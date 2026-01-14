@@ -35,7 +35,7 @@ VAP's scope is deliberately strict: **domains where system failures can cause ir
 | Profile | Domain | Risk Category | Repository | Status |
 |---------|--------|---------------|------------|--------|
 | **VCP** | Finance & Trading | Market Stability | [veritaschain/vcp-spec](https://github.com/veritaschain/vcp-spec) | ✅ v1.1 |
-| **CAP** | Content / Creative | IP Rights, Misinformation | [veritaschain/cap-spec](https://github.com/veritaschain/cap-spec) | 🚧 v0.2 |
+| **CAP** | Content / Creative | IP Rights, Misinformation | [veritaschain/cap-spec](https://github.com/veritaschain/cap-spec) | ✅ v1.0 |
 | **DVP** | Automotive | Physical Safety | — | 📋 Planned |
 | **MAP** | Medical | Patient Safety | — | 📋 Planned |
 | **PAP** | Public Sector | Democratic Integrity | — | 📋 Planned |
