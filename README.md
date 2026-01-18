@@ -36,6 +36,7 @@ VAP's scope is deliberately strict: **domains where system failures can cause ir
 |---------|--------|---------------|------------|--------|
 | **VCP** | Finance & Trading | Market Stability | [veritaschain/vcp-spec](https://github.com/veritaschain/vcp-spec) | ✅ v1.1 |
 | **CAP** | Content / Creative | IP Rights, Misinformation | [veritaschain/cap-spec](https://github.com/veritaschain/cap-spec) | ✅ v1.0 |
+| **CPP** | Consumer / Media | Evidence Integrity, Misinformation | [veritaschain/cpp-spec](https://github.com/veritaschain/cpp-spec) | ✅ v1.0 |
 | **DVP** | Automotive | Physical Safety | — | 📋 Planned |
 | **MAP** | Medical | Patient Safety | — | 📋 Planned |
 | **PAP** | Public Sector | Democratic Integrity | — | 📋 Planned |
@@ -63,6 +64,7 @@ VAP's scope is deliberately strict: **domains where system failures can cause ir
 |----------|------|
 | **VCP** (Finance Profile) | [github.com/veritaschain/vcp-spec](https://github.com/veritaschain/vcp-spec) |
 | **CAP** (Content Profile) | [github.com/veritaschain/cap-spec](https://github.com/veritaschain/cap-spec) |
+| **CPP** (Capture Profile) | [github.com/veritaschain/cpp-spec](https://github.com/veritaschain/cpp-spec) |
 | **Website** | [veritaschain.org](https://veritaschain.org) |
 | **IETF Draft** | [draft-kamimura-scitt-vcp](https://datatracker.ietf.org/doc/draft-kamimura-scitt-vcp/) |
 
