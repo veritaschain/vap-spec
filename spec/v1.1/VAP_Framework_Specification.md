@@ -14,13 +14,13 @@
 
 ## Executive Summary
 
-**VAP（Verifiable AI Provenance Framework）** は、あらゆる高リスクAIシステムに共通する「暗号学的に検証可能な判断証跡（Provenance）」の構成要件を規定する、**分野横断の上位フレームワーク**である。
+**VAP (Verifiable AI Provenance Framework)** is a **cross-domain upper-level framework** that defines the structural requirements for cryptographically verifiable decision provenance common to all high-risk AI systems.
 
-VAPは「AIの利用を制限する規制」ではなく、**「AIを安全に継続運用するための証跡インフラ」** を標準化することを目的とする。
+VAP is not a regulation that restricts AI usage. Its purpose is to standardize **the provenance infrastructure required for the safe and continuous operation of AI systems.**
 
-**VAPの適用対象は明確である：システム障害が人命・社会基盤・民主的制度に不可逆的な損害をもたらしうる領域。**
+**The scope of VAP is explicit: domains where system failure can cause irreversible harm to human life, societal infrastructure, or democratic institutions.**
 
-金融・医療・交通・エネルギー・公共政策の5領域において、AI判断の透明性と追跡可能性は任意の付加機能ではなく、社会インフラとしての必須要件である。
+Across the five domains of finance, healthcare, transportation, energy, and public policy, transparency and traceability of AI decisions are not optional features — they are mandatory requirements for societal infrastructure.
 
 ---
 
@@ -33,16 +33,17 @@ VAPは「AIの利用を制限する規制」ではなく、**「AIを安全に�
 │                                                                 │
 │     VAP (Verifiable AI Provenance Framework)                    │
 │     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━                    │
-│     AI判断証跡の「概念・上位フレームワーク」                      │
-│     全ドメイン共通の最低要件・抽象レイヤーを定義                   │
+│     Conceptual upper-level framework for AI decision provenance │
+│     Defines minimum requirements and abstract layers common     │
+│     to all domains                                              │
 │                                                                 │
 │                          ▲                                      │
 │                          │ defines & maintains                  │
 │                          │                                      │
 │     VSO (VeritasChain Standards Organization)                   │
 │     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━                   │
-│     VAPを策定・維持・認証する「標準化団体」                        │
-│     プロファイル間の整合性を保証                                  │
+│     Standards body that develops, maintains, and certifies VAP  │
+│     Ensures consistency across domain profiles                  │
 │                                                                 │
 │                          │                                      │
 │                          │ publishes profiles                   │
@@ -54,7 +55,7 @@ VAPは「AIの利用を制限する規制」ではなく、**「AIを安全に�
 │     │Profile  │ │ Profile │ │Profile │ │Profile │           │
 │     └─────────┘ └─────────┘ └─────────┘ └─────────┘           │
 │                                                                 │
-│     ドメイン固有の「具体プロトコル実装」                          │
+│     Domain-specific protocol implementations                    │
 │                                                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```
@@ -69,7 +70,7 @@ VAPは「AIの利用を制限する規制」ではなく、**「AIを安全に�
 | **FIX Trading Community** | Financial Trading | FIX Protocol |
 | **VSO** | **AI Decision Provenance** | **VAP Framework, VCP, DVP, MAP...** |
 
-**VSOは「AI判断の証跡と安全性の基盤」を定義する国際標準化団体として位置づけられる。**
+**VSO is positioned as an international standards body defining the foundational infrastructure for AI decision provenance and safety.**
 
 ---
 
@@ -94,47 +95,47 @@ VAPは「AIの利用を制限する規制」ではなく、**「AIを安全に�
 
 ### 1.1 Purpose
 
-VAP（Verifiable AI Provenance Framework）は、以下の構造的課題を解消するために設計された上位フレームワークである：
+VAP (Verifiable AI Provenance Framework) is an upper-level framework designed to address the following structural challenges:
 
-| 課題 | 説明 | VAPによる解決 |
-|--------|------|---------------|
-| **再現不可能性** | AIの判断プロセスが再現できない | Provenance Layerによる判断由来の記録 |
-| **記録欠如** | 意思決定の過程が記録されていない | Integrity Layerによる自動ロギング |
-| **改ざん可能性** | 監査記録が事後的に書き換え可能 | Hash Chain + Merkle Tree による暗号的保証 |
-| **責任曖昧性** | 事故時の責任主体が特定不能 | Accountability Layerによる責任境界の可視化 |
+| Challenge | Description | VAP Solution |
+|-----------|-------------|--------------|
+| **Non-reproducibility** | AI decision processes cannot be reproduced | Provenance Layer records decision lineage |
+| **Absence of records** | Decision-making processes are not recorded | Integrity Layer provides automated logging |
+| **Tamperability** | Audit records can be retroactively modified | Hash Chain + Merkle Tree provide cryptographic guarantees |
+| **Ambiguous accountability** | Responsible parties cannot be identified after incidents | Accountability Layer makes responsibility boundaries visible |
 
 ### 1.2 Design Philosophy
 
-VAPは以下の基本理念に基づく：
+VAP is guided by the following principle:
 
-> **「AIの利用を制限する規制」ではなく、「AIを安全に継続運用するための共通証跡基盤」**
+> **"Not a regulation that restricts AI usage, but a common provenance infrastructure for the safe and continuous operation of AI systems."**
 
-AI技術の進歩を阻害することなく、その判断プロセスの透明性と追跡可能性を確保することで、社会的信頼を維持しながらAI活用を継続可能にする。
+By ensuring transparency and traceability of AI decision processes without impeding technological progress, VAP enables continued AI adoption while maintaining societal trust.
 
 ### 1.3 Scope Definition
 
-VAPは**「システム障害が人命・社会基盤・民主的制度に重大かつ不可逆的な損害をもたらしうる領域」**を対象とする。
+VAP targets **"domains where system failure can cause serious and irreversible harm to human life, societal infrastructure, or democratic institutions."**
 
-この定義は意図的に厳格である。VAPは汎用的なログ収集フレームワークではなく、**社会インフラとしてのAIシステムに必須となる証跡基盤**である。
+This definition is intentionally strict. VAP is not a general-purpose logging framework — it is **provenance infrastructure essential for AI systems operating as societal infrastructure.**
 
 ### 1.4 Conformance Language
 
-本仕様書において、以下のキーワードは RFC 2119 に準拠して解釈される：
+In this specification, the following keywords are interpreted in accordance with RFC 2119:
 
-- **MUST** / **REQUIRED** / **SHALL**: 絶対的な要件
-- **MUST NOT** / **SHALL NOT**: 絶対的な禁止
-- **SHOULD** / **RECOMMENDED**: 推奨事項（正当な理由がある場合は逸脱可能）
-- **MAY** / **OPTIONAL**: 任意事項
+- **MUST** / **REQUIRED** / **SHALL**: Absolute requirement
+- **MUST NOT** / **SHALL NOT**: Absolute prohibition
+- **SHOULD** / **RECOMMENDED**: Recommended (deviation permitted with justifiable reason)
+- **MAY** / **OPTIONAL**: Optional
 
 ### 1.5 Terminology
 
 | Term | Definition |
 |------|------------|
-| **VAP** | Verifiable AI Provenance Framework - 分野横断の上位フレームワーク |
-| **VSO** | VeritasChain Standards Organization - VAPを策定・維持する標準化団体 |
-| **Profile** | VAPの特定ドメイン実装（VCP, DVP, MAP等） |
-| **Provenance** | データの出所・由来・履歴の暗号学的に検証可能な記録 |
-| **High-Risk AI** | EU AI Act Article 6に定義される高リスクAIシステム |
+| **VAP** | Verifiable AI Provenance Framework — Cross-domain upper-level framework |
+| **VSO** | VeritasChain Standards Organization — Standards body that develops and maintains VAP |
+| **Profile** | Domain-specific implementation of VAP (VCP, DVP, MAP, etc.) |
+| **Provenance** | Cryptographically verifiable record of data origin, lineage, and history |
+| **High-Risk AI** | High-risk AI systems as defined in EU AI Act Article 6 |
 
 ---
 
@@ -142,13 +143,13 @@ VAPは**「システム障害が人命・社会基盤・民主的制度に重大
 
 ### 2.1 Normative Scope Statement
 
-**VAP（Verifiable AI Provenance Framework）は、「システム障害が人命・社会基盤・民主的制度に重大かつ不可逆的な損害をもたらしうる領域」におけるAI判断の監査基盤として設計される。**
+**VAP (Verifiable AI Provenance Framework) is designed as an audit infrastructure for AI decisions in domains where system failure can cause serious and irreversible harm to human life, societal infrastructure, or democratic institutions.**
 
-以下の5領域は、VAPの**必須適用対象（Mandatory Application Domains）**として定義される。
+The following five domains are defined as **Mandatory Application Domains** for VAP.
 
 ### 2.2 Domain Definitions
 
-#### 2.2.1 Financial Infrastructure（金融インフラ）
+#### 2.2.1 Financial Infrastructure
 
 | Attribute | Value |
 |-----------|-------|
@@ -157,30 +158,30 @@ VAPは**「システム障害が人命・社会基盤・民主的制度に重大
 | **Risk Category** | Systemic Risk / Market Integrity |
 
 **Scope:**
-- 高頻度取引（HFT）システム
-- AI/アルゴリズム駆動の取引戦略
-- 取引所・清算機関・プライムブローカー
-- リスク管理システム
-- 与信スコアリングAI
+- High-frequency trading (HFT) systems
+- AI/algorithm-driven trading strategies
+- Exchanges, clearinghouses, prime brokers
+- Risk management systems
+- Credit scoring AI
 
 **Failure Impact:**
-- AI/HFTの異常動作による市場の急激な変動
-- 年金基金・企業財務・国家財政への連鎖的影響
-- システミックリスクの顕在化（2010年Flash Crash：1兆ドルが数分で蒸発）
+- Sudden market volatility caused by AI/HFT malfunction
+- Cascading impact on pension funds, corporate finance, and national fiscal systems
+- Materialization of systemic risk (2010 Flash Crash: $1 trillion evaporated in minutes)
 
 **Regulatory Drivers:**
-- EU AI Act Article 6(2) - 信用スコアリングは高リスクAI
-- MiFID II Article 17 - アルゴリズム取引の監査要件
-- CAT Rule 613 - 統合監査証跡
+- EU AI Act Article 6(2) — Credit scoring classified as high-risk AI
+- MiFID II Article 17 — Algorithmic trading audit requirements
+- CAT Rule 613 — Consolidated Audit Trail
 
 **VAP Requirements:**
-- 取引イベントの暗号学的連鎖記録
-- AI判断根拠（DecisionFactors）の保存
-- ナノ秒精度のタイムスタンプ同期
+- Cryptographic chain recording of trading events
+- Preservation of AI decision rationale (DecisionFactors)
+- Nanosecond-precision timestamp synchronization
 
 ---
 
-#### 2.2.2 Medical and Healthcare AI（医療・ヘルスケアAI）
+#### 2.2.2 Medical and Healthcare AI
 
 | Attribute | Value |
 |-----------|-------|
@@ -189,30 +190,30 @@ VAPは**「システム障害が人命・社会基盤・民主的制度に重大
 | **Risk Category** | Patient Safety / Life-Critical |
 
 **Scope:**
-- AI診断支援システム
-- 画像診断AI（放射線、病理）
-- トリアージ・優先度判定AI
-- 投薬推奨・薬物相互作用チェック
-- 手術支援ロボットの判断ロジック
+- AI diagnostic support systems
+- Imaging AI (radiology, pathology)
+- Triage and priority assessment AI
+- Medication recommendation and drug interaction checking
+- Surgical robot decision logic
 
 **Failure Impact:**
-- 診断の誤りによる患者への直接的な健康被害
-- 投薬ミスによる重篤な副作用
-- トリアージ誤判定による適切な医療提供の遅延
+- Direct patient harm from diagnostic errors
+- Severe adverse effects from medication errors
+- Delayed appropriate care from triage misjudgment
 
 **Regulatory Drivers:**
-- EU AI Act Annex III - 医療機器AIは高リスク
+- EU AI Act Annex III — Medical device AI classified as high-risk
 - FDA AI/ML-Based SaMD Guidance
 - MDR (Medical Device Regulation) 2017/745
 
 **VAP Requirements:**
-- 診断根拠の完全な記録と再構成能力
-- 判断に使用したデータ・モデルバージョンの特定
-- 医療事故調査・訴訟対応への証跡提供能力
+- Complete recording and reconstruction capability for diagnostic rationale
+- Identification of data and model versions used in decision-making
+- Capability to provide evidence for medical incident investigation and litigation
 
 ---
 
-#### 2.2.3 Transportation and Autonomous Systems（交通・自動運転）
+#### 2.2.3 Transportation and Autonomous Systems
 
 | Attribute | Value |
 |-----------|-------|
@@ -221,33 +222,33 @@ VAPは**「システム障害が人命・社会基盤・民主的制度に重大
 | **Risk Category** | Physical Safety / Mass Casualty Prevention |
 
 **Scope:**
-- 自動運転車両（Level 3-5）
-- ADAS（先進運転支援システム）
-- 航空機自動操縦・航空管制AI
-- 鉄道運行管理システム
-- ドローン自律制御
+- Autonomous vehicles (Level 3–5)
+- ADAS (Advanced Driver-Assistance Systems)
+- Aircraft autopilot and air traffic control AI
+- Railway operations management systems
+- Autonomous drone control
 
 **Failure Impact:**
-- 自動運転の誤判断による交通事故
-- 航空管制AIの異常動作による航空機事故リスク
-- 鉄道制御の誤動作による運行障害
+- Traffic accidents from autonomous driving misjudgment
+- Aviation accident risk from ATC AI malfunction
+- Service disruption from railway control errors
 
 **Regulatory Drivers:**
-- EU AI Act Annex III - 交通安全AIは高リスク
-- UNECE WP.29 - 自動運転システム規則
+- EU AI Act Annex III — Transport safety AI classified as high-risk
+- UNECE WP.29 — Automated driving system regulations
 - FAA Advisory Circular 23.1309-1E
 
 **VAP Requirements:**
-- 物理的フライトレコーダーとAI判断レコーダーの統合
-- センサー入力→判断→制御出力の完全な因果連鎖記録
-- リアルタイム記録とオフライン検証の両立
+- Integration of physical flight recorder with AI decision recorder
+- Complete causal chain recording from sensor input → decision → control output
+- Compatibility between real-time recording and offline verification
 
 **Unique Characteristic:**
-> **物理的フライトレコーダーに加え、AI判断レベルの証跡記録が最終形態となる領域。**
+> **The ultimate form for this domain is AI decision-level provenance recording in addition to physical flight recorders.**
 
 ---
 
-#### 2.2.4 Energy and Critical Infrastructure（エネルギー・社会インフラ）
+#### 2.2.4 Energy and Critical Infrastructure
 
 | Attribute | Value |
 |-----------|-------|
@@ -256,33 +257,33 @@ VAPは**「システム障害が人命・社会基盤・民主的制度に重大
 | **Risk Category** | Societal Continuity / Critical Infrastructure |
 
 **Scope:**
-- 電力網管理・需給バランシングAI
-- 水道網監視・制御システム
-- 通信インフラ管理AI
-- ガスパイプライン制御
-- 原子力発電所監視システム
+- Power grid management and supply-demand balancing AI
+- Water network monitoring and control systems
+- Telecommunications infrastructure management AI
+- Gas pipeline control
+- Nuclear power plant monitoring systems
 
 **Failure Impact:**
-- 電力網AI異常動作による大規模停電（医療機器・冷暖房への影響）
-- 水道システム誤動作による水質・供給への影響
-- 通信インフラ障害による緊急通報・金融システムへの波及
+- Large-scale blackouts from power grid AI malfunction (affecting medical devices, HVAC)
+- Water quality and supply impacts from water system errors
+- Cascading effects on emergency services and financial systems from telecom infrastructure failure
 
 **Regulatory Drivers:**
-- EU NIS2 Directive - 重要インフラのセキュリティ
-- NERC CIP Standards - 電力系統サイバーセキュリティ
-- EU AI Act - エネルギー管理AIは高リスク
+- EU NIS2 Directive — Critical infrastructure security
+- NERC CIP Standards — Power system cybersecurity
+- EU AI Act — Energy management AI classified as high-risk
 
 **VAP Requirements:**
-- AIの異常判断の原因追跡能力
-- 障害復旧のための状態再構成
-- カスケード障害の根本原因分析
+- Root cause tracking for anomalous AI decisions
+- State reconstruction for failure recovery
+- Root cause analysis for cascading failures
 
 **Unique Characteristic:**
-> **社会基盤の継続性に直結するインフラ。復旧のためには判断履歴の追跡が不可欠。**
+> **Infrastructure directly tied to societal continuity. Decision history tracing is indispensable for recovery.**
 
 ---
 
-#### 2.2.5 Public Policy, Law Enforcement, and Justice（公共政策・治安・司法）
+#### 2.2.5 Public Policy, Law Enforcement, and Justice
 
 | Attribute | Value |
 |-----------|-------|
@@ -291,29 +292,29 @@ VAPは**「システム障害が人命・社会基盤・民主的制度に重大
 | **Risk Category** | Democratic Integrity / Civil Rights |
 
 **Scope:**
-- 与信スコアリング・ローン審査AI
-- 福祉給付判定システム
-- 入国管理・ビザ審査AI
-- 再犯リスク評価（recidivism prediction）
-- 採用・人事評価AI
+- Credit scoring and loan assessment AI
+- Welfare benefit determination systems
+- Immigration and visa assessment AI
+- Recidivism prediction
+- Recruitment and performance evaluation AI
 
 **Failure Impact:**
-- 判断理由が追跡不能な場合、不服申立・司法審査が困難
-- バイアスのあるAIによる不公正な判定の固定化
-- 民主的統制を欠いたアルゴリズムによる意思決定
+- If decision rationale cannot be traced, appeals and judicial review become difficult
+- Entrenchment of unfair determinations from biased AI
+- Algorithmic decision-making without democratic oversight
 
 **Regulatory Drivers:**
-- EU AI Act Article 6(2) - 基本的権利に影響するAIは高リスク
-- GDPR Article 22 - 自動化された意思決定への異議申立権
-- US Executive Order 14110 - AI安全性に関する大統領令
+- EU AI Act Article 6(2) — AI affecting fundamental rights classified as high-risk
+- GDPR Article 22 — Right to object to automated decision-making
+- US Executive Order 14110 — AI safety
 
 **VAP Requirements:**
-- 個人に影響する判定の完全な説明可能性
-- 事後的な監査と異議申立への対応能力
-- 民主的監視のための透明性確保
+- Full explainability of decisions affecting individuals
+- Post-hoc audit and appeal response capability
+- Transparency for democratic oversight
 
 **Unique Characteristic:**
-> **判断理由の追跡が不可能なAIは、民主的説明責任の基盤を損なう。**
+> **AI whose decision rationale cannot be traced undermines the foundation of democratic accountability.**
 
 ---
 
@@ -322,46 +323,46 @@ VAPは**「システム障害が人命・社会基盤・民主的制度に重大
 | Domain | Profile | Failure Mode | Time to Impact | Reversibility |
 |--------|---------|--------------|----------------|---------------|
 | Financial | VCP | Systemic Instability | Milliseconds | Partial |
-| Medical | MAP | Patient Harm | Minutes-Hours | Irreversible |
+| Medical | MAP | Patient Harm | Minutes–Hours | Irreversible |
 | Transportation | DVP/AAP | Physical Harm | Seconds | Irreversible |
-| Energy | EIP | Infrastructure Disruption | Minutes-Days | Slow Recovery |
-| Public Policy | PAP | Institutional Erosion | Months-Years | Difficult |
+| Energy | EIP | Infrastructure Disruption | Minutes–Days | Slow Recovery |
+| Public Policy | PAP | Institutional Erosion | Months–Years | Difficult |
 
 ### 2.4 Common Requirements Across Domains
 
-すべてのHigh-Risk Domainに共通する要件：
+Requirements common to all High-Risk Domains:
 
 | Requirement ID | Requirement | Rationale |
 |----------------|-------------|-----------|
-| **HR-001** | 暗号学的完全性（Hash Chain） | 改ざん検出 |
-| **HR-002** | 判断由来の記録（Provenance） | 再構成能力 |
-| **HR-003** | 因果連鎖の追跡（Traceability） | 根本原因分析 |
-| **HR-004** | 責任境界の明確化（Accountability） | 法的責任特定 |
-| **HR-005** | 説明可能性（Explainability） | 規制・訴訟対応 |
-| **HR-006** | プライバシー保護（Privacy） | GDPR対応 |
+| **HR-001** | Cryptographic integrity (Hash Chain) | Tamper detection |
+| **HR-002** | Decision lineage recording (Provenance) | Reconstruction capability |
+| **HR-003** | Causal chain tracing (Traceability) | Root cause analysis |
+| **HR-004** | Accountability boundary definition (Accountability) | Legal responsibility identification |
+| **HR-005** | Explainability | Regulatory and litigation response |
+| **HR-006** | Privacy protection (Privacy) | GDPR compliance |
 
 ### 2.5 Domain Selection Criteria
 
 #### 2.5.1 Selection Criteria
 
-VAPの必須適用対象は、以下の基準に基づいて選定された：
+VAP Mandatory Application Domains were selected based on the following criteria:
 
-1. **不可逆性（Irreversibility）**: 判断ミスの結果が回復困難または不可能
-2. **規模（Scale）**: 個人ではなく社会全体に影響が波及
-3. **速度（Velocity）**: 人間の介入が間に合わない速度で影響が拡大
-4. **規制要件（Regulatory Mandate）**: 既存または計画中の規制が透明性を要求
+1. **Irreversibility**: Consequences of decision errors are difficult or impossible to recover from
+2. **Scale**: Impact affects society as a whole, not just individuals
+3. **Velocity**: Impact propagates faster than human intervention can prevent
+4. **Regulatory Mandate**: Existing or planned regulations require transparency
 
 #### 2.5.2 Strategic Implications
 
-この5領域の明確な定義により：
+The explicit definition of these five domains provides:
 
 | Implication | Description |
 |-------------|-------------|
-| **VAPの普遍性** | 金融領域に限定されない汎用フレームワークであることを明示 |
-| **VAPの必然性** | AI社会基盤全体の上位レイヤーとしての位置づけを確立 |
-| **参入障壁の低下** | 他分野の事業者がVAP準拠を選択する合理的理由を提供 |
-| **標準乱立の防止** | 各分野での個別プロトコル乱立を防ぎ、相互運用性を確保 |
-| **国際標準化の促進** | ISO等の国際標準化プロセスへの移行を円滑化 |
+| **VAP universality** | Demonstrates VAP as a general-purpose framework, not limited to finance |
+| **VAP necessity** | Establishes positioning as the upper layer of AI societal infrastructure |
+| **Lower adoption barriers** | Provides rational grounds for non-financial organizations to adopt VAP compliance |
+| **Prevention of standards fragmentation** | Prevents proliferation of domain-specific protocols, ensuring interoperability |
+| **Facilitation of international standardization** | Smooths transition to ISO and other international standardization processes |
 
 ---
 
@@ -369,7 +370,7 @@ VAPの必須適用対象は、以下の基準に基づいて選定された：
 
 ### 3.1 Layered Architecture
 
-VAP は以下の5つの必須レイヤーから構成される：
+VAP comprises the following five mandatory layers:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -380,22 +381,24 @@ VAP は以下の5つの必須レイヤーから構成される：
 │   └─────────┘ └─────────┘ └─────────┘ └─────────┘          │
 ├─────────────────────────────────────────────────────────────┤
 │                  Accountability Layer                        │
-│         責任主体の識別・責任境界の定義・監査証跡              │
+│   Responsibility identification · Boundary definition ·     │
+│   Audit trails                                               │
 ├─────────────────────────────────────────────────────────────┤
 │                  Traceability Layer                          │
-│         因果構造の再構成・時系列追跡・インシデント分析         │
+│   Causal structure reconstruction · Temporal tracking ·      │
+│   Incident analysis                                          │
 ├─────────────────────────────────────────────────────────────┤
 │                   Provenance Layer                           │
-│         Actor/Input/Context/Action/Outcome の記録            │
+│   Actor / Input / Context / Action / Outcome recording       │
 ├─────────────────────────────────────────────────────────────┤
 │                    Integrity Layer                           │
-│         Hash Chain・Merkle Tree・Digital Signatures          │
+│   Hash Chain · Merkle Tree · Digital Signatures              │
 └─────────────────────────────────────────────────────────────┘
 ```
 
 ### 3.2 Layer Dependency
 
-各レイヤーは下位レイヤーに依存する：
+Each layer depends on the layers below it:
 
 ```
 Domain Profiles ──depends on──▶ Accountability Layer
@@ -415,35 +418,35 @@ Domain Profiles ──depends on──▶ Accountability Layer
 
 ### 3.3 Cross-Cutting Concerns
 
-以下は全レイヤーに共通する横断的関心事である：
+The following concerns span all layers:
 
-| 関心事 | 説明 | 実装要件 |
-|--------|------|----------|
-| **Privacy** | 個人データの保護 | Crypto-shredding, 匿名化 |
-| **Security** | 暗号的安全性 | Ed25519/Dilithium, SHA-256/SHA3 |
-| **Performance** | 低遅延・高スループット | Tier別の性能要件 |
-| **Interoperability** | システム間連携 | JSON/SBE, 標準API |
+| Concern | Description | Implementation Requirement |
+|---------|-------------|---------------------------|
+| **Privacy** | Personal data protection | Crypto-shredding, anonymization |
+| **Security** | Cryptographic security | Ed25519/Dilithium, SHA-256/SHA3 |
+| **Performance** | Low latency, high throughput | Tier-specific performance requirements |
+| **Interoperability** | Cross-system integration | JSON/SBE, standard APIs |
 
 ---
 
 ## 4. Core Layers
 
-### 4.1 Integrity Layer（暗号的完全性レイヤー）
+### 4.1 Integrity Layer
 
 #### 4.1.1 Purpose
 
-すべてのAI判断イベントの改ざん不可能性を暗号学的に保証する。
+Provides cryptographic guarantees of tamper-resistance for all AI decision events.
 
 #### 4.1.2 Requirements
 
-| 要件ID | 要件 | 必須レベル |
-|--------|------|------------|
-| INT-001 | すべてのイベントは正規化（Canonicalization）されなければならない | MUST |
-| INT-002 | 各イベントには一意識別子（UUID v7推奨）を付与しなければならない | MUST |
-| INT-003 | イベントは暗号学的ハッシュ（SHA-256以上）でリンクされなければならない | MUST |
-| INT-004 | ハッシュチェーンは連続性を維持しなければならない | MUST |
-| INT-005 | デジタル署名またはTEE署名により否認防止を実現すべきである | SHOULD |
-| INT-006 | 定期的なMerkle Tree アンカリングを行うべきである | SHOULD |
+| Req ID | Requirement | Level |
+|--------|-------------|-------|
+| INT-001 | All events MUST be canonicalized | MUST |
+| INT-002 | Each event MUST have a unique identifier (UUID v7 recommended) | MUST |
+| INT-003 | Events MUST be linked via cryptographic hash (SHA-256 or stronger) | MUST |
+| INT-004 | Hash chain MUST maintain continuity | MUST |
+| INT-005 | Non-repudiation SHOULD be achieved via digital signatures or TEE signatures | SHOULD |
+| INT-006 | Periodic Merkle Tree anchoring SHOULD be performed | SHOULD |
 
 #### 4.1.3 Hash Chain Construction
 
@@ -482,14 +485,14 @@ Output: VALID or INVALID with error location
 
 #### 4.1.4 Merkle Tree Anchoring
 
-RFC 6962（Certificate Transparency）準拠のMerkle Tree構築を**必須**とする：
+Merkle Tree construction conforming to RFC 6962 (Certificate Transparency) is **REQUIRED**:
 
 ```
-Leaf(D) = H(0x00 || D)        // リーフノード
-Node(L, R) = H(0x01 || L || R) // 内部ノード
+Leaf(D) = H(0x00 || D)        // Leaf node
+Node(L, R) = H(0x01 || L || R) // Internal node
 ```
 
-**Domain Separation（0x00/0x01 prefix）は第二原像攻撃を防止するために必須である。**
+**Domain Separation (0x00/0x01 prefix) is REQUIRED to prevent second preimage attacks.**
 
 #### 4.1.5 Cryptographic Algorithm Support
 
@@ -503,51 +506,51 @@ Node(L, R) = H(0x01 || L || R) // 内部ノード
 | **DILITHIUM2** | Signature | FUTURE | Yes |
 | FALCON-512 | Signature | FUTURE | Yes |
 
-**Crypto Agility要件:** すべてのVAP準拠実装は、署名アルゴリズムを識別するフィールドを含み、将来のアルゴリズム移行を可能にしなければならない（MUST）。
+**Crypto Agility Requirement:** All VAP-compliant implementations MUST include a field identifying the signature algorithm and MUST enable future algorithm migration.
 
 ---
 
-### 4.2 Provenance Layer（判断由来レイヤー）
+### 4.2 Provenance Layer
 
 #### 4.2.1 Purpose
 
-AIの判断由来（誰が・何を・どの環境で・何を参照して・何を出したか）を構造化して記録する。
+Records AI decision lineage in structured form: who acted, what they received, under what conditions, what they referenced, and what they produced.
 
 #### 4.2.2 Abstract Data Model
 
-VAPはドメイン非依存の抽象モデルを定義する：
+VAP defines a domain-independent abstract model:
 
 ```json
 {
   "provenance": {
     "actor": {
       "type": "enum",           // AI_MODEL, HUMAN, EXTERNAL_AGENT, HYBRID
-      "identifier": "string",   // 一意識別子
-      "version": "string",      // バージョン情報（AI_MODELの場合）
-      "hash": "string"          // モデルパラメータのハッシュ（AI_MODELの場合）
+      "identifier": "string",   // Unique identifier
+      "version": "string",      // Version info (for AI_MODEL)
+      "hash": "string"          // Model parameter hash (for AI_MODEL)
     },
     "input": {
-      "sources": ["array"],     // 入力データソースのリスト
-      "timestamp": "int64",     // 入力取得時刻
-      "hash": "string"          // 入力データのハッシュ
+      "sources": ["array"],     // List of input data sources
+      "timestamp": "int64",     // Input acquisition time
+      "hash": "string"          // Input data hash
     },
     "context": {
-      "parameters": "object",   // アクティブなパラメータ
-      "constraints": "object",  // 適用された制約条件
-      "environment": "object"   // 実行環境情報
+      "parameters": "object",   // Active parameters
+      "constraints": "object",  // Applied constraints
+      "environment": "object"   // Execution environment info
     },
     "action": {
-      "type": "string",         // 判断/提案/推奨の種類
-      "decision": "object",     // AIの判断内容
-      "confidence": "string",   // 信頼度スコア（0.0-1.0）
+      "type": "string",         // Type of decision/proposal/recommendation
+      "decision": "object",     // AI decision content
+      "confidence": "string",   // Confidence score (0.0–1.0)
       "explainability": {
         "method": "enum",       // SHAP, LIME, GRADCAM, RULE_TRACE, NONE
-        "factors": ["array"]    // 判断に寄与した要因
+        "factors": ["array"]    // Factors contributing to decision
       }
     },
     "outcome": {
-      "result": "object",       // 実行結果
-      "timestamp": "int64",     // 結果確定時刻
+      "result": "object",       // Execution result
+      "timestamp": "int64",     // Result finalization time
       "status": "enum"          // SUCCESS, FAILURE, PARTIAL, PENDING
     }
   }
@@ -566,20 +569,20 @@ VAPはドメイン非依存の抽象モデルを定義する：
 
 ---
 
-### 4.3 Traceability Layer（追跡可能性レイヤー）
+### 4.3 Traceability Layer
 
 #### 4.3.1 Purpose
 
-判断チェーンを時系列および因果構造で再構成可能にする。
+Enables reconstruction of decision chains in both temporal sequence and causal structure.
 
 #### 4.3.2 Requirements
 
-| 要件ID | 要件 | 必須レベル |
-|--------|------|------------|
-| TRC-001 | イベント間の因果関係を表現できなければならない | MUST |
-| TRC-002 | trace_id により関連イベントをグループ化できなければならない | MUST |
-| TRC-003 | 任意の時点でのシステム状態を再構成できるべきである | SHOULD |
-| TRC-004 | 根本原因分析（RCA）を支援するクエリ機能を提供すべきである | SHOULD |
+| Req ID | Requirement | Level |
+|--------|-------------|-------|
+| TRC-001 | MUST be capable of expressing causal relationships between events | MUST |
+| TRC-002 | MUST be capable of grouping related events via trace_id | MUST |
+| TRC-003 | SHOULD be capable of reconstructing system state at any point in time | SHOULD |
+| TRC-004 | SHOULD provide query capabilities supporting root cause analysis (RCA) | SHOULD |
 
 #### 4.3.3 Causal Chain Model
 
@@ -618,31 +621,31 @@ Application → Evaluation → Scoring → Decision → Notification → Appeal
 
 ---
 
-### 4.4 Accountability Layer（責任境界レイヤー）
+### 4.4 Accountability Layer
 
 #### 4.4.1 Purpose
 
-AI関与の判断において、責任主体を特定可能にする。
+Enables identification of responsible parties in AI-involved decisions.
 
 #### 4.4.2 Actor Types
 
-| Actor Type | 説明 | 例 |
-|------------|------|-----|
-| **MODEL_DEVELOPER** | AIモデルの開発者 | 機械学習エンジニア |
-| **AI_PROVIDER** | AIシステムの提供者 | SaaSベンダー |
-| **OPERATOR** | 運用者・オペレーター | トレーダー、ドライバー、医師 |
-| **DATA_VENDOR** | データ提供者 | マーケットデータベンダー |
-| **FINAL_DECISION_MAKER** | 最終意思決定者 | リスクマネージャー |
+| Actor Type | Description | Example |
+|------------|-------------|---------|
+| **MODEL_DEVELOPER** | AI model developer | Machine learning engineer |
+| **AI_PROVIDER** | AI system provider | SaaS vendor |
+| **OPERATOR** | Operator | Trader, driver, physician |
+| **DATA_VENDOR** | Data provider | Market data vendor |
+| **FINAL_DECISION_MAKER** | Final decision maker | Risk manager |
 
 #### 4.4.3 Responsibility Schema
 
 ```json
 {
   "accountability": {
-    "operator_id": "string",           // 運用者識別子
-    "last_approval_by": "string",      // 最終承認者
-    "approval_timestamp": "int64",     // 承認時刻
-    "delegation_chain": [              // 委任チェーン
+    "operator_id": "string",           // Operator identifier
+    "last_approval_by": "string",      // Final approver
+    "approval_timestamp": "int64",     // Approval time
+    "delegation_chain": [              // Delegation chain
       {
         "delegator": "string",
         "delegatee": "string",
@@ -651,7 +654,7 @@ AI関与の判断において、責任主体を特定可能にする。
         "valid_until": "int64"
       }
     ],
-    "override_history": [              // 上書き履歴
+    "override_history": [              // Override history
       {
         "original_action": "object",
         "override_action": "object",
@@ -666,36 +669,36 @@ AI関与の判断において、責任主体を特定可能にする。
 
 #### 4.4.4 Human Oversight Requirements
 
-EU AI Act Article 14（Human Oversight）への対応：
+Addressing EU AI Act Article 14 (Human Oversight):
 
-| 要件 | VAP実装 |
-|------|---------|
-| 人間による監視の有効化 | operator_id フィールド |
-| 介入能力 | HALT/OVERRIDE イベントタイプ |
-| オーバーライド機能 | override_history 記録 |
+| Requirement | VAP Implementation |
+|-------------|-------------------|
+| Enable human monitoring | operator_id field |
+| Intervention capability | HALT/OVERRIDE event types |
+| Override functionality | override_history recording |
 
 ---
 
-### 4.5 Domain Profiles Layer（領域プロファイルレイヤー）
+### 4.5 Domain Profiles Layer
 
 #### 4.5.1 Purpose
 
-VAP共通レイヤーの上に、ドメイン固有の拡張を定義する。
+Defines domain-specific extensions on top of VAP common layers.
 
 #### 4.5.2 Profile Registry
 
 | Profile ID | Domain | Status | Specification |
 |------------|--------|--------|---------------|
 | **VCP** | Finance / Algorithmic Trading | **v1.0 Released** | VSO-VCP-SPEC-001 |
-| DVP | Automotive / Autonomous Driving | Planned | - |
-| AAP | Aviation / Air Traffic Control | Planned | - |
-| MAP | Medical / Healthcare AI | Planned | - |
-| EIP | Energy / Critical Infrastructure | Planned | - |
-| PAP | Public Sector / Government AI | Planned | - |
+| DVP | Automotive / Autonomous Driving | Planned | — |
+| AAP | Aviation / Air Traffic Control | Planned | — |
+| MAP | Medical / Healthcare AI | Planned | — |
+| EIP | Energy / Critical Infrastructure | Planned | — |
+| PAP | Public Sector / Government AI | Planned | — |
 
 #### 4.5.3 Profile Extension Mechanism
 
-各プロファイルは以下の拡張ポイントを定義できる：
+Each profile can define the following extension points:
 
 ```json
 {
@@ -723,20 +726,20 @@ VAP共通レイヤーの上に、ドメイン固有の拡張を定義する。
 
 #### 5.1.1 Overview
 
-VCP（VeritasChain Protocol）は、VAP の金融ドメインプロファイルであり、アルゴリズム取引・AI駆動取引システムの監査証跡を標準化する。
+VCP (VeritasChain Protocol) is the financial domain profile of VAP, standardizing audit trails for algorithmic trading and AI-driven trading systems.
 
-**VCPはVAPファミリーの最初の実装プロファイルであり、金融・アルゴリズム取引ドメインにおける証跡標準として位置づけられる。**
+**VCP is the first implementation profile of the VAP family, positioned as the provenance standard for the finance and algorithmic trading domain.**
 
 #### 5.1.2 Domain-Specific Modules
 
 | Module | Purpose | VAP Layer Mapping |
 |--------|---------|-------------------|
-| **VCP-CORE** | 標準ヘッダー・セキュリティ | Integrity Layer |
-| **VCP-TRADE** | 取引ペイロード | Provenance Layer (action/outcome) |
-| **VCP-GOV** | アルゴリズムガバナンス | Provenance Layer (actor/context) |
-| **VCP-RISK** | リスクパラメータ記録 | Provenance Layer (context) |
+| **VCP-CORE** | Standard header and security | Integrity Layer |
+| **VCP-TRADE** | Trading payload | Provenance Layer (action/outcome) |
+| **VCP-GOV** | Algorithm governance | Provenance Layer (actor/context) |
+| **VCP-RISK** | Risk parameter recording | Provenance Layer (context) |
 | **VCP-PRIVACY** | Crypto-shredding | Cross-cutting (Privacy) |
-| **VCP-RECOVERY** | チェーン復旧 | Integrity Layer |
+| **VCP-RECOVERY** | Chain recovery | Integrity Layer |
 
 #### 5.1.3 Compliance Tiers
 
@@ -750,7 +753,7 @@ VCP（VeritasChain Protocol）は、VAP の金融ドメインプロファイル�
 
 | Regulation | VCP Module | Implementation |
 |------------|------------|----------------|
-| EU AI Act Art. 12 | VCP-CORE | 自動イベントロギング |
+| EU AI Act Art. 12 | VCP-CORE | Automated event logging |
 | EU AI Act Art. 13 | VCP-GOV | DecisionFactors |
 | EU AI Act Art. 14 | VCP-GOV | OperatorID, LastApprovalBy |
 | MiFID II Art. 17 | VCP-GOV | AlgoID, TestingRecordLink |
@@ -763,7 +766,7 @@ VCP（VeritasChain Protocol）は、VAP の金融ドメインプロファイル�
 
 #### 5.2.1 DVP: Automotive Profile
 
-**Scope:** 自動運転車両、ADAS、ドローン
+**Scope:** Autonomous vehicles, ADAS, drones
 
 **Key Events:**
 - SENSOR_INPUT, PERCEPTION, PATH_PLANNING, CONTROL_COMMAND
@@ -771,7 +774,7 @@ VCP（VeritasChain Protocol）は、VAP の金融ドメインプロファイル�
 
 #### 5.2.2 MAP: Medical Profile
 
-**Scope:** AI診断、画像解析、投薬支援、手術ロボット
+**Scope:** AI diagnostics, imaging analysis, medication support, surgical robots
 
 **Key Events:**
 - IMAGING_ACQUIRED, ANALYSIS_COMPLETED, DIAGNOSIS_SUGGESTED
@@ -779,7 +782,7 @@ VCP（VeritasChain Protocol）は、VAP の金融ドメインプロファイル�
 
 #### 5.2.3 PAP: Public Administration Profile
 
-**Scope:** 与信スコア、福祉判定、入国管理、採用AI
+**Scope:** Credit scoring, welfare determination, immigration, recruitment AI
 
 **Key Events:**
 - APPLICATION_RECEIVED, EVALUATION_STARTED, SCORING_COMPLETED
@@ -816,14 +819,14 @@ VCP（VeritasChain Protocol）は、VAP の金融ドメインプロファイル�
 ```
 Current Ed25519 Security:
 - Classical Attack: O(2^128) operations
-- Quantum Attack (Shor): O((log n)³) with ~2,000-4,000 logical qubits
+- Quantum Attack (Shor): O((log n)³) with ~2,000–4,000 logical qubits
 
 Hash Function (SHA-256):
 - Classical Preimage: O(2^256)
 - Quantum Preimage (Grover): O(2^128) — Still secure
 ```
 
-**Key Insight:** VAPのハッシュチェーン完全性は量子攻撃後も維持される。
+**Key Insight:** VAP hash chain integrity is preserved even after quantum attacks.
 
 #### 6.2.2 Migration Path
 
@@ -860,7 +863,7 @@ After Key Destruction:
 
 ### 7.1 Common Event Structure
 
-すべてのVAP準拠イベントは以下の構造を持つ：
+All VAP-compliant events MUST have the following structure:
 
 ```json
 {
@@ -904,7 +907,7 @@ After Key Destruction:
 
 ### 7.2 Numeric Precision
 
-**すべての数値はstring型でエンコードしなければならない（MUST）。**
+**All numeric values MUST be encoded as string type.**
 
 ```json
 // ✅ Correct
@@ -916,7 +919,7 @@ After Key Destruction:
 
 ### 7.3 Canonicalization
 
-JSON の正規化は RFC 8785（JSON Canonicalization Scheme）に従わなければならない（MUST）。
+JSON canonicalization MUST conform to RFC 8785 (JSON Canonicalization Scheme).
 
 ---
 
@@ -926,17 +929,17 @@ JSON の正規化は RFC 8785（JSON Canonicalization Scheme）に従わなけ�
 
 | Level | Description | Requirements |
 |-------|-------------|--------------|
-| **VAP-Core** | 最小準拠 | Integrity Layer必須要件のみ |
-| **VAP-Standard** | 標準準拠 | Core + Provenance + Traceability |
-| **VAP-Full** | 完全準拠 | Standard + Accountability + Profile Extensions |
+| **VAP-Core** | Minimum conformance | Integrity Layer mandatory requirements only |
+| **VAP-Standard** | Standard conformance | Core + Provenance + Traceability |
+| **VAP-Full** | Full conformance | Standard + Accountability + Profile Extensions |
 
 ### 8.2 Certification Program
 
 | Certification | Level | Requirements |
 |---------------|-------|--------------|
-| **VAP-Ready** | Core | 基本テスト合格 |
-| **VAP-Compliant** | Standard | 標準テスト合格 + 監査 |
-| **VAP-Certified** | Full | 完全テスト合格 + 第三者監査 |
+| **VAP-Ready** | Core | Basic test suite pass |
+| **VAP-Compliant** | Standard | Standard test suite pass + audit |
+| **VAP-Certified** | Full | Full test suite pass + third-party audit |
 
 ---
 
@@ -944,7 +947,7 @@ JSON の正規化は RFC 8785（JSON Canonicalization Scheme）に従わなけ�
 
 ### 9.1 Sidecar Pattern
 
-既存システムへの非侵入的統合を推奨する：
+Non-invasive integration with existing systems is recommended:
 
 ```
 ┌─────────────────────────────────────────────────┐
@@ -993,19 +996,19 @@ VeritasChain Standards Organization (VSO)
 
 | Phase | Timeline | Activities |
 |-------|----------|------------|
-| **Phase 1** | 2025 Q1-Q2 | VCP v1.0 Release, VAP Framework Draft |
-| **Phase 2** | 2025 Q3-Q4 | VAP v1.0 Formalization, IETF Internet-Draft |
+| **Phase 1** | 2025 Q1–Q2 | VCP v1.0 Release, VAP Framework Draft |
+| **Phase 2** | 2025 Q3–Q4 | VAP v1.0 Formalization, IETF Internet-Draft |
 | **Phase 3** | 2026 | ISO TC 68 Submission, DVP/MAP Development |
 | **Phase 4** | 2027+ | International Standard, PQC Migration |
 
 ### 10.3 Change Management
 
-仕様変更は以下のプロセスに従う：
+Specification changes follow this process:
 
-1. **RFC（Request for Comments）** 提出
-2. **Public Review** 期間（30日）
-3. **Technical Committee** 審議
-4. **Vote**（2/3多数で承認）
+1. **RFC (Request for Comments)** submission
+2. **Public Review** period (30 days)
+3. **Technical Committee** deliberation
+4. **Vote** (approved by two-thirds majority)
 5. **Release**
 
 ---
@@ -1014,7 +1017,7 @@ VeritasChain Standards Organization (VSO)
 
 ### 11.1 Broader AI Provenance Framework Context
 
-VCPは、将来的に他分野でも使えるVerifiable AI Provenance（VAP）の**金融プロファイル版**として設計されている。
+VCP is designed as the **financial profile** of the broader Verifiable AI Provenance (VAP) framework, applicable in the future to other domains as well.
 
 ### 11.2 Standards Landscape
 
@@ -1027,13 +1030,13 @@ VCPは、将来的に他分野でも使えるVerifiable AI Provenance（VAP）�
 
 ### 11.3 Future Standardization
 
-VSOは以下の標準化活動を計画している：
+VSO plans the following standardization activities:
 
 | Target | Timeline | Status |
 |--------|----------|--------|
 | IETF Internet-Draft | 2025 Q3 | Planned |
 | ISO/TC 68 (Financial Services) | 2026 | Planned |
-| ISO/IEC JTC 1/SC 42 (AI) | 2026-2027 | Planned |
+| ISO/IEC JTC 1/SC 42 (AI) | 2026–2027 | Planned |
 | IEEE Standards Association | 2027+ | Under consideration |
 
 ---
@@ -1074,16 +1077,16 @@ VSOは以下の標準化活動を計画している：
 
 | Term | Definition |
 |------|------------|
-| **VAP** | Verifiable AI Provenance Framework - 分野横断の上位フレームワーク |
-| **VSO** | VeritasChain Standards Organization - VAPを策定・維持する標準化団体 |
-| **VCP** | VeritasChain Protocol - VAP Finance Profile |
-| **DVP** | Driving Vehicle Protocol - VAP Automotive Profile |
-| **MAP** | Medical AI Protocol - VAP Medical Profile |
-| **PAP** | Public Administration Protocol - VAP Public Sector Profile |
-| **EIP** | Energy Infrastructure Protocol - VAP Energy Profile |
-| **AAP** | Aviation AI Protocol - VAP Aviation Profile |
-| **Provenance** | データの出所・由来・履歴の暗号学的に検証可能な記録 |
-| **High-Risk AI** | EU AI Act Article 6に定義される高リスクAIシステム |
+| **VAP** | Verifiable AI Provenance Framework — Cross-domain upper-level framework |
+| **VSO** | VeritasChain Standards Organization — Standards body that develops and maintains VAP |
+| **VCP** | VeritasChain Protocol — VAP Finance Profile |
+| **DVP** | Driving Vehicle Protocol — VAP Automotive Profile |
+| **MAP** | Medical AI Protocol — VAP Medical Profile |
+| **PAP** | Public Administration Protocol — VAP Public Sector Profile |
+| **EIP** | Energy Infrastructure Protocol — VAP Energy Profile |
+| **AAP** | Aviation AI Protocol — VAP Aviation Profile |
+| **Provenance** | Cryptographically verifiable record of data origin, lineage, and history |
+| **High-Risk AI** | High-risk AI systems as defined in EU AI Act Article 6 |
 
 ---
 
@@ -1114,15 +1117,11 @@ GitHub: https://github.com/veritaschain
 
 ## Declaration
 
-> **VAP（Verifiable AI Provenance Framework）は、AI社会基盤の最上位概念として、
-> 「システム障害が人命・社会基盤・民主的制度に重大かつ不可逆的な損害をもたらしうる領域」における
-> AI判断の証跡と安全性の基盤を定義する。**
+> **VAP (Verifiable AI Provenance Framework), as the uppermost conceptual layer of AI societal infrastructure, defines the foundational infrastructure for AI decision provenance and safety in domains where system failure can cause serious and irreversible harm to human life, societal infrastructure, or democratic institutions.**
 >
-> VSOは、W3C（Web）、IETF（Network）、IEEE（Communications）、FIX（Financial Trading）と並ぶ、
-> **AI判断証跡の国際標準化団体**として、このフレームワークを策定・維持する。
+> VSO, positioned alongside W3C (Web), IETF (Network), IEEE (Communications), and FIX (Financial Trading), develops and maintains this framework as an **international standards body for AI decision provenance.**
 >
-> VCPは、VAPファミリーの最初の実装プロファイルであり、
-> 金融・アルゴリズム取引ドメインにおける証跡標準として運用されている。
+> VCP is the first implementation profile of the VAP family, operating as the provenance standard for the finance and algorithmic trading domain.
 
 ---
 
