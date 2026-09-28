@@ -16,7 +16,7 @@
 | **Stable** | Released, backward-compatible changes only |
 | **Superseded** | Replaced by newer version |
 
-**Current Status: Draft**
+**Current Status: Superseded** by [v1.2.0 (Draft 3)](../v1.2/) for all new work. This version is retained for reference; its text is unchanged.
 
 ---
 
@@ -26,8 +26,8 @@ This version introduces:
 
 - High-Risk AI Domain definitions (Section 2)
 - VAP/VSO/VCP hierarchy clarification
-- Four-layer architecture formalization
-- Crypto-shredding requirements for GDPR compliance
+- Layered architecture formalization (five layers, §3.1)
+- Crypto-shredding requirements (privacy / erasure support — see v1.2 §6.3.4 for legal scope)
 - Conformance level definitions (Core/Standard/Full)
 
 ---
@@ -77,8 +77,10 @@ When implementing a VAP profile (VCP, CAP, DVP, etc.), reference these sections:
 
 ## Related Documents
 
-- [VCP Specification v1.1](https://github.com/veritaschain/vcp-spec/tree/main/spec/v1.1)
-- [CAP Specification v0.2](https://github.com/veritaschain/cap-spec)
+- [VAP Framework Specification v1.2 (current)](../v1.2/)
+- [VCP Specification v1.1](https://github.com/veritaschain/vcp-spec/tree/main/spec/v1.1) · [v1.2 RC1](https://github.com/veritaschain/vcp-spec/tree/main/spec/v1.2)
+- [CAP Specification v1.0](https://github.com/veritaschain/cap-spec)
+- [CPP Specification v1.4](https://github.com/veritaschain/cpp-spec)
 
 ---
 

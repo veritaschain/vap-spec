@@ -6,7 +6,8 @@ The following versions of the VAP Framework are currently supported with securit
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 1.1.x   | :white_check_mark: |
+| 1.2.x (Draft 3) | :white_check_mark: |
+| 1.1.x   | :white_check_mark: (superseded for new work) |
 | < 1.1   | :x:                |
 
 ## Reporting a Vulnerability
@@ -98,7 +99,8 @@ This security policy applies to the following VAP-related repositories:
 
 - [vap-spec](https://github.com/veritaschain/vap-spec) - VAP Framework Specification
 - [vcp-spec](https://github.com/veritaschain/vcp-spec) - Finance Profile (VCP)
-- [cap-spec](https://github.com/veritaschain/cap-spec) - Content/Creative Profile (CAP)
+- [cap-spec](https://github.com/veritaschain/cap-spec) - Content / Creative AI Profile (CAP)
+- [cpp-spec](https://github.com/veritaschain/cpp-spec) - Capture Provenance Profile (CPP)
 
 ## Acknowledgments
 
