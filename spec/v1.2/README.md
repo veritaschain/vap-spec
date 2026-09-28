@@ -74,7 +74,7 @@ material that disagrees with it.
 
 | ID | Domain / scope | Status | Where |
 |----|----------------|--------|-------|
-| **VCP** | Finance / Algorithmic Trading | v1.2 Release Candidate (RC1) | [veritaschain/vcp-spec](https://github.com/veritaschain/vcp-spec) |
+| **VCP** | Finance / Algorithmic Trading | v1.2 Released (Production Ready, GA 2026-07-06) | [veritaschain/vcp-spec](https://github.com/veritaschain/vcp-spec) |
 | **CAP** | Content / Creative AI | v1.0 Released | [veritaschain/cap-spec](https://github.com/veritaschain/cap-spec) |
 | **CPP** | Capture Provenance | v1.4 Released | [veritaschain/cpp-spec](https://github.com/veritaschain/cpp-spec) |
 | **OAP** | Observed Artifact Provenance | v0.1.1 Working Draft | VSO-VAP-OAP-001 |

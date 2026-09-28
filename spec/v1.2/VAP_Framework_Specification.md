@@ -5,7 +5,7 @@
 **Document ID:** VSO-VAP-SPEC-001
 **Status:** Draft Specification (Draft 3)
 **Version:** 1.2.0
-**Date:** 2026-09-01 (publication folds G-2, H-2, A-4 applied 2026-09-28; see Appendix D)
+**Date:** 2026-09-01 (publication folds G-2, H-2, A-4 and post-publication fold B-5 applied 2026-09-28; see Appendix D)
 **Supersedes:** Draft 2 (2026-06-10). Draft 3 folds the cross-profile alignment
 review **VSO-VAP-ALIGN-001** into this document. Per VSO practice, pre-release
 review findings fold directly into the draft with a disposition record and do
@@ -190,7 +190,7 @@ The five domains in §2.2.1–§2.2.5 are **Mandatory Application Domains** for 
 | Attribute         | Value                            |
 | ----------------- | -------------------------------- |
 | **Profile ID**    | VCP (VeritasChain Protocol)      |
-| **Status**        | v1.2 (RC1)                       |
+| **Status**        | v1.2 Released                    |
 | **Risk Category** | Systemic Risk / Market Integrity |
 
 **Scope:** High-frequency trading (HFT) systems; AI/algorithm-driven trading strategies; exchanges, clearinghouses, prime brokers; risk management systems; credit scoring AI.
@@ -687,7 +687,7 @@ Defines domain-specific extensions on top of VAP common layers. **One Core, Many
 
 | Profile ID | Domain                           | Status                          | Specification         |
 | ---------- | -------------------------------- | ------------------------------- | --------------------- |
-| **VCP**    | Finance / Algorithmic Trading    | **v1.2 (RC1)**                  | VSO-VCP-SPEC          |
+| **VCP**    | Finance / Algorithmic Trading    | **v1.2 Released**               | VSO-VCP-SPEC          |
 | **CAP**    | Content / Creative AI            | **v1.0 Released**               | veritaschain/cap-spec |
 | **CPP**    | Capture Provenance               | **v1.4 Released**               | veritaschain/cpp-spec |
 | **OAP**    | Observed Artifact Provenance     | v0.1.1 Working Draft            | VSO-VAP-OAP-001       |
@@ -804,7 +804,7 @@ OAP composes with DAP where the observation is performed by an autonomous agent.
 
 ### 5.1 VCP: Finance Profile
 
-**Status:** v1.2 (RC1)
+**Status:** v1.2 Released (Production Ready, GA 2026-07-06; tag `v1.2.0`)
 **Document:** VSO-VCP-SPEC (v1.2 incorporates VSO-SPEC-CHANGE-001 as a normative annex)
 
 #### 5.1.1 Overview
@@ -1255,7 +1255,7 @@ VAP and profile version numbers are **independently assigned**. Apparent synchro
 |---|---|---|
 | VCP v1.0 | Partial (pre-dates policy identification) | Partial (legacy; certification subject to VCP grace deadlines) |
 | VCP v1.1 | Non-conformant on v1.1 INT-003/004 as written (resolved by this revision) | **Full** |
-| VCP v1.2 (RC1) | — | **Full** (reference profile) |
+| VCP v1.2 | — | **Full** (reference profile) |
 | CAP v1.0 | Mapping required | **Mapping required and outstanding** (due per VSO-VAP-CHANGE-001 §5) |
 | CPP v1.4 | Mapping required | **Mapping required and outstanding** (due per VSO-VAP-CHANGE-001 §5) |
 | OAP v0.1.1 (WD) | — | Targets v1.2 at first release |
@@ -1266,7 +1266,7 @@ VAP and profile version numbers are **independently assigned**. Apparent synchro
 | DVP / AAP / EIP / IAP | — | MUST target VAP v1.2 at first release |
 
 **Outstanding mapping obligation (honest statement).** CAP v1.0 and CPP v1.4 are
-the two profiles carrying *Released* status, and both have a v1.2 conformance
+the two profiles other than VCP carrying *Released* status, and both have a v1.2 conformance
 mapping that is due and not yet delivered. Until those mappings are published,
 neither profile's conformance against the v1.2 requirement set has been
 established, and neither may be described as VAP v1.2 conformant. A known
@@ -1357,7 +1357,7 @@ adoption, or approval by that body.
 | -------------------- | ---------------------------------------------- |
 | VSO-VAP-CHANGE-001   | VAP Framework v1.2 Change Proposal (normative annex) |
 | VSO-VAP-ALIGN-001    | VAP v1.2 Cross-Profile Alignment Review (dispositions in Appendix D) |
-| VSO-VCP-SPEC         | VeritasChain Protocol Specification (v1.2 RC1) |
+| VSO-VCP-SPEC         | VeritasChain Protocol Specification (v1.2)     |
 | VSO-SPEC-CHANGE-001  | VCP v1.2 Change Proposal                       |
 | CAP v1.0             | Content / Creative AI Profile                  |
 | CPP v1.4             | Capture Provenance Profile                     |
@@ -1411,6 +1411,7 @@ adoption, or approval by that body.
 | 1.1.0   | 2025-12-11 | Added High-Risk AI Domains, VSO/VAP/VCP hierarchy clarification                                       | VSO Technical Committee |
 | 1.2.0 (Draft 3) | 2026-09-01 | Pre-publication fold of **VSO-VAP-ALIGN-001** (cross-profile alignment review). Editorial and registry corrections only; no wire-format change, no conformance-level change. Version number unchanged per VSO pre-release practice. Dispositions: Appendix D | VSO Technical Committee |
 | 1.2.0 (Draft 3, as published) | 2026-09-28 | Publication folds G-2 (implementation-status disclosure), H-2 (capability-language corrections), A-4 (Declaration and hierarchy diagram aligned with the Normative Position Statement and §10.1); K-1 closed by publication of this draft in `veritaschain/vap-spec` `spec/v1.2/`. Editorial only; no normative requirement, wire format, or conformance level changed. Dispositions: Appendix D | VSO Technical Committee |
+| 1.2.0 (Draft 3, fold B-5) | 2026-09-28 | Post-publication fold B-5: profile registry and related rows record VCP as v1.2 Released (GA 2026-07-06, tag `v1.2.0`) instead of v1.2 (RC1). Editorial only; no normative requirement, wire format, or conformance level changed. Disposition: Appendix D | VSO Technical Committee |
 | 1.2.0 (Draft 2) | 2026-06-10 | Per VSO-VAP-CHANGE-001: Cryptographic Sequence Verifiability abstraction (INT-003/004/004a); external anchoring MUST at all levels (INT-006) with anchor continuity (INT-007); Completeness Invariant (INT-008); bounded RECOVERY (INT-009); ERASURE event + legal scope clause; policy identification; XREF (TRC-005); SCITT/COSE opt-in alignment; PQC EXPERIMENTAL status (ML-DSA/FN-DSA), hybrid signatures, RSA-2048 deprecation; version compatibility management; profile registry update (VCP v1.2 RC1, CAP v1.0, CPP v1.0, IAP); Legal Scope and Non-Guarantee Statement | VSO Technical Committee |
 
 ---
@@ -1457,6 +1458,13 @@ conformance level.
 | H-2 | Capability language exceeded the framework's claim level: "immutable" (§1.5, §6.3.3, Appendix A) for an event whose property is append-only and tamper-evident; "guarantees" / "guaranteed" (Executive Summary, §4.1.1, INT-004, §4.1.2 scope note, §4.3.2, §5.5.3) where the framework makes alteration and post-anchor omission detectable and warrants nothing (§1.6) | **Applied.** "append-only"; "completeness verification (omission-evidence)"; "make alteration and post-anchor omission detectable (tamper-evidence and omission-evidence)"; "ordering properties"; "verifiable only at anchor time and at batch granularity"; "XREF detection statement"; "load-bearing mechanism". Requirement levels and semantics unchanged |
 | A-4 | The Declaration described VSO as "positioned alongside W3C, IETF, IEEE, and FIX … as an international standards body" and VAP as infrastructure for "provenance and safety", contradicting the Standing statement, the structural-comparison note in the Normative Position Statement, and §1.6. The hierarchy diagram described VSO as the body that "certifies VAP", contradicting §10.1 | **Applied.** The Declaration now uses the Normative Position Statement's wording and restates that the comparison is structural, not a claim of equivalent status; "and safety" removed. Diagram corrected to "develops and maintains VAP" |
 
+
+**Post-publication fold (2026-09-28).** Applied under the same practice after
+publication. It changes no normative requirement, field, or conformance level.
+
+| ID | Finding | Disposition |
+| --- | --- | --- |
+| B-5 | §2.2.1, §4.5.2, §5.1, §10.4 and §12 recorded VCP at v1.2 (RC1). VCP v1.2 was declared Production Ready (GA) on 2026-07-06; the GA text and its normative annex VSO-SPEC-CHANGE-001 are published in `veritaschain/vcp-spec` `spec/v1.2/` and tagged `v1.2.0`, which meets the §4.5.2 definition of *Released* | **Applied.** VCP recorded as v1.2 Released in those locations. VSO-VAP-CHANGE-001 is unchanged: its normative baseline is VCP v1.2 RC1 (2026-05-31), whose technical content is identical to the Released text. The Draft 2 version-history row keeps its historical wording |
 ---
 
 ## Contact Information
