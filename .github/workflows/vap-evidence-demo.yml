@@ -1,0 +1,39 @@
+name: VAP Evidence Pack Interoperability Demo
+on:
+  pull_request:
+    paths: ['interop/vap-evidence-pack-demo/**','.github/workflows/vap-evidence-demo.yml']
+  push:
+    branches: [main]
+    paths: ['interop/vap-evidence-pack-demo/**','.github/workflows/vap-evidence-demo.yml']
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Install dependencies
+        working-directory: interop/vap-evidence-pack-demo
+        run: pip install -r requirements.txt
+      - name: Generate deterministic vectors
+        working-directory: interop/vap-evidence-pack-demo
+        run: python generate_demo.py
+      - name: Run Python tests
+        working-directory: interop/vap-evidence-pack-demo
+        run: pytest -q
+      - name: Verify valid vector in both implementations
+        working-directory: interop/vap-evidence-pack-demo
+        run: |
+          python verify_python.py test-vectors/valid-pack.json
+          node verify_node.mjs test-vectors/valid-pack.json
+      - name: Require invalid vectors to fail
+        working-directory: interop/vap-evidence-pack-demo
+        run: |
+          for vector in invalid-tampered-event.json invalid-omitted-outcome.json invalid-split-view.json; do
+            ! python verify_python.py "test-vectors/$vector"
+            ! node verify_node.mjs "test-vectors/$vector"
+          done
