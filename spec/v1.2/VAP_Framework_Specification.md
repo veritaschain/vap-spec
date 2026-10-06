@@ -5,7 +5,7 @@
 **Document ID:** VSO-VAP-SPEC-001
 **Status:** Draft Specification (Draft 3)
 **Version:** 1.2.0
-**Date:** 2026-09-01 (publication folds G-2, H-2, A-4 applied 2026-09-28; see Appendix D)
+**Date:** 2026-09-01 (publication folds G-2, H-2, A-4 applied 2026-09-28; post-publication folds L-1, L-2, L-3, H-3, H-4, H-5 applied 2026-10-06; see Appendix D)
 **Supersedes:** Draft 2 (2026-06-10). Draft 3 folds the cross-profile alignment
 review **VSO-VAP-ALIGN-001** into this document. Per VSO practice, pre-release
 review findings fold directly into the draft with a disposition record and do
@@ -213,7 +213,7 @@ The five domains in §2.2.1–§2.2.5 are **Mandatory Application Domains** for 
 
 **Failure Impact:** Direct patient harm from diagnostic errors; severe adverse effects from medication errors; delayed appropriate care from triage misjudgment.
 
-**Regulatory Drivers:** EU AI Act Annex III; FDA AI/ML-Based SaMD Guidance; MDR 2017/745.
+**Regulatory Drivers:** EU AI Act Article 6(1) with Annex I, Section A (an AI system that is itself a device, or is a safety component of a device, where that device is required to undergo third-party conformity assessment under MDR 2017/745 or IVDR 2017/746), and Annex III point 5(d) for emergency healthcare patient triage systems; MDR 2017/745; FDA AI/ML-Based SaMD Guidance.
 
 **VAP Requirements:** Complete recording and reconstruction capability for diagnostic rationale; identification of data and model versions used; capability to provide evidence for incident investigation and litigation.
 
@@ -229,7 +229,7 @@ The five domains in §2.2.1–§2.2.5 are **Mandatory Application Domains** for 
 
 **Failure Impact:** Traffic accidents from autonomous driving misjudgment; aviation accident risk from ATC AI malfunction; service disruption from railway control errors.
 
-**Regulatory Drivers:** EU AI Act Annex III; UNECE WP.29; FAA Advisory Circular 23.1309-1E.
+**Regulatory Drivers:** EU AI Act Article 6(1) with Annex I, Section B (which lists, among other acts, motor-vehicle type-approval, civil-aviation and rail-interoperability legislation), and Annex III point 2 for safety components in the management and operation of road traffic; UNECE WP.29; FAA Advisory Circular 23.1309-1E. For high-risk AI systems related to products covered by the legislation listed in Annex I, Section B, EU AI Act Article 2(2) limits the Act's direct application: for the transport legislation listed there, the requirements of Chapter III, Section 2 are to be taken into account in acts adopted under that legislation (Articles 102 to 109).
 
 **VAP Requirements:** Integration of physical flight recorder with AI decision recorder; complete causal chain recording from sensor input → decision → control output; compatibility between real-time recording and offline verification.
 
@@ -247,7 +247,7 @@ The five domains in §2.2.1–§2.2.5 are **Mandatory Application Domains** for 
 
 **Failure Impact:** Large-scale blackouts from power grid AI malfunction; water quality and supply impacts; cascading effects on emergency services and financial systems from telecom infrastructure failure.
 
-**Regulatory Drivers:** EU NIS2 Directive; NERC CIP Standards; EU AI Act.
+**Regulatory Drivers:** EU NIS2 Directive; EU AI Act Article 6(2) with Annex III point 2; NERC CIP Standards.
 
 **VAP Requirements:** Root cause tracking for anomalous AI decisions; state reconstruction for failure recovery; root cause analysis for cascading failures.
 
@@ -265,7 +265,7 @@ The five domains in §2.2.1–§2.2.5 are **Mandatory Application Domains** for 
 
 **Failure Impact:** If decision rationale cannot be traced, appeals and judicial review become difficult; entrenchment of unfair determinations from biased AI; algorithmic decision-making without democratic oversight.
 
-**Regulatory Drivers:** EU AI Act Article 6(2); GDPR Article 22; US Executive Order 14110.
+**Regulatory Drivers:** EU AI Act Article 6(2); GDPR Article 22.
 
 **VAP Requirements:** Full explainability of decisions affecting individuals; post-hoc audit and appeal response capability; transparency for democratic oversight. The Completeness Invariant (§4.1.7) is load-bearing in this domain: proving that a decision was or was not recorded is central to appeals.
 
@@ -327,7 +327,7 @@ Mandatory Application Domains were selected based on: (1) **Irreversibility** �
 | **VAP universality**                              | Demonstrates VAP as a general-purpose framework, not limited to finance            |
 | **VAP necessity**                                 | Establishes positioning as the upper layer of AI societal infrastructure           |
 | **Lower adoption barriers**                       | Provides rational grounds for non-financial organizations to adopt VAP conformance |
-| **Prevention of standards fragmentation**         | Prevents proliferation of domain-specific protocols, ensuring interoperability     |
+| **Reduced standards fragmentation**               | A shared core is intended to reduce the proliferation of domain-specific schemes and to support interoperability |
 | **Facilitation of international standardization** | Smooths transition to ISO and other international standardization processes        |
 
 ---
@@ -666,14 +666,14 @@ Enables identification of responsible parties in AI-involved decisions.
 
 #### 4.4.4 Human Oversight Requirements
 
-Addressing EU AI Act Article 14 (Human Oversight):
+This section identifies the records relevant to human oversight (for example, under EU AI Act Article 14). VAP and its profiles define the records in which oversight actions taken by human actors on the recorded AI system are captured; VAP does not itself provide monitoring, intervention, or override capability. Per §1.6, the table below identifies records and is not a compliance determination.
 
-| Requirement             | VAP Implementation          |
-| ----------------------- | --------------------------- |
-| Enable human monitoring | operator_id field           |
-| Intervention capability | HALT/OVERRIDE event types   |
-| Override functionality  | override_history recording  |
-| Bounded recovery        | INT-009 Emergency Override (v1.2) |
+| Oversight aspect                       | VAP record                                           |
+| -------------------------------------- | ---------------------------------------------------- |
+| Attribution to an identified operator  | operator_id field                                    |
+| Interventions                          | Profile-defined intervention events, where the applicable profile defines them; the framework defines none |
+| Overrides                              | override_history recording (§4.4.3); profile-defined override events (for example, `OVERRIDE` in MAP v0.1.2 §6.1) |
+| Bounded recovery                       | INT-009 Emergency Override with recorded approval (v1.2) |
 
 ---
 
@@ -874,10 +874,12 @@ OAP are siblings distinguished by control of the source: CPP covers capture by a
 device the operator controls; OAP covers observation of material the operator
 does not control and cannot re-obtain once it is removed.
 
-VAP v1.2 alignment notes: the Completeness Invariant (INT-008) is load-bearing,
-because the disputed question is characteristically *what was observed and not
-recorded*; the pre-measurement-drop boundary is correspondingly explicit, since
-a resource that was never retrieved leaves no evidence of its former existence;
+VAP v1.2 alignment notes: the Completeness Invariant (INT-008) is load-bearing
+in combination with OAP's ObservationScopeManifest and attempt-closure invariant
+(OAP v0.1.1 §8.0 and Invariant OAP-1), because the disputed question is
+characteristically *what was observed and not recorded*; the
+pre-measurement-drop boundary is correspondingly explicit, since a resource
+that was never retrieved leaves no evidence of its former existence;
 XREF instantiates as observer ↔ archiving service; OAP composes with DAP (§4.6)
 where retrieval is performed by an autonomous agent.
 
@@ -1286,7 +1288,7 @@ VAP is an informational architectural framework: it does not introduce new netwo
 
 The SCITT architecture and the COSE receipt format are now published as **RFC 9943** and **RFC 9942** respectively (June 2026). Other components of that work remain Internet-Drafts and MUST NOT be cited as published standards: SCRAPI (`draft-ietf-scitt-scrapi`), the CCF receipt profile (`draft-ietf-scitt-receipts-ccf-profile`), and CoRIM (`draft-ietf-rats-corim`).
 
-**What SCITT provides and what INT-008 adds.** RFC 9943 lets a relying party assemble the set of Transparent Statements bound to a given Subject, which supports completeness and non-equivocation *over the statements that were registered*. An event that an issuer never submitted does not appear in that set. The Completeness Invariant (§4.1.7) addresses that residue: it requires the expected event set to be **declared in advance** and bound to the anchor, so that non-submission is structurally detectable. Tamper-evidence and omission-evidence are distinct properties; VAP claims the second only at anchor granularity (§4.1.7), not as mathematical completeness.
+**What SCITT provides and what INT-008 adds.** RFC 9943 lets a relying party assemble the set of Transparent Statements bound to a given Subject, which supports completeness and non-equivocation *over the statements that were registered*. An event that an issuer never submitted does not appear in that set. The Completeness Invariant (INT-008; summarized in §4.1.7) adds a batch-level binding: each AnchorRecord binds an event count, the first and last event identifiers, and the identifier of the policy under which the batch was produced, so that omission of in-scope events after anchoring, and split-view presentation, are detectable by any verifier holding the anchor. Neither RFC 9943 nor INT-008 by itself reveals an event that was never registered or never included in an anchored batch. That such an event is missing is detectable only by reference to another record that implies its existence — for example, a recorded request or attempt that a profile or cross-cutting capability (§4.6) requires to terminate in a recorded outcome, or a corresponding record held by a counterparty (TRC-005). An event that no record implies — in particular, one that was never measured (Appendix A, *Pre-measurement drop*) — remains outside the reach of the framework. Tamper-evidence and omission-evidence are distinct properties; VAP claims the second only at anchor granularity (§4.1.7), not as mathematical completeness.
 
 ### 11.2 Standards Landscape (Non-Normative)
 
@@ -1344,12 +1346,15 @@ adoption, or approval by that body.
 
 | Regulation     | Jurisdiction   | Relevance                   |
 | -------------- | -------------- | --------------------------- |
-| EU AI Act      | European Union | High-Risk AI Classification |
+| EU AI Act — Regulation (EU) 2024/1689 | European Union | High-Risk AI Classification |
+| Regulation (EU) 2026/1744 (Digital Omnibus on AI; OJ L, 2026/1744, 24.7.2026) | European Union | Amends Regulation (EU) 2024/1689 (and Regulations (EU) 2018/1139 and (EU) 2023/1230). Under Article 113, third paragraph, point (c) of Regulation (EU) 2024/1689 as amended, Chapter III, Sections 1 to 3, except Article 6(5), apply from 2 December 2027 to AI systems classified as high-risk under Article 6(2) and Annex III, and from 2 August 2028 to those classified under Article 6(1) and Annex I |
 | MiFID II       | European Union | Financial Trading           |
 | GDPR           | European Union | Data Privacy                |
 | CAT Rule 613   | United States  | Consolidated Audit Trail    |
 | NIS2 Directive | European Union | Critical Infrastructure     |
 | FDA AI/ML SaMD | United States  | Medical AI guidance         |
+
+Application dates, and the EU AI Act classifications cited in §2.2, are stated as of 2026-10-06 on the basis of the consolidated text of 27 July 2026 and may change; readers should confirm them against the Official Journal of the European Union.
 
 ### 12.3 Related VSO Documents
 
@@ -1375,7 +1380,7 @@ adoption, or approval by that body.
 | Term             | Definition                                                                           |
 | ---------------- | ------------------------------------------------------------------------------------ |
 | **Cross-Cutting Capability** | Evidence requirement defined once at the Shared Assurance Core and inherited by any profile that invokes it (DAP, SMP). See §4.6. |
-| **Omission-evidence** | Detectability of events that were never submitted, as distinct from tamper-evidence (detectability of alteration to submitted records). Provided by INT-008 at anchor granularity. |
+| **Omission-evidence** | Detectability, at anchor granularity, of post-anchor omission of events from an anchored batch and of split-view presentation (INT-008), as distinct from tamper-evidence (detectability of alteration to recorded events). *Note:* INT-008 does not by itself reveal an event that was never included in an anchored batch; that such an event is missing is detectable only by reference to another record that implies its existence — for example, a recorded request or attempt that a profile or cross-cutting capability (§4.6) requires to terminate in a recorded outcome, or a counterparty record (TRC-005). An event that no record implies — in particular, one that was never measured (*Pre-measurement drop*) — remains outside the reach of the framework. |
 | **Pre-measurement drop** | An event that was never measured or recorded. Permanently outside the reach of any provenance mechanism, by construction. This is a structural limit of the framework, not a gap to be closed. |
 | **VAP**          | Verifiable AI Provenance Framework — Cross-domain upper-level framework              |
 | **VSO**          | VeritasChain Standards Organization                                                  |
@@ -1411,6 +1416,7 @@ adoption, or approval by that body.
 | 1.1.0   | 2025-12-11 | Added High-Risk AI Domains, VSO/VAP/VCP hierarchy clarification                                       | VSO Technical Committee |
 | 1.2.0 (Draft 3) | 2026-09-01 | Pre-publication fold of **VSO-VAP-ALIGN-001** (cross-profile alignment review). Editorial and registry corrections only; no wire-format change, no conformance-level change. Version number unchanged per VSO pre-release practice. Dispositions: Appendix D | VSO Technical Committee |
 | 1.2.0 (Draft 3, as published) | 2026-09-28 | Publication folds G-2 (implementation-status disclosure), H-2 (capability-language corrections), A-4 (Declaration and hierarchy diagram aligned with the Normative Position Statement and §10.1); K-1 closed by publication of this draft in `veritaschain/vap-spec` `spec/v1.2/`. Editorial only; no normative requirement, wire format, or conformance level changed. Dispositions: Appendix D | VSO Technical Committee |
+| 1.2.0 (Draft 3, post-publication folds) | 2026-10-06 | Post-publication folds L-1, L-2, L-3 (regulatory references corrected and updated), H-3, H-4 (capability language), H-5 (omission-evidence definition, §5.4 and §11.1 aligned with INT-008 as written). Editorial only; no normative requirement, field, wire format, or conformance level changed. The text as published on 2026-09-28 remains identified by its SHA-256 digest (`spec/v1.2/README.md`). Dispositions: Appendix D | VSO Technical Committee |
 | 1.2.0 (Draft 2) | 2026-06-10 | Per VSO-VAP-CHANGE-001: Cryptographic Sequence Verifiability abstraction (INT-003/004/004a); external anchoring MUST at all levels (INT-006) with anchor continuity (INT-007); Completeness Invariant (INT-008); bounded RECOVERY (INT-009); ERASURE event + legal scope clause; policy identification; XREF (TRC-005); SCITT/COSE opt-in alignment; PQC EXPERIMENTAL status (ML-DSA/FN-DSA), hybrid signatures, RSA-2048 deprecation; version compatibility management; profile registry update (VCP v1.2 RC1, CAP v1.0, CPP v1.0, IAP); Legal Scope and Non-Guarantee Statement | VSO Technical Committee |
 
 ---
@@ -1456,6 +1462,24 @@ conformance level.
 | G-2 | The header disclosure's paying-customer item was inaccurate: VeritasChain Co., Ltd. holds ten paid service contracts with European organizations. A disclosure that is inaccurate in the direction of modesty is still inaccurate | **Applied.** The paying-customer item is replaced by a statement of the ten contracts (client names withheld pending consent) and an explicit statement that they are neither external implementations nor independent validation. The two remaining items (zero external implementations; zero Evidence Packs accepted in any proceeding) are unchanged. Profiles that carry the three-item form (e.g., OAP v0.1.1 §15.3) align at their next revision |
 | H-2 | Capability language exceeded the framework's claim level: "immutable" (§1.5, §6.3.3, Appendix A) for an event whose property is append-only and tamper-evident; "guarantees" / "guaranteed" (Executive Summary, §4.1.1, INT-004, §4.1.2 scope note, §4.3.2, §5.5.3) where the framework makes alteration and post-anchor omission detectable and warrants nothing (§1.6) | **Applied.** "append-only"; "completeness verification (omission-evidence)"; "make alteration and post-anchor omission detectable (tamper-evidence and omission-evidence)"; "ordering properties"; "verifiable only at anchor time and at batch granularity"; "XREF detection statement"; "load-bearing mechanism". Requirement levels and semantics unchanged |
 | A-4 | The Declaration described VSO as "positioned alongside W3C, IETF, IEEE, and FIX … as an international standards body" and VAP as infrastructure for "provenance and safety", contradicting the Standing statement, the structural-comparison note in the Normative Position Statement, and §1.6. The hierarchy diagram described VSO as the body that "certifies VAP", contradicting §10.1 | **Applied.** The Declaration now uses the Normative Position Statement's wording and restates that the comparison is structural, not a claim of equivalent status; "and safety" removed. Diagram corrected to "develops and maintains VAP" |
+
+**Post-publication folds (2026-10-06).** Findings from an editorial review of
+the published draft conducted on 2026-10-06, applied under the same pre-release
+practice: publication on 2026-09-28 did not change the status of this document,
+which remains a Draft Specification (Draft 3). None of the folds changes a
+normative requirement, a field, or a conformance level.
+These folds change the SHA-256 digest of this file; the current digest and the
+digest of the text as published on 2026-09-28 are listed in
+`spec/v1.2/README.md`.
+
+| ID | Finding | Disposition |
+| --- | --- | --- |
+| L-1 | §2.2.5 cited US Executive Order 14110 as a regulatory driver. That order was revoked on 2025-01-20 by Executive Order 14148 (90 FR 8237) | **Applied.** Reference removed. No replacement is asserted |
+| L-2 | §2.2.2 and §2.2.3 cited "EU AI Act Annex III" for medical-device AI and for vehicles and aviation, and §2.2.4 cited the Act without a provision. AI that is a medical device, or a safety component of one, is classified through Article 6(1) with Annex I, Section A where the device requires third-party conformity assessment under MDR/IVDR (consistent with MAP v0.1.2, VSO-VAP-MAP-001, §15.2); Annex III point 5(d) separately covers emergency healthcare patient triage systems. Motor-vehicle type-approval, civil-aviation and rail-interoperability legislation is among the acts listed in Annex I, Section B, where Article 2(2) limits the Act's direct application and Articles 102 to 109 require the requirements of Chapter III, Section 2 to be taken into account in acts adopted under that legislation. Annex III point 2 covers safety components in the management and operation of critical digital infrastructure and road traffic and in the supply of water, gas, heating or electricity; it does not cover vehicles | **Applied.** §2.2.2 and §2.2.3 corrected; §2.2.4 now cites Article 6(2) with Annex III point 2 |
+| L-3 | §12.2 did not record Regulation (EU) 2026/1744 (in force 2026-07-27), under which Chapter III, Sections 1 to 3, except Article 6(5), apply from 2 December 2027 to systems classified under Article 6(2) and Annex III and from 2 August 2028 to systems classified under Article 6(1) and Annex I | **Applied.** Row and dated note added; the existing row now carries the regulation number of the EU AI Act. Application dates of other provisions are not restated here |
+| H-3 | §4.4.4 introduced its table with "Addressing EU AI Act Article 14 (Human Oversight)", listed "Intervention capability" in a "Requirement" column that paraphrased Article 14 rather than any VAP requirement, and mapped it to "HALT/OVERRIDE event types" under "VAP Implementation". VAP records interventions and provides none (Declaration); a mapping to a provision is not a compliance determination (§1.6); and neither this specification nor VSO-VAP-CHANGE-001 defines a HALT event type | **Applied.** Lead sentence and table reworded as records of oversight actions; the intervention and override rows now refer to profile-defined events. The section number and title are unchanged. No field or requirement is changed: `operator_id` and `override_history` (§4.4.3) and INT-009 are still cited; row labels are reworded, and the INT-009 cell now reads "Emergency Override with recorded approval". §4.4.4 contains no RFC 2119 requirement (§1.4) |
+| H-4 | §2.5.2 said the framework "prevents proliferation of domain-specific protocols, ensuring interoperability". "Protocols" is at odds with the §1.5 reservation of that designation for VCP; "prevents" and "ensuring" exceed the framework's claim level | **Applied.** Row relabelled "Reduced standards fragmentation"; the text now reads "A shared core is intended to reduce the proliferation of domain-specific schemes and to support interoperability" |
+| H-5 | Appendix A defined omission-evidence as "detectability of events that were never submitted"; §11.1 said the Completeness Invariant "requires the expected event set to be declared in advance … so that non-submission is structurally detectable"; §5.4 called INT-008 load-bearing for "what was observed and not recorded" without naming the profile mechanisms involved. INT-008 as written binds event count, first and last event identifiers, and the policy identifier at batch closure, which makes post-anchor omission and split-view presentation detectable (§1.5, §4.1.7, Appendix A "Completeness Invariant"). It refers to a "declared scope" without defining it and contains no advance declaration of an expected event set. The three passages claimed more than the normative requirement delivers | **Applied.** The three passages are aligned with INT-008 as written. §11.1 and the Appendix A entry now state that INT-008 does not by itself reveal an event that was never included in an anchored batch, and that the fact that such an event is missing is detectable only by reference to another record that implies its existence (for example, a recorded request or attempt that a profile or cross-cutting capability requires to terminate in a recorded outcome, or a counterparty record under TRC-005). §5.4 now names the OAP mechanisms (ObservationScopeManifest, OAP-1) in combination with which INT-008 is load-bearing. The §11.1 wording introduced under E-2 is superseded. Whether the framework should define the declared scope and require it to be committed in advance is a normative question for a future change proposal and is not decided here. MAP v0.1.2 (§1.1, §17) describes the binding of a declared expected event set at anchor time as the Completeness Invariant itself, and supplies that declaration through its own ScopeManifest (§8.0); those descriptions are reconciled when that question is decided, and no profile requirement changes as a result of this fold |
 
 ---
 
