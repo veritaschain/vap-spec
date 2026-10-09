@@ -78,7 +78,7 @@ When implementing a VAP profile (VCP, CAP, DVP, etc.), reference these sections:
 ## Related Documents
 
 - [VAP Framework Specification v1.2 (current)](../v1.2/)
-- [VCP Specification v1.1](https://github.com/veritaschain/vcp-spec/tree/main/spec/v1.1) · [v1.2 RC1](https://github.com/veritaschain/vcp-spec/tree/main/spec/v1.2)
+- [VCP Specification v1.1](https://github.com/veritaschain/vcp-spec/tree/main/spec/v1.1) · [v1.2](https://github.com/veritaschain/vcp-spec/tree/main/spec/v1.2)
 - [CAP Specification v1.0](https://github.com/veritaschain/cap-spec)
 - [CPP Specification v1.4](https://github.com/veritaschain/cpp-spec)
 
