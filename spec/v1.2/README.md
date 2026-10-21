@@ -3,7 +3,7 @@
 **Document ID:** VSO-VAP-SPEC-001
 **Version:** 1.2.0
 **Status:** Draft Specification (Draft 3)
-**Date:** 2026-09-01 (publication folds G-2, H-2, A-4 applied 2026-09-28; post-publication folds L-1, L-2, L-3, H-3, H-4, H-5 applied 2026-10-06; post-publication fold B-5 corrected 2026-10-09; Appendix D)
+**Date:** 2026-09-01 (publication folds G-2, H-2, A-4 applied 2026-09-28; post-publication folds L-1, L-2, L-3, H-3, H-4, H-5 applied 2026-10-06; post-publication fold B-5 corrected 2026-10-09; CAB-independence errata applied 2026-10-21 JST; Appendix D and ERRATA)
 
 VAP (Verifiable AI Provenance Framework) is a metaframework. It defines the
 common requirements that domain profiles (VCP, CAP, CPP, OAP, MAP, PAP, …) and
@@ -33,7 +33,7 @@ related Internet-Drafts are individual submissions (§11.4).
 
 | File | Content | SHA-256 |
 |------|---------|---------|
-| [`VAP_Framework_Specification.md`](VAP_Framework_Specification.md) | VAP Framework Specification v1.2.0, Draft 3 (normative) | `5bff84fca2e931f717d7dcba2651f1a7c9cf2d9b0078da5f504f61f81f1e8a09` |
+| [`VAP_Framework_Specification.md`](VAP_Framework_Specification.md) | VAP Framework Specification v1.2.0, Draft 3 (normative) | `dbe2439d6d138929b48697cd0545a5c8324059ab032732b9a9122f993fde9f48` |
 | [`VSO-VAP-CHANGE-001.md`](VSO-VAP-CHANGE-001.md) | VAP v1.1 → v1.2 Change Proposal — normative annex / change-control record (§1.7) | `ec781c81b2869f06ccb53de12927da868d7990e1eea42ba8a0369425b0089fca` |
 
 Version numbers identify documents; the SHA-256 digests above fix their exact
@@ -52,6 +52,7 @@ Earlier texts remain available in the repository history at the commits listed.
 | 2026-10-06 | Draft 3 with post-publication folds L-1, L-2, L-3, H-3, H-4, H-5 (editorial; no normative requirement, field, or conformance level changed) | `67e9b2c20f7adecf00ef6df8f2f245673cd66bb91455eb8336142f1f8f9c7e0d` |
 | 2026-10-08 | Draft 3 with post-publication fold B-5 (VCP v1.2 Released); prior editorial folds retained | `5bff84fca2e931f717d7dcba2651f1a7c9cf2d9b0078da5f504f61f81f1e8a09` |
 | 2026-10-09 | B-5 corrected: VCP GA wire-contract changes and historical RC1 baseline distinguished | `6f588abdd2fb37a108058bc7a16c1124d1cabc414d28e9a71d7ed14511ba8ebc` |
+| 2026-10-21 | Draft 3 with the CAB-independence errata (2026-10-21 JST). Version and status unchanged (v1.2.0, Draft Specification, Draft 3). Earlier rows in this table are unchanged | `dbe2439d6d138929b48697cd0545a5c8324059ab032732b9a9122f993fde9f48` |
 
 ---
 
