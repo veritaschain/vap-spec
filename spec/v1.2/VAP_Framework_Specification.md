@@ -5,7 +5,7 @@
 **Document ID:** VSO-VAP-SPEC-001
 **Status:** Draft Specification (Draft 3)
 **Version:** 1.2.0
-**Date:** 2026-09-01 (publication folds G-2, H-2, A-4 applied 2026-09-28; post-publication folds L-1, L-2, L-3, H-3, H-4, H-5 applied 2026-10-06; post-publication fold B-5 corrected 2026-10-09; see Appendix D)
+**Date:** 2026-09-01 (publication folds G-2, H-2, A-4 applied 2026-09-28; post-publication folds L-1, L-2, L-3, H-3, H-4, H-5 applied 2026-10-06; post-publication fold B-5 corrected 2026-10-09; CAB-independence errata applied 2026-10-21 JST; see Appendix D and ERRATA)
 **Supersedes:** Draft 2 (2026-06-10). Draft 3 folds the cross-profile alignment
 review **VSO-VAP-ALIGN-001** into this document. Per VSO practice, pre-release
 review findings fold directly into the draft with a disposition record and do
@@ -93,7 +93,7 @@ Across the mandatory application domains of finance, healthcare, transportation,
 | **FIX Trading Community** | Financial Trading          | FIX Protocol                             |
 | **VSO**                   | **AI Decision Provenance** | **VAP Framework, VCP, CAP, CPP, OAP...** |
 
-**VSO develops and maintains VAP as a standards organization for AI decision provenance.** The comparison above is structural — it identifies the layer at which VSO operates — and is not a claim of equivalent status, recognition, or adoption. VSO's neutrality rests on published mechanisms, not on legal form: specifications are published under CC BY 4.0, conformity assessment is performed by independent Conformity Assessment Bodies rather than by VSO (§10.1), and vendor non-endorsement is a published policy.
+**VSO develops and maintains VAP as a standards organization for AI decision provenance.** The comparison above is structural — it identifies the layer at which VSO operates — and is not a claim of equivalent status, recognition, or adoption. VSO's neutrality rests on published mechanisms, not on legal form: specifications are published under CC BY 4.0, the scheme requires conformity assessment to be performed by Conformity Assessment Bodies that are independent of the scheme owner rather than by VSO (§10.1), and vendor non-endorsement is a published policy. That requirement is not a description of the current registry. The only registered CAB is VeritasChain Co., Ltd., which operates VSO and is not independent of the scheme owner (§10.1, ERRATA).
 
 ---
 
@@ -1164,7 +1164,7 @@ Profiles MUST publish a **sequence-mechanism matrix** declaring, per profile con
 | **VAP-Compliant** | Standard | Standard test suite pass + audit         |
 | **VAP-Certified** | Full     | Full test suite pass + third-party audit |
 
-VSO defines requirements; independent Conformity Assessment Bodies (CABs) perform audits and issue certificates (§10.1). Migration deadlines for v1.1 conformance claims are defined in VSO-VAP-CHANGE-001 §5.
+VSO defines requirements. The scheme requires that audits be performed and certificates issued by Conformity Assessment Bodies (CABs) that are independent of the scheme owner, not by VSO (§10.1). The CAB registry does not currently meet that requirement: the only registered CAB is VeritasChain Co., Ltd., which operates VSO and is not independent of the scheme owner (ERRATA, 2026-10-21 JST). Migration deadlines for v1.1 conformance claims are defined in VSO-VAP-CHANGE-001 §5.
 
 ---
 
@@ -1217,13 +1217,15 @@ VeritasChain Standards Organization (VSO)
 │   ├── Medical Working Group (MAP)
 │   └── Public Sector Working Group (PAP)
 ├── Certification Authority Liaison
-│   └── Conformance Testing (audits performed by independent CABs)
+│   └── Conformance Testing (CAB independence is required; registry note below)
 └── Advisory Board
     ├── Industry Representatives
     └── Regulatory Liaisons
 ```
 
-VSO develops and maintains specifications and defines conformance requirements; it does **not** perform audits or issue certifications, and maintains strict vendor neutrality (VSO Non-Endorsement Policy).
+VSO develops and maintains specifications and defines conformance requirements. The scheme requires that VSO not perform audits or issue certifications, and that any CAB that does so be independent of the scheme owner. VSO maintains strict vendor neutrality (VSO Non-Endorsement Policy). VSO is operated by VeritasChain Co., Ltd.
+
+**Current registry (confirmed 2026-10-21 JST).** The CAB registry at <https://veritaschain.org/certified/cab/> lists one CAB: VeritasChain Co., Ltd. That company operates VSO and is not independent of the scheme owner. No independent CAB is registered. This registry fact does not relax technical independent verification of evidence, independent external anchoring, or the institutional-independence requirement stated above.
 
 ### 10.2 Standardization Roadmap
 
@@ -1418,6 +1420,7 @@ Application dates, and the EU AI Act classifications cited in §2.2, are stated 
 | 1.2.0 (Draft 3, as published) | 2026-09-28 | Publication folds G-2 (implementation-status disclosure), H-2 (capability-language corrections), A-4 (Declaration and hierarchy diagram aligned with the Normative Position Statement and §10.1); K-1 closed by publication of this draft in `veritaschain/vap-spec` `spec/v1.2/`. Editorial only; no normative requirement, wire format, or conformance level changed. Dispositions: Appendix D | VSO Technical Committee |
 | 1.2.0 (Draft 3, post-publication folds) | 2026-10-06 | Post-publication folds L-1, L-2, L-3 (regulatory references corrected and updated), H-3, H-4 (capability language), H-5 (omission-evidence definition, §5.4 and §11.1 aligned with INT-008 as written). Editorial only; no normative requirement, field, wire format, or conformance level changed. The text as published on 2026-09-28 remains identified by its SHA-256 digest (`spec/v1.2/README.md`). Dispositions: Appendix D | VSO Technical Committee |
 | 1.2.0 (Draft 3, fold B-5) | 2026-10-09 | Post-publication fold B-5: profile registry and related rows record VCP as v1.2 Released (GA 2026-07-06, tag `v1.2.0`) instead of v1.2 (RC1). VAP requirement IDs and conformance levels are unchanged; VCP pre-GA wire-contract corrections are documented in Appendix D. This is not a claim of RC1/GA technical identity. Disposition: Appendix D | VSO Technical Committee |
+| 1.2.0 (Draft 3, errata) | 2026-10-21 | Errata, 2026-10-21 JST. The Normative Position Statement, §8.3, §10.1, and the repository README no longer say that independent CABs currently perform assessment. The requirement that a CAB be independent of the scheme owner is unchanged. The CAB registry lists only VeritasChain Co., Ltd., which operates VSO and is not independent of the scheme owner. Version and status remain v1.2.0, Draft Specification (Draft 3). Earlier rows in this table are unchanged. See ERRATA. This row is not a §10.3 change-proposal vote | VSO |
 | 1.2.0 (Draft 2) | 2026-06-10 | Per VSO-VAP-CHANGE-001: Cryptographic Sequence Verifiability abstraction (INT-003/004/004a); external anchoring MUST at all levels (INT-006) with anchor continuity (INT-007); Completeness Invariant (INT-008); bounded RECOVERY (INT-009); ERASURE event + legal scope clause; policy identification; XREF (TRC-005); SCITT/COSE opt-in alignment; PQC EXPERIMENTAL status (ML-DSA/FN-DSA), hybrid signatures, RSA-2048 deprecation; version compatibility management; profile registry update (VCP v1.2 RC1, CAP v1.0, CPP v1.0, IAP); Legal Scope and Non-Guarantee Statement | VSO Technical Committee |
 
 ---
@@ -1491,6 +1494,30 @@ not be described as editorial or technically identical to RC1.
 | ID | Finding | Disposition |
 | --- | --- | --- |
 | B-5 | §2.2.1, §4.5.2, §5.1, §10.4 and §12 recorded VCP at v1.2 (RC1). VCP v1.2 was declared Production Ready (GA) on 2026-07-06; the GA text and its normative annex VSO-SPEC-CHANGE-001 are published in `veritaschain/vcp-spec` `spec/v1.2/` and tagged `v1.2.0`, which meets the §4.5.2 definition of *Released* | **Applied.** VCP recorded as v1.2 Released in those locations. VSO-VAP-CHANGE-001 retains its historical VCP v1.2 RC1 (2026-05-31) baseline; it is not evidence that RC1 and GA are technically identical. The 2026-10-09 VCP correction registers five SYS_* events, defines their structured payload locations, replaces the inconsistent pre-GA compact ERASURE encoding with Payload.VCP-PRIVACY.ErasureDetails, detaches inclusion proofs and clarifies bounded recovery. See [VCP GA compatibility assessment](https://github.com/veritaschain/vcp-spec/blob/v1.2.0/spec/v1.2/GA-CONSISTENCY.md). Existing INT-009 (bounded recovery) and erasure requirements are unchanged at the VAP layer; profile implementations must assess the new serialization and validation contract. No independent implementation conformance is claimed. The Draft 2 version-history row keeps its historical wording |
+---
+
+## ERRATA
+
+This errata is a new change to the current text. It does not rewrite earlier
+commits, earlier Appendix B rows, or Appendix D. Version and status stay
+**1.2.0**, **Draft Specification (Draft 3)**. It does not speak to VCP's
+release status.
+
+| Field | Entry |
+| --- | --- |
+| ID | E-2026-10-21 |
+| Date | 2026-10-21 JST |
+| Affected sections | Normative Position Statement (the paragraph under "Analogous Standards Bodies"); §8.3 (the sentence under the certification table); §10.1 (the conformance-testing line of the structure diagram, and the paragraph under it); repository `README.md` (the vendor-neutrality paragraph). Appendix A still defines **CAB** as an independent certifier: that line is the role requirement, not a census of the registry |
+| Reason | Those passages said, in the present tense, that independent Conformity Assessment Bodies perform conformity assessment. The scheme does require a CAB to be independent of the scheme owner. The published CAB registry (<https://veritaschain.org/certified/cab/>), read on 2026-10-21, lists one CAB: VeritasChain Co., Ltd. That company operates VSO and is not independent of the scheme owner. The wording now separates the requirement from that registry. VSO is operated by VeritasChain Co., Ltd. |
+| What is unchanged | Technical independent verification of evidence; independent external anchoring (including INT-006); the institutional requirement that a CAB be independent of the scheme owner. No requirement identifier, field, wire format, or conformance level changes. This is not a vote under §10.3 |
+
+The sentences this errata replaces were:
+
+- Normative Position Statement: "conformity assessment is performed by independent Conformity Assessment Bodies rather than by VSO (§10.1)".
+- §8.3: "independent Conformity Assessment Bodies (CABs) perform audits and issue certificates (§10.1)".
+- §10.1 diagram: "Conformance Testing (audits performed by independent CABs)".
+- `README.md`: "VAP v1.2 §10.1 assigns conformity assessment to independent Conformity Assessment Bodies, not to VSO."
+
 ---
 
 ## Contact Information

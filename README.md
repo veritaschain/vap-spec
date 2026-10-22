@@ -85,7 +85,7 @@ CAP v1.0 and CPP v1.4 owe a VAP v1.2 conformance mapping that has not yet been p
 | Assessment programs | Certification authority |
 | Open standard | Endorsement of any vendor |
 
-**VSO maintains strict vendor neutrality.** See [VSO Non-Endorsement Policy](https://veritaschain.org/vso/policies/). VAP v1.2 §10.1 assigns conformity assessment to independent Conformity Assessment Bodies, not to VSO.
+**VSO maintains strict vendor neutrality.** See [VSO Non-Endorsement Policy](https://veritaschain.org/vso/policies/). VAP v1.2 §10.1 requires conformity assessment to be performed by Conformity Assessment Bodies that are independent of the scheme owner, not by VSO. The only CAB in the [registry](https://veritaschain.org/certified/cab/) is VeritasChain Co., Ltd., which operates VSO and is not independent of the scheme owner (errata 2026-10-21 JST).
 
 ---
 
