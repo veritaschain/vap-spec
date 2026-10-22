@@ -543,7 +543,7 @@ Verifier: VSO 主任, from the local git commit and from `origin/main` after a n
 - `git merge --no-ff cursor/vap-cab-errata-doc-sync-33a7` produced `307ca8ec84fb2d3760e62b37eca59bb40c941fd9`.
 - `git log -1` committer and author time `2026-10-22T10:04:52+00:00`.
 - `git push origin main` updated `refs/heads/main` from `47bbeb5` to `307ca8e`. The push was not a force-push.
-- `git ls-remote origin refs/heads/main` returned `307ca8ec84fb2d3760e62b37eca59bb40c941fd9`.
+- Immediately after that merge push, `git ls-remote origin refs/heads/main` returned `307ca8ec84fb2d3760e62b37eca59bb40c941fd9`. The commit that adds this entry moves `main` forward and does not replace the merge commit.
 - `git ls-remote origin refs/tags/*` returned only `refs/tags/v1.1.0` at `a2ba18c4877c3ff569b33bf134a067c1824678c0`.
 
 ### Not yet reflected, owner, next action
