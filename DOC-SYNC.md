@@ -4,8 +4,9 @@ This file is newly created. On 2026-10-21 JST a GitHub code search for
 `filename:DOC-SYNC.md` in the `veritaschain` organization returned
 `total_count` 0 (`GET /search/code`). No earlier DOC-SYNC was found in this
 repository or in that organization search, so there is no prior entry to
-continue. Every entry below was confirmed retrospectively on 2026-10-21 JST.
-The entries are not contemporaneous notes written when the events happened.
+continue. Entries 1–5 were confirmed retrospectively on 2026-10-21 JST.
+Those five entries are not contemporaneous notes written when the events
+happened. Entry 6 records a later merge and states its own time.
 
 The verifier of each entry is **VSO 主任, via the GitHub API**. That verifies
 this record. It is not an approval of a historical pull request, tag, release,
@@ -17,7 +18,7 @@ VAP in this repository remains **v1.2.0, Draft Specification (Draft 3)**. That
 status is not VCP's release status. VCP v1.2 events below are events in
 `veritaschain/vcp-spec`.
 
-**DOC-SYNC entry time for every entry:** 2026-10-21 JST.
+**DOC-SYNC entry time for entries 1–5:** 2026-10-21 JST. Entry 6 states its own entry time.
 
 JST is nine hours ahead of UTC. UTC values below are copied from the API.
 JST clock times are those UTC values plus nine hours. Where the API gave
@@ -488,3 +489,63 @@ the case as migrated.
 - The VAP CAB-independence errata in this repository is a separate commit. It
   is not one of the VCP events above, and it does not change VAP's version or
   status.
+
+---
+
+## 6. vap-spec main — merge of the CAB errata and this DOC-SYNC
+
+### Event time
+
+Merge committer time **2026-10-22T10:04:52Z**, which is **2026-10-22 19:04:52 JST**.
+Author time is the same. Both values are from the merge commit itself.
+
+### DOC-SYNC entry time
+
+2026-10-22 JST, written after the merge was on `origin/main`.
+
+### Pull request, commit, tag, and files
+
+| Item | Value |
+| --- | --- |
+| Repository | `veritaschain/vap-spec` |
+| Branch merged | `cursor/vap-cab-errata-doc-sync-33a7` |
+| Merge commit | `307ca8ec84fb2d3760e62b37eca59bb40c941fd9` |
+| Parents | `47bbeb59e1b3f0163882d473fc6542b07317641f` (`main` before the merge), `aa732f16a2c44fa14712d61c764fbe9c531400db` (branch tip) |
+| Commits brought in | `770a859ee8cad3643efeabbbb2bc593c257df7c2` (CAB independence errata), `aa732f16a2c44fa14712d61c764fbe9c531400db` (this DOC-SYNC, entries 1–5) |
+| Pull request | none. The earlier attempt to open a pull request was rejected with `must be a collaborator`. This merge is a normal `git merge --no-ff` pushed to `main`, not a GitHub pull-request merge |
+| Tag | none created, moved, deleted, or annotated. Before and after the merge the only local tag was `v1.1.0`. `refs/tags/v1.1.0` on the remote was unchanged (`a2ba18c4877c3ff569b33bf134a067c1824678c0`) |
+| Files in the merge | `DOC-SYNC.md` (added), `README.md`, `spec/v1.2/README.md`, `spec/v1.2/VAP_Framework_Specification.md` |
+
+### Before
+
+`main` was `47bbeb59e1b3f0163882d473fc6542b07317641f` ("Merge pull request #9 from veritaschain/docs/refresh-status-2026-09"). It did not contain the CAB-independence errata or `DOC-SYNC.md`.
+
+### After
+
+`main` contains the errata and entries 1–5 of this file. The merge commit subject is `Merge branch 'cursor/vap-cab-errata-doc-sync-33a7'`. VAP remains v1.2.0, Draft Specification (Draft 3). This follow-up commit, which adds entry 6, is not the merge commit.
+
+### Reason
+
+The owner approved publishing the errata and the retrospective VCP v1.2 record on `main`.
+
+### Approval
+
+Owner instruction in the VSO group chat, **2026-10-22 19:03 JST** (2026-10-22 10:03 UTC; no seconds were given), text **「すすめて」**. That is the approval for this merge. It is not a GitHub review. A Slack search from this session for `すすめて` on 2026-10-22, and a channel search for `VSO`, returned no message, so this entry does not cite a Slack permalink or message id.
+
+### Impact
+
+The CAB-independence wording and entries 1–5 are on `veritaschain/vap-spec` `main`. No tag in this repository or in `vcp-spec` was changed. VCP tag `v1.2.0` is untouched. Open items from entries 4 and 5 stay open: `vap.veritaschain.org` still needed a host update at the time of entry 4, and K3-VCP-BLIND-001 still awaits the evaluator.
+
+### Verifier and evidence
+
+Verifier: VSO 主任, from the local git commit and from `origin/main` after a non-force push, on 2026-10-22 JST.
+
+- `git merge --no-ff cursor/vap-cab-errata-doc-sync-33a7` produced `307ca8ec84fb2d3760e62b37eca59bb40c941fd9`.
+- `git log -1` committer and author time `2026-10-22T10:04:52+00:00`.
+- `git push origin main` updated `refs/heads/main` from `47bbeb5` to `307ca8e`. The push was not a force-push.
+- `git ls-remote origin refs/heads/main` returned `307ca8ec84fb2d3760e62b37eca59bb40c941fd9`.
+- `git ls-remote origin refs/tags/*` returned only `refs/tags/v1.1.0` at `a2ba18c4877c3ff569b33bf134a067c1824678c0`.
+
+### Not yet reflected, owner, next action
+
+This entry is a commit after `307ca8ec84fb2d3760e62b37eca59bb40c941fd9`. It does not amend that merge. Still outstanding from earlier entries: `https://vap.veritaschain.org/` (owner: VSO, operated by VeritasChain Co., Ltd.) and version confirmation for K3-VCP-BLIND-001 (owner: the K3 evaluator). Next action for those two items is unchanged. No further tag operation is authorized.
