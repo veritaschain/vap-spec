@@ -5,9 +5,12 @@ from record_gate.common import canonical, decode, require
 ENDPOINTS = {'http://audit:8080': ('audit', 8080), 'http://backend:8080': ('backend', 8080)}
 
 
-def exchange(host, port, path, payload=None, method='POST', timeout=2):
+def exchange(host, port, path, payload=None, method='POST', timeout=2, on_connected=None):
     connection = http.client.HTTPConnection(host, port, timeout=timeout)
     try:
+        connection.connect()
+        if on_connected is not None:
+            on_connected()
         raw = None if payload is None else canonical(payload)
         connection.request(method, path, body=raw, headers={'Content-Type': 'application/json'})
         response = connection.getresponse()

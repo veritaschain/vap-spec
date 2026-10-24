@@ -49,6 +49,15 @@ class TransportTests(unittest.TestCase):
                     transport.service_rpc(url, '/write', {})
             exchange.assert_not_called()
 
+    def test_response_timeout_does_not_become_connection_denial(self):
+        def stall(*args, on_connected=None, **kwargs):
+            on_connected()
+            raise TimeoutError(errno.ETIMEDOUT, 'response timed out')
+        with patch.object(probe, 'exchange', side_effect=stall):
+            result = probe.network('192.0.2.1', 8080)
+        self.assertIs(result['connected'], True)
+        self.assertIsNone(result['http_status'])
+
     def test_non_success_including_redirects_is_not_acknowledgment(self):
         for status in (301, 302, 403, 500):
             with self.subTest(status=status), patch.object(transport, 'exchange', return_value=(status, {})):

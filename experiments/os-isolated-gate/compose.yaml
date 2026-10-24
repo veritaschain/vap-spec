@@ -40,7 +40,8 @@ services:
     <<: *runtime
     user: '10001:10001'
     command: [idle]
-    healthcheck: {disable: true}
+    healthcheck:
+      test: [CMD, python, -c, "import os; assert os.getuid() == 10001"]
     networks: [frontend]
     volumes:
       - agent-config:/run/role:ro

@@ -45,11 +45,15 @@ def filesystem(role):
 def network(host, port, path='/write', method='POST', operation_id='direct-bypass-001'):
     op = {'operation_id': operation_id, 'action': 'create_record', 'target': 'sandbox/records',
           'args': {'text': 'synthetic direct-call probe'}}
+    connected = False
+    def mark_connected():
+        nonlocal connected
+        connected = True
     try:
-        status, body = exchange(host, port, path, {'intent': op}, method=method)
+        status, body = exchange(host, port, path, {'intent': op}, method=method, on_connected=mark_connected)
         return {'connected': True, 'http_status': status, 'body': body}
     except (OSError, TimeoutError) as exc:
-        return {'connected': False, 'http_status': None, 'error': type(exc).__name__, 'errno': getattr(exc, 'errno', None)}
+        return {'connected': connected, 'http_status': None, 'error': type(exc).__name__, 'errno': getattr(exc, 'errno', None)}
 
 
 def execute_request(kind):
@@ -57,7 +61,7 @@ def execute_request(kind):
     request = config['fresh_request' if kind == 'fresh' else 'request']
     if kind == 'bad-target':
         request['intent']['target'] = 'http://backend:8080/write'
-    status, body = exchange('gate', 8080, '/execute', request)
+    status, body = exchange('gate', 8080, '/execute', request, timeout=10)
     return {'http_status': status, 'result': body}
 
 

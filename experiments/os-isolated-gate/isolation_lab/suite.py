@@ -148,6 +148,7 @@ def run_suite(directory):
         lab = Lab(output)
         lab.start()
         lab.inspection = lab.inspect()
+        save(output / 'runtime.json', lab.inspection)
         identities = {r: lab.probe(r, 'identity') for r in ROLES}
         record('01', identities, all(
             p['uid'] == ROLES[r] and p['gid'] == ROLES[r] and 0 not in p['groups']
@@ -247,6 +248,12 @@ def run_suite(directory):
     except Exception as exc:
         error = type(exc).__name__ + ': ' + str(exc)
         print('Experiment incomplete:', error, flush=True)
+        if lab and shutil.which('docker'):
+            try:
+                logs = lab.compose('--profile', 'negative-control', 'logs', '--no-color', '--tail', '40', check=False)
+                (output / 'failure-services.log').write_text(logs.stdout + logs.stderr)
+            except Exception:
+                pass  # The original error and incomplete status are retained.
     finally:
         if lab:
             try:
