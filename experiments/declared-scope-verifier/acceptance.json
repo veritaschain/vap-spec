@@ -1,0 +1,240 @@
+[
+  {
+    "case": "01",
+    "description": "Complete delivery of 1000 records",
+    "integrity": "verified",
+    "scope": "met",
+    "INT-008": "verified",
+    "reason": null,
+    "requirements": {
+      "INT-001/003": "verified",
+      "INT-002": "verified",
+      "INT-005": "verified",
+      "INT-006": "verified",
+      "INT-004": "indeterminate",
+      "INT-007": "indeterminate",
+      "INT-009": "indeterminate"
+    }
+  },
+  {
+    "case": "02",
+    "description": "100 records removed after original commitment",
+    "integrity": "verified",
+    "scope": "not_met",
+    "INT-008": "failed",
+    "reason": "missing_delivery",
+    "requirements": {
+      "INT-001/003": "verified",
+      "INT-002": "verified",
+      "INT-005": "verified",
+      "INT-006": "verified",
+      "INT-004": "indeterminate",
+      "INT-007": "indeterminate",
+      "INT-009": "indeterminate"
+    }
+  },
+  {
+    "case": "03",
+    "description": "Payload tampered without matching signature",
+    "integrity": "failed",
+    "scope": "indeterminate",
+    "INT-008": "indeterminate",
+    "reason": "included_record_unverified",
+    "requirements": {
+      "INT-001/003": "failed",
+      "INT-002": "verified",
+      "INT-005": "failed",
+      "INT-006": "failed",
+      "INT-004": "indeterminate",
+      "INT-007": "indeterminate",
+      "INT-009": "indeterminate"
+    }
+  },
+  {
+    "case": "04",
+    "description": "1000 records with duplicate replacements for missing IDs",
+    "integrity": "verified",
+    "scope": "not_met",
+    "INT-008": "failed",
+    "reason": "missing_delivery",
+    "requirements": {
+      "INT-001/003": "verified",
+      "INT-002": "failed",
+      "INT-005": "verified",
+      "INT-006": "verified",
+      "INT-004": "indeterminate",
+      "INT-007": "indeterminate",
+      "INT-009": "indeterminate"
+    }
+  },
+  {
+    "case": "05",
+    "description": "Expected inventory and authoritative closure unavailable",
+    "integrity": "verified",
+    "scope": "indeterminate",
+    "INT-008": "verified",
+    "reason": "expected_set_unknown",
+    "requirements": {
+      "INT-001/003": "verified",
+      "INT-002": "verified",
+      "INT-005": "verified",
+      "INT-006": "verified",
+      "INT-004": "indeterminate",
+      "INT-007": "indeterminate",
+      "INT-009": "indeterminate"
+    }
+  },
+  {
+    "case": "06",
+    "description": "Notification receipt absent; notification source unclosed",
+    "integrity": "verified",
+    "scope": "indeterminate",
+    "INT-008": "failed",
+    "reason": "notification_evidence_unclosed",
+    "requirements": {
+      "INT-001/003": "verified",
+      "INT-002": "verified",
+      "INT-005": "verified",
+      "INT-006": "verified",
+      "INT-004": "indeterminate",
+      "INT-007": "indeterminate",
+      "INT-009": "indeterminate"
+    }
+  },
+  {
+    "case": "07",
+    "description": "Required notification receipt explicitly withheld after deadline",
+    "integrity": "verified",
+    "scope": "not_met",
+    "INT-008": "failed",
+    "reason": "required_evidence_withheld",
+    "requirements": {
+      "INT-001/003": "verified",
+      "INT-002": "verified",
+      "INT-005": "verified",
+      "INT-006": "verified",
+      "INT-004": "indeterminate",
+      "INT-007": "indeterminate",
+      "INT-009": "indeterminate"
+    }
+  },
+  {
+    "case": "08",
+    "description": "Required record unavailable after finalized deadline",
+    "integrity": "verified",
+    "scope": "not_met",
+    "INT-008": "failed",
+    "reason": "required_evidence_unavailable",
+    "requirements": {
+      "INT-001/003": "verified",
+      "INT-002": "verified",
+      "INT-005": "verified",
+      "INT-006": "verified",
+      "INT-004": "indeterminate",
+      "INT-007": "indeterminate",
+      "INT-009": "indeterminate"
+    }
+  },
+  {
+    "case": "09",
+    "description": "Withheld payload with permitted verified commitment",
+    "integrity": "verified",
+    "scope": "met",
+    "INT-008": "failed",
+    "reason": null,
+    "requirements": {
+      "INT-001/003": "verified",
+      "INT-002": "verified",
+      "INT-005": "verified",
+      "INT-006": "verified",
+      "INT-004": "indeterminate",
+      "INT-007": "indeterminate",
+      "INT-009": "indeterminate"
+    }
+  },
+  {
+    "case": "10",
+    "description": "Signed producer and execution records contradict equality rule",
+    "integrity": "verified",
+    "scope": "not_met",
+    "INT-008": "verified",
+    "reason": "source_disagreement",
+    "requirements": {
+      "INT-001/003": "verified",
+      "INT-002": "verified",
+      "INT-005": "verified",
+      "INT-006": "verified",
+      "INT-004": "indeterminate",
+      "INT-007": "indeterminate",
+      "INT-009": "indeterminate"
+    }
+  },
+  {
+    "case": "11",
+    "description": "Scope has no accepted external timing proof",
+    "integrity": "indeterminate",
+    "scope": "indeterminate",
+    "INT-008": "verified",
+    "reason": "advance_commitment_unknown",
+    "requirements": {
+      "INT-001/003": "verified",
+      "INT-002": "verified",
+      "INT-005": "verified",
+      "INT-006": "verified",
+      "INT-004": "indeterminate",
+      "INT-007": "indeterminate",
+      "INT-009": "indeterminate"
+    }
+  },
+  {
+    "case": "12",
+    "description": "Closed trusted register proves late first acceptance",
+    "integrity": "verified",
+    "scope": "not_met",
+    "INT-008": "verified",
+    "reason": "late_first_acceptance",
+    "requirements": {
+      "INT-001/003": "verified",
+      "INT-002": "verified",
+      "INT-005": "verified",
+      "INT-006": "verified",
+      "INT-004": "indeterminate",
+      "INT-007": "indeterminate",
+      "INT-009": "indeterminate"
+    }
+  },
+  {
+    "case": "13",
+    "description": "Expectation source reports unresolved observation gap",
+    "integrity": "verified",
+    "scope": "indeterminate",
+    "INT-008": "verified",
+    "reason": "observation_gap",
+    "requirements": {
+      "INT-001/003": "verified",
+      "INT-002": "verified",
+      "INT-005": "verified",
+      "INT-006": "verified",
+      "INT-004": "indeterminate",
+      "INT-007": "indeterminate",
+      "INT-009": "indeterminate"
+    }
+  },
+  {
+    "case": "14",
+    "description": "Scope from another exercise substituted",
+    "integrity": "failed",
+    "scope": "indeterminate",
+    "INT-008": "verified",
+    "reason": "scope_authority",
+    "requirements": {
+      "INT-001/003": "verified",
+      "INT-002": "verified",
+      "INT-005": "verified",
+      "INT-006": "verified",
+      "INT-004": "indeterminate",
+      "INT-007": "indeterminate",
+      "INT-009": "indeterminate"
+    }
+  }
+]

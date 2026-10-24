@@ -250,10 +250,13 @@ the missing records were omitted from delivery, not proven absent from the origi
 
 ## 7 Synthetic acceptance cases
 
-These are proposed expected outcomes, **not executed test results**. Except where a case changes them,
+The table defines expected outcomes, not evidence of conformance. An opt-in
+[research verifier and execution record](../../experiments/declared-scope-verifier/README.md) now accompany
+these scenarios. Its internal synthetic runs are separate from independent reproduction and normative adoption.
+Except where a case changes them,
 fixtures assume approved synthetic keys, valid prior commitment, evidenced source closure, an authenticated
 final submission manifest, and a policy requiring full records. Simulated external receipts are test fixtures,
-not independent timestamps or production anchoring. Each future fixture MUST include its exact policy,
+not independent timestamps or production anchoring. Each fixture MUST include its exact policy,
 input evidence, expected per-check results, and the reason for any unknown result.
 
 | Case | Cryptographic integrity | Scope fulfillment |
@@ -279,6 +282,12 @@ For derived inventories, fixtures MUST include the source records, closure evide
 expected identifiers so a second implementation can reproduce E rather than trust a supplied count.
 
 ## 8 Compatibility and implementation tracks
+
+The accompanying implementation uses explicit `vap-v1.2` and `experimental-scope` modes. Its local integrity
+aggregation rule is Failed before Indeterminate before Verified, retaining every individual check. This is
+an experimental implementation decision, not a newly adopted v1.2 rule. The implemented subset, unsupported
+requirements, adapter format, synthetic receipt limits and reproducible commands are documented
+[with the code](../../experiments/declared-scope-verifier/README.md).
 
 The **v1.2 verifier track** checks the implemented subset of current profile and framework requirements
 against a pinned specification and policy. It does not require this draft's fields or claim full conformance
