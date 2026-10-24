@@ -37,7 +37,7 @@ for this review; no original wording or approval is inferred for them.
 | P2 | VCP §6.2.3 omits a nonexistent sibling while §6.2.1 duplicates it. | 19 of 136 generated inclusion paths fail against the example's own root under a fold using its hash rules. |
 | P3 | The quickstart function starts from the raw event hash and omits leaf/internal-node prefixes. | 0 of the same 136 proofs are accepted. This is an example-code finding, not a test of every VCP implementation. |
 | P4 | Odd-node duplication allows `[e0,e1,e2]` and `[e0,e1,e2,e2]` to share a root. | Same VCP-example root; different RFC roots for this pair. |
-| P5 | VCP's ordinary leaf is `H(0x00 || H(JCS(Header) || JCS(Payload)))`; VAP Mechanism B says `H(0x00 || canonical(E))`. Mechanism A additionally includes `prev_hash`. | A synthetic Header/Payload-object reading of E produces different leaves. This illustrates the missing mapping; it does not establish a unique normative definition of E or equate VAP A with every VCP hash form. |
+| P5 | VCP's ordinary leaf is `H(0x00 \|\| H(JCS(Header) \|\| JCS(Payload)))`; VAP Mechanism B says `H(0x00 \|\| canonical(E))`. Mechanism A additionally includes `prev_hash`. | A synthetic Header/Payload-object reading of E produces different leaves. This illustrates the missing mapping; it does not establish a unique normative definition of E or equate VAP A with every VCP hash form. |
 | P6 | The VCP §6.3.1 example signs root bytes. Changing count, last ID and policy in the accompanying record leaves those signed bytes unchanged. | Real synthetic Ed25519 verification still succeeds. For an 8-leaf root presented as size 6, size-free folds and generic depth checks accept indices 0–5; strict size-6 verification rejects 4–5 but accepts 0–3. |
 | P7 | The reference verifier uses `json.dumps(..., sort_keys=True)` for Header and Payload. | On the supplied synthetic sample, it rejects the JCS-based hash and accepts the `json.dumps` hash; its 3-leaf root follows odd duplication. The tool identifies itself as **v1.1**, not a v1.2 production verifier. |
 | P8 | Python `rfc8785==0.1.4` rejects the pinned fixture headers with Python integer TimestampInt values. | 40/40 rejected; **40/40 timestamp values are nevertheless exactly representable in binary64**. Diagnostic equal-value float inputs are accepted for all 40. An adjacent nonrepresentable integer demonstrates the separate general precision risk. |
@@ -110,6 +110,38 @@ Ed25519 checks include an altered-root rejection control. These are controls of
 the probe, not additional product regression tests or independent reproduction.
 Publication checks also rejected a modified source file, a changed saved count,
 a boolean changed to a number, and a duplicate member in the saved output.
+
+## Final internal review — 24 October 2026
+
+GitHub's Markdown rendering truncated P5 at the unescaped concatenation pipes,
+hiding part of the formula and its limitation. Escaping those table-cell pipes
+restores the complete three-column row; GitHub's renderer was used to confirm
+the repair. The probe and saved observations were not changed by this repair.
+
+Fresh local environments, using a newly cloned VCP repository and a fresh
+download of the pinned reference source, completed the documented comparison:
+
+| Runtime | Dependencies | Outcome |
+| --- | --- | --- |
+| Python 3.12.14 | rfc8785 0.1.4; cryptography 50.0.2 | All non-environment fields match the saved report |
+| Python 3.14.3 | Same | All non-environment fields match; output bytes match the saved report |
+
+Seven negative checks also returned nonzero without writing a result: altered
+count, boolean replaced by number, extra claim, duplicate member, malformed
+JSON, changed reference-source bytes, and missing reference source. The 2,080
+inclusion controls and signature controls run inside each complete probe run.
+
+Reviewed probe SHA-256:
+`88ffef24994da7640c3ca4b38aa3cce900c401d9ae6f7bfa79f038cc7c7c5e4e`.
+Saved/Python 3.14 output SHA-256:
+`1a97314b4fe3ce0b4c9d401588cf2b1a1a9cacc46c175bec42c09c87f5ba594e`.
+Python 3.12 output SHA-256 (environment metadata differs):
+`6c238f11e7f8665f1b94d076ebe699f5dde720f815aa36def153486386365444`.
+
+These are local internal checks, not GitHub CI or independent third-party
+reproduction. No remaining blocker was identified within this observation-only
+scope. Merging the research record does not adopt its proposed changes or
+resolve the documented VCP/VAP discrepancies or the unverified Draft 2 history.
 
 ## Existing experiments and external evaluation
 
