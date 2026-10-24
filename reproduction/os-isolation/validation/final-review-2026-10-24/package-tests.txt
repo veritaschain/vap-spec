@@ -1,0 +1,57 @@
+﻿2026-10-24T03:42:56.6434673Z ##[group]Run python -W error::ResourceWarning -m unittest discover -s authoring/reproduction/os-isolation/tests -v
+2026-10-24T03:42:56.6435521Z ^[[36;1mpython -W error::ResourceWarning -m unittest discover -s authoring/reproduction/os-isolation/tests -v^[[0m
+2026-10-24T03:42:56.6502636Z shell: /usr/bin/bash -e {0}
+2026-10-24T03:42:56.6502897Z env:
+2026-10-24T03:42:56.6503115Z   PYTHONDONTWRITEBYTECODE: 1
+2026-10-24T03:42:56.6503443Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-24T03:42:56.6503924Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-24T03:42:56.6504371Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-24T03:42:56.6504774Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-24T03:42:56.6505175Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-24T03:42:56.6505593Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-24T03:42:56.6505930Z ##[endgroup]
+2026-10-24T03:42:56.9412681Z test_boolean_is_not_number (test_package.PackageTests.test_boolean_is_not_number) ... ok
+2026-10-24T03:42:56.9436568Z test_environment_drops_import_and_compose_overrides (test_package.PackageTests.test_environment_drops_import_and_compose_overrides) ... ok
+2026-10-24T03:42:56.9449924Z test_existing_output_is_not_overwritten (test_package.PackageTests.test_existing_output_is_not_overwritten) ... ok
+2026-10-24T03:42:56.9478114Z test_expected_observations_match (test_package.PackageTests.test_expected_observations_match) ... ok
+2026-10-24T03:42:56.9564111Z test_incomplete_or_wrong_counts_fail (test_package.PackageTests.test_incomplete_or_wrong_counts_fail) ... ok
+2026-10-24T03:42:56.9591860Z test_inventory_detects_mutation_and_extra_file (test_package.PackageTests.test_inventory_detects_mutation_and_extra_file) ... ok
+2026-10-24T03:42:56.9607144Z test_inventory_includes_nested_manifest_and_rejects_symlink (test_package.PackageTests.test_inventory_includes_nested_manifest_and_rejects_symlink) ... ok
+2026-10-24T03:42:56.9620606Z test_json_rejects_duplicates_and_nonfinite (test_package.PackageTests.test_json_rejects_duplicates_and_nonfinite) ... ok
+2026-10-24T03:42:56.9654873Z test_match_flag_cannot_hide_changed_or_missing_observation (test_package.PackageTests.test_match_flag_cannot_hide_changed_or_missing_observation) ... ok
+2026-10-24T03:42:56.9670237Z test_missing_duplicate_and_unexpected_cases_fail (test_package.PackageTests.test_missing_duplicate_and_unexpected_cases_fail) ... ok
+2026-10-24T03:42:56.9686592Z test_non_linux_preflight_never_executes_docker (test_package.PackageTests.test_non_linux_preflight_never_executes_docker) ... ok
+2026-10-24T03:42:56.9695013Z test_output_inside_source_rejected (test_package.PackageTests.test_output_inside_source_rejected) ... ok
+2026-10-24T03:42:56.9799577Z test_pack_is_deterministic_complete_and_exclusive (test_package.PackageTests.test_pack_is_deterministic_complete_and_exclusive) ... ok
+2026-10-24T03:42:56.9818764Z Created /tmp/tmpyw824eqr/a.zip sha256=9e7efa74372ec08434f2d70b2a23a41a416fb64dfa99a24c13bbca255d1c0bb9
+2026-10-24T03:42:56.9820911Z Created /tmp/tmpyw824eqr/b.zip sha256=9e7efa74372ec08434f2d70b2a23a41a416fb64dfa99a24c13bbca255d1c0bb9
+2026-10-24T03:42:56.9822600Z Package incomplete: ValueError: wrong source
+2026-10-24T03:42:56.9834771Z test_preflight_failure_records_incomplete (test_package.PackageTests.test_preflight_failure_records_incomplete) ... ok
+2026-10-24T03:42:57.0749126Z skip: INCOMPLETE OR MISMATCH
+2026-10-24T03:42:57.1577720Z skip: INCOMPLETE OR MISMATCH
+2026-10-24T03:42:57.1581752Z test_real_unittest_skip_and_expected_failure_are_not_success (test_package.PackageTests.test_real_unittest_skip_and_expected_failure_are_not_success) ... ok
+2026-10-24T03:42:57.1623611Z test_recorded_environment_must_match_lock_and_reference_comparison (test_package.PackageTests.test_recorded_environment_must_match_lock_and_reference_comparison) ... ok
+2026-10-24T03:42:57.1631183Z test_runtime_provenance_must_match_preflight (test_package.PackageTests.test_runtime_provenance_must_match_preflight) ... ok
+2026-10-24T03:42:57.1706892Z test_saved_run_cannot_claim_independent_reproduction (test_package.PackageTests.test_saved_run_cannot_claim_independent_reproduction) ... ok
+2026-10-24T03:42:57.1805267Z test_saved_run_checks_all_steps_and_counts (test_package.PackageTests.test_saved_run_checks_all_steps_and_counts) ... ok
+2026-10-24T03:42:57.1855095Z test_saved_run_rejects_added_file (test_package.PackageTests.test_saved_run_rejects_added_file) ... ok
+2026-10-24T03:42:57.1941976Z test_saved_run_rejects_skipped_count_with_rehashed_log (test_package.PackageTests.test_saved_run_rejects_skipped_count_with_rehashed_log) ... ok
+2026-10-24T03:42:57.2018049Z test_saved_run_rejects_skipped_tests_even_with_rehashed_report (test_package.PackageTests.test_saved_run_rejects_skipped_tests_even_with_rehashed_report) ... ok
+2026-10-24T03:42:57.2044239Z test_source_commit_cleanliness_hash_and_symlink (test_package.PackageTests.test_source_commit_cleanliness_hash_and_symlink) ... ok
+2026-10-24T03:42:57.2053248Z rechecked
+2026-10-24T03:42:57.2053898Z Saved artifacts rechecked; this is not OS re-execution or an independence attestation.
+2026-10-24T03:42:57.2054459Z test: OK
+2026-10-24T03:42:57.2058423Z test: INCOMPLETE OR MISMATCH
+2026-10-24T03:42:57.2064343Z test: INCOMPLETE OR MISMATCH
+2026-10-24T03:42:57.2070079Z test: INCOMPLETE OR MISMATCH
+2026-10-24T03:42:57.2077786Z test: INCOMPLETE OR MISMATCH
+2026-10-24T03:42:57.2081556Z test_step_checks_process_exit_and_exact_test_count (test_package.PackageTests.test_step_checks_process_exit_and_exact_test_count) ... ok
+2026-10-24T03:42:57.2090777Z test: INCOMPLETE OR MISMATCH
+2026-10-24T03:42:57.2094173Z test_timeout_is_incomplete (test_package.PackageTests.test_timeout_is_incomplete) ... ok
+2026-10-24T03:42:57.2101093Z test_unit_log_requires_unambiguous_success (test_package.PackageTests.test_unit_log_requires_unambiguous_success) ... ok
+2026-10-24T03:42:57.2136811Z test_unsupported_independence_or_adoption_fails (test_package.PackageTests.test_unsupported_independence_or_adoption_fails) ... ok
+2026-10-24T03:42:57.2137741Z 
+2026-10-24T03:42:57.2138061Z ----------------------------------------------------------------------
+2026-10-24T03:42:57.2138641Z Ran 27 tests in 0.274s
+2026-10-24T03:42:57.2138857Z 
+2026-10-24T03:42:57.2138986Z OK
