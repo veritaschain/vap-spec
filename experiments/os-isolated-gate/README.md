@@ -64,6 +64,16 @@ remove only the project named `vap-isolation-<run suffix>` shown in Docker, not
 unrelated resources. The Docker build needs registry/package-network access;
 the runtime roles use three private, internal bridge networks.
 
+To recheck a saved evidence bundle without Docker, use the unchanged verifier
+and native receipt checks through this thin entry point:
+
+```sh
+.venv/bin/python -m isolation_lab verify-evidence generated/evidence.json
+```
+
+This checks actual signatures/bindings and recomputes both reports. It does not
+re-execute the OS experiment or authenticate the host's network observations.
+
 A dedicated `.github/workflows/os-isolated-gate.yml` runs the actual Linux lab
 and the unchanged gate/verifier regression and acceptance suites. Local Mac
 controller tests do **not** establish Linux OS isolation. See `results/` for

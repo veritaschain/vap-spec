@@ -5,7 +5,7 @@ import time
 
 def main():
     parser = argparse.ArgumentParser(description='Unadopted OS-isolation mock experiment')
-    parser.add_argument('command', choices=['init', 'serve', 'idle', 'probe', 'run-suite'])
+    parser.add_argument('command', choices=['init', 'serve', 'idle', 'probe', 'run-suite', 'verify-evidence'])
     parser.add_argument('arguments', nargs='*')
     parser.add_argument('--output', default='generated')
     args = parser.parse_args()
@@ -18,6 +18,11 @@ def main():
     elif args.command == 'idle':
         while True:
             time.sleep(30)
+    elif args.command == 'verify-evidence':
+        from record_gate.suite import verify_bundle
+        from scope_verifier.crypto import strict_json
+        verify_bundle(strict_json(args.arguments[0]))
+        print('Evidence signatures and both verifier reports rechecked; synthetic trust only; no OS re-execution.')
     elif args.command == 'run-suite':
         from .suite import run_suite
         raise SystemExit(0 if run_suite(args.output) else 1)

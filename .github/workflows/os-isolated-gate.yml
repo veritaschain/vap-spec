@@ -29,7 +29,9 @@ jobs:
         run: python -W error::ResourceWarning -m unittest discover -s tests -v
       - name: Execute actual Linux UID, namespace, filesystem and network probes
         working-directory: experiments/os-isolated-gate
-        run: python -m isolation_lab run-suite
+        run: |
+          python -m isolation_lab run-suite
+          python -m isolation_lab verify-evidence generated/evidence.json
       - name: Preserve existing gate regressions, scenarios and evidence verification
         working-directory: experiments/pre-record-gate
         run: |

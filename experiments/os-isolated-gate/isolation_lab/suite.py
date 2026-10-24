@@ -213,6 +213,7 @@ def run_suite(directory):
                and digest(events_before) == digest(events_after)
                and evidence['reports']['experimental-scope']['integrity']['result'] == 'verified'
                and evidence['reports']['experimental-scope']['scope_fulfillment']['result'] == 'met'
+               and evidence['reports']['vap-v1.2']['integrity']['result'] == 'verified'
                and evidence['reports']['vap-v1.2']['scope_fulfillment'] is None)
         lab.compose('stop', 'audit')
         stopped = lab.probe('agent', 'execute', 'fresh')
