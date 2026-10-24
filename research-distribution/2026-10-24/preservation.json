@@ -1,0 +1,76 @@
+{
+  "schema": "vso-research-preservation/1",
+  "preserved_on": "2026-10-24",
+  "status": "experimental_unadopted",
+  "independent_reproduction": "not_established",
+  "kit_commit": "b1af0dc9d368b466bf74e7c1b2a6808fb41949ae",
+  "subject_commit": "c8ccf972196a16d11429a478f4918a08fe27bb73",
+  "ci_runs": [
+    {
+      "run_id": 40059420561,
+      "attempt": 1,
+      "head_sha": "3c1cad051291dd2308d85419bd2d593c6ae1906f",
+      "workflow_url": "https://github.com/veritaschain/vap-spec/actions/runs/40059420561",
+      "conclusion": "success",
+      "created_at": "2026-10-24T03:42:47Z",
+      "artifact_id": 12546697726,
+      "artifact_name": "reproduction-kit-and-internal-validation",
+      "artifact_sha256": "8ae707b5bd0a58e99340eece048fca443b6145f83cbefcb34091a07e5ebbf9e4",
+      "github_artifact_digest_matched": true,
+      "artifact_expires_at": "2026-11-23T03:45:42Z",
+      "complete_output_inventory_and_hashes_matched": true,
+      "output_files_excluding_manifest": 90,
+      "kit_sha256": "9e7efa74372ec08434f2d70b2a23a41a416fb64dfa99a24c13bbca255d1c0bb9",
+      "kit_files_match_execution_report": true
+    },
+    {
+      "run_id": 40059665558,
+      "attempt": 1,
+      "head_sha": "69142d98ce4bc1d8b54fddadd7995902320eea16",
+      "workflow_url": "https://github.com/veritaschain/vap-spec/actions/runs/40059665558",
+      "conclusion": "success",
+      "created_at": "2026-10-24T03:46:21Z",
+      "artifact_id": 12547385121,
+      "artifact_name": "reproduction-kit-and-internal-validation",
+      "artifact_sha256": "edff7c4c48a9e3c4d87615b51b2dbb3c7fe12a43d56e451716161de080b5a788",
+      "github_artifact_digest_matched": true,
+      "artifact_expires_at": "2026-11-23T03:48:51Z",
+      "complete_output_inventory_and_hashes_matched": true,
+      "output_files_excluding_manifest": 90,
+      "kit_sha256": "9e7efa74372ec08434f2d70b2a23a41a416fb64dfa99a24c13bbca255d1c0bb9",
+      "kit_files_match_execution_report": true
+    }
+  ],
+  "assets": [
+    {
+      "name": "kit-b1af0dc.zip",
+      "bytes": 32456,
+      "sha256": "9e7efa74372ec08434f2d70b2a23a41a416fb64dfa99a24c13bbca255d1c0bb9"
+    },
+    {
+      "name": "vap-research-evidence-b1af0dc-20261024.zip",
+      "bytes": 11801285,
+      "sha256": "f2e82ed77d1a789a31e6b09f1493476db98417b8578b80c489fdea0fdba5a153"
+    }
+  ],
+  "preservation_checks": {
+    "checks": [
+      {
+        "run_id": 40059420561,
+        "operation": "saved-evidence recheck, not OS execution",
+        "exit_code": 0
+      },
+      {
+        "run_id": 40059665558,
+        "operation": "saved-evidence recheck, not OS execution",
+        "exit_code": 0
+      }
+    ],
+    "kit_files_match_b1af0dc": true,
+    "bundle_verified": true,
+    "new_os_execution": false,
+    "independent_reproduction": "not_established"
+  },
+  "redactions": "none; original CI downloads unchanged",
+  "release_tag": "research-kit-b1af0dc-20261024"
+}

@@ -94,6 +94,7 @@ CAP v1.0 and CPP v1.4 owe a VAP v1.2 conformance mapping that has not yet been p
 | Resource | Link |
 |----------|------|
 | **VAP v1.2 Specification** | [spec/v1.2/VAP_Framework_Specification.md](./spec/v1.2/VAP_Framework_Specification.md) |
+| **Unadopted research reproduction kit** | [Fixed kit, complete historical evidence and evaluation terms](./research-distribution/2026-10-24/) — internal validation only; independent third-party reproduction not established |
 | **VCP** (Finance Profile) | [github.com/veritaschain/vcp-spec](https://github.com/veritaschain/vcp-spec) |
 | **CAP** (Content / Creative AI Profile) | [github.com/veritaschain/cap-spec](https://github.com/veritaschain/cap-spec) |
 | **CPP** (Capture Provenance Profile) | [github.com/veritaschain/cpp-spec](https://github.com/veritaschain/cpp-spec) |
