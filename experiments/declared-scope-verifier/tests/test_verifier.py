@@ -5,7 +5,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from scope_verifier.crypto import (InputError, canonical, digest, hex_bytes, inclusion,
+from scope_verifier.crypto import (InputError, audit_path, canonical, digest, hex_bytes, inclusion,
                                    leaf_hash, merkle_root, strict_json)
 from scope_verifier.fixtures import (EVALUATION_TIME, base, disposition, private_key,
                                     refresh_manifest, resign, signed)
@@ -356,6 +356,125 @@ class EvidenceRegression(unittest.TestCase):
     def test_unsupported_mode_rejected(self):
         with self.assertRaises(InputError):
             self.run_verifier("automatic")
+
+    def test_individual_obligation_still_applies_when_inventory_available(self):
+        x = self.p["experimental"]
+        required = copy.deepcopy(x["inventory"]["body"]["obligations"][-1])
+        required["id"] = "additional-required-record"
+        x["scope"]["body"]["individually_required"] = [required]
+        self.reapprove()
+        result = self.outcome("verified", "not_met")
+        self.assertEqual(result["scope_fulfillment"]["expected_distinct_obligations"], 4)
+
+    def test_conflicting_individual_and_inventory_obligation_rejected(self):
+        x = self.p["experimental"]
+        required = copy.deepcopy(x["inventory"]["body"]["obligations"][-1])
+        required["disclosure"] = "commitment"
+        x["scope"]["body"]["individually_required"] = [required]
+        self.reapprove()
+        with self.assertRaises(InputError):
+            self.run_verifier()
+
+    def test_unknown_derivation_does_not_hide_independent_violation(self):
+        x = self.p["experimental"]
+        x["scope"]["body"]["derivation_rule"] = "unsupported-rule"
+        x["scope"]["body"]["individually_required"] = [copy.deepcopy(x["inventory"]["body"]["obligations"][-1])]
+        self.reapprove()
+        self.p["events"].pop()
+        disposition(self.p, "record-0002", "withheld")
+        refresh_manifest(self.p)
+        result = self.outcome("verified", "not_met")
+        self.assertIn("derivation_unsupported", [r["code"] for r in result["scope_fulfillment"]["unresolved"]])
+
+    def test_json_boolean_and_number_do_not_satisfy_equality(self):
+        x = self.p["experimental"]
+        x["scope"]["body"]["relationships"] = [
+            {"rule": "payload-value-equality-v1", "left": "record-0000", "right": "record-0001"}]
+        self.reapprove()
+        for event, value in zip(self.p["events"], [False, 0, 0]):
+            event["signed"]["body"]["payload"]["value"] = value
+            event["signed"] = resign(event["signed"])
+            event["event_hash"] = digest(event["signed"]["body"])
+        leaves = [leaf_hash(e["signed"]["body"]) for e in self.p["events"]]
+        for i, event in enumerate(self.p["events"]):
+            self.p["batch_index"][i]["leaf_hash"] = leaves[i].hex()
+            event["path"] = audit_path(leaves, i)
+        self.p["anchor"]["body"]["batch"].update(
+            merkle_root=merkle_root(leaves).hex(), index_digest=digest(self.p["batch_index"]))
+        self.p["anchor"] = resign(self.p["anchor"])
+        self.p["anchor_receipt"]["body"]["target_digest"] = digest(self.p["anchor"])
+        self.p["anchor_receipt"] = resign(self.p["anchor_receipt"])
+        x["manifest"]["body"]["anchor_digest"] = digest(self.p["anchor"])
+        refresh_manifest(self.p)
+        self.outcome("verified", "not_met")
+
+    def test_wrong_extension_container_returns_input_error(self):
+        self.p["experimental"] = "not-an-object"
+        with self.assertRaises(InputError):
+            self.run_verifier()
+
+    def test_closure_sources_cannot_use_string_substring_matching(self):
+        x = self.p["experimental"]
+        x["closure"]["body"]["closed_sources"] = "not-notification-not-execution"
+        x["closure"] = resign(x["closure"])
+        with self.assertRaises(InputError):
+            self.run_verifier()
+
+    def test_observation_gaps_cannot_use_null_as_empty_array(self):
+        x = self.p["experimental"]
+        x["closure"]["body"]["observation_gaps"] = None
+        x["closure"] = resign(x["closure"])
+        with self.assertRaises(InputError):
+            self.run_verifier()
+
+    def test_trust_roles_cannot_use_string_substring_matching(self):
+        self.trust["keys"]["producer"]["roles"] = "event scope anchor manifest"
+        with self.assertRaises(InputError):
+            self.run_verifier()
+
+    def test_int006_unknown_is_not_failed_due_to_unrelated_event_signature(self):
+        self.p["events"][0]["signed"]["signature"] = "00" * 64
+        self.p["anchor_receipt"] = None
+        refresh_manifest(self.p)
+        result = self.outcome("failed", "indeterminate")
+        self.assertEqual(next(c["result"] for c in result["v1_2_requirements"] if c["check"] == "INT-006"), "indeterminate")
+
+    def test_identical_individual_obligation_is_counted_once(self):
+        x = self.p["experimental"]
+        x["scope"]["body"]["individually_required"] = [copy.deepcopy(x["inventory"]["body"]["obligations"][-1])]
+        self.reapprove()
+        result = self.outcome("verified", "met")
+        self.assertEqual(result["scope_fulfillment"]["expected_distinct_obligations"], 3)
+
+    def test_unclosed_derived_inventory_is_not_reported_as_complete_expected_set(self):
+        self.p, self.trust = base(derived=True, count=3)
+        x = self.p["experimental"]
+        x["closure"]["body"]["closed"] = False
+        x["closure"] = resign(x["closure"])
+        result = self.outcome("verified", "indeterminate")
+        self.assertIsNone(result["scope_fulfillment"]["expected_distinct_obligations"])
+
+    def test_gapped_derived_source_cannot_establish_full_expected_set(self):
+        self.p, self.trust = base(derived=True, count=3)
+        x = self.p["experimental"]
+        x["closure"]["body"]["observation_gaps"] = ["unresolved source gap"]
+        x["closure"] = resign(x["closure"])
+        result = self.outcome("verified", "indeterminate")
+        self.assertIsNone(result["scope_fulfillment"]["expected_distinct_obligations"])
+
+    def test_unsupported_time_basis_cannot_establish_deadline_violation(self):
+        self.p["experimental"]["scope"]["body"]["time_basis"] = "unknown clock and units"
+        self.reapprove()
+        self.p["events"].pop()
+        disposition(self.p, "record-0002", "withheld")
+        refresh_manifest(self.p)
+        self.outcome("verified", "indeterminate")
+
+    def test_event_signature_failure_does_not_change_valid_merkle_anchor_result(self):
+        self.p["events"][0]["signed"]["signature"] = "00" * 64
+        refresh_manifest(self.p)
+        result = self.outcome("failed", "indeterminate")
+        self.assertEqual(next(c["result"] for c in result["v1_2_requirements"] if c["check"] == "INT-006"), "verified")
 
 
 if __name__ == "__main__":

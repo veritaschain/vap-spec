@@ -5,6 +5,9 @@
 **Baseline:** VAP v1.2.0 Draft 3 at commit `9465c722be9efae18622ac4f04896bb0e1ea53d7`.
 **License:** CC BY 4.0 International. [日本語レビュー要約](REVIEW-ja.md).
 
+Repository integration of this discussion draft and its experimental implementation is not normative adoption.
+Its unadopted status, unassigned formal identifier and undecided target release remain unchanged after merge.
+
 This proposal defines how an evaluator could compare a submitted evidence package with an agreed scope,
 an evidenced expected set, and a disclosure policy. It addresses the open question in [Appendix D, H-5][h5]:
 whether VAP should define declared scope and require advance commitment.

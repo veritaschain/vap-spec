@@ -23,6 +23,28 @@ class InputError(ValueError):
     pass
 
 
+def object_value(value, name):
+    if not isinstance(value, dict):
+        raise InputError(name + " must be an object")
+    return value
+
+
+def array_value(value, name):
+    if not isinstance(value, list) or len(value) > MAX_ITEMS:
+        raise InputError(name + " must be an array of at most 10000 items")
+    return value
+
+
+def string_value(value, name):
+    if not isinstance(value, str) or not value:
+        raise InputError(name + " must be a nonempty string")
+    return value
+
+
+def string_array(value, name):
+    return [string_value(item, name + " item") for item in array_value(value, name)]
+
+
 def canonical(value):
     try:
         return rfc8785.dumps(value)
@@ -84,8 +106,11 @@ def authenticate(envelope, trust, role):
         return "indeterminate", "unsupported signature algorithm"
     if "signature" not in envelope or "body" not in envelope:
         return "indeterminate", "signature or signed body unavailable"
-    key = trust["keys"].get(envelope.get("key_id"))
-    if not key or role not in key["roles"]:
+    key = object_value(trust["keys"], "trust.keys").get(envelope.get("key_id"))
+    if key is None:
+        return "indeterminate", "no evaluator-authorized key for this role"
+    object_value(key, "trust key")
+    if role not in string_array(key["roles"], "trust key roles"):
         return "indeterminate", "no evaluator-authorized key for this role"
     try:
         Ed25519PublicKey.from_public_bytes(hex_bytes(key["public_key"])).verify(

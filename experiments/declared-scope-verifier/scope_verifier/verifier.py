@@ -1,8 +1,27 @@
 """Separate current-framework checks from unadopted scope semantics."""
 
 from . import ADAPTER, BASELINE, VERSION
-from .crypto import (InputError, MAX_ITEMS, authenticate, canonical, digest,
-                     hex_bytes, inclusion, leaf_hash, merkle_root, natural)
+from .crypto import (InputError, MAX_ITEMS, array_value, authenticate, canonical, digest,
+                     hex_bytes, inclusion, leaf_hash, merkle_root, natural,
+                     object_value, string_array, string_value)
+
+
+def obligation_list(value, name):
+    items = array_value(value, name)
+    ids = []
+    for item in items:
+        object_value(item, name + " item")
+        for key in ("id", "source_id", "event_type", "disclosure"):
+            string_value(item[key], name + "." + key)
+        ids.append(item["id"])
+        if item["event_type"] == "notification_receipt":
+            notification = object_value(item["notification"], "notification obligation")
+            for key in ("trigger", "recipient", "stage"):
+                string_value(notification[key], "notification." + key)
+            natural(notification["deadline"], 2**53 - 1)
+    if len(ids) != len(set(ids)):
+        raise InputError("Duplicate obligation IDs in " + name)
+    return items
 
 
 def aggregate(checks):
@@ -28,7 +47,8 @@ class Checks:
 
 class Evaluation:
     def __init__(self, package, trust, at, simulate):
-        self.p, self.trust = package, trust
+        self.p = object_value(package, "package")
+        self.trust = object_value(trust, "trust")
         self.at = natural(at, 2**53 - 1)
         self.simulate = simulate and trust.get("purpose") == "synthetic-test-only"
         self.crypto = Checks()
@@ -46,7 +66,10 @@ class Evaluation:
         ok = self.crypto.add(ref + ".signature", state, reason, [ref])
         if obj is None:
             return False
-        body = obj["body"]
+        object_value(obj, ref)
+        body = object_value(obj["body"], ref + ".body")
+        for key in ("kind", "evaluation_id", "policy_digest"):
+            string_value(body[key], ref + ".body." + key)
         binding = (body["kind"] == kind and body["evaluation_id"] == self.trust["evaluation_id"]
                    and body["policy_digest"] == self.trust["policy_digest"])
         return self.crypto.test(ref + ".binding", binding,
@@ -80,7 +103,10 @@ class Evaluation:
             raise InputError("Unsupported evidence adapter")
         if not isinstance(p["events"], list) or len(p["events"]) > MAX_ITEMS:
             raise InputError("Unsupported event collection")
-        self.policy = p["policy"]
+        self.policy = object_value(p["policy"], "policy")
+        for source, keys in object_value(self.policy["event_signers"], "policy.event_signers").items():
+            string_value(source, "event source")
+            string_array(keys, "event source signers")
         if self.policy["adapter"] != ADAPTER or self.policy["multiplicity"] != "exactly-one-per-obligation":
             raise InputError("Unimplemented adapter or multiplicity policy")
         self.policy_ok = self.crypto.test("policy.binding", digest(self.policy) == self.trust["policy_digest"],
@@ -106,14 +132,15 @@ class Evaluation:
                                         ["anchor.batch", "batch_index"]) and self.anchor_ok
         receipt_ok = self.receipt(p.get("anchor_receipt"), digest(p["anchor"]), "anchor", "anchor_receipt")
         self.anchor_ok = self.anchor_ok and receipt_ok
+        anchoring_checks = list(self.crypto.items)
         delivered_ids, indices = [], []
         hash_checks, sig_checks, proof_checks = [], [], []
         for pos, event in enumerate(p["events"]):
             ref = f"events[{pos}]"
             body = event["signed"]["body"]
             event_id = body["event_id"]
-            if not isinstance(event_id, str) or not event_id:
-                raise InputError("Event ID must be a nonempty string")
+            for key in ("event_id", "source_id", "event_type"):
+                string_value(body[key], ref + "." + key)
             sig_ok = self.signed(event["signed"], "event", ref + ".signed")
             source_ok = event["signed"]["key_id"] in self.policy["event_signers"].get(body["source_id"], [])
             sig_ok = self.crypto.add(ref + ".source", "verified" if source_ok else "indeterminate",
@@ -127,6 +154,7 @@ class Evaluation:
             } and inclusion(leaf_hash(body), index, size, event["path"], batch["merkle_root"]))
             proof_ok = self.crypto.test(ref + ".inclusion", proof_ok,
                                         "RFC 6962 inclusion and authenticated index identity", [ref, "anchor", "batch_index"])
+            anchoring_checks.append(self.crypto.items[-1])
             valid = sig_ok and hash_ok and proof_ok and self.index_ok and self.anchor_ok
             delivered_ids.append(event_id)
             indices.append(index)
@@ -145,6 +173,7 @@ class Evaluation:
                      inclusion(hex_bytes(proof["leaf_hash"]), index, size, proof["path"], batch["merkle_root"]))
             valid = self.crypto.test(ref, valid, "Hidden payload commitment bound to the authenticated batch index",
                                      [ref, "anchor", "batch_index"]) and self.index_ok and self.anchor_ok
+            anchoring_checks.append(self.crypto.items[-1])
             self.proofs.setdefault(proof["event_id"], []).append({"valid": valid, **identity})
         req = self.requirements
         req.add("INT-001/003", "verified" if all(hash_checks) else "failed",
@@ -155,8 +184,7 @@ class Evaluation:
                                 c["result"] == "failed" for c in self.crypto.items)
         req.add("INT-005", "verified" if all(sig_checks) else ("failed" if signature_failure else "indeterminate"),
                 "Ed25519 event signatures requested by this experiment policy; framework requirement is SHOULD", ["events"])
-        req.add("INT-006", "verified" if self.anchor_ok and self.index_ok and all(proof_checks) else
-                ("failed" if aggregate(self.crypto.items) == "failed" else "indeterminate"),
+        req.add("INT-006", aggregate(anchoring_checks),
                 "Signed Merkle root, inclusion and external receipt; simulation only when explicitly enabled",
                 ["anchor", "anchor_receipt", "events", "batch_index"])
         complete = (len(delivered_ids) == size and len(set(delivered_ids)) == size and
@@ -197,6 +225,7 @@ class Evaluation:
         if not x:
             unknown("extension_missing", "Experimental sidecars not supplied", ["experimental"])
             return finish()
+        object_value(x, "experimental")
         scope_env = x.get("scope")
         scope_ok = self.signed(scope_env, "scope", "experimental.scope")
         if not scope_env:
@@ -208,6 +237,10 @@ class Evaluation:
                                   "Exact approved revision pinned by evaluator outside package; amendments are not auto-accepted",
                                   ["experimental.scope", "trust.scope_digest"])
         scope_ok = scope_ok and pinned and self.policy_ok
+        for key in ("systems", "operations", "event_classes", "exclusions", "controllers"):
+            string_array(scope[key], "scope." + key)
+        string_value(scope["observation_boundary"], "scope.observation_boundary")
+        individuals = obligation_list(scope.get("individually_required", []), "individually_required")
         cutoff = natural(scope["commitment_cutoff"], 2**53 - 1)
         start = natural(scope["start"], 2**53 - 1)
         end = natural(scope["end"], 2**53 - 1)
@@ -216,14 +249,18 @@ class Evaluation:
             raise InputError("Unsupported or inconsistent scope interval/deadlines")
         if scope["revision"] != "1" or scope.get("previous_revision") is not None:
             unknown("amendment_unsupported", "Amendments require separate original and revised assessments", ["experimental.scope"])
-        if scope["closure_rule"] != "signed-source-enumeration-v1":
+        time_supported = scope["interval"] == "[start,end]" and scope["time_basis"] == "synthetic POSIX integer seconds"
+        if not time_supported:
+            unknown("time_semantics_unsupported", "Unimplemented interval or time basis", ["experimental.scope"])
+        closure_supported = scope["closure_rule"] == "signed-source-enumeration-v1"
+        if not closure_supported:
             unknown("closure_rule_unsupported", "Unimplemented source closure rule", ["experimental.scope"])
-        if scope["inventory_mode"] not in ("fixed", "derived") or scope["derivation_rule"] != "explicit-obligations-v1":
+        derivation_supported = scope["inventory_mode"] in ("fixed", "derived") and scope["derivation_rule"] == "explicit-obligations-v1"
+        if not derivation_supported:
             unknown("derivation_unsupported", "Unimplemented expected-set derivation", ["experimental.scope"])
-            return finish()
         receipt = x.get("scope_receipt")
         timing_ok = self.receipt(receipt, scope_digest, "scope", "experimental.scope_receipt")
-        if timing_ok and scope_ok:
+        if timing_ok and scope_ok and time_supported:
             body = receipt["body"]
             if body["accepted_at"] + body["uncertainty"] <= cutoff:
                 scope_checks.add("advance_commitment", "verified", "Latest simulated receipt bound is no later than cutoff",
@@ -266,8 +303,8 @@ class Evaluation:
                                      "Sidecar belongs to the exact scope revision", ["experimental." + name]) and valid
             return valid
 
-        inventory_ok = sidecar("inventory", "inventory")
-        closure_ok = sidecar("closure", "closure")
+        inventory_ok = sidecar("inventory", "inventory") and derivation_supported
+        closure_ok = sidecar("closure", "closure") and closure_supported
         manifest_ok = sidecar("manifest", "manifest")
         inventory = x["inventory"]["body"] if x.get("inventory") else None
         closure = x["closure"]["body"] if x.get("closure") else None
@@ -284,26 +321,26 @@ class Evaluation:
             if type(closure["closed"]) is not bool:
                 raise InputError("Source closure must be a boolean")
             natural(closure["closed_at"], 2**53 - 1)
+            string_array(closure["closed_sources"], "closure.closed_sources")
+            string_array(closure["observation_gaps"], "closure.observation_gaps")
             closure_ok = self.crypto.test("closure.configuration", closure["configuration_digest"] == scope["configuration_digest"] and
                                           closure["source_id"] == scope["expectation_source"] and
                                           closure["end"] == end and closure["closed_at"] >= end,
                                           "Closure source, boundary end and configuration binding", ["experimental.closure", "experimental.scope"])
+        source_ready = (closure_ok and time_supported and closure["closed"] is True and
+                        closure["closed_at"] <= self.at and not closure["observation_gaps"])
         expected = None
         if inventory_ok:
-            expected = inventory["obligations"]
-            if not isinstance(expected, list) or len(expected) > MAX_ITEMS:
-                raise InputError("Invalid obligation collection")
-            ids = [item["id"] for item in expected]
-            if len(ids) != len(set(ids)):
-                raise InputError("Duplicate expected obligation IDs")
+            expected = obligation_list(inventory["obligations"], "inventory.obligations")
             if scope["inventory_mode"] == "fixed":
                 inventory_ok = self.crypto.test("inventory.fixed_commitment", digest(expected) == scope["expected_digest"],
                                                "Fixed expected enumeration bound before cutoff", ["experimental.scope", "experimental.inventory"])
-            elif closure_ok and x.get("source_records") is not None:
-                derived = [record["obligation"] for record in x["source_records"]]
+            elif source_ready and x.get("source_records") is not None:
+                records = array_value(x["source_records"], "source_records")
+                derived = [object_value(record, "source record")["obligation"] for record in records]
                 inventory_ok = self.crypto.test("inventory.derived_commitment",
                                                closure["source_records_digest"] == digest(x["source_records"]) and
-                                               derived == expected and closure["expected_digest"] == digest(expected),
+                                               canonical(derived) == canonical(expected) and closure["expected_digest"] == digest(expected),
                                                "Reproduce expected set from closure-bound source records under explicit-obligations-v1",
                                                ["experimental.source_records", "experimental.closure", "experimental.inventory"])
             else:
@@ -311,25 +348,35 @@ class Evaluation:
         if inventory_ok and closure_ok:
             closure_ok = self.crypto.test("closure.inventory_binding", closure["expected_digest"] == digest(expected),
                                           "Closure binds the exact expected enumeration", ["experimental.closure", "experimental.inventory"])
+        source_ready = source_ready and closure_ok
         if not inventory_ok:
             unknown("expected_set_unknown", "Expected inventory cannot be authenticated or reproduced", ["experimental.inventory", "experimental.closure"])
             expected = None
-        if not closure_ok or not closure["closed"] or closure["closed_at"] > self.at:
+        if not closure_ok or not time_supported or not closure["closed"] or closure["closed_at"] > self.at:
             unknown("source_unclosed", "Expected-set source closure is absent or not yet established", ["experimental.closure"])
         elif closure["observation_gaps"]:
             unknown("observation_gap", "Authenticated source reports unresolved observation gaps; signature does not cure them", ["experimental.closure"])
         if not manifest_ok:
             unknown("manifest_unknown", "Exact final delivery manifest is unavailable or invalid", ["experimental.manifest"])
-        # A pinned scope can define individual obligations even when E cannot be reconstructed.
-        obligations = expected if expected is not None else scope.get("individually_required", [])
+        # Pinned individual obligations always apply, including when the inventory is available.
+        combined = {item["id"]: item for item in expected or []}
+        for item in individuals:
+            if item["id"] in combined and canonical(combined[item["id"]]) != canonical(item):
+                raise InputError("Conflicting inventory and individual obligation: " + item["id"])
+            combined[item["id"]] = item
+        obligations = list(combined.values())
+        if len(obligations) > MAX_ITEMS:
+            raise InputError("Combined obligations exceed the supported limit")
         satisfied = 0
         accounted = expected is not None and manifest_ok
         dispositions = {}
-        entries = manifest["entries"] if manifest_ok else []
+        entries = array_value(manifest["entries"], "manifest.entries") if manifest_ok else []
+        for entry in entries:
+            string_value(object_value(entry, "manifest entry")["id"], "manifest entry ID")
         if len({entry["id"] for entry in entries}) != len(entries):
             raise InputError("Duplicate manifest obligation IDs")
         entries = {entry["id"]: entry for entry in entries}
-        final = manifest_ok and manifest["final"] is True and deadline <= manifest["finalized_at"] <= self.at
+        final = time_supported and manifest_ok and manifest["final"] is True and deadline <= manifest["finalized_at"] <= self.at
         if not final:
             unknown("delivery_pending", "Delivery is not authenticated and finalized after its deadline", ["experimental.manifest"])
         for obligation in obligations:
@@ -348,7 +395,7 @@ class Evaluation:
                 if n["stage"] not in ("attempted", "transport_accepted", "delivered_endpoint", "human_acknowledged"):
                     unknown("notification_stage_unsupported", "Unimplemented notification acknowledgement stage", refs)
                     continue
-                if n["deadline"] > self.at:
+                if not time_supported or n["deadline"] > self.at:
                     unknown("notification_pending", oid + ": notification evidence deadline has not elapsed", refs)
                     continue
             if obligation["disclosure"] not in ("full", "commitment"):
@@ -384,7 +431,7 @@ class Evaluation:
                 elif len(records) > 1 and all(self.record_valid[oid]) and final:
                     violation("duplicate_delivery", oid + ": multiplicity rule requires exactly one record", refs + ["events"])
                 elif not records and final:
-                    source_closed = closure_ok and closure["closed"] is True and closure["closed_at"] <= self.at and obligation["source_id"] in closure["closed_sources"]
+                    source_closed = source_ready and obligation["source_id"] in closure["closed_sources"]
                     if obligation["event_type"] == "notification_receipt" and not source_closed:
                         unknown("notification_evidence_unclosed", oid + ": inclusion claim lacks receipt and source closure", refs + ["experimental.closure"])
                     else:
@@ -392,21 +439,23 @@ class Evaluation:
                 else:
                     unknown("included_record_unverified", oid + ": manifest inclusion claim cannot be established", refs + ["events"])
             elif state == "unaccounted" and final:
-                source_closed = closure_ok and closure["closed"] is True and closure["closed_at"] <= self.at and obligation["source_id"] in closure["closed_sources"]
+                source_closed = source_ready and obligation["source_id"] in closure["closed_sources"]
                 if obligation["event_type"] == "notification_receipt" and not source_closed:
                     unknown("notification_evidence_unclosed", oid + ": missing receipt with unclosed source; occurrence unknown", refs + ["experimental.closure"])
                 else:
                     violation("missing_delivery", oid + ": identified required evidence absent from finalized delivery", refs)
             else:
                 unknown("delivery_unresolved", oid + ": required evidence not yet established", refs)
-        for relation in scope["relationships"]:
+        for relation in array_value(scope["relationships"], "scope.relationships"):
+            object_value(relation, "relationship")
             if relation["rule"] != "payload-value-equality-v1":
                 unknown("relationship_unsupported", "Unimplemented relationship rule", ["experimental.scope"])
                 continue
             left, right = relation["left"], relation["right"]
             if (len(self.records.get(left, [])) == len(self.records.get(right, [])) == 1 and
                     all(self.record_valid[left]) and all(self.record_valid[right])):
-                equal = self.records[left][0]["payload"]["value"] == self.records[right][0]["payload"]["value"]
+                equal = (canonical(self.records[left][0]["payload"]["value"]) ==
+                         canonical(self.records[right][0]["payload"]["value"]))
                 if not equal:
                     violation("source_disagreement", "Authenticated producer and execution observations violate agreed equality; truth of either is unresolved",
                               ["experimental.scope", "events:" + left, "events:" + right, "anchor", "trust"])
@@ -415,7 +464,7 @@ class Evaluation:
         if aggregate(self.crypto.items) != "verified":
             unknown("cryptographic_prerequisite", "Some required cryptographic checks failed or are unresolved; independent violations are retained",
                     [item["check"] for item in self.crypto.items if item["result"] != "verified"])
-        return finish(len(expected) if expected is not None else None, satisfied, bool(accounted), dispositions)
+        return finish(len(obligations) if expected is not None else None, satisfied, bool(accounted), dispositions)
 
     @staticmethod
     def notification_matches(record, obligation):

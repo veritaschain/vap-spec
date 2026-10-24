@@ -1,9 +1,10 @@
 # VAP evidence delivery research verifier
 
-**Experimental, unadopted, offline.** Implementation revision 0.1.0.
+**Experimental, unadopted, offline.** Implementation revision 0.1.1.
 This implements the 14 synthetic acceptance scenarios in [Draft PR #10](https://github.com/veritaschain/vap-spec/pull/10)
 and [the declared-scope proposal](../../proposals/declared-scope-precommit/README.md).
 It does not adopt the proposal or establish full VAP conformance.
+Merging this research implementation and its discussion draft into `main` does not adopt the extension.
 [日本語実行ガイド](RUN-ja.md) · [Machine-readable execution summary](results/summary.json).
 
 The verifier performs real Ed25519 verification, SHA-256 hashing, RFC 8785 canonicalization,
@@ -88,6 +89,8 @@ Adapter identifier: `vap-evidence-research-adapter/1`. All JSON inputs are UTF-8
 nonfinite numbers, unsupported JCS values and unsafe integers are rejected. Files are limited to 32 MiB,
 event/index/proof collections to 10,000 entries, and inclusion paths to 64 siblings. Counts and indices must
 be nonnegative integers, not booleans. Unsupported structural input returns a structured error.
+Role, signer, closure-source and observation-gap lists must be arrays; strings cannot substitute for lists
+or authorize roles through substring matching. Obligation identifiers and source/type labels must be strings.
 
 An envelope contains `body`, `algorithm` (Ed25519), `key_id`, and a lowercase hexadecimal 64-byte signature.
 The signed message is UTF-8 `vap-evidence-research-adapter/1`, one zero byte, then JCS of the object containing
@@ -117,6 +120,11 @@ the evaluator's approval of that exact scope. This prototype does not prove how 
   Later signed closure binds `source_records`; the verifier extracts each explicit `obligation` and compares
   the complete ordered result. Future events are not described as pre-enumerated. This deliberately small rule
   does not infer obligations from arbitrary logs or implement other profiles' derivation rules.
+  Unclosed or gapped sources do not establish a complete expected-set count. Unsupported derivation rules
+  leave that set unresolved while independently pinned individual obligations are still assessed.
+- **Individual obligations:** `scope.individually_required` always augments the authenticated expected set,
+  including when that set is available. Identical obligations with the same ID are counted once; conflicting
+  definitions are rejected. A resolved expected count includes this union; it stays null if the full set is unknown.
 - **Closure:** the authorized synthetic inventory authority signs the exact source, end, configuration,
   expected enumeration and closure time, and reports observation gaps. This is a test assumption about one
   synthetic boundary, not a cryptographic proof that no unobserved real-world action existed.
@@ -131,6 +139,7 @@ the evaluator's approval of that exact scope. This prototype does not prove how 
   explicitly represented as separate policy obligations; no universal attempt/outcome bijection is inferred.
 - **Relationships:** only `payload-value-equality-v1` is implemented. Conflicting authenticated observations
   establish a violation of the equality rule, not which observation describes reality.
+  Values are compared by their JCS representation, so JSON booleans and numbers remain distinct.
 - **Notifications:** trigger, recipient, deadline and exact stage are checked. Attempted, transport accepted,
   endpoint delivered and human acknowledged are distinct. Missing receipt plus unclosed notification source is
   indeterminate. Explicit full-receipt withholding after final deadline is a delivery violation.
@@ -144,6 +153,8 @@ Integrity aggregates **failed before indeterminate before verified**. Individual
 checks remain in `integrity.checks`; a failure never removes unresolved checks. This is a local implementation
 rule for the experiment, not an adopted framework change. Missing signatures or trust paths are indeterminate;
 an actual signature/hash/binding mismatch is failed. Semantic batch completeness remains separately reported.
+Each requirement aggregates only its own dependencies: an unrelated event-signature failure does not turn
+an unresolved external anchor into an INT-006 failure. Unsupported time semantics cannot establish a deadline violation.
 
 Scope fulfillment prioritizes a validated violation (`not_met`), then unresolved required prerequisites
 (`indeterminate`), then `met` within the declared boundary. Independent signed evidence can prove withholding
