@@ -135,6 +135,22 @@ def signature_valid(public_key, signature, message):
         return False
 
 
+def unique_members(pairs):
+    result = {}
+    for key, value in pairs:
+        require(key not in result, f"Duplicate saved-result member: {key}")
+        result[key] = value
+    return result
+
+
+def comparable(report):
+    require(isinstance(report, dict), "Saved report must be an object")
+    # Python dict equality conflates True/1 and False/0. Compare typed JSON
+    # spellings so changing a verdict's JSON type cannot pass this check.
+    return json.dumps({k: v for k, v in report.items() if k != "environment"},
+                      sort_keys=True, ensure_ascii=False, allow_nan=False)
+
+
 def run(args):
     require(importlib.metadata.version("rfc8785") == "0.1.4", "Use pinned rfc8785==0.1.4")
     sources = []
@@ -279,9 +295,8 @@ def main():
     try:
         result = run(args)
         if args.check:
-            expected = json.loads(args.check.read_text())
-            require({k: v for k, v in result.items() if k != "environment"} ==
-                    {k: v for k, v in expected.items() if k != "environment"}, "Observation output differs from saved report")
+            expected = json.loads(args.check.read_text(), object_pairs_hook=unique_members)
+            require(comparable(result) == comparable(expected), "Observation output differs from saved report")
         rendered = json.dumps(result, ensure_ascii=False, indent=2) + "\n"
         if args.output:
             args.output.parent.mkdir(parents=True, exist_ok=True)

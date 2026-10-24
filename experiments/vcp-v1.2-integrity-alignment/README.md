@@ -99,7 +99,8 @@ is public test material and must never be used for real evidence.
 `--check` compares every saved field except the separately recorded `environment`
 object. Environment differences should be reported even when observations match;
 the probe requires rfc8785 0.1.4. Missing sources, wrong hashes or result
-differences return nonzero. Exit zero means the observation run completed (and
+differences return nonzero. Duplicate saved-result members are rejected, and
+comparison distinguishes JSON booleans from numbers. Exit zero means the observation run completed (and
 matched when `--check` is used), **not** VCP/VAP conformance. Without `--check`,
 the probe reports observations without asserting the saved counts as an oracle.
 
@@ -107,6 +108,8 @@ The local RFC comparator has 2,080 positive inclusions over tree sizes 1–64, w
 modified-entry, surplus-path and nonempty truncated-path negative controls. The
 Ed25519 checks include an altered-root rejection control. These are controls of
 the probe, not additional product regression tests or independent reproduction.
+Publication checks also rejected a modified source file, a changed saved count,
+a boolean changed to a number, and a duplicate member in the saved output.
 
 ## Existing experiments and external evaluation
 
