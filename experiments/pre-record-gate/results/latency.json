@@ -1,0 +1,49 @@
+{
+  "before_send_median_ms": 39.7821665,
+  "limitations": "Single host, loopback, 10 sequential synthetic operations; no SLA, network or production benchmark.",
+  "measurement": "Gate-entry to first backend send includes authorization and two durable audit round trips; excludes service startup.",
+  "sample_count": 10,
+  "samples": [
+    {
+      "before_send_ms": 48.413125,
+      "total_ms": 121.439125
+    },
+    {
+      "before_send_ms": 47.234958,
+      "total_ms": 97.302875
+    },
+    {
+      "before_send_ms": 43.686458,
+      "total_ms": 96.837042
+    },
+    {
+      "before_send_ms": 51.17525,
+      "total_ms": 114.16125
+    },
+    {
+      "before_send_ms": 41.010416,
+      "total_ms": 97.983166
+    },
+    {
+      "before_send_ms": 28.708041,
+      "total_ms": 81.935791
+    },
+    {
+      "before_send_ms": 38.553917,
+      "total_ms": 87.893625
+    },
+    {
+      "before_send_ms": 30.602458,
+      "total_ms": 79.561958
+    },
+    {
+      "before_send_ms": 37.641291,
+      "total_ms": 82.660708
+    },
+    {
+      "before_send_ms": 33.790917,
+      "total_ms": 86.806542
+    }
+  ],
+  "total_median_ms": 92.36533349999999
+}
