@@ -181,11 +181,13 @@ class GateTests(unittest.TestCase):
 
     def test_unavailable_reconciliation_does_not_repeat_write(self):
         h = self.h
-        h.execute()
+        op, auth = authorize(h.request, h.gate)
+        audit_call(h.gate, 'prepare', op, request=h.request, authorization=auth)
+        audit_call(h.gate, 'claim', op)
         h.stop('backend')
         result = reconcile(h.gate, h.op)
         self.assertEqual(result['state'], 'result_unknown')
-        self.assertEqual(h.counts()['backend_requests'], 1)
+        self.assertEqual(h.counts()['backend_requests'], 0)
 
     def test_audit_tampering_detected(self):
         h = self.h

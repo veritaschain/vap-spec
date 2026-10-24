@@ -34,8 +34,10 @@ Additional checks:
 .venv/bin/python -m record_gate verify-exports --output generated
 ```
 
-The offline command verifies exported signatures, authorization bindings, native backend receipts,
-Merkle proofs and both verifier reports without rerunning the gate. It uses the bundled **mock trust
+The offline command requires the complete expected case inventory and evidence bundles, then verifies
+exported signatures, authorization bindings, native backend receipts, Merkle proofs and both verifier
+reports without rerunning the gate. Missing or duplicate cases, missing evidence and scope/operation
+mismatches fail the recheck; an empty report cannot succeed. It uses the bundled **mock trust
 configuration**; an evaluator must decide which authorities to trust. Digests detect artifact changes,
 not independent provenance. Fresh suite runs generate fresh test keys, so signature bytes and artifact
 hashes change. No private keys are included in reports. See [RUN-ja.md](RUN-ja.md) for Japanese guidance
@@ -55,7 +57,10 @@ and [results/README.md](results/README.md) for the recorded execution.
 The gate derives subject, delegator and approver from verified authority-issued claims, not `agent_id`
 or a `human_approved` flag. Each token's audience, validity, scope and revocation status are checked.
 Approval binds the exact operation digest and delegation digest. Agent proof binds the intent and all
-three token envelopes. Authorization is checked again just before claiming dispatch.
+three token envelopes. The gate takes its own canonical request snapshot so caller mutations cannot
+replace the request during authorization. Authorization is checked again just before claiming dispatch.
+The exported authorization snapshot belongs to the pre-record check; the final refresh is a gate check,
+not a separately signed authorization decision. Continuous revocation assurance is not established.
 
 The ordered steps are:
 
@@ -65,6 +70,10 @@ The ordered steps are:
 4. Audit transaction atomically claims dispatch, appends a signed dispatch-intent event and commits before returning a permit.
 5. Send one gate-signed request with that exact permit to the fixed loopback backend.
 6. Verify the backend's signed, exact-operation receipt and durably record it before reporting confirmed success.
+
+Every audit acknowledgment is checked for its state and receipt as well as its signature and operation binding.
+An acknowledgment of a dispatch intent does not acknowledge a saved result. Malformed or contradictory
+acknowledgments cannot permit a send or turn an unresolved operation into confirmed success.
 
 The control envelope uses domain `pre-record-gate-experiment/1` and Ed25519/JCS. Audit events preserve the
 existing research adapter's signature domain. Hashes and signatures are computed from bytes; input
@@ -93,7 +102,9 @@ even when the test harness knows that the worker was killed before sending. If r
 the prior dispatch-intent event is the durable unresolved record; the report explicitly says the separate
 unknown-outcome event was not persisted. Reconciliation is an operator-facing trusted function, not an
 agent-supplied replacement authorization. It queries the backend and records a valid matching receipt;
-it never issues a write.
+it never issues a write. A valid success receipt already in the audit store is returned without requiring
+the backend to be online. A concurrent durable confirmation remains success and is not reported as a newly
+stored unknown event.
 
 The mock backend commits operation ID, exact argument digest and effect receipt in one transaction.
 Replaying the same ID/intent returns the same receipt; a changed intent is rejected. Its state has no

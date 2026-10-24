@@ -222,26 +222,67 @@ def latency_samples():
 
 def verify_exports(output):
     """Offline cryptographic recheck of exported evidence, not re-execution of the gate."""
-    from .bridge import validate_events
     from .common import require
-    from scope_verifier.verifier import verify
     output = Path(output)
     summary = strict_json(output / 'summary.json')
+    expectations = {r['case']: r for r in strict_json(ROOT / 'acceptance.json')}
+    rows = summary.get('cases')
+    require(isinstance(rows, list) and len(rows) == len(expectations), 'incomplete_case_inventory')
+    ids = [r.get('case') for r in rows if isinstance(r, dict)]
+    require(len(ids) == len(expectations) and all(isinstance(i, str) for i in ids)
+            and len(set(ids)) == len(ids) and set(ids) == set(expectations), 'invalid_case_inventory')
+    require(type(summary.get('cases_executed')) is int and summary['cases_executed'] == len(expectations)
+            and type(summary.get('matching_cases')) is int and summary['matching_cases'] == len(expectations),
+            'incomplete_suite_result')
     checked = 0
-    for row in summary['cases']:
+    for row in rows:
+        expected = expectations[row['case']]
+        require(row['differences'] == {} and digest(row['expected']) == digest(expected['expected'])
+                and all(k in row['actual'] and digest(row['actual'][k]) == digest(v)
+                        for k, v in expected['expected'].items()), 'acceptance_report_mismatch')
         artifact = strict_json(output / (row['case'] + '.json'))
         require(digest(artifact) == row['artifact_digest'], 'artifact_digest_mismatch')
-        bundles = [artifact['evidence'], artifact['details'].get('recovered_evidence')]
-        for bundle in filter(None, bundles):
-            p, trust, adapter = bundle['package'], bundle['trust'], bundle['adapter_trust']
-            require(trust['keys']['audit']['public_key'] == adapter['audit_public'], 'adapter_trust_mismatch')
-            result_seen = validate_events([e['signed'] for e in p['events']], adapter['operation'],
-                                         adapter['audit_public'], adapter['backend_public'], adapter['authority_public'])
-            require(bundle['native_receipt_check'] == ('verified' if result_seen else 'unavailable'), 'native_check_mismatch')
-            for mode in ('vap-v1.2', 'experimental-scope'):
-                report = verify(p, trust, mode, bundle['evaluation_time'], allow_synthetic=True)
-                require(digest(report) == digest(bundle['reports'][mode]), 'verifier_report_mismatch')
+        primary, recovered = artifact['evidence'], artifact['details'].get('recovered_evidence')
+        count = expected['evidence_bundles']
+        require((primary is not None) == (count > 0) and (recovered is not None) == (count > 1),
+                'missing_or_unexpected_evidence_bundle')
+        for bundle in (primary, recovered):
+            if bundle is None:
+                continue
+            verify_bundle(bundle)
+            if bundle is primary:
+                reports = bundle['reports']
+                require(row['actual']['integrity'] == reports['experimental-scope']['integrity']['result']
+                        and row['actual']['scope'] == reports['experimental-scope']['scope_fulfillment']['result']
+                        and row['actual']['core_scope'] is None and row['actual']['core_status'] == 'not_applied',
+                        'summary_evidence_mismatch')
+            else:
+                reports = bundle['reports']
+                require(bundle['native_receipt_check'] == 'verified'
+                        and reports['experimental-scope']['integrity']['result'] == 'verified'
+                        and reports['experimental-scope']['scope_fulfillment']['result'] == 'met',
+                        'recovery_evidence_not_confirmed')
             checked += 1
     require(digest(strict_json(output / 'latency.json')) == summary['latency_digest'], 'latency_digest_mismatch')
     print('Offline recheck:', checked, 'evidence bundles; mock trust only; no gate execution or independent reproduction claim.')
     return True
+
+
+def verify_bundle(bundle):
+    """Recheck one bundle under the declared mock adapter contract, not production trust."""
+    from .bridge import EVALUATION_TIME, POLICY, validate_events
+    from .common import intent, require
+    from scope_verifier.verifier import verify
+    p, trust, adapter = bundle['package'], bundle['trust'], bundle['adapter_trust']
+    op = intent(adapter['operation'])
+    require(digest(p['policy']) == digest(POLICY) and bundle['evaluation_time'] == EVALUATION_TIME,
+            'adapter_policy_or_time_mismatch')
+    require(p['experimental']['scope']['body']['configuration_digest'] ==
+            digest({'operation': op, 'adapter': 'pre-record-gate/1'}), 'scope_operation_binding')
+    require(trust['keys']['audit']['public_key'] == adapter['audit_public'], 'adapter_trust_mismatch')
+    result_seen = validate_events([e['signed'] for e in p['events']], op,
+                                 adapter['audit_public'], adapter['backend_public'], adapter['authority_public'])
+    require(bundle['native_receipt_check'] == ('verified' if result_seen else 'unavailable'), 'native_check_mismatch')
+    for mode in ('vap-v1.2', 'experimental-scope'):
+        report = verify(p, trust, mode, bundle['evaluation_time'], allow_synthetic=True)
+        require(digest(report) == digest(bundle['reports'][mode]), 'verifier_report_mismatch')

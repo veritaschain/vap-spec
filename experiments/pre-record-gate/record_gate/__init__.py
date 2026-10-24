@@ -4,5 +4,5 @@ import sys
 
 # Reuse the merged research verifier without modifying its implementation.
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'declared-scope-verifier'))
-VERSION = '0.1.0'
+VERSION = '0.1.1'
 DOMAIN = b'pre-record-gate-experiment/1\0'

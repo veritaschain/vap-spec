@@ -71,6 +71,8 @@ def validate_events(events, op, audit_public, backend_public, authority_public):
             require(digest(b['payload']['intent']) == digest(op), 'dispatch_intent_binding')
         if suffix in ('dispatch', 'unknown', 'result'):
             require(request_seen, 'request_must_precede_dispatch')
+        if suffix == 'unknown':
+            require(not result_seen, 'unknown_after_confirmed_result')
         if suffix in ('unknown', 'result'):
             require('dispatch' in seen, 'dispatch_must_precede_outcome')
         if suffix == 'result':
