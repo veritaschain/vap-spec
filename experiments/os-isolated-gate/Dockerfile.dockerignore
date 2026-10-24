@@ -1,0 +1,12 @@
+**
+!experiments
+!experiments/declared-scope-verifier
+!experiments/declared-scope-verifier/requirements.txt
+!experiments/declared-scope-verifier/scope_verifier
+!experiments/declared-scope-verifier/scope_verifier/*.py
+!experiments/pre-record-gate
+!experiments/pre-record-gate/record_gate
+!experiments/pre-record-gate/record_gate/*.py
+!experiments/os-isolated-gate
+!experiments/os-isolated-gate/isolation_lab
+!experiments/os-isolated-gate/isolation_lab/*.py
