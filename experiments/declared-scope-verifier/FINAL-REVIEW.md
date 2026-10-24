@@ -2,7 +2,7 @@
 
 Reviewed the implementation introduced through PR #10 head `c13cac3239d2d88bb96763b805f23220801425ee`.
 The review found issues not covered by the original 14 scenarios or 49 regression tests. The following
-repairs are part of implementation 0.1.1, and the regression suite now contains 63 tests.
+repairs are part of implementation 0.1.1, and the regression suite now contains 64 tests.
 
 | Finding | Repair and regression coverage |
 | --- | --- |

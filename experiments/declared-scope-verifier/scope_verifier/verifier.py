@@ -469,7 +469,7 @@ class Evaluation:
     @staticmethod
     def notification_matches(record, obligation):
         required = obligation["notification"]
-        observed = record["payload"]
+        observed = object_value(record["payload"], "notification payload")
         return (all(observed.get(key) == required[key] for key in ("trigger", "recipient", "stage")) and
                 type(observed.get("at")) is int and 0 <= observed["at"] <= required["deadline"])
 

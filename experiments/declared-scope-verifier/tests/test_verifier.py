@@ -9,7 +9,7 @@ from scope_verifier.crypto import (InputError, audit_path, canonical, digest, he
                                    leaf_hash, merkle_root, strict_json)
 from scope_verifier.fixtures import (EVALUATION_TIME, base, disposition, private_key,
                                     refresh_manifest, resign, signed)
-from scope_verifier.verifier import aggregate, verify
+from scope_verifier.verifier import Evaluation, aggregate, verify
 
 
 class CryptoVectors(unittest.TestCase):
@@ -475,6 +475,11 @@ class EvidenceRegression(unittest.TestCase):
         refresh_manifest(self.p)
         result = self.outcome("failed", "indeterminate")
         self.assertEqual(next(c["result"] for c in result["v1_2_requirements"] if c["check"] == "INT-006"), "verified")
+
+    def test_notification_payload_wrong_container_is_structured_input_error(self):
+        with self.assertRaises(InputError):
+            Evaluation.notification_matches({"payload": []}, {"notification": {
+                "trigger": "finding", "recipient": "evaluator@example.invalid", "stage": "delivered_endpoint", "deadline": 10}})
 
 
 if __name__ == "__main__":
