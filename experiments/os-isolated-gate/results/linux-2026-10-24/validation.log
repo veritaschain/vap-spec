@@ -38,10 +38,10 @@ linux-isolation	Controller and transport regressions	2026-10-24T03:23:14.4373949
 linux-isolation	Controller and transport regressions	2026-10-24T03:23:14.4453689Z test_missing_docker_writes_only_a_fresh_incomplete_report (test_review_regressions.OutputTests.test_missing_docker_writes_only_a_fresh_incomplete_report) ... ok
 linux-isolation	Controller and transport regressions	2026-10-24T03:23:14.4474252Z test_dirty_check_includes_imported_code_and_workflow (test_review_regressions.ProvenanceTests.test_dirty_check_includes_imported_code_and_workflow) ... ok
 linux-isolation	Controller and transport regressions	2026-10-24T03:23:14.4503669Z test_modified_imported_source_changes_its_fingerprint (test_review_regressions.ProvenanceTests.test_modified_imported_source_changes_its_fingerprint) ... ok
-linux-isolation	Controller and transport regressions	2026-10-24T03:23:14.4504406Z 
+linux-isolation	Controller and transport regressions	2026-10-24T03:23:14.4504406Z
 linux-isolation	Controller and transport regressions	2026-10-24T03:23:14.4504543Z ----------------------------------------------------------------------
 linux-isolation	Controller and transport regressions	2026-10-24T03:23:14.4504857Z Ran 28 tests in 0.118s
-linux-isolation	Controller and transport regressions	2026-10-24T03:23:14.4504971Z 
+linux-isolation	Controller and transport regressions	2026-10-24T03:23:14.4504971Z
 linux-isolation	Controller and transport regressions	2026-10-24T03:23:14.4505046Z OK
 linux-isolation	Execute actual Linux UID, namespace, filesystem and network probes	﻿2026-10-24T03:23:14.4697351Z ##[group]Run python -m isolation_lab run-suite
 linux-isolation	Execute actual Linux UID, namespace, filesystem and network probes	2026-10-24T03:23:14.4697663Z ^[[36;1mpython -m isolation_lab run-suite^[[0m
@@ -131,10 +131,10 @@ linux-isolation	Preserve existing gate regressions, scenarios and evidence verif
 linux-isolation	Preserve existing gate regressions, scenarios and evidence verification	2026-10-24T03:24:44.3844144Z test_malformed_ack_does_not_escape_as_uncaught_error (test_review.ReviewGateTests.test_malformed_ack_does_not_escape_as_uncaught_error) ... ok
 linux-isolation	Preserve existing gate regressions, scenarios and evidence verification	2026-10-24T03:24:44.5634565Z test_offline_adapter_rechecks_scope_operation_binding (test_review.ReviewGateTests.test_offline_adapter_rechecks_scope_operation_binding) ... ok
 linux-isolation	Preserve existing gate regressions, scenarios and evidence verification	2026-10-24T03:24:44.7941506Z test_wrong_outcome_ack_does_not_report_success (test_review.ReviewGateTests.test_wrong_outcome_ack_does_not_report_success) ... ok
-linux-isolation	Preserve existing gate regressions, scenarios and evidence verification	2026-10-24T03:24:44.7942287Z 
+linux-isolation	Preserve existing gate regressions, scenarios and evidence verification	2026-10-24T03:24:44.7942287Z
 linux-isolation	Preserve existing gate regressions, scenarios and evidence verification	2026-10-24T03:24:44.7942439Z ----------------------------------------------------------------------
 linux-isolation	Preserve existing gate regressions, scenarios and evidence verification	2026-10-24T03:24:44.7942736Z Ran 46 tests in 7.218s
-linux-isolation	Preserve existing gate regressions, scenarios and evidence verification	2026-10-24T03:24:44.7942852Z 
+linux-isolation	Preserve existing gate regressions, scenarios and evidence verification	2026-10-24T03:24:44.7942852Z
 linux-isolation	Preserve existing gate regressions, scenarios and evidence verification	2026-10-24T03:24:44.7942931Z OK
 linux-isolation	Preserve existing gate regressions, scenarios and evidence verification	2026-10-24T03:24:45.1734922Z 01 MATCH {'backend_requests': 1, 'effects': 1, 'state': 'confirmed_success', 'stored_state': 'confirmed_success', 'integrity': 'verified', 'scope': 'met', 'core_scope': None, 'core_status': 'not_applied', 'requests_after_replay': 1} {}
 linux-isolation	Preserve existing gate regressions, scenarios and evidence verification	2026-10-24T03:24:45.3375372Z 02 MATCH {'backend_requests': 0, 'effects': 0, 'state': 'blocked'} {}
@@ -228,10 +228,10 @@ linux-isolation	Preserve existing verifier regressions and 14 acceptance cases	2
 linux-isolation	Preserve existing verifier regressions and 14 acceptance cases	2026-10-24T03:24:50.1196672Z test_unsupported_mode_rejected (test_verifier.EvidenceRegression.test_unsupported_mode_rejected) ... ok
 linux-isolation	Preserve existing verifier regressions and 14 acceptance cases	2026-10-24T03:24:50.1233378Z test_unsupported_time_basis_cannot_establish_deadline_violation (test_verifier.EvidenceRegression.test_unsupported_time_basis_cannot_establish_deadline_violation) ... ok
 linux-isolation	Preserve existing verifier regressions and 14 acceptance cases	2026-10-24T03:24:50.1248322Z test_wrong_extension_container_returns_input_error (test_verifier.EvidenceRegression.test_wrong_extension_container_returns_input_error) ... ok
-linux-isolation	Preserve existing verifier regressions and 14 acceptance cases	2026-10-24T03:24:50.1249071Z 
+linux-isolation	Preserve existing verifier regressions and 14 acceptance cases	2026-10-24T03:24:50.1249071Z
 linux-isolation	Preserve existing verifier regressions and 14 acceptance cases	2026-10-24T03:24:50.1249261Z ----------------------------------------------------------------------
 linux-isolation	Preserve existing verifier regressions and 14 acceptance cases	2026-10-24T03:24:50.1249677Z Ran 64 tests in 0.189s
-linux-isolation	Preserve existing verifier regressions and 14 acceptance cases	2026-10-24T03:24:50.1249845Z 
+linux-isolation	Preserve existing verifier regressions and 14 acceptance cases	2026-10-24T03:24:50.1249845Z
 linux-isolation	Preserve existing verifier regressions and 14 acceptance cases	2026-10-24T03:24:50.1249927Z OK
 linux-isolation	Preserve existing verifier regressions and 14 acceptance cases	2026-10-24T03:25:08.9202094Z 01 MATCH: core=verified integrity=verified scope=met INT-008=verified
 linux-isolation	Preserve existing verifier regressions and 14 acceptance cases	2026-10-24T03:25:08.9203301Z 02 MATCH: core=verified integrity=verified scope=not_met INT-008=failed

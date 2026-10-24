@@ -69,7 +69,7 @@ a test key and provides no independent time attestation.
 `linux-2026-10-24/` contains the unmodified downloaded JSON observations, sanitized
 runtime inspection, environment and cleanup records, the actual signed evidence,
 and the old suites' summary files. `validation.log` retains the relevant CI step
-lines (terminal color sequences removed). `sha256.json` records byte hashes for
+lines (terminal color sequences and trailing whitespace removed). `sha256.json` records byte hashes for
 these files; it is an integrity inventory, not an external attestation. No seed
 or private key is retained.
 
