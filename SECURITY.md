@@ -18,11 +18,15 @@ We take the security of the Verifiable AI Provenance Framework seriously. If you
 
 **Please do NOT report security vulnerabilities through public GitHub issues.**
 
-Instead, please report them via email to:
+For this repository, use [GitHub private vulnerability reporting](https://github.com/veritaschain/vap-spec/security/advisories/new). The feature was enabled on 24 October 2026. Reports are not public issues. Please remove production credentials, personal data and unrelated customer information before submitting.
+
+You can also contact us via email:
 
 📧 **security@veritaschain.org**
 
-If you prefer encrypted communication, please contact us first to obtain our PGP key.
+If you need an encrypted exchange outside GitHub, send a non-sensitive initial message so we can agree on a suitable channel before you send confidential details. This repository does not currently publish a verified PGP contact key; availability of a key must not be assumed. Ordinary email is not represented as end-to-end encrypted.
+
+If you receive no acknowledgment within the target below, follow up through the other private channel with the original date and a short non-sensitive summary. Do not post the vulnerability details in a public issue.
 
 ### What to Include
 
@@ -36,27 +40,33 @@ Please include the following information in your report:
 - **Impact assessment** of the vulnerability
 - **Any potential mitigations** you have identified
 
-### Response Timeline
+### Response Targets
 
-| Action | Timeline |
+These are operational targets, not a guaranteed service level or a claim of round-the-clock staffing. Coverage during absence or holidays has not been validated. Business days mean Monday–Friday, excluding Japanese public holidays (Asia/Tokyo). We will state the next update date when acknowledging a report and explain material delays.
+
+| Action | Target |
 | ------ | -------- |
-| Initial response | Within 48 hours |
-| Status update | Within 7 days |
-| Vulnerability assessment | Within 14 days |
+| Initial response | Within 2 business days of receipt |
+| Status update | Aim for 7 calendar days after acknowledgment; confirm the next update date in the acknowledgment |
+| Initial vulnerability assessment | Aim for 14 calendar days after acknowledgment, subject to sufficient information and complexity |
 | Specification revision | Depends on severity |
-| Public disclosure | After revision is published |
+| Public disclosure | Coordinate timing and scope with the reporter, considering risk and remediation |
 
 ### What to Expect
 
-1. **Acknowledgment**: We will acknowledge receipt of your vulnerability report within 48 hours.
+1. **Acknowledgment**: We aim to acknowledge receipt within the target above. An automated receipt alone does not establish that a maintainer has reviewed the report.
 
 2. **Communication**: We will keep you informed about the progress of addressing the vulnerability.
 
-3. **Assessment**: Our security team will investigate and assess the impact of the reported vulnerability.
+3. **Assessment**: The maintainer will investigate and assess the reported issue. Receipt is not confirmation that a vulnerability exists.
 
 4. **Resolution**: We will work on a specification revision and coordinate the release timeline with you.
 
-5. **Credit**: If you wish, we will publicly acknowledge your responsible disclosure in our release notes.
+5. **Credit**: Publication of the report, raw evidence, your name and your organization requires separate agreement. We will confirm the proposed wording and attribution before publication.
+
+A controlled email exercise on 24 October 2026 checked delivery to the business mailbox and delivery of an AI-assisted acknowledgment to the sender. It did not establish independent notification awareness, holiday/absence coverage, PGP key readiness, or the handling of a real vulnerability. Enabling GitHub private reporting likewise does not by itself prove that its notifications have reached a human.
+
+Reports concerning the research experiments are welcome, but the extensions remain **unadopted**, separate from current VAP v1.2 requirements. Independent third-party reproduction has **not been established**. This contact-policy update does not change the fixed research ZIPs, source revisions, existing verifier, gate, OS experiment or K3 conditions.
 
 ## Security Best Practices
 
@@ -89,15 +99,13 @@ When implementing VAP profiles in your systems, please follow these security bes
 
 Security updates are released as needed. To stay informed:
 
-- ⭐ **Star** and **Watch** our repositories on GitHub
-- 📧 Subscribe to security announcements at security@veritaschain.org
+- Use GitHub **Watch → Custom → Security alerts** for this repository, with email delivery enabled in your GitHub notification settings. A star alone does not subscribe you to security notifications.
 - 🌐 Visit https://veritaschain.org for the latest updates
 
 ## Scope
 
-This security policy applies to the following VAP-related repositories:
+This policy is maintained for [vap-spec](https://github.com/veritaschain/vap-spec). The private-reporting enablement and intake exercise described above were checked for this repository only. Related profile repositories have their own reporting settings and security policies:
 
-- [vap-spec](https://github.com/veritaschain/vap-spec) - VAP Framework Specification
 - [vcp-spec](https://github.com/veritaschain/vcp-spec) - Finance Profile (VCP)
 - [cap-spec](https://github.com/veritaschain/cap-spec) - Content / Creative AI Profile (CAP)
 - [cpp-spec](https://github.com/veritaschain/cpp-spec) - Capture Provenance Profile (CPP)
