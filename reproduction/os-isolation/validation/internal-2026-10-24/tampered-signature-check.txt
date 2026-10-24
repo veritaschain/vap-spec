@@ -1,0 +1,3 @@
+Deliberately changed one signature byte in a separate copy.
+Exit code: 1
+Rejected: invalid_event_signature_or_shape

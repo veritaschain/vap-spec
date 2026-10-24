@@ -1,0 +1,1185 @@
+{
+  "cases": [
+    {
+      "case": "01",
+      "description": "Distinct non-root users, private namespaces, zero capabilities and no privilege escalation",
+      "equals": [
+        {
+          "path": [
+            "agent",
+            "uid"
+          ],
+          "value": 10001
+        },
+        {
+          "path": [
+            "agent",
+            "gid"
+          ],
+          "value": 10001
+        },
+        {
+          "path": [
+            "agent",
+            "groups"
+          ],
+          "value": [
+            10001
+          ]
+        },
+        {
+          "path": [
+            "agent",
+            "security"
+          ],
+          "value": {
+            "CapBnd": "0000000000000000",
+            "CapEff": "0000000000000000",
+            "CapPrm": "0000000000000000",
+            "NoNewPrivs": "1",
+            "Seccomp": "2"
+          }
+        },
+        {
+          "path": [
+            "agent",
+            "setuid_zero"
+          ],
+          "value": {
+            "allowed": false,
+            "errno": 1,
+            "error": "PermissionError"
+          }
+        },
+        {
+          "path": [
+            "gate",
+            "uid"
+          ],
+          "value": 10002
+        },
+        {
+          "path": [
+            "gate",
+            "gid"
+          ],
+          "value": 10002
+        },
+        {
+          "path": [
+            "gate",
+            "groups"
+          ],
+          "value": [
+            10002
+          ]
+        },
+        {
+          "path": [
+            "gate",
+            "security"
+          ],
+          "value": {
+            "CapBnd": "0000000000000000",
+            "CapEff": "0000000000000000",
+            "CapPrm": "0000000000000000",
+            "NoNewPrivs": "1",
+            "Seccomp": "2"
+          }
+        },
+        {
+          "path": [
+            "gate",
+            "setuid_zero"
+          ],
+          "value": {
+            "allowed": false,
+            "errno": 1,
+            "error": "PermissionError"
+          }
+        },
+        {
+          "path": [
+            "audit",
+            "uid"
+          ],
+          "value": 10003
+        },
+        {
+          "path": [
+            "audit",
+            "gid"
+          ],
+          "value": 10003
+        },
+        {
+          "path": [
+            "audit",
+            "groups"
+          ],
+          "value": [
+            10003
+          ]
+        },
+        {
+          "path": [
+            "audit",
+            "security"
+          ],
+          "value": {
+            "CapBnd": "0000000000000000",
+            "CapEff": "0000000000000000",
+            "CapPrm": "0000000000000000",
+            "NoNewPrivs": "1",
+            "Seccomp": "2"
+          }
+        },
+        {
+          "path": [
+            "audit",
+            "setuid_zero"
+          ],
+          "value": {
+            "allowed": false,
+            "errno": 1,
+            "error": "PermissionError"
+          }
+        },
+        {
+          "path": [
+            "backend",
+            "uid"
+          ],
+          "value": 10004
+        },
+        {
+          "path": [
+            "backend",
+            "gid"
+          ],
+          "value": 10004
+        },
+        {
+          "path": [
+            "backend",
+            "groups"
+          ],
+          "value": [
+            10004
+          ]
+        },
+        {
+          "path": [
+            "backend",
+            "security"
+          ],
+          "value": {
+            "CapBnd": "0000000000000000",
+            "CapEff": "0000000000000000",
+            "CapPrm": "0000000000000000",
+            "NoNewPrivs": "1",
+            "Seccomp": "2"
+          }
+        },
+        {
+          "path": [
+            "backend",
+            "setuid_zero"
+          ],
+          "value": {
+            "allowed": false,
+            "errno": 1,
+            "error": "PermissionError"
+          }
+        },
+        {
+          "path": [
+            "open-backend",
+            "uid"
+          ],
+          "value": 10005
+        },
+        {
+          "path": [
+            "open-backend",
+            "gid"
+          ],
+          "value": 10005
+        },
+        {
+          "path": [
+            "open-backend",
+            "groups"
+          ],
+          "value": [
+            10005
+          ]
+        },
+        {
+          "path": [
+            "open-backend",
+            "security"
+          ],
+          "value": {
+            "CapBnd": "0000000000000000",
+            "CapEff": "0000000000000000",
+            "CapPrm": "0000000000000000",
+            "NoNewPrivs": "1",
+            "Seccomp": "2"
+          }
+        },
+        {
+          "path": [
+            "open-backend",
+            "setuid_zero"
+          ],
+          "value": {
+            "allowed": false,
+            "errno": 1,
+            "error": "PermissionError"
+          }
+        }
+      ]
+    },
+    {
+      "case": "02",
+      "description": "Per-role readable config; foreign UID canaries denied by kernel DAC",
+      "equals": [
+        {
+          "path": [
+            "agent",
+            "canaries"
+          ],
+          "value": {
+            "agent": {
+              "allowed": true,
+              "errno": null
+            },
+            "audit": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            },
+            "backend": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            },
+            "gate": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            },
+            "open-backend": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            }
+          }
+        },
+        {
+          "path": [
+            "agent",
+            "own_config_readable",
+            "allowed"
+          ],
+          "value": true
+        },
+        {
+          "path": [
+            "gate",
+            "canaries"
+          ],
+          "value": {
+            "agent": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            },
+            "audit": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            },
+            "backend": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            },
+            "gate": {
+              "allowed": true,
+              "errno": null
+            },
+            "open-backend": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            }
+          }
+        },
+        {
+          "path": [
+            "gate",
+            "own_config_readable",
+            "allowed"
+          ],
+          "value": true
+        },
+        {
+          "path": [
+            "audit",
+            "canaries"
+          ],
+          "value": {
+            "agent": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            },
+            "audit": {
+              "allowed": true,
+              "errno": null
+            },
+            "backend": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            },
+            "gate": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            },
+            "open-backend": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            }
+          }
+        },
+        {
+          "path": [
+            "audit",
+            "own_config_readable",
+            "allowed"
+          ],
+          "value": true
+        },
+        {
+          "path": [
+            "backend",
+            "canaries"
+          ],
+          "value": {
+            "agent": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            },
+            "audit": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            },
+            "backend": {
+              "allowed": true,
+              "errno": null
+            },
+            "gate": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            },
+            "open-backend": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            }
+          }
+        },
+        {
+          "path": [
+            "backend",
+            "own_config_readable",
+            "allowed"
+          ],
+          "value": true
+        },
+        {
+          "path": [
+            "open-backend",
+            "canaries"
+          ],
+          "value": {
+            "agent": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            },
+            "audit": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            },
+            "backend": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            },
+            "gate": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            },
+            "open-backend": {
+              "allowed": true,
+              "errno": null
+            }
+          }
+        },
+        {
+          "path": [
+            "open-backend",
+            "own_config_readable",
+            "allowed"
+          ],
+          "value": true
+        }
+      ]
+    },
+    {
+      "case": "03",
+      "description": "Read-only code/config, private role mounts, no engine socket or seed mount",
+      "equals": [
+        {
+          "path": [
+            "filesystem",
+            "agent",
+            "config_write",
+            "allowed"
+          ],
+          "value": false
+        },
+        {
+          "path": [
+            "filesystem",
+            "agent",
+            "code_write",
+            "allowed"
+          ],
+          "value": false
+        },
+        {
+          "path": [
+            "filesystem",
+            "agent",
+            "docker_socket_visible"
+          ],
+          "value": false
+        },
+        {
+          "path": [
+            "filesystem",
+            "agent",
+            "setup_seed_visible"
+          ],
+          "value": false
+        },
+        {
+          "path": [
+            "runtime",
+            "agent",
+            "readonly_rootfs"
+          ],
+          "value": true
+        },
+        {
+          "path": [
+            "runtime",
+            "agent",
+            "privileged"
+          ],
+          "value": false
+        },
+        {
+          "path": [
+            "filesystem",
+            "gate",
+            "config_write",
+            "allowed"
+          ],
+          "value": false
+        },
+        {
+          "path": [
+            "filesystem",
+            "gate",
+            "code_write",
+            "allowed"
+          ],
+          "value": false
+        },
+        {
+          "path": [
+            "filesystem",
+            "gate",
+            "docker_socket_visible"
+          ],
+          "value": false
+        },
+        {
+          "path": [
+            "filesystem",
+            "gate",
+            "setup_seed_visible"
+          ],
+          "value": false
+        },
+        {
+          "path": [
+            "runtime",
+            "gate",
+            "readonly_rootfs"
+          ],
+          "value": true
+        },
+        {
+          "path": [
+            "runtime",
+            "gate",
+            "privileged"
+          ],
+          "value": false
+        },
+        {
+          "path": [
+            "filesystem",
+            "audit",
+            "config_write",
+            "allowed"
+          ],
+          "value": false
+        },
+        {
+          "path": [
+            "filesystem",
+            "audit",
+            "code_write",
+            "allowed"
+          ],
+          "value": false
+        },
+        {
+          "path": [
+            "filesystem",
+            "audit",
+            "docker_socket_visible"
+          ],
+          "value": false
+        },
+        {
+          "path": [
+            "filesystem",
+            "audit",
+            "setup_seed_visible"
+          ],
+          "value": false
+        },
+        {
+          "path": [
+            "runtime",
+            "audit",
+            "readonly_rootfs"
+          ],
+          "value": true
+        },
+        {
+          "path": [
+            "runtime",
+            "audit",
+            "privileged"
+          ],
+          "value": false
+        },
+        {
+          "path": [
+            "filesystem",
+            "backend",
+            "config_write",
+            "allowed"
+          ],
+          "value": false
+        },
+        {
+          "path": [
+            "filesystem",
+            "backend",
+            "code_write",
+            "allowed"
+          ],
+          "value": false
+        },
+        {
+          "path": [
+            "filesystem",
+            "backend",
+            "docker_socket_visible"
+          ],
+          "value": false
+        },
+        {
+          "path": [
+            "filesystem",
+            "backend",
+            "setup_seed_visible"
+          ],
+          "value": false
+        },
+        {
+          "path": [
+            "runtime",
+            "backend",
+            "readonly_rootfs"
+          ],
+          "value": true
+        },
+        {
+          "path": [
+            "runtime",
+            "backend",
+            "privileged"
+          ],
+          "value": false
+        },
+        {
+          "path": [
+            "filesystem",
+            "open-backend",
+            "config_write",
+            "allowed"
+          ],
+          "value": false
+        },
+        {
+          "path": [
+            "filesystem",
+            "open-backend",
+            "code_write",
+            "allowed"
+          ],
+          "value": false
+        },
+        {
+          "path": [
+            "filesystem",
+            "open-backend",
+            "docker_socket_visible"
+          ],
+          "value": false
+        },
+        {
+          "path": [
+            "filesystem",
+            "open-backend",
+            "setup_seed_visible"
+          ],
+          "value": false
+        },
+        {
+          "path": [
+            "runtime",
+            "open-backend",
+            "readonly_rootfs"
+          ],
+          "value": true
+        },
+        {
+          "path": [
+            "runtime",
+            "open-backend",
+            "privileged"
+          ],
+          "value": false
+        }
+      ]
+    },
+    {
+      "case": "04",
+      "description": "Only declared internal networks; no published host ports or privileged runtime",
+      "equals": [
+        {
+          "path": [
+            "internal"
+          ],
+          "value": {
+            "audit": true,
+            "backend": true,
+            "frontend": true
+          }
+        }
+      ]
+    },
+    {
+      "case": "05",
+      "description": "Authorized agent request through gate creates exactly one mock effect",
+      "equals": [
+        {
+          "path": [
+            "response",
+            "http_status"
+          ],
+          "value": 200
+        },
+        {
+          "path": [
+            "response",
+            "result",
+            "state"
+          ],
+          "value": "confirmed_success"
+        },
+        {
+          "path": [
+            "response",
+            "result",
+            "backend_attempted"
+          ],
+          "value": true
+        },
+        {
+          "path": [
+            "before"
+          ],
+          "value": {
+            "effects": 0,
+            "requests": 0
+          }
+        },
+        {
+          "path": [
+            "after"
+          ],
+          "value": {
+            "effects": 1,
+            "requests": 1
+          }
+        }
+      ]
+    },
+    {
+      "case": "06",
+      "description": "Agent direct call to backend literal IPv4 cannot connect or reach handler",
+      "equals": [
+        {
+          "path": [
+            "attempt",
+            "connected"
+          ],
+          "value": false
+        },
+        {
+          "path": [
+            "attempt",
+            "http_status"
+          ],
+          "value": null
+        },
+        {
+          "path": [
+            "target_health"
+          ],
+          "value": {
+            "ready": true,
+            "role": "backend"
+          }
+        },
+        {
+          "path": [
+            "backend_counts"
+          ],
+          "value": {
+            "effects": 1,
+            "requests": 1
+          }
+        }
+      ]
+    },
+    {
+      "case": "07",
+      "description": "Agent direct call to audit literal IPv4 cannot connect",
+      "equals": [
+        {
+          "path": [
+            "attempt",
+            "connected"
+          ],
+          "value": false
+        },
+        {
+          "path": [
+            "attempt",
+            "http_status"
+          ],
+          "value": null
+        },
+        {
+          "path": [
+            "target_health"
+          ],
+          "value": {
+            "ready": true,
+            "role": "audit"
+          }
+        },
+        {
+          "path": [
+            "backend_counts"
+          ],
+          "value": {
+            "effects": 1,
+            "requests": 1
+          }
+        }
+      ]
+    },
+    {
+      "case": "08",
+      "description": "Agent cannot reach even an unauthenticated mock API on the private backend network",
+      "equals": [
+        {
+          "path": [
+            "attempt",
+            "connected"
+          ],
+          "value": false
+        },
+        {
+          "path": [
+            "attempt",
+            "http_status"
+          ],
+          "value": null
+        },
+        {
+          "path": [
+            "target_health"
+          ],
+          "value": {
+            "ready": true,
+            "role": "open-backend"
+          }
+        },
+        {
+          "path": [
+            "backend_counts"
+          ],
+          "value": {
+            "effects": 0,
+            "requests": 0
+          }
+        }
+      ]
+    },
+    {
+      "case": "09",
+      "description": "Gate rejects a caller-selected target and does not proxy arbitrary paths",
+      "equals": [
+        {
+          "path": [
+            "bad_target",
+            "result",
+            "state"
+          ],
+          "value": "denied"
+        },
+        {
+          "path": [
+            "bad_target",
+            "result",
+            "backend_attempted"
+          ],
+          "value": false
+        },
+        {
+          "path": [
+            "proxy",
+            "connected"
+          ],
+          "value": true
+        },
+        {
+          "path": [
+            "proxy",
+            "http_status"
+          ],
+          "value": 404
+        },
+        {
+          "path": [
+            "backend_counts"
+          ],
+          "value": {
+            "effects": 1,
+            "requests": 1
+          }
+        }
+      ]
+    },
+    {
+      "case": "10",
+      "description": "CONNECT to gate is not an alternate backend route",
+      "equals": [
+        {
+          "path": [
+            "attempt",
+            "connected"
+          ],
+          "value": true
+        },
+        {
+          "path": [
+            "attempt",
+            "http_status"
+          ],
+          "value": 501
+        },
+        {
+          "path": [
+            "backend_counts"
+          ],
+          "value": {
+            "effects": 1,
+            "requests": 1
+          }
+        }
+      ]
+    },
+    {
+      "case": "11",
+      "description": "Deleting agent logs leaves signed audit evidence intact and verifiable",
+      "equals": [
+        {
+          "path": [
+            "created"
+          ],
+          "value": {
+            "exists": true
+          }
+        },
+        {
+          "path": [
+            "deleted"
+          ],
+          "value": {
+            "exists": false
+          }
+        }
+      ]
+    },
+    {
+      "case": "12",
+      "description": "Audit outage blocks a fresh operation before any API request",
+      "equals": [
+        {
+          "path": [
+            "response",
+            "http_status"
+          ],
+          "value": 200
+        },
+        {
+          "path": [
+            "response",
+            "result",
+            "state"
+          ],
+          "value": "blocked"
+        },
+        {
+          "path": [
+            "response",
+            "result",
+            "backend_attempted"
+          ],
+          "value": false
+        },
+        {
+          "path": [
+            "backend_counts"
+          ],
+          "value": {
+            "effects": 1,
+            "requests": 1
+          }
+        }
+      ]
+    },
+    {
+      "case": "13",
+      "description": "Audit restart preserves evidence and known success without another write",
+      "equals": [
+        {
+          "path": [
+            "response",
+            "http_status"
+          ],
+          "value": 200
+        },
+        {
+          "path": [
+            "response",
+            "result",
+            "state"
+          ],
+          "value": "confirmed_success"
+        },
+        {
+          "path": [
+            "response",
+            "result",
+            "backend_attempted"
+          ],
+          "value": false
+        },
+        {
+          "path": [
+            "backend_counts"
+          ],
+          "value": {
+            "effects": 1,
+            "requests": 1
+          }
+        }
+      ]
+    },
+    {
+      "case": "14",
+      "description": "Negative control: added backend route is reachable, API authentication still denies write",
+      "equals": [
+        {
+          "path": [
+            "attempt",
+            "connected"
+          ],
+          "value": true
+        },
+        {
+          "path": [
+            "attempt",
+            "http_status"
+          ],
+          "value": 403
+        },
+        {
+          "path": [
+            "backend_counts"
+          ],
+          "value": {
+            "effects": 1,
+            "requests": 2
+          }
+        },
+        {
+          "path": [
+            "network_isolation_established"
+          ],
+          "value": false
+        },
+        {
+          "path": [
+            "unauthorized_effect"
+          ],
+          "value": false
+        }
+      ]
+    },
+    {
+      "case": "15",
+      "description": "Negative control: added route plus unauthenticated mock API permits bypass; guarantee false",
+      "equals": [
+        {
+          "path": [
+            "attempt",
+            "connected"
+          ],
+          "value": true
+        },
+        {
+          "path": [
+            "attempt",
+            "http_status"
+          ],
+          "value": 200
+        },
+        {
+          "path": [
+            "backend_counts"
+          ],
+          "value": {
+            "effects": 1,
+            "requests": 1
+          }
+        },
+        {
+          "path": [
+            "bypass_guarantee_established"
+          ],
+          "value": false
+        }
+      ]
+    },
+    {
+      "case": "16",
+      "description": "Removing the extra route restores connection denial",
+      "equals": [
+        {
+          "path": [
+            "attempt",
+            "connected"
+          ],
+          "value": false
+        },
+        {
+          "path": [
+            "attempt",
+            "http_status"
+          ],
+          "value": null
+        },
+        {
+          "path": [
+            "backend_counts"
+          ],
+          "value": {
+            "effects": 1,
+            "requests": 1
+          }
+        }
+      ]
+    }
+  ],
+  "format": "vap-reproduction-expectations/1",
+  "gate_bundles": 11,
+  "gate_cases": 15,
+  "lab_input_digests": {
+    "declared-scope-verifier": "7928438d5737628579168b2df00a7bda06c13104057e687039cb732e1397f481",
+    "os-isolated-gate": "bfeac73d4b4dec705afa2f75ad767329198adac8de2520499f3c2cc561623322",
+    "pre-record-gate": "a53c70f5d204a48fde4d454183aad79d56e0c47f0d46472257fa649223a88745",
+    "workflow": "2b0a6a4f480edbaffdc2ba900cf8ba6ad21a20e41a0b17ed705cbb4f9c6d9d5d"
+  },
+  "not_compared_byte_for_byte": [
+    "Ed25519 keys and signatures",
+    "evidence hashes",
+    "container/project IDs",
+    "IPv4 assignments",
+    "namespace IDs",
+    "timings",
+    "wall-clock timestamps"
+  ],
+  "unit_tests": {
+    "gate-unit": 46,
+    "lab-unit": 28,
+    "verifier-unit": 64
+  },
+  "verifier_cases": 14
+}

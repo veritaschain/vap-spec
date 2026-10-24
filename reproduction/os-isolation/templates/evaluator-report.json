@@ -1,0 +1,40 @@
+{
+  "format": "vap-independent-evaluator-report/1",
+  "proposal_status": "experimental_unadopted",
+  "overall_vap_conformance": "not_assessed",
+  "evaluator": {
+    "name": null,
+    "organization": null,
+    "relationship_to_implementers": null,
+    "machine_provisioned_and_controlled_by": null,
+    "personally_executed_fresh_os_run": null,
+    "independence_statement": null
+  },
+  "acquisition": {
+    "package_commit": null,
+    "package_url": null,
+    "package_zip_sha256": null,
+    "source_url": null,
+    "source_commit_observed": null
+  },
+  "execution": {
+    "date_utc": null,
+    "commands_used": [],
+    "environment_artifact": null,
+    "reference_environment_deviations": [],
+    "attempts_including_failures": [],
+    "run_report_status": null,
+    "artifact_location": null,
+    "artifact_archive_sha256": null,
+    "saved_artifacts_rechecked": null,
+    "manual_cleanup_or_changes": []
+  },
+  "conclusion": {
+    "observations": null,
+    "discrepancies": [],
+    "limitations": [],
+    "independence_review": "not_assessed",
+    "reviewer": null,
+    "review_date_utc": null
+  }
+}
