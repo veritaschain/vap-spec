@@ -1,0 +1,1273 @@
+{
+  "all_expectations_matched": true,
+  "cases": [
+    {
+      "case": "01",
+      "description": "Distinct non-root users, private namespaces, zero capabilities and no privilege escalation",
+      "matched": true,
+      "observed": {
+        "agent": {
+          "gid": 10001,
+          "groups": [
+            10001
+          ],
+          "namespaces": {
+            "mnt": "mnt:[4026532335]",
+            "net": "net:[4026532340]",
+            "pid": "pid:[4026532338]"
+          },
+          "security": {
+            "CapBnd": "0000000000000000",
+            "CapEff": "0000000000000000",
+            "CapPrm": "0000000000000000",
+            "NoNewPrivs": "1",
+            "Seccomp": "2"
+          },
+          "setuid_zero": {
+            "allowed": false,
+            "errno": 1,
+            "error": "PermissionError"
+          },
+          "uid": 10001
+        },
+        "audit": {
+          "gid": 10003,
+          "groups": [
+            10003
+          ],
+          "namespaces": {
+            "mnt": "mnt:[4026532524]",
+            "net": "net:[4026532529]",
+            "pid": "pid:[4026532527]"
+          },
+          "security": {
+            "CapBnd": "0000000000000000",
+            "CapEff": "0000000000000000",
+            "CapPrm": "0000000000000000",
+            "NoNewPrivs": "1",
+            "Seccomp": "2"
+          },
+          "setuid_zero": {
+            "allowed": false,
+            "errno": 1,
+            "error": "PermissionError"
+          },
+          "uid": 10003
+        },
+        "backend": {
+          "gid": 10004,
+          "groups": [
+            10004
+          ],
+          "namespaces": {
+            "mnt": "mnt:[4026532398]",
+            "net": "net:[4026532403]",
+            "pid": "pid:[4026532401]"
+          },
+          "security": {
+            "CapBnd": "0000000000000000",
+            "CapEff": "0000000000000000",
+            "CapPrm": "0000000000000000",
+            "NoNewPrivs": "1",
+            "Seccomp": "2"
+          },
+          "setuid_zero": {
+            "allowed": false,
+            "errno": 1,
+            "error": "PermissionError"
+          },
+          "uid": 10004
+        },
+        "gate": {
+          "gid": 10002,
+          "groups": [
+            10002
+          ],
+          "namespaces": {
+            "mnt": "mnt:[4026532461]",
+            "net": "net:[4026532466]",
+            "pid": "pid:[4026532464]"
+          },
+          "security": {
+            "CapBnd": "0000000000000000",
+            "CapEff": "0000000000000000",
+            "CapPrm": "0000000000000000",
+            "NoNewPrivs": "1",
+            "Seccomp": "2"
+          },
+          "setuid_zero": {
+            "allowed": false,
+            "errno": 1,
+            "error": "PermissionError"
+          },
+          "uid": 10002
+        },
+        "open-backend": {
+          "gid": 10005,
+          "groups": [
+            10005
+          ],
+          "namespaces": {
+            "mnt": "mnt:[4026532271]",
+            "net": "net:[4026532277]",
+            "pid": "pid:[4026532275]"
+          },
+          "security": {
+            "CapBnd": "0000000000000000",
+            "CapEff": "0000000000000000",
+            "CapPrm": "0000000000000000",
+            "NoNewPrivs": "1",
+            "Seccomp": "2"
+          },
+          "setuid_zero": {
+            "allowed": false,
+            "errno": 1,
+            "error": "PermissionError"
+          },
+          "uid": 10005
+        }
+      }
+    },
+    {
+      "case": "02",
+      "description": "Per-role readable config; foreign UID canaries denied by kernel DAC",
+      "matched": true,
+      "observed": {
+        "agent": {
+          "canaries": {
+            "agent": {
+              "allowed": true,
+              "errno": null
+            },
+            "audit": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            },
+            "backend": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            },
+            "gate": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            },
+            "open-backend": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            }
+          },
+          "code_write": {
+            "allowed": false,
+            "errno": 30,
+            "error": "OSError"
+          },
+          "config_write": {
+            "allowed": false,
+            "errno": 13,
+            "error": "PermissionError"
+          },
+          "docker_socket_visible": false,
+          "own_config_readable": {
+            "allowed": true,
+            "errno": null
+          },
+          "setup_seed_visible": false
+        },
+        "audit": {
+          "canaries": {
+            "agent": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            },
+            "audit": {
+              "allowed": true,
+              "errno": null
+            },
+            "backend": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            },
+            "gate": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            },
+            "open-backend": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            }
+          },
+          "code_write": {
+            "allowed": false,
+            "errno": 30,
+            "error": "OSError"
+          },
+          "config_write": {
+            "allowed": false,
+            "errno": 13,
+            "error": "PermissionError"
+          },
+          "docker_socket_visible": false,
+          "own_config_readable": {
+            "allowed": true,
+            "errno": null
+          },
+          "setup_seed_visible": false
+        },
+        "backend": {
+          "canaries": {
+            "agent": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            },
+            "audit": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            },
+            "backend": {
+              "allowed": true,
+              "errno": null
+            },
+            "gate": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            },
+            "open-backend": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            }
+          },
+          "code_write": {
+            "allowed": false,
+            "errno": 30,
+            "error": "OSError"
+          },
+          "config_write": {
+            "allowed": false,
+            "errno": 13,
+            "error": "PermissionError"
+          },
+          "docker_socket_visible": false,
+          "own_config_readable": {
+            "allowed": true,
+            "errno": null
+          },
+          "setup_seed_visible": false
+        },
+        "gate": {
+          "canaries": {
+            "agent": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            },
+            "audit": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            },
+            "backend": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            },
+            "gate": {
+              "allowed": true,
+              "errno": null
+            },
+            "open-backend": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            }
+          },
+          "code_write": {
+            "allowed": false,
+            "errno": 30,
+            "error": "OSError"
+          },
+          "config_write": {
+            "allowed": false,
+            "errno": 13,
+            "error": "PermissionError"
+          },
+          "docker_socket_visible": false,
+          "own_config_readable": {
+            "allowed": true,
+            "errno": null
+          },
+          "setup_seed_visible": false
+        },
+        "open-backend": {
+          "canaries": {
+            "agent": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            },
+            "audit": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            },
+            "backend": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            },
+            "gate": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            },
+            "open-backend": {
+              "allowed": true,
+              "errno": null
+            }
+          },
+          "code_write": {
+            "allowed": false,
+            "errno": 30,
+            "error": "OSError"
+          },
+          "config_write": {
+            "allowed": false,
+            "errno": 13,
+            "error": "PermissionError"
+          },
+          "docker_socket_visible": false,
+          "own_config_readable": {
+            "allowed": true,
+            "errno": null
+          },
+          "setup_seed_visible": false
+        }
+      }
+    },
+    {
+      "case": "03",
+      "description": "Read-only code/config, private role mounts, no engine socket or seed mount",
+      "matched": true,
+      "observed": {
+        "filesystem": {
+          "agent": {
+            "canaries": {
+              "agent": {
+                "allowed": true,
+                "errno": null
+              },
+              "audit": {
+                "allowed": false,
+                "errno": 13,
+                "error": "PermissionError"
+              },
+              "backend": {
+                "allowed": false,
+                "errno": 13,
+                "error": "PermissionError"
+              },
+              "gate": {
+                "allowed": false,
+                "errno": 13,
+                "error": "PermissionError"
+              },
+              "open-backend": {
+                "allowed": false,
+                "errno": 13,
+                "error": "PermissionError"
+              }
+            },
+            "code_write": {
+              "allowed": false,
+              "errno": 30,
+              "error": "OSError"
+            },
+            "config_write": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            },
+            "docker_socket_visible": false,
+            "own_config_readable": {
+              "allowed": true,
+              "errno": null
+            },
+            "setup_seed_visible": false
+          },
+          "audit": {
+            "canaries": {
+              "agent": {
+                "allowed": false,
+                "errno": 13,
+                "error": "PermissionError"
+              },
+              "audit": {
+                "allowed": true,
+                "errno": null
+              },
+              "backend": {
+                "allowed": false,
+                "errno": 13,
+                "error": "PermissionError"
+              },
+              "gate": {
+                "allowed": false,
+                "errno": 13,
+                "error": "PermissionError"
+              },
+              "open-backend": {
+                "allowed": false,
+                "errno": 13,
+                "error": "PermissionError"
+              }
+            },
+            "code_write": {
+              "allowed": false,
+              "errno": 30,
+              "error": "OSError"
+            },
+            "config_write": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            },
+            "docker_socket_visible": false,
+            "own_config_readable": {
+              "allowed": true,
+              "errno": null
+            },
+            "setup_seed_visible": false
+          },
+          "backend": {
+            "canaries": {
+              "agent": {
+                "allowed": false,
+                "errno": 13,
+                "error": "PermissionError"
+              },
+              "audit": {
+                "allowed": false,
+                "errno": 13,
+                "error": "PermissionError"
+              },
+              "backend": {
+                "allowed": true,
+                "errno": null
+              },
+              "gate": {
+                "allowed": false,
+                "errno": 13,
+                "error": "PermissionError"
+              },
+              "open-backend": {
+                "allowed": false,
+                "errno": 13,
+                "error": "PermissionError"
+              }
+            },
+            "code_write": {
+              "allowed": false,
+              "errno": 30,
+              "error": "OSError"
+            },
+            "config_write": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            },
+            "docker_socket_visible": false,
+            "own_config_readable": {
+              "allowed": true,
+              "errno": null
+            },
+            "setup_seed_visible": false
+          },
+          "gate": {
+            "canaries": {
+              "agent": {
+                "allowed": false,
+                "errno": 13,
+                "error": "PermissionError"
+              },
+              "audit": {
+                "allowed": false,
+                "errno": 13,
+                "error": "PermissionError"
+              },
+              "backend": {
+                "allowed": false,
+                "errno": 13,
+                "error": "PermissionError"
+              },
+              "gate": {
+                "allowed": true,
+                "errno": null
+              },
+              "open-backend": {
+                "allowed": false,
+                "errno": 13,
+                "error": "PermissionError"
+              }
+            },
+            "code_write": {
+              "allowed": false,
+              "errno": 30,
+              "error": "OSError"
+            },
+            "config_write": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            },
+            "docker_socket_visible": false,
+            "own_config_readable": {
+              "allowed": true,
+              "errno": null
+            },
+            "setup_seed_visible": false
+          },
+          "open-backend": {
+            "canaries": {
+              "agent": {
+                "allowed": false,
+                "errno": 13,
+                "error": "PermissionError"
+              },
+              "audit": {
+                "allowed": false,
+                "errno": 13,
+                "error": "PermissionError"
+              },
+              "backend": {
+                "allowed": false,
+                "errno": 13,
+                "error": "PermissionError"
+              },
+              "gate": {
+                "allowed": false,
+                "errno": 13,
+                "error": "PermissionError"
+              },
+              "open-backend": {
+                "allowed": true,
+                "errno": null
+              }
+            },
+            "code_write": {
+              "allowed": false,
+              "errno": 30,
+              "error": "OSError"
+            },
+            "config_write": {
+              "allowed": false,
+              "errno": 13,
+              "error": "PermissionError"
+            },
+            "docker_socket_visible": false,
+            "own_config_readable": {
+              "allowed": true,
+              "errno": null
+            },
+            "setup_seed_visible": false
+          }
+        },
+        "runtime": {
+          "agent": {
+            "cap_add": null,
+            "cap_drop": [
+              "ALL"
+            ],
+            "image_id": "sha256:840aacf866e863df0ff1d973dc1d0a213c26e8ec245ba20d79c5a3303b6d750f",
+            "mounts": [
+              {
+                "destination": "/data",
+                "name": "vap-isolation-743001d100_agent-data",
+                "rw": true,
+                "type": "volume"
+              },
+              {
+                "destination": "/canaries",
+                "name": "vap-isolation-743001d100_canaries",
+                "rw": false,
+                "type": "volume"
+              },
+              {
+                "destination": "/run/role",
+                "name": "vap-isolation-743001d100_agent-config",
+                "rw": false,
+                "type": "volume"
+              }
+            ],
+            "networks": {
+              "vap-isolation-743001d100_frontend": {
+                "ip": "172.20.0.3"
+              }
+            },
+            "port_bindings": {},
+            "privileged": false,
+            "readonly_rootfs": true,
+            "security_opt": [
+              "no-new-privileges:true"
+            ],
+            "user": "10001:10001"
+          },
+          "audit": {
+            "cap_add": null,
+            "cap_drop": [
+              "ALL"
+            ],
+            "image_id": "sha256:840aacf866e863df0ff1d973dc1d0a213c26e8ec245ba20d79c5a3303b6d750f",
+            "mounts": [
+              {
+                "destination": "/data",
+                "name": "vap-isolation-743001d100_audit-data",
+                "rw": true,
+                "type": "volume"
+              },
+              {
+                "destination": "/canaries",
+                "name": "vap-isolation-743001d100_canaries",
+                "rw": false,
+                "type": "volume"
+              },
+              {
+                "destination": "/run/role",
+                "name": "vap-isolation-743001d100_audit-config",
+                "rw": false,
+                "type": "volume"
+              }
+            ],
+            "networks": {
+              "vap-isolation-743001d100_audit": {
+                "ip": "172.18.0.2"
+              }
+            },
+            "port_bindings": {},
+            "privileged": false,
+            "readonly_rootfs": true,
+            "security_opt": [
+              "no-new-privileges:true"
+            ],
+            "user": "10003:10003"
+          },
+          "backend": {
+            "cap_add": null,
+            "cap_drop": [
+              "ALL"
+            ],
+            "image_id": "sha256:840aacf866e863df0ff1d973dc1d0a213c26e8ec245ba20d79c5a3303b6d750f",
+            "mounts": [
+              {
+                "destination": "/run/role",
+                "name": "vap-isolation-743001d100_backend-config",
+                "rw": false,
+                "type": "volume"
+              },
+              {
+                "destination": "/data",
+                "name": "vap-isolation-743001d100_backend-data",
+                "rw": true,
+                "type": "volume"
+              },
+              {
+                "destination": "/canaries",
+                "name": "vap-isolation-743001d100_canaries",
+                "rw": false,
+                "type": "volume"
+              }
+            ],
+            "networks": {
+              "vap-isolation-743001d100_backend": {
+                "ip": "172.19.0.2"
+              }
+            },
+            "port_bindings": {},
+            "privileged": false,
+            "readonly_rootfs": true,
+            "security_opt": [
+              "no-new-privileges:true"
+            ],
+            "user": "10004:10004"
+          },
+          "gate": {
+            "cap_add": null,
+            "cap_drop": [
+              "ALL"
+            ],
+            "image_id": "sha256:840aacf866e863df0ff1d973dc1d0a213c26e8ec245ba20d79c5a3303b6d750f",
+            "mounts": [
+              {
+                "destination": "/run/role",
+                "name": "vap-isolation-743001d100_gate-config",
+                "rw": false,
+                "type": "volume"
+              },
+              {
+                "destination": "/data",
+                "name": "vap-isolation-743001d100_gate-data",
+                "rw": true,
+                "type": "volume"
+              },
+              {
+                "destination": "/canaries",
+                "name": "vap-isolation-743001d100_canaries",
+                "rw": false,
+                "type": "volume"
+              }
+            ],
+            "networks": {
+              "vap-isolation-743001d100_audit": {
+                "ip": "172.18.0.3"
+              },
+              "vap-isolation-743001d100_backend": {
+                "ip": "172.19.0.4"
+              },
+              "vap-isolation-743001d100_frontend": {
+                "ip": "172.20.0.2"
+              }
+            },
+            "port_bindings": {},
+            "privileged": false,
+            "readonly_rootfs": true,
+            "security_opt": [
+              "no-new-privileges:true"
+            ],
+            "user": "10002:10002"
+          },
+          "open-backend": {
+            "cap_add": null,
+            "cap_drop": [
+              "ALL"
+            ],
+            "image_id": "sha256:840aacf866e863df0ff1d973dc1d0a213c26e8ec245ba20d79c5a3303b6d750f",
+            "mounts": [
+              {
+                "destination": "/run/role",
+                "name": "vap-isolation-743001d100_open-backend-config",
+                "rw": false,
+                "type": "volume"
+              },
+              {
+                "destination": "/data",
+                "name": "vap-isolation-743001d100_open-backend-data",
+                "rw": true,
+                "type": "volume"
+              },
+              {
+                "destination": "/canaries",
+                "name": "vap-isolation-743001d100_canaries",
+                "rw": false,
+                "type": "volume"
+              }
+            ],
+            "networks": {
+              "vap-isolation-743001d100_backend": {
+                "ip": "172.19.0.3"
+              }
+            },
+            "port_bindings": {},
+            "privileged": false,
+            "readonly_rootfs": true,
+            "security_opt": [
+              "no-new-privileges:true"
+            ],
+            "user": "10005:10005"
+          }
+        }
+      }
+    },
+    {
+      "case": "04",
+      "description": "Only declared internal networks; no published host ports or privileged runtime",
+      "matched": true,
+      "observed": {
+        "internal": {
+          "audit": true,
+          "backend": true,
+          "frontend": true
+        },
+        "runtime": {
+          "agent": {
+            "cap_add": null,
+            "cap_drop": [
+              "ALL"
+            ],
+            "image_id": "sha256:840aacf866e863df0ff1d973dc1d0a213c26e8ec245ba20d79c5a3303b6d750f",
+            "mounts": [
+              {
+                "destination": "/data",
+                "name": "vap-isolation-743001d100_agent-data",
+                "rw": true,
+                "type": "volume"
+              },
+              {
+                "destination": "/canaries",
+                "name": "vap-isolation-743001d100_canaries",
+                "rw": false,
+                "type": "volume"
+              },
+              {
+                "destination": "/run/role",
+                "name": "vap-isolation-743001d100_agent-config",
+                "rw": false,
+                "type": "volume"
+              }
+            ],
+            "networks": {
+              "vap-isolation-743001d100_frontend": {
+                "ip": "172.20.0.3"
+              }
+            },
+            "port_bindings": {},
+            "privileged": false,
+            "readonly_rootfs": true,
+            "security_opt": [
+              "no-new-privileges:true"
+            ],
+            "user": "10001:10001"
+          },
+          "audit": {
+            "cap_add": null,
+            "cap_drop": [
+              "ALL"
+            ],
+            "image_id": "sha256:840aacf866e863df0ff1d973dc1d0a213c26e8ec245ba20d79c5a3303b6d750f",
+            "mounts": [
+              {
+                "destination": "/data",
+                "name": "vap-isolation-743001d100_audit-data",
+                "rw": true,
+                "type": "volume"
+              },
+              {
+                "destination": "/canaries",
+                "name": "vap-isolation-743001d100_canaries",
+                "rw": false,
+                "type": "volume"
+              },
+              {
+                "destination": "/run/role",
+                "name": "vap-isolation-743001d100_audit-config",
+                "rw": false,
+                "type": "volume"
+              }
+            ],
+            "networks": {
+              "vap-isolation-743001d100_audit": {
+                "ip": "172.18.0.2"
+              }
+            },
+            "port_bindings": {},
+            "privileged": false,
+            "readonly_rootfs": true,
+            "security_opt": [
+              "no-new-privileges:true"
+            ],
+            "user": "10003:10003"
+          },
+          "backend": {
+            "cap_add": null,
+            "cap_drop": [
+              "ALL"
+            ],
+            "image_id": "sha256:840aacf866e863df0ff1d973dc1d0a213c26e8ec245ba20d79c5a3303b6d750f",
+            "mounts": [
+              {
+                "destination": "/run/role",
+                "name": "vap-isolation-743001d100_backend-config",
+                "rw": false,
+                "type": "volume"
+              },
+              {
+                "destination": "/data",
+                "name": "vap-isolation-743001d100_backend-data",
+                "rw": true,
+                "type": "volume"
+              },
+              {
+                "destination": "/canaries",
+                "name": "vap-isolation-743001d100_canaries",
+                "rw": false,
+                "type": "volume"
+              }
+            ],
+            "networks": {
+              "vap-isolation-743001d100_backend": {
+                "ip": "172.19.0.2"
+              }
+            },
+            "port_bindings": {},
+            "privileged": false,
+            "readonly_rootfs": true,
+            "security_opt": [
+              "no-new-privileges:true"
+            ],
+            "user": "10004:10004"
+          },
+          "gate": {
+            "cap_add": null,
+            "cap_drop": [
+              "ALL"
+            ],
+            "image_id": "sha256:840aacf866e863df0ff1d973dc1d0a213c26e8ec245ba20d79c5a3303b6d750f",
+            "mounts": [
+              {
+                "destination": "/run/role",
+                "name": "vap-isolation-743001d100_gate-config",
+                "rw": false,
+                "type": "volume"
+              },
+              {
+                "destination": "/data",
+                "name": "vap-isolation-743001d100_gate-data",
+                "rw": true,
+                "type": "volume"
+              },
+              {
+                "destination": "/canaries",
+                "name": "vap-isolation-743001d100_canaries",
+                "rw": false,
+                "type": "volume"
+              }
+            ],
+            "networks": {
+              "vap-isolation-743001d100_audit": {
+                "ip": "172.18.0.3"
+              },
+              "vap-isolation-743001d100_backend": {
+                "ip": "172.19.0.4"
+              },
+              "vap-isolation-743001d100_frontend": {
+                "ip": "172.20.0.2"
+              }
+            },
+            "port_bindings": {},
+            "privileged": false,
+            "readonly_rootfs": true,
+            "security_opt": [
+              "no-new-privileges:true"
+            ],
+            "user": "10002:10002"
+          },
+          "open-backend": {
+            "cap_add": null,
+            "cap_drop": [
+              "ALL"
+            ],
+            "image_id": "sha256:840aacf866e863df0ff1d973dc1d0a213c26e8ec245ba20d79c5a3303b6d750f",
+            "mounts": [
+              {
+                "destination": "/run/role",
+                "name": "vap-isolation-743001d100_open-backend-config",
+                "rw": false,
+                "type": "volume"
+              },
+              {
+                "destination": "/data",
+                "name": "vap-isolation-743001d100_open-backend-data",
+                "rw": true,
+                "type": "volume"
+              },
+              {
+                "destination": "/canaries",
+                "name": "vap-isolation-743001d100_canaries",
+                "rw": false,
+                "type": "volume"
+              }
+            ],
+            "networks": {
+              "vap-isolation-743001d100_backend": {
+                "ip": "172.19.0.3"
+              }
+            },
+            "port_bindings": {},
+            "privileged": false,
+            "readonly_rootfs": true,
+            "security_opt": [
+              "no-new-privileges:true"
+            ],
+            "user": "10005:10005"
+          }
+        }
+      }
+    },
+    {
+      "case": "05",
+      "description": "Authorized agent request through gate creates exactly one mock effect",
+      "matched": true,
+      "observed": {
+        "after": {
+          "effects": 1,
+          "requests": 1
+        },
+        "before": {
+          "effects": 0,
+          "requests": 0
+        },
+        "response": {
+          "http_status": 200,
+          "result": {
+            "backend_attempted": true,
+            "before_send_ms": 17.592936,
+            "reason": "signed_backend_receipt_durably_recorded",
+            "state": "confirmed_success",
+            "total_ms": 29.847343
+          }
+        }
+      }
+    },
+    {
+      "case": "06",
+      "description": "Agent direct call to backend literal IPv4 cannot connect or reach handler",
+      "matched": true,
+      "observed": {
+        "attempt": {
+          "connected": false,
+          "errno": 101,
+          "error": "OSError",
+          "http_status": null
+        },
+        "backend_counts": {
+          "effects": 1,
+          "requests": 1
+        },
+        "target_health": {
+          "ready": true,
+          "role": "backend"
+        }
+      }
+    },
+    {
+      "case": "07",
+      "description": "Agent direct call to audit literal IPv4 cannot connect",
+      "matched": true,
+      "observed": {
+        "attempt": {
+          "connected": false,
+          "errno": 101,
+          "error": "OSError",
+          "http_status": null
+        },
+        "backend_counts": {
+          "effects": 1,
+          "requests": 1
+        },
+        "target_health": {
+          "ready": true,
+          "role": "audit"
+        }
+      }
+    },
+    {
+      "case": "08",
+      "description": "Agent cannot reach even an unauthenticated mock API on the private backend network",
+      "matched": true,
+      "observed": {
+        "attempt": {
+          "connected": false,
+          "errno": 101,
+          "error": "OSError",
+          "http_status": null
+        },
+        "backend_counts": {
+          "effects": 0,
+          "requests": 0
+        },
+        "target_health": {
+          "ready": true,
+          "role": "open-backend"
+        }
+      }
+    },
+    {
+      "case": "09",
+      "description": "Gate rejects a caller-selected target and does not proxy arbitrary paths",
+      "matched": true,
+      "observed": {
+        "backend_counts": {
+          "effects": 1,
+          "requests": 1
+        },
+        "bad_target": {
+          "http_status": 200,
+          "result": {
+            "backend_attempted": false,
+            "reason": "unsupported_operation",
+            "state": "denied"
+          }
+        },
+        "proxy": {
+          "body": {
+            "error": "path_not_allowed"
+          },
+          "connected": true,
+          "http_status": 404
+        }
+      }
+    },
+    {
+      "case": "10",
+      "description": "CONNECT to gate is not an alternate backend route",
+      "matched": true,
+      "observed": {
+        "attempt": {
+          "body": {
+            "non_json_response": true
+          },
+          "connected": true,
+          "http_status": 501
+        },
+        "backend_counts": {
+          "effects": 1,
+          "requests": 1
+        }
+      }
+    },
+    {
+      "case": "11",
+      "description": "Deleting agent logs leaves signed audit evidence intact and verifiable",
+      "matched": true,
+      "observed": {
+        "audit_digest": "de07d81fd3c14017b3bc8a22d377f9a1cc654ed3b1c8e173449d4a9feb073376",
+        "created": {
+          "exists": true
+        },
+        "deleted": {
+          "exists": false
+        },
+        "evidence_digest": "2092e8369e181d3bfc9af0802e5ee0c674f5b454ab00aa99f98c0d6d669e2e53"
+      }
+    },
+    {
+      "case": "12",
+      "description": "Audit outage blocks a fresh operation before any API request",
+      "matched": true,
+      "observed": {
+        "backend_counts": {
+          "effects": 1,
+          "requests": 1
+        },
+        "response": {
+          "http_status": 200,
+          "result": {
+            "backend_attempted": false,
+            "reason": "pre_record_not_acknowledged",
+            "state": "blocked"
+          }
+        }
+      }
+    },
+    {
+      "case": "13",
+      "description": "Audit restart preserves evidence and known success without another write",
+      "matched": true,
+      "observed": {
+        "backend_counts": {
+          "effects": 1,
+          "requests": 1
+        },
+        "response": {
+          "http_status": 200,
+          "result": {
+            "backend_attempted": false,
+            "reason": "previously_confirmed_no_resend",
+            "state": "confirmed_success"
+          }
+        }
+      }
+    },
+    {
+      "case": "14",
+      "description": "Negative control: added backend route is reachable, API authentication still denies write",
+      "matched": true,
+      "observed": {
+        "attempt": {
+          "body": {
+            "error": "Rejected"
+          },
+          "connected": true,
+          "http_status": 403
+        },
+        "backend_counts": {
+          "effects": 1,
+          "requests": 2
+        },
+        "network_isolation_established": false,
+        "unauthorized_effect": false
+      }
+    },
+    {
+      "case": "15",
+      "description": "Negative control: added route plus unauthenticated mock API permits bypass; guarantee false",
+      "matched": true,
+      "observed": {
+        "attempt": {
+          "body": {
+            "algorithm": "Ed25519",
+            "body": {
+              "committed": true,
+              "kind": "backend_receipt",
+              "operation_digest": "289ab441e7295bdb22b0d3da2e61fb7dc1cb54ee910a44333233195b105670b8",
+              "operation_id": "direct-bypass-001"
+            },
+            "key_id": "backend",
+            "signature": "d4b3d25c54d3c33fdb1120b184845b26546f4590a12677ca98b6ff2167b15aa9837065d52fb71ede1a971ef0c7446f881ec14ce219af2dd62aff990e70a18106"
+          },
+          "connected": true,
+          "http_status": 200
+        },
+        "backend_counts": {
+          "effects": 1,
+          "requests": 1
+        },
+        "bypass_guarantee_established": false
+      }
+    },
+    {
+      "case": "16",
+      "description": "Removing the extra route restores connection denial",
+      "matched": true,
+      "observed": {
+        "attempt": {
+          "connected": false,
+          "errno": 101,
+          "error": "OSError",
+          "http_status": null
+        },
+        "backend_counts": {
+          "effects": 1,
+          "requests": 1
+        }
+      }
+    }
+  ],
+  "cases_executed": 16,
+  "execution_complete": true,
+  "execution_error": null,
+  "independent_reproduction": "not_established",
+  "matching_cases": 16,
+  "privileged_host_resistance": "not_established",
+  "production_ready": false,
+  "proposal_status": "experimental_unadopted",
+  "provenance": {
+    "baseline_commit": "2d4fda80b9e26cbaa51112fb2a65fdfb51d2bd1f",
+    "ci_run_id": "40056738307",
+    "commit": "24b41566fd7306f0fa558713bb6b465b3fd9faa3",
+    "controller_python": "3.12.15",
+    "dirty": false,
+    "os_execution_location": "Linux Docker engine",
+    "source_digest": "f9ddc5f0746ebdcaff0a3df1214c0f1a3e82e6fb4f8870d829fac78be89d6fc1",
+    "version": "0.1.0"
+  }
+}

@@ -1,0 +1,646 @@
+{
+  "cases": [
+    {
+      "actual": {
+        "INT-008": "verified",
+        "core_integrity": "verified",
+        "integrity": "verified",
+        "scope": "met"
+      },
+      "case": "01",
+      "description": "Complete delivery of 1000 records",
+      "differences": {},
+      "evidence_digest": "140beb8adfd5e94825b1275bceb166437d462271896eca53b9765bdf896740ac",
+      "expected": {
+        "INT-008": "verified",
+        "case": "01",
+        "core_integrity": "verified",
+        "description": "Complete delivery of 1000 records",
+        "integrity": "verified",
+        "reason": null,
+        "requirements": {
+          "INT-001/003": "verified",
+          "INT-002": "verified",
+          "INT-004": "indeterminate",
+          "INT-005": "verified",
+          "INT-006": "verified",
+          "INT-007": "indeterminate",
+          "INT-009": "indeterminate"
+        },
+        "scope": "met"
+      },
+      "reasons": [],
+      "requirements": {
+        "INT-001/003": "verified",
+        "INT-002": "verified",
+        "INT-004": "indeterminate",
+        "INT-005": "verified",
+        "INT-006": "verified",
+        "INT-007": "indeterminate",
+        "INT-008": "verified",
+        "INT-009": "indeterminate"
+      },
+      "trust_digest": "4bf5834dfff29d1d4b8440cb3be963f6ef10d06abfa31fcecaf5e633bf0e4558"
+    },
+    {
+      "actual": {
+        "INT-008": "failed",
+        "core_integrity": "verified",
+        "integrity": "verified",
+        "scope": "not_met"
+      },
+      "case": "02",
+      "description": "100 records removed after original commitment",
+      "differences": {},
+      "evidence_digest": "cfb2142f9a77f6268bb4742230fa315708ed6a06d424ea98d56f829b804bca7b",
+      "expected": {
+        "INT-008": "failed",
+        "case": "02",
+        "core_integrity": "verified",
+        "description": "100 records removed after original commitment",
+        "integrity": "verified",
+        "reason": "missing_delivery",
+        "requirements": {
+          "INT-001/003": "verified",
+          "INT-002": "verified",
+          "INT-004": "indeterminate",
+          "INT-005": "verified",
+          "INT-006": "verified",
+          "INT-007": "indeterminate",
+          "INT-009": "indeterminate"
+        },
+        "scope": "not_met"
+      },
+      "reasons": [
+        "missing_delivery"
+      ],
+      "requirements": {
+        "INT-001/003": "verified",
+        "INT-002": "verified",
+        "INT-004": "indeterminate",
+        "INT-005": "verified",
+        "INT-006": "verified",
+        "INT-007": "indeterminate",
+        "INT-008": "failed",
+        "INT-009": "indeterminate"
+      },
+      "trust_digest": "4bf5834dfff29d1d4b8440cb3be963f6ef10d06abfa31fcecaf5e633bf0e4558"
+    },
+    {
+      "actual": {
+        "INT-008": "indeterminate",
+        "core_integrity": "failed",
+        "integrity": "failed",
+        "scope": "indeterminate"
+      },
+      "case": "03",
+      "description": "Payload tampered without matching signature",
+      "differences": {},
+      "evidence_digest": "42ee31caf892dedb0bb3636080ded258e40e2f6de4ceba9ddc59db6a5c6ee0ae",
+      "expected": {
+        "INT-008": "indeterminate",
+        "case": "03",
+        "core_integrity": "failed",
+        "description": "Payload tampered without matching signature",
+        "integrity": "failed",
+        "reason": "included_record_unverified",
+        "requirements": {
+          "INT-001/003": "failed",
+          "INT-002": "verified",
+          "INT-004": "indeterminate",
+          "INT-005": "failed",
+          "INT-006": "failed",
+          "INT-007": "indeterminate",
+          "INT-009": "indeterminate"
+        },
+        "scope": "indeterminate"
+      },
+      "reasons": [
+        "cryptographic_prerequisite",
+        "included_record_unverified"
+      ],
+      "requirements": {
+        "INT-001/003": "failed",
+        "INT-002": "verified",
+        "INT-004": "indeterminate",
+        "INT-005": "failed",
+        "INT-006": "failed",
+        "INT-007": "indeterminate",
+        "INT-008": "indeterminate",
+        "INT-009": "indeterminate"
+      },
+      "trust_digest": "4bf5834dfff29d1d4b8440cb3be963f6ef10d06abfa31fcecaf5e633bf0e4558"
+    },
+    {
+      "actual": {
+        "INT-008": "failed",
+        "core_integrity": "verified",
+        "integrity": "verified",
+        "scope": "not_met"
+      },
+      "case": "04",
+      "description": "1000 records with duplicate replacements for missing IDs",
+      "differences": {},
+      "evidence_digest": "bf6facf17397e3dc34f3696f76ca850c40f56cfb25b0d6e92be3e94d94461e7b",
+      "expected": {
+        "INT-008": "failed",
+        "case": "04",
+        "core_integrity": "verified",
+        "description": "1000 records with duplicate replacements for missing IDs",
+        "integrity": "verified",
+        "reason": "missing_delivery",
+        "requirements": {
+          "INT-001/003": "verified",
+          "INT-002": "failed",
+          "INT-004": "indeterminate",
+          "INT-005": "verified",
+          "INT-006": "verified",
+          "INT-007": "indeterminate",
+          "INT-009": "indeterminate"
+        },
+        "scope": "not_met"
+      },
+      "reasons": [
+        "duplicate_delivery",
+        "missing_delivery"
+      ],
+      "requirements": {
+        "INT-001/003": "verified",
+        "INT-002": "failed",
+        "INT-004": "indeterminate",
+        "INT-005": "verified",
+        "INT-006": "verified",
+        "INT-007": "indeterminate",
+        "INT-008": "failed",
+        "INT-009": "indeterminate"
+      },
+      "trust_digest": "4bf5834dfff29d1d4b8440cb3be963f6ef10d06abfa31fcecaf5e633bf0e4558"
+    },
+    {
+      "actual": {
+        "INT-008": "verified",
+        "core_integrity": "verified",
+        "integrity": "verified",
+        "scope": "indeterminate"
+      },
+      "case": "05",
+      "description": "Expected inventory and authoritative closure unavailable",
+      "differences": {},
+      "evidence_digest": "a01e7da0c02261eb4c523751a9cdf7d25c8937a3123578cdcdbfe5a047a95a12",
+      "expected": {
+        "INT-008": "verified",
+        "case": "05",
+        "core_integrity": "verified",
+        "description": "Expected inventory and authoritative closure unavailable",
+        "integrity": "verified",
+        "reason": "expected_set_unknown",
+        "requirements": {
+          "INT-001/003": "verified",
+          "INT-002": "verified",
+          "INT-004": "indeterminate",
+          "INT-005": "verified",
+          "INT-006": "verified",
+          "INT-007": "indeterminate",
+          "INT-009": "indeterminate"
+        },
+        "scope": "indeterminate"
+      },
+      "reasons": [
+        "expected_set_unknown",
+        "source_unclosed"
+      ],
+      "requirements": {
+        "INT-001/003": "verified",
+        "INT-002": "verified",
+        "INT-004": "indeterminate",
+        "INT-005": "verified",
+        "INT-006": "verified",
+        "INT-007": "indeterminate",
+        "INT-008": "verified",
+        "INT-009": "indeterminate"
+      },
+      "trust_digest": "4bf5834dfff29d1d4b8440cb3be963f6ef10d06abfa31fcecaf5e633bf0e4558"
+    },
+    {
+      "actual": {
+        "INT-008": "failed",
+        "core_integrity": "verified",
+        "integrity": "verified",
+        "scope": "indeterminate"
+      },
+      "case": "06",
+      "description": "Notification receipt absent; notification source unclosed",
+      "differences": {},
+      "evidence_digest": "41126bbf746d944eba46f0e8c8cce26ce39f9a1f53e7ccb7417dabf645b81249",
+      "expected": {
+        "INT-008": "failed",
+        "case": "06",
+        "core_integrity": "verified",
+        "description": "Notification receipt absent; notification source unclosed",
+        "integrity": "verified",
+        "reason": "notification_evidence_unclosed",
+        "requirements": {
+          "INT-001/003": "verified",
+          "INT-002": "verified",
+          "INT-004": "indeterminate",
+          "INT-005": "verified",
+          "INT-006": "verified",
+          "INT-007": "indeterminate",
+          "INT-009": "indeterminate"
+        },
+        "scope": "indeterminate"
+      },
+      "reasons": [
+        "notification_evidence_unclosed"
+      ],
+      "requirements": {
+        "INT-001/003": "verified",
+        "INT-002": "verified",
+        "INT-004": "indeterminate",
+        "INT-005": "verified",
+        "INT-006": "verified",
+        "INT-007": "indeterminate",
+        "INT-008": "failed",
+        "INT-009": "indeterminate"
+      },
+      "trust_digest": "072223acb94365e5b77e519f1016913f830e2ae2bbe5b299282503ee0ef4ef6b"
+    },
+    {
+      "actual": {
+        "INT-008": "failed",
+        "core_integrity": "verified",
+        "integrity": "verified",
+        "scope": "not_met"
+      },
+      "case": "07",
+      "description": "Required notification receipt explicitly withheld after deadline",
+      "differences": {},
+      "evidence_digest": "f2e00ac55829bd3aafb085e63d03e1d512e2d230a08d616e0b4b5277a16cf9ba",
+      "expected": {
+        "INT-008": "failed",
+        "case": "07",
+        "core_integrity": "verified",
+        "description": "Required notification receipt explicitly withheld after deadline",
+        "integrity": "verified",
+        "reason": "required_evidence_withheld",
+        "requirements": {
+          "INT-001/003": "verified",
+          "INT-002": "verified",
+          "INT-004": "indeterminate",
+          "INT-005": "verified",
+          "INT-006": "verified",
+          "INT-007": "indeterminate",
+          "INT-009": "indeterminate"
+        },
+        "scope": "not_met"
+      },
+      "reasons": [
+        "required_evidence_withheld"
+      ],
+      "requirements": {
+        "INT-001/003": "verified",
+        "INT-002": "verified",
+        "INT-004": "indeterminate",
+        "INT-005": "verified",
+        "INT-006": "verified",
+        "INT-007": "indeterminate",
+        "INT-008": "failed",
+        "INT-009": "indeterminate"
+      },
+      "trust_digest": "072223acb94365e5b77e519f1016913f830e2ae2bbe5b299282503ee0ef4ef6b"
+    },
+    {
+      "actual": {
+        "INT-008": "failed",
+        "core_integrity": "verified",
+        "integrity": "verified",
+        "scope": "not_met"
+      },
+      "case": "08",
+      "description": "Required record unavailable after finalized deadline",
+      "differences": {},
+      "evidence_digest": "7ef4d66b4319bb4552ee0f007d783d288cdc294697061f36430112d4a91dbdc1",
+      "expected": {
+        "INT-008": "failed",
+        "case": "08",
+        "core_integrity": "verified",
+        "description": "Required record unavailable after finalized deadline",
+        "integrity": "verified",
+        "reason": "required_evidence_unavailable",
+        "requirements": {
+          "INT-001/003": "verified",
+          "INT-002": "verified",
+          "INT-004": "indeterminate",
+          "INT-005": "verified",
+          "INT-006": "verified",
+          "INT-007": "indeterminate",
+          "INT-009": "indeterminate"
+        },
+        "scope": "not_met"
+      },
+      "reasons": [
+        "required_evidence_unavailable"
+      ],
+      "requirements": {
+        "INT-001/003": "verified",
+        "INT-002": "verified",
+        "INT-004": "indeterminate",
+        "INT-005": "verified",
+        "INT-006": "verified",
+        "INT-007": "indeterminate",
+        "INT-008": "failed",
+        "INT-009": "indeterminate"
+      },
+      "trust_digest": "4bf5834dfff29d1d4b8440cb3be963f6ef10d06abfa31fcecaf5e633bf0e4558"
+    },
+    {
+      "actual": {
+        "INT-008": "failed",
+        "core_integrity": "verified",
+        "integrity": "verified",
+        "scope": "met"
+      },
+      "case": "09",
+      "description": "Withheld payload with permitted verified commitment",
+      "differences": {},
+      "evidence_digest": "15c611f5f24eced799ab5301ae79330cc3cdc3fa35ba00c31a3cdd3aa3f68946",
+      "expected": {
+        "INT-008": "failed",
+        "case": "09",
+        "core_integrity": "verified",
+        "description": "Withheld payload with permitted verified commitment",
+        "integrity": "verified",
+        "reason": null,
+        "requirements": {
+          "INT-001/003": "verified",
+          "INT-002": "verified",
+          "INT-004": "indeterminate",
+          "INT-005": "verified",
+          "INT-006": "verified",
+          "INT-007": "indeterminate",
+          "INT-009": "indeterminate"
+        },
+        "scope": "met"
+      },
+      "reasons": [],
+      "requirements": {
+        "INT-001/003": "verified",
+        "INT-002": "verified",
+        "INT-004": "indeterminate",
+        "INT-005": "verified",
+        "INT-006": "verified",
+        "INT-007": "indeterminate",
+        "INT-008": "failed",
+        "INT-009": "indeterminate"
+      },
+      "trust_digest": "9858bc93106d15a6d5c5fd5206299af81dc5db1ef06990bf2bbec019ad460f7c"
+    },
+    {
+      "actual": {
+        "INT-008": "verified",
+        "core_integrity": "verified",
+        "integrity": "verified",
+        "scope": "not_met"
+      },
+      "case": "10",
+      "description": "Signed producer and execution records contradict equality rule",
+      "differences": {},
+      "evidence_digest": "c7fc88ef91bf8d5241e5dcf9c9c1e7d1959a9c5864276c58d9d4362e80fa6fb2",
+      "expected": {
+        "INT-008": "verified",
+        "case": "10",
+        "core_integrity": "verified",
+        "description": "Signed producer and execution records contradict equality rule",
+        "integrity": "verified",
+        "reason": "source_disagreement",
+        "requirements": {
+          "INT-001/003": "verified",
+          "INT-002": "verified",
+          "INT-004": "indeterminate",
+          "INT-005": "verified",
+          "INT-006": "verified",
+          "INT-007": "indeterminate",
+          "INT-009": "indeterminate"
+        },
+        "scope": "not_met"
+      },
+      "reasons": [
+        "source_disagreement"
+      ],
+      "requirements": {
+        "INT-001/003": "verified",
+        "INT-002": "verified",
+        "INT-004": "indeterminate",
+        "INT-005": "verified",
+        "INT-006": "verified",
+        "INT-007": "indeterminate",
+        "INT-008": "verified",
+        "INT-009": "indeterminate"
+      },
+      "trust_digest": "9973fdff6452c0f764bd5efaf556eba1265a3dda49286caa1dca9f09ac2e2c16"
+    },
+    {
+      "actual": {
+        "INT-008": "verified",
+        "core_integrity": "verified",
+        "integrity": "indeterminate",
+        "scope": "indeterminate"
+      },
+      "case": "11",
+      "description": "Scope has no accepted external timing proof",
+      "differences": {},
+      "evidence_digest": "53deb820f4e0b78bf92d07cb9cef84dfff827b89f13bbc80100ce85307e5fcb1",
+      "expected": {
+        "INT-008": "verified",
+        "case": "11",
+        "core_integrity": "verified",
+        "description": "Scope has no accepted external timing proof",
+        "integrity": "indeterminate",
+        "reason": "advance_commitment_unknown",
+        "requirements": {
+          "INT-001/003": "verified",
+          "INT-002": "verified",
+          "INT-004": "indeterminate",
+          "INT-005": "verified",
+          "INT-006": "verified",
+          "INT-007": "indeterminate",
+          "INT-009": "indeterminate"
+        },
+        "scope": "indeterminate"
+      },
+      "reasons": [
+        "advance_commitment_unknown",
+        "cryptographic_prerequisite"
+      ],
+      "requirements": {
+        "INT-001/003": "verified",
+        "INT-002": "verified",
+        "INT-004": "indeterminate",
+        "INT-005": "verified",
+        "INT-006": "verified",
+        "INT-007": "indeterminate",
+        "INT-008": "verified",
+        "INT-009": "indeterminate"
+      },
+      "trust_digest": "4bf5834dfff29d1d4b8440cb3be963f6ef10d06abfa31fcecaf5e633bf0e4558"
+    },
+    {
+      "actual": {
+        "INT-008": "verified",
+        "core_integrity": "verified",
+        "integrity": "verified",
+        "scope": "not_met"
+      },
+      "case": "12",
+      "description": "Closed trusted register proves late first acceptance",
+      "differences": {},
+      "evidence_digest": "d61afe0626f387174927bf1f6d676b5d336d7eff579af1557f060c88cb5bc514",
+      "expected": {
+        "INT-008": "verified",
+        "case": "12",
+        "core_integrity": "verified",
+        "description": "Closed trusted register proves late first acceptance",
+        "integrity": "verified",
+        "reason": "late_first_acceptance",
+        "requirements": {
+          "INT-001/003": "verified",
+          "INT-002": "verified",
+          "INT-004": "indeterminate",
+          "INT-005": "verified",
+          "INT-006": "verified",
+          "INT-007": "indeterminate",
+          "INT-009": "indeterminate"
+        },
+        "scope": "not_met"
+      },
+      "reasons": [
+        "late_first_acceptance"
+      ],
+      "requirements": {
+        "INT-001/003": "verified",
+        "INT-002": "verified",
+        "INT-004": "indeterminate",
+        "INT-005": "verified",
+        "INT-006": "verified",
+        "INT-007": "indeterminate",
+        "INT-008": "verified",
+        "INT-009": "indeterminate"
+      },
+      "trust_digest": "4bf5834dfff29d1d4b8440cb3be963f6ef10d06abfa31fcecaf5e633bf0e4558"
+    },
+    {
+      "actual": {
+        "INT-008": "verified",
+        "core_integrity": "verified",
+        "integrity": "verified",
+        "scope": "indeterminate"
+      },
+      "case": "13",
+      "description": "Expectation source reports unresolved observation gap",
+      "differences": {},
+      "evidence_digest": "1971a66014b4eaa9cc3090bd9f4b60dd37613fd5ebf4b4b5611512e8ccdd90c8",
+      "expected": {
+        "INT-008": "verified",
+        "case": "13",
+        "core_integrity": "verified",
+        "description": "Expectation source reports unresolved observation gap",
+        "integrity": "verified",
+        "reason": "observation_gap",
+        "requirements": {
+          "INT-001/003": "verified",
+          "INT-002": "verified",
+          "INT-004": "indeterminate",
+          "INT-005": "verified",
+          "INT-006": "verified",
+          "INT-007": "indeterminate",
+          "INT-009": "indeterminate"
+        },
+        "scope": "indeterminate"
+      },
+      "reasons": [
+        "observation_gap"
+      ],
+      "requirements": {
+        "INT-001/003": "verified",
+        "INT-002": "verified",
+        "INT-004": "indeterminate",
+        "INT-005": "verified",
+        "INT-006": "verified",
+        "INT-007": "indeterminate",
+        "INT-008": "verified",
+        "INT-009": "indeterminate"
+      },
+      "trust_digest": "4bf5834dfff29d1d4b8440cb3be963f6ef10d06abfa31fcecaf5e633bf0e4558"
+    },
+    {
+      "actual": {
+        "INT-008": "verified",
+        "core_integrity": "verified",
+        "integrity": "failed",
+        "scope": "indeterminate"
+      },
+      "case": "14",
+      "description": "Scope from another exercise substituted",
+      "differences": {},
+      "evidence_digest": "2bedac418dbeb542fd46de5a90fade35f20dd33cae83822a5abda7b70b3883ff",
+      "expected": {
+        "INT-008": "verified",
+        "case": "14",
+        "core_integrity": "verified",
+        "description": "Scope from another exercise substituted",
+        "integrity": "failed",
+        "reason": "scope_authority",
+        "requirements": {
+          "INT-001/003": "verified",
+          "INT-002": "verified",
+          "INT-004": "indeterminate",
+          "INT-005": "verified",
+          "INT-006": "verified",
+          "INT-007": "indeterminate",
+          "INT-009": "indeterminate"
+        },
+        "scope": "indeterminate"
+      },
+      "reasons": [
+        "advance_commitment_unknown",
+        "scope_authority"
+      ],
+      "requirements": {
+        "INT-001/003": "verified",
+        "INT-002": "verified",
+        "INT-004": "indeterminate",
+        "INT-005": "verified",
+        "INT-006": "verified",
+        "INT-007": "indeterminate",
+        "INT-008": "verified",
+        "INT-009": "indeterminate"
+      },
+      "trust_digest": "4bf5834dfff29d1d4b8440cb3be963f6ef10d06abfa31fcecaf5e633bf0e4558"
+    }
+  ],
+  "cases_executed": 14,
+  "evaluation_time": 2000000400,
+  "external_time_attestation": "simulated_not_independent",
+  "fixture_manifest_digest": "9c3c5f9ddb3a57e9752a9086166303022f9c6777cef41f81ba10f7ef2c750ae9",
+  "full_conformance": "not_assessed",
+  "matching_cases": 14,
+  "mismatching_cases": [],
+  "overall_vap_pass": null,
+  "proposal_status": "experimental_unadopted",
+  "provenance": {
+    "dependencies": {
+      "cffi": "2.1.1",
+      "cryptography": "50.0.2",
+      "pycparser": "3.12",
+      "rfc8785": "0.1.4"
+    },
+    "fixture_commit": "24b41566fd7306f0fa558713bb6b465b3fd9faa3",
+    "implementation_commit": "24b41566fd7306f0fa558713bb6b465b3fd9faa3",
+    "independent_reproduction": "not_established",
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "python": "3.12.15",
+    "source_digest": "ac9e1736718bac3b98257b54a78a33bedce9f14f39997929bafcda48f5f47be5",
+    "working_tree_dirty": false
+  },
+  "test_execution": "internal_synthetic_only"
+}

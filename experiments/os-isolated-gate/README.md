@@ -76,8 +76,8 @@ re-execute the OS experiment or authenticate the host's network observations.
 
 A dedicated `.github/workflows/os-isolated-gate.yml` runs the actual Linux lab
 and the unchanged gate/verifier regression and acceptance suites. Local Mac
-controller tests do **not** establish Linux OS isolation. See `results/` for
-retained actual execution records when available; the script alone is not a result.
+controller tests do **not** establish Linux OS isolation. See [the retained execution record](results/README.md) for actual results
+and source provenance; the script alone is not a result.
 
 ## Sixteen measured cases
 
@@ -113,6 +113,10 @@ built from actual signed audit events and backend receipts, then passed through
 the **unchanged** existing verifier. `vap-v1.2` does not acquire scope evaluation;
 `experimental-scope` stays explicitly unadopted. Cryptographic integrity and
 scope fulfillment remain separate fields. No `signature_valid` input flag is used.
+The evidence bundle covers only the first authorized operation's request,
+dispatch intent and result. The second blocked attempt and OS probes are separate
+controller observations outside that declared scope. A scope result of `met`
+is not an overall security verdict on the sixteen cases.
 All identity/approval/time evidence is synthetic; the scope receipt is signed by a
 test key and is **not independent third-party time evidence**. Fixed logical times
 are fixture values, not assertions about wall-clock issuance or production expiry.
