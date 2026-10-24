@@ -74,6 +74,8 @@ Status values follow the normative registry in VAP v1.2 §4.5.2; that registry p
 | **DAP** (VAP-AGENT) | Delegated Access Provenance | VSO-VAP-DAP-001 | v0.1.0 Working Draft |
 | **SMP** (VAP-SLEEP) | Self-Modification Provenance | VSO-VAP-SMP-SPEC-001 | v0.2.0 Working Draft |
 
+**Working Draft texts are not yet public.** VAP v1.2 §4.5.2 defines a Working Draft as "Published for technical discussion", but the texts of OAP, MAP and PAP (Track B), and of the DAP and SMP capabilities, have not been published in any VSO repository. A review on 24 October 2026 found passages in each that conflict with VAP v1.2 Draft 3 or with corrections VSO has made since. Until revised texts are published, the rows above give each document's status in the registry, not its availability.
+
 CAP v1.0 has published a [draft mapping](https://github.com/veritaschain/cap-spec/blob/beb0c44d0991ce191999949db3276471d92eb44e/docs/conformance/CAP-v1.0-VAP-v1.2-Draft3-Conformance-Mapping.md) against VAP v1.2 Draft 3; it identifies unresolved divergences and does not establish conformance. CPP v1.4's mapping remains unpublished. Full conformance has not been established for either profile (VAP v1.2 §10.4).
 
 ---
