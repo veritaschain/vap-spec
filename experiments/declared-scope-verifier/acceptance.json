@@ -14,7 +14,8 @@
       "INT-004": "indeterminate",
       "INT-007": "indeterminate",
       "INT-009": "indeterminate"
-    }
+    },
+    "core_integrity": "verified"
   },
   {
     "case": "02",
@@ -31,7 +32,8 @@
       "INT-004": "indeterminate",
       "INT-007": "indeterminate",
       "INT-009": "indeterminate"
-    }
+    },
+    "core_integrity": "verified"
   },
   {
     "case": "03",
@@ -48,7 +50,8 @@
       "INT-004": "indeterminate",
       "INT-007": "indeterminate",
       "INT-009": "indeterminate"
-    }
+    },
+    "core_integrity": "failed"
   },
   {
     "case": "04",
@@ -65,7 +68,8 @@
       "INT-004": "indeterminate",
       "INT-007": "indeterminate",
       "INT-009": "indeterminate"
-    }
+    },
+    "core_integrity": "verified"
   },
   {
     "case": "05",
@@ -82,7 +86,8 @@
       "INT-004": "indeterminate",
       "INT-007": "indeterminate",
       "INT-009": "indeterminate"
-    }
+    },
+    "core_integrity": "verified"
   },
   {
     "case": "06",
@@ -99,7 +104,8 @@
       "INT-004": "indeterminate",
       "INT-007": "indeterminate",
       "INT-009": "indeterminate"
-    }
+    },
+    "core_integrity": "verified"
   },
   {
     "case": "07",
@@ -116,7 +122,8 @@
       "INT-004": "indeterminate",
       "INT-007": "indeterminate",
       "INT-009": "indeterminate"
-    }
+    },
+    "core_integrity": "verified"
   },
   {
     "case": "08",
@@ -133,7 +140,8 @@
       "INT-004": "indeterminate",
       "INT-007": "indeterminate",
       "INT-009": "indeterminate"
-    }
+    },
+    "core_integrity": "verified"
   },
   {
     "case": "09",
@@ -150,7 +158,8 @@
       "INT-004": "indeterminate",
       "INT-007": "indeterminate",
       "INT-009": "indeterminate"
-    }
+    },
+    "core_integrity": "verified"
   },
   {
     "case": "10",
@@ -167,7 +176,8 @@
       "INT-004": "indeterminate",
       "INT-007": "indeterminate",
       "INT-009": "indeterminate"
-    }
+    },
+    "core_integrity": "verified"
   },
   {
     "case": "11",
@@ -184,7 +194,8 @@
       "INT-004": "indeterminate",
       "INT-007": "indeterminate",
       "INT-009": "indeterminate"
-    }
+    },
+    "core_integrity": "verified"
   },
   {
     "case": "12",
@@ -201,7 +212,8 @@
       "INT-004": "indeterminate",
       "INT-007": "indeterminate",
       "INT-009": "indeterminate"
-    }
+    },
+    "core_integrity": "verified"
   },
   {
     "case": "13",
@@ -218,7 +230,8 @@
       "INT-004": "indeterminate",
       "INT-007": "indeterminate",
       "INT-009": "indeterminate"
-    }
+    },
+    "core_integrity": "verified"
   },
   {
     "case": "14",
@@ -235,6 +248,7 @@
       "INT-004": "indeterminate",
       "INT-007": "indeterminate",
       "INT-009": "indeterminate"
-    }
+    },
+    "core_integrity": "verified"
   }
 ]

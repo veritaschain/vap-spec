@@ -48,7 +48,8 @@ def suite(output):
         write_json(output / f"{case}.experimental.report.json", result)
         write_json(output / f"{case}.v1.2.report.json", core)
         requirements = {c["check"]: c["result"] for c in result["v1_2_requirements"]}
-        actual = {"integrity": result["integrity"]["result"], "scope": result["scope_fulfillment"]["result"],
+        actual = {"integrity": result["integrity"]["result"], "core_integrity": core["integrity"]["result"],
+                  "scope": result["scope_fulfillment"]["result"],
                   "INT-008": requirements["INT-008"]}
         reasons = {item["code"] for item in result["scope_fulfillment"]["violations"] + result["scope_fulfillment"]["unresolved"]}
         differences = {key: {"expected": expected[key], "actual": actual[key]}
@@ -56,6 +57,9 @@ def suite(output):
         for key, value in expected.get("requirements", {}).items():
             if requirements[key] != value:
                 differences[key] = {"expected": value, "actual": requirements[key]}
+        core_requirements = {c["check"]: c["result"] for c in core["v1_2_requirements"]}
+        if core_requirements != requirements:
+            differences["mode_requirement_isolation"] = {"core": core_requirements, "extension": requirements}
         if expected["reason"] and expected["reason"] not in reasons:
             differences["reason"] = {"expected": expected["reason"], "actual": sorted(reasons)}
         if core["scope_fulfillment"] is not None or core["proposal_status"] != "not_applied":
@@ -66,7 +70,7 @@ def suite(output):
         if differences:
             mismatches.append(case)
         print(f"{case} {'MATCH' if not differences else 'MISMATCH'}: "
-              f"integrity={actual['integrity']} scope={actual['scope']} INT-008={actual['INT-008']}")
+              f"core={actual['core_integrity']} integrity={actual['integrity']} scope={actual['scope']} INT-008={actual['INT-008']}")
     report = {"provenance": run_provenance, "evaluation_time": EVALUATION_TIME,
               "test_execution": "internal_synthetic_only", "proposal_status": "experimental_unadopted",
               "external_time_attestation": "simulated_not_independent", "cases_executed": len(rows),
