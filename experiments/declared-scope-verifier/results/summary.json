@@ -634,12 +634,12 @@
       "pycparser": "3.12",
       "rfc8785": "0.1.4"
     },
-    "fixture_commit": "3ecbaa226b2b371e86a1616c0444a424c9a7d5eb",
-    "implementation_commit": "3ecbaa226b2b371e86a1616c0444a424c9a7d5eb",
+    "fixture_commit": "979c76e5ce30281c5c3f7b217227f3ce4fe938e7",
+    "implementation_commit": "979c76e5ce30281c5c3f7b217227f3ce4fe938e7",
     "independent_reproduction": "not_established",
     "platform": "macOS-26.3.1-arm64-arm-64bit-Mach-O",
     "python": "3.14.3",
-    "source_digest": "5f6f3e1b398ecf5d49b1ef09f51d0e1583b1859563be8ce188f65ca3171bad94",
+    "source_digest": "ac9e1736718bac3b98257b54a78a33bedce9f14f39997929bafcda48f5f47be5",
     "working_tree_dirty": false
   },
   "test_execution": "internal_synthetic_only"

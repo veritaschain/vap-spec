@@ -1,12 +1,13 @@
 # Internal synthetic execution record — 2026-10-24 JST
 
-Tested code and fixture generator: [`3ecbaa226b2b371e86a1616c0444a424c9a7d5eb`](https://github.com/veritaschain/vap-spec/commit/3ecbaa226b2b371e86a1616c0444a424c9a7d5eb).
+Tested code and fixture generator: [`979c76e5ce30281c5c3f7b217227f3ce4fe938e7`](https://github.com/veritaschain/vap-spec/commit/979c76e5ce30281c5c3f7b217227f3ce4fe938e7).
 The worktree was clean during execution. Python 3.14.3, macOS arm64; exact dependencies and content digests
 are in [summary.json](summary.json). This subsequent documentation commit records that run without changing
 the tested implementation.
 
-**14/14 scenario expectations matched in both modes. 49/49 additional regression tests passed.**
+**14/14 scenario expectations matched in both modes. 64/64 additional regression tests passed.**
 This is internal synthetic execution, not independent reproduction, specification adoption or full conformance.
+[Final-review findings and repairs](../FINAL-REVIEW.md) explain the additional regression coverage in 0.1.1.
 
 | Case | Experimental integrity | Experimental scope | Current INT-008 |
 | --- | --- | --- | --- |
