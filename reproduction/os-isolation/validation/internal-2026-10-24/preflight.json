@@ -1,0 +1,34 @@
+{
+  "compose": "2.38.2",
+  "dependencies": {
+    "cffi": "2.1.1",
+    "cryptography": "50.0.2",
+    "pycparser": "3.12",
+    "rfc8785": "0.1.4"
+  },
+  "docker": {
+    "kernel": "6.17.0-1022-azure",
+    "os": "linux",
+    "security": [
+      "name=apparmor",
+      "name=seccomp,profile=builtin",
+      "name=cgroupns"
+    ],
+    "version": "28.0.4"
+  },
+  "host_kernel": "6.17.0-1022-azure",
+  "host_system": "Linux",
+  "machine": "x86_64",
+  "python": "3.12.15",
+  "reference_version_matches": {
+    "compose": true,
+    "docker": true,
+    "kernel": true,
+    "python": true
+  },
+  "source": {
+    "commit": "c8ccf972196a16d11429a478f4918a08fe27bb73",
+    "files_checked": 71,
+    "source_lock_sha256": "f8daa23d8fce778eaa6b320d18e0da69919e8bb1086a8091dc0c923d17ebc7a3"
+  }
+}
