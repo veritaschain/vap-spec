@@ -21,7 +21,7 @@
 VAP makes AI decision records **auditable, attributable, and — at anchor granularity — completeness-verifiable after the fact**. It is post-hoc only: it does not prevent, block, or intercept any AI behaviour, and it does not warrant that any recorded decision was correct, fair, or safe.
 
 VAP is **NOT** a regulation that restricts AI use.<br>
-VAP **IS** an evidence infrastructure standard for safe continued AI operation.
+VAP **IS** an evidence infrastructure framework for reviewing recorded AI operations.
 
 > **"Encoding Trust in the AI Age"**
 
@@ -74,7 +74,7 @@ Status values follow the normative registry in VAP v1.2 §4.5.2; that registry p
 | **DAP** (VAP-AGENT) | Delegated Access Provenance | VSO-VAP-DAP-001 | v0.1.0 Working Draft |
 | **SMP** (VAP-SLEEP) | Self-Modification Provenance | VSO-VAP-SMP-SPEC-001 | v0.2.0 Working Draft |
 
-CAP v1.0 and CPP v1.4 owe a VAP v1.2 conformance mapping that has not yet been published; until it is, neither may be described as VAP v1.2 conformant (VAP v1.2 §10.4).
+CAP v1.0 has published a [draft mapping](https://github.com/veritaschain/cap-spec/blob/beb0c44d0991ce191999949db3276471d92eb44e/docs/conformance/CAP-v1.0-VAP-v1.2-Draft3-Conformance-Mapping.md) against VAP v1.2 Draft 3; it identifies unresolved divergences and does not establish conformance. CPP v1.4's mapping remains unpublished. Full conformance has not been established for either profile (VAP v1.2 §10.4).
 
 ---
 
