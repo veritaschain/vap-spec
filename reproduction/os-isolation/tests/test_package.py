@@ -157,6 +157,51 @@ class PackageTests(unittest.TestCase):
                 self.assertEqual(hashlib.sha256(archive.read(prefix + name)).hexdigest(), digest)
         with self.assertRaises(FileExistsError): r.pack(first)
 
+    def completed_output(self):
+        output = self.path / 'complete'; output.mkdir(); (output / 'logs').mkdir()
+        frozen = {'commit': 'fixed'}
+        preflight = {'source': frozen}
+        r.save(output / 'preflight.json', preflight)
+        report = {'status': 'matched', 'independence': 'not_assessed',
+                  'proposal_status': 'experimental_unadopted', 'overall_vap_pass': None,
+                  'kit_files_sha256': r.kit_digests(), 'preflight': preflight,
+                  'postflight_source': frozen, 'steps': []}
+        for name in ['lab-unit', 'gate-unit', 'verifier-unit', 'lab', 'gate', 'verifier', 'artifact-recheck']:
+            log = output / 'logs' / (name + '.log')
+            count = self.expected['unit_tests'].get(name)
+            log.write_text('Ran ' + str(count) + ' tests in 0.1s' if count else 'complete')
+            result = {'step': name, 'ok': True, 'completed': True, 'returncode': 0, 'log_sha256': r.sha(log)}
+            if count: result.update(tests_executed=count, expected_tests=count)
+            report['steps'].append(result)
+        r.save(output / 'run-report.json', report)
+        r.save(output / 'SHA256SUMS.json', r.inventory(output))
+        return output, report, frozen
+
+    def test_saved_run_checks_all_steps_and_counts(self):
+        output, report, frozen = self.completed_output()
+        with patch.object(r, 'verify_source', return_value=frozen), patch.object(r, 'command', return_value='rechecked') as check:
+            r.check_run(self.path / 'source', output)
+            check.assert_called_once()
+        # Rewrite even the unsigned hashes: the fixed step inventory must still reject this.
+        report['steps'].pop()
+        r.save(output / 'run-report.json', report); r.save(output / 'SHA256SUMS.json', r.inventory(output))
+        with patch.object(r, 'verify_source', return_value=frozen), self.assertRaisesRegex(ValueError, 'step_inventory'):
+            r.check_run(self.path / 'source', output)
+
+    def test_saved_run_rejects_skipped_tests_even_with_rehashed_report(self):
+        output, report, frozen = self.completed_output()
+        log = output / 'logs/lab-unit.log'; log.write_text('Ran 0 tests in 0.0s')
+        report['steps'][0].update(log_sha256=r.sha(log), tests_executed=0)
+        r.save(output / 'run-report.json', report); r.save(output / 'SHA256SUMS.json', r.inventory(output))
+        with patch.object(r, 'verify_source', return_value=frozen), self.assertRaisesRegex(ValueError, 'unit_test_count'):
+            r.check_run(self.path / 'source', output)
+
+    def test_saved_run_rejects_added_file(self):
+        output, report, frozen = self.completed_output()
+        (output / 'extra').write_text('extra')
+        with patch.object(r, 'verify_source', return_value=frozen), self.assertRaisesRegex(ValueError, 'inventory_or_hash'):
+            r.check_run(self.path / 'source', output)
+
     def test_environment_drops_import_and_compose_overrides(self):
         with patch.dict(r.os.environ, {'PYTHONPATH': '/bad', 'PYTHONHOME': '/bad', 'COMPOSE_PROFILES': 'bad', 'COMPOSE_FILE': 'bad'}):
             env = r.environment()

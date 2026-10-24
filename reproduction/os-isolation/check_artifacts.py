@@ -58,7 +58,7 @@ def check(source, output):
     for role in ROLES:
         require(runtime_mounts_match(role, runtime[role], project), 'runtime_mount_mismatch: ' + role)
         same(sorted(runtime[role]['networks']), sorted(project + '_' + n for n in networks[role]), 'network_membership_mismatch')
-        require(not runtime[role]['port_bindings'], 'unexpected_published_port')
+        same(runtime[role]['port_bindings'], {}, 'unexpected_published_port')
     bundle = strict_json(output / 'lab/evidence.json')
     verify_bundle(bundle)  # Actual signatures, hashes, bindings and both modes from unchanged code.
     same(digest(bundle), rows['11']['evidence_digest'], 'lab_evidence_digest_mismatch')
