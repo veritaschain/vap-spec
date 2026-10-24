@@ -1,32 +1,59 @@
-# Implementation review record
+# Final review record — PR #11
 
-Status: experimental, unadopted; intended for a separate Draft PR. No normative adoption is requested.
-Source reviewed and exercised: `56a98eec87339193831f4c78607de5b259745edc`.
+Status: **experimental, unadopted**. This review supports merging the bounded research implementation;
+it is not normative adoption, production approval or independent third-party reproduction.
+No formal proposal number or target release is assigned.
 
-The review checked the gate's fail-closed ordering, exact request/authorization binding, concurrency,
-response loss, unresolved-state retention, read-only recovery, native signature verification and
-claims in both languages. Follow-up corrections before that commit included:
+Reviewed initial PR head: `9343953e9754e15da409f5cffcbe0d7e4a7f7bd5`.
+Corrected implementation and test source: `f34c2f51ab2afb4c28fce06db77953dd56cd54e1`.
 
-- Prevent reusing a prepared operation ID with a different authorization envelope, even for identical intent.
-- Recheck identity/delegation/approval and signed status in the evidence adapter; do not accept only an audit assertion.
-- Check actual dispatch intent and original request binding, event ordering and nested native backend receipts.
-- Keep storage failure after an external commit as unknown, with the earlier dispatch intent retained.
-- Close HTTP error responses and SQLite connections explicitly; regression execution treats resource warnings as errors.
+## Findings corrected before integration
 
-The positive boundary is narrow: an honest trusted gate/audit/backend and a keyless or agent-key-only caller.
-The agent and service roles use separate directories, keys, processes and databases, but the same OS user.
-The intentionally insecure backend test demonstrates that leaving a direct accepted path defeats the guarantee.
-No successful-bypass result is converted into a positive deployment claim.
+1. **Acknowledgment semantics:** a signed acknowledgment was checked for operation binding but not the
+   requested durable state. A signed dispatch-intent acknowledgment could be mistaken for a saved result,
+   and a contradictory claim acknowledgment could reach the backend. State/receipt shape and action-specific
+   state transitions now fail closed. Malformed acknowledgments do not escape as an uncaught gate error.
+2. **Known outcomes:** reconciliation could return unknown when a valid success receipt was already durable
+   but the backend was offline. Concurrent confirmation could also be reported as a newly persisted unknown
+   event or a failed claim. Valid durable confirmation now remains success, without an extra write or lookup.
+3. **Mutable caller input:** replacing the caller's request after pre-recording could change the request
+   being authorized at the final check while leaving the original dispatch intent in use. The gate now owns
+   a canonical request snapshot and checks that the refreshed authorization binds the same intent.
+4. **Export completeness and bindings:** the offline recheck could exit successfully on an empty case list
+   or silently skip absent bundles. It now requires the exact case inventory, no duplicates/path escapes,
+   all expected primary/recovery bundles, matching expectations/reports, scope/operation binding, and a
+   confirmed recovered result. Impossible unknown-after-confirmed event order is rejected by the adapter.
 
-The unchanged verifier evaluates submitted evidence, not network enforcement. Scope mode remains unadopted;
-current-spec mode has no scope result. Pending result evidence is indeterminate; a final submission with
-missing required result evidence is not met, without inferring nonoccurrence. Synthetic receipt signatures
-are checked, but no independent timestamp, externally operated anchor or real-world identity assurance is claimed.
+The first seven focused regression reproductions failed or errored on the reviewed head before repair.
+The final review added fifteen regression tests in `tests/test_review.py`, covering these failures and
+related missing-evidence, state-concurrency and binding cases. All are passing in the recorded local run.
 
-Validation records are under `results/`: 31 new regressions, 15 gate scenarios, 11 offline evidence-bundle
-rechecks, plus the existing 64 regressions and 14 declared-scope cases. CI separately repeats these checks on
-Python 3.12 and 3.14; the PR's actual check status is the authority for whether those CI runs have completed.
+## Validation and separation
 
-Diff boundary: only `experiments/pre-record-gate/` and its new CI workflow are added.
-The v1.2 specification, DOC-SYNC, K3, existing proposal and existing verifier source/test artifacts remain unchanged.
-Remaining limitations and operational recovery costs are explicit in the README; this is not a production release.
+The corrected source was tested with a clean experiment working tree on Python 3.14.3/macOS:
+
+- 46 gate regression tests passed; all 15 gate scenarios matched their declared expectations.
+- 11 public evidence bundles rechecked offline, with actual Ed25519 signatures and both verifier modes.
+- Existing verifier: 64 regression tests passed; all 14 synthetic declared-scope cases matched.
+- Signed evidence, public synthetic trust, raw test logs, source digests and local latency samples are in `results/`.
+
+The dedicated CI repeats both experiments on Python 3.12 and 3.14. The actual checks attached to the final
+PR head determine CI completion; local execution and project CI are not independent reproduction.
+The older evidence remains available in Git history; `results/` now records the corrected source above.
+
+The full PR diff is limited to `experiments/pre-record-gate/` and `.github/workflows/pre-record-gate.yml`.
+VAP v1.2, the existing verifier and its test artifacts, the declared-scope proposal, DOC-SYNC and K3 remain unchanged.
+The verifier evaluates evidence; the execution gate remains a separate product-side experiment.
+
+## Remaining claim boundaries
+
+The trusted roles share one OS user. Only the mock application credential boundary is exercised; hostile
+same-user/administrator access, production egress isolation, real identity integration, independently
+operated anchors, accurate external time, production readiness and buyer demand remain unestablished.
+The intentionally insecure backend test exposes a successful bypass and labels that guarantee false.
+All authority/receipt keys and clocks are synthetic and controlled by the test harness.
+The exported authorization snapshot represents the pre-record check; the final refresh is a gate check,
+not a separately signed authorization decision. Continuous revocation assurance is not claimed.
+
+A matching negative-control test is not a deployment endorsement. Integration of this code does not alter
+the adoption status of the experimental scope extension or turn it into a VAP v1.2 execution requirement.

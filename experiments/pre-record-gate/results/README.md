@@ -1,16 +1,16 @@
 # Recorded internal execution
 
-Implementation and test source commit: `56a98eec87339193831f4c78607de5b259745edc`.
+Implementation and test source commit: `f34c2f51ab2afb4c28fce06db77953dd56cd54e1`.
 The suite ran with a clean experiment working tree on Python 3.14.3/macOS arm64.
 `summary.json` records source digests, dependency versions and platform.
 
 - 15/15 gate scenarios matched their independently stored expectations.
-- 31 gate regression tests passed (`regression-tests.txt`).
+- 46 gate regression tests passed (`regression-tests.txt`).
 - 11 exported evidence bundles rechecked offline, including authorization bindings, native backend receipts
   and both modes of the unchanged verifier.
 - Existing PR #10 baseline: 64 regression tests passed and 14/14 synthetic cases matched;
   see `existing-verifier-tests.txt` and `existing-verifier-summary.json`.
-- Ten normal local operations: median gate entry to backend send **39.78 ms**; median full duration **92.37 ms**.
+- Ten normal local operations: median gate entry to backend send **37.86 ms**; median full duration **90.16 ms**.
   Startup is excluded. These measurements are single-host observations, not a production SLA.
 
 `mock-evidence-and-reports.tar.gz` contains 15 scenario artifacts, summary and latency samples.

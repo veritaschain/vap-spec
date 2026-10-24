@@ -634,8 +634,8 @@
       "pycparser": "3.12",
       "rfc8785": "0.1.4"
     },
-    "fixture_commit": "71d22b7b3501952cb23bcb76e665e5cfb7e6fa74",
-    "implementation_commit": "71d22b7b3501952cb23bcb76e665e5cfb7e6fa74",
+    "fixture_commit": "f34c2f51ab2afb4c28fce06db77953dd56cd54e1",
+    "implementation_commit": "f34c2f51ab2afb4c28fce06db77953dd56cd54e1",
     "independent_reproduction": "not_established",
     "platform": "macOS-26.3.1-arm64-arm-64bit-Mach-O",
     "python": "3.14.3",

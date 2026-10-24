@@ -29,8 +29,23 @@ test_duplicate_json_keys_rejected (test_gate.InputTests.test_duplicate_json_keys
 test_nonfinite_json_rejected (test_gate.InputTests.test_nonfinite_json_rejected) ... ok
 test_nonloopback_url_rejected_before_network (test_gate.InputTests.test_nonloopback_url_rejected_before_network) ... ok
 test_unsafe_json_integer_rejected (test_gate.InputTests.test_unsafe_json_integer_rejected) ... ok
+test_case_name_cannot_escape_export_directory (test_review.ReviewArchiveTests.test_case_name_cannot_escape_export_directory) ... ok
+test_duplicate_case_cannot_stand_in_for_a_missing_case (test_review.ReviewArchiveTests.test_duplicate_case_cannot_stand_in_for_a_missing_case) ... ok
+test_missing_primary_evidence_not_skipped_even_if_digest_updated (test_review.ReviewArchiveTests.test_missing_primary_evidence_not_skipped_even_if_digest_updated) ... ok
+test_missing_recovered_evidence_not_skipped (test_review.ReviewArchiveTests.test_missing_recovered_evidence_not_skipped) ... ok
+test_recovery_report_cannot_accept_missing_result_evidence (test_review.ReviewArchiveTests.test_recovery_report_cannot_accept_missing_result_evidence) ... ok
+test_empty_summary_does_not_succeed_without_verifying_evidence (test_review.ReviewExportTests.test_empty_summary_does_not_succeed_without_verifying_evidence) ... ok
+test_adapter_rejects_unknown_after_confirmation (test_review.ReviewGateTests.test_adapter_rejects_unknown_after_confirmation) ... ok
+test_caller_mutation_cannot_swap_final_authorization (test_review.ReviewGateTests.test_caller_mutation_cannot_swap_final_authorization) ... ok
+test_claim_ack_requires_dispatch_state_before_any_send (test_review.ReviewGateTests.test_claim_ack_requires_dispatch_state_before_any_send) ... ok
+test_concurrent_confirmation_is_not_called_an_unknown_event (test_review.ReviewGateTests.test_concurrent_confirmation_is_not_called_an_unknown_event) ... ok
+test_durable_success_survives_lookup_service_outage (test_review.ReviewGateTests.test_durable_success_survives_lookup_service_outage) ... ok
+test_losing_claim_observes_concurrent_durable_success (test_review.ReviewGateTests.test_losing_claim_observes_concurrent_durable_success) ... ok
+test_malformed_ack_does_not_escape_as_uncaught_error (test_review.ReviewGateTests.test_malformed_ack_does_not_escape_as_uncaught_error) ... ok
+test_offline_adapter_rechecks_scope_operation_binding (test_review.ReviewGateTests.test_offline_adapter_rechecks_scope_operation_binding) ... ok
+test_wrong_outcome_ack_does_not_report_success (test_review.ReviewGateTests.test_wrong_outcome_ack_does_not_report_success) ... ok
 
 ----------------------------------------------------------------------
-Ran 31 tests in 6.688s
+Ran 46 tests in 8.437s
 
 OK
