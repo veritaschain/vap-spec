@@ -1,0 +1,4 @@
+.venv-scope/
+__pycache__/
+*.pyc
+experiments/declared-scope-verifier/generated/
