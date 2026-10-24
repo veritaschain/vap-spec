@@ -5,7 +5,7 @@
 **Document ID:** VSO-VAP-SPEC-001
 **Status:** Draft Specification (Draft 3)
 **Version:** 1.2.0
-**Date:** 2026-09-01 (publication folds G-2, H-2, A-4 applied 2026-09-28; post-publication folds L-1, L-2, L-3, H-3, H-4, H-5 applied 2026-10-06; post-publication fold B-5 corrected 2026-10-09; CAB-independence errata applied 2026-10-21 JST; see Appendix D and ERRATA)
+**Date:** 2026-09-01 (publication folds G-2, H-2, A-4 applied 2026-09-28; post-publication folds L-1, L-2, L-3, H-3, H-4, H-5 applied 2026-10-06; post-publication fold B-5 corrected 2026-10-09; CAB-independence errata applied 2026-10-21 JST; VCP v1.2 compatibility-status correction dated 2026-10-24 JST, §10.4 and Appendix B; see Appendix D and ERRATA)
 **Supersedes:** Draft 2 (2026-06-10). Draft 3 folds the cross-profile alignment
 review **VSO-VAP-ALIGN-001** into this document. Per VSO practice, pre-release
 review findings fold directly into the draft with a disposition record and do
@@ -1259,7 +1259,7 @@ VAP and profile version numbers are **independently assigned**. Apparent synchro
 |---|---|---|
 | VCP v1.0 | Partial (pre-dates policy identification) | Partial (legacy; certification subject to VCP grace deadlines) |
 | VCP v1.1 | Non-conformant on v1.1 INT-003/004 as written (resolved by this revision) | **Full** |
-| VCP v1.2 | — | **Full** (reference profile) |
+| VCP v1.2 | — | **Integrity alignment under review; full conformance has not been established.** Mapping required and outstanding |
 | CAP v1.0 | Mapping required | **Mapping required and outstanding** (due per VSO-VAP-CHANGE-001 §5) |
 | CPP v1.4 | Mapping required | **Mapping required and outstanding** (due per VSO-VAP-CHANGE-001 §5) |
 | OAP v0.1.1 (WD) | — | Targets v1.2 at first release |
@@ -1268,6 +1268,18 @@ VAP and profile version numbers are **independently assigned**. Apparent synchro
 | DAP v0.1.0 (capability) | — | Targets the v1.2 requirement set (§4.6) |
 | SMP v0.2.0 (capability) | — | Targets the v1.2 requirement set (§4.6) |
 | DVP / AAP / EIP / IAP | — | MUST target VAP v1.2 at first release |
+
+**VCP v1.2 compatibility-status correction — 2026-10-24 JST.** The previous
+unconditional "Full (reference profile)" entry is replaced by the review status
+above. The [pinned research observation record](https://github.com/veritaschain/vap-spec/blob/9fa5fbc68075079b4599e16940e9078db976cd59/experiments/vcp-v1.2-integrity-alignment/README.md)
+documents known integrity-layer discrepancies; their resolution and a
+clause-level VCP-to-VAP conformance mapping remain outstanding. This corrects
+the current compatibility claim, not VAP's normative requirements, conformance
+levels, or VCP's release status. It is not a change-proposal adoption or a vote
+under §10.3. Existing implementations, fixed distributions and K3 baselines,
+criteria and results are unchanged. The experimental extensions remain
+**unadopted**, and independent third-party reproduction remains **unestablished**;
+merging the research observations does not establish full conformance.
 
 **Outstanding mapping obligation (honest statement).** CAP v1.0 and CPP v1.4 are
 the two profiles other than VCP carrying *Released* status, and both have a v1.2 conformance
@@ -1421,6 +1433,7 @@ Application dates, and the EU AI Act classifications cited in §2.2, are stated 
 | 1.2.0 (Draft 3, post-publication folds) | 2026-10-06 | Post-publication folds L-1, L-2, L-3 (regulatory references corrected and updated), H-3, H-4 (capability language), H-5 (omission-evidence definition, §5.4 and §11.1 aligned with INT-008 as written). Editorial only; no normative requirement, field, wire format, or conformance level changed. The text as published on 2026-09-28 remains identified by its SHA-256 digest (`spec/v1.2/README.md`). Dispositions: Appendix D | VSO Technical Committee |
 | 1.2.0 (Draft 3, fold B-5) | 2026-10-09 | Post-publication fold B-5: profile registry and related rows record VCP as v1.2 Released (GA 2026-07-06, tag `v1.2.0`) instead of v1.2 (RC1). VAP requirement IDs and conformance levels are unchanged; VCP pre-GA wire-contract corrections are documented in Appendix D. This is not a claim of RC1/GA technical identity. Disposition: Appendix D | VSO Technical Committee |
 | 1.2.0 (Draft 3, errata) | 2026-10-21 | Errata, 2026-10-21 JST. The Normative Position Statement, §8.3, §10.1, and the repository README no longer say that independent CABs currently perform assessment. The requirement that a CAB be independent of the scheme owner is unchanged. The CAB registry lists only VeritasChain Co., Ltd., which operates VSO and is not independent of the scheme owner. Version and status remain v1.2.0, Draft Specification (Draft 3). Earlier rows in this table are unchanged. See ERRATA. This row is not a §10.3 change-proposal vote | VSO |
+| 1.2.0 (Draft 3, compatibility-status correction) | 2026-10-24 | §10.4 replaces the unconditional VCP v1.2 Full entry with integrity alignment under review, full conformance not established, and mapping outstanding, citing the pinned research observations. Status claim only: no normative requirement, field, wire format, conformance level or VCP release-status change. Experimental extensions remain unadopted; independent third-party reproduction remains unestablished. Earlier history and fixed distributions are preserved. This is not a §10.3 adoption or vote | VSO |
 | 1.2.0 (Draft 2) | 2026-06-10 | Per VSO-VAP-CHANGE-001: Cryptographic Sequence Verifiability abstraction (INT-003/004/004a); external anchoring MUST at all levels (INT-006) with anchor continuity (INT-007); Completeness Invariant (INT-008); bounded RECOVERY (INT-009); ERASURE event + legal scope clause; policy identification; XREF (TRC-005); SCITT/COSE opt-in alignment; PQC EXPERIMENTAL status (ML-DSA/FN-DSA), hybrid signatures, RSA-2048 deprecation; version compatibility management; profile registry update (VCP v1.2 RC1, CAP v1.0, CPP v1.0, IAP); Legal Scope and Non-Guarantee Statement | VSO Technical Committee |
 
 ---
