@@ -5,7 +5,7 @@
 **Document ID:** VSO-VAP-SPEC-001
 **Status:** Draft Specification (Draft 3)
 **Version:** 1.2.0
-**Date:** 2026-09-01 (publication folds G-2, H-2, A-4 applied 2026-09-28; post-publication folds L-1, L-2, L-3, H-3, H-4, H-5 applied 2026-10-06; post-publication fold B-5 corrected 2026-10-09; CAB-independence errata applied 2026-10-21 JST; VCP v1.2 compatibility-status correction dated 2026-10-24 JST, §10.4 and Appendix B; see Appendix D and ERRATA)
+**Date:** 2026-09-01 (publication folds G-2, H-2, A-4 applied 2026-09-28; post-publication folds L-1, L-2, L-3, H-3, H-4, H-5 applied 2026-10-06; post-publication fold B-5 corrected 2026-10-09; CAB-independence errata applied 2026-10-21 JST; VCP compatibility-status corrections dated 2026-10-24 JST, §5.1, §10.4, Declaration and Appendix B; see Appendix D and ERRATA)
 **Supersedes:** Draft 2 (2026-06-10). Draft 3 folds the cross-profile alignment
 review **VSO-VAP-ALIGN-001** into this document. Per VSO practice, pre-release
 review findings fold directly into the draft with a disposition record and do
@@ -809,7 +809,7 @@ OAP composes with DAP where the observation is performed by an autonomous agent.
 
 #### 5.1.1 Overview
 
-VCP (VeritasChain Protocol) is the financial domain profile of VAP, standardizing audit trails for algorithmic trading and AI-driven trading systems. **VCP is the first implementation profile of the VAP family and the reference profile for VAP v1.2:** its three-layer integrity architecture (EventHash / Merkle / External Anchor), mandatory all-tier anchoring, policy identification, ERASURE event, bounded RECOVERY, and XREF mechanisms are the proven origins of the corresponding v1.2 framework requirements.
+VCP (VeritasChain Protocol) is the financial domain profile of VAP, standardizing audit trails for algorithmic trading and AI-driven trading systems. **VCP is the first implementation profile of the VAP family.** Its VAP v1.2 integrity alignment is under review; full conformance has not been established, and the clause-level mapping remains outstanding (§10.4). Its historical role does not establish the correctness of its mechanisms or conformance to the framework.
 
 #### 5.1.2 Domain-Specific Modules
 
@@ -1258,7 +1258,7 @@ VAP and profile version numbers are **independently assigned**. Apparent synchro
 | Profile or capability / version | VAP v1.1 | VAP v1.2 |
 |---|---|---|
 | VCP v1.0 | Partial (pre-dates policy identification) | Partial (legacy; certification subject to VCP grace deadlines) |
-| VCP v1.1 | Non-conformant on v1.1 INT-003/004 as written (resolved by this revision) | **Full** |
+| VCP v1.1 | Non-conformant on v1.1 INT-003/004 as written (resolved by this revision) | **Integrity alignment under review; full conformance has not been established.** Mapping required and outstanding |
 | VCP v1.2 | — | **Integrity alignment under review; full conformance has not been established.** Mapping required and outstanding |
 | CAP v1.0 | Mapping required | **Mapping required and outstanding** (due per VSO-VAP-CHANGE-001 §5) |
 | CPP v1.4 | Mapping required | **Mapping required and outstanding** (due per VSO-VAP-CHANGE-001 §5) |
@@ -1280,6 +1280,24 @@ under §10.3. Existing implementations, fixed distributions and K3 baselines,
 criteria and results are unchanged. The experimental extensions remain
 **unadopted**, and independent third-party reproduction remains **unestablished**;
 merging the research observations does not establish full conformance.
+
+**Related status corrections — 2026-10-24 JST (follow-up).** The VCP v1.1
+entry now carries the same review status. Text inspection of the
+[pinned VCP v1.1 specification](https://github.com/veritaschain/vcp-spec/blob/b23acb266f88df81d960d36d58fb64ceaa0dd5ed/spec/v1.1/VCP-Specification-v1_1_en.md)
+found the same odd-node duplication (§6.2.1), omitted nonexistent siblings in
+audit paths (§6.2.3), root-only signature example (§6.3.1), and nanosecond JSON
+integer example (§6.3.2) as in the reviewed v1.2 text. This is a source comparison,
+not a separate execution of the v1.2 probe against v1.1. §5.1 and the Declaration
+retain VCP's historical role as the first implementation profile without
+claiming proven correctness or reference-profile conformance.
+
+Under §1.7, the current compatibility status in this section prevails over the
+historical compatibility claims in VSO-VAP-CHANGE-001 CH-11 and Annex A,
+including its "Full" entries and "no VCP changes are required" conclusion;
+those passages do not establish current full conformance. CHANGE-001 is
+preserved as the adopted change-control record. This status correction neither
+amends its technical requirements nor adopts any proposed VCP repair. The
+scope and unadopted / independent-reproduction limitations above remain in force.
 
 **Outstanding mapping obligation (honest statement).** CAP v1.0 and CPP v1.4 are
 the two profiles other than VCP carrying *Released* status, and both have a v1.2 conformance
@@ -1434,6 +1452,7 @@ Application dates, and the EU AI Act classifications cited in §2.2, are stated 
 | 1.2.0 (Draft 3, fold B-5) | 2026-10-09 | Post-publication fold B-5: profile registry and related rows record VCP as v1.2 Released (GA 2026-07-06, tag `v1.2.0`) instead of v1.2 (RC1). VAP requirement IDs and conformance levels are unchanged; VCP pre-GA wire-contract corrections are documented in Appendix D. This is not a claim of RC1/GA technical identity. Disposition: Appendix D | VSO Technical Committee |
 | 1.2.0 (Draft 3, errata) | 2026-10-21 | Errata, 2026-10-21 JST. The Normative Position Statement, §8.3, §10.1, and the repository README no longer say that independent CABs currently perform assessment. The requirement that a CAB be independent of the scheme owner is unchanged. The CAB registry lists only VeritasChain Co., Ltd., which operates VSO and is not independent of the scheme owner. Version and status remain v1.2.0, Draft Specification (Draft 3). Earlier rows in this table are unchanged. See ERRATA. This row is not a §10.3 change-proposal vote | VSO |
 | 1.2.0 (Draft 3, compatibility-status correction) | 2026-10-24 | §10.4 replaces the unconditional VCP v1.2 Full entry with integrity alignment under review, full conformance not established, and mapping outstanding, citing the pinned research observations. Status claim only: no normative requirement, field, wire format, conformance level or VCP release-status change. Experimental extensions remain unadopted; independent third-party reproduction remains unestablished. Earlier history and fixed distributions are preserved. This is not a §10.3 adoption or vote | VSO |
+| 1.2.0 (Draft 3, status-consistency follow-up) | 2026-10-24 | §10.4 extends the review status to VCP v1.1 and explicitly applies §1.7 precedence over CHANGE-001 CH-11 / Annex A compatibility claims. §5.1 and the Declaration retain first-implementation history without reference-profile or proven-origin claims. Status wording only; normative requirements, CHANGE-001, existing implementations, signed data, fixed distributions, DOC-SYNC and K3 are unchanged. Experimental extensions remain unadopted; independent third-party reproduction remains unestablished. Earlier history is preserved; this is not a §10.3 adoption or vote | VSO |
 | 1.2.0 (Draft 2) | 2026-06-10 | Per VSO-VAP-CHANGE-001: Cryptographic Sequence Verifiability abstraction (INT-003/004/004a); external anchoring MUST at all levels (INT-006) with anchor continuity (INT-007); Completeness Invariant (INT-008); bounded RECOVERY (INT-009); ERASURE event + legal scope clause; policy identification; XREF (TRC-005); SCITT/COSE opt-in alignment; PQC EXPERIMENTAL status (ML-DSA/FN-DSA), hybrid signatures, RSA-2048 deprecation; version compatibility management; profile registry update (VCP v1.2 RC1, CAP v1.0, CPP v1.0, IAP); Legal Scope and Non-Guarantee Statement | VSO Technical Committee |
 
 ---
@@ -1549,7 +1568,7 @@ GitHub: <https://github.com/veritaschain>
 >
 > VSO develops and maintains this framework as a **standards organization for AI decision provenance.** The comparison with W3C, IETF, IEEE, and FIX in the Normative Position Statement identifies the layer at which VSO operates; it is not a claim of equivalent status, recognition, or adoption.
 >
-> VCP is the first implementation profile of the VAP family and the reference profile for v1.2; CAP, CPP, and OAP extend the same Shared Assurance Core to content, capture, and observed-artifact provenance; DAP and SMP extend it across domains as cross-cutting capabilities.
+> VCP is the first implementation profile of the VAP family; its integrity alignment and outstanding conformance mapping are recorded in §10.4, and full conformance to VAP v1.2 has not been established. CAP, CPP, and OAP extend the same Shared Assurance Core to content, capture, and observed-artifact provenance; DAP and SMP extend it across domains as cross-cutting capabilities.
 >
 > **What this framework does not do.** VAP makes AI decision records auditable, attributable, and — at anchor granularity — completeness-verifiable after the fact. It does not prevent, block, or intercept any AI behaviour, and it does not warrant that any recorded decision was correct, fair, or safe (§1.6). Events that were never measured are permanently outside its reach by construction, and no revision of this framework will change that.
 
