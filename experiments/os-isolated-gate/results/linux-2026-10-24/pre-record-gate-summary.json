@@ -12,7 +12,7 @@
         "state": "confirmed_success",
         "stored_state": "confirmed_success"
       },
-      "artifact_digest": "e9a348bf69ee5800bd87384534789614afe4dd73ced781b6e35390cf64f20844",
+      "artifact_digest": "04eeb532032d2a8e32cfbd295a46130a2d22f47e98fc57fbedc0a9477171fa46",
       "case": "01",
       "description": "Normal durable pre-record and one confirmed mock effect; repeat returns stored result",
       "differences": {},
@@ -55,7 +55,7 @@
         "stored_state": "prepared",
         "worker_killed": true
       },
-      "artifact_digest": "7598b8048d8f6d1d54c289a7bbd8c31147d66c5b4734965113eada2d38ab489d",
+      "artifact_digest": "2166e4bbbd988a243111f564342fa0ce389d44da61a6a2a9026f66c17e1ae58a",
       "case": "03",
       "description": "SIGKILL after pre-record, then abrupt audit restart",
       "differences": {},
@@ -82,7 +82,7 @@
         "state": "result_unknown",
         "stored_state": "result_unknown"
       },
-      "artifact_digest": "340ed602e078dfbb020d9133804e614525dc23dd51bdb021c2858485245a015a",
+      "artifact_digest": "2f6b35006a9b26ca0766043ccad185815dad39fc6a3ef63782431f722300948a",
       "case": "04",
       "description": "API commits and drops response; no write retry, read-only recovery",
       "differences": {},
@@ -108,7 +108,7 @@
         "state": "denied",
         "stored_state": "prepared"
       },
-      "artifact_digest": "5205d58b00f5530f1a1b7ceaacbe9cc589b020be87fc1290fd343835629596fb",
+      "artifact_digest": "77140db1efdbb75349414d86e0800a2100d38144efed80117a4b59e3af356969",
       "case": "05",
       "description": "Actual dispatch arguments differ from durable pre-record",
       "differences": {},
@@ -171,7 +171,7 @@
         "state": "confirmed_success",
         "stored_state": "confirmed_success"
       },
-      "artifact_digest": "a6e6712a2c7e4004293b164d4d9e86d2ab23c00f3c682e1fd61c441680616396",
+      "artifact_digest": "b12c21c6991a6c206993eaa222a01c131532f2e3509ddecc27b914e40b362361",
       "case": "08",
       "description": "Delete all agent-local request/log files; separate audit evidence survives",
       "differences": {},
@@ -197,7 +197,7 @@
         "stored_state": "dispatch_intent",
         "worker_killed": true
       },
-      "artifact_digest": "1a70231420807612b9d402b0556605fd08ed678a6d9996c0e8a342c1a94de4c3",
+      "artifact_digest": "cdd82ca32b47c941ace58f9e3d521dc04278f1c4ebd1a6b34346cc3dd2c8bc93",
       "case": "09",
       "description": "SIGKILL after durable dispatch intent but before send; no auto replay",
       "differences": {},
@@ -225,7 +225,7 @@
         "stored_state": "dispatch_intent",
         "unknown_outcome_persisted": false
       },
-      "artifact_digest": "ab2a5b35759d74b3559497a5beeb5a2a82a29b969a42d7531fe5c6dfae556f3e",
+      "artifact_digest": "bb1d97ac968ff76b9998b427e3c7e2ec9a3738f2da4e3b6855c81edeab34421c",
       "case": "10",
       "description": "API commits but audit outcome writes fail; retain dispatch intent and reconcile after repair",
       "differences": {},
@@ -251,7 +251,7 @@
         "state": "confirmed_success",
         "stored_state": "confirmed_success"
       },
-      "artifact_digest": "83fefd55c3cae3cbcdc5d68c9135ebd85d7742c074553593e34e14cabc83a168",
+      "artifact_digest": "43305f830fe9e966cb1c482ea4ce34db6f5fedb869af5ea0f4a9f3b4feed0420",
       "case": "11",
       "description": "Four concurrent gate workers claim the same operation",
       "differences": {},
@@ -291,7 +291,7 @@
         "state": "blocked",
         "stored_state": "prepared"
       },
-      "artifact_digest": "1b72e1f7b473916b7d6b3b609497e27a19896cf0718a549d68730557908479b0",
+      "artifact_digest": "02ac805cf86705d575cfef712702761163063604624eccb579aef4c223d07983",
       "case": "13",
       "description": "Audit dispatch-intent transaction unavailable after pre-record",
       "differences": {},
@@ -310,7 +310,7 @@
         "state": "blocked",
         "stored_state": "confirmed_success"
       },
-      "artifact_digest": "c982fffbe5d125d4da0993d485597175ad75bda069b7f246151c12d3be268350",
+      "artifact_digest": "ce4cbbe59ea50ee15b882df2295e1026e3df2a1dd80152264cc25aa38788a649",
       "case": "14",
       "description": "Reuse operation ID with a new, validly authorized intent",
       "differences": {},
@@ -332,7 +332,7 @@
         "state": "blocked",
         "stored_state": "prepared"
       },
-      "artifact_digest": "775700c6aab338c4619e12a2a98c1a6413aff0510eaa8c6e9409bea0b8168436",
+      "artifact_digest": "4aecaaa6acfd0fadffa39fc100ec6f3b1b86c14ff279c117ce214f90160874e6",
       "case": "15",
       "description": "Pre-record commits but acknowledgment is lost; no API send",
       "differences": {},
@@ -349,7 +349,7 @@
   "current_v1_2_modified": false,
   "external_time_attestation": "simulated_not_independent",
   "independent_reproduction": "not_established",
-  "latency_digest": "bccb4604fde104a53884684c4fdd3a9a22fc200cdd712974d27fc64df76a4620",
+  "latency_digest": "fb1612c5d4b3d17c7be062f52d342d949712241d8ee27273145556695abdd9be",
   "matching_cases": 15,
   "os_or_network_isolation": "not_established_same_uid_loopback_processes",
   "production_readiness": "not_assessed",
@@ -361,7 +361,7 @@
       "pycparser": "3.12",
       "rfc8785": "0.1.4"
     },
-    "implementation_commit": "24b41566fd7306f0fa558713bb6b465b3fd9faa3",
+    "implementation_commit": "1e8e497f2082cb11b7d2f7da1278205f1449a774",
     "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
     "python": "3.12.15",
     "source_digest": "270da0e1a2dd357df50f842bb83cf14670ed8a180d5b67b9791a3861fbb51681",

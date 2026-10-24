@@ -12,9 +12,9 @@
             10001
           ],
           "namespaces": {
-            "mnt": "mnt:[4026532335]",
-            "net": "net:[4026532340]",
-            "pid": "pid:[4026532338]"
+            "mnt": "mnt:[4026532381]",
+            "net": "net:[4026532386]",
+            "pid": "pid:[4026532384]"
           },
           "security": {
             "CapBnd": "0000000000000000",
@@ -36,9 +36,9 @@
             10003
           ],
           "namespaces": {
-            "mnt": "mnt:[4026532524]",
-            "net": "net:[4026532529]",
-            "pid": "pid:[4026532527]"
+            "mnt": "mnt:[4026532317]",
+            "net": "net:[4026532322]",
+            "pid": "pid:[4026532320]"
           },
           "security": {
             "CapBnd": "0000000000000000",
@@ -60,9 +60,9 @@
             10004
           ],
           "namespaces": {
-            "mnt": "mnt:[4026532398]",
-            "net": "net:[4026532403]",
-            "pid": "pid:[4026532401]"
+            "mnt": "mnt:[4026532507]",
+            "net": "net:[4026532512]",
+            "pid": "pid:[4026532510]"
           },
           "security": {
             "CapBnd": "0000000000000000",
@@ -84,9 +84,9 @@
             10002
           ],
           "namespaces": {
-            "mnt": "mnt:[4026532461]",
-            "net": "net:[4026532466]",
-            "pid": "pid:[4026532464]"
+            "mnt": "mnt:[4026532444]",
+            "net": "net:[4026532449]",
+            "pid": "pid:[4026532447]"
           },
           "security": {
             "CapBnd": "0000000000000000",
@@ -108,9 +108,9 @@
             10005
           ],
           "namespaces": {
-            "mnt": "mnt:[4026532271]",
-            "net": "net:[4026532277]",
-            "pid": "pid:[4026532275]"
+            "mnt": "mnt:[4026532563]",
+            "net": "net:[4026532574]",
+            "pid": "pid:[4026532572]"
           },
           "security": {
             "CapBnd": "0000000000000000",
@@ -588,107 +588,29 @@
             "cap_drop": [
               "ALL"
             ],
-            "image_id": "sha256:840aacf866e863df0ff1d973dc1d0a213c26e8ec245ba20d79c5a3303b6d750f",
-            "mounts": [
-              {
-                "destination": "/data",
-                "name": "vap-isolation-743001d100_agent-data",
-                "rw": true,
-                "type": "volume"
-              },
-              {
-                "destination": "/canaries",
-                "name": "vap-isolation-743001d100_canaries",
-                "rw": false,
-                "type": "volume"
-              },
-              {
-                "destination": "/run/role",
-                "name": "vap-isolation-743001d100_agent-config",
-                "rw": false,
-                "type": "volume"
-              }
-            ],
-            "networks": {
-              "vap-isolation-743001d100_frontend": {
-                "ip": "172.20.0.3"
-              }
-            },
-            "port_bindings": {},
-            "privileged": false,
-            "readonly_rootfs": true,
-            "security_opt": [
-              "no-new-privileges:true"
-            ],
-            "user": "10001:10001"
-          },
-          "audit": {
-            "cap_add": null,
-            "cap_drop": [
-              "ALL"
-            ],
-            "image_id": "sha256:840aacf866e863df0ff1d973dc1d0a213c26e8ec245ba20d79c5a3303b6d750f",
-            "mounts": [
-              {
-                "destination": "/data",
-                "name": "vap-isolation-743001d100_audit-data",
-                "rw": true,
-                "type": "volume"
-              },
-              {
-                "destination": "/canaries",
-                "name": "vap-isolation-743001d100_canaries",
-                "rw": false,
-                "type": "volume"
-              },
-              {
-                "destination": "/run/role",
-                "name": "vap-isolation-743001d100_audit-config",
-                "rw": false,
-                "type": "volume"
-              }
-            ],
-            "networks": {
-              "vap-isolation-743001d100_audit": {
-                "ip": "172.18.0.2"
-              }
-            },
-            "port_bindings": {},
-            "privileged": false,
-            "readonly_rootfs": true,
-            "security_opt": [
-              "no-new-privileges:true"
-            ],
-            "user": "10003:10003"
-          },
-          "backend": {
-            "cap_add": null,
-            "cap_drop": [
-              "ALL"
-            ],
-            "image_id": "sha256:840aacf866e863df0ff1d973dc1d0a213c26e8ec245ba20d79c5a3303b6d750f",
+            "image_id": "sha256:ef18966faf60a5ca45b081886003d555716794bf41dce1793b66fb876bf482fc",
             "mounts": [
               {
                 "destination": "/run/role",
-                "name": "vap-isolation-743001d100_backend-config",
+                "name": "vap-isolation-fc0b7d94be_agent-config",
                 "rw": false,
                 "type": "volume"
               },
               {
                 "destination": "/data",
-                "name": "vap-isolation-743001d100_backend-data",
+                "name": "vap-isolation-fc0b7d94be_agent-data",
                 "rw": true,
                 "type": "volume"
               },
               {
                 "destination": "/canaries",
-                "name": "vap-isolation-743001d100_canaries",
+                "name": "vap-isolation-fc0b7d94be_canaries",
                 "rw": false,
                 "type": "volume"
               }
             ],
             "networks": {
-              "vap-isolation-743001d100_backend": {
+              "vap-isolation-fc0b7d94be_frontend": {
                 "ip": "172.19.0.2"
               }
             },
@@ -698,42 +620,39 @@
             "security_opt": [
               "no-new-privileges:true"
             ],
-            "user": "10004:10004"
+            "tmpfs": {
+              "/tmp": "rw,noexec,nosuid,size=16m,mode=1777"
+            },
+            "user": "10001:10001"
           },
-          "gate": {
+          "audit": {
             "cap_add": null,
             "cap_drop": [
               "ALL"
             ],
-            "image_id": "sha256:840aacf866e863df0ff1d973dc1d0a213c26e8ec245ba20d79c5a3303b6d750f",
+            "image_id": "sha256:ef18966faf60a5ca45b081886003d555716794bf41dce1793b66fb876bf482fc",
             "mounts": [
               {
                 "destination": "/run/role",
-                "name": "vap-isolation-743001d100_gate-config",
+                "name": "vap-isolation-fc0b7d94be_audit-config",
                 "rw": false,
                 "type": "volume"
               },
               {
                 "destination": "/data",
-                "name": "vap-isolation-743001d100_gate-data",
+                "name": "vap-isolation-fc0b7d94be_audit-data",
                 "rw": true,
                 "type": "volume"
               },
               {
                 "destination": "/canaries",
-                "name": "vap-isolation-743001d100_canaries",
+                "name": "vap-isolation-fc0b7d94be_canaries",
                 "rw": false,
                 "type": "volume"
               }
             ],
             "networks": {
-              "vap-isolation-743001d100_audit": {
-                "ip": "172.18.0.3"
-              },
-              "vap-isolation-743001d100_backend": {
-                "ip": "172.19.0.4"
-              },
-              "vap-isolation-743001d100_frontend": {
+              "vap-isolation-fc0b7d94be_audit": {
                 "ip": "172.20.0.2"
               }
             },
@@ -743,36 +662,87 @@
             "security_opt": [
               "no-new-privileges:true"
             ],
-            "user": "10002:10002"
+            "tmpfs": {
+              "/tmp": "rw,noexec,nosuid,size=16m,mode=1777"
+            },
+            "user": "10003:10003"
           },
-          "open-backend": {
+          "backend": {
             "cap_add": null,
             "cap_drop": [
               "ALL"
             ],
-            "image_id": "sha256:840aacf866e863df0ff1d973dc1d0a213c26e8ec245ba20d79c5a3303b6d750f",
+            "image_id": "sha256:ef18966faf60a5ca45b081886003d555716794bf41dce1793b66fb876bf482fc",
             "mounts": [
               {
                 "destination": "/run/role",
-                "name": "vap-isolation-743001d100_open-backend-config",
+                "name": "vap-isolation-fc0b7d94be_backend-config",
                 "rw": false,
                 "type": "volume"
               },
               {
                 "destination": "/data",
-                "name": "vap-isolation-743001d100_open-backend-data",
+                "name": "vap-isolation-fc0b7d94be_backend-data",
                 "rw": true,
                 "type": "volume"
               },
               {
                 "destination": "/canaries",
-                "name": "vap-isolation-743001d100_canaries",
+                "name": "vap-isolation-fc0b7d94be_canaries",
                 "rw": false,
                 "type": "volume"
               }
             ],
             "networks": {
-              "vap-isolation-743001d100_backend": {
+              "vap-isolation-fc0b7d94be_backend": {
+                "ip": "172.18.0.2"
+              }
+            },
+            "port_bindings": {},
+            "privileged": false,
+            "readonly_rootfs": true,
+            "security_opt": [
+              "no-new-privileges:true"
+            ],
+            "tmpfs": {
+              "/tmp": "rw,noexec,nosuid,size=16m,mode=1777"
+            },
+            "user": "10004:10004"
+          },
+          "gate": {
+            "cap_add": null,
+            "cap_drop": [
+              "ALL"
+            ],
+            "image_id": "sha256:ef18966faf60a5ca45b081886003d555716794bf41dce1793b66fb876bf482fc",
+            "mounts": [
+              {
+                "destination": "/data",
+                "name": "vap-isolation-fc0b7d94be_gate-data",
+                "rw": true,
+                "type": "volume"
+              },
+              {
+                "destination": "/canaries",
+                "name": "vap-isolation-fc0b7d94be_canaries",
+                "rw": false,
+                "type": "volume"
+              },
+              {
+                "destination": "/run/role",
+                "name": "vap-isolation-fc0b7d94be_gate-config",
+                "rw": false,
+                "type": "volume"
+              }
+            ],
+            "networks": {
+              "vap-isolation-fc0b7d94be_audit": {
+                "ip": "172.20.0.3"
+              },
+              "vap-isolation-fc0b7d94be_backend": {
+                "ip": "172.18.0.4"
+              },
+              "vap-isolation-fc0b7d94be_frontend": {
                 "ip": "172.19.0.3"
               }
             },
@@ -782,6 +752,51 @@
             "security_opt": [
               "no-new-privileges:true"
             ],
+            "tmpfs": {
+              "/tmp": "rw,noexec,nosuid,size=16m,mode=1777"
+            },
+            "user": "10002:10002"
+          },
+          "open-backend": {
+            "cap_add": null,
+            "cap_drop": [
+              "ALL"
+            ],
+            "image_id": "sha256:ef18966faf60a5ca45b081886003d555716794bf41dce1793b66fb876bf482fc",
+            "mounts": [
+              {
+                "destination": "/canaries",
+                "name": "vap-isolation-fc0b7d94be_canaries",
+                "rw": false,
+                "type": "volume"
+              },
+              {
+                "destination": "/run/role",
+                "name": "vap-isolation-fc0b7d94be_open-backend-config",
+                "rw": false,
+                "type": "volume"
+              },
+              {
+                "destination": "/data",
+                "name": "vap-isolation-fc0b7d94be_open-backend-data",
+                "rw": true,
+                "type": "volume"
+              }
+            ],
+            "networks": {
+              "vap-isolation-fc0b7d94be_backend": {
+                "ip": "172.18.0.3"
+              }
+            },
+            "port_bindings": {},
+            "privileged": false,
+            "readonly_rootfs": true,
+            "security_opt": [
+              "no-new-privileges:true"
+            ],
+            "tmpfs": {
+              "/tmp": "rw,noexec,nosuid,size=16m,mode=1777"
+            },
             "user": "10005:10005"
           }
         }
@@ -803,107 +818,29 @@
             "cap_drop": [
               "ALL"
             ],
-            "image_id": "sha256:840aacf866e863df0ff1d973dc1d0a213c26e8ec245ba20d79c5a3303b6d750f",
-            "mounts": [
-              {
-                "destination": "/data",
-                "name": "vap-isolation-743001d100_agent-data",
-                "rw": true,
-                "type": "volume"
-              },
-              {
-                "destination": "/canaries",
-                "name": "vap-isolation-743001d100_canaries",
-                "rw": false,
-                "type": "volume"
-              },
-              {
-                "destination": "/run/role",
-                "name": "vap-isolation-743001d100_agent-config",
-                "rw": false,
-                "type": "volume"
-              }
-            ],
-            "networks": {
-              "vap-isolation-743001d100_frontend": {
-                "ip": "172.20.0.3"
-              }
-            },
-            "port_bindings": {},
-            "privileged": false,
-            "readonly_rootfs": true,
-            "security_opt": [
-              "no-new-privileges:true"
-            ],
-            "user": "10001:10001"
-          },
-          "audit": {
-            "cap_add": null,
-            "cap_drop": [
-              "ALL"
-            ],
-            "image_id": "sha256:840aacf866e863df0ff1d973dc1d0a213c26e8ec245ba20d79c5a3303b6d750f",
-            "mounts": [
-              {
-                "destination": "/data",
-                "name": "vap-isolation-743001d100_audit-data",
-                "rw": true,
-                "type": "volume"
-              },
-              {
-                "destination": "/canaries",
-                "name": "vap-isolation-743001d100_canaries",
-                "rw": false,
-                "type": "volume"
-              },
-              {
-                "destination": "/run/role",
-                "name": "vap-isolation-743001d100_audit-config",
-                "rw": false,
-                "type": "volume"
-              }
-            ],
-            "networks": {
-              "vap-isolation-743001d100_audit": {
-                "ip": "172.18.0.2"
-              }
-            },
-            "port_bindings": {},
-            "privileged": false,
-            "readonly_rootfs": true,
-            "security_opt": [
-              "no-new-privileges:true"
-            ],
-            "user": "10003:10003"
-          },
-          "backend": {
-            "cap_add": null,
-            "cap_drop": [
-              "ALL"
-            ],
-            "image_id": "sha256:840aacf866e863df0ff1d973dc1d0a213c26e8ec245ba20d79c5a3303b6d750f",
+            "image_id": "sha256:ef18966faf60a5ca45b081886003d555716794bf41dce1793b66fb876bf482fc",
             "mounts": [
               {
                 "destination": "/run/role",
-                "name": "vap-isolation-743001d100_backend-config",
+                "name": "vap-isolation-fc0b7d94be_agent-config",
                 "rw": false,
                 "type": "volume"
               },
               {
                 "destination": "/data",
-                "name": "vap-isolation-743001d100_backend-data",
+                "name": "vap-isolation-fc0b7d94be_agent-data",
                 "rw": true,
                 "type": "volume"
               },
               {
                 "destination": "/canaries",
-                "name": "vap-isolation-743001d100_canaries",
+                "name": "vap-isolation-fc0b7d94be_canaries",
                 "rw": false,
                 "type": "volume"
               }
             ],
             "networks": {
-              "vap-isolation-743001d100_backend": {
+              "vap-isolation-fc0b7d94be_frontend": {
                 "ip": "172.19.0.2"
               }
             },
@@ -913,42 +850,39 @@
             "security_opt": [
               "no-new-privileges:true"
             ],
-            "user": "10004:10004"
+            "tmpfs": {
+              "/tmp": "rw,noexec,nosuid,size=16m,mode=1777"
+            },
+            "user": "10001:10001"
           },
-          "gate": {
+          "audit": {
             "cap_add": null,
             "cap_drop": [
               "ALL"
             ],
-            "image_id": "sha256:840aacf866e863df0ff1d973dc1d0a213c26e8ec245ba20d79c5a3303b6d750f",
+            "image_id": "sha256:ef18966faf60a5ca45b081886003d555716794bf41dce1793b66fb876bf482fc",
             "mounts": [
               {
                 "destination": "/run/role",
-                "name": "vap-isolation-743001d100_gate-config",
+                "name": "vap-isolation-fc0b7d94be_audit-config",
                 "rw": false,
                 "type": "volume"
               },
               {
                 "destination": "/data",
-                "name": "vap-isolation-743001d100_gate-data",
+                "name": "vap-isolation-fc0b7d94be_audit-data",
                 "rw": true,
                 "type": "volume"
               },
               {
                 "destination": "/canaries",
-                "name": "vap-isolation-743001d100_canaries",
+                "name": "vap-isolation-fc0b7d94be_canaries",
                 "rw": false,
                 "type": "volume"
               }
             ],
             "networks": {
-              "vap-isolation-743001d100_audit": {
-                "ip": "172.18.0.3"
-              },
-              "vap-isolation-743001d100_backend": {
-                "ip": "172.19.0.4"
-              },
-              "vap-isolation-743001d100_frontend": {
+              "vap-isolation-fc0b7d94be_audit": {
                 "ip": "172.20.0.2"
               }
             },
@@ -958,36 +892,87 @@
             "security_opt": [
               "no-new-privileges:true"
             ],
-            "user": "10002:10002"
+            "tmpfs": {
+              "/tmp": "rw,noexec,nosuid,size=16m,mode=1777"
+            },
+            "user": "10003:10003"
           },
-          "open-backend": {
+          "backend": {
             "cap_add": null,
             "cap_drop": [
               "ALL"
             ],
-            "image_id": "sha256:840aacf866e863df0ff1d973dc1d0a213c26e8ec245ba20d79c5a3303b6d750f",
+            "image_id": "sha256:ef18966faf60a5ca45b081886003d555716794bf41dce1793b66fb876bf482fc",
             "mounts": [
               {
                 "destination": "/run/role",
-                "name": "vap-isolation-743001d100_open-backend-config",
+                "name": "vap-isolation-fc0b7d94be_backend-config",
                 "rw": false,
                 "type": "volume"
               },
               {
                 "destination": "/data",
-                "name": "vap-isolation-743001d100_open-backend-data",
+                "name": "vap-isolation-fc0b7d94be_backend-data",
                 "rw": true,
                 "type": "volume"
               },
               {
                 "destination": "/canaries",
-                "name": "vap-isolation-743001d100_canaries",
+                "name": "vap-isolation-fc0b7d94be_canaries",
                 "rw": false,
                 "type": "volume"
               }
             ],
             "networks": {
-              "vap-isolation-743001d100_backend": {
+              "vap-isolation-fc0b7d94be_backend": {
+                "ip": "172.18.0.2"
+              }
+            },
+            "port_bindings": {},
+            "privileged": false,
+            "readonly_rootfs": true,
+            "security_opt": [
+              "no-new-privileges:true"
+            ],
+            "tmpfs": {
+              "/tmp": "rw,noexec,nosuid,size=16m,mode=1777"
+            },
+            "user": "10004:10004"
+          },
+          "gate": {
+            "cap_add": null,
+            "cap_drop": [
+              "ALL"
+            ],
+            "image_id": "sha256:ef18966faf60a5ca45b081886003d555716794bf41dce1793b66fb876bf482fc",
+            "mounts": [
+              {
+                "destination": "/data",
+                "name": "vap-isolation-fc0b7d94be_gate-data",
+                "rw": true,
+                "type": "volume"
+              },
+              {
+                "destination": "/canaries",
+                "name": "vap-isolation-fc0b7d94be_canaries",
+                "rw": false,
+                "type": "volume"
+              },
+              {
+                "destination": "/run/role",
+                "name": "vap-isolation-fc0b7d94be_gate-config",
+                "rw": false,
+                "type": "volume"
+              }
+            ],
+            "networks": {
+              "vap-isolation-fc0b7d94be_audit": {
+                "ip": "172.20.0.3"
+              },
+              "vap-isolation-fc0b7d94be_backend": {
+                "ip": "172.18.0.4"
+              },
+              "vap-isolation-fc0b7d94be_frontend": {
                 "ip": "172.19.0.3"
               }
             },
@@ -997,6 +982,51 @@
             "security_opt": [
               "no-new-privileges:true"
             ],
+            "tmpfs": {
+              "/tmp": "rw,noexec,nosuid,size=16m,mode=1777"
+            },
+            "user": "10002:10002"
+          },
+          "open-backend": {
+            "cap_add": null,
+            "cap_drop": [
+              "ALL"
+            ],
+            "image_id": "sha256:ef18966faf60a5ca45b081886003d555716794bf41dce1793b66fb876bf482fc",
+            "mounts": [
+              {
+                "destination": "/canaries",
+                "name": "vap-isolation-fc0b7d94be_canaries",
+                "rw": false,
+                "type": "volume"
+              },
+              {
+                "destination": "/run/role",
+                "name": "vap-isolation-fc0b7d94be_open-backend-config",
+                "rw": false,
+                "type": "volume"
+              },
+              {
+                "destination": "/data",
+                "name": "vap-isolation-fc0b7d94be_open-backend-data",
+                "rw": true,
+                "type": "volume"
+              }
+            ],
+            "networks": {
+              "vap-isolation-fc0b7d94be_backend": {
+                "ip": "172.18.0.3"
+              }
+            },
+            "port_bindings": {},
+            "privileged": false,
+            "readonly_rootfs": true,
+            "security_opt": [
+              "no-new-privileges:true"
+            ],
+            "tmpfs": {
+              "/tmp": "rw,noexec,nosuid,size=16m,mode=1777"
+            },
             "user": "10005:10005"
           }
         }
@@ -1019,10 +1049,10 @@
           "http_status": 200,
           "result": {
             "backend_attempted": true,
-            "before_send_ms": 17.592936,
+            "before_send_ms": 12.75651,
             "reason": "signed_backend_receipt_durably_recorded",
             "state": "confirmed_success",
-            "total_ms": 29.847343
+            "total_ms": 22.341168
           }
         }
       }
@@ -1139,14 +1169,14 @@
       "description": "Deleting agent logs leaves signed audit evidence intact and verifiable",
       "matched": true,
       "observed": {
-        "audit_digest": "de07d81fd3c14017b3bc8a22d377f9a1cc654ed3b1c8e173449d4a9feb073376",
+        "audit_digest": "074680ed6f3370228b84d27d2608a72ead9af683183a69c148058e0567cc4d3c",
         "created": {
           "exists": true
         },
         "deleted": {
           "exists": false
         },
-        "evidence_digest": "2092e8369e181d3bfc9af0802e5ee0c674f5b454ab00aa99f98c0d6d669e2e53"
+        "evidence_digest": "df7ed0ee091a3cb33e7df26b42eb6b68ff854584ac23eda5e5961b1fc80e6405"
       }
     },
     {
@@ -1222,7 +1252,7 @@
               "operation_id": "direct-bypass-001"
             },
             "key_id": "backend",
-            "signature": "d4b3d25c54d3c33fdb1120b184845b26546f4590a12677ca98b6ff2167b15aa9837065d52fb71ede1a971ef0c7446f881ec14ce219af2dd62aff990e70a18106"
+            "signature": "c35d9f57e697e71296ecacaf104462d73a0bc67daf960574b76ff261c83d0c1d4d1a7ea08ed2bdbc608fe1415010ef3fff2f72b286e8e0c6715639a811181d0d"
           },
           "connected": true,
           "http_status": 200
@@ -1262,12 +1292,18 @@
   "proposal_status": "experimental_unadopted",
   "provenance": {
     "baseline_commit": "2d4fda80b9e26cbaa51112fb2a65fdfb51d2bd1f",
-    "ci_run_id": "40056738307",
-    "commit": "24b41566fd7306f0fa558713bb6b465b3fd9faa3",
+    "ci_run_id": "40058076259",
+    "commit": "1e8e497f2082cb11b7d2f7da1278205f1449a774",
     "controller_python": "3.12.15",
     "dirty": false,
+    "input_digests": {
+      "declared-scope-verifier": "7928438d5737628579168b2df00a7bda06c13104057e687039cb732e1397f481",
+      "os-isolated-gate": "bfeac73d4b4dec705afa2f75ad767329198adac8de2520499f3c2cc561623322",
+      "pre-record-gate": "a53c70f5d204a48fde4d454183aad79d56e0c47f0d46472257fa649223a88745",
+      "workflow": "2b0a6a4f480edbaffdc2ba900cf8ba6ad21a20e41a0b17ed705cbb4f9c6d9d5d"
+    },
     "os_execution_location": "Linux Docker engine",
-    "source_digest": "f9ddc5f0746ebdcaff0a3df1214c0f1a3e82e6fb4f8870d829fac78be89d6fc1",
+    "source_digest": "bfeac73d4b4dec705afa2f75ad767329198adac8de2520499f3c2cc561623322",
     "version": "0.1.0"
   }
 }

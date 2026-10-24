@@ -4,107 +4,29 @@
     "cap_drop": [
       "ALL"
     ],
-    "image_id": "sha256:840aacf866e863df0ff1d973dc1d0a213c26e8ec245ba20d79c5a3303b6d750f",
-    "mounts": [
-      {
-        "destination": "/data",
-        "name": "vap-isolation-743001d100_agent-data",
-        "rw": true,
-        "type": "volume"
-      },
-      {
-        "destination": "/canaries",
-        "name": "vap-isolation-743001d100_canaries",
-        "rw": false,
-        "type": "volume"
-      },
-      {
-        "destination": "/run/role",
-        "name": "vap-isolation-743001d100_agent-config",
-        "rw": false,
-        "type": "volume"
-      }
-    ],
-    "networks": {
-      "vap-isolation-743001d100_frontend": {
-        "ip": "172.20.0.3"
-      }
-    },
-    "port_bindings": {},
-    "privileged": false,
-    "readonly_rootfs": true,
-    "security_opt": [
-      "no-new-privileges:true"
-    ],
-    "user": "10001:10001"
-  },
-  "audit": {
-    "cap_add": null,
-    "cap_drop": [
-      "ALL"
-    ],
-    "image_id": "sha256:840aacf866e863df0ff1d973dc1d0a213c26e8ec245ba20d79c5a3303b6d750f",
-    "mounts": [
-      {
-        "destination": "/data",
-        "name": "vap-isolation-743001d100_audit-data",
-        "rw": true,
-        "type": "volume"
-      },
-      {
-        "destination": "/canaries",
-        "name": "vap-isolation-743001d100_canaries",
-        "rw": false,
-        "type": "volume"
-      },
-      {
-        "destination": "/run/role",
-        "name": "vap-isolation-743001d100_audit-config",
-        "rw": false,
-        "type": "volume"
-      }
-    ],
-    "networks": {
-      "vap-isolation-743001d100_audit": {
-        "ip": "172.18.0.2"
-      }
-    },
-    "port_bindings": {},
-    "privileged": false,
-    "readonly_rootfs": true,
-    "security_opt": [
-      "no-new-privileges:true"
-    ],
-    "user": "10003:10003"
-  },
-  "backend": {
-    "cap_add": null,
-    "cap_drop": [
-      "ALL"
-    ],
-    "image_id": "sha256:840aacf866e863df0ff1d973dc1d0a213c26e8ec245ba20d79c5a3303b6d750f",
+    "image_id": "sha256:ef18966faf60a5ca45b081886003d555716794bf41dce1793b66fb876bf482fc",
     "mounts": [
       {
         "destination": "/run/role",
-        "name": "vap-isolation-743001d100_backend-config",
+        "name": "vap-isolation-fc0b7d94be_agent-config",
         "rw": false,
         "type": "volume"
       },
       {
         "destination": "/data",
-        "name": "vap-isolation-743001d100_backend-data",
+        "name": "vap-isolation-fc0b7d94be_agent-data",
         "rw": true,
         "type": "volume"
       },
       {
         "destination": "/canaries",
-        "name": "vap-isolation-743001d100_canaries",
+        "name": "vap-isolation-fc0b7d94be_canaries",
         "rw": false,
         "type": "volume"
       }
     ],
     "networks": {
-      "vap-isolation-743001d100_backend": {
+      "vap-isolation-fc0b7d94be_frontend": {
         "ip": "172.19.0.2"
       }
     },
@@ -114,42 +36,39 @@
     "security_opt": [
       "no-new-privileges:true"
     ],
-    "user": "10004:10004"
+    "tmpfs": {
+      "/tmp": "rw,noexec,nosuid,size=16m,mode=1777"
+    },
+    "user": "10001:10001"
   },
-  "gate": {
+  "audit": {
     "cap_add": null,
     "cap_drop": [
       "ALL"
     ],
-    "image_id": "sha256:840aacf866e863df0ff1d973dc1d0a213c26e8ec245ba20d79c5a3303b6d750f",
+    "image_id": "sha256:ef18966faf60a5ca45b081886003d555716794bf41dce1793b66fb876bf482fc",
     "mounts": [
       {
         "destination": "/run/role",
-        "name": "vap-isolation-743001d100_gate-config",
+        "name": "vap-isolation-fc0b7d94be_audit-config",
         "rw": false,
         "type": "volume"
       },
       {
         "destination": "/data",
-        "name": "vap-isolation-743001d100_gate-data",
+        "name": "vap-isolation-fc0b7d94be_audit-data",
         "rw": true,
         "type": "volume"
       },
       {
         "destination": "/canaries",
-        "name": "vap-isolation-743001d100_canaries",
+        "name": "vap-isolation-fc0b7d94be_canaries",
         "rw": false,
         "type": "volume"
       }
     ],
     "networks": {
-      "vap-isolation-743001d100_audit": {
-        "ip": "172.18.0.3"
-      },
-      "vap-isolation-743001d100_backend": {
-        "ip": "172.19.0.4"
-      },
-      "vap-isolation-743001d100_frontend": {
+      "vap-isolation-fc0b7d94be_audit": {
         "ip": "172.20.0.2"
       }
     },
@@ -159,36 +78,87 @@
     "security_opt": [
       "no-new-privileges:true"
     ],
-    "user": "10002:10002"
+    "tmpfs": {
+      "/tmp": "rw,noexec,nosuid,size=16m,mode=1777"
+    },
+    "user": "10003:10003"
   },
-  "open-backend": {
+  "backend": {
     "cap_add": null,
     "cap_drop": [
       "ALL"
     ],
-    "image_id": "sha256:840aacf866e863df0ff1d973dc1d0a213c26e8ec245ba20d79c5a3303b6d750f",
+    "image_id": "sha256:ef18966faf60a5ca45b081886003d555716794bf41dce1793b66fb876bf482fc",
     "mounts": [
       {
         "destination": "/run/role",
-        "name": "vap-isolation-743001d100_open-backend-config",
+        "name": "vap-isolation-fc0b7d94be_backend-config",
         "rw": false,
         "type": "volume"
       },
       {
         "destination": "/data",
-        "name": "vap-isolation-743001d100_open-backend-data",
+        "name": "vap-isolation-fc0b7d94be_backend-data",
         "rw": true,
         "type": "volume"
       },
       {
         "destination": "/canaries",
-        "name": "vap-isolation-743001d100_canaries",
+        "name": "vap-isolation-fc0b7d94be_canaries",
         "rw": false,
         "type": "volume"
       }
     ],
     "networks": {
-      "vap-isolation-743001d100_backend": {
+      "vap-isolation-fc0b7d94be_backend": {
+        "ip": "172.18.0.2"
+      }
+    },
+    "port_bindings": {},
+    "privileged": false,
+    "readonly_rootfs": true,
+    "security_opt": [
+      "no-new-privileges:true"
+    ],
+    "tmpfs": {
+      "/tmp": "rw,noexec,nosuid,size=16m,mode=1777"
+    },
+    "user": "10004:10004"
+  },
+  "gate": {
+    "cap_add": null,
+    "cap_drop": [
+      "ALL"
+    ],
+    "image_id": "sha256:ef18966faf60a5ca45b081886003d555716794bf41dce1793b66fb876bf482fc",
+    "mounts": [
+      {
+        "destination": "/data",
+        "name": "vap-isolation-fc0b7d94be_gate-data",
+        "rw": true,
+        "type": "volume"
+      },
+      {
+        "destination": "/canaries",
+        "name": "vap-isolation-fc0b7d94be_canaries",
+        "rw": false,
+        "type": "volume"
+      },
+      {
+        "destination": "/run/role",
+        "name": "vap-isolation-fc0b7d94be_gate-config",
+        "rw": false,
+        "type": "volume"
+      }
+    ],
+    "networks": {
+      "vap-isolation-fc0b7d94be_audit": {
+        "ip": "172.20.0.3"
+      },
+      "vap-isolation-fc0b7d94be_backend": {
+        "ip": "172.18.0.4"
+      },
+      "vap-isolation-fc0b7d94be_frontend": {
         "ip": "172.19.0.3"
       }
     },
@@ -198,6 +168,51 @@
     "security_opt": [
       "no-new-privileges:true"
     ],
+    "tmpfs": {
+      "/tmp": "rw,noexec,nosuid,size=16m,mode=1777"
+    },
+    "user": "10002:10002"
+  },
+  "open-backend": {
+    "cap_add": null,
+    "cap_drop": [
+      "ALL"
+    ],
+    "image_id": "sha256:ef18966faf60a5ca45b081886003d555716794bf41dce1793b66fb876bf482fc",
+    "mounts": [
+      {
+        "destination": "/canaries",
+        "name": "vap-isolation-fc0b7d94be_canaries",
+        "rw": false,
+        "type": "volume"
+      },
+      {
+        "destination": "/run/role",
+        "name": "vap-isolation-fc0b7d94be_open-backend-config",
+        "rw": false,
+        "type": "volume"
+      },
+      {
+        "destination": "/data",
+        "name": "vap-isolation-fc0b7d94be_open-backend-data",
+        "rw": true,
+        "type": "volume"
+      }
+    ],
+    "networks": {
+      "vap-isolation-fc0b7d94be_backend": {
+        "ip": "172.18.0.3"
+      }
+    },
+    "port_bindings": {},
+    "privileged": false,
+    "readonly_rootfs": true,
+    "security_opt": [
+      "no-new-privileges:true"
+    ],
+    "tmpfs": {
+      "/tmp": "rw,noexec,nosuid,size=16m,mode=1777"
+    },
     "user": "10005:10005"
   }
 }

@@ -634,8 +634,8 @@
       "pycparser": "3.12",
       "rfc8785": "0.1.4"
     },
-    "fixture_commit": "24b41566fd7306f0fa558713bb6b465b3fd9faa3",
-    "implementation_commit": "24b41566fd7306f0fa558713bb6b465b3fd9faa3",
+    "fixture_commit": "1e8e497f2082cb11b7d2f7da1278205f1449a774",
+    "implementation_commit": "1e8e497f2082cb11b7d2f7da1278205f1449a774",
     "independent_reproduction": "not_established",
     "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
     "python": "3.12.15",

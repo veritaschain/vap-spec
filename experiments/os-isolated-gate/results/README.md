@@ -4,12 +4,16 @@
 GitHub-hosted Linux runner. It is not independent reproduction, a production
 security assessment or adoption of a VAP requirement.
 
-The retained run is [40056738307](https://github.com/veritaschain/vap-spec/actions/runs/40056738307),
-at source commit `24b41566fd7306f0fa558713bb6b465b3fd9faa3` (clean checkout), based
+The retained run is [40058076259](https://github.com/veritaschain/vap-spec/actions/runs/40058076259),
+at source commit `1e8e497f2082cb11b7d2f7da1278205f1449a774` (clean checkout), based
 on merged PR #11 commit `2d4fda80b9e26cbaa51112fb2a65fdfb51d2bd1f`.
 The experiment source digest is
-`f9ddc5f0746ebdcaff0a3df1214c0f1a3e82e6fb4f8870d829fac78be89d6fc1`.
+`bfeac73d4b4dec705afa2f75ad767329198adac8de2520499f3c2cc561623322`.
+This supersedes the initial record; the original run remains available in
+[commit 11c7e3b](https://github.com/veritaschain/vap-spec/blob/11c7e3b/experiments/os-isolated-gate/results/README.md).
+See [the final review](../FINAL-REVIEW.md) for the corrected failure paths.
 Later documentation/artifact commits do not retroactively change that provenance.
+Separate fingerprints for the imported gate/verifier and workflow are now included.
 
 The job ran on `ubuntu-24.04`: Linux `6.17.0-1022-azure`, Docker Engine `28.0.4`,
 Compose `2.38.2`, controller Python `3.12.15`. The runtime image's exact base digest
@@ -17,7 +21,7 @@ is pinned in the Dockerfile; the built image ID is in the inspection record.
 
 | Verification | Actual result |
 | --- | --- |
-| New controller/transport/reporting regression tests | 12 passed |
+| New controller/transport/reporting regression tests | 28 passed |
 | Actual Linux isolation experiment | 16/16 expected outcomes matched |
 | Unchanged gate regression tests | 46 passed |
 | Unchanged gate scenarios | 15/15 matched |
