@@ -57,7 +57,11 @@ python -m venv .venv
 ```
 
 The last command builds the image, provisions the mock lab, executes all sixteen
-cases, writes `generated/`, and cleans up. Exit 0 requires the exact case inventory,
+cases, writes a **new** `generated/` directory, and cleans up. An existing output
+directory (including an empty directory or symlink) is refused before provisioning.
+For another run, preserve the old results and choose a fresh destination, for example
+`python -m isolation_lab run-suite --output generated/run-002`. This prevents
+failed reruns from mixing old evidence with new observations. Exit 0 requires the exact case inventory,
 all expected outcomes, and successful teardown. Missing Docker, an incomplete
 run or cleanup failure is not a passing result. If a controller is forcibly killed,
 remove only the project named `vap-isolation-<run suffix>` shown in Docker, not
@@ -108,7 +112,10 @@ API from being mistaken for effective isolation. Backend counters are read from
 its actual persisted handler/effect tables by the trusted controller.
 
 Reports keep raw probe observations, sanitized runtime inspection, Docker/Compose/
-kernel versions, source commit/digest and cleanup status. The evidence bundle is
+kernel versions, source commit/digests and cleanup status. Provenance includes the
+unchanged imported gate/verifier code, requirements and workflow; changes during
+execution invalidate completion. Missing role/canary observations, substituted or
+extra mounts, and failed cleanup queries cannot count as passing observations. The evidence bundle is
 built from actual signed audit events and backend receipts, then passed through
 the **unchanged** existing verifier. `vap-v1.2` does not acquire scope evaluation;
 `experimental-scope` stays explicitly unadopted. Cryptographic integrity and

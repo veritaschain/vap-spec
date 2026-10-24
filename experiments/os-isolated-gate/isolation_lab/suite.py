@@ -18,6 +18,7 @@ from record_gate.common import require, save
 from scope_verifier.crypto import digest
 from . import REPO, ROOT, ROLES, VERSION
 from .seed import generate
+from .checks import filesystem_permissions_match, runtime_mounts_match
 
 CASES = {
     '01': 'Distinct non-root users, private namespaces, zero capabilities and no privilege escalation',
@@ -60,6 +61,8 @@ class Lab:
         self.env = {**os.environ, 'LAB_IMAGE': self.image, 'LAB_SEED_DIR': self.tmp.name}
         self.prefix = ['docker', 'compose', '-f', str(ROOT / 'compose.yaml'), '-p', self.project]
         self.ids = {}
+        self.build_attempted = False
+        self.image_built = False
 
     def compose(self, *args, **kwargs):
         return command([*self.prefix, *args], env=self.env, **kwargs)
@@ -68,9 +71,11 @@ class Lab:
         require(shutil.which('docker') is not None, 'docker_unavailable_no_os_test_executed')
         kind = command(['docker', 'info', '--format', '{{.OSType}}']).stdout.strip()
         require(kind == 'linux', 'linux_docker_engine_required')
+        self.build_attempted = True
         built = command(['docker', 'build', '-t', self.image, '-f', str(ROOT / 'Dockerfile'), str(REPO)], timeout=360, check=False)
         (self.output / 'build.log').write_text(built.stdout + built.stderr)
         require(built.returncode == 0, 'image_build_failed_see_build_log')
+        self.image_built = True
         self.compose('run', '--rm', '--no-deps', 'setup', timeout=60)
         self.compose('--profile', 'negative-control', 'up', '-d', '--wait', '--wait-timeout', '90', timeout=120)
         self.ids = {role: self.compose('ps', '-q', role).stdout.strip() for role in ROLES}
@@ -90,6 +95,7 @@ class Lab:
                          'cap_drop': raw['HostConfig']['CapDrop'], 'cap_add': raw['HostConfig']['CapAdd'],
                          'security_opt': raw['HostConfig']['SecurityOpt'],
                          'port_bindings': raw['HostConfig']['PortBindings'],
+                         'tmpfs': raw['HostConfig'].get('Tmpfs', {}),
                          'networks': {name: {'ip': n['IPAddress']} for name, n in raw['NetworkSettings']['Networks'].items()},
                          'mounts': [{'type': m['Type'], 'destination': m['Destination'], 'rw': m['RW'],
                                      'name': m.get('Name')} for m in raw['Mounts']]}
@@ -114,13 +120,21 @@ class Lab:
                 # Scoped by the randomly generated project; never prune shared Docker resources.
                 result = self.compose('--profile', 'negative-control', '--profile', 'setup', 'down', '-v',
                                       '--remove-orphans', timeout=60, check=False)
-                removed = command(['docker', 'image', 'rm', self.image], check=False, timeout=30)
-                save(self.output / 'cleanup.json', {'returncode': result.returncode,
-                     'image_removal_returncode': removed.returncode})
+                cleanup = {'returncode': result.returncode, 'image_removal_returncode': None}
+                if self.build_attempted:
+                    removed = command(['docker', 'image', 'rm', self.image], check=False, timeout=30)
+                    cleanup['image_removal_returncode'] = removed.returncode
+                    # A failed build may never have created an image. A failed query
+                    # is unknown, not proof that an image disappeared.
+                    listing = command(['docker', 'image', 'ls', '--quiet', '--no-trunc',
+                                       '--filter', 'reference=' + self.image], check=False, timeout=30)
+                    cleanup['image_listing_returncode'] = listing.returncode
+                    cleanup['image_absence_confirmed'] = listing.returncode == 0 and not listing.stdout.strip()
+                    save(self.output / 'cleanup.json', cleanup)
+                    require(not self.image_built or removed.returncode == 0, 'temporary_image_removal_failed')
+                    require(cleanup['image_absence_confirmed'], 'temporary_image_absence_unconfirmed')
+                save(self.output / 'cleanup.json', cleanup)
                 require(result.returncode == 0, 'container_or_volume_cleanup_incomplete')
-                # An absent image is expected when the build failed before creating it.
-                remains = command(['docker', 'image', 'inspect', self.image], check=False)
-                require(remains.returncode != 0, 'temporary_image_cleanup_incomplete')
         finally:
             self.tmp.cleanup()
 
@@ -137,9 +151,37 @@ def summarize(rows, *, execution_error=None):
             'independent_reproduction': 'not_established', 'privileged_host_resistance': 'not_established'}
 
 
+def prepare_output(directory):
+    # A new directory is an atomic run boundary. Never reuse or delete old evidence.
+    output = Path(directory).absolute()
+    try:
+        output.mkdir(parents=True, exist_ok=False)
+    except FileExistsError as exc:
+        raise ValueError('output_directory_exists_choose_a_fresh_output: ' + str(output)) from exc
+    return output.resolve()
+
+
+def source_snapshot():
+    def git(*args):
+        r = command(['git', *args], check=False)
+        return r.stdout.strip() if r.returncode == 0 else 'unavailable'
+    files = sorted((ROOT / 'isolation_lab').glob('*.py')) + sorted((ROOT / 'tests').glob('*.py'))
+    files += [ROOT / p for p in ('compose.yaml', 'Dockerfile', 'Dockerfile.dockerignore', 'requirements.txt')]
+    inputs = {'os-isolated-gate': digest({str(p.relative_to(ROOT)): p.read_text() for p in files})}
+    for name, package in [('pre-record-gate', 'record_gate'), ('declared-scope-verifier', 'scope_verifier')]:
+        root = ROOT.parent / name
+        dependency = sorted((root / package).glob('*.py')) + [root / 'requirements.txt']
+        inputs[name] = digest({str(p.relative_to(root)): p.read_text() for p in dependency})
+    workflow = REPO / '.github/workflows/os-isolated-gate.yml'
+    inputs['workflow'] = digest(workflow.read_text())
+    changed = git('status', '--porcelain', '--', str(ROOT), str(ROOT.parent / 'pre-record-gate'),
+                  str(ROOT.parent / 'declared-scope-verifier'), str(workflow))
+    return {'commit': git('rev-parse', 'HEAD'), 'dirty': bool(changed), 'input_digests': inputs}
+
+
 def run_suite(directory):
-    output = Path(directory).resolve()
-    output.mkdir(parents=True, exist_ok=True)
+    output = prepare_output(directory)
+    initial_source = source_snapshot()
     rows, error, lab = [], None, None
     def record(case, details, passed):
         rows.append({'case': case, 'description': CASES[case], 'matched': bool(passed), 'observed': details})
@@ -158,9 +200,7 @@ def run_suite(directory):
             for r, p in identities.items()) and all(
                 len({p['namespaces'][n] for p in identities.values()}) == len(ROLES) for n in ('mnt', 'pid', 'net')))
         files = {r: lab.probe(r, 'filesystem', r) for r in ROLES}
-        record('02', files, all(p['own_config_readable']['allowed'] and all(
-            x['allowed'] if other == r else (x['allowed'] is False and x['errno'] == errno.EACCES)
-            for other, x in p['canaries'].items()) for r, p in files.items()))
+        record('02', files, filesystem_permissions_match(files))
         mounts = lab.inspection
         record('03', {'filesystem': files, 'runtime': mounts}, all(
             p['config_write']['allowed'] is False and p['code_write']['allowed'] is False
@@ -168,9 +208,7 @@ def run_suite(directory):
             and p['code_write']['errno'] in (errno.EACCES, errno.EROFS)
             and not p['docker_socket_visible'] and not p['setup_seed_visible']
             and mounts[r]['readonly_rootfs'] and not mounts[r]['privileged']
-            and len([m for m in mounts[r]['mounts'] if m['destination'] == '/run/role' and not m['rw']
-                     and m['name'] == lab.project + '_' + r + '-config']) == 1
-            and all(m['destination'] in ('/run/role', '/data', '/canaries', '/tmp') for m in mounts[r]['mounts'])
+            and runtime_mounts_match(r, mounts[r], lab.project)
             for r, p in files.items()))
         networks = {n: json.loads(command(['docker', 'network', 'inspect', lab.project + '_' + n]).stdout)[0]
                     for n in ('frontend', 'audit', 'backend')}
@@ -261,15 +299,15 @@ def run_suite(directory):
                 lab.close()
             except Exception as exc:
                 error = (error or '') + ' cleanup_failed: ' + str(exc)
+    final_source = source_snapshot()
+    if (initial_source['input_digests'] != final_source['input_digests']
+            or initial_source['commit'] != final_source['commit']):
+        error = (error or '') + ' source_changed_during_execution'
     summary = summarize(rows, execution_error=error)
-    def git(*args):
-        r = command(['git', *args], check=False)
-        return r.stdout.strip() if r.returncode == 0 else 'unavailable'
-    files = sorted((ROOT / 'isolation_lab').glob('*.py')) + sorted((ROOT / 'tests').glob('*.py'))
-    files += [ROOT / p for p in ('compose.yaml', 'Dockerfile', 'Dockerfile.dockerignore', 'requirements.txt')]
-    summary['provenance'] = {'version': VERSION, 'commit': git('rev-parse', 'HEAD'),
-        'dirty': bool(git('status', '--porcelain', '--', str(ROOT))), 'controller_python': platform.python_version(),
-        'source_digest': digest({str(p.relative_to(ROOT)): p.read_text() for p in files}),
+    summary['provenance'] = {'version': VERSION, 'commit': initial_source['commit'],
+        'dirty': initial_source['dirty'] or final_source['dirty'], 'controller_python': platform.python_version(),
+        'source_digest': initial_source['input_digests']['os-isolated-gate'],
+        'input_digests': initial_source['input_digests'],
         'ci_run_id': os.environ.get('GITHUB_RUN_ID'), 'os_execution_location': 'Linux Docker engine' if lab and lab.ids else 'not_executed',
         'baseline_commit': '2d4fda80b9e26cbaa51112fb2a65fdfb51d2bd1f'}
     save(output / 'summary.json', summary)
