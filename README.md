@@ -29,7 +29,7 @@ VAP's scope is deliberately strict: **domains where system failures can cause ir
 
 ### Implementation status (mandatory disclosure)
 
-As of September 2026: **zero external implementations** of VAP or any VAP profile, and **zero Evidence Packs accepted in any proceeding**.
+As of 25 October 2026: **zero external implementations** of VAP or any VAP profile, and **zero Evidence Packs accepted in any proceeding**. How these items will be counted is set out in the [proposed counting criteria](disclosures/2026-10-24-counting-criteria.md).
 
 **Commercial disclosure correction — 24 October 2026:** the previously published paid-service contract figure has not been substantiated through reconciliation with primary records. It is withdrawn from current public claims pending that review; this does **not** establish a count of zero. No verified contract count, customer count or revenue figure is asserted here. Commercial service activity must be distinguished from external implementations, independent validation and accepted Evidence Packs. See the [dated correction and counting criteria](disclosures/2026-10-24-commercial-contracts.md). Previously distributed fixed source and evidence archives remain unchanged.
 
