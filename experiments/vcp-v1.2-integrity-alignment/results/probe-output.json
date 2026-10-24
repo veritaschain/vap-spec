@@ -1,0 +1,739 @@
+{
+  "status": "research_observation_unadopted_not_conformance_verdict",
+  "provenance": "Separate reconstruction from pinned public sources; not the unavailable probe at 1b88644.",
+  "environment": {
+    "python": "3.14.3",
+    "rfc8785": "0.1.4",
+    "cryptography": "50.0.2"
+  },
+  "sources": [
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "spec/v1.2/VCP-Specification-v1_2_en.md",
+      "sha256": "ce94399bde111c8b805d3804fad2e6d61cab2f1839533d5009e94e812d15a942"
+    },
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "examples/python/quickstart.py",
+      "sha256": "7f8351344667c349bd7d1c7897f388459f2548e58525e0c63d8b731b57279881"
+    },
+    {
+      "revision": "277b37930be858c0832708a8696d6f213b1fe7bb",
+      "path": "spec/v1.2/VAP_Framework_Specification.md",
+      "sha256": "dbe2439d6d138929b48697cd0545a5c8324059ab032732b9a9122f993fde9f48"
+    },
+    {
+      "revision": "3d359dce3be479632d41e4dee74c7f102766e202",
+      "path": "tools/verifier/vcp_verifier.py",
+      "sha256": "6d9fb91f268c0af1cf898a0e1a608852825d46952d13a544411634e91518c959"
+    },
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "tests/fixtures/v1.2/valid/anchor-failover.json",
+      "sha256": "ff937a796f7bb56bc1a93d96079ed3a1600365afb395831b5ec2e490e71799fe"
+    },
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "tests/fixtures/v1.2/valid/anchor-migration.json",
+      "sha256": "e4cdfa2cda5104669a30e56351af48cb17fbfd1149454095f36bdeec73bf51a7"
+    },
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "tests/fixtures/v1.2/valid/audit.json",
+      "sha256": "32c155464a0abb59898815e56aaae8cadafeb033089a37cf01fe2a74519eab8a"
+    },
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "tests/fixtures/v1.2/valid/checkpoint-emergency.json",
+      "sha256": "e3ea5d9a40c3cac88c54094cb9ac43d59c70532a842c02f5c9de28a1b990cad9"
+    },
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "tests/fixtures/v1.2/valid/checkpoint-planned.json",
+      "sha256": "4d28f72effc5e8ebb5831f0d01085a9c8fd8035ac3c6ac4094ba42b0f9d3953d"
+    },
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "tests/fixtures/v1.2/valid/erasure-court_order.json",
+      "sha256": "6e25672f60bf614b843797748c06c65ced17e233a09eb129a48ab0ae8ac1d8fd"
+    },
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "tests/fixtures/v1.2/valid/erasure-error_correction.json",
+      "sha256": "a1dd1fc3c6d62131e58f7299a351f917d91c89ebd0a9b758bd929abbeadae0e9"
+    },
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "tests/fixtures/v1.2/valid/erasure-gdpr_art_17_1a.json",
+      "sha256": "9e439fbda400114e63ac893aac7269062b8b550bb0732813f57f41b40fc0995d"
+    },
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "tests/fixtures/v1.2/valid/erasure-gdpr_art_17_1b.json",
+      "sha256": "f206ec203c42e1e9adcac389edc471c6c598e66ebc53e903c23275211eb354e9"
+    },
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "tests/fixtures/v1.2/valid/erasure-gdpr_art_17_1c.json",
+      "sha256": "584d90fd5c801dbd4bd3b1c02ba9e250664e558241dcfaa303ffa0c7fcc05fbc"
+    },
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "tests/fixtures/v1.2/valid/erasure-gdpr_art_17_1d.json",
+      "sha256": "66c66df7750bb00b3a2b1551006eaa6ce3667c007e419179a5fc7f7fb90ebd3c"
+    },
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "tests/fixtures/v1.2/valid/erasure-hsm_zeroize.json",
+      "sha256": "831056941e7be474e6e62062de7c1a2b212f3869a25c94a49d3a36fb901a8b6b"
+    },
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "tests/fixtures/v1.2/valid/erasure-retention_expired.json",
+      "sha256": "2698f819b31f7bf76a1f8b26a2e014fb777e6787b5d661b27a2eabac2955ce67"
+    },
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "tests/fixtures/v1.2/valid/erasure-secure_delete.json",
+      "sha256": "68b71e4cf705398cfff1d872db9b2ee0496a25a33824f70b235cd7661379325c"
+    },
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "tests/fixtures/v1.2/valid/erasure.json",
+      "sha256": "6dc5f8f2fab8533ab79bad311942ee5f2690a63fc4b4365aab9da4d4c7b238b8"
+    },
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "tests/fixtures/v1.2/valid/existing-ack.json",
+      "sha256": "147696926feab4b1aac4f0d6892b306ade159e0a80a8a7644add1223db0f1998"
+    },
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "tests/fixtures/v1.2/valid/existing-anc.json",
+      "sha256": "62e4f0c635146a328a169e57fe46a975f520d4f31ab213d7bdff2a278568892f"
+    },
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "tests/fixtures/v1.2/valid/existing-cls.json",
+      "sha256": "7791e51f20a2bc6a63c302551816e53dfdce0d1829b5e3392d68f49043e9afae"
+    },
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "tests/fixtures/v1.2/valid/existing-cxl.json",
+      "sha256": "af0fff6ec51e62dc6361e8b7870ec6e17d388f6538c9fa8ae1917fc188e2cc7f"
+    },
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "tests/fixtures/v1.2/valid/existing-err.json",
+      "sha256": "7b87cee9f2863c60f3873c5a438d257dca159b0d7aefc6e789cd7642fb473319"
+    },
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "tests/fixtures/v1.2/valid/existing-err_auth.json",
+      "sha256": "5b83fbf55e4f6d5afe5be3bc4cf214ba12d08519f78d7eeaa08a9516abc5591e"
+    },
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "tests/fixtures/v1.2/valid/existing-err_conn.json",
+      "sha256": "f65ffd6dd7ecb8e1bd6a00f4211f0e039476728856fc6e84097163b9a6387436"
+    },
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "tests/fixtures/v1.2/valid/existing-err_parse.json",
+      "sha256": "af7246e3be090605c8172360d465aeae42e8632dd3053f14b7c12176dd704585"
+    },
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "tests/fixtures/v1.2/valid/existing-err_recover.json",
+      "sha256": "20f294a166c455a4e65fd410729e31d7a88db2d06f194a79a24db093c651eccd"
+    },
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "tests/fixtures/v1.2/valid/existing-err_reject.json",
+      "sha256": "f10b9ad7c2d8a8d305b3dafe1914e612c5c2b1906787628eec3522c956a6511b"
+    },
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "tests/fixtures/v1.2/valid/existing-err_risk.json",
+      "sha256": "4b7e709d20fd47029676d1b35a5a2627a338fb02737c3d7efbda1783ab118325"
+    },
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "tests/fixtures/v1.2/valid/existing-err_sync.json",
+      "sha256": "8590512a66c16712caee88d38424fda7c8a9e7ebc8db2290f2cb1dcade5fb97d"
+    },
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "tests/fixtures/v1.2/valid/existing-err_system.json",
+      "sha256": "0b8c69c33e7b8314540283bed99a6ff588f118d941e270aeaa544b3f58ed3bff"
+    },
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "tests/fixtures/v1.2/valid/existing-err_timeout.json",
+      "sha256": "a7f22a946317e596d36430982e569d4c6d36014a75178824e94598b068e8a8f9"
+    },
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "tests/fixtures/v1.2/valid/existing-exe.json",
+      "sha256": "f5eddaae81325d0fd19179cc2c8db2a036384134f78a038e9b0647b246940bf0"
+    },
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "tests/fixtures/v1.2/valid/existing-hbt.json",
+      "sha256": "2e1aeba772ff6c8f62d0f362b0d2e6ff95d724a71e4fa43d51f71e1b51cd59c1"
+    },
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "tests/fixtures/v1.2/valid/existing-init.json",
+      "sha256": "4030e49f149e621ab0fe15339ec71f2577b32800d9f4c572f8f5b45bc6fbff04"
+    },
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "tests/fixtures/v1.2/valid/existing-mod.json",
+      "sha256": "dd255dff77d09515d33574943a8483f8391cbe709c4ba3a79a585dcfe718622e"
+    },
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "tests/fixtures/v1.2/valid/existing-ord.json",
+      "sha256": "36ade1d175b4f15571d614d47da7515fc2cd7c859ba3e6f30fb4d163e75d149e"
+    },
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "tests/fixtures/v1.2/valid/existing-rsk.json",
+      "sha256": "fead362578f5fdd5f2a6938009522ee9161449cc510603730fa3ce296195a26f"
+    },
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "tests/fixtures/v1.2/valid/existing-sig.json",
+      "sha256": "d01f7a65f80151b3e3368d880d606234fe0bc6138f9bde6effc278fa16a272df"
+    },
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "tests/fixtures/v1.2/valid/legacy-legal_order.json",
+      "sha256": "f0aee8560b7f5a296125a2a5434d99d1efa5a0e7103a2abb8ada8866ebeb1f27"
+    },
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "tests/fixtures/v1.2/valid/legacy-retention_expired.json",
+      "sha256": "d885a498bf995d539c2840bb57c1fb6f93a86aec96d4c063f3513e2d299b8b6d"
+    },
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "tests/fixtures/v1.2/valid/legacy-subject_request.json",
+      "sha256": "4c2514287c35903e8183df752484275f9f5a389cdcfd9b687ab9a774979288c9"
+    },
+    {
+      "revision": "b23acb266f88df81d960d36d58fb64ceaa0dd5ed",
+      "path": "tests/fixtures/v1.2/valid/recovery-announce.json",
+      "sha256": "558970c62af39c8a85db1d18b368bf1b8402df73e4e8b67308b3754e6f8a7378"
+    }
+  ],
+  "rfc_controls": {
+    "tree_sizes": [
+      1,
+      64
+    ],
+    "positive_inclusions": 2080,
+    "modified_entries_and_surplus_paths_rejected": true,
+    "nonempty_paths_truncated_rejected": true
+  },
+  "P1": {
+    "tree_sizes": [
+      1,
+      16
+    ],
+    "different_root_sizes": [
+      3,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ]
+  },
+  "P2": {
+    "proof_count": 136,
+    "own_root_failure_count": 19,
+    "failures_size_index": [
+      [
+        3,
+        2
+      ],
+      [
+        5,
+        4
+      ],
+      [
+        6,
+        4
+      ],
+      [
+        6,
+        5
+      ],
+      [
+        7,
+        6
+      ],
+      [
+        9,
+        8
+      ],
+      [
+        10,
+        8
+      ],
+      [
+        10,
+        9
+      ],
+      [
+        11,
+        8
+      ],
+      [
+        11,
+        9
+      ],
+      [
+        11,
+        10
+      ],
+      [
+        12,
+        8
+      ],
+      [
+        12,
+        9
+      ],
+      [
+        12,
+        10
+      ],
+      [
+        12,
+        11
+      ],
+      [
+        13,
+        12
+      ],
+      [
+        14,
+        12
+      ],
+      [
+        14,
+        13
+      ],
+      [
+        15,
+        14
+      ]
+    ]
+  },
+  "P3": {
+    "proof_count": 136,
+    "quickstart_pass_count": 0
+  },
+  "P4": {
+    "three_vs_duplicate_four_same_vcp_root": true,
+    "three_vs_duplicate_four_same_rfc_root": false
+  },
+  "P5": {
+    "kind": "illustrative_preimage_comparison_not_profile_mapping",
+    "vcp_leaf": "aa3890ed27ed94480cf971adb80c84861a40241fc1a04c860200743377041b66",
+    "vap_b_leaf_assuming_E_is_Header_Payload_object": "dc4ebbd6743ce43482053e2456c9379f57a6d41f3f703a1b97ae2f67885a96ae",
+    "same_leaf_under_that_reading": false,
+    "vcp_unchained_event_hash": "daaf576d41a088b831c55e24e057271b44768f561b9c61fa6d8febe514da523e",
+    "vap_A_with_32_zero_byte_prev_hash_example": "57608b36a1624c33e81daad0449bfb17f50660bf54d4ebc20d6bfb7000410e21"
+  },
+  "P6": {
+    "scope": "published_root_only_signature_example_and_synthetic_batch",
+    "original_record": {
+      "MerkleRoot": "bc5ecaee3d9701027da5d63417f741335f618604ad89ca91bb263d62b15ecb7e",
+      "EventCount": 8,
+      "FirstEventID": "e0",
+      "LastEventID": "e7",
+      "PolicyID": "p0"
+    },
+    "edited_record": {
+      "MerkleRoot": "bc5ecaee3d9701027da5d63417f741335f618604ad89ca91bb263d62b15ecb7e",
+      "EventCount": 6,
+      "FirstEventID": "e0",
+      "LastEventID": "e5",
+      "PolicyID": "p1"
+    },
+    "signature_hex": "10b4ee932a33bfa2c1824d20c8a9f3fad336a8fe331c0d8f81c4bebf8db76e2d9bb364557a16c924366ec729ff95e92a4c0dec09918dc462759106aadd4f1e03",
+    "root_only_signature_valid_after_metadata_edit": true,
+    "claimed_size6": [
+      {
+        "index": 0,
+        "size_free_fold": true,
+        "generic_depth": true,
+        "strict_size6": true
+      },
+      {
+        "index": 1,
+        "size_free_fold": true,
+        "generic_depth": true,
+        "strict_size6": true
+      },
+      {
+        "index": 2,
+        "size_free_fold": true,
+        "generic_depth": true,
+        "strict_size6": true
+      },
+      {
+        "index": 3,
+        "size_free_fold": true,
+        "generic_depth": true,
+        "strict_size6": true
+      },
+      {
+        "index": 4,
+        "size_free_fold": true,
+        "generic_depth": true,
+        "strict_size6": false
+      },
+      {
+        "index": 5,
+        "size_free_fold": true,
+        "generic_depth": true,
+        "strict_size6": false
+      }
+    ]
+  },
+  "P7": {
+    "target": "reference tool describing itself as VCP v1.1",
+    "jcs_bytes_hex": "7b224576656e744944223a2273616d706c65222c224e6f7465223a22c3a9227d7b225072696365223a22312e3235227d",
+    "json_dumps_bytes_hex": "7b224576656e744944223a202273616d706c65222c20224e6f7465223a20225c7530306539227d7b225072696365223a2022312e3235227d",
+    "jcs_event_hash_accepted": false,
+    "json_dumps_event_hash_accepted": true,
+    "three_leaf_root_matches_vcp_odd_duplicate_example": true
+  },
+  "P8": {
+    "fixture_count": 40,
+    "rejected_as_python_integers": 40,
+    "exact_binary64_count": 40,
+    "accepted_as_exact_doubles": 40,
+    "nearby_lossy_example": {
+      "integer": 1791504000000000001,
+      "after_binary64_conversion": 1791504000000000000
+    },
+    "fixtures": [
+      {
+        "file": "tests/fixtures/v1.2/valid/anchor-failover.json",
+        "timestamp": 1791504000000000000,
+        "exact_binary64": true,
+        "python_integer_input": "IntegerDomainError",
+        "exact_double_input_accepted": true
+      },
+      {
+        "file": "tests/fixtures/v1.2/valid/anchor-migration.json",
+        "timestamp": 1791504000000000000,
+        "exact_binary64": true,
+        "python_integer_input": "IntegerDomainError",
+        "exact_double_input_accepted": true
+      },
+      {
+        "file": "tests/fixtures/v1.2/valid/audit.json",
+        "timestamp": 1791504000000000000,
+        "exact_binary64": true,
+        "python_integer_input": "IntegerDomainError",
+        "exact_double_input_accepted": true
+      },
+      {
+        "file": "tests/fixtures/v1.2/valid/checkpoint-emergency.json",
+        "timestamp": 1791504000000000000,
+        "exact_binary64": true,
+        "python_integer_input": "IntegerDomainError",
+        "exact_double_input_accepted": true
+      },
+      {
+        "file": "tests/fixtures/v1.2/valid/checkpoint-planned.json",
+        "timestamp": 1791504000000000000,
+        "exact_binary64": true,
+        "python_integer_input": "IntegerDomainError",
+        "exact_double_input_accepted": true
+      },
+      {
+        "file": "tests/fixtures/v1.2/valid/erasure-court_order.json",
+        "timestamp": 1791504000000000000,
+        "exact_binary64": true,
+        "python_integer_input": "IntegerDomainError",
+        "exact_double_input_accepted": true
+      },
+      {
+        "file": "tests/fixtures/v1.2/valid/erasure-error_correction.json",
+        "timestamp": 1791504000000000000,
+        "exact_binary64": true,
+        "python_integer_input": "IntegerDomainError",
+        "exact_double_input_accepted": true
+      },
+      {
+        "file": "tests/fixtures/v1.2/valid/erasure-gdpr_art_17_1a.json",
+        "timestamp": 1791504000000000000,
+        "exact_binary64": true,
+        "python_integer_input": "IntegerDomainError",
+        "exact_double_input_accepted": true
+      },
+      {
+        "file": "tests/fixtures/v1.2/valid/erasure-gdpr_art_17_1b.json",
+        "timestamp": 1791504000000000000,
+        "exact_binary64": true,
+        "python_integer_input": "IntegerDomainError",
+        "exact_double_input_accepted": true
+      },
+      {
+        "file": "tests/fixtures/v1.2/valid/erasure-gdpr_art_17_1c.json",
+        "timestamp": 1791504000000000000,
+        "exact_binary64": true,
+        "python_integer_input": "IntegerDomainError",
+        "exact_double_input_accepted": true
+      },
+      {
+        "file": "tests/fixtures/v1.2/valid/erasure-gdpr_art_17_1d.json",
+        "timestamp": 1791504000000000000,
+        "exact_binary64": true,
+        "python_integer_input": "IntegerDomainError",
+        "exact_double_input_accepted": true
+      },
+      {
+        "file": "tests/fixtures/v1.2/valid/erasure-hsm_zeroize.json",
+        "timestamp": 1791504000000000000,
+        "exact_binary64": true,
+        "python_integer_input": "IntegerDomainError",
+        "exact_double_input_accepted": true
+      },
+      {
+        "file": "tests/fixtures/v1.2/valid/erasure-retention_expired.json",
+        "timestamp": 1791504000000000000,
+        "exact_binary64": true,
+        "python_integer_input": "IntegerDomainError",
+        "exact_double_input_accepted": true
+      },
+      {
+        "file": "tests/fixtures/v1.2/valid/erasure-secure_delete.json",
+        "timestamp": 1791504000000000000,
+        "exact_binary64": true,
+        "python_integer_input": "IntegerDomainError",
+        "exact_double_input_accepted": true
+      },
+      {
+        "file": "tests/fixtures/v1.2/valid/erasure.json",
+        "timestamp": 1791504000000000000,
+        "exact_binary64": true,
+        "python_integer_input": "IntegerDomainError",
+        "exact_double_input_accepted": true
+      },
+      {
+        "file": "tests/fixtures/v1.2/valid/existing-ack.json",
+        "timestamp": 1791504000000000000,
+        "exact_binary64": true,
+        "python_integer_input": "IntegerDomainError",
+        "exact_double_input_accepted": true
+      },
+      {
+        "file": "tests/fixtures/v1.2/valid/existing-anc.json",
+        "timestamp": 1791504000000000000,
+        "exact_binary64": true,
+        "python_integer_input": "IntegerDomainError",
+        "exact_double_input_accepted": true
+      },
+      {
+        "file": "tests/fixtures/v1.2/valid/existing-cls.json",
+        "timestamp": 1791504000000000000,
+        "exact_binary64": true,
+        "python_integer_input": "IntegerDomainError",
+        "exact_double_input_accepted": true
+      },
+      {
+        "file": "tests/fixtures/v1.2/valid/existing-cxl.json",
+        "timestamp": 1791504000000000000,
+        "exact_binary64": true,
+        "python_integer_input": "IntegerDomainError",
+        "exact_double_input_accepted": true
+      },
+      {
+        "file": "tests/fixtures/v1.2/valid/existing-err.json",
+        "timestamp": 1791504000000000000,
+        "exact_binary64": true,
+        "python_integer_input": "IntegerDomainError",
+        "exact_double_input_accepted": true
+      },
+      {
+        "file": "tests/fixtures/v1.2/valid/existing-err_auth.json",
+        "timestamp": 1791504000000000000,
+        "exact_binary64": true,
+        "python_integer_input": "IntegerDomainError",
+        "exact_double_input_accepted": true
+      },
+      {
+        "file": "tests/fixtures/v1.2/valid/existing-err_conn.json",
+        "timestamp": 1791504000000000000,
+        "exact_binary64": true,
+        "python_integer_input": "IntegerDomainError",
+        "exact_double_input_accepted": true
+      },
+      {
+        "file": "tests/fixtures/v1.2/valid/existing-err_parse.json",
+        "timestamp": 1791504000000000000,
+        "exact_binary64": true,
+        "python_integer_input": "IntegerDomainError",
+        "exact_double_input_accepted": true
+      },
+      {
+        "file": "tests/fixtures/v1.2/valid/existing-err_recover.json",
+        "timestamp": 1791504000000000000,
+        "exact_binary64": true,
+        "python_integer_input": "IntegerDomainError",
+        "exact_double_input_accepted": true
+      },
+      {
+        "file": "tests/fixtures/v1.2/valid/existing-err_reject.json",
+        "timestamp": 1791504000000000000,
+        "exact_binary64": true,
+        "python_integer_input": "IntegerDomainError",
+        "exact_double_input_accepted": true
+      },
+      {
+        "file": "tests/fixtures/v1.2/valid/existing-err_risk.json",
+        "timestamp": 1791504000000000000,
+        "exact_binary64": true,
+        "python_integer_input": "IntegerDomainError",
+        "exact_double_input_accepted": true
+      },
+      {
+        "file": "tests/fixtures/v1.2/valid/existing-err_sync.json",
+        "timestamp": 1791504000000000000,
+        "exact_binary64": true,
+        "python_integer_input": "IntegerDomainError",
+        "exact_double_input_accepted": true
+      },
+      {
+        "file": "tests/fixtures/v1.2/valid/existing-err_system.json",
+        "timestamp": 1791504000000000000,
+        "exact_binary64": true,
+        "python_integer_input": "IntegerDomainError",
+        "exact_double_input_accepted": true
+      },
+      {
+        "file": "tests/fixtures/v1.2/valid/existing-err_timeout.json",
+        "timestamp": 1791504000000000000,
+        "exact_binary64": true,
+        "python_integer_input": "IntegerDomainError",
+        "exact_double_input_accepted": true
+      },
+      {
+        "file": "tests/fixtures/v1.2/valid/existing-exe.json",
+        "timestamp": 1791504000000000000,
+        "exact_binary64": true,
+        "python_integer_input": "IntegerDomainError",
+        "exact_double_input_accepted": true
+      },
+      {
+        "file": "tests/fixtures/v1.2/valid/existing-hbt.json",
+        "timestamp": 1791504000000000000,
+        "exact_binary64": true,
+        "python_integer_input": "IntegerDomainError",
+        "exact_double_input_accepted": true
+      },
+      {
+        "file": "tests/fixtures/v1.2/valid/existing-init.json",
+        "timestamp": 1791504000000000000,
+        "exact_binary64": true,
+        "python_integer_input": "IntegerDomainError",
+        "exact_double_input_accepted": true
+      },
+      {
+        "file": "tests/fixtures/v1.2/valid/existing-mod.json",
+        "timestamp": 1791504000000000000,
+        "exact_binary64": true,
+        "python_integer_input": "IntegerDomainError",
+        "exact_double_input_accepted": true
+      },
+      {
+        "file": "tests/fixtures/v1.2/valid/existing-ord.json",
+        "timestamp": 1791504000000000000,
+        "exact_binary64": true,
+        "python_integer_input": "IntegerDomainError",
+        "exact_double_input_accepted": true
+      },
+      {
+        "file": "tests/fixtures/v1.2/valid/existing-rsk.json",
+        "timestamp": 1791504000000000000,
+        "exact_binary64": true,
+        "python_integer_input": "IntegerDomainError",
+        "exact_double_input_accepted": true
+      },
+      {
+        "file": "tests/fixtures/v1.2/valid/existing-sig.json",
+        "timestamp": 1791504000000000000,
+        "exact_binary64": true,
+        "python_integer_input": "IntegerDomainError",
+        "exact_double_input_accepted": true
+      },
+      {
+        "file": "tests/fixtures/v1.2/valid/legacy-legal_order.json",
+        "timestamp": 1791504000000000000,
+        "exact_binary64": true,
+        "python_integer_input": "IntegerDomainError",
+        "exact_double_input_accepted": true
+      },
+      {
+        "file": "tests/fixtures/v1.2/valid/legacy-retention_expired.json",
+        "timestamp": 1791504000000000000,
+        "exact_binary64": true,
+        "python_integer_input": "IntegerDomainError",
+        "exact_double_input_accepted": true
+      },
+      {
+        "file": "tests/fixtures/v1.2/valid/legacy-subject_request.json",
+        "timestamp": 1791504000000000000,
+        "exact_binary64": true,
+        "python_integer_input": "IntegerDomainError",
+        "exact_double_input_accepted": true
+      },
+      {
+        "file": "tests/fixtures/v1.2/valid/recovery-announce.json",
+        "timestamp": 1791504000000000000,
+        "exact_binary64": true,
+        "python_integer_input": "IntegerDomainError",
+        "exact_double_input_accepted": true
+      }
+    ]
+  },
+  "P9": {
+    "status": "historical_regression_unverified_originals_unavailable",
+    "public_marker_presence_only": {
+      "EH-001": false,
+      "EH-002": false,
+      "EH-003": false,
+      "EH-004": false,
+      "EH-005": false,
+      "EH-006": false,
+      "PRV-001": false,
+      "PRV-002": false,
+      "PRV-003": false,
+      "anchor_sequence": false,
+      "prev_anchor_record_hash": false,
+      "VerifyChain": false,
+      "VSO-VAP-RD-001": false
+    },
+    "MiFID_II_III_present": true,
+    "warning": "Absent markers do not establish prior approval, normative adoption, or historical loss."
+  },
+  "limits": [
+    "No production implementation, K3 fixture, customer system or external anchor tested.",
+    "No changes to specifications, existing verifier/gates, fixed distribution, DOC-SYNC or K3.",
+    "Internal recomputation is not independent third-party reproduction."
+  ]
+}
