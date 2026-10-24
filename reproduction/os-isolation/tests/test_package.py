@@ -89,6 +89,7 @@ class PackageTests(unittest.TestCase):
             self.assertFalse(r.run(self.path / 'source', output))
         report = r.read_json(output / 'run-report.json')
         self.assertEqual(report['status'], 'incomplete')
+        self.assertEqual(report['independent_reproduction'], 'not_established')
         self.assertEqual(report['steps'], [])
         self.assertEqual(r.inventory(output), r.read_json(output / 'SHA256SUMS.json'))
 
@@ -135,7 +136,7 @@ class PackageTests(unittest.TestCase):
                    (0, 'Ran 27 tests in 0.1s', False), (0, 'nothing ran', False),
                    (0, 'Ran 28 tests in 0.1s\nRan 28 tests in 0.1s', False)]
         for code, log, success in samples:
-            with self.subTest(code=code, log=log), patch.object(r.subprocess, 'run', return_value=subprocess.CompletedProcess([], code, '', log)):
+            with self.subTest(code=code, log=log), patch.object(r.subprocess, 'run', return_value=subprocess.CompletedProcess([], code, '', log + '\n\nOK\n')):
                 self.assertIs(r.step('test', ['mock'], self.path, self.path, 28)['ok'], success)
 
     def test_timeout_is_incomplete(self):
@@ -162,14 +163,14 @@ class PackageTests(unittest.TestCase):
         frozen = {'commit': 'fixed'}
         preflight = {'source': frozen}
         r.save(output / 'preflight.json', preflight)
-        report = {'status': 'matched', 'independence': 'not_assessed',
+        report = {'status': 'matched', 'independence': 'not_assessed', 'independent_reproduction': 'not_established',
                   'proposal_status': 'experimental_unadopted', 'overall_vap_pass': None,
                   'kit_files_sha256': r.kit_digests(), 'preflight': preflight,
                   'postflight_source': frozen, 'steps': []}
         for name in ['lab-unit', 'gate-unit', 'verifier-unit', 'lab', 'gate', 'verifier', 'artifact-recheck']:
             log = output / 'logs' / (name + '.log')
             count = self.expected['unit_tests'].get(name)
-            log.write_text('Ran ' + str(count) + ' tests in 0.1s' if count else 'complete')
+            log.write_text('Ran ' + str(count) + ' tests in 0.1s\n\nOK\n' if count else 'complete')
             result = {'step': name, 'ok': True, 'completed': True, 'returncode': 0, 'log_sha256': r.sha(log)}
             if count: result.update(tests_executed=count, expected_tests=count)
             report['steps'].append(result)
@@ -196,11 +197,71 @@ class PackageTests(unittest.TestCase):
         with patch.object(r, 'verify_source', return_value=frozen), self.assertRaisesRegex(ValueError, 'unit_test_count'):
             r.check_run(self.path / 'source', output)
 
+    def test_saved_run_cannot_claim_independent_reproduction(self):
+        output, report, frozen = self.completed_output()
+        report['independent_reproduction'] = 'established'
+        r.save(output / 'run-report.json', report); r.save(output / 'SHA256SUMS.json', r.inventory(output))
+        with patch.object(r, 'verify_source', return_value=frozen), self.assertRaisesRegex(ValueError, 'boundary_changed'):
+            r.check_run(self.path / 'source', output)
+
     def test_saved_run_rejects_added_file(self):
         output, report, frozen = self.completed_output()
         (output / 'extra').write_text('extra')
         with patch.object(r, 'verify_source', return_value=frozen), self.assertRaisesRegex(ValueError, 'inventory_or_hash'):
             r.check_run(self.path / 'source', output)
+
+    def test_real_unittest_skip_and_expected_failure_are_not_success(self):
+        (self.path / 'logs').mkdir()
+        for decorator, body in [('unittest.skip("unavailable")', 'pass'),
+                                ('unittest.expectedFailure', 'self.fail("missing")')]:
+            code = ('import unittest\nclass T(unittest.TestCase):\n @' + decorator
+                    + '\n def test_case(self): ' + body + '\nunittest.main()\n')
+            with self.subTest(decorator=decorator):
+                result = r.step('skip', [sys.executable, '-c', code], self.path, self.path, 1)
+                self.assertEqual(result['returncode'], 0)
+                self.assertEqual(result['tests_executed'], 1)
+                self.assertFalse(result['ok'])
+
+    def test_unit_log_requires_unambiguous_success(self):
+        for conclusion in ('', 'OK (skipped=28)', 'OK (expected failures=1)', 'FAILED (failures=1)', 'OK\nOK'):
+            with self.subTest(conclusion=conclusion):
+                self.assertFalse(r.unit_log_matches('Ran 28 tests in 0.1s\n\n' + conclusion + '\n', 28))
+
+    def test_saved_run_rejects_skipped_count_with_rehashed_log(self):
+        output, report, frozen = self.completed_output()
+        log = output / 'logs/lab-unit.log'; log.write_text('Ran 28 tests in 0.1s\n\nOK (skipped=28)\n')
+        report['steps'][0]['log_sha256'] = r.sha(log)
+        r.save(output / 'run-report.json', report); r.save(output / 'SHA256SUMS.json', r.inventory(output))
+        with patch.object(r, 'verify_source', return_value=frozen), self.assertRaisesRegex(ValueError, 'not_all_passed'):
+            r.check_run(self.path / 'source', output)
+
+    def test_recorded_environment_must_match_lock_and_reference_comparison(self):
+        from check_artifacts import validate_environment_record
+        lock = r.read_json(r.ROOT / 'source-lock.json')
+        reference = lock['reference_environment']
+        record = {'dependencies': copy.deepcopy(lock['dependencies']), 'python': reference['controller_python'],
+                  'compose': reference['compose'], 'docker': {'version': reference['docker'], 'kernel': reference['kernel']},
+                  'reference_version_matches': dict.fromkeys(('python', 'compose', 'docker', 'kernel'), True)}
+        validate_environment_record(record, lock)
+        for field in ('dependencies', 'python', 'reference_version_matches'):
+            bad = copy.deepcopy(record)
+            if field == 'dependencies': bad[field]['cryptography'] = '0.0.0'
+            elif field == 'python': bad[field] = '3.11.0'
+            else: bad[field]['python'] = False
+            with self.subTest(field=field), self.assertRaises(ValueError): validate_environment_record(bad, lock)
+        # A disclosed Docker version deviation remains allowed.
+        record['docker']['version'] = 'different'; record['reference_version_matches']['docker'] = False
+        validate_environment_record(record, lock)
+
+    def test_runtime_provenance_must_match_preflight(self):
+        from check_artifacts import validate_runtime_record
+        preflight = {'python': '3.12.15', 'dependencies': r.read_json(r.ROOT / 'source-lock.json')['dependencies']}
+        validate_runtime_record(copy.deepcopy(preflight), preflight)
+        for field in ('python', 'dependencies'):
+            changed = copy.deepcopy(preflight)
+            if field == 'python': changed[field] = '3.14.0'
+            else: changed[field]['cryptography'] = '0.0.0'
+            with self.subTest(field=field), self.assertRaises(ValueError): validate_runtime_record(changed, preflight)
 
     def test_environment_drops_import_and_compose_overrides(self):
         with patch.dict(r.os.environ, {'PYTHONPATH': '/bad', 'PYTHONHOME': '/bad', 'COMPOSE_PROFILES': 'bad', 'COMPOSE_FILE': 'bad'}):

@@ -48,8 +48,10 @@ successful experiment, not a declaration that the evidence itself passed.
 
 Require complete case inventories, typed values (JSON `true` is not `1`), exact
 expected outcomes, regression counts 28/46/64, actual evidence verification and
-complete output hashes. Missing evidence, unknown counts, skipped steps, source
-changes, execution errors and cleanup failures cannot produce `matched`.
+complete output hashes. Missing evidence, unknown counts, skipped tests/steps, expected failures, source
+changes, execution errors and cleanup failures cannot produce `matched`. The
+recorded runtime versions must agree across preflight and per-case reports;
+recorded dependencies must match the lock.
 
 Do **not** byte-compare separate runs' random keys/signatures, evidence digests,
 container/project IDs, IP addresses, namespace IDs, wall-clock times or latency

@@ -134,6 +134,13 @@ def compare_lab(summary, expectations):
     return differences
 
 
+def unit_log_matches(text, expected_tests):
+    """unittest's Ran count includes skips and expected failures: require plain OK."""
+    counts = re.findall(r'^Ran (\d+) tests? in ', text, re.MULTILINE)
+    conclusions = re.findall(r'^(?:OK(?:[ \t].*)?|FAILED(?:[ \t].*)?)$', text, re.MULTILINE)
+    return counts == [str(expected_tests)] and conclusions == ['OK']
+
+
 def step(name, args, cwd, output, expected_tests=None):
     try:
         r = subprocess.run(args, cwd=cwd, env=environment(), capture_output=True, text=True, timeout=600)
@@ -149,7 +156,7 @@ def step(name, args, cwd, output, expected_tests=None):
         counts = re.findall(r'^Ran (\d+) tests? in ', text, re.MULTILINE)
         result['tests_executed'] = int(counts[-1]) if len(counts) == 1 else None
         result['expected_tests'] = expected_tests
-    result['ok'] = result['completed'] and result['returncode'] == 0 and (expected_tests is None or result['tests_executed'] == expected_tests)
+    result['ok'] = result['completed'] and result['returncode'] == 0 and (expected_tests is None or unit_log_matches(text, expected_tests))
     print(name + ': ' + ('OK' if result['ok'] else 'INCOMPLETE OR MISMATCH'), flush=True)
     return result
 
@@ -172,7 +179,7 @@ def run(source, output):
     (output / 'logs').mkdir()
     report = {'format': 'vap-reproduction-run/1', 'started_at': datetime.now(timezone.utc).isoformat(),
               'status': 'incomplete', 'proposal_status': 'experimental_unadopted', 'overall_vap_pass': None,
-              'independence': 'not_assessed', 'steps': [], 'kit_files_sha256': kit_digests()}
+              'independence': 'not_assessed', 'independent_reproduction': 'not_established', 'steps': [], 'kit_files_sha256': kit_digests()}
     try:
         report['preflight'] = preflight(source)
         save(output / 'preflight.json', report['preflight'])
@@ -214,7 +221,8 @@ def check_run(source, output):
     require(equal(hashes, inventory(output)), 'artifact_inventory_or_hash_mismatch')
     report = read_json(output / 'run-report.json')
     require(report['status'] == 'matched' and report['independence'] == 'not_assessed'
-            and report['proposal_status'] == 'experimental_unadopted' and report['overall_vap_pass'] is None,
+            and report['proposal_status'] == 'experimental_unadopted' and report['overall_vap_pass'] is None
+            and report['independent_reproduction'] == 'not_established',
             'run_not_complete_or_boundary_changed')
     require(report['kit_files_sha256'] == kit_digests(), 'wrong_package_revision_for_recheck')
     expected_names = ['lab-unit', 'gate-unit', 'verifier-unit', 'lab', 'gate', 'verifier', 'artifact-recheck']
@@ -229,6 +237,7 @@ def check_run(source, output):
         if result['step'] in expected_tests:
             count = expected_tests[result['step']]
             require(re.findall(r'^Ran (\d+) tests? in ', log.read_text(), re.MULTILINE) == [str(count)], 'unit_test_count_missing_or_wrong')
+            require(unit_log_matches(log.read_text(), count), 'unit_tests_not_all_passed')
             require(equal(result['tests_executed'], count) and equal(result['expected_tests'], count), 'unit_test_count_report_mismatch')
     print(command([sys.executable, str(ROOT / 'check_artifacts.py'), '--source', str(Path(source).resolve()),
                    '--run', str(output)], ROOT, timeout=180))

@@ -8,10 +8,31 @@ import sys
 from reproduce import ROOT, compare_lab, equal, read_json, require, verify_source
 
 
+def validate_environment_record(record, lock):
+    require(equal(record['dependencies'], lock['dependencies']), 'recorded_dependencies_do_not_match_lock')
+    version = record['python']
+    require(isinstance(version, str) and re.fullmatch(r'\d+\.\d+\.\d+', version) is not None,
+            'invalid_recorded_python_version')
+    require(tuple(map(int, version.split('.'))) >= (3, 12), 'unsupported_recorded_python_version')
+    reference = lock['reference_environment']
+    matches = {'python': version == reference['controller_python'],
+               'docker': record['docker']['version'] == reference['docker'],
+               'compose': record['compose'] == reference['compose'],
+               'kernel': record['docker']['kernel'] == reference['kernel']}
+    require(equal(record['reference_version_matches'], matches), 'recorded_reference_comparison_mismatch')
+
+
+def validate_runtime_record(value, preflight):
+    require(equal(value['python'], preflight['python']), 'recorded_python_changed')
+    require(equal(value['dependencies'], preflight['dependencies']), 'recorded_dependencies_changed')
+
+
 def check(source, output):
     source, output = Path(source).resolve(), Path(output).resolve()
     frozen = verify_source(source)
     expectations = read_json(ROOT / 'expected-results.json')
+    preflight = read_json(output / 'preflight.json')
+    validate_environment_record(preflight, read_json(ROOT / 'source-lock.json'))
     sys.path.insert(0, str(source / 'experiments/os-isolated-gate'))
     from isolation_lab import ROLES
     from isolation_lab.checks import filesystem_permissions_match, runtime_mounts_match
@@ -24,6 +45,7 @@ def check(source, output):
         require(equal(actual, expected), message)
 
     def provenance(value, fixtures=False):
+        validate_runtime_record(value, preflight)
         same(value['implementation_commit'], frozen['commit'], 'wrong_implementation_commit')
         require(value['working_tree_dirty'] is False, 'dirty_implementation')
         if fixtures:
@@ -34,6 +56,7 @@ def check(source, output):
     require(not compare_lab(lab, expectations), 'lab_observation_mismatch: ' + str(compare_lab(lab, expectations)))
     same(lab['provenance']['commit'], frozen['commit'], 'wrong_lab_commit')
     require(lab['provenance']['dirty'] is False, 'dirty_lab_source')
+    same(lab['provenance']['controller_python'], preflight['python'], 'lab_controller_python_changed')
     same(lab['provenance']['input_digests'], expectations['lab_input_digests'], 'lab_input_digest_mismatch')
     same(lab['provenance']['os_execution_location'], 'Linux Docker engine', 'os_execution_missing')
     rows = {r['case']: r['observed'] for r in lab['cases']}
@@ -72,7 +95,6 @@ def check(source, output):
         same(cleanup[field], 0, 'cleanup_incomplete: ' + field)
     require(cleanup['image_absence_confirmed'] is True, 'temporary_image_absence_not_confirmed')
     environment = strict_json(output / 'lab/environment.json')
-    preflight = strict_json(output / 'preflight.json')
     same(preflight['source'], frozen, 'preflight_source_mismatch')
     same(preflight['host_system'], 'Linux', 'non_linux_controller')
     same(environment['docker']['Os'], 'linux', 'non_linux_engine')

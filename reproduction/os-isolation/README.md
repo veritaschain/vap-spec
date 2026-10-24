@@ -3,6 +3,7 @@
 **Research only. Experimental extension remains unadopted.** This package makes
 another evaluator's execution possible; publishing it or passing its CI does not
 establish independent reproduction, VAP conformance, adoption, or production readiness.
+**Independent third-party reproduction has not been established.**
 
 The subject is the merged PR #12 implementation at
 [`c8ccf972196a16d11429a478f4918a08fe27bb73`](https://github.com/veritaschain/vap-spec/commit/c8ccf972196a16d11429a478f4918a08fe27bb73).
@@ -95,10 +96,14 @@ and saved-evidence rechecks. `results-001` **must not already exist**.
 
 The `run` command makes fresh mock keys and evidence and exercises actual Linux
 permissions/network probes through the original lab. It records each step's log,
-return code and unit-test count. Each child has a ten-minute execution limit;
+return code and unit-test count. A regression step requires the exact count and
+a plain successful unittest conclusion: skipped tests and expected failures do
+not count as a complete passing run. Each child has a ten-minute execution limit;
 interruptions or timeouts are incomplete runs, never evidence of isolation.
 `check` requires the same kit revision and frozen source and rechecks the output
-inventory, hashes, counts, stable observations and cryptographic evidence. It does
+inventory, hashes, counts, stable observations and cryptographic evidence. Recorded
+Python and dependency versions in each gate/verifier report must agree with
+preflight, and recorded dependencies must match the lock. It does
 **not** rerun the OS probes or authenticate the operator's account of execution.
 
 Expected totals: **28 + 46 + 64 regression tests; 16 OS cases; 15 gate scenarios
@@ -106,6 +111,7 @@ with 11 evidence bundles; 14 verifier cases in both modes**. See the explicit
 negative-control interpretation in [EXPECTED-RESULTS.md](EXPECTED-RESULTS.md).
 `run-report.json` reports `matched` only after all steps and final source checks.
 The report always keeps `independence: not_assessed`,
+`independent_reproduction: not_established`,
 `proposal_status: experimental_unadopted`, and `overall_vap_pass: null`.
 
 Exit codes: 0 = requested operation completed (for `run`/`check`, expected results
