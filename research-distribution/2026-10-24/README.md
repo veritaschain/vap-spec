@@ -58,6 +58,7 @@ image or external Python packages and is not a hermetic execution environment.
 - [Existing report format and retention instructions](https://github.com/veritaschain/vap-spec/blob/b1af0dc9d368b466bf74e7c1b2a6808fb41949ae/reproduction/os-isolation/REPORTING.md)
 - [Proposed evaluation and separate publication-consent terms](EVALUATION-TERMS.md)
 - [Result-handling operating note](RESULT-HANDLING.md)
+- [Fixed-tag protection review and remaining release-asset limits](PROTECTION-REVIEW.md)
 
 The terms are a proposal, not an evaluator's acceptance. Fresh execution,
 assistance, independence and publication permissions must be assessed separately.
@@ -77,3 +78,7 @@ No new redactions were applied. Preserve any future edited public copy separatel
 from its original with a change record. Never silently replace these ZIPs or
 historical results: corrections require a new identifier, checksum and advisory
 linked to the affected version.
+
+The [24 October commercial disclosure correction](../../disclosures/2026-10-24-commercial-contracts.md)
+applies to current descriptions and should accompany any conflicting commercial
+statement retained in historical sources. It does not alter the archived files.
