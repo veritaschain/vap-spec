@@ -5,7 +5,7 @@
 **Document ID:** VSO-VAP-SPEC-001
 **Status:** Draft Specification (Draft 3)
 **Version:** 1.2.0
-**Date:** 2026-09-01 (publication folds G-2, H-2, A-4 applied 2026-09-28; post-publication folds L-1, L-2, L-3, H-3, H-4, H-5 applied 2026-10-06; post-publication fold B-5 corrected 2026-10-09; CAB-independence errata applied 2026-10-21 JST; VCP compatibility-status corrections dated 2026-10-24 JST, §5.1, §10.4, Declaration and Appendix B; see Appendix D and ERRATA)
+**Date:** 2026-09-01 (publication folds G-2, H-2, A-4 applied 2026-09-28; post-publication folds L-1, L-2, L-3, H-3, H-4, H-5 applied 2026-10-06; post-publication fold B-5 corrected 2026-10-09; CAB-independence errata applied 2026-10-21 JST; VCP compatibility-status corrections dated 2026-10-24 JST, §5.1, §10.4, Declaration and Appendix B; commercial disclosure and CAP mapping-status follow-up dated 2026-10-24 JST; see Appendix D and ERRATA)
 **Supersedes:** Draft 2 (2026-06-10). Draft 3 folds the cross-profile alignment
 review **VSO-VAP-ALIGN-001** into this document. Per VSO practice, pre-release
 review findings fold directly into the draft with a disposition record and do
@@ -17,15 +17,20 @@ revision. Dispositions are recorded in **Appendix D**.
 **Website:** <https://veritaschain.org>
 **Change Control:** VSO-VAP-CHANGE-001 (normative annex to this specification)
 
-> **Implementation status (mandatory disclosure).** As of this draft: **zero
-> external implementations and zero Evidence Packs accepted in any proceeding**
-> — for VAP or for any VAP profile. VeritasChain Co., Ltd., which provides the
-> operating base of VSO, holds ten paid service contracts with European
-> organizations in regulatory technology, financial trading, and audit and
-> assurance; client names are withheld pending individual consent. Those
-> contracts are not external implementations and are not independent validation
-> of this framework. Nothing in this document is a claim of deployment,
-> adoption, or evidentiary acceptance.
+> **Implementation status (mandatory disclosure).** The published September 2026
+> baseline reports **zero external implementations and zero Evidence Packs
+> accepted in any proceeding** for VAP or any VAP profile.
+>
+> **Commercial disclosure correction — 24 October 2026:** the earlier paid-service
+> contract figure and associated details have not been substantiated through
+> reconciliation with primary records and are withdrawn pending verification.
+> This does **not** establish a count of zero. No verified contract count,
+> customer count or revenue figure is asserted here. Commercial activity is not
+> external implementation, independent validation or Evidence Pack acceptance.
+> See the [dated correction and counting criteria](../../disclosures/2026-10-24-commercial-contracts.md).
+> Fixed distributions and historical evidence remain unchanged. The historical
+> G-2 disposition is retained below with a dated follow-up; it is not a current
+> substantiation of the withdrawn commercial claim.
 
 > **Standing of this document.** VAP is maintained by the VeritasChain Standards
 > Organization. It has not been adopted by, and carries no standing within, the
@@ -1260,7 +1265,7 @@ VAP and profile version numbers are **independently assigned**. Apparent synchro
 | VCP v1.0 | Partial (pre-dates policy identification) | Partial (legacy; certification subject to VCP grace deadlines) |
 | VCP v1.1 | Non-conformant on v1.1 INT-003/004 as written (resolved by this revision) | **Integrity alignment under review; full conformance has not been established.** Mapping required and outstanding |
 | VCP v1.2 | — | **Integrity alignment under review; full conformance has not been established.** Mapping required and outstanding |
-| CAP v1.0 | Mapping required | **Mapping required and outstanding** (due per VSO-VAP-CHANGE-001 §5) |
+| CAP v1.0 | Mapping required | **Draft mapping published; unresolved divergences; full conformance not established.** Complete mapping remains outstanding (VSO-VAP-CHANGE-001 §5) |
 | CPP v1.4 | Mapping required | **Mapping required and outstanding** (due per VSO-VAP-CHANGE-001 §5) |
 | OAP v0.1.1 (WD) | — | Targets v1.2 at first release |
 | MAP v0.1.2 (WD) | — | Targets v1.2 at first release |
@@ -1299,11 +1304,13 @@ preserved as the adopted change-control record. This status correction neither
 amends its technical requirements nor adopts any proposed VCP repair. The
 scope and unadopted / independent-reproduction limitations above remain in force.
 
-**Outstanding mapping obligation (honest statement).** CAP v1.0 and CPP v1.4 are
-the two profiles other than VCP carrying *Released* status, and both have a v1.2 conformance
-mapping that is due and not yet delivered. Until those mappings are published,
-neither profile's conformance against the v1.2 requirement set has been
-established, and neither may be described as VAP v1.2 conformant. A known
+**Mapping status clarification — 2026-10-24 JST.** CAP v1.0 has published a
+[draft conformance mapping](https://github.com/veritaschain/cap-spec/blob/beb0c44d0991ce191999949db3276471d92eb44e/docs/conformance/CAP-v1.0-VAP-v1.2-Draft3-Conformance-Mapping.md)
+against VAP v1.2 Draft 3, identifying unresolved normative divergences; a complete
+mapping remains outstanding. CPP v1.4's mapping has not been published.
+Publication of CAP's review draft does not establish conformance. Neither
+profile's conformance against the v1.2 requirement set has been established,
+and neither may be described as VAP v1.2 conformant. A known
 candidate divergence to be resolved in the CPP mapping is the treatment of
 external anchoring at CPP's lowest conformance tier: §8.1 and INT-006 do not
 permit external anchoring to be optional at any level.
@@ -1453,6 +1460,7 @@ Application dates, and the EU AI Act classifications cited in §2.2, are stated 
 | 1.2.0 (Draft 3, errata) | 2026-10-21 | Errata, 2026-10-21 JST. The Normative Position Statement, §8.3, §10.1, and the repository README no longer say that independent CABs currently perform assessment. The requirement that a CAB be independent of the scheme owner is unchanged. The CAB registry lists only VeritasChain Co., Ltd., which operates VSO and is not independent of the scheme owner. Version and status remain v1.2.0, Draft Specification (Draft 3). Earlier rows in this table are unchanged. See ERRATA. This row is not a §10.3 change-proposal vote | VSO |
 | 1.2.0 (Draft 3, compatibility-status correction) | 2026-10-24 | §10.4 replaces the unconditional VCP v1.2 Full entry with integrity alignment under review, full conformance not established, and mapping outstanding, citing the pinned research observations. Status claim only: no normative requirement, field, wire format, conformance level or VCP release-status change. Experimental extensions remain unadopted; independent third-party reproduction remains unestablished. Earlier history and fixed distributions are preserved. This is not a §10.3 adoption or vote | VSO |
 | 1.2.0 (Draft 3, status-consistency follow-up) | 2026-10-24 | §10.4 extends the review status to VCP v1.1 and explicitly applies §1.7 precedence over CHANGE-001 CH-11 / Annex A compatibility claims. §5.1 and the Declaration retain first-implementation history without reference-profile or proven-origin claims. Status wording only; normative requirements, CHANGE-001, existing implementations, signed data, fixed distributions, DOC-SYNC and K3 are unchanged. Experimental extensions remain unadopted; independent third-party reproduction remains unestablished. Earlier history is preserved; this is not a §10.3 adoption or vote | VSO |
+| 1.2.0 (Draft 3, disclosure and mapping status) | 2026-10-24 | Current commercial disclosure follows the dated withdrawal; no replacement commercial count is asserted. CAP mapping status acknowledges the published review draft without claiming conformance. The earlier G-2 row remains a historical record, with a new Appendix D follow-up. No normative requirement, legal-scope statement, CHANGE-001, implementation, signed data, fixed distribution, DOC-SYNC or K3 change; experimental extensions remain unadopted and independent third-party reproduction unestablished. This is not a §10.3 vote | VSO |
 | 1.2.0 (Draft 2) | 2026-06-10 | Per VSO-VAP-CHANGE-001: Cryptographic Sequence Verifiability abstraction (INT-003/004/004a); external anchoring MUST at all levels (INT-006) with anchor continuity (INT-007); Completeness Invariant (INT-008); bounded RECOVERY (INT-009); ERASURE event + legal scope clause; policy identification; XREF (TRC-005); SCITT/COSE opt-in alignment; PQC EXPERIMENTAL status (ML-DSA/FN-DSA), hybrid signatures, RSA-2048 deprecation; version compatibility management; profile registry update (VCP v1.2 RC1, CAP v1.0, CPP v1.0, IAP); Legal Scope and Non-Guarantee Statement | VSO Technical Committee |
 
 ---
@@ -1526,6 +1534,16 @@ not be described as editorial or technically identical to RC1.
 | ID | Finding | Disposition |
 | --- | --- | --- |
 | B-5 | §2.2.1, §4.5.2, §5.1, §10.4 and §12 recorded VCP at v1.2 (RC1). VCP v1.2 was declared Production Ready (GA) on 2026-07-06; the GA text and its normative annex VSO-SPEC-CHANGE-001 are published in `veritaschain/vcp-spec` `spec/v1.2/` and tagged `v1.2.0`, which meets the §4.5.2 definition of *Released* | **Applied.** VCP recorded as v1.2 Released in those locations. VSO-VAP-CHANGE-001 retains its historical VCP v1.2 RC1 (2026-05-31) baseline; it is not evidence that RC1 and GA are technically identical. The 2026-10-09 VCP correction registers five SYS_* events, defines their structured payload locations, replaces the inconsistent pre-GA compact ERASURE encoding with Payload.VCP-PRIVACY.ErasureDetails, detaches inclusion proofs and clarifies bounded recovery. See [VCP GA compatibility assessment](https://github.com/veritaschain/vcp-spec/blob/v1.2.0/spec/v1.2/GA-CONSISTENCY.md). Existing INT-009 (bounded recovery) and erasure requirements are unchanged at the VAP layer; profile implementations must assess the new serialization and validation contract. No independent implementation conformance is claimed. The Draft 2 version-history row keeps its historical wording |
+
+**Disclosure and mapping-status follow-up — 2026-10-24 JST.** This dated
+addition preserves the previous disposition rows; it changes no normative
+requirement, field, wire format or conformance level.
+
+| Record | Finding | Current disposition |
+| --- | --- | --- |
+| Commercial disclosure following G-2 | The numerical commercial statement introduced by G-2 has not been substantiated by reconciliation with primary records, as recorded in the [24 October correction](../../disclosures/2026-10-24-commercial-contracts.md) | Current header disclosure withdraws that commercial claim pending verification, without asserting zero contracts or zero customers. G-2 itself remains historical and is not proof of the claim. Its separate noncommercial implementation/evidence baseline is not withdrawn by this correction. Fixed sources and evidence archives are preserved |
+| CAP mapping publication | §10.4 grouped CAP and CPP as having no published mapping, although CAP's review draft is available | CAP is recorded as having a published draft with unresolved divergences; CPP remains unpublished. Full conformance remains unestablished for both. This is a publication-status correction, not adoption of CAP's proposed normative changes |
+
 ---
 
 ## ERRATA

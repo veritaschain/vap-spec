@@ -3,7 +3,7 @@
 **Document ID:** VSO-VAP-SPEC-001
 **Version:** 1.2.0
 **Status:** Draft Specification (Draft 3)
-**Date:** 2026-09-01 (publication folds G-2, H-2, A-4 applied 2026-09-28; post-publication folds L-1, L-2, L-3, H-3, H-4, H-5 applied 2026-10-06; post-publication fold B-5 corrected 2026-10-09; CAB-independence errata applied 2026-10-21 JST; VCP compatibility-status corrections dated 2026-10-24 JST, §5.1, §10.4, Declaration and Appendix B; Appendix D and ERRATA)
+**Date:** 2026-09-01 (publication folds G-2, H-2, A-4 applied 2026-09-28; post-publication folds L-1, L-2, L-3, H-3, H-4, H-5 applied 2026-10-06; post-publication fold B-5 corrected 2026-10-09; CAB-independence errata applied 2026-10-21 JST; VCP compatibility-status corrections dated 2026-10-24 JST, §5.1, §10.4, Declaration and Appendix B; commercial disclosure and CAP mapping-status follow-up dated 2026-10-24 JST; Appendix D and ERRATA)
 
 VAP (Verifiable AI Provenance Framework) is a metaframework. It defines the
 common requirements that domain profiles (VCP, CAP, CPP, OAP, MAP, PAP, …) and
@@ -15,13 +15,10 @@ after the fact. It does not prevent, block, or intercept any AI behaviour.
 
 ## Implementation status (mandatory disclosure)
 
-As of this draft there are **zero external implementations** of VAP or any VAP
-profile, and **zero Evidence Packs accepted in any proceeding**. VeritasChain
-Co., Ltd., which provides the operating base of VSO, holds ten paid service
-contracts with European organizations in regulatory technology, financial
-trading, and audit and assurance (client names withheld pending individual
-consent). Those contracts are not external implementations and are not
-independent validation of VAP.
+The published September 2026 baseline reports **zero external implementations** of VAP or any VAP
+profile, and **zero Evidence Packs accepted in any proceeding**.
+
+**Commercial disclosure correction — 24 October 2026:** the previously published paid-service contract figure and associated commercial details have not been substantiated through reconciliation with primary records. The claim is withdrawn pending verification; this does **not** establish a count of zero. No verified contract count, customer count or revenue figure is asserted here. Commercial activity is separate from external implementation, independent validation and Evidence Pack acceptance. See the [dated correction and counting criteria](https://github.com/veritaschain/vap-spec/blob/main/disclosures/2026-10-24-commercial-contracts.md). Fixed distributions and historical evidence remain unchanged.
 
 VAP has not been adopted by, and carries no standing within, the IETF,
 ISO/IEC JTC 1/SC 42, ITU-T, or any other established standards body. The
@@ -33,7 +30,7 @@ related Internet-Drafts are individual submissions (§11.4).
 
 | File | Content | SHA-256 |
 |------|---------|---------|
-| [`VAP_Framework_Specification.md`](VAP_Framework_Specification.md) | VAP Framework Specification v1.2.0, Draft 3 (normative) | `a966a6d6de00f84a4d3fc1d6188b833aac0714f50fa7088b87bd475b307d4a3f` |
+| [`VAP_Framework_Specification.md`](VAP_Framework_Specification.md) | VAP Framework Specification v1.2.0, Draft 3 (normative) | `24a961ddd419298d02b2cc2b8015d6e058501a2411ffa9a744a218bf110ac6bf` |
 | [`VSO-VAP-CHANGE-001.md`](VSO-VAP-CHANGE-001.md) | VAP v1.1 → v1.2 Change Proposal — normative annex / change-control record (§1.7) | `ec781c81b2869f06ccb53de12927da868d7990e1eea42ba8a0369425b0089fca` |
 
 Version numbers identify documents; the SHA-256 digests above fix their exact
@@ -55,6 +52,7 @@ Earlier texts remain available in the repository history at the commits listed.
 | 2026-10-21 | Draft 3 with the CAB-independence errata (2026-10-21 JST). Version and status unchanged (v1.2.0, Draft Specification, Draft 3). Earlier rows in this table are unchanged | `dbe2439d6d138929b48697cd0545a5c8324059ab032732b9a9122f993fde9f48` |
 | 2026-10-24 | Draft 3 with the VCP v1.2 compatibility-status correction in §10.4: integrity alignment under review; full conformance not established; mapping outstanding. Status claim only; normative requirements and earlier digest-history rows unchanged. Experimental extensions remain unadopted; independent third-party reproduction remains unestablished | `fc7877ae9cb33a4b95bd7ad539e76dc830d398a21e16caec7689795f46ec5e12` |
 | 2026-10-24 (follow-up) | Draft 3 status-consistency correction: VCP v1.1 receives the same review status as v1.2; §5.1 and the Declaration retain first-implementation history without proven-origin or reference-profile conformance claims; §10.4 clarifies §1.7 precedence over historical CHANGE-001 CH-11 / Annex A compatibility claims. Normative requirements and CHANGE-001 are unchanged. Earlier digest rows are preserved. Experimental extensions remain unadopted; independent third-party reproduction remains unestablished | `a966a6d6de00f84a4d3fc1d6188b833aac0714f50fa7088b87bd475b307d4a3f` |
+| 2026-10-24 (disclosure / mapping follow-up) | Current commercial disclosure propagates the dated withdrawal without asserting a replacement count; CAP mapping publication acknowledged with unresolved divergences and no conformance claim. Historical G-2 and digest rows preserved. Normative requirements and fixed artifacts unchanged; experimental extensions unadopted, independent reproduction unestablished | `24a961ddd419298d02b2cc2b8015d6e058501a2411ffa9a744a218bf110ac6bf` |
 
 ---
 
@@ -101,9 +99,7 @@ material that disagrees with it.
 | **DAP** (capability) | Delegated Access Provenance (VAP-AGENT) | v0.1.0 Working Draft | VSO-VAP-DAP-001 |
 | **SMP** (capability) | Self-Modification Provenance (VAP-SLEEP) | v0.2.0 Working Draft | VSO-VAP-SMP-SPEC-001 |
 
-CAP v1.0 and CPP v1.4 have a VAP v1.2 conformance mapping that is due and not
-yet delivered; until it is published, neither may be described as VAP v1.2
-conformant (§10.4).
+CAP v1.0 has published a [draft mapping](https://github.com/veritaschain/cap-spec/blob/beb0c44d0991ce191999949db3276471d92eb44e/docs/conformance/CAP-v1.0-VAP-v1.2-Draft3-Conformance-Mapping.md) against VAP v1.2 Draft 3; it identifies unresolved divergences and does not establish conformance. CPP v1.4's mapping remains unpublished. Full conformance has not been established for either profile (§10.4).
 
 ---
 
