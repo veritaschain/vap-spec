@@ -1,0 +1,17 @@
+[
+ {"case":"01","description":"Normal durable pre-record and one confirmed mock effect; repeat returns stored result","expected":{"state":"confirmed_success","effects":1,"backend_requests":1,"requests_after_replay":1,"integrity":"verified","scope":"met","core_scope":null,"core_status":"not_applied"}},
+ {"case":"02","description":"Audit service stopped before execution","expected":{"state":"blocked","effects":0,"backend_requests":0}},
+ {"case":"03","description":"SIGKILL after pre-record, then abrupt audit restart","expected":{"state":"not_dispatched","stored_state":"prepared","worker_killed":true,"effects":0,"backend_requests":0,"scope":"indeterminate"}},
+ {"case":"04","description":"API commits and drops response; no write retry, read-only recovery","expected":{"state":"result_unknown","effects":1,"backend_requests":1,"scope":"indeterminate","requests_after_retry":1,"requests_after_recovery":1,"recovered_state":"confirmed_success"}},
+ {"case":"05","description":"Actual dispatch arguments differ from durable pre-record","expected":{"state":"denied","reason":"recorded_request_mismatch","effects":0,"backend_requests":0,"scope":"indeterminate"}},
+ {"case":"06","description":"Forged, expired, revoked or out-of-scope credentials/delegation/approval and stale status","expected":{"state":"denied","effects":0,"backend_requests":0,"all_reasons_match":true,"denials":14}},
+ {"case":"07","description":"Unsigned direct API bypass with self-reported identity and approval","expected":{"state":"bypass_rejected","effects":0,"backend_requests":1,"guarantee_established_for_keyless_mock_call":true}},
+ {"case":"08","description":"Delete all agent-local request/log files; separate audit evidence survives","expected":{"state":"confirmed_success","effects":1,"integrity":"verified","scope":"met","audit_unchanged":true,"agent_directory_absent":true}},
+ {"case":"09","description":"SIGKILL after durable dispatch intent but before send; no auto replay","expected":{"state":"result_unknown","stored_state":"dispatch_intent","worker_killed":true,"effects":0,"backend_requests":0,"requests_after_retry":0,"scope":"indeterminate"}},
+ {"case":"10","description":"API commits but audit outcome writes fail; retain dispatch intent and reconcile after repair","expected":{"state":"result_unknown","stored_state":"dispatch_intent","effects":1,"backend_requests":1,"unknown_outcome_persisted":false,"scope":"indeterminate","recovered_state":"confirmed_success","requests_after_recovery":1}},
+ {"case":"11","description":"Four concurrent gate workers claim the same operation","expected":{"state":"confirmed_success","effects":1,"backend_requests":1,"scope":"met"}},
+ {"case":"12","description":"Deliberately insecure mock backend negative control exposes failed bypass guarantee","expected":{"state":"bypass_accepted","effects":1,"backend_requests":1,"guarantee_established_for_keyless_mock_call":false}},
+ {"case":"13","description":"Audit dispatch-intent transaction unavailable after pre-record","expected":{"state":"blocked","stored_state":"prepared","effects":0,"backend_requests":0,"scope":"indeterminate"}},
+ {"case":"14","description":"Reuse operation ID with a new, validly authorized intent","expected":{"state":"blocked","stored_state":"confirmed_success","effects":1,"backend_requests":1}},
+ {"case":"15","description":"Pre-record commits but acknowledgment is lost; no API send","expected":{"state":"blocked","stored_state":"prepared","effects":0,"backend_requests":0,"scope":"indeterminate"}}
+]
