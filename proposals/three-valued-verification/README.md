@@ -1,7 +1,7 @@
 # Draft proposal for three-valued results in the core verification algorithms
 
 **Status:** Discussion draft, not adopted. **Formal proposal number:** Unassigned.
-**Draft revision:** 0.1. **Date:** 2026-10-24 JST. **Target release:** Undecided.
+**Draft revision:** 0.2. **Date:** 2026-10-25 JST. **Target release:** Undecided.
 **Baseline:** VAP v1.2.0 Draft 3 at commit `99dae8353277cd3af86b2efb9a2bcc29e5a68924`.
 **License:** CC BY 4.0 International. A Japanese summary follows the English text.
 
@@ -71,6 +71,9 @@ cryptographic integrity as Verified, Failed or Indeterminate.
    `INDETERMINATE` as not verified.
 5. A verifier that claims to check INT-008 MUST report the count, range and policy bindings as a separate
    check. If they cannot be resolved, that check is `INDETERMINATE`, never `VALID`.
+6. Missing input for one check MUST NOT cause an overall `INDETERMINATE` return before other
+   independently executable required checks have been evaluated. Aggregate their results only after
+   those checks have completed, retaining any demonstrated `INVALID` result.
 
 ### Revised Mechanism B (proposed text)
 
@@ -79,18 +82,49 @@ Algorithm: VAP Batch Verification
 Input: Event E, audit path P, AnchorRecord A, anchor target T, verifier policy V
 Output: VALID, INVALID or INDETERMINATE, with the result and reason of each check
 
-1: if P or A is absent then return INDETERMINATE: required material missing
-2: leaf ← H(0x00 || canonical(E))
-3: root ← FoldAuditPath(leaf, P)                  // RFC 6962 path computation
-4: inclusion ← (root = A.merkle_root) ? VALID : INVALID
-5: signature ← VerifySignature(A, V)              // INDETERMINATE: key not established, algorithm unsupported
-6: external ← VerifyExternal(A, T, V)             // INVALID: anchor commits to a different value
-                                                  // INDETERMINATE: proof absent or pending, target unreachable
-                                                  //                or not accepted by V
-7: completeness ← CheckCompleteness(A)            // INDETERMINATE: count, range or policy not resolvable
-8: return Combine(inclusion, signature, external, completeness)
-   // INVALID if any is INVALID; otherwise INDETERMINATE if any is INDETERMINATE; otherwise VALID
+1: inclusion, signature, external, completeness ← INDETERMINATE: anchor record missing
+2: if A is present then
+3:     if E is absent or P is absent then
+4:         inclusion ← INDETERMINATE: event or audit path missing
+5:     else
+6:         inclusion ← VerifyInclusion(E, P, A, V)
+7:     signature ← VerifySignature(A, V)          // independent of E and P
+8:     external ← VerifyExternal(A, T, V)         // independent of E and P
+9:     completeness ← CheckCompleteness(A)        // independent of the event's audit path
+10: return Combine(inclusion, signature, external, completeness)
+    // INVALID if any is INVALID; otherwise INDETERMINATE if any is INDETERMINATE; otherwise VALID
 ```
+
+`VerifyInclusion` applies the existing proposed leaf/path computation
+(`leaf = H(0x00 || canonical(E))`, `root = FoldAuditPath(leaf, P)`) and compares the computed root
+with `A.merkle_root`, when the required input, algorithm and path interpretation are available.
+Unsupported algorithms or unresolved prerequisites produce `INDETERMINATE`, not a silent pass.
+This control-flow correction does not adopt or revise a profile's leaf encoding or proof format.
+
+Each helper returns a result and, for a non-`VALID` result, a reason. `VerifySignature` returns
+`INDETERMINATE` when the key is not established or the algorithm is unsupported; a signature
+mismatch against an established key is `INVALID`. `VerifyExternal` reports `INVALID` for a
+verified commitment to a different value, and `INDETERMINATE` for absent or pending proof, an
+unreachable target, or a target not accepted by V. `CheckCompleteness` reports `INDETERMINATE`
+when the count, range or policy binding cannot be resolved. Missing prerequisites affect only
+checks that depend on them; available independent checks still run.
+
+Presence is not a truthiness test: `P = []` is a supplied audit path, not an absent one. An empty
+path can verify a single-leaf tree when the remaining tree context and root are consistent.
+It must not automatically produce either `INDETERMINATE` or `VALID`.
+
+#### Control-flow regression examples (informative)
+
+These examples describe scheduling and aggregation, not cryptographic test vectors or evidence
+of independent reproduction. `VALID` entries assume the corresponding check actually ran and matched.
+
+| Supplied material / observation | Inclusion | Signature | External | Completeness | Overall |
+| --- | --- | --- | --- | --- | --- |
+| P absent; A present; signature mismatch against an established key; other checks match | INDETERMINATE | INVALID | VALID | VALID | INVALID |
+| P absent; A present; all independently executable checks match | INDETERMINATE | VALID | VALID | VALID | INDETERMINATE |
+| A absent | INDETERMINATE | INDETERMINATE | INDETERMINATE | INDETERMINATE | INDETERMINATE |
+| P is an empty supplied path; consistent single-leaf tree; all checks match | VALID | VALID | VALID | VALID | VALID |
+| E absent; A present; external commitment demonstrably differs; other checks match | INDETERMINATE | VALID | INVALID | VALID | INVALID |
 
 ### Hash chain validation
 
@@ -140,6 +174,12 @@ VSO の vcp-rta-reference の main（VCP v1.1）の検証器は、署名と外�
 審査では「未検証」として扱う。意味は ETSI EN 319 102-1 §5.1 の TOTAL-PASSED／TOTAL-FAILED／INDETERMINATE に
 揃え、宣言スコープ提案（§6）の Verified／Failed／Indeterminate とも整合させる。イベント・フィールド・
 ワイヤ形式・適合レベルは変えない。採択されていない議論用の草案である。
+
+2026-10-25 の草案修正では、監査経路などが欠けた時点で全体を早期終了する処理を除いた。
+不足する入力に依存する検査だけを `INDETERMINATE` とし、実行可能な署名・外部アンカー・完全性の検査を
+続けてから集約する。既知の不一致を、別の入力不足によって隠してはならない。空の監査経路 `[]` は
+未提供と区別し、整合する単一葉の木であれば包含検証を実行する。5つの説明例は制御フローの確認用であり、
+暗号学的試験や独立再現の成立を示すものではない。規範本文・既存実装・固定配布物は変更しない。
 
 [s413]: https://github.com/veritaschain/vap-spec/blob/99dae8353277cd3af86b2efb9a2bcc29e5a68924/spec/v1.2/VAP_Framework_Specification.md#413-sequence-verifiability-mechanisms
 [rta-main]: https://github.com/veritaschain/vcp-rta-reference/blob/3d359dce3be479632d41e4dee74c7f102766e202/tools/verifier/vcp_verifier.py
