@@ -6,9 +6,11 @@ This file is newly created. On 2026-10-21 JST a GitHub code search for
 repository or in that organization search, so there is no prior entry to
 continue. Entries 1–5 were confirmed retrospectively on 2026-10-21 JST.
 Those five entries are not contemporaneous notes written when the events
-happened. Entry 6 records a later merge and states its own time.
+happened. Entry 6 records a later merge and states its own time. Entry 7
+records a later deployment check and states its own time and verifier.
 
-The verifier of each entry is **VSO 主任, via the GitHub API**. That verifies
+The verifier of entries 1–6 is **VSO 主任, via the GitHub API**; entry 7
+states its own verifier. That verifies
 this record. It is not an approval of a historical pull request, tag, release,
 or case. No approving review is recorded unless the API returned one. No git
 tag was created, moved, deleted, or annotated while this file was written. No
@@ -18,7 +20,7 @@ VAP in this repository remains **v1.2.0, Draft Specification (Draft 3)**. That
 status is not VCP's release status. VCP v1.2 events below are events in
 `veritaschain/vcp-spec`.
 
-**DOC-SYNC entry time for entries 1–5:** 2026-10-21 JST. Entry 6 states its own entry time.
+**DOC-SYNC entry time for entries 1–5:** 2026-10-21 JST. Entries 6 and 7 state their own entry time.
 
 JST is nine hours ahead of UTC. UTC values below are copied from the API.
 JST clock times are those UTC values plus nine hours. Where the API gave
