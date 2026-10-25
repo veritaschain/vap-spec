@@ -827,7 +827,7 @@ VCP (VeritasChain Protocol) is the financial domain profile of VAP, standardizin
 | **VCP-PRIVACY**  | Crypto-shredding / ERASURE   | Cross-cutting (Privacy), §6.3     |
 | **VCP-RECOVERY** | Bounded chain recovery       | Integrity Layer (INT-009)         |
 | **VCP-XREF**     | Cross-party provenance       | Traceability Layer (TRC-005)      |
-| **VCP-ANCHOR**   | Anchor migration and failover records (v1.2 GA correction; not listed in VCP §1.6) | Integrity Layer (INT-007)         |
+| **VCP-ANCHOR**   | Payload namespace for `SYS_ANCHOR_MIGRATION` / `SYS_ANCHOR_FAILOVER` (VCP v1.2 §3.2.3, VCP CHANGE-001 §1.4.10); not among the VCP §1.6 Core Modules | Integrity Layer (INT-007)         |
 
 #### 5.1.3 Conformance Tiers (profile-defined)
 
@@ -1462,7 +1462,7 @@ Application dates, and the EU AI Act classifications cited in §2.2, are stated 
 | 1.2.0 (Draft 3, compatibility-status correction) | 2026-10-24 | §10.4 replaces the unconditional VCP v1.2 Full entry with integrity alignment under review, full conformance not established, and mapping outstanding, citing the pinned research observations. Status claim only: no normative requirement, field, wire format, conformance level or VCP release-status change. Experimental extensions remain unadopted; independent third-party reproduction remains unestablished. Earlier history and fixed distributions are preserved. This is not a §10.3 adoption or vote | VSO |
 | 1.2.0 (Draft 3, status-consistency follow-up) | 2026-10-24 | §10.4 extends the review status to VCP v1.1 and explicitly applies §1.7 precedence over CHANGE-001 CH-11 / Annex A compatibility claims. §5.1 and the Declaration retain first-implementation history without reference-profile or proven-origin claims. Status wording only; normative requirements, CHANGE-001, existing implementations, signed data, fixed distributions, DOC-SYNC and K3 are unchanged. Experimental extensions remain unadopted; independent third-party reproduction remains unestablished. Earlier history is preserved; this is not a §10.3 adoption or vote | VSO |
 | 1.2.0 (Draft 3, disclosure and mapping status) | 2026-10-24 | Current commercial disclosure follows the dated withdrawal; no replacement commercial count is asserted. CAP mapping status acknowledges the published review draft without claiming conformance. The earlier G-2 row remains a historical record, with a new Appendix D follow-up. No normative requirement, legal-scope statement, CHANGE-001, implementation, signed data, fixed distribution, DOC-SYNC or K3 change; experimental extensions remain unadopted and independent third-party reproduction unestablished. This is not a §10.3 vote | VSO |
-| 1.2.0 (Draft 3, errata E-2026-10-25) | 2026-10-25 | Cross-profile consistency errata: §11.4 lists the Internet-Draft revisions posted on 2026-10-24; §2.2.1 and §5.1.3 restate VCP timing and the Gold target as VCP §2.1 gives them; §5.1.2 records the VCP-ANCHOR module used by VCP v1.2 §3.2.3; §2.2.6 records the corrected CPP Internet-Draft title. No requirement identifier, field, wire format, conformance level, release status or compatibility status changes. See ERRATA. This row is not a §10.3 change-proposal vote | VSO |
+| 1.2.0 (Draft 3, errata E-2026-10-25) | 2026-10-25 | Cross-profile consistency errata: §11.4 lists the Internet-Draft revisions current on 2026-10-25 (four posted on 2026-10-24); §2.2.1 and §5.1.3 restate VCP timing and the Gold target as VCP §2.1 gives them; §5.1.2 records the `Payload.VCP-ANCHOR` payload namespace used by VCP v1.2 §3.2.3; §2.2.6 records the corrected CPP Internet-Draft title. No requirement identifier, field, wire format, conformance level, release status or compatibility status changes. See ERRATA. This row is not a §10.3 change-proposal vote | VSO |
 | 1.2.0 (Draft 2) | 2026-06-10 | Per VSO-VAP-CHANGE-001: Cryptographic Sequence Verifiability abstraction (INT-003/004/004a); external anchoring MUST at all levels (INT-006) with anchor continuity (INT-007); Completeness Invariant (INT-008); bounded RECOVERY (INT-009); ERASURE event + legal scope clause; policy identification; XREF (TRC-005); SCITT/COSE opt-in alignment; PQC EXPERIMENTAL status (ML-DSA/FN-DSA), hybrid signatures, RSA-2048 deprecation; version compatibility management; profile registry update (VCP v1.2 RC1, CAP v1.0, CPP v1.0, IAP); Legal Scope and Non-Guarantee Statement | VSO Technical Committee |
 
 ---
@@ -1570,7 +1570,6 @@ The sentences this errata replaces were:
 - §10.1 diagram: "Conformance Testing (audits performed by independent CABs)".
 - `README.md`: "VAP v1.2 §10.1 assigns conformity assessment to independent Conformity Assessment Bodies, not to VSO."
 
-
 ### E-2026-10-25
 
 | Field | Entry |
@@ -1578,7 +1577,7 @@ The sentences this errata replaces were:
 | ID | E-2026-10-25 |
 | Date | 2026-10-25 JST |
 | Affected sections | §2.2.1 (VAP Requirements sentence); §2.2.6 (Naming paragraph, one sentence added); §5.1.2 (one row added); §5.1.3 (Gold target); §11.4 (IETF row) |
-| Reason | A cross-repository consistency review on 2026-10-25 compared this text with VCP v1.2 (tag `v1.2.0`) and with the IETF Datatracker. §11.4 listed revisions that were replaced on 2026-10-24. §2.2.1 described nanosecond-precision synchronization, whereas VCP v1.2 §2.1 specifies nanosecond timestamp resolution with PTPv2 synchronization better than 1 µs at Platinum. §5.1.3 gave the Gold target as "Institutional"; VCP v1.2 §2.1 gives "Prop/Institutional". VCP v1.2 §3.2.3 places anchor migration and failover details under `Payload.VCP-ANCHOR`, a module §5.1.2 did not list. `draft-vso-cpp-core-04` corrected the CPP expansion that §2.2.6 asked to be corrected |
+| Reason | A cross-repository consistency review on 2026-10-25 compared this text with VCP v1.2 (tag `v1.2.0`) and with the IETF Datatracker. §11.4 listed four revisions that were replaced on 2026-10-24 (`draft-kamimura-rats-behavioral-evidence-02` was current and is unchanged). §2.2.1 described nanosecond-precision synchronization, whereas VCP v1.2 §2.1 specifies nanosecond timestamp resolution with PTPv2 synchronization better than 1 µs at Platinum. §5.1.3 gave the Gold target as "Institutional"; VCP v1.2 §2.1 gives "Prop/Institutional". VCP v1.2 §3.2.3 places anchor migration and failover details under `Payload.VCP-ANCHOR`, a payload namespace (not a §1.6 Core Module) that §5.1.2 did not list. `draft-vso-cpp-core-04` corrected the CPP expansion that §2.2.6 asked to be corrected |
 | What is unchanged | All requirement identifiers, fields, wire formats and conformance levels; the profile registry (§4.5.2); the compatibility statuses in §10.4; CHANGE-001. This is not a vote under §10.3 |
 
 The sentences this errata replaces were:
@@ -1586,6 +1585,7 @@ The sentences this errata replaces were:
 - §2.2.1: "nanosecond-precision timestamp synchronization at the highest tiers."
 - §5.1.3: Gold target "Institutional".
 - §11.4: "**Five individual Internet-Drafts submitted and active**: `draft-kamimura-vap-framework-01`, `draft-kamimura-scitt-vcp-03`, `draft-kamimura-rats-behavioral-evidence-02`, `draft-kamimura-scitt-refusal-events-03`, `draft-vso-cpp-core-03`."
+
 ---
 
 ## Contact Information
