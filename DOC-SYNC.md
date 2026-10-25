@@ -549,3 +549,46 @@ Verifier: VSO 主任, from the local git commit and from `origin/main` after a n
 ### Not yet reflected, owner, next action
 
 This entry is a commit after `307ca8ec84fb2d3760e62b37eca59bb40c941fd9`. It does not amend that merge. Still outstanding from earlier entries: `https://vap.veritaschain.org/` (owner: VSO, operated by VeritasChain Co., Ltd.) and version confirmation for K3-VCP-BLIND-001 (owner: the K3 evaluator). Next action for those two items is unchanged. No further tag operation is authorized.
+
+## 7. `vap.veritaschain.org` — wording correction deployed
+
+### Event time
+
+The served `/specification/` page reported `Last-Modified: Sat, 24 Oct 2026 12:14:04 GMT`, which is **2026-10-24 21:14:04 JST**. This is the server's file time, recorded in `veritaschain/vcp-site` `maintenance/xserver-vap-2026-10-24/README.md` ("Deployment observation"). No deployment log is available to this entry.
+
+### DOC-SYNC entry time
+
+2026-10-25 JST.
+
+### Pull request, commit, tag, and files
+
+| Item | Value |
+| --- | --- |
+| Host | `https://vap.veritaschain.org/` (XServer; not a GitHub repository) |
+| Package | `veritaschain/vcp-site` `maintenance/xserver-vap-2026-10-24/` (31 files; reference VAP commit `b5ef9316717bebe638d5eca621327b54cdda93e1`) |
+| Record of served files | `deployed-2026-10-24.json` in the same directory: 17 files match the package **after** hash; 14 differ only by deployment-time date metadata reproduced by `deployment-adjustments.patch` |
+| Tag | none |
+
+### Before
+
+Entries 4 and 6 recorded `vap.veritaschain.org` as not yet reflecting the current VAP and VCP status.
+
+### After
+
+On 2026-10-25 the served home page carried the 24 October status-correction banner, described VCP v1.2 as Released with its VAP v1.2 integrity alignment under review, and contained no withdrawn commercial count. The served `llms.txt` (SHA-256 `de45a230298eebf3075fbe5dafdaf7453ab4f0d1a7fb4515de90f0729beec48a`) equals the served hash recorded in `deployed-2026-10-24.json` and contains no withdrawn commercial count.
+
+### Reason
+
+The wording package of 24 October 2026 was deployed to the host. Who deployed it, and when the deployment decision was made, are not recorded here.
+
+### Impact
+
+The open item "vap.veritaschain.org still needed a host update" in entries 4 and 6 is reflected for the items in the package. Not reflected: the served pages still list the Internet-Draft revisions replaced on 2026-10-24 (`-01`/`-03`), and `llms.txt` labels the disclosure "Aug 2026" and names OAP "VAP-WEB", a name that does not appear in VAP v1.2 §4.5.2.
+
+### Verifier and evidence
+
+Verifier: Claude (VSO review session), by HTTPS retrieval of `https://vap.veritaschain.org/`, its 26 sitemap pages and `/llms.txt` on 2026-10-25 JST, compared with the package record. This entry does not record an approval.
+
+### Not yet reflected, owner, next action
+
+Owner: VSO, operated by VeritasChain Co., Ltd. Next action: update the Internet-Draft revisions on the served pages (`draft-kamimura-vap-framework-02`, `draft-kamimura-scitt-vcp-05`, `draft-kamimura-scitt-refusal-events-04`, `draft-vso-cpp-core-04`) and the two `llms.txt` labels at the next host update. Entry 5 (K3-VCP-BLIND-001) is unchanged.
