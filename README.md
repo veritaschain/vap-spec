@@ -58,7 +58,7 @@ Status values follow the normative registry in VAP v1.2 §4.5.2; that registry p
 
 | Profile | Domain | Risk Category | Repository / Document | Status |
 |---------|--------|---------------|------------|--------|
-| **VCP** | Finance & Algorithmic Trading | Market Integrity | [veritaschain/vcp-spec](https://github.com/veritaschain/vcp-spec) | v1.2 Released (Production Ready, GA 2026-07-06) |
+| **VCP** | Finance & Algorithmic Trading | Market Integrity | [veritaschain/vcp-spec](https://github.com/veritaschain/vcp-spec) | v1.2 Released (specification GA, 2026-07-06) |
 | **CAP** | Content / Creative AI | IP Rights, Misinformation | [veritaschain/cap-spec](https://github.com/veritaschain/cap-spec) | v1.0 Released |
 | **CPP** | Capture Provenance | Evidence Integrity, Misinformation | [veritaschain/cpp-spec](https://github.com/veritaschain/cpp-spec) | v1.4 Released |
 | **OAP** | Observed Artifact Provenance | Evidence Integrity, Repudiation | VSO-VAP-OAP-001 | v0.1.1 Working Draft |
@@ -68,6 +68,8 @@ Status values follow the normative registry in VAP v1.2 §4.5.2; that registry p
 | **DVP** | Automotive | Physical Safety | — | Planned |
 | **AAP** | Aviation | Physical Safety | — | Planned |
 | **EIP** | Energy Infrastructure | Critical Infrastructure | — | Planned |
+
+Released / GA identifies specification publication, not implementation production readiness. VCP's [known issues](https://github.com/veritaschain/vcp-spec/blob/main/spec/v1.2/README.md#known-issues-in-v12-informative) remain open; VAP v1.2 alignment is under review and full conformance has not been established.
 
 | Capability | Scope | Document | Status |
 |------------|-------|----------|--------|

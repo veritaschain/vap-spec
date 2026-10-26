@@ -30,13 +30,19 @@ A two-valued output forces each of these into one of two wrong answers. Reportin
 tampering where only material is missing. The opposite shortcut, skipping an unavailable check and
 reporting `VALID`, asserts integrity that was never checked.
 
-The second error has occurred in VSO's own reference code. On the default branch of
-[`veritaschain/vcp-rta-reference`][rta-main] (commit `3d359dc`, VCP v1.1), the verifier does not check
-Ed25519 signatures or the external anchor, treats the Merkle check as passed when no expected root is
-supplied, and prints "All checks passed - VCP v1.1 Compliant". An unmerged branch,
-[`cursor/vcp-verifier-three-valued-faf6`][rta-branch], replaces this with `VALID`, `INVALID` and
-`UNVERIFIABLE` per check and records that the external anchor of that evidence pack cannot be verified
-from the public materials.
+The historical example used in this proposal on 25 October 2026 was
+[`veritaschain/vcp-rta-reference` at commit `3d359dc`][rta-historical] (VCP v1.1). That verifier did not
+check Ed25519 signatures or the external anchor, treated the Merkle check as passed when no expected
+root was supplied, and printed "All checks passed - VCP v1.1 Compliant". These observations describe
+that pinned snapshot, not the current default branch.
+
+**Implementation status checked 27 October 2026 (JST):** the reference implementation at
+[`e6b5b26`][rta-current] now verifies Ed25519 signatures against explicitly caller-selected trusted
+keys and reports `VALID`, `INVALID` or `INDETERMINATE` per check. Missing material does not pass or
+hide an independently detected mismatch. The original OpenTimestamps proof remains absent from the
+archived pack, and its overall historical-evidence verdict remains `INDETERMINATE`. These
+implementation improvements do not adopt this proposal or establish VCP/VAP conformance or
+independent third-party reproduction.
 
 ## 2 Proposed result values
 
@@ -165,8 +171,14 @@ discussion. They are not registered identifiers.
 VAP v1.2 §4.1.3 の2つの検証アルゴリズムは `VALID` か `INVALID` しか返さない。Mechanism B は、外部アンカーの
 証明がない、確定待ち、アンカー先に到達できない、鍵が確立していない、といった「確かめられない」状態も
 `INVALID`（不一致）として返す。逆に、確かめられない検査を飛ばして `VALID` とする実装も生まれる。
-VSO の vcp-rta-reference の main（VCP v1.1）の検証器は、署名と外部アンカーを検査せず、期待する Merkle 根が
-与えられないと比較なしで合格とし、「All checks passed - VCP v1.1 Compliant」と表示する。
+2026-10-25 の本案で例示した vcp-rta-reference の履歴コミット `3d359dc`（VCP v1.1）の検証器は、署名と外部アンカーを
+検査せず、期待する Merkle 根が与えられないと比較なしで合格とし、「All checks passed - VCP v1.1 Compliant」と
+表示していた。これは固定した過去版の観察であり、現在の main の挙動ではない。
+
+2026-10-27 JST に確認したコミット `e6b5b26` では、呼出者が明示的に選択した信頼済み鍵で Ed25519 署名を検証し、
+検査ごとに `VALID`／`INVALID`／`INDETERMINATE` を返す。材料の不足を合格とせず、別の検査で判明した不一致も隠さない。
+元の OpenTimestamps 証明は保存パックに存在せず、履歴証拠全体の判定は引き続き `INDETERMINATE` となる。
+この実装修正は本案の採択、VCP/VAP 適合、独立した第三者再現の成立を意味しない。
 
 本案は結果を `VALID`／`INVALID`／`INDETERMINATE` の3値にする。`INVALID` は不一致を実際に示せた場合に限り、
 材料の欠如・確定待ち・到達不能・鍵未確立・未対応アルゴリズムは `INDETERMINATE` とする。優先順位は
@@ -182,5 +194,5 @@ VSO の vcp-rta-reference の main（VCP v1.1）の検証器は、署名と外�
 暗号学的試験や独立再現の成立を示すものではない。規範本文・既存実装・固定配布物は変更しない。
 
 [s413]: https://github.com/veritaschain/vap-spec/blob/99dae8353277cd3af86b2efb9a2bcc29e5a68924/spec/v1.2/VAP_Framework_Specification.md#413-sequence-verifiability-mechanisms
-[rta-main]: https://github.com/veritaschain/vcp-rta-reference/blob/3d359dce3be479632d41e4dee74c7f102766e202/tools/verifier/vcp_verifier.py
-[rta-branch]: https://github.com/veritaschain/vcp-rta-reference/tree/cursor/vcp-verifier-three-valued-faf6
+[rta-historical]: https://github.com/veritaschain/vcp-rta-reference/blob/3d359dce3be479632d41e4dee74c7f102766e202/tools/verifier/vcp_verifier.py
+[rta-current]: https://github.com/veritaschain/vcp-rta-reference/blob/e6b5b263fa8b2250b4b55fe795cce190c322ad4d/README.md
