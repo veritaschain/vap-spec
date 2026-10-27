@@ -5,7 +5,7 @@
 **Document ID:** VSO-VAP-SPEC-001
 **Status:** Draft Specification (Draft 3)
 **Version:** 1.2.0
-**Date:** 2026-09-01 (publication folds G-2, H-2, A-4 applied 2026-09-28; post-publication folds L-1, L-2, L-3, H-3, H-4, H-5 applied 2026-10-06; post-publication fold B-5 corrected 2026-10-09; CAB-independence errata applied 2026-10-21 JST; VCP compatibility-status corrections dated 2026-10-24 JST, §5.1, §10.4, Declaration and Appendix B; commercial disclosure and CAP mapping-status follow-up dated 2026-10-24 JST; cross-profile consistency errata E-2026-10-25 applied 2026-10-25 JST; see Appendix D and ERRATA)
+**Date:** 2026-09-01 (publication folds G-2, H-2, A-4 applied 2026-09-28; post-publication folds L-1, L-2, L-3, H-3, H-4, H-5 applied 2026-10-06; post-publication fold B-5 corrected 2026-10-09; CAB-independence errata applied 2026-10-21 JST; VCP compatibility-status corrections dated 2026-10-24 JST, §5.1, §10.4, Declaration and Appendix B; commercial disclosure and CAP mapping-status follow-up dated 2026-10-24 JST; cross-profile consistency errata E-2026-10-25 applied 2026-10-25 JST; publication-status clarification E-2026-10-27 dated 2026-10-27 JST; see Appendix D and ERRATA)
 **Supersedes:** Draft 2 (2026-06-10). Draft 3 folds the cross-profile alignment
 review **VSO-VAP-ALIGN-001** into this document. Per VSO practice, pre-release
 review findings fold directly into the draft with a disposition record and do
@@ -809,8 +809,10 @@ OAP composes with DAP where the observation is performed by an autonomous agent.
 
 ### 5.1 VCP: Finance Profile
 
-**Status:** v1.2 Released (Production Ready, GA 2026-07-06; tag `v1.2.0`)
+**Status:** v1.2 Released (specification GA, 2026-07-06; tag `v1.2.0`)
 **Document:** VSO-VCP-SPEC (v1.2 incorporates VSO-SPEC-CHANGE-001 as a normative annex)
+
+Released / GA identifies specification publication, not implementation production readiness. The integrity alignment and conformance status in §10.4 are unchanged.
 
 #### 5.1.1 Overview
 
@@ -1463,6 +1465,7 @@ Application dates, and the EU AI Act classifications cited in §2.2, are stated 
 | 1.2.0 (Draft 3, status-consistency follow-up) | 2026-10-24 | §10.4 extends the review status to VCP v1.1 and explicitly applies §1.7 precedence over CHANGE-001 CH-11 / Annex A compatibility claims. §5.1 and the Declaration retain first-implementation history without reference-profile or proven-origin claims. Status wording only; normative requirements, CHANGE-001, existing implementations, signed data, fixed distributions, DOC-SYNC and K3 are unchanged. Experimental extensions remain unadopted; independent third-party reproduction remains unestablished. Earlier history is preserved; this is not a §10.3 adoption or vote | VSO |
 | 1.2.0 (Draft 3, disclosure and mapping status) | 2026-10-24 | Current commercial disclosure follows the dated withdrawal; no replacement commercial count is asserted. CAP mapping status acknowledges the published review draft without claiming conformance. The earlier G-2 row remains a historical record, with a new Appendix D follow-up. No normative requirement, legal-scope statement, CHANGE-001, implementation, signed data, fixed distribution, DOC-SYNC or K3 change; experimental extensions remain unadopted and independent third-party reproduction unestablished. This is not a §10.3 vote | VSO |
 | 1.2.0 (Draft 3, errata E-2026-10-25) | 2026-10-25 | Cross-profile consistency errata: §11.4 lists the Internet-Draft revisions current on 2026-10-25 (four posted on 2026-10-24); §2.2.1 and §5.1.3 restate VCP timing and the Gold target as VCP §2.1 gives them; §5.1.2 records the `Payload.VCP-ANCHOR` payload namespace used by VCP v1.2 §3.2.3; §2.2.6 records the corrected CPP Internet-Draft title. No requirement identifier, field, wire format, conformance level, release status or compatibility status changes. See ERRATA. This row is not a §10.3 change-proposal vote | VSO |
+| 1.2.0 (Draft 3, errata E-2026-10-27) | 2026-10-27 | §5.1 and the current repository status table describe VCP GA as specification publication, not implementation production readiness. Current status wording only; all normative requirements, VCP release dates and tag, §10.4 compatibility status, CHANGE-001, implementations and fixed artifacts are unchanged. Earlier history is preserved. See ERRATA. This row is not a §10.3 change-proposal vote | VSO |
 | 1.2.0 (Draft 2) | 2026-06-10 | Per VSO-VAP-CHANGE-001: Cryptographic Sequence Verifiability abstraction (INT-003/004/004a); external anchoring MUST at all levels (INT-006) with anchor continuity (INT-007); Completeness Invariant (INT-008); bounded RECOVERY (INT-009); ERASURE event + legal scope clause; policy identification; XREF (TRC-005); SCITT/COSE opt-in alignment; PQC EXPERIMENTAL status (ML-DSA/FN-DSA), hybrid signatures, RSA-2048 deprecation; version compatibility management; profile registry update (VCP v1.2 RC1, CAP v1.0, CPP v1.0, IAP); Legal Scope and Non-Guarantee Statement | VSO Technical Committee |
 
 ---
@@ -1585,6 +1588,20 @@ The sentences this errata replaces were:
 - §2.2.1: "nanosecond-precision timestamp synchronization at the highest tiers."
 - §5.1.3: Gold target "Institutional".
 - §11.4: "**Five individual Internet-Drafts submitted and active**: `draft-kamimura-vap-framework-01`, `draft-kamimura-scitt-vcp-03`, `draft-kamimura-rats-behavioral-evidence-02`, `draft-kamimura-scitt-refusal-events-03`, `draft-vso-cpp-core-03`."
+
+### E-2026-10-27
+
+| Field | Entry |
+| --- | --- |
+| ID | E-2026-10-27 |
+| Date | 2026-10-27 JST |
+| Affected sections | §5.1 (VCP status label and publication-status clarification); `spec/v1.2/README.md` (current VCP status table) |
+| Reason | The current repository README distinguishes specification publication from implementation production readiness, but §5.1 and the version-directory status table still used "Production Ready". Their current labels now use "specification GA" with the same publication date and tag |
+| What is unchanged | All normative requirements, requirement identifiers, fields, wire formats and conformance levels; the Released status in §4.5.2; the compatibility statuses in §10.4; the VCP GA declaration date and release tag; CHANGE-001, implementations, signed data, fixed distributions and K3. Historical wording remains a historical record. This is not a vote under §10.3 |
+
+The status label this erratum replaces was:
+
+- §5.1: "v1.2 Released (Production Ready, GA 2026-07-06; tag `v1.2.0`)".
 
 ---
 
