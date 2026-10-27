@@ -3,7 +3,7 @@
 **Document ID:** VSO-VAP-SPEC-001
 **Version:** 1.2.0
 **Status:** Draft Specification (Draft 3)
-**Date:** 2026-09-01 (publication folds G-2, H-2, A-4 applied 2026-09-28; post-publication folds L-1, L-2, L-3, H-3, H-4, H-5 applied 2026-10-06; post-publication fold B-5 corrected 2026-10-09; CAB-independence errata applied 2026-10-21 JST; VCP compatibility-status corrections dated 2026-10-24 JST, §5.1, §10.4, Declaration and Appendix B; commercial disclosure and CAP mapping-status follow-up dated 2026-10-24 JST; Appendix D and ERRATA)
+**Date:** 2026-09-01 (publication folds G-2, H-2, A-4 applied 2026-09-28; post-publication folds L-1, L-2, L-3, H-3, H-4, H-5 applied 2026-10-06; post-publication fold B-5 corrected 2026-10-09; CAB-independence errata applied 2026-10-21 JST; VCP compatibility-status corrections dated 2026-10-24 JST, §5.1, §10.4, Declaration and Appendix B; commercial disclosure and CAP mapping-status follow-up dated 2026-10-24 JST; cross-profile consistency errata E-2026-10-25 applied 2026-10-25 JST; Appendix D and ERRATA)
 
 VAP (Verifiable AI Provenance Framework) is a metaframework. It defines the
 common requirements that domain profiles (VCP, CAP, CPP, OAP, MAP, PAP, …) and
@@ -30,7 +30,7 @@ related Internet-Drafts are individual submissions (§11.4).
 
 | File | Content | SHA-256 |
 |------|---------|---------|
-| [`VAP_Framework_Specification.md`](VAP_Framework_Specification.md) | VAP Framework Specification v1.2.0, Draft 3 (normative) | `24a961ddd419298d02b2cc2b8015d6e058501a2411ffa9a744a218bf110ac6bf` |
+| [`VAP_Framework_Specification.md`](VAP_Framework_Specification.md) | VAP Framework Specification v1.2.0, Draft 3 (normative) | `da7c1b6e4bd7786459bf4ea6c25f0966314896cfed416ae3675eef97018a028b` |
 | [`VSO-VAP-CHANGE-001.md`](VSO-VAP-CHANGE-001.md) | VAP v1.1 → v1.2 Change Proposal — normative annex / change-control record (§1.7) | `ec781c81b2869f06ccb53de12927da868d7990e1eea42ba8a0369425b0089fca` |
 
 Version numbers identify documents; the SHA-256 digests above fix their exact
@@ -53,6 +53,9 @@ Earlier texts remain available in the repository history at the commits listed.
 | 2026-10-24 | Draft 3 with the VCP v1.2 compatibility-status correction in §10.4: integrity alignment under review; full conformance not established; mapping outstanding. Status claim only; normative requirements and earlier digest-history rows unchanged. Experimental extensions remain unadopted; independent third-party reproduction remains unestablished | `fc7877ae9cb33a4b95bd7ad539e76dc830d398a21e16caec7689795f46ec5e12` |
 | 2026-10-24 (follow-up) | Draft 3 status-consistency correction: VCP v1.1 receives the same review status as v1.2; §5.1 and the Declaration retain first-implementation history without proven-origin or reference-profile conformance claims; §10.4 clarifies §1.7 precedence over historical CHANGE-001 CH-11 / Annex A compatibility claims. Normative requirements and CHANGE-001 are unchanged. Earlier digest rows are preserved. Experimental extensions remain unadopted; independent third-party reproduction remains unestablished | `a966a6d6de00f84a4d3fc1d6188b833aac0714f50fa7088b87bd475b307d4a3f` |
 | 2026-10-24 (disclosure / mapping follow-up) | Current commercial disclosure propagates the dated withdrawal without asserting a replacement count; CAP mapping publication acknowledged with unresolved divergences and no conformance claim. Historical G-2 and digest rows preserved. Normative requirements and fixed artifacts unchanged; experimental extensions unadopted, independent reproduction unestablished | `24a961ddd419298d02b2cc2b8015d6e058501a2411ffa9a744a218bf110ac6bf` |
+| 2026-10-25 | Draft 3 with errata E-2026-10-25 (cross-profile consistency): Internet-Draft revisions in §11.4; VCP timing, Gold target and VCP-ANCHOR attributions in §2.2.1, §5.1.2 and §5.1.3 restated as VCP v1.2 gives them; CPP Internet-Draft title correction noted in §2.2.6. No requirement, field, conformance level, registry or compatibility status changed. Earlier digest rows preserved | `da7c1b6e4bd7786459bf4ea6c25f0966314896cfed416ae3675eef97018a028b` |
+
+Note (2026-10-25): the 2026-10-08 text existed only at branch commit `b2c649e`; `main` went from `1771fdb` (`67e9b2…`) to `47bbeb5` (`6f588a…`) via #9.
 
 ---
 
@@ -99,7 +102,7 @@ material that disagrees with it.
 | **DAP** (capability) | Delegated Access Provenance (VAP-AGENT) | v0.1.0 Working Draft | VSO-VAP-DAP-001 |
 | **SMP** (capability) | Self-Modification Provenance (VAP-SLEEP) | v0.2.0 Working Draft | VSO-VAP-SMP-SPEC-001 |
 
-CAP v1.0 has published a [draft mapping](https://github.com/veritaschain/cap-spec/blob/beb0c44d0991ce191999949db3276471d92eb44e/docs/conformance/CAP-v1.0-VAP-v1.2-Draft3-Conformance-Mapping.md) against VAP v1.2 Draft 3; it identifies unresolved divergences and does not establish conformance. CPP v1.4's mapping remains unpublished. Full conformance has not been established for either profile (§10.4).
+CAP v1.0 has published a [draft mapping](https://github.com/veritaschain/cap-spec/blob/beb0c44d0991ce191999949db3276471d92eb44e/docs/conformance/CAP-v1.0-VAP-v1.2-Draft3-Conformance-Mapping.md) against VAP v1.2 Draft 3; it identifies unresolved divergences and does not establish conformance. CPP v1.4's mapping remains unpublished. Full conformance has not been established for either profile (§10.4). For VCP v1.1 and v1.2, integrity alignment with VAP v1.2 is under review; full conformance has not been established and the clause-level mapping is outstanding.
 
 ---
 

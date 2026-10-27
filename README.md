@@ -78,7 +78,7 @@ Released / GA identifies specification publication, not implementation productio
 
 **Working Draft texts are not yet public.** VAP v1.2 §4.5.2 defines a Working Draft as "Published for technical discussion", but the texts of OAP, MAP and PAP (Track B), and of the DAP and SMP capabilities, have not been published in any VSO repository. A review on 24 October 2026 found passages in each that conflict with VAP v1.2 Draft 3 or with corrections VSO has made since. Until revised texts are published, the rows above give each document's status in the registry, not its availability.
 
-CAP v1.0 has published a [draft mapping](https://github.com/veritaschain/cap-spec/blob/beb0c44d0991ce191999949db3276471d92eb44e/docs/conformance/CAP-v1.0-VAP-v1.2-Draft3-Conformance-Mapping.md) against VAP v1.2 Draft 3; it identifies unresolved divergences and does not establish conformance. CPP v1.4's mapping remains unpublished. Full conformance has not been established for either profile (VAP v1.2 §10.4).
+CAP v1.0 has published a [draft mapping](https://github.com/veritaschain/cap-spec/blob/beb0c44d0991ce191999949db3276471d92eb44e/docs/conformance/CAP-v1.0-VAP-v1.2-Draft3-Conformance-Mapping.md) against VAP v1.2 Draft 3; it identifies unresolved divergences and does not establish conformance. CPP v1.4's mapping remains unpublished. Full conformance has not been established for either profile (VAP v1.2 §10.4). For VCP v1.1 and v1.2, integrity alignment with VAP v1.2 is under review; full conformance has not been established and the clause-level mapping is outstanding.
 
 ---
 
@@ -237,7 +237,7 @@ VAP produces evidence relevant to provisions such as the following. This is not 
 
 | Body | Document | Status |
 |------|----------|--------|
-| IETF | `draft-kamimura-vap-framework-01`, `draft-kamimura-scitt-vcp-03`, `draft-kamimura-rats-behavioral-evidence-02`, `draft-kamimura-scitt-refusal-events-03`, `draft-vso-cpp-core-03` | Individual Internet-Drafts, active. Not adopted by any IETF Working Group; no standing in the IETF standards process |
+| IETF | [`draft-kamimura-vap-framework-02`](https://datatracker.ietf.org/doc/draft-kamimura-vap-framework/), [`draft-kamimura-scitt-vcp-05`](https://datatracker.ietf.org/doc/draft-kamimura-scitt-vcp/), [`draft-kamimura-rats-behavioral-evidence-02`](https://datatracker.ietf.org/doc/draft-kamimura-rats-behavioral-evidence/), [`draft-kamimura-scitt-refusal-events-04`](https://datatracker.ietf.org/doc/draft-kamimura-scitt-refusal-events/), [`draft-vso-cpp-core-04`](https://datatracker.ietf.org/doc/draft-vso-cpp-core/) (revisions current on 25 October 2026) | Individual Internet-Drafts, active. Not adopted by any IETF Working Group; no standing in the IETF standards process |
 | ITU-T SG17 | VSO-LS-SG17-001 | Returned by the TSB; the three criteria (well-defined standardization problem, demonstrated interoperability requirement, implementation experience) are not yet met |
 | ISO/IEC JTC 1/SC 42 | Pre-registered gap-assessment protocol VSO-GAP-SC42-001 | No liaison, submission, or contribution |
 | ISO/TC 68 | (Financial Services) | Planned. No submission |
