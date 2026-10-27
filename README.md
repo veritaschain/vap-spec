@@ -80,6 +80,15 @@ Released / GA identifies specification publication, not implementation productio
 
 CAP v1.0 has published a [draft mapping](https://github.com/veritaschain/cap-spec/blob/beb0c44d0991ce191999949db3276471d92eb44e/docs/conformance/CAP-v1.0-VAP-v1.2-Draft3-Conformance-Mapping.md) against VAP v1.2 Draft 3; it identifies unresolved divergences and does not establish conformance. CPP v1.4's mapping remains unpublished. Full conformance has not been established for either profile (VAP v1.2 §10.4). For VCP v1.1 and v1.2, integrity alignment with VAP v1.2 is under review; full conformance has not been established and the clause-level mapping is outstanding.
 
+### Related and proposed domain profiles
+
+The VAP family also provides a point of reference for proposed domain profiles.
+The normative registry above is unchanged; the following entry introduces published proposal work.
+
+| Proposal | Domain | Reference | Status |
+|----------|--------|-----------|--------|
+| **VAP-LAP — Legal AI Profile** | Legal AI / LegalTech | [Overview, draft, and AILEX reference](./proposals/legal-ai-profile/README.md) | Proposed domain profile; individual Internet-Draft `-05` |
+
 ---
 
 ## What This Repository IS / IS NOT
@@ -104,6 +113,7 @@ CAP v1.0 has published a [draft mapping](https://github.com/veritaschain/cap-spe
 | **VCP** (Finance Profile) | [github.com/veritaschain/vcp-spec](https://github.com/veritaschain/vcp-spec) |
 | **CAP** (Content / Creative AI Profile) | [github.com/veritaschain/cap-spec](https://github.com/veritaschain/cap-spec) |
 | **CPP** (Capture Provenance Profile) | [github.com/veritaschain/cpp-spec](https://github.com/veritaschain/cpp-spec) |
+| **VAP-LAP** (proposed Legal AI Profile) | [Overview, draft, and AILEX reference](./proposals/legal-ai-profile/README.md) |
 | **Website** | [veritaschain.org](https://veritaschain.org) |
 | **IETF Internet-Draft (VAP)** | [draft-kamimura-vap-framework](https://datatracker.ietf.org/doc/draft-kamimura-vap-framework/) |
 
