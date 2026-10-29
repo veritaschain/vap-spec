@@ -1,0 +1,503 @@
+{
+  "schema_version": "0.1.0-proposal",
+  "status": "informative-unadopted",
+  "synthetic": true,
+  "execution_status": "not-executed",
+  "checked_date": "2026-10-30",
+  "note": "Proposed synthetic test inputs only. The given observations are hypothetical assumptions, not reconstructions of real incidents. Expected values describe application-layer assessments for a possible future integration; they are not core VAP/CAP verifier verdicts, registered schema events, executed-test results, or findings of legal compliance. Structural validation of this catalogue does not execute its cases. No absence of evidence establishes absence of activity outside the declared observation scope.",
+  "cases": [
+    {
+      "id": "UP-01",
+      "area": "transfer",
+      "title": "Unapproved destination is denied within an observed route",
+      "given": [
+        "An application routes its upload requests through a configured policy-enforcement gateway.",
+        "The selected destination, unapproved.example.invalid, is absent from the applicable approved-destination registry.",
+        "The gateway denies this request before dispatch and records no dispatch for its request identifier.",
+        "The evidence covers this gateway route and does not cover all devices, accounts, or alternative network paths."
+      ],
+      "expected": {
+        "transfer_authorization": "DENY",
+        "transfer_observation": "NOT_OBSERVED",
+        "coverage": "DECLARED_GATEWAY_ROUTE_ONLY",
+        "reasons": [
+          "The destination is not approved for this request.",
+          "No dispatch was observed for this request on the covered route; other routes remain outside the claim."
+        ]
+      },
+      "forbidden_conclusions": [
+        "No external upload occurred anywhere.",
+        "The organization prevented every possible disclosure.",
+        "The denial establishes legal compliance."
+      ]
+    },
+    {
+      "id": "UP-02",
+      "area": "transfer",
+      "title": "Approved provider with the wrong tenant is denied",
+      "given": [
+        "The registry approves ai.example.invalid only for tenant-enterprise-a and the stated processing purpose.",
+        "The proposed request uses the same provider but is authenticated to tenant-personal-b.",
+        "The gateway can bind the authenticated tenant and destination to the proposed request.",
+        "No exception authorizes tenant-personal-b."
+      ],
+      "expected": {
+        "transfer_authorization": "DENY",
+        "binding_assessment": "TENANT_MISMATCH",
+        "reasons": [
+          "Provider-level approval does not authorize a different tenant or account.",
+          "The requested tenant fails the approval binding before dispatch."
+        ]
+      },
+      "forbidden_conclusions": [
+        "Any account at an approved provider is approved.",
+        "The provider's brand or hostname alone proves an appropriate contractual arrangement.",
+        "A matching provider identifier overrides a tenant mismatch."
+      ]
+    },
+    {
+      "id": "UP-03",
+      "area": "transfer",
+      "title": "Expired or stale authorization requires review",
+      "given": [
+        "A cached permit refers to policy version policy-v1 and has passed its validity deadline.",
+        "The application cannot establish whether policy-v1 is still the currently applicable policy.",
+        "The payload and destination match the cached permit.",
+        "The gateway has not dispatched the request."
+      ],
+      "expected": {
+        "transfer_authorization": "REVIEW",
+        "dispatch_action": "HOLD_PENDING_CURRENT_AUTHORIZATION",
+        "policy_binding": "EXPIRED_OR_UNRESOLVED",
+        "reasons": [
+          "Matching content and destination do not refresh an expired decision.",
+          "A new applicable policy evaluation is needed before the controlled route may proceed."
+        ]
+      },
+      "forbidden_conclusions": [
+        "A historically permitted request remains permitted indefinitely.",
+        "An expired permit is valid because its signature still verifies.",
+        "Review status itself authorizes dispatch."
+      ]
+    },
+    {
+      "id": "UP-04",
+      "area": "transfer",
+      "title": "Payload substitution after authorization is denied",
+      "given": [
+        "A permit binds the exact outgoing payload digest, destination, tenant, purpose, and policy version.",
+        "After the permit is issued, the outgoing payload bytes change.",
+        "The gateway computes the digest of the actual outgoing bytes and finds a mismatch.",
+        "The request has not yet been dispatched."
+      ],
+      "expected": {
+        "transfer_authorization": "DENY",
+        "binding_assessment": "PAYLOAD_MISMATCH",
+        "reasons": [
+          "The permit does not cover the bytes now proposed for transfer.",
+          "A replacement payload needs a new policy evaluation and binding."
+        ]
+      },
+      "forbidden_conclusions": [
+        "An unchanged filename establishes an unchanged payload.",
+        "The old permit authorizes every revision of the file.",
+        "An intact permit signature proves that the outgoing content was authorized."
+      ]
+    },
+    {
+      "id": "UP-05",
+      "area": "transfer",
+      "title": "Observed transmission after denial is a control violation",
+      "given": [
+        "The applicable policy decision denies a request identified by request-005.",
+        "A separately authenticated egress observation binds a transmission to request-005, the same payload, destination, and tenant.",
+        "The observation falls within the declared monitoring scope and relevant time interval.",
+        "No authorized override or later permit covers the observed transmission."
+      ],
+      "expected": {
+        "transfer_authorization": "DENY",
+        "transfer_observation": "OBSERVED",
+        "control_assessment": "VIOLATION",
+        "reasons": [
+          "The observed action conflicts with the bound denial.",
+          "The denial record cannot substitute for evidence that the enforcement control actually stopped the request."
+        ]
+      },
+      "forbidden_conclusions": [
+        "The upload was prevented because a denial was logged.",
+        "The valid signatures make the action policy-compliant.",
+        "This application-layer violation is already a final legal finding."
+      ]
+    },
+    {
+      "id": "UP-06",
+      "area": "transfer",
+      "title": "Timeout after dispatch leaves remote outcome unknown",
+      "given": [
+        "The gateway records dispatch of an authorized request to ai.example.invalid.",
+        "The connection times out before a usable destination acknowledgement is received.",
+        "The available evidence does not establish whether the provider accepted or processed the request.",
+        "The integration has not established a provider-supported idempotency or reconciliation guarantee for this operation."
+      ],
+      "expected": {
+        "transfer_observation": "DISPATCH_OBSERVED",
+        "remote_outcome": "UNKNOWN",
+        "retry_action": "RECONCILE_BEFORE_RETRY",
+        "reasons": [
+          "A timeout does not distinguish rejection from acceptance followed by a lost response.",
+          "Blind repetition could duplicate a transfer or processing action."
+        ]
+      },
+      "forbidden_conclusions": [
+        "The provider received no data.",
+        "The provider definitely completed processing.",
+        "Retrying the request is necessarily harmless."
+      ]
+    },
+    {
+      "id": "UP-07",
+      "area": "transfer",
+      "title": "A possible bypass outside coverage remains unknown",
+      "given": [
+        "The collector observes only the managed application's API route.",
+        "An alternative browser or unmanaged device can reach external services outside that route.",
+        "No upload record appears in the managed application's collected records for the relevant interval.",
+        "No additional evidence resolves whether a transfer occurred through the uncovered path."
+      ],
+      "expected": {
+        "transfer_observation": "UNKNOWN",
+        "coverage": "INCOMPLETE",
+        "reasons": [
+          "The available observations cannot resolve activity on an uncovered path.",
+          "The absence of an application event supports only the narrower statement that this collector did not observe one."
+        ]
+      },
+      "forbidden_conclusions": [
+        "No AI service was used.",
+        "An uncovered upload definitely occurred.",
+        "The managed route's record completeness establishes organization-wide completeness."
+      ]
+    },
+    {
+      "id": "UP-08",
+      "area": "transfer",
+      "title": "Unavailable collector blocks only the controlled application route",
+      "given": [
+        "The application's configured policy requires a functioning evidence collector before this class of upload may be dispatched.",
+        "The collector is unavailable and cannot acknowledge durable collection.",
+        "The gateway can hold requests on its own route before transmission.",
+        "The application does not control every other device, network path, or AI client."
+      ],
+      "expected": {
+        "application_route_action": "BLOCK",
+        "collector_health": "UNAVAILABLE",
+        "external_activity_assessment": "UNKNOWN",
+        "reasons": [
+          "This application's configured prerequisite for dispatch is unsatisfied.",
+          "Blocking the covered route says nothing conclusive about activity elsewhere."
+        ]
+      },
+      "forbidden_conclusions": [
+        "VAP itself stopped all network transfers.",
+        "No information left the organization while the collector was down.",
+        "Collector unavailability is a core VAP/CAP verifier verdict."
+      ]
+    },
+    {
+      "id": "ER-01",
+      "area": "erasure",
+      "title": "A deletion request establishes a request only",
+      "given": [
+        "An authenticated local record contains a deletion request for object-synthetic-001 in tenant-enterprise-a.",
+        "The request identifies the intended provider and the requested scope.",
+        "No destination acknowledgement, provider deletion statement, or independent review is available."
+      ],
+      "expected": {
+        "deletion_evidence": "REQUEST_ONLY",
+        "provider_completion": "UNKNOWN",
+        "reasons": [
+          "The available record establishes the recorded request and its declared scope.",
+          "It does not establish receipt or action by the provider."
+        ]
+      },
+      "forbidden_conclusions": [
+        "The object has been erased.",
+        "The provider received or accepted the request.",
+        "The request proves deletion from backups or training data."
+      ]
+    },
+    {
+      "id": "ER-02",
+      "area": "erasure",
+      "title": "An acknowledgement does not establish completed deletion",
+      "given": [
+        "The provider authenticates a response acknowledging receipt of a bound deletion request.",
+        "The acknowledgement identifies the matching tenant, object set, and request identifier.",
+        "The response says the request is queued and contains no completion claim.",
+        "No subsequent completion evidence is available."
+      ],
+      "expected": {
+        "deletion_evidence": "ACKNOWLEDGED",
+        "provider_completion": "UNKNOWN",
+        "reasons": [
+          "Receipt of a queued request is established within the stated assumptions.",
+          "Acknowledgement and completion are distinct events."
+        ]
+      },
+      "forbidden_conclusions": [
+        "A successful acknowledgement means deletion completed.",
+        "A queued request proves that all copies are inaccessible.",
+        "Receipt of the request discharges all applicable legal obligations."
+      ]
+    },
+    {
+      "id": "ER-03",
+      "area": "erasure",
+      "title": "A signed deletion attestation excluding backups remains scoped",
+      "given": [
+        "A provider statement is signed by the expected provider identity and binds the correct request, tenant, and object set.",
+        "The statement claims removal from active serving storage at a specified time.",
+        "The statement expressly excludes backups and does not address model-training use or derivative material.",
+        "No independent assessment of the provider's deletion process is available."
+      ],
+      "expected": {
+        "deletion_evidence": "PROVIDER_ATTESTED_WITHIN_DECLARED_SCOPE",
+        "independent_verification": "NOT_ESTABLISHED",
+        "excluded_scope_outcome": "UNKNOWN",
+        "reasons": [
+          "The signature attributes a defined claim to the provider; it does not independently establish the truth of every claimed action.",
+          "Backups, training use, and derivative material are outside the supported claim."
+        ]
+      },
+      "forbidden_conclusions": [
+        "All copies were universally erased.",
+        "A valid signature is independent proof of physical deletion.",
+        "The attestation proves removal from model weights or every derivative."
+      ]
+    },
+    {
+      "id": "ER-04",
+      "area": "erasure",
+      "title": "A mismatched deletion receipt cannot support the target claim",
+      "given": [
+        "The target deletion request concerns object-synthetic-004 in tenant-enterprise-a.",
+        "A cryptographically authentic provider receipt instead binds object-synthetic-elsewhere in tenant-enterprise-b.",
+        "No documented object mapping, tenant migration, or corrected receipt connects the receipt to the target request.",
+        "No other completion evidence is available for the target object."
+      ],
+      "expected": {
+        "receipt_applicability": "UNUSABLE_FOR_TARGET_CLAIM",
+        "binding_assessment": "OBJECT_AND_TENANT_MISMATCH",
+        "target_completion": "UNKNOWN",
+        "reasons": [
+          "An authentic receipt for a different scope does not support this deletion claim.",
+          "The target request remains unresolved without matching evidence."
+        ]
+      },
+      "forbidden_conclusions": [
+        "Any receipt from the provider proves the requested deletion.",
+        "Valid signature verification cures mismatched scope.",
+        "The mismatch proves that the target object was retained."
+      ]
+    },
+    {
+      "id": "ER-05",
+      "area": "erasure",
+      "title": "Independent review supports only the reviewed deletion scope",
+      "given": [
+        "An independent reviewer documents a method, evidence set, observation interval, and limitations for a deletion review.",
+        "The reviewed scope covers the named synthetic objects in specified active-storage locations of tenant-enterprise-a.",
+        "The reviewer reports completion within that scope and binds the report to the relevant request and object set.",
+        "Backups, unobserved replicas, downstream recipients, and model-training derivatives are expressly excluded."
+      ],
+      "expected": {
+        "deletion_evidence": "INDEPENDENTLY_REVIEWED_WITHIN_DECLARED_SCOPE",
+        "review_result": "SUPPORTED_WITHIN_REVIEW_METHOD_AND_LIMITATIONS",
+        "outside_scope_outcome": "UNKNOWN",
+        "reasons": [
+          "The independent report adds evidence only for the objects, locations, time, and method it actually covers.",
+          "The report's exclusions and limitations remain part of the assessment."
+        ]
+      },
+      "forbidden_conclusions": [
+        "Independent review proves universal irreversible erasure.",
+        "Excluded locations or derivatives were also verified.",
+        "A limited technical review is a legal compliance determination."
+      ]
+    },
+    {
+      "id": "PB-01",
+      "area": "publication",
+      "title": "Authentic evidence and disclosure do not override an AI-use prohibition",
+      "given": [
+        "The publication's applicable policy version prohibits the recorded type of AI use at the current submission stage.",
+        "Integrity and identity checks for the evidence records have succeeded under the stated verification assumptions.",
+        "The records bind the prohibited AI use to the exact proposed document revision.",
+        "The author has prepared a truthful disclosure of that use and no applicable exception is established."
+      ],
+      "expected": {
+        "publication_action": "BLOCK",
+        "policy_assessment": "PROHIBITED_USE",
+        "evidence_integrity": "ESTABLISHED_UNDER_GIVEN_ASSUMPTIONS",
+        "reasons": [
+          "Authentic evidence can establish a conflict with the applicable publication policy.",
+          "Disclosure does not convert a prohibited activity into a permitted one."
+        ]
+      },
+      "forbidden_conclusions": [
+        "Integrity verification means the publication is permitted.",
+        "Any AI use is acceptable once disclosed.",
+        "The application assessment is a legal or institutional adjudication."
+      ]
+    },
+    {
+      "id": "PB-02",
+      "area": "publication",
+      "title": "No AI event with incomplete coverage cannot establish human-only authorship",
+      "given": [
+        "The collected records contain no AI-use event for the proposed document revision.",
+        "The collector covers one editor but does not cover external services, imported text, or all collaborator activity.",
+        "No independently supported complete provenance claim is available.",
+        "The application is asked to classify whether the document involved AI assistance."
+      ],
+      "expected": {
+        "ai_involvement": "UNKNOWN",
+        "coverage": "INCOMPLETE",
+        "publication_action": "REVIEW",
+        "reasons": [
+          "The absence of a collected event does not resolve activity outside the collector's scope.",
+          "Human-only authorship is not established by the available evidence."
+        ]
+      },
+      "forbidden_conclusions": [
+        "The document was created entirely by humans.",
+        "AI assistance definitely occurred.",
+        "Missing provenance is itself proof of misconduct."
+      ]
+    },
+    {
+      "id": "PB-03",
+      "area": "publication",
+      "title": "An approved document revision changes before submission",
+      "given": [
+        "An editorial approval and disclosure assessment bind document revision revision-a and its exact content digest.",
+        "The proposed submission contains revision-b with different content bytes.",
+        "No approval or disclosure reassessment binds revision-b.",
+        "The workflow requires an approval covering the submitted revision."
+      ],
+      "expected": {
+        "publication_action": "REVIEW",
+        "approval_applicability": "PRIOR_REVISION_ONLY",
+        "reasons": [
+          "The existing approval covers revision-a rather than the changed submission.",
+          "The application must assess the new revision and preserve the earlier revision's evidence."
+        ]
+      },
+      "forbidden_conclusions": [
+        "An approval automatically covers all future edits.",
+        "The same title or filename proves approval applicability.",
+        "Revision-b is necessarily prohibited merely because reassessment is pending."
+      ]
+    },
+    {
+      "id": "PB-04",
+      "area": "publication",
+      "title": "Disclosure omits AI involvement in figures or code",
+      "given": [
+        "The applicable policy requires disclosure of AI assistance in text, figures, and code submitted with the work.",
+        "Bound evidence records AI assistance for a figure and a code artifact included in the proposed submission.",
+        "The prepared disclosure addresses prose editing only and omits those artifacts.",
+        "The omission has not been resolved by a documented exception."
+      ],
+      "expected": {
+        "disclosure_assessment": "INCOMPLETE",
+        "publication_action": "REVIEW",
+        "reasons": [
+          "The disclosure does not cover the artifact types required by the applicable policy.",
+          "The evidence must bind the figure and code versions as well as the prose revision."
+        ]
+      },
+      "forbidden_conclusions": [
+        "A prose-only declaration covers every submission component.",
+        "AI involvement in an included figure or code artifact is irrelevant by default.",
+        "Incomplete disclosure establishes the author's intent."
+      ]
+    },
+    {
+      "id": "PB-05",
+      "area": "publication",
+      "title": "Ambiguous stage-dependent rules require review with stage evidence retained",
+      "given": [
+        "The available policies describe different AI-use rules for drafting, submission, and final publication.",
+        "The proposed transition is a revised submission whose governing stage or policy precedence is not resolved by the available policy records.",
+        "The evidence identifies AI use during drafting and later edits, with distinct artifact revisions and timestamps.",
+        "No authorized interpretation resolves which rule controls the proposed transition."
+      ],
+      "expected": {
+        "publication_action": "REVIEW",
+        "policy_applicability": "UNRESOLVED",
+        "evidence_retention": "PRESERVE_PER_STAGE_POLICY_AND_REVISION_BINDINGS",
+        "reasons": [
+          "The application cannot choose a permissive interpretation without resolving stage and policy applicability.",
+          "Earlier activity and the policies applicable to it remain relevant evidence even after the workflow advances."
+        ]
+      },
+      "forbidden_conclusions": [
+        "A rule permitting AI during drafting necessarily permits it at every later stage.",
+        "The newest policy automatically governs every historical action.",
+        "Advancing stages removes the need to preserve earlier policy and artifact bindings."
+      ]
+    },
+    {
+      "id": "PB-06",
+      "area": "publication",
+      "title": "A signed self-declaration remains distinct from observed activity",
+      "given": [
+        "An author signs a declaration describing the AI assistance used for a bound document revision.",
+        "Signature and identity checks attribute the declaration to that author under the stated assumptions.",
+        "No contemporaneous tool observations or independent corroboration establish the declaration's factual completeness.",
+        "The available evidence contains no established contradiction of the declaration."
+      ],
+      "expected": {
+        "evidence_basis": "SELF_DECLARED",
+        "declarant_attribution": "ESTABLISHED_UNDER_GIVEN_ASSUMPTIONS",
+        "activity_completeness": "UNKNOWN",
+        "reasons": [
+          "The signature establishes attribution and integrity of the declaration under the given assumptions.",
+          "It does not transform the declaration into directly observed or independently verified activity."
+        ]
+      },
+      "forbidden_conclusions": [
+        "The signature proves that every factual assertion is true and complete.",
+        "The declaration is false because independent observations are unavailable.",
+        "Self-declared activity and instrumented observations have identical evidence strength."
+      ]
+    },
+    {
+      "id": "PB-07",
+      "area": "publication",
+      "title": "Prepared or dispatched disclosure has no confirmed receipt or acceptance",
+      "given": [
+        "A disclosure text is prepared and binds the intended document revision, publication destination, and policy version.",
+        "The local application records a dispatch attempt to submissions.example.invalid.",
+        "No trustworthy destination receipt confirms which disclosure and document revision arrived.",
+        "No publisher acknowledgement or editorial acceptance is available."
+      ],
+      "expected": {
+        "disclosure_preparation": "RECORDED",
+        "dispatch_observation": "ATTEMPT_RECORDED",
+        "delivery_status": "UNCONFIRMED",
+        "acceptance_status": "UNKNOWN",
+        "reasons": [
+          "Preparation and a local send record do not establish what the publication destination received.",
+          "Receipt, if later established, would still be distinct from editorial acceptance or satisfaction of disclosure requirements."
+        ]
+      },
+      "forbidden_conclusions": [
+        "The disclosure was definitely delivered.",
+        "The publisher accepted the submission or approved the AI use.",
+        "Preparing or sending a disclosure automatically satisfies the applicable policy or law."
+      ]
+    }
+  ]
+}
