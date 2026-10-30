@@ -1,0 +1,364 @@
+{
+  "format": "incident-erasure-acceptance/0.1",
+  "scope": "Synthetic local namespace removal; no universal erasure or independent review.",
+  "cases": [
+    {
+      "case_id": "LE-01",
+      "title": "Exact authorized local namespace removal",
+      "expected": {
+        "states": [
+          "LOCAL_UNLINK_CONFIRMED"
+        ],
+        "unlink_attempts": 1,
+        "local_observations": [
+          "REMOVAL_OBSERVED_SAME_CONTROLLER"
+        ],
+        "core_evidence": [
+          "PROVIDER_ATTESTED_WITHIN_DECLARED_SCOPE"
+        ],
+        "rejected_probes": 0,
+        "retained_readable_controls": [],
+        "outside_scope_remains_unknown": true
+      }
+    },
+    {
+      "case_id": "LE-02",
+      "title": "Acknowledgement without removal leaves the object present",
+      "expected": {
+        "states": [
+          "ACKNOWLEDGED_ONLY"
+        ],
+        "unlink_attempts": 0,
+        "local_observations": [
+          "PRESENT_AT_OBSERVATION"
+        ],
+        "core_evidence": [
+          "ACKNOWLEDGED"
+        ],
+        "rejected_probes": 0,
+        "retained_readable_controls": [],
+        "outside_scope_remains_unknown": true
+      }
+    },
+    {
+      "case_id": "LE-03",
+      "title": "Request alone establishes no provider completion",
+      "expected": {
+        "states": [
+          "NO_PROVIDER_CALL"
+        ],
+        "unlink_attempts": 0,
+        "local_observations": [
+          "NOT_OBSERVED"
+        ],
+        "core_evidence": [
+          "REQUEST_ONLY"
+        ],
+        "rejected_probes": 0,
+        "retained_readable_controls": [],
+        "outside_scope_remains_unknown": true
+      }
+    },
+    {
+      "case_id": "LE-04",
+      "title": "Tampered receipt signature is rejected after a measured operation",
+      "expected": {
+        "states": [
+          "LOCAL_UNLINK_CONFIRMED"
+        ],
+        "unlink_attempts": 1,
+        "local_observations": [
+          "REMOVAL_OBSERVED_SAME_CONTROLLER"
+        ],
+        "core_evidence": [
+          "PROVIDER_ATTESTED_WITHIN_DECLARED_SCOPE"
+        ],
+        "rejected_probes": 1,
+        "retained_readable_controls": [],
+        "outside_scope_remains_unknown": true
+      }
+    },
+    {
+      "case_id": "LE-05",
+      "title": "Validly signed completion for another tenant is rejected",
+      "expected": {
+        "states": [
+          "LOCAL_UNLINK_CONFIRMED"
+        ],
+        "unlink_attempts": 1,
+        "local_observations": [
+          "REMOVAL_OBSERVED_SAME_CONTROLLER"
+        ],
+        "core_evidence": [
+          "PROVIDER_ATTESTED_WITHIN_DECLARED_SCOPE"
+        ],
+        "rejected_probes": 1,
+        "retained_readable_controls": [],
+        "outside_scope_remains_unknown": true
+      }
+    },
+    {
+      "case_id": "LE-06",
+      "title": "Authorization expires after claim and before unlink",
+      "expected": {
+        "states": [
+          "BLOCKED"
+        ],
+        "unlink_attempts": 0,
+        "local_observations": [
+          "PRESENT_AT_OBSERVATION"
+        ],
+        "core_evidence": [
+          "ACKNOWLEDGED"
+        ],
+        "rejected_probes": 0,
+        "retained_readable_controls": [],
+        "outside_scope_remains_unknown": true
+      }
+    },
+    {
+      "case_id": "LE-07",
+      "title": "Changed current content is not deleted",
+      "expected": {
+        "states": [
+          "BLOCKED"
+        ],
+        "unlink_attempts": 0,
+        "local_observations": [
+          "PRESENT_AT_OBSERVATION"
+        ],
+        "core_evidence": [
+          "REQUEST_ONLY"
+        ],
+        "rejected_probes": 0,
+        "retained_readable_controls": [],
+        "outside_scope_remains_unknown": true
+      }
+    },
+    {
+      "case_id": "LE-08",
+      "title": "Pre-existing absence is not attributed to this deletion request",
+      "expected": {
+        "states": [
+          "BLOCKED"
+        ],
+        "unlink_attempts": 0,
+        "local_observations": [
+          "ABSENCE_ONLY"
+        ],
+        "core_evidence": [
+          "REQUEST_ONLY"
+        ],
+        "rejected_probes": 0,
+        "retained_readable_controls": [],
+        "outside_scope_remains_unknown": true
+      }
+    },
+    {
+      "case_id": "LE-09",
+      "title": "Repeated request performs no second unlink",
+      "expected": {
+        "states": [
+          "LOCAL_UNLINK_CONFIRMED",
+          "REPLAY_NO_ACTION"
+        ],
+        "unlink_attempts": 1,
+        "local_observations": [
+          "REMOVAL_OBSERVED_SAME_CONTROLLER",
+          "ABSENCE_ONLY"
+        ],
+        "core_evidence": [
+          "PROVIDER_ATTESTED_WITHIN_DECLARED_SCOPE",
+          "REQUEST_ONLY"
+        ],
+        "rejected_probes": 0,
+        "retained_readable_controls": [],
+        "outside_scope_remains_unknown": true
+      }
+    },
+    {
+      "case_id": "LE-10",
+      "title": "Lost terminal persistence acknowledgement remains unknown and cannot retry",
+      "expected": {
+        "states": [
+          "OUTCOME_UNKNOWN",
+          "REPLAY_NO_ACTION"
+        ],
+        "unlink_attempts": 1,
+        "local_observations": [
+          "ABSENCE_ONLY",
+          "ABSENCE_ONLY"
+        ],
+        "core_evidence": [
+          "ACKNOWLEDGED",
+          "REQUEST_ONLY"
+        ],
+        "rejected_probes": 0,
+        "retained_readable_controls": [],
+        "outside_scope_remains_unknown": true
+      }
+    },
+    {
+      "case_id": "LE-11",
+      "title": "Concurrent identical requests enter at most one unlink",
+      "expected": {
+        "states": [
+          "LOCAL_UNLINK_CONFIRMED",
+          "REPLAY_NO_ACTION"
+        ],
+        "unlink_attempts": 1,
+        "local_observations": [
+          "ABSENCE_ONLY",
+          "REMOVAL_OBSERVED_SAME_CONTROLLER"
+        ],
+        "core_evidence": [
+          "PROVIDER_ATTESTED_WITHIN_DECLARED_SCOPE",
+          "REQUEST_ONLY"
+        ],
+        "rejected_probes": 0,
+        "retained_readable_controls": [],
+        "outside_scope_remains_unknown": true
+      }
+    },
+    {
+      "case_id": "LE-12",
+      "title": "Explicitly excluded copy stays readable after scoped removal",
+      "expected": {
+        "states": [
+          "LOCAL_UNLINK_CONFIRMED"
+        ],
+        "unlink_attempts": 1,
+        "local_observations": [
+          "REMOVAL_OBSERVED_SAME_CONTROLLER"
+        ],
+        "core_evidence": [
+          "PROVIDER_ATTESTED_WITHIN_DECLARED_SCOPE"
+        ],
+        "rejected_probes": 0,
+        "retained_readable_controls": [
+          "excluded-copy"
+        ],
+        "outside_scope_remains_unknown": true
+      }
+    },
+    {
+      "case_id": "LE-13",
+      "title": "Previously opened file stays readable after namespace removal",
+      "expected": {
+        "states": [
+          "LOCAL_UNLINK_CONFIRMED"
+        ],
+        "unlink_attempts": 1,
+        "local_observations": [
+          "REMOVAL_OBSERVED_SAME_CONTROLLER"
+        ],
+        "core_evidence": [
+          "PROVIDER_ATTESTED_WITHIN_DECLARED_SCOPE"
+        ],
+        "rejected_probes": 0,
+        "retained_readable_controls": [
+          "open-handle"
+        ],
+        "outside_scope_remains_unknown": true
+      }
+    },
+    {
+      "case_id": "LE-14",
+      "title": "After-only absence does not prove an observed transition",
+      "expected": {
+        "states": [
+          "LOCAL_UNLINK_CONFIRMED"
+        ],
+        "unlink_attempts": 1,
+        "local_observations": [
+          "ABSENCE_ONLY"
+        ],
+        "core_evidence": [
+          "PROVIDER_ATTESTED_WITHIN_DECLARED_SCOPE"
+        ],
+        "rejected_probes": 0,
+        "retained_readable_controls": [],
+        "outside_scope_remains_unknown": true
+      }
+    },
+    {
+      "case_id": "LE-15",
+      "title": "Recreated entry is observed present despite an earlier scoped receipt",
+      "expected": {
+        "states": [
+          "LOCAL_UNLINK_CONFIRMED"
+        ],
+        "unlink_attempts": 1,
+        "local_observations": [
+          "PRESENT_AT_OBSERVATION"
+        ],
+        "core_evidence": [
+          "PROVIDER_ATTESTED_WITHIN_DECLARED_SCOPE"
+        ],
+        "rejected_probes": 0,
+        "retained_readable_controls": [],
+        "outside_scope_remains_unknown": true
+      }
+    },
+    {
+      "case_id": "LE-16",
+      "title": "Failed durable intent prevents unlink",
+      "expected": {
+        "states": [
+          "BLOCKED"
+        ],
+        "unlink_attempts": 0,
+        "local_observations": [
+          "PRESENT_AT_OBSERVATION"
+        ],
+        "core_evidence": [
+          "REQUEST_ONLY"
+        ],
+        "rejected_probes": 0,
+        "retained_readable_controls": [],
+        "outside_scope_remains_unknown": true
+      }
+    },
+    {
+      "case_id": "LE-17",
+      "title": "Same request ID with another object version conflicts",
+      "expected": {
+        "states": [
+          "LOCAL_UNLINK_CONFIRMED",
+          "REQUEST_ID_CONFLICT"
+        ],
+        "unlink_attempts": 1,
+        "local_observations": [
+          "REMOVAL_OBSERVED_SAME_CONTROLLER",
+          "PRESENT_AT_OBSERVATION"
+        ],
+        "core_evidence": [
+          "PROVIDER_ATTESTED_WITHIN_DECLARED_SCOPE",
+          "REQUEST_ONLY"
+        ],
+        "rejected_probes": 0,
+        "retained_readable_controls": [],
+        "outside_scope_remains_unknown": true
+      }
+    },
+    {
+      "case_id": "LE-18",
+      "title": "Provider attestation without observer remains a scoped provider claim",
+      "expected": {
+        "states": [
+          "LOCAL_UNLINK_CONFIRMED"
+        ],
+        "unlink_attempts": 1,
+        "local_observations": [
+          "NOT_OBSERVED"
+        ],
+        "core_evidence": [
+          "PROVIDER_ATTESTED_WITHIN_DECLARED_SCOPE"
+        ],
+        "rejected_probes": 0,
+        "retained_readable_controls": [],
+        "outside_scope_remains_unknown": true
+      }
+    }
+  ]
+}

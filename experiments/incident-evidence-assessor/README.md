@@ -200,3 +200,9 @@ References: [RFC 8785](https://www.rfc-editor.org/rfc/rfc8785.html),
 [Ed25519 API](https://cryptography.io/en/50.0.2/hazmat/primitives/asymmetric/ed25519/).
 The repository's [CC BY 4.0 license](../../LICENSE) applies; this experiment does
 not relicense the repository.
+
+## Bounded local erasure execution
+
+The separate [local erasure pilot](../incident-erasure-pilot/README.md) connects
+actual synthetic namespace removal to the unchanged erasure assessor. It keeps
+provider claims, same-controller readback and unverified external scope distinct.
