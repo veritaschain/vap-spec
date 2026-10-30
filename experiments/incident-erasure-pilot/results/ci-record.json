@@ -1,0 +1,87 @@
+{
+  "format": "incident-erasure-ci-record/0.1",
+  "experiment": "Local incident erasure pilot",
+  "status": "Informative synthetic experiment; unadopted",
+  "checked_on": "2026-10-30 JST",
+  "tested_commit": "ff54a5d302bc014df57736e6bcd5b0e44acc01b7",
+  "tested_tree": "8484c45be59180a78f41ae64308291f83532770a",
+  "source_sha256": "fb0dc41bde92840e06f11c9077c41743dc8c1255b4404aaa464b7455fa829191",
+  "source_file_count": 28,
+  "workflow_run": {
+    "id": 40997508247,
+    "url": "https://github.com/veritaschain/vap-spec/actions/runs/40997508247",
+    "event": "push",
+    "run_attempt": 1,
+    "conclusion": "success",
+    "created_at": "2026-10-30T03:27:46Z",
+    "updated_at": "2026-10-30T03:28:13Z"
+  },
+  "jobs": [
+    {
+      "python_matrix": "3.12",
+      "python_runtime": "3.12.15 (main, Oct  1 2026, 02:35:59) [GCC 13.3.0]",
+      "job_id": 123873984383,
+      "job_url": "https://github.com/veritaschain/vap-spec/actions/runs/40997508247/job/123873984383",
+      "conclusion": "success",
+      "unit_test_methods": 54,
+      "skipped_methods": 0,
+      "unraisable_finalizer_errors": 0,
+      "scenario_expectations_matched": 18,
+      "scenario_total": 18,
+      "verified_exports": 18,
+      "assessor_test_methods": 20,
+      "assessor_catalogue_cases": 23,
+      "summary_file": "summary-python-3.12.json",
+      "artifact": {
+        "id": 12952440268,
+        "name": "incident-erasure-python-3.12",
+        "digest": "sha256:01e64f5d2a09103d64030523c0f6e2875f00694478d6f3cea28fef9ecfbd308f",
+        "size_in_bytes": 78774,
+        "expires_at": "2026-11-29T03:28:06Z",
+        "url": "https://github.com/veritaschain/vap-spec/actions/runs/40997508247/artifacts/12952440268"
+      }
+    },
+    {
+      "python_matrix": "3.14",
+      "python_runtime": "3.14.9 (main, Oct 21 2026, 14:50:29) [GCC 13.3.0]",
+      "job_id": 123873984021,
+      "job_url": "https://github.com/veritaschain/vap-spec/actions/runs/40997508247/job/123873984021",
+      "conclusion": "success",
+      "unit_test_methods": 54,
+      "skipped_methods": 0,
+      "unraisable_finalizer_errors": 0,
+      "scenario_expectations_matched": 18,
+      "scenario_total": 18,
+      "verified_exports": 18,
+      "assessor_test_methods": 20,
+      "assessor_catalogue_cases": 23,
+      "summary_file": "summary-python-3.14.json",
+      "artifact": {
+        "id": 12952355747,
+        "name": "incident-erasure-python-3.14",
+        "digest": "sha256:e7e909b40e85cd7fa3bfb125f7a8019fc5047318cbf7dcd7fae74627059c64b5",
+        "size_in_bytes": 78824,
+        "expires_at": "2026-11-29T03:28:08Z",
+        "url": "https://github.com/veritaschain/vap-spec/actions/runs/40997508247/artifacts/12952355747"
+      }
+    }
+  ],
+  "source_capture": "Original ERASURE_PILOT_SUMMARY_JSON marker extracted from each successful job log; JSON whitespace reformatted only.",
+  "public_artifact_scope": [
+    "generated/summary.json",
+    "generated/cases/"
+  ],
+  "runtime_files_uploaded": false,
+  "private_keys_exported": false,
+  "raw_object_content_exported": false,
+  "independent_reproduction": "NOT_ESTABLISHED",
+  "remote_provider_used": false,
+  "universal_erasure": "NOT_ESTABLISHED",
+  "limitations": [
+    "All roles, observations and CI evidence use the same development controller; separate keys do not establish independent verification.",
+    "The recorded source commit predates the documentation/results commit. Compare the executable source manifest for subsequent rechecks.",
+    "Artifacts expire after 30 days. Retained summary files alone do not reconstruct the signed case exports or satisfy verify-exports.",
+    "Namespace removal is narrower than data erasure: retained-copy and open-handle controls observed the original synthetic bytes still readable.",
+    "Core assessor completion, out-of-scope and independence dimensions remain unchanged."
+  ]
+}

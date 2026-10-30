@@ -1,0 +1,370 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:veritaschain:experimental:vap-interop-demo:0.2.0:evidence-pack",
+  "title": "Experimental interoperability evidence-pack structural schema",
+  "description": "Structural contract for vap-interop-demo/0.2.0 only. Schema validation does not establish cryptographic validity, VAP conformance, legal acceptance or independent verification.",
+  "$comment": "The independent verifiers enforce raw JSON constraints (duplicate or escaped-equivalent keys, integer-only number tokens including rejection of 1.0, exponents and -0, UTF-8/BOM, 2 MiB input limit and depth <=16). JSON Schema integer accepts mathematically integral numbers and cannot establish their original token spelling. The verifiers also enforce real calendar dates, time windows/order, unique IDs, contiguous sequence, scope and role/key references, distinct role keys, hashes/signatures, the RFC 6962 root, receipt bindings and attempt/outcome bijection. The negative end assertions in patterns reject a trailing newline as well as any other suffix.",
+  "type": "object",
+  "required": [
+    "contract_id",
+    "canonicalization",
+    "hash_algorithm",
+    "signature_algorithm",
+    "scope",
+    "scope_commitment",
+    "events",
+    "merkle",
+    "producer_manifest",
+    "observer_receipt",
+    "demo_anchor_receipt"
+  ],
+  "properties": {
+    "contract_id": {
+      "const": "vap-interop-demo/0.2.0"
+    },
+    "canonicalization": {
+      "const": "DEMO-ASCII-SAFEINT-JSON-v1"
+    },
+    "hash_algorithm": {
+      "const": "SHA-256"
+    },
+    "signature_algorithm": {
+      "const": "Ed25519"
+    },
+    "scope": {
+      "$ref": "#/$defs/scope"
+    },
+    "scope_commitment": {
+      "$ref": "#/$defs/sha256"
+    },
+    "events": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 128,
+      "items": {
+        "$ref": "#/$defs/event"
+      }
+    },
+    "merkle": {
+      "type": "object",
+      "required": [
+        "algorithm",
+        "root"
+      ],
+      "properties": {
+        "algorithm": {
+          "const": "RFC6962-SHA256"
+        },
+        "root": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "additionalProperties": false
+    },
+    "producer_manifest": {
+      "$ref": "#/$defs/record",
+      "properties": {
+        "record_type": {
+          "const": "PRODUCER_MANIFEST"
+        }
+      }
+    },
+    "observer_receipt": {
+      "$ref": "#/$defs/record",
+      "properties": {
+        "record_type": {
+          "const": "OBSERVER_RECEIPT"
+        }
+      }
+    },
+    "demo_anchor_receipt": {
+      "$ref": "#/$defs/record",
+      "properties": {
+        "record_type": {
+          "const": "DEMO_ANCHOR_RECEIPT"
+        }
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024,
+      "pattern": "^[\\u0020-\\u007E]+(?![\\s\\S])"
+    },
+    "sha256": {
+      "type": "string",
+      "minLength": 64,
+      "maxLength": 64,
+      "pattern": "^[0-9a-f]{64}(?![\\s\\S])"
+    },
+    "signature": {
+      "type": "string",
+      "minLength": 88,
+      "maxLength": 88,
+      "pattern": "^[A-Za-z0-9+/]{85}[AQgw]==(?![\\s\\S])",
+      "description": "Canonical padded base64 encoding of exactly 64 bytes; cryptographic verification is a verifier responsibility."
+    },
+    "timestamp": {
+      "type": "string",
+      "minLength": 20,
+      "maxLength": 20,
+      "pattern": "^(?!0000)[0-9]{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12][0-9]|3[01])T(?:[01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]Z(?![\\s\\S])",
+      "description": "UTC calendar timestamp syntax with year 0001..9999. The verifier checks real calendar dates and temporal relationships; this pattern alone does not establish date validity."
+    },
+    "safeInteger": {
+      "type": "integer",
+      "minimum": -9007199254740991,
+      "maximum": 9007199254740991,
+      "$comment": "Only safe integral values are represented here. Rejection of decimal/exponent tokens and -0 belongs to strict raw JSON parsing."
+    },
+    "scope": {
+      "type": "object",
+      "required": [
+        "chain_id",
+        "batch_id",
+        "policy_id",
+        "window_start",
+        "window_end",
+        "in_scope_event_types",
+        "expected_attempt_count",
+        "completeness_rule"
+      ],
+      "properties": {
+        "chain_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "batch_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "policy_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "window_start": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "window_end": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "in_scope_event_types": {
+          "const": [
+            "AI_DECISION_ATTEMPT",
+            "AI_DECISION_OUTCOME"
+          ]
+        },
+        "expected_attempt_count": {
+          "$ref": "#/$defs/safeInteger",
+          "minimum": 1,
+          "maximum": 64
+        },
+        "completeness_rule": {
+          "const": "ATTEMPT_OUTCOME_BIJECTION"
+        }
+      },
+      "additionalProperties": false
+    },
+    "attemptProvenance": {
+      "type": "object",
+      "required": [
+        "attempt_id",
+        "actor",
+        "action",
+        "input_hash",
+        "context"
+      ],
+      "properties": {
+        "attempt_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "actor": {
+          "$ref": "#/$defs/identifier"
+        },
+        "action": {
+          "$ref": "#/$defs/identifier"
+        },
+        "input_hash": {
+          "$ref": "#/$defs/sha256"
+        },
+        "context": {
+          "type": "object",
+          "required": [
+            "jurisdiction"
+          ],
+          "properties": {
+            "jurisdiction": {
+              "$ref": "#/$defs/identifier"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "outcomeProvenance": {
+      "type": "object",
+      "required": [
+        "attempt_id",
+        "actor",
+        "action",
+        "outcome",
+        "reason_code",
+        "human_review_required"
+      ],
+      "properties": {
+        "attempt_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "actor": {
+          "$ref": "#/$defs/identifier"
+        },
+        "action": {
+          "$ref": "#/$defs/identifier"
+        },
+        "outcome": {
+          "enum": [
+            "APPROVED",
+            "DENIED_AUTOMATION"
+          ]
+        },
+        "reason_code": {
+          "$ref": "#/$defs/identifier"
+        },
+        "human_review_required": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "event": {
+      "type": "object",
+      "required": [
+        "contract_id",
+        "chain_id",
+        "event_id",
+        "sequence_no",
+        "event_type",
+        "timestamp",
+        "issuer_id",
+        "key_id",
+        "policy_id",
+        "model_id",
+        "provenance",
+        "payload_hash",
+        "signature"
+      ],
+      "properties": {
+        "contract_id": {
+          "const": "vap-interop-demo/0.2.0"
+        },
+        "chain_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "event_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "sequence_no": {
+          "$ref": "#/$defs/safeInteger",
+          "minimum": 1,
+          "maximum": 128
+        },
+        "event_type": {
+          "enum": [
+            "AI_DECISION_ATTEMPT",
+            "AI_DECISION_OUTCOME"
+          ]
+        },
+        "timestamp": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "issuer_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "key_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "policy_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "model_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "provenance": {
+          "type": "object"
+        },
+        "payload_hash": {
+          "$ref": "#/$defs/sha256"
+        },
+        "signature": {
+          "$ref": "#/$defs/signature"
+        }
+      },
+      "additionalProperties": false,
+      "oneOf": [
+        {
+          "properties": {
+            "event_type": {
+              "const": "AI_DECISION_ATTEMPT"
+            },
+            "provenance": {
+              "$ref": "#/$defs/attemptProvenance"
+            }
+          }
+        },
+        {
+          "properties": {
+            "event_type": {
+              "const": "AI_DECISION_OUTCOME"
+            },
+            "provenance": {
+              "$ref": "#/$defs/outcomeProvenance"
+            }
+          }
+        }
+      ]
+    },
+    "record": {
+      "type": "object",
+      "required": [
+        "record_type",
+        "key_id",
+        "merkle_root",
+        "scope_commitment",
+        "event_count",
+        "issued_at",
+        "signature"
+      ],
+      "properties": {
+        "record_type": {
+          "enum": [
+            "PRODUCER_MANIFEST",
+            "OBSERVER_RECEIPT",
+            "DEMO_ANCHOR_RECEIPT"
+          ]
+        },
+        "key_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "merkle_root": {
+          "$ref": "#/$defs/sha256"
+        },
+        "scope_commitment": {
+          "$ref": "#/$defs/sha256"
+        },
+        "event_count": {
+          "$ref": "#/$defs/safeInteger",
+          "minimum": 1,
+          "maximum": 128
+        },
+        "issued_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "signature": {
+          "$ref": "#/$defs/signature"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

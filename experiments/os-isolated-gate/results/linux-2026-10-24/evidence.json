@@ -1,0 +1,1219 @@
+{
+  "adapter_trust": {
+    "audit_public": "1de0bda49cd11eb07d5a853e79164138fe7dfe09f690ed8530e6b37ecaec0df6",
+    "authority_public": "c035a5427dcbeb572339c6bdc3e096c0c803a92abff14186c923fde3b2650bbc",
+    "backend_public": "e9bd609f4f9f6244e8a02498ebd3ebabf536c47c913988dfeb9be943f339c618",
+    "operation": {
+      "action": "create_record",
+      "args": {
+        "text": "synthetic isolation exercise"
+      },
+      "operation_id": "isolation-operation-001",
+      "target": "sandbox/records"
+    }
+  },
+  "evaluation_time": 2000000400,
+  "native_receipt_check": "verified",
+  "package": {
+    "anchor": {
+      "algorithm": "Ed25519",
+      "body": {
+        "batch": {
+          "event_count": 3,
+          "first_event_id": "isolation-operation-001:request",
+          "index_digest": "cdc706b05270bdd4bcdaa3d1c269efd5b1502425dff838b2c47ade123c0b0ff9",
+          "last_event_id": "isolation-operation-001:result",
+          "merkle_root": "0fa45c06b5f586a39b21a16889f375bdbd299e66050763695c3480484eaeda6d",
+          "policy_digest": "adca04f58572f7c7e0b644f68a54e21aefd3fd42d6bc1cab0e77ab2db308112b"
+        },
+        "evaluation_id": "synthetic-gate-exercise",
+        "kind": "anchor",
+        "policy_digest": "adca04f58572f7c7e0b644f68a54e21aefd3fd42d6bc1cab0e77ab2db308112b"
+      },
+      "key_id": "exporter",
+      "signature": "cc2d46f64c8fa0d0192542bcf8cd248abd0862587210f1913ff59717c45f49398a9926937ec5ff14966b5a59ea1fb59b4efac36c9417abc2dea1d9cb50b87006"
+    },
+    "anchor_receipt": {
+      "algorithm": "Ed25519",
+      "body": {
+        "accepted_at": 2000000250,
+        "adapter": "synthetic-receipt/1",
+        "evaluation_id": "synthetic-gate-exercise",
+        "kind": "receipt",
+        "policy_digest": "adca04f58572f7c7e0b644f68a54e21aefd3fd42d6bc1cab0e77ab2db308112b",
+        "purpose": "anchor",
+        "target_digest": "a5a3cafe9845c293c64058bd7504f6ae8c33ad16ec996a0b195db6a5846a5e3b",
+        "uncertainty": 1
+      },
+      "key_id": "exporter",
+      "signature": "fe1bcbed0288469aaaa2b640e16f517c6e341172075ceaa1e5de50fb87074dff584aac431a1be62c9ec29853df36ffd60d9e17c887f2ea59ae90b373af0a5302"
+    },
+    "batch_index": [
+      {
+        "event_id": "isolation-operation-001:request",
+        "event_type": "request",
+        "leaf_hash": "74f7b2fcd35231cae4b31bbdab9483c7fa7c6ac1d258ffcefcde86e7d58c93d0",
+        "source_id": "gate-audit"
+      },
+      {
+        "event_id": "isolation-operation-001:dispatch",
+        "event_type": "dispatch",
+        "leaf_hash": "c3664f3c8cc6b2d97b5f5f32032ff8de7ad737b5df7b74fcc528eebf1082eac9",
+        "source_id": "gate-audit"
+      },
+      {
+        "event_id": "isolation-operation-001:result",
+        "event_type": "result",
+        "leaf_hash": "1e3aeff7397cceab145b3805db69236db83fc9e3fc2d6abe3fa65be641b54377",
+        "source_id": "gate-audit"
+      }
+    ],
+    "commitment_proofs": [],
+    "events": [
+      {
+        "event_hash": "e7c81edf5621e9dc9004fe9b019112f0e35d2c7340a1b59d1782ecc7747ee461",
+        "index": 0,
+        "path": [
+          "c3664f3c8cc6b2d97b5f5f32032ff8de7ad737b5df7b74fcc528eebf1082eac9",
+          "1e3aeff7397cceab145b3805db69236db83fc9e3fc2d6abe3fa65be641b54377"
+        ],
+        "signed": {
+          "algorithm": "Ed25519",
+          "body": {
+            "evaluation_id": "synthetic-gate-exercise",
+            "event_id": "isolation-operation-001:request",
+            "event_type": "request",
+            "kind": "event",
+            "payload": {
+              "authorization": {
+                "approval_id": "approval-001",
+                "approver": "synthetic-approver",
+                "checked_at": 2000000150,
+                "credential_id": "credential-001",
+                "delegation_id": "delegation-001",
+                "delegator": "synthetic-owner",
+                "request_digest": "56be6308ea9ca692d2ecc092ef5ab9264058654e091df11c33bf4217e90cb8f6",
+                "revocation_snapshot": {
+                  "algorithm": "Ed25519",
+                  "body": {
+                    "issued_at": 2000000149,
+                    "kind": "revocations",
+                    "revoked": [],
+                    "valid_until": 2000000250
+                  },
+                  "key_id": "authority",
+                  "signature": "a0af55ce8d95f5e873bc2373569f389daa3bdcd05cfc2f7e78749df2d4b940b2fac34b4c8ca8b8495930fde40aa735cec0b7043c621d65a4a3dfd3d19c3c2007"
+                },
+                "revocations_digest": "571969b1951ad2fe4bcc8ed024b31cd45ab78e7f20b6d3fddb46de560af8f572",
+                "subject": "synthetic-agent"
+              },
+              "intent": {
+                "action": "create_record",
+                "args": {
+                  "text": "synthetic isolation exercise"
+                },
+                "operation_id": "isolation-operation-001",
+                "target": "sandbox/records"
+              },
+              "operation_digest": "66786f9a4ab94758cc4a9bfc8aa15673417a6f75b537dd50b9420ed80fea308f",
+              "signed_request": {
+                "approval": {
+                  "algorithm": "Ed25519",
+                  "body": {
+                    "approver": "synthetic-approver",
+                    "audience": "experimental-gate",
+                    "delegation_digest": "8fd1aff82bbf5a9779e04e970b2aea3c2f8d0f192ac2bc98d10d88ffd7a6bf47",
+                    "expires": 2000000250,
+                    "id": "approval-001",
+                    "kind": "approval",
+                    "not_before": 2000000050,
+                    "operation_digest": "66786f9a4ab94758cc4a9bfc8aa15673417a6f75b537dd50b9420ed80fea308f",
+                    "subject": "synthetic-agent"
+                  },
+                  "key_id": "authority",
+                  "signature": "693794fafc344e0d2cec58134e8730af925a0b40ff710bfe4aa8696ea2eb0df94e431bb506524215c1471a6572a6ec570ddb9013cdadefa8ba3bf45c7852e205"
+                },
+                "credential": {
+                  "algorithm": "Ed25519",
+                  "body": {
+                    "audience": "experimental-gate",
+                    "expires": 2000000250,
+                    "id": "credential-001",
+                    "kind": "credential",
+                    "not_before": 2000000050,
+                    "public_key": "e020de9760ac08f30355192dc3afb61a1da965c89e20c96d95d8e0c66237dfc1",
+                    "subject": "synthetic-agent"
+                  },
+                  "key_id": "authority",
+                  "signature": "85624a009cff690fcae23780e4d26888108917e857397a81c1655cd25d62ec3736caaa8441a6b12d93127a1e744fdee24df135cd8c7cb859b700c1bfdb787b0f"
+                },
+                "delegation": {
+                  "algorithm": "Ed25519",
+                  "body": {
+                    "action": "create_record",
+                    "audience": "experimental-gate",
+                    "delegator": "synthetic-owner",
+                    "expires": 2000000250,
+                    "id": "delegation-001",
+                    "kind": "delegation",
+                    "not_before": 2000000050,
+                    "subject": "synthetic-agent",
+                    "target": "sandbox/records"
+                  },
+                  "key_id": "authority",
+                  "signature": "3832a32a57bbdbb8eac10cdd5907976669f13843c6f2ac15833cbc0141bc64057b2116729e42fb12b2f012527c4189b57a2b1af50a537bcf3135f050de5ca70e"
+                },
+                "intent": {
+                  "action": "create_record",
+                  "args": {
+                    "text": "synthetic isolation exercise"
+                  },
+                  "operation_id": "isolation-operation-001",
+                  "target": "sandbox/records"
+                },
+                "proof": {
+                  "algorithm": "Ed25519",
+                  "body": {
+                    "approval_digest": "ab0ee8df01360fb9e1692e3520ea16685fa8de426a2bd6edf03d1467cc63f6cc",
+                    "credential_digest": "0160be494a6bcd55b3ac16df94d438c8b9ca91e8d20325fd5a5a4b7ac75a5d49",
+                    "delegation_digest": "8fd1aff82bbf5a9779e04e970b2aea3c2f8d0f192ac2bc98d10d88ffd7a6bf47",
+                    "kind": "request",
+                    "operation_digest": "66786f9a4ab94758cc4a9bfc8aa15673417a6f75b537dd50b9420ed80fea308f"
+                  },
+                  "key_id": "agent",
+                  "signature": "0e9c23da23411446bae30f1fda07103bc5ed27236f8628021982266759eeb512381db024d4534bce34a3b2e84ef8a9ba143a064223f97bd30675e83b056d3102"
+                }
+              }
+            },
+            "policy_digest": "adca04f58572f7c7e0b644f68a54e21aefd3fd42d6bc1cab0e77ab2db308112b",
+            "source_id": "gate-audit"
+          },
+          "key_id": "audit",
+          "signature": "843b2d80565a5e9a7c89256b5fad14671ad908f260ecae2c50b587d3359ac8b8b0abbd5a870e23b51e472b2b18d5644c4f46e30984056f58af3e63f69ff72308"
+        }
+      },
+      {
+        "event_hash": "1e6e80b7718d2a0c39b37d7419944f7609256250922487e35571fd84fd6895c7",
+        "index": 1,
+        "path": [
+          "74f7b2fcd35231cae4b31bbdab9483c7fa7c6ac1d258ffcefcde86e7d58c93d0",
+          "1e3aeff7397cceab145b3805db69236db83fc9e3fc2d6abe3fa65be641b54377"
+        ],
+        "signed": {
+          "algorithm": "Ed25519",
+          "body": {
+            "evaluation_id": "synthetic-gate-exercise",
+            "event_id": "isolation-operation-001:dispatch",
+            "event_type": "dispatch",
+            "kind": "event",
+            "payload": {
+              "intent": {
+                "action": "create_record",
+                "args": {
+                  "text": "synthetic isolation exercise"
+                },
+                "operation_id": "isolation-operation-001",
+                "target": "sandbox/records"
+              },
+              "meaning": "durable intent to dispatch; not proof of sending",
+              "operation_digest": "66786f9a4ab94758cc4a9bfc8aa15673417a6f75b537dd50b9420ed80fea308f"
+            },
+            "policy_digest": "adca04f58572f7c7e0b644f68a54e21aefd3fd42d6bc1cab0e77ab2db308112b",
+            "source_id": "gate-audit"
+          },
+          "key_id": "audit",
+          "signature": "2d2632b01874077a7acb78e9f60e779143e91639c8ebf723626b80e4a3037babcee9d593fc35ad8cc2331d0f3c4eed336ff5ec9e623b00f565cf729661283c0e"
+        }
+      },
+      {
+        "event_hash": "5f6dfd4a368c29b3aac22fb92fd74caa0fd99d474d267213da20727a9359e4bf",
+        "index": 2,
+        "path": [
+          "08ad1866c68dba38f46127721a642748fc54f01c466b626a20d7877512c660a2"
+        ],
+        "signed": {
+          "algorithm": "Ed25519",
+          "body": {
+            "evaluation_id": "synthetic-gate-exercise",
+            "event_id": "isolation-operation-001:result",
+            "event_type": "result",
+            "kind": "event",
+            "payload": {
+              "operation_digest": "66786f9a4ab94758cc4a9bfc8aa15673417a6f75b537dd50b9420ed80fea308f",
+              "receipt": {
+                "algorithm": "Ed25519",
+                "body": {
+                  "committed": true,
+                  "kind": "backend_receipt",
+                  "operation_digest": "66786f9a4ab94758cc4a9bfc8aa15673417a6f75b537dd50b9420ed80fea308f",
+                  "operation_id": "isolation-operation-001"
+                },
+                "key_id": "backend",
+                "signature": "005cf40fb6ef3e3ad37f7925c143054d67d05dfa12b836a9fade67a88cc09dcb56c50a61e5e0e3d103d62853218c2ac6118b5c1fe47985e0521766c8eebab30b"
+              }
+            },
+            "policy_digest": "adca04f58572f7c7e0b644f68a54e21aefd3fd42d6bc1cab0e77ab2db308112b",
+            "source_id": "gate-audit"
+          },
+          "key_id": "audit",
+          "signature": "fa7fe355a84b057800977b05586e253decc7d6b4fda91351d5c62f14576173e28b14466820b7724adc3a35af1e4423a9be90eea6754c349dd35d5f4da29e8c0e"
+        }
+      }
+    ],
+    "experimental": {
+      "closure": {
+        "algorithm": "Ed25519",
+        "body": {
+          "closed": true,
+          "closed_at": 2000000210,
+          "closed_sources": [
+            "gate-audit"
+          ],
+          "configuration_digest": "52355a52c164068c6cba790b9cf60178afb981711c692e562b3d599f8fcf7c6f",
+          "end": 2000000200,
+          "evaluation_id": "synthetic-gate-exercise",
+          "expected_digest": "d798f8c9dbcc28cda5841dce3c81414f90aef77dafedf8b7268ef7de7222f83d",
+          "kind": "closure",
+          "observation_gaps": [],
+          "policy_digest": "adca04f58572f7c7e0b644f68a54e21aefd3fd42d6bc1cab0e77ab2db308112b",
+          "scope_digest": "1bd9dd76b1c2f2bafb062ab9004acb5766fef8f74d51803f101f8062fcdbe15e",
+          "source_id": "gate-exercise-inventory"
+        },
+        "key_id": "exporter",
+        "signature": "fa2804af64da481df95a8d6ff4b4fa89f073c6a892baa449bce3d671d125b608971bdcaf75d68e369d92c746fca2000bbe96d4999412dea5f12f4501df90aa0e"
+      },
+      "inventory": {
+        "algorithm": "Ed25519",
+        "body": {
+          "evaluation_id": "synthetic-gate-exercise",
+          "kind": "inventory",
+          "obligations": [
+            {
+              "disclosure": "full",
+              "event_type": "request",
+              "id": "isolation-operation-001:request",
+              "source_id": "gate-audit"
+            },
+            {
+              "disclosure": "full",
+              "event_type": "dispatch",
+              "id": "isolation-operation-001:dispatch",
+              "source_id": "gate-audit"
+            },
+            {
+              "disclosure": "full",
+              "event_type": "result",
+              "id": "isolation-operation-001:result",
+              "source_id": "gate-audit"
+            }
+          ],
+          "policy_digest": "adca04f58572f7c7e0b644f68a54e21aefd3fd42d6bc1cab0e77ab2db308112b",
+          "scope_digest": "1bd9dd76b1c2f2bafb062ab9004acb5766fef8f74d51803f101f8062fcdbe15e"
+        },
+        "key_id": "exporter",
+        "signature": "2048b214d3ddff1bd6d6362f44de6c0df4281abe8614fc1bb95d515ca193eb0a3d6210c5708f4823dcfa5df58c792227e8979f98a876f11eb6e7dbf8993d0406"
+      },
+      "manifest": {
+        "algorithm": "Ed25519",
+        "body": {
+          "anchor_digest": "a5a3cafe9845c293c64058bd7504f6ae8c33ad16ec996a0b195db6a5846a5e3b",
+          "delivery_digest": "e44639c718b5b18f0f6a166698807e2d4a47bc5c600d202ec209949fa5ed39b7",
+          "entries": [
+            {
+              "id": "isolation-operation-001:request",
+              "state": "included"
+            },
+            {
+              "id": "isolation-operation-001:dispatch",
+              "state": "included"
+            },
+            {
+              "id": "isolation-operation-001:result",
+              "state": "included"
+            }
+          ],
+          "evaluation_id": "synthetic-gate-exercise",
+          "final": true,
+          "finalized_at": 2000000310,
+          "kind": "manifest",
+          "policy_digest": "adca04f58572f7c7e0b644f68a54e21aefd3fd42d6bc1cab0e77ab2db308112b",
+          "scope_digest": "1bd9dd76b1c2f2bafb062ab9004acb5766fef8f74d51803f101f8062fcdbe15e"
+        },
+        "key_id": "exporter",
+        "signature": "e454d3dea6565d1d1c10eb365750671ddafc3aafe0dd07d82f1ef938aba2af564ed0e5525899cdff792a4f1a7e398dd78021423e1ada70a675fec566484ddd09"
+      },
+      "scope": {
+        "algorithm": "Ed25519",
+        "body": {
+          "claimed_independence": false,
+          "closure_rule": "signed-source-enumeration-v1",
+          "commitment_cutoff": 2000000050,
+          "configuration_digest": "52355a52c164068c6cba790b9cf60178afb981711c692e562b3d599f8fcf7c6f",
+          "controllers": [
+            "single test harness operator"
+          ],
+          "derivation_rule": "explicit-obligations-v1",
+          "end": 2000000200,
+          "evaluation_id": "synthetic-gate-exercise",
+          "event_classes": [
+            "request",
+            "dispatch",
+            "result"
+          ],
+          "exclusions": [
+            "All operations outside this one synthetic operation; all real-world activity"
+          ],
+          "expectation_source": "gate-exercise-inventory",
+          "expected_digest": "d798f8c9dbcc28cda5841dce3c81414f90aef77dafedf8b7268ef7de7222f83d",
+          "individually_required": [],
+          "interval": "[start,end]",
+          "inventory_mode": "fixed",
+          "kind": "scope",
+          "observation_boundary": "Role-separated local audit process; same host administrator controls all keys",
+          "operations": [
+            "create_record"
+          ],
+          "policy_digest": "adca04f58572f7c7e0b644f68a54e21aefd3fd42d6bc1cab0e77ab2db308112b",
+          "previous_revision": null,
+          "relationships": [],
+          "revision": "1",
+          "start": 2000000100,
+          "submission_deadline": 2000000300,
+          "systems": [
+            "loopback-mock-api"
+          ],
+          "time_basis": "synthetic POSIX integer seconds"
+        },
+        "key_id": "exporter",
+        "signature": "240a094a20f8c9d78445bec76c12f6ecba4e7cd6332fe3bc17dd1de3220542fa9b71f8ede5d1dc282ee6d877075a240bd245965be7d4250d153032491711190e"
+      },
+      "scope_receipt": {
+        "algorithm": "Ed25519",
+        "body": {
+          "accepted_at": 2000000040,
+          "adapter": "synthetic-receipt/1",
+          "evaluation_id": "synthetic-gate-exercise",
+          "kind": "receipt",
+          "policy_digest": "adca04f58572f7c7e0b644f68a54e21aefd3fd42d6bc1cab0e77ab2db308112b",
+          "purpose": "scope",
+          "target_digest": "1bd9dd76b1c2f2bafb062ab9004acb5766fef8f74d51803f101f8062fcdbe15e",
+          "uncertainty": 1
+        },
+        "key_id": "exporter",
+        "signature": "08fd34c828304dff99c9b34d8c987b908645c4b8579a0bb34602d3fed1351f9b26935464a9e5dcd84944149619483e7f4c0f79e9baadd3463699425dbc0fae03"
+      }
+    },
+    "format": "vap-evidence-research-adapter/1",
+    "policy": {
+      "adapter": "vap-evidence-research-adapter/1",
+      "event_signers": {
+        "gate-audit": [
+          "audit"
+        ]
+      },
+      "id": "one-mock-write-evidence/1",
+      "multiplicity": "exactly-one-per-obligation",
+      "observation_assurance": "One specified mock operation only; no production or independent assurance",
+      "timing_register_id": "synthetic-gate-register"
+    }
+  },
+  "reports": {
+    "experimental-scope": {
+      "environment": "synthetic_simulation",
+      "evaluation_id": "synthetic-gate-exercise",
+      "evaluation_time": 2000000400,
+      "format": "vap-evidence-research-adapter/1",
+      "full_vap_conformance": "not_assessed",
+      "implementation_version": "0.1.1",
+      "input_digest": "786b08e7afd2f7e593efcf9f046428d01064dcb186ef0dc8c8528e090a6c56d1",
+      "integrity": {
+        "checks": [
+          {
+            "check": "policy.binding",
+            "evidence": [
+              "policy",
+              "trust.policy_digest"
+            ],
+            "reason": "Policy digest must be pinned outside the package",
+            "result": "verified"
+          },
+          {
+            "check": "anchor.signature",
+            "evidence": [
+              "anchor"
+            ],
+            "reason": "Ed25519 signature verified under evaluator trust configuration",
+            "result": "verified"
+          },
+          {
+            "check": "anchor.binding",
+            "evidence": [
+              "anchor"
+            ],
+            "reason": "Object kind, evaluation and policy must match evaluator inputs",
+            "result": "verified"
+          },
+          {
+            "check": "anchor.index",
+            "evidence": [
+              "anchor.batch",
+              "batch_index"
+            ],
+            "reason": "Signed index digest, distinct IDs, root, count, endpoints and policy binding",
+            "result": "verified"
+          },
+          {
+            "check": "anchor_receipt.signature",
+            "evidence": [
+              "anchor_receipt"
+            ],
+            "reason": "Ed25519 signature verified under evaluator trust configuration",
+            "result": "verified"
+          },
+          {
+            "check": "anchor_receipt.binding",
+            "evidence": [
+              "anchor_receipt"
+            ],
+            "reason": "Object kind, evaluation and policy must match evaluator inputs",
+            "result": "verified"
+          },
+          {
+            "check": "anchor_receipt.target",
+            "evidence": [
+              "anchor_receipt"
+            ],
+            "reason": "Exact receipt target and purpose binding",
+            "result": "verified"
+          },
+          {
+            "check": "anchor_receipt.trust_path",
+            "evidence": [
+              "anchor_receipt"
+            ],
+            "reason": "Simulation: test key authenticates the receipt; no independent time attestation",
+            "result": "verified"
+          },
+          {
+            "check": "events[0].signed.signature",
+            "evidence": [
+              "events[0].signed"
+            ],
+            "reason": "Ed25519 signature verified under evaluator trust configuration",
+            "result": "verified"
+          },
+          {
+            "check": "events[0].signed.binding",
+            "evidence": [
+              "events[0].signed"
+            ],
+            "reason": "Object kind, evaluation and policy must match evaluator inputs",
+            "result": "verified"
+          },
+          {
+            "check": "events[0].source",
+            "evidence": [
+              "events[0]",
+              "policy"
+            ],
+            "reason": "Signer authorization for the named source",
+            "result": "verified"
+          },
+          {
+            "check": "events[0].hash",
+            "evidence": [
+              "events[0]"
+            ],
+            "reason": "SHA-256 of RFC 8785 canonical event body",
+            "result": "verified"
+          },
+          {
+            "check": "events[0].inclusion",
+            "evidence": [
+              "events[0]",
+              "anchor",
+              "batch_index"
+            ],
+            "reason": "RFC 6962 inclusion and authenticated index identity",
+            "result": "verified"
+          },
+          {
+            "check": "events[1].signed.signature",
+            "evidence": [
+              "events[1].signed"
+            ],
+            "reason": "Ed25519 signature verified under evaluator trust configuration",
+            "result": "verified"
+          },
+          {
+            "check": "events[1].signed.binding",
+            "evidence": [
+              "events[1].signed"
+            ],
+            "reason": "Object kind, evaluation and policy must match evaluator inputs",
+            "result": "verified"
+          },
+          {
+            "check": "events[1].source",
+            "evidence": [
+              "events[1]",
+              "policy"
+            ],
+            "reason": "Signer authorization for the named source",
+            "result": "verified"
+          },
+          {
+            "check": "events[1].hash",
+            "evidence": [
+              "events[1]"
+            ],
+            "reason": "SHA-256 of RFC 8785 canonical event body",
+            "result": "verified"
+          },
+          {
+            "check": "events[1].inclusion",
+            "evidence": [
+              "events[1]",
+              "anchor",
+              "batch_index"
+            ],
+            "reason": "RFC 6962 inclusion and authenticated index identity",
+            "result": "verified"
+          },
+          {
+            "check": "events[2].signed.signature",
+            "evidence": [
+              "events[2].signed"
+            ],
+            "reason": "Ed25519 signature verified under evaluator trust configuration",
+            "result": "verified"
+          },
+          {
+            "check": "events[2].signed.binding",
+            "evidence": [
+              "events[2].signed"
+            ],
+            "reason": "Object kind, evaluation and policy must match evaluator inputs",
+            "result": "verified"
+          },
+          {
+            "check": "events[2].source",
+            "evidence": [
+              "events[2]",
+              "policy"
+            ],
+            "reason": "Signer authorization for the named source",
+            "result": "verified"
+          },
+          {
+            "check": "events[2].hash",
+            "evidence": [
+              "events[2]"
+            ],
+            "reason": "SHA-256 of RFC 8785 canonical event body",
+            "result": "verified"
+          },
+          {
+            "check": "events[2].inclusion",
+            "evidence": [
+              "events[2]",
+              "anchor",
+              "batch_index"
+            ],
+            "reason": "RFC 6962 inclusion and authenticated index identity",
+            "result": "verified"
+          },
+          {
+            "check": "experimental.scope.signature",
+            "evidence": [
+              "experimental.scope"
+            ],
+            "reason": "Ed25519 signature verified under evaluator trust configuration",
+            "result": "verified"
+          },
+          {
+            "check": "experimental.scope.binding",
+            "evidence": [
+              "experimental.scope"
+            ],
+            "reason": "Object kind, evaluation and policy must match evaluator inputs",
+            "result": "verified"
+          },
+          {
+            "check": "scope.approval_binding",
+            "evidence": [
+              "experimental.scope",
+              "trust.scope_digest"
+            ],
+            "reason": "Exact approved revision pinned by evaluator outside package; amendments are not auto-accepted",
+            "result": "verified"
+          },
+          {
+            "check": "experimental.scope_receipt.signature",
+            "evidence": [
+              "experimental.scope_receipt"
+            ],
+            "reason": "Ed25519 signature verified under evaluator trust configuration",
+            "result": "verified"
+          },
+          {
+            "check": "experimental.scope_receipt.binding",
+            "evidence": [
+              "experimental.scope_receipt"
+            ],
+            "reason": "Object kind, evaluation and policy must match evaluator inputs",
+            "result": "verified"
+          },
+          {
+            "check": "experimental.scope_receipt.target",
+            "evidence": [
+              "experimental.scope_receipt"
+            ],
+            "reason": "Exact receipt target and purpose binding",
+            "result": "verified"
+          },
+          {
+            "check": "experimental.scope_receipt.trust_path",
+            "evidence": [
+              "experimental.scope_receipt"
+            ],
+            "reason": "Simulation: test key authenticates the receipt; no independent time attestation",
+            "result": "verified"
+          },
+          {
+            "check": "experimental.inventory.signature",
+            "evidence": [
+              "experimental.inventory"
+            ],
+            "reason": "Ed25519 signature verified under evaluator trust configuration",
+            "result": "verified"
+          },
+          {
+            "check": "experimental.inventory.binding",
+            "evidence": [
+              "experimental.inventory"
+            ],
+            "reason": "Object kind, evaluation and policy must match evaluator inputs",
+            "result": "verified"
+          },
+          {
+            "check": "inventory.scope_binding",
+            "evidence": [
+              "experimental.inventory"
+            ],
+            "reason": "Sidecar belongs to the exact scope revision",
+            "result": "verified"
+          },
+          {
+            "check": "experimental.closure.signature",
+            "evidence": [
+              "experimental.closure"
+            ],
+            "reason": "Ed25519 signature verified under evaluator trust configuration",
+            "result": "verified"
+          },
+          {
+            "check": "experimental.closure.binding",
+            "evidence": [
+              "experimental.closure"
+            ],
+            "reason": "Object kind, evaluation and policy must match evaluator inputs",
+            "result": "verified"
+          },
+          {
+            "check": "closure.scope_binding",
+            "evidence": [
+              "experimental.closure"
+            ],
+            "reason": "Sidecar belongs to the exact scope revision",
+            "result": "verified"
+          },
+          {
+            "check": "experimental.manifest.signature",
+            "evidence": [
+              "experimental.manifest"
+            ],
+            "reason": "Ed25519 signature verified under evaluator trust configuration",
+            "result": "verified"
+          },
+          {
+            "check": "experimental.manifest.binding",
+            "evidence": [
+              "experimental.manifest"
+            ],
+            "reason": "Object kind, evaluation and policy must match evaluator inputs",
+            "result": "verified"
+          },
+          {
+            "check": "manifest.scope_binding",
+            "evidence": [
+              "experimental.manifest"
+            ],
+            "reason": "Sidecar belongs to the exact scope revision",
+            "result": "verified"
+          },
+          {
+            "check": "manifest.package_binding",
+            "evidence": [
+              "experimental.manifest",
+              "events",
+              "anchor"
+            ],
+            "reason": "Manifest binds exact delivery bytes and original anchor",
+            "result": "verified"
+          },
+          {
+            "check": "closure.configuration",
+            "evidence": [
+              "experimental.closure",
+              "experimental.scope"
+            ],
+            "reason": "Closure source, boundary end and configuration binding",
+            "result": "verified"
+          },
+          {
+            "check": "inventory.fixed_commitment",
+            "evidence": [
+              "experimental.scope",
+              "experimental.inventory"
+            ],
+            "reason": "Fixed expected enumeration bound before cutoff",
+            "result": "verified"
+          },
+          {
+            "check": "closure.inventory_binding",
+            "evidence": [
+              "experimental.closure",
+              "experimental.inventory"
+            ],
+            "reason": "Closure binds the exact expected enumeration",
+            "result": "verified"
+          }
+        ],
+        "claim_boundary": "Supplied objects and named bindings only; absent payloads are not verified",
+        "result": "verified"
+      },
+      "limits": [
+        "Research adapter, not a standardized VAP Evidence Pack format",
+        "Synthetic receipt keys do not establish independent time or institutional independence",
+        "No production RFC 3161, SCITT, blockchain or log trust-path adapter",
+        "No reconstruction of unobserved activity, prevention, certification or legal-compliance conclusion",
+        "INT-004 profile sequencing, INT-007 continuity and INT-009 recovery remain unimplemented"
+      ],
+      "mode": "experimental-scope",
+      "overall_pass": null,
+      "policy_digest": "adca04f58572f7c7e0b644f68a54e21aefd3fd42d6bc1cab0e77ab2db308112b",
+      "proposal_status": "experimental_unadopted",
+      "scope_fulfillment": {
+        "checks": [
+          {
+            "check": "advance_commitment",
+            "evidence": [
+              "experimental.scope_receipt"
+            ],
+            "reason": "Latest simulated receipt bound is no later than cutoff",
+            "result": "verified"
+          }
+        ],
+        "claim_boundary": "Declared synthetic observation boundary and exact evaluation policy only",
+        "expected_distinct_obligations": 3,
+        "inventory_accounted_for": true,
+        "occurrence_of_underlying_actions": "not_determined",
+        "presentation_states": {
+          "included": 3
+        },
+        "result": "met",
+        "satisfied_distinct_obligations": 3,
+        "unresolved": [],
+        "violations": []
+      },
+      "specification": {
+        "commit": "9465c722be9efae18622ac4f04896bb0e1ea53d7",
+        "version": "VAP v1.2.0 Draft 3"
+      },
+      "trust_digest": "ad955cea34efa1ac1b92c12337997e00ad68f9789b93022a5c3e0e05675876af",
+      "v1_2_requirements": [
+        {
+          "check": "INT-001/003",
+          "evidence": [
+            "events"
+          ],
+          "reason": "Implemented JCS and event hashes for supplied event bodies only",
+          "result": "verified"
+        },
+        {
+          "check": "INT-002",
+          "evidence": [
+            "events"
+          ],
+          "reason": "Distinct supplied event IDs; UUIDv7 is not imposed by this adapter",
+          "result": "verified"
+        },
+        {
+          "check": "INT-005",
+          "evidence": [
+            "events"
+          ],
+          "reason": "Ed25519 event signatures requested by this experiment policy; framework requirement is SHOULD",
+          "result": "verified"
+        },
+        {
+          "check": "INT-006",
+          "evidence": [
+            "anchor",
+            "anchor_receipt",
+            "events",
+            "batch_index"
+          ],
+          "reason": "Signed Merkle root, inclusion and external receipt; simulation only when explicitly enabled",
+          "result": "verified"
+        },
+        {
+          "check": "INT-008",
+          "evidence": [
+            "anchor",
+            "batch_index",
+            "events"
+          ],
+          "reason": "Reconcile delivery with the original authenticated batch, including count, IDs, range and policy; a valid subset is not a complete batch",
+          "result": "verified"
+        },
+        {
+          "check": "INT-004",
+          "evidence": [],
+          "reason": "Profile-specific sequencing beyond Merkle position is not implemented",
+          "result": "indeterminate"
+        },
+        {
+          "check": "INT-007",
+          "evidence": [],
+          "reason": "Operational continuity, fallback and assurance evidence are not implemented",
+          "result": "indeterminate"
+        },
+        {
+          "check": "INT-009",
+          "evidence": [],
+          "reason": "Recovery authorization and bounds are not implemented",
+          "result": "indeterminate"
+        }
+      ]
+    },
+    "vap-v1.2": {
+      "environment": "synthetic_simulation",
+      "evaluation_id": "synthetic-gate-exercise",
+      "evaluation_time": 2000000400,
+      "format": "vap-evidence-research-adapter/1",
+      "full_vap_conformance": "not_assessed",
+      "implementation_version": "0.1.1",
+      "input_digest": "786b08e7afd2f7e593efcf9f046428d01064dcb186ef0dc8c8528e090a6c56d1",
+      "integrity": {
+        "checks": [
+          {
+            "check": "policy.binding",
+            "evidence": [
+              "policy",
+              "trust.policy_digest"
+            ],
+            "reason": "Policy digest must be pinned outside the package",
+            "result": "verified"
+          },
+          {
+            "check": "anchor.signature",
+            "evidence": [
+              "anchor"
+            ],
+            "reason": "Ed25519 signature verified under evaluator trust configuration",
+            "result": "verified"
+          },
+          {
+            "check": "anchor.binding",
+            "evidence": [
+              "anchor"
+            ],
+            "reason": "Object kind, evaluation and policy must match evaluator inputs",
+            "result": "verified"
+          },
+          {
+            "check": "anchor.index",
+            "evidence": [
+              "anchor.batch",
+              "batch_index"
+            ],
+            "reason": "Signed index digest, distinct IDs, root, count, endpoints and policy binding",
+            "result": "verified"
+          },
+          {
+            "check": "anchor_receipt.signature",
+            "evidence": [
+              "anchor_receipt"
+            ],
+            "reason": "Ed25519 signature verified under evaluator trust configuration",
+            "result": "verified"
+          },
+          {
+            "check": "anchor_receipt.binding",
+            "evidence": [
+              "anchor_receipt"
+            ],
+            "reason": "Object kind, evaluation and policy must match evaluator inputs",
+            "result": "verified"
+          },
+          {
+            "check": "anchor_receipt.target",
+            "evidence": [
+              "anchor_receipt"
+            ],
+            "reason": "Exact receipt target and purpose binding",
+            "result": "verified"
+          },
+          {
+            "check": "anchor_receipt.trust_path",
+            "evidence": [
+              "anchor_receipt"
+            ],
+            "reason": "Simulation: test key authenticates the receipt; no independent time attestation",
+            "result": "verified"
+          },
+          {
+            "check": "events[0].signed.signature",
+            "evidence": [
+              "events[0].signed"
+            ],
+            "reason": "Ed25519 signature verified under evaluator trust configuration",
+            "result": "verified"
+          },
+          {
+            "check": "events[0].signed.binding",
+            "evidence": [
+              "events[0].signed"
+            ],
+            "reason": "Object kind, evaluation and policy must match evaluator inputs",
+            "result": "verified"
+          },
+          {
+            "check": "events[0].source",
+            "evidence": [
+              "events[0]",
+              "policy"
+            ],
+            "reason": "Signer authorization for the named source",
+            "result": "verified"
+          },
+          {
+            "check": "events[0].hash",
+            "evidence": [
+              "events[0]"
+            ],
+            "reason": "SHA-256 of RFC 8785 canonical event body",
+            "result": "verified"
+          },
+          {
+            "check": "events[0].inclusion",
+            "evidence": [
+              "events[0]",
+              "anchor",
+              "batch_index"
+            ],
+            "reason": "RFC 6962 inclusion and authenticated index identity",
+            "result": "verified"
+          },
+          {
+            "check": "events[1].signed.signature",
+            "evidence": [
+              "events[1].signed"
+            ],
+            "reason": "Ed25519 signature verified under evaluator trust configuration",
+            "result": "verified"
+          },
+          {
+            "check": "events[1].signed.binding",
+            "evidence": [
+              "events[1].signed"
+            ],
+            "reason": "Object kind, evaluation and policy must match evaluator inputs",
+            "result": "verified"
+          },
+          {
+            "check": "events[1].source",
+            "evidence": [
+              "events[1]",
+              "policy"
+            ],
+            "reason": "Signer authorization for the named source",
+            "result": "verified"
+          },
+          {
+            "check": "events[1].hash",
+            "evidence": [
+              "events[1]"
+            ],
+            "reason": "SHA-256 of RFC 8785 canonical event body",
+            "result": "verified"
+          },
+          {
+            "check": "events[1].inclusion",
+            "evidence": [
+              "events[1]",
+              "anchor",
+              "batch_index"
+            ],
+            "reason": "RFC 6962 inclusion and authenticated index identity",
+            "result": "verified"
+          },
+          {
+            "check": "events[2].signed.signature",
+            "evidence": [
+              "events[2].signed"
+            ],
+            "reason": "Ed25519 signature verified under evaluator trust configuration",
+            "result": "verified"
+          },
+          {
+            "check": "events[2].signed.binding",
+            "evidence": [
+              "events[2].signed"
+            ],
+            "reason": "Object kind, evaluation and policy must match evaluator inputs",
+            "result": "verified"
+          },
+          {
+            "check": "events[2].source",
+            "evidence": [
+              "events[2]",
+              "policy"
+            ],
+            "reason": "Signer authorization for the named source",
+            "result": "verified"
+          },
+          {
+            "check": "events[2].hash",
+            "evidence": [
+              "events[2]"
+            ],
+            "reason": "SHA-256 of RFC 8785 canonical event body",
+            "result": "verified"
+          },
+          {
+            "check": "events[2].inclusion",
+            "evidence": [
+              "events[2]",
+              "anchor",
+              "batch_index"
+            ],
+            "reason": "RFC 6962 inclusion and authenticated index identity",
+            "result": "verified"
+          }
+        ],
+        "claim_boundary": "Supplied objects and named bindings only; absent payloads are not verified",
+        "result": "verified"
+      },
+      "limits": [
+        "Research adapter, not a standardized VAP Evidence Pack format",
+        "Synthetic receipt keys do not establish independent time or institutional independence",
+        "No production RFC 3161, SCITT, blockchain or log trust-path adapter",
+        "No reconstruction of unobserved activity, prevention, certification or legal-compliance conclusion",
+        "INT-004 profile sequencing, INT-007 continuity and INT-009 recovery remain unimplemented"
+      ],
+      "mode": "vap-v1.2",
+      "overall_pass": null,
+      "policy_digest": "adca04f58572f7c7e0b644f68a54e21aefd3fd42d6bc1cab0e77ab2db308112b",
+      "proposal_status": "not_applied",
+      "scope_fulfillment": null,
+      "specification": {
+        "commit": "9465c722be9efae18622ac4f04896bb0e1ea53d7",
+        "version": "VAP v1.2.0 Draft 3"
+      },
+      "trust_digest": "ad955cea34efa1ac1b92c12337997e00ad68f9789b93022a5c3e0e05675876af",
+      "v1_2_requirements": [
+        {
+          "check": "INT-001/003",
+          "evidence": [
+            "events"
+          ],
+          "reason": "Implemented JCS and event hashes for supplied event bodies only",
+          "result": "verified"
+        },
+        {
+          "check": "INT-002",
+          "evidence": [
+            "events"
+          ],
+          "reason": "Distinct supplied event IDs; UUIDv7 is not imposed by this adapter",
+          "result": "verified"
+        },
+        {
+          "check": "INT-005",
+          "evidence": [
+            "events"
+          ],
+          "reason": "Ed25519 event signatures requested by this experiment policy; framework requirement is SHOULD",
+          "result": "verified"
+        },
+        {
+          "check": "INT-006",
+          "evidence": [
+            "anchor",
+            "anchor_receipt",
+            "events",
+            "batch_index"
+          ],
+          "reason": "Signed Merkle root, inclusion and external receipt; simulation only when explicitly enabled",
+          "result": "verified"
+        },
+        {
+          "check": "INT-008",
+          "evidence": [
+            "anchor",
+            "batch_index",
+            "events"
+          ],
+          "reason": "Reconcile delivery with the original authenticated batch, including count, IDs, range and policy; a valid subset is not a complete batch",
+          "result": "verified"
+        },
+        {
+          "check": "INT-004",
+          "evidence": [],
+          "reason": "Profile-specific sequencing beyond Merkle position is not implemented",
+          "result": "indeterminate"
+        },
+        {
+          "check": "INT-007",
+          "evidence": [],
+          "reason": "Operational continuity, fallback and assurance evidence are not implemented",
+          "result": "indeterminate"
+        },
+        {
+          "check": "INT-009",
+          "evidence": [],
+          "reason": "Recovery authorization and bounds are not implemented",
+          "result": "indeterminate"
+        }
+      ]
+    }
+  },
+  "trust": {
+    "evaluation_id": "synthetic-gate-exercise",
+    "keys": {
+      "audit": {
+        "public_key": "1de0bda49cd11eb07d5a853e79164138fe7dfe09f690ed8530e6b37ecaec0df6",
+        "roles": [
+          "event"
+        ]
+      },
+      "exporter": {
+        "public_key": "b7df32d8161cd3ad26bef8bacb0c2825db99f7ef1309e18de7309f7271521159",
+        "roles": [
+          "scope",
+          "inventory",
+          "closure",
+          "manifest",
+          "anchor",
+          "receipt"
+        ]
+      }
+    },
+    "policy_digest": "adca04f58572f7c7e0b644f68a54e21aefd3fd42d6bc1cab0e77ab2db308112b",
+    "purpose": "synthetic-test-only",
+    "scope_digest": "1bd9dd76b1c2f2bafb062ab9004acb5766fef8f74d51803f101f8062fcdbe15e"
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "finished_at": "2026-10-24T03:37:28.091528+00:00",
+  "format": "vap-reproduction-run/1",
+  "independence": "not_assessed",
+  "kit_files_sha256": {
+    "EXPECTED-RESULTS.md": "ba803eb65b6762ba57a5b8a060e9be7e7805087666cfe44f60d70775becef7db",
+    "README.md": "7f768c47e322e90cfd9764e92096259d3eea5941167b68ffa1a80fe63ffed752",
+    "REPORTING.md": "2afb585449575de1a3cbffdbb4b26c176292297f895d3271c43cb1c053c95332",
+    "RUN-ja.md": "8fc509384ad11020c58fdcc3d5c9c010c1a384a48259ce841adb9af9f3d72865",
+    "check_artifacts.py": "e3a449e02907355bd8892f88d9c5c5e87c5ce9c86e52e9955a40e5efe632eac1",
+    "expected-results.json": "c1008f3916dbbc30bec0c6f623c9bbef1aa3d20624116053593c119a7e50e85b",
+    "reproduce.py": "57495bcaac3fe0d35f46b914e1131b5f12a4f6449cd729cf477f768a846edec7",
+    "source-lock.json": "f8daa23d8fce778eaa6b320d18e0da69919e8bb1086a8091dc0c923d17ebc7a3",
+    "templates/evaluator-report.json": "b0941e39ee9ddc62f81c9afc2cc07e7b10038db9afea03563a57b42e3bf8bffe",
+    "tests/test_package.py": "7aa00d153beb262a4bbd4701d74c24d3aa6dae84f32dbcb522a7a47a1db0f044"
+  },
+  "overall_vap_pass": null,
+  "postflight_source": {
+    "commit": "c8ccf972196a16d11429a478f4918a08fe27bb73",
+    "files_checked": 71,
+    "source_lock_sha256": "f8daa23d8fce778eaa6b320d18e0da69919e8bb1086a8091dc0c923d17ebc7a3"
+  },
+  "preflight": {
+    "compose": "2.38.2",
+    "dependencies": {
+      "cffi": "2.1.1",
+      "cryptography": "50.0.2",
+      "pycparser": "3.12",
+      "rfc8785": "0.1.4"
+    },
+    "docker": {
+      "kernel": "6.17.0-1022-azure",
+      "os": "linux",
+      "security": [
+        "name=apparmor",
+        "name=seccomp,profile=builtin",
+        "name=cgroupns"
+      ],
+      "version": "28.0.4"
+    },
+    "host_kernel": "6.17.0-1022-azure",
+    "host_system": "Linux",
+    "machine": "x86_64",
+    "python": "3.12.15",
+    "reference_version_matches": {
+      "compose": true,
+      "docker": true,
+      "kernel": true,
+      "python": true
+    },
+    "source": {
+      "commit": "c8ccf972196a16d11429a478f4918a08fe27bb73",
+      "files_checked": 71,
+      "source_lock_sha256": "f8daa23d8fce778eaa6b320d18e0da69919e8bb1086a8091dc0c923d17ebc7a3"
+    }
+  },
+  "proposal_status": "experimental_unadopted",
+  "started_at": "2026-10-24T03:35:29.605620+00:00",
+  "status": "matched",
+  "steps": [
+    {
+      "completed": true,
+      "expected_tests": 28,
+      "log_sha256": "aed502297636ec633e5c6b4c619e2d0823d76cd241cd416e93433b08efb58c95",
+      "ok": true,
+      "returncode": 0,
+      "step": "lab-unit",
+      "tests_executed": 28
+    },
+    {
+      "completed": true,
+      "expected_tests": 46,
+      "log_sha256": "79b8fd95fc21f4e39848b75a503973b664c9d408176a0fed817b7b1792b84655",
+      "ok": true,
+      "returncode": 0,
+      "step": "gate-unit",
+      "tests_executed": 46
+    },
+    {
+      "completed": true,
+      "expected_tests": 64,
+      "log_sha256": "0749384571bbb70baa616d9bf35e206e63d2ca4986953195e06afbdeeab7a4da",
+      "ok": true,
+      "returncode": 0,
+      "step": "verifier-unit",
+      "tests_executed": 64
+    },
+    {
+      "completed": true,
+      "log_sha256": "3660a20dcedc9ddfd9eb875880a03174e1dd4d6d4d83d104436db789f86f85d5",
+      "ok": true,
+      "returncode": 0,
+      "step": "lab"
+    },
+    {
+      "completed": true,
+      "log_sha256": "6c24ba7fc0d7d8ad57dfb29ec320eed69b5ec6c01cdd2f2601af096bcad54ae0",
+      "ok": true,
+      "returncode": 0,
+      "step": "gate"
+    },
+    {
+      "completed": true,
+      "log_sha256": "32a0cc0609c8546c36680c4ce943618d529ed17d0571a76f888d00a3ad5625bd",
+      "ok": true,
+      "returncode": 0,
+      "step": "verifier"
+    },
+    {
+      "completed": true,
+      "log_sha256": "92083948ca94cd9774477f96a97bae802713c7e59f85a00a40a4fb0f941509e1",
+      "ok": true,
+      "returncode": 0,
+      "step": "artifact-recheck"
+    }
+  ]
+}

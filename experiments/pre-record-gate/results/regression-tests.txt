@@ -1,0 +1,51 @@
+test_adapter_rechecks_authorization_not_just_audit_signature (test_gate.GateTests.test_adapter_rechecks_authorization_not_just_audit_signature) ... ok
+test_adapter_rechecks_dispatch_arguments (test_gate.GateTests.test_adapter_rechecks_dispatch_arguments) ... ok
+test_adapter_rejects_duplicate_audit_events (test_gate.GateTests.test_adapter_rejects_duplicate_audit_events) ... ok
+test_adapter_rejects_result_before_dispatch (test_gate.GateTests.test_adapter_rejects_result_before_dispatch) ... ok
+test_adapter_rejects_substituted_native_receipt (test_gate.GateTests.test_adapter_rejects_substituted_native_receipt) ... ok
+test_adapter_verifies_nested_receipt_even_if_audit_signs_it (test_gate.GateTests.test_adapter_verifies_nested_receipt_even_if_audit_signs_it) ... ok
+test_agent_proof_is_checked (test_gate.GateTests.test_agent_proof_is_checked) ... ok
+test_audit_tampering_detected (test_gate.GateTests.test_audit_tampering_detected) ... ok
+test_backend_atomic_idempotency_and_parameter_mismatch (test_gate.GateTests.test_backend_atomic_idempotency_and_parameter_mismatch) ... ok
+test_bool_expiry_rejected (test_gate.GateTests.test_bool_expiry_rejected) ... ok
+test_control_signature_not_research_signature (test_gate.GateTests.test_control_signature_not_research_signature) ... ok
+test_direct_call_signed_by_agent_not_gate_is_rejected (test_gate.GateTests.test_direct_call_signed_by_agent_not_gate_is_rejected) ... ok
+test_fake_backend_receipt_cannot_mark_success (test_gate.GateTests.test_fake_backend_receipt_cannot_mark_success) ... ok
+test_gate_signature_without_audit_permit_is_rejected (test_gate.GateTests.test_gate_signature_without_audit_permit_is_rejected) ... ok
+test_invalid_response_retains_unknown (test_gate.GateTests.test_invalid_response_retains_unknown) ... ok
+test_missing_approval_cannot_be_replaced_by_boolean (test_gate.GateTests.test_missing_approval_cannot_be_replaced_by_boolean) ... ok
+test_missing_result_pending_vs_final_are_distinct (test_gate.GateTests.test_missing_result_pending_vs_final_are_distinct) ... ok
+test_missing_revocation_status_blocks (test_gate.GateTests.test_missing_revocation_status_blocks) ... ok
+test_permit_cannot_authorize_different_arguments (test_gate.GateTests.test_permit_cannot_authorize_different_arguments) ... ok
+test_prepare_ack_is_not_a_dispatch_permit (test_gate.GateTests.test_prepare_ack_is_not_a_dispatch_permit) ... ok
+test_proof_cannot_bind_different_credential (test_gate.GateTests.test_proof_cannot_bind_different_credential) ... ok
+test_record_cannot_be_reused_for_another_target (test_gate.GateTests.test_record_cannot_be_reused_for_another_target) ... ok
+test_revocation_between_prepare_and_claim_blocks (test_gate.GateTests.test_revocation_between_prepare_and_claim_blocks) ... ok
+test_same_intent_id_different_actor_authorization_is_rejected (test_gate.GateTests.test_same_intent_id_different_actor_authorization_is_rejected) ... ok
+test_self_reported_identity_does_not_override_verified_claims (test_gate.GateTests.test_self_reported_identity_does_not_override_verified_claims) ... ok
+test_unavailable_reconciliation_does_not_repeat_write (test_gate.GateTests.test_unavailable_reconciliation_does_not_repeat_write) ... ok
+test_valid_receipt_for_other_operation_is_rejected (test_gate.GateTests.test_valid_receipt_for_other_operation_is_rejected) ... ok
+test_duplicate_json_keys_rejected (test_gate.InputTests.test_duplicate_json_keys_rejected) ... ok
+test_nonfinite_json_rejected (test_gate.InputTests.test_nonfinite_json_rejected) ... ok
+test_nonloopback_url_rejected_before_network (test_gate.InputTests.test_nonloopback_url_rejected_before_network) ... ok
+test_unsafe_json_integer_rejected (test_gate.InputTests.test_unsafe_json_integer_rejected) ... ok
+test_case_name_cannot_escape_export_directory (test_review.ReviewArchiveTests.test_case_name_cannot_escape_export_directory) ... ok
+test_duplicate_case_cannot_stand_in_for_a_missing_case (test_review.ReviewArchiveTests.test_duplicate_case_cannot_stand_in_for_a_missing_case) ... ok
+test_missing_primary_evidence_not_skipped_even_if_digest_updated (test_review.ReviewArchiveTests.test_missing_primary_evidence_not_skipped_even_if_digest_updated) ... ok
+test_missing_recovered_evidence_not_skipped (test_review.ReviewArchiveTests.test_missing_recovered_evidence_not_skipped) ... ok
+test_recovery_report_cannot_accept_missing_result_evidence (test_review.ReviewArchiveTests.test_recovery_report_cannot_accept_missing_result_evidence) ... ok
+test_empty_summary_does_not_succeed_without_verifying_evidence (test_review.ReviewExportTests.test_empty_summary_does_not_succeed_without_verifying_evidence) ... ok
+test_adapter_rejects_unknown_after_confirmation (test_review.ReviewGateTests.test_adapter_rejects_unknown_after_confirmation) ... ok
+test_caller_mutation_cannot_swap_final_authorization (test_review.ReviewGateTests.test_caller_mutation_cannot_swap_final_authorization) ... ok
+test_claim_ack_requires_dispatch_state_before_any_send (test_review.ReviewGateTests.test_claim_ack_requires_dispatch_state_before_any_send) ... ok
+test_concurrent_confirmation_is_not_called_an_unknown_event (test_review.ReviewGateTests.test_concurrent_confirmation_is_not_called_an_unknown_event) ... ok
+test_durable_success_survives_lookup_service_outage (test_review.ReviewGateTests.test_durable_success_survives_lookup_service_outage) ... ok
+test_losing_claim_observes_concurrent_durable_success (test_review.ReviewGateTests.test_losing_claim_observes_concurrent_durable_success) ... ok
+test_malformed_ack_does_not_escape_as_uncaught_error (test_review.ReviewGateTests.test_malformed_ack_does_not_escape_as_uncaught_error) ... ok
+test_offline_adapter_rechecks_scope_operation_binding (test_review.ReviewGateTests.test_offline_adapter_rechecks_scope_operation_binding) ... ok
+test_wrong_outcome_ack_does_not_report_success (test_review.ReviewGateTests.test_wrong_outcome_ack_does_not_report_success) ... ok
+
+----------------------------------------------------------------------
+Ran 46 tests in 8.437s
+
+OK

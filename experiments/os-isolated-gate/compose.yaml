@@ -1,0 +1,104 @@
+x-runtime: &runtime
+  image: ${LAB_IMAGE:?set by the test harness}
+  read_only: true
+  cap_drop: [ALL]
+  security_opt: [no-new-privileges:true]
+  pids_limit: 64
+  mem_limit: 256m
+  tmpfs: ['/tmp:rw,noexec,nosuid,size=16m,mode=1777']
+  healthcheck:
+    test: [CMD, python, -m, isolation_lab, probe, health]
+    interval: 2s
+    timeout: 3s
+    retries: 15
+
+services:
+  setup:
+    image: ${LAB_IMAGE:?set by the test harness}
+    profiles: [setup]
+    user: '0:0'
+    read_only: true
+    network_mode: none
+    cap_drop: [ALL]
+    cap_add: [CHOWN, DAC_OVERRIDE, FOWNER]
+    security_opt: [no-new-privileges:true]
+    command: [init, /seed/seed.json]
+    volumes:
+      - ${LAB_SEED_DIR:?temporary trusted seed directory}:/seed:ro
+      - agent-config:/volumes/agent-config
+      - gate-config:/volumes/gate-config
+      - audit-config:/volumes/audit-config
+      - backend-config:/volumes/backend-config
+      - open-backend-config:/volumes/open-backend-config
+      - agent-data:/volumes/agent-data
+      - gate-data:/volumes/gate-data
+      - audit-data:/volumes/audit-data
+      - backend-data:/volumes/backend-data
+      - open-backend-data:/volumes/open-backend-data
+      - canaries:/canaries
+  agent:
+    <<: *runtime
+    user: '10001:10001'
+    command: [idle]
+    healthcheck:
+      test: [CMD, python, -c, "import os; assert os.getuid() == 10001"]
+    networks: [frontend]
+    volumes:
+      - agent-config:/run/role:ro
+      - agent-data:/data
+      - canaries:/canaries:ro
+  gate:
+    <<: *runtime
+    user: '10002:10002'
+    command: [serve, gate]
+    networks: [frontend, audit, backend]
+    volumes:
+      - gate-config:/run/role:ro
+      - gate-data:/data
+      - canaries:/canaries:ro
+  audit:
+    <<: *runtime
+    user: '10003:10003'
+    command: [serve, audit]
+    networks: [audit]
+    volumes:
+      - audit-config:/run/role:ro
+      - audit-data:/data
+      - canaries:/canaries:ro
+  backend:
+    <<: *runtime
+    user: '10004:10004'
+    command: [serve, backend]
+    networks: [backend]
+    volumes:
+      - backend-config:/run/role:ro
+      - backend-data:/data
+      - canaries:/canaries:ro
+  open-backend:
+    <<: *runtime
+    profiles: [negative-control]
+    user: '10005:10005'
+    command: [serve, open-backend]
+    networks: [backend]
+    volumes:
+      - open-backend-config:/run/role:ro
+      - open-backend-data:/data
+      - canaries:/canaries:ro
+
+networks:
+  frontend: {internal: true}
+  audit: {internal: true}
+  backend: {internal: true}
+
+volumes:
+  agent-config: {}
+  gate-config: {}
+  audit-config: {}
+  backend-config: {}
+  open-backend-config: {}
+  agent-data: {}
+  gate-data: {}
+  audit-data: {}
+  backend-data: {}
+  open-backend-data: {}
+  canaries: {}

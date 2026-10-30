@@ -1,0 +1,118 @@
+{
+  "finished_at": "2026-10-24T03:45:24.808312+00:00",
+  "format": "vap-reproduction-run/1",
+  "independence": "not_assessed",
+  "independent_reproduction": "not_established",
+  "kit_files_sha256": {
+    "EXPECTED-RESULTS.md": "79fe7b81504bb4eba2d0720b9dda1269e7212a119ceb6abec426c5ec702c7c3a",
+    "README.md": "549a73df561715d057f615995dca0458c526960da6f23248cc73014ce375db9c",
+    "REPORTING.md": "2afb585449575de1a3cbffdbb4b26c176292297f895d3271c43cb1c053c95332",
+    "RUN-ja.md": "a957bce6824576711e8337880a572d6719cabd4ef0d392e1d64b1cf1089c0bcb",
+    "check_artifacts.py": "b37dcaac83fc23244f4a2281c9c836ccbb26bdfe60fe69b7de50bccb6d0ef0aa",
+    "expected-results.json": "c1008f3916dbbc30bec0c6f623c9bbef1aa3d20624116053593c119a7e50e85b",
+    "reproduce.py": "31def55be2052877be84cf07584eb361f18d0714a9ee44d633de21013ea35a12",
+    "source-lock.json": "f8daa23d8fce778eaa6b320d18e0da69919e8bb1086a8091dc0c923d17ebc7a3",
+    "templates/evaluator-report.json": "b0941e39ee9ddc62f81c9afc2cc07e7b10038db9afea03563a57b42e3bf8bffe",
+    "tests/test_package.py": "9dcd5e54eec0deeaf615d9d7a70aa02c0f1fd5c072cb9e1659fc0e14077f6796"
+  },
+  "overall_vap_pass": null,
+  "postflight_source": {
+    "commit": "c8ccf972196a16d11429a478f4918a08fe27bb73",
+    "files_checked": 71,
+    "source_lock_sha256": "f8daa23d8fce778eaa6b320d18e0da69919e8bb1086a8091dc0c923d17ebc7a3"
+  },
+  "preflight": {
+    "compose": "2.38.2",
+    "dependencies": {
+      "cffi": "2.1.1",
+      "cryptography": "50.0.2",
+      "pycparser": "3.12",
+      "rfc8785": "0.1.4"
+    },
+    "docker": {
+      "kernel": "6.17.0-1022-azure",
+      "os": "linux",
+      "security": [
+        "name=apparmor",
+        "name=seccomp,profile=builtin",
+        "name=cgroupns"
+      ],
+      "version": "28.0.4"
+    },
+    "host_kernel": "6.17.0-1022-azure",
+    "host_system": "Linux",
+    "machine": "x86_64",
+    "python": "3.12.15",
+    "reference_version_matches": {
+      "compose": true,
+      "docker": true,
+      "kernel": true,
+      "python": true
+    },
+    "source": {
+      "commit": "c8ccf972196a16d11429a478f4918a08fe27bb73",
+      "files_checked": 71,
+      "source_lock_sha256": "f8daa23d8fce778eaa6b320d18e0da69919e8bb1086a8091dc0c923d17ebc7a3"
+    }
+  },
+  "proposal_status": "experimental_unadopted",
+  "started_at": "2026-10-24T03:42:57.494565+00:00",
+  "status": "matched",
+  "steps": [
+    {
+      "completed": true,
+      "expected_tests": 28,
+      "log_sha256": "aa1122ac8ae3fdb5fe164ec5cedbab2aac106da1635ead0fc3d0bde3ece02057",
+      "ok": true,
+      "returncode": 0,
+      "step": "lab-unit",
+      "tests_executed": 28
+    },
+    {
+      "completed": true,
+      "expected_tests": 46,
+      "log_sha256": "3d36812066951dc7fbf384421a8852703b837ef50a7db50b81dddcb009537832",
+      "ok": true,
+      "returncode": 0,
+      "step": "gate-unit",
+      "tests_executed": 46
+    },
+    {
+      "completed": true,
+      "expected_tests": 64,
+      "log_sha256": "b7f65e2dc69a8502c0c14ad27da895005e03c636597d2d1632bc434b1395e32b",
+      "ok": true,
+      "returncode": 0,
+      "step": "verifier-unit",
+      "tests_executed": 64
+    },
+    {
+      "completed": true,
+      "log_sha256": "3660a20dcedc9ddfd9eb875880a03174e1dd4d6d4d83d104436db789f86f85d5",
+      "ok": true,
+      "returncode": 0,
+      "step": "lab"
+    },
+    {
+      "completed": true,
+      "log_sha256": "6c24ba7fc0d7d8ad57dfb29ec320eed69b5ec6c01cdd2f2601af096bcad54ae0",
+      "ok": true,
+      "returncode": 0,
+      "step": "gate"
+    },
+    {
+      "completed": true,
+      "log_sha256": "32a0cc0609c8546c36680c4ce943618d529ed17d0571a76f888d00a3ad5625bd",
+      "ok": true,
+      "returncode": 0,
+      "step": "verifier"
+    },
+    {
+      "completed": true,
+      "log_sha256": "92083948ca94cd9774477f96a97bae802713c7e59f85a00a40a4fb0f941509e1",
+      "ok": true,
+      "returncode": 0,
+      "step": "artifact-recheck"
+    }
+  ]
+}

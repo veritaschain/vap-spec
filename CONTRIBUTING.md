@@ -217,7 +217,8 @@ feat(profiles): propose DVP automotive profile RFC
 | Repository | Description |
 |------------|-------------|
 | [vcp-spec](https://github.com/veritaschain/vcp-spec) | Finance Profile (VCP) |
-| [cap-spec](https://github.com/veritaschain/cap-spec) | Content/Creative Profile (CAP) |
+| [cap-spec](https://github.com/veritaschain/cap-spec) | Content / Creative AI Profile (CAP) |
+| [cpp-spec](https://github.com/veritaschain/cpp-spec) | Capture Provenance Profile (CPP) |
 
 ---
 

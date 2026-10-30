@@ -1,0 +1,24 @@
+{
+  "format": "incident-upload-pilot-acceptance/0.1",
+  "synthetic": true,
+  "note": "Actual controlled loopback observations, not real provider behavior. A matched bypass negative control is not a security pass.",
+  "cases": [
+    {"id":"UL-01","title":"Allowed immutable raw bytes reach the receiver","expected":{"states":["RECEIPT_CONFIRMED"],"gateway_attempts":1,"handler_calls":1,"accepted_count":1,"received_bytes_match":true}},
+    {"id":"UL-02","title":"Unapproved destination grant blocks before transport","expected":{"states":["BLOCKED_WITHOUT_ATTEMPT"],"gateway_attempts":0,"handler_calls":0,"accepted_count":0}},
+    {"id":"UL-03","title":"Wrong tenant grant blocks before transport","expected":{"states":["BLOCKED_WITHOUT_ATTEMPT"],"gateway_attempts":0,"handler_calls":0,"accepted_count":0}},
+    {"id":"UL-04","title":"Previously permitted digest cannot authorize changed bytes","expected":{"states":["BLOCKED_WITHOUT_ATTEMPT"],"gateway_attempts":0,"handler_calls":0,"accepted_count":0}},
+    {"id":"UL-05","title":"Expired signed permission cannot authorize current execution","expected":{"states":["BLOCKED_WITHOUT_ATTEMPT"],"gateway_attempts":0,"handler_calls":0,"accepted_count":0}},
+    {"id":"UL-06","title":"Injected journal claim failure blocks transport","expected":{"states":["BLOCKED_WITHOUT_ATTEMPT"],"gateway_attempts":0,"handler_calls":0,"accepted_count":0}},
+    {"id":"UL-07","title":"Receiver commits and drops response; repeat never resends","expected":{"states":["OUTCOME_UNKNOWN","REPLAY_NO_SEND"],"gateway_attempts":1,"handler_calls":1,"accepted_count":1,"received_bytes_match":true}},
+    {"id":"UL-08","title":"Authentic response for wrong payload cannot confirm receipt","expected":{"states":["OUTCOME_UNKNOWN"],"gateway_attempts":1,"handler_calls":1,"accepted_count":1,"received_bytes_match":true}},
+    {"id":"UL-09","title":"Caller mutation after capture cannot replace outgoing bytes","expected":{"states":["RECEIPT_CONFIRMED"],"gateway_attempts":1,"handler_calls":1,"accepted_count":1,"received_bytes_match":true,"source_mutated_after_capture":true}},
+    {"id":"UL-10","title":"Permission expires during pre-send pause","expected":{"states":["BLOCKED_WITHOUT_ATTEMPT"],"gateway_attempts":0,"handler_calls":0,"accepted_count":0,"admission_allowed":true}},
+    {"id":"UL-11","title":"Repeated confirmed request does not send twice","expected":{"states":["RECEIPT_CONFIRMED","REPLAY_NO_SEND"],"gateway_attempts":1,"handler_calls":1,"accepted_count":1}},
+    {"id":"UL-12","title":"Same request identifier with newly approved other bytes is rejected","expected":{"states":["RECEIPT_CONFIRMED","REQUEST_ID_CONFLICT"],"gateway_attempts":1,"handler_calls":1,"accepted_count":1}},
+    {"id":"UL-13","title":"HTTP redirect is never followed","expected":{"states":["OUTCOME_UNKNOWN"],"gateway_attempts":1,"handler_calls":1,"accepted_count":0}},
+    {"id":"UL-14","title":"Unauthenticated endpoint exposes the outside-route bypass","expected":{"states":["BLOCKED_WITHOUT_ATTEMPT"],"gateway_attempts":0,"handler_calls":1,"accepted_count":1,"controller_direct_status":200,"all_route_prevention_established":false}},
+    {"id":"UL-15","title":"Concurrent identical calls consume only one dispatch claim","expected":{"states":["RECEIPT_CONFIRMED","REPLAY_NO_SEND"],"gateway_attempts":1,"handler_calls":1,"accepted_count":1}},
+    {"id":"UL-16","title":"Injected result persistence failure leaves outcome unresolved","expected":{"states":["OUTCOME_UNKNOWN"],"gateway_attempts":1,"handler_calls":1,"accepted_count":1}},
+    {"id":"UL-17","title":"Worker killed after committed intent is not automatically resent","expected":{"states":["REPLAY_NO_SEND"],"gateway_attempts":0,"handler_calls":0,"accepted_count":0,"worker_killed_after_intent":true}}
+  ]
+}

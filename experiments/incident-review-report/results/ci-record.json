@@ -1,0 +1,157 @@
+{
+  "format": "incident-review-ci-record/0.1",
+  "experiment": "Incident evidence review report",
+  "status": "Informative synthetic experiment; unadopted",
+  "checked_on": "2026-10-30 JST",
+  "tested_commit": "504bc1e5f43a034ef9062c9f1b5a39bb784dac60",
+  "tested_tree": "2661f32afad4a0122e514e3548cace9bbb64167a",
+  "source_sha256": "1b6187b8d732e299de389e957601b96ad971f908f1b96cc6da11d2662e2efb3b",
+  "source_file_count": 154,
+  "frozen_source_file_count": 136,
+  "workflow_run": {
+    "id": 41007421315,
+    "url": "https://github.com/veritaschain/vap-spec/actions/runs/41007421315",
+    "event": "push",
+    "run_attempt": 1,
+    "conclusion": "success",
+    "created_at": "2026-10-30T05:15:33Z",
+    "updated_at": "2026-10-30T05:16:11Z"
+  },
+  "jobs": [
+    {
+      "python_matrix": "3.12",
+      "python_runtime": "3.12.15",
+      "job_id": 123905365967,
+      "job_url": "https://github.com/veritaschain/vap-spec/actions/runs/41007421315/job/123905365967",
+      "conclusion": "success",
+      "started_at": "2026-10-30T05:15:36Z",
+      "completed_at": "2026-10-30T05:16:06Z",
+      "checkout_commit": "504bc1e5f43a034ef9062c9f1b5a39bb784dac60",
+      "tests": {
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0,
+        "successful": true,
+        "test_methods": 37,
+        "unraisable": 0
+      },
+      "saved_cases_rechecked": 53,
+      "source_unchanged": true,
+      "frozen_kit_unchanged": true,
+      "deterministic_rederivation": true,
+      "summary_file": "summary-python-3.12.json",
+      "artifact": {
+        "id": 12955803380,
+        "name": "incident-review-python-3.12",
+        "digest": "sha256:4e6e3b2e6fc3a7a82dfe9cff0364509d3d61f8c18902d1e23ab0cc8eb0c877d6",
+        "size_in_bytes": 367509,
+        "expires_at": "2026-11-29T05:16:03Z",
+        "url": "https://github.com/veritaschain/vap-spec/actions/runs/41007421315/artifacts/12955803380"
+      },
+      "downloaded_artifact_digest_matched": true,
+      "downloaded_report_and_all_members_identical_to_local": true,
+      "downloaded_summary_matches_job_log": true
+    },
+    {
+      "python_matrix": "3.14",
+      "python_runtime": "3.14.9",
+      "job_id": 123905365782,
+      "job_url": "https://github.com/veritaschain/vap-spec/actions/runs/41007421315/job/123905365782",
+      "conclusion": "success",
+      "started_at": "2026-10-30T05:15:36Z",
+      "completed_at": "2026-10-30T05:16:11Z",
+      "checkout_commit": "504bc1e5f43a034ef9062c9f1b5a39bb784dac60",
+      "tests": {
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0,
+        "successful": true,
+        "test_methods": 37,
+        "unraisable": 0
+      },
+      "saved_cases_rechecked": 53,
+      "source_unchanged": true,
+      "frozen_kit_unchanged": true,
+      "deterministic_rederivation": true,
+      "summary_file": "summary-python-3.14.json",
+      "artifact": {
+        "id": 12956216934,
+        "name": "incident-review-python-3.14",
+        "digest": "sha256:08d44ff8b6507cfcbb5bb2e43890777128ad05a491ad880971c46f82cb2bdf61",
+        "size_in_bytes": 367509,
+        "expires_at": "2026-11-29T05:16:08Z",
+        "url": "https://github.com/veritaschain/vap-spec/actions/runs/41007421315/artifacts/12956216934"
+      },
+      "downloaded_artifact_digest_matched": true,
+      "downloaded_report_and_all_members_identical_to_local": true,
+      "downloaded_summary_matches_job_log": true
+    }
+  ],
+  "report": {
+    "actions_reexecuted": false,
+    "conformance": "NOT_ASSESSED",
+    "format": "incident-review-verification/0.1",
+    "human_review": "NOT_PERFORMED",
+    "independent_reproduction": "NOT_ESTABLISHED",
+    "kit_archive_sha256": "06bdb46eade7ef5c2f041797007d1f7ef3aaa55ad17d88a90b28276be17d865f",
+    "report_byte_length": 2237333,
+    "report_sha256": "df971f32b68efc20bb76352076266747485bc9c49a26e248aec6af444a399360",
+    "reporter_source_sha256": "1b6187b8d732e299de389e957601b96ad971f908f1b96cc6da11d2662e2efb3b",
+    "saved_cases_rechecked": 53
+  },
+  "presentation_counts": {
+    "cases": 53,
+    "frames": 129,
+    "not_recorded_frames": 29,
+    "notes": 87,
+    "recorded_frames": 100
+  },
+  "members": {
+    "manifest.json": {
+      "byte_length": 414,
+      "sha256": "087717cf95c6056f7ca5bf955b5e7093fcb5ec3b97c183b39eab939453a3ecf7"
+    },
+    "review-en.md": {
+      "byte_length": 698879,
+      "sha256": "c95ef69802b0665eeb5e3df536e3fc7b02573ed1e4b77a0e22f63db5bd71846b"
+    },
+    "review-ja.md": {
+      "byte_length": 728229,
+      "sha256": "a8a52417a4f35217d83d43d9dabb3d168314dd95890627bfb71f6eda9a53284d"
+    },
+    "review.json": {
+      "byte_length": 809389,
+      "sha256": "0de419ece3f344b763122d0dfc69ec4649cf0867c3438e829f2e90031401a316"
+    }
+  },
+  "source_capture": "Completed job summary markers matched downloaded summaries. Every source hash matched reviewed bytes. Stored report members and summary JSON are copied from the verified Python 3.12/3.14 artifacts without reserialization.",
+  "output_capture": "Both downloaded outer artifacts matched GitHub digests. Their inner report ZIPs and all four report members were byte-identical to each other and the verified local outputs.",
+  "local_checkpoint": {
+    "python": "3.12.14",
+    "recorded_at": "2026-10-30T04:35:10.171538+00:00",
+    "tests": {
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "successful": true,
+      "test_methods": 37,
+      "unraisable": 0
+    }
+  },
+  "actions_reexecuted": false,
+  "human_review": "NOT_PERFORMED",
+  "observation_truth": "NOT_ESTABLISHED",
+  "independent_reproduction": "NOT_ESTABLISHED",
+  "conformance": "NOT_ASSESSED",
+  "legal_compliance": "NOT_ASSESSED",
+  "dependency_scope": "PINNED_VERSIONS_NOT_HERMETIC",
+  "limitations": [
+    "37 passed software test methods and 53 saved-case rechecks are not 53 security successes or prevented incidents.",
+    "The report preserves 100 recorded assessor frames and 29 explicit absent frames; absent frames are not populated with invented UNKNOWN values.",
+    "All original roles, evidence and CI executions use the same development controller. An automated report and separate keys do not establish independent observation truth or reproduction.",
+    "Original pilot actions are not reexecuted. Report tests perform temporary-file publication and diagnostic failure injections.",
+    "Source/import checks assume a trusted local reporter checkout, interpreter and host. The existing Python audit guard is not OS isolation; dependency binaries are not hermetically captured.",
+    "Outer CI artifacts expire after 30 days. Exact report members, original fixed capture and matching source remain in Git for deterministic rederivation.",
+    "The result-recording commit follows the tested implementation. Result/review/contract documents are excluded from the execution manifest; recorded report hashes do not change their own source inputs."
+  ]
+}

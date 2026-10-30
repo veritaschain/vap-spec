@@ -1,0 +1,372 @@
+{
+  "cases": [
+    {
+      "actual": {
+        "backend_requests": 1,
+        "core_scope": null,
+        "core_status": "not_applied",
+        "effects": 1,
+        "integrity": "verified",
+        "requests_after_replay": 1,
+        "scope": "met",
+        "state": "confirmed_success",
+        "stored_state": "confirmed_success"
+      },
+      "artifact_digest": "04eeb532032d2a8e32cfbd295a46130a2d22f47e98fc57fbedc0a9477171fa46",
+      "case": "01",
+      "description": "Normal durable pre-record and one confirmed mock effect; repeat returns stored result",
+      "differences": {},
+      "expected": {
+        "backend_requests": 1,
+        "core_scope": null,
+        "core_status": "not_applied",
+        "effects": 1,
+        "integrity": "verified",
+        "requests_after_replay": 1,
+        "scope": "met",
+        "state": "confirmed_success"
+      }
+    },
+    {
+      "actual": {
+        "backend_requests": 0,
+        "effects": 0,
+        "state": "blocked"
+      },
+      "artifact_digest": "774097c0930e628e8cd4dde3563fb01e7f9d2fcaddcf04a35f45d2be53203179",
+      "case": "02",
+      "description": "Audit service stopped before execution",
+      "differences": {},
+      "expected": {
+        "backend_requests": 0,
+        "effects": 0,
+        "state": "blocked"
+      }
+    },
+    {
+      "actual": {
+        "backend_requests": 0,
+        "core_scope": null,
+        "core_status": "not_applied",
+        "effects": 0,
+        "integrity": "verified",
+        "scope": "indeterminate",
+        "state": "not_dispatched",
+        "stored_state": "prepared",
+        "worker_killed": true
+      },
+      "artifact_digest": "2166e4bbbd988a243111f564342fa0ce389d44da61a6a2a9026f66c17e1ae58a",
+      "case": "03",
+      "description": "SIGKILL after pre-record, then abrupt audit restart",
+      "differences": {},
+      "expected": {
+        "backend_requests": 0,
+        "effects": 0,
+        "scope": "indeterminate",
+        "state": "not_dispatched",
+        "stored_state": "prepared",
+        "worker_killed": true
+      }
+    },
+    {
+      "actual": {
+        "backend_requests": 1,
+        "core_scope": null,
+        "core_status": "not_applied",
+        "effects": 1,
+        "integrity": "verified",
+        "recovered_state": "confirmed_success",
+        "requests_after_recovery": 1,
+        "requests_after_retry": 1,
+        "scope": "indeterminate",
+        "state": "result_unknown",
+        "stored_state": "result_unknown"
+      },
+      "artifact_digest": "2f6b35006a9b26ca0766043ccad185815dad39fc6a3ef63782431f722300948a",
+      "case": "04",
+      "description": "API commits and drops response; no write retry, read-only recovery",
+      "differences": {},
+      "expected": {
+        "backend_requests": 1,
+        "effects": 1,
+        "recovered_state": "confirmed_success",
+        "requests_after_recovery": 1,
+        "requests_after_retry": 1,
+        "scope": "indeterminate",
+        "state": "result_unknown"
+      }
+    },
+    {
+      "actual": {
+        "backend_requests": 0,
+        "core_scope": null,
+        "core_status": "not_applied",
+        "effects": 0,
+        "integrity": "verified",
+        "reason": "recorded_request_mismatch",
+        "scope": "indeterminate",
+        "state": "denied",
+        "stored_state": "prepared"
+      },
+      "artifact_digest": "77140db1efdbb75349414d86e0800a2100d38144efed80117a4b59e3af356969",
+      "case": "05",
+      "description": "Actual dispatch arguments differ from durable pre-record",
+      "differences": {},
+      "expected": {
+        "backend_requests": 0,
+        "effects": 0,
+        "reason": "recorded_request_mismatch",
+        "scope": "indeterminate",
+        "state": "denied"
+      }
+    },
+    {
+      "actual": {
+        "all_reasons_match": true,
+        "backend_requests": 0,
+        "denials": 14,
+        "effects": 0,
+        "state": "denied"
+      },
+      "artifact_digest": "76a753bcf709f9d9c397d9e04d40464bf65a776e3783c288e4104705b6ec7641",
+      "case": "06",
+      "description": "Forged, expired, revoked or out-of-scope credentials/delegation/approval and stale status",
+      "differences": {},
+      "expected": {
+        "all_reasons_match": true,
+        "backend_requests": 0,
+        "denials": 14,
+        "effects": 0,
+        "state": "denied"
+      }
+    },
+    {
+      "actual": {
+        "backend_requests": 1,
+        "effects": 0,
+        "guarantee_established_for_keyless_mock_call": true,
+        "state": "bypass_rejected"
+      },
+      "artifact_digest": "ac9443e216225890257059832f6d91865aa5d327b27bc643db52f126b77cc3c5",
+      "case": "07",
+      "description": "Unsigned direct API bypass with self-reported identity and approval",
+      "differences": {},
+      "expected": {
+        "backend_requests": 1,
+        "effects": 0,
+        "guarantee_established_for_keyless_mock_call": true,
+        "state": "bypass_rejected"
+      }
+    },
+    {
+      "actual": {
+        "agent_directory_absent": true,
+        "audit_unchanged": true,
+        "backend_requests": 1,
+        "core_scope": null,
+        "core_status": "not_applied",
+        "effects": 1,
+        "integrity": "verified",
+        "scope": "met",
+        "state": "confirmed_success",
+        "stored_state": "confirmed_success"
+      },
+      "artifact_digest": "b12c21c6991a6c206993eaa222a01c131532f2e3509ddecc27b914e40b362361",
+      "case": "08",
+      "description": "Delete all agent-local request/log files; separate audit evidence survives",
+      "differences": {},
+      "expected": {
+        "agent_directory_absent": true,
+        "audit_unchanged": true,
+        "effects": 1,
+        "integrity": "verified",
+        "scope": "met",
+        "state": "confirmed_success"
+      }
+    },
+    {
+      "actual": {
+        "backend_requests": 0,
+        "core_scope": null,
+        "core_status": "not_applied",
+        "effects": 0,
+        "integrity": "verified",
+        "requests_after_retry": 0,
+        "scope": "indeterminate",
+        "state": "result_unknown",
+        "stored_state": "dispatch_intent",
+        "worker_killed": true
+      },
+      "artifact_digest": "cdd82ca32b47c941ace58f9e3d521dc04278f1c4ebd1a6b34346cc3dd2c8bc93",
+      "case": "09",
+      "description": "SIGKILL after durable dispatch intent but before send; no auto replay",
+      "differences": {},
+      "expected": {
+        "backend_requests": 0,
+        "effects": 0,
+        "requests_after_retry": 0,
+        "scope": "indeterminate",
+        "state": "result_unknown",
+        "stored_state": "dispatch_intent",
+        "worker_killed": true
+      }
+    },
+    {
+      "actual": {
+        "backend_requests": 1,
+        "core_scope": null,
+        "core_status": "not_applied",
+        "effects": 1,
+        "integrity": "verified",
+        "recovered_state": "confirmed_success",
+        "requests_after_recovery": 1,
+        "scope": "indeterminate",
+        "state": "result_unknown",
+        "stored_state": "dispatch_intent",
+        "unknown_outcome_persisted": false
+      },
+      "artifact_digest": "bb1d97ac968ff76b9998b427e3c7e2ec9a3738f2da4e3b6855c81edeab34421c",
+      "case": "10",
+      "description": "API commits but audit outcome writes fail; retain dispatch intent and reconcile after repair",
+      "differences": {},
+      "expected": {
+        "backend_requests": 1,
+        "effects": 1,
+        "recovered_state": "confirmed_success",
+        "requests_after_recovery": 1,
+        "scope": "indeterminate",
+        "state": "result_unknown",
+        "stored_state": "dispatch_intent",
+        "unknown_outcome_persisted": false
+      }
+    },
+    {
+      "actual": {
+        "backend_requests": 1,
+        "core_scope": null,
+        "core_status": "not_applied",
+        "effects": 1,
+        "integrity": "verified",
+        "scope": "met",
+        "state": "confirmed_success",
+        "stored_state": "confirmed_success"
+      },
+      "artifact_digest": "43305f830fe9e966cb1c482ea4ce34db6f5fedb869af5ea0f4a9f3b4feed0420",
+      "case": "11",
+      "description": "Four concurrent gate workers claim the same operation",
+      "differences": {},
+      "expected": {
+        "backend_requests": 1,
+        "effects": 1,
+        "scope": "met",
+        "state": "confirmed_success"
+      }
+    },
+    {
+      "actual": {
+        "backend_requests": 1,
+        "effects": 1,
+        "guarantee_established_for_keyless_mock_call": false,
+        "state": "bypass_accepted"
+      },
+      "artifact_digest": "f400a4ce652eedf8ef3374a21ac06bad1202a2292bca7cbe4f04ff4ba1f7b00f",
+      "case": "12",
+      "description": "Deliberately insecure mock backend negative control exposes failed bypass guarantee",
+      "differences": {},
+      "expected": {
+        "backend_requests": 1,
+        "effects": 1,
+        "guarantee_established_for_keyless_mock_call": false,
+        "state": "bypass_accepted"
+      }
+    },
+    {
+      "actual": {
+        "backend_requests": 0,
+        "core_scope": null,
+        "core_status": "not_applied",
+        "effects": 0,
+        "integrity": "verified",
+        "scope": "indeterminate",
+        "state": "blocked",
+        "stored_state": "prepared"
+      },
+      "artifact_digest": "02ac805cf86705d575cfef712702761163063604624eccb579aef4c223d07983",
+      "case": "13",
+      "description": "Audit dispatch-intent transaction unavailable after pre-record",
+      "differences": {},
+      "expected": {
+        "backend_requests": 0,
+        "effects": 0,
+        "scope": "indeterminate",
+        "state": "blocked",
+        "stored_state": "prepared"
+      }
+    },
+    {
+      "actual": {
+        "backend_requests": 1,
+        "effects": 1,
+        "state": "blocked",
+        "stored_state": "confirmed_success"
+      },
+      "artifact_digest": "ce4cbbe59ea50ee15b882df2295e1026e3df2a1dd80152264cc25aa38788a649",
+      "case": "14",
+      "description": "Reuse operation ID with a new, validly authorized intent",
+      "differences": {},
+      "expected": {
+        "backend_requests": 1,
+        "effects": 1,
+        "state": "blocked",
+        "stored_state": "confirmed_success"
+      }
+    },
+    {
+      "actual": {
+        "backend_requests": 0,
+        "core_scope": null,
+        "core_status": "not_applied",
+        "effects": 0,
+        "integrity": "verified",
+        "scope": "indeterminate",
+        "state": "blocked",
+        "stored_state": "prepared"
+      },
+      "artifact_digest": "4aecaaa6acfd0fadffa39fc100ec6f3b1b86c14ff279c117ce214f90160874e6",
+      "case": "15",
+      "description": "Pre-record commits but acknowledgment is lost; no API send",
+      "differences": {},
+      "expected": {
+        "backend_requests": 0,
+        "effects": 0,
+        "scope": "indeterminate",
+        "state": "blocked",
+        "stored_state": "prepared"
+      }
+    }
+  ],
+  "cases_executed": 15,
+  "current_v1_2_modified": false,
+  "external_time_attestation": "simulated_not_independent",
+  "independent_reproduction": "not_established",
+  "latency_digest": "fb1612c5d4b3d17c7be062f52d342d949712241d8ee27273145556695abdd9be",
+  "matching_cases": 15,
+  "os_or_network_isolation": "not_established_same_uid_loopback_processes",
+  "production_readiness": "not_assessed",
+  "proposal_status": "experimental_unadopted",
+  "provenance": {
+    "dependencies": {
+      "cffi": "2.1.1",
+      "cryptography": "50.0.2",
+      "pycparser": "3.12",
+      "rfc8785": "0.1.4"
+    },
+    "implementation_commit": "1e8e497f2082cb11b7d2f7da1278205f1449a774",
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "python": "3.12.15",
+    "source_digest": "270da0e1a2dd357df50f842bb83cf14670ed8a180d5b67b9791a3861fbb51681",
+    "verifier_source_digest": "8890a9563e47905a9c8727320cad4d5f2677c39779636bbac31b6366ced1981c",
+    "working_tree_dirty": false
+  },
+  "test_execution": "internal_synthetic_only"
+}

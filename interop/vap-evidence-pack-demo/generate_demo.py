@@ -1,195 +1,215 @@
-from __future__ import annotations
+#!/usr/bin/env python3
+"""Generate deterministic synthetic fixtures; the test private keys are PUBLIC.
 
+Use --output-dir explicitly to write, or --check to compare committed bytes.
+No external service is contacted and no production identity is represented.
+"""
+
+import argparse
 import base64
 import copy
 import hashlib
 import json
 from pathlib import Path
-from typing import Any
 
+from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
-from cryptography.hazmat.primitives.serialization import Encoding, PublicFormat
 
-ROOT = Path(__file__).resolve().parent
-VECTORS = ROOT / "test-vectors"
+from verify_python import CANONICALIZATION, CONTRACT_ID, EVENT_TYPES, canonical, merkle_root
 
-SEEDS = {
-    "operator-key-1": bytes.fromhex("11" * 32),
-    "observer-key-1": bytes.fromhex("22" * 32),
-    "anchor-key-1": bytes.fromhex("33" * 32),
-}
-
-
-def canonical(value: Any) -> bytes:
-    def validate(v: Any) -> None:
-        if isinstance(v, float):
-            raise TypeError("floats are forbidden by the demo canonicalization profile")
-        if isinstance(v, dict):
-            for k, item in v.items():
-                if not isinstance(k, str):
-                    raise TypeError("object keys must be strings")
-                validate(item)
-        elif isinstance(v, list):
-            for item in v:
-                validate(item)
-        elif v is not None and not isinstance(v, (str, int, bool)):
-            raise TypeError(f"unsupported type: {type(v)!r}")
-
-    validate(value)
-    return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
+HERE = Path(__file__).resolve().parent
+# Public TEST secrets. Never use these keys for production data or identity.
+SEEDS = {"producer": bytes([0x11]) * 32, "observer": bytes([0x22]) * 32,
+         "anchor": bytes([0x33]) * 32}
+KEY_IDS = {role: "demo-" + role + "-key-1" for role in SEEDS}
+PRIVATE_KEYS = {role: Ed25519PrivateKey.from_private_bytes(seed)
+                for role, seed in SEEDS.items()}
 
 
-def sha256(data: bytes) -> bytes:
-    return hashlib.sha256(data).digest()
+def digest(value):
+    return hashlib.sha256(canonical(value)).hexdigest()
 
 
-def hex_sha(data: bytes) -> str:
-    return sha256(data).hex()
+def sign(value, private_key):
+    value = {key: item for key, item in value.items() if key != "signature"}
+    value["signature"] = base64.b64encode(private_key.sign(canonical(value))).decode("ascii")
+    return value
 
 
-def b64(data: bytes) -> str:
-    return base64.b64encode(data).decode("ascii")
+def sign_event(event, private_key):
+    event = {key: item for key, item in event.items() if key not in ("payload_hash", "signature")}
+    event["payload_hash"] = digest(event)
+    return sign(event, private_key)
 
 
-def private_key(key_id: str) -> Ed25519PrivateKey:
-    return Ed25519PrivateKey.from_private_bytes(SEEDS[key_id])
-
-
-def sign(key_id: str, obj: dict[str, Any]) -> str:
-    return b64(private_key(key_id).sign(canonical(obj)))
-
-
-def event_unsigned(event: dict[str, Any]) -> dict[str, Any]:
-    return {k: v for k, v in event.items() if k not in {"payload_hash", "signature"}}
-
-
-def sign_event(event: dict[str, Any]) -> dict[str, Any]:
-    unsigned = event_unsigned(event)
-    event["payload_hash"] = hex_sha(canonical(unsigned))
-    event["signature"] = sign(event["key_id"], {**unsigned, "payload_hash": event["payload_hash"]})
-    return event
-
-
-def event_bytes(event: dict[str, Any]) -> bytes:
-    return canonical(event)
-
-
-def leaf_hash(event: dict[str, Any]) -> bytes:
-    return sha256(b"\x00" + event_bytes(event))
-
-
-def node_hash(left: bytes, right: bytes) -> bytes:
-    return sha256(b"\x01" + left + right)
-
-
-def merkle_root(events: list[dict[str, Any]]) -> str:
-    nodes = [leaf_hash(e) for e in events]
-    if not nodes:
-        return sha256(b"").hex()
-    while len(nodes) > 1:
-        next_nodes: list[bytes] = []
-        for i in range(0, len(nodes), 2):
-            right = nodes[i + 1] if i + 1 < len(nodes) else nodes[i]
-            next_nodes.append(node_hash(nodes[i], right))
-        nodes = next_nodes
-    return nodes[0].hex()
-
-
-def signed_record(record_type: str, key_id: str, root: str, scope_commitment: str, event_count: int, issued_at: str) -> dict[str, Any]:
-    body = {
-        "record_type": record_type,
-        "key_id": key_id,
-        "merkle_root": root,
-        "scope_commitment": scope_commitment,
-        "event_count": event_count,
-        "issued_at": issued_at,
-    }
-    return {**body, "signature": sign(key_id, body)}
-
-
-def make_event(seq: int, event_id: str, event_type: str, timestamp: str, attempt_id: str, actor: str, action: str, **extra: Any) -> dict[str, Any]:
-    provenance = {"attempt_id": attempt_id, "actor": actor, "action": action, **extra}
-    event = {
-        "vap_version": "1.2",
-        "chain_id": "vap-demo-chain-001",
-        "event_id": event_id,
-        "sequence_no": seq,
-        "event_type": event_type,
-        "timestamp": timestamp,
-        "issuer_id": "did:web:demo.operator.example",
-        "key_id": "operator-key-1",
-        "policy_id": "org.veritaschain.demo:claim-triage-v1",
-        "model_id": "sha256:demo-model-2026-07",
-        "provenance": provenance,
-    }
-    return sign_event(event)
-
-
-def build_pack(events: list[dict[str, Any]], scope: dict[str, Any], observer_root_override: str | None = None) -> dict[str, Any]:
-    root = merkle_root(events)
-    scope_commitment = hex_sha(canonical(scope))
-    keys = {
-        key_id: b64(private_key(key_id).public_key().public_bytes(Encoding.Raw, PublicFormat.Raw))
-        for key_id in SEEDS
-    }
-    observer_root = observer_root_override or root
+def make_scope(attempt_count):
     return {
-        "evidence_pack_version": "0.1.0-demo",
-        "profile": "VAP-COMMON",
-        "canonicalization": "JCS-CONSTRAINED-NO-FLOATS",
-        "hash_algorithm": "SHA-256",
-        "signature_algorithm": "Ed25519",
-        "scope": scope,
-        "scope_commitment": scope_commitment,
-        "events": events,
-        "merkle": {"algorithm": "RFC6962-DOMAIN-SEPARATED", "root": root},
-        "producer_manifest": signed_record("PRODUCER_MANIFEST", "operator-key-1", root, scope_commitment, len(events), "2026-07-10T08:01:10Z"),
-        "observer_receipt": signed_record("OBSERVER_RECEIPT", "observer-key-1", observer_root, scope_commitment, len(events), "2026-07-10T08:01:20Z"),
-        "external_anchor_receipt": signed_record("DEMO_TRANSPARENCY_RECEIPT", "anchor-key-1", root, scope_commitment, len(events), "2026-07-10T08:01:30Z"),
-        "public_keys": keys,
-    }
-
-
-def write(name: str, obj: dict[str, Any]) -> None:
-    VECTORS.mkdir(parents=True, exist_ok=True)
-    (VECTORS / name).write_text(json.dumps(obj, ensure_ascii=False, sort_keys=True, indent=2) + "\n", encoding="utf-8")
-
-
-def main() -> None:
-    scope = {
-        "chain_id": "vap-demo-chain-001",
-        "batch_id": "batch-20260710-0800Z",
-        "window_start": "2026-07-10T08:00:00Z",
-        "window_end": "2026-07-10T08:01:00Z",
-        "in_scope_event_types": ["AI_DECISION_ATTEMPT", "AI_DECISION_OUTCOME"],
-        "expected_attempt_count": 2,
+        "chain_id": "demo-claim-triage",
+        "batch_id": "demo-batch-" + str(attempt_count),
+        "policy_id": "synthetic-triage-policy/1",
+        "window_start": "2026-10-30T12:00:00Z",
+        "window_end": "2026-10-30T12:00:10Z",
+        "in_scope_event_types": list(EVENT_TYPES),
+        "expected_attempt_count": attempt_count,
         "completeness_rule": "ATTEMPT_OUTCOME_BIJECTION",
     }
-    events = [
-        make_event(1, "01980000-0001-7000-8000-000000000001", "AI_DECISION_ATTEMPT", "2026-07-10T08:00:05Z", "attempt-001", "agent:triage-01", "EVALUATE_CLAIM", input_hash="sha256:claim-a", context={"jurisdiction": "DEMO"}),
-        make_event(2, "01980000-0002-7000-8000-000000000002", "AI_DECISION_OUTCOME", "2026-07-10T08:00:06Z", "attempt-001", "agent:triage-01", "REFER_HUMAN", outcome="DENIED_AUTOMATION", reason_code="LOW_CONFIDENCE", human_review_required=True),
-        make_event(3, "01980000-0003-7000-8000-000000000003", "AI_DECISION_ATTEMPT", "2026-07-10T08:00:20Z", "attempt-002", "agent:triage-01", "EVALUATE_CLAIM", input_hash="sha256:claim-b", context={"jurisdiction": "DEMO"}),
-        make_event(4, "01980000-0004-7000-8000-000000000004", "AI_DECISION_OUTCOME", "2026-07-10T08:00:21Z", "attempt-002", "agent:triage-01", "APPROVE_AUTOMATION", outcome="APPROVED", reason_code="POLICY_RULES_SATISFIED", human_review_required=False),
-    ]
 
-    valid = build_pack(copy.deepcopy(events), copy.deepcopy(scope))
-    write("valid-pack.json", valid)
 
-    tampered = copy.deepcopy(valid)
-    tampered["events"][1]["provenance"]["outcome"] = "APPROVED"
-    write("invalid-tampered-event.json", tampered)
+def make_events(scope):
+    events = []
+    for index in range(1, scope["expected_attempt_count"] + 1):
+        for offset, kind in enumerate(EVENT_TYPES):
+            sequence = (index - 1) * 2 + offset + 1
+            provenance = {"attempt_id": f"attempt-{index:03}",
+                          "actor": "synthetic-claim-service", "action": "claim-triage"}
+            if kind == EVENT_TYPES[0]:
+                provenance.update({"input_hash": hashlib.sha256(
+                    f"synthetic-claim-{index:03}".encode("ascii")).hexdigest(),
+                    "context": {"jurisdiction": "FICTIONAL-DEMO"}})
+            else:
+                denied = index == 1
+                provenance.update({"outcome": "DENIED_AUTOMATION" if denied else "APPROVED",
+                                   "reason_code": "LOW_CONFIDENCE" if denied else "POLICY_THRESHOLD_MET",
+                                   "human_review_required": denied})
+            events.append({
+                "contract_id": CONTRACT_ID, "chain_id": scope["chain_id"],
+                "event_id": f"event-{sequence:03}", "sequence_no": sequence,
+                "event_type": kind, "timestamp": f"2026-10-30T12:00:{sequence - 1:02}Z",
+                "issuer_id": "synthetic-demo-producer", "key_id": KEY_IDS["producer"],
+                "policy_id": scope["policy_id"], "model_id": "fictional-triage-model/1",
+                "provenance": provenance,
+            })
+    return events
 
-    omitted_events = [copy.deepcopy(e) for e in events if e["provenance"]["attempt_id"] != "attempt-002" or e["event_type"] != "AI_DECISION_OUTCOME"]
-    for idx, event in enumerate(omitted_events, start=1):
-        event["sequence_no"] = idx
-        sign_event(event)
-    omitted = build_pack(omitted_events, copy.deepcopy(scope))
-    write("invalid-omitted-outcome.json", omitted)
 
-    fake_root = "ab" * 32
-    split_view = build_pack(copy.deepcopy(events), copy.deepcopy(scope), observer_root_override=fake_root)
-    write("invalid-split-view.json", split_view)
+def assemble(scope, events, producer_key=None):
+    """Rebuild every event and record so semantic negative cases stay signed."""
+    producer_key = producer_key or PRIVATE_KEYS["producer"]
+    events = copy.deepcopy(events)
+    for sequence, event in enumerate(events, 1):
+        event["sequence_no"] = sequence
+    events = [sign_event(event, producer_key) for event in events]
+    root, commitment = merkle_root(events), digest(scope)
+    pack = {
+        "contract_id": CONTRACT_ID, "canonicalization": CANONICALIZATION,
+        "hash_algorithm": "SHA-256", "signature_algorithm": "Ed25519",
+        "scope": copy.deepcopy(scope), "scope_commitment": commitment,
+        "events": events, "merkle": {"algorithm": "RFC6962-SHA256", "root": root},
+    }
+    for field, role, kind, second in (
+        ("producer_manifest", "producer", "PRODUCER_MANIFEST", 11),
+        ("observer_receipt", "observer", "OBSERVER_RECEIPT", 12),
+        ("demo_anchor_receipt", "anchor", "DEMO_ANCHOR_RECEIPT", 13),
+    ):
+        key = producer_key if role == "producer" else PRIVATE_KEYS[role]
+        pack[field] = sign({"record_type": kind, "key_id": KEY_IDS[role],
+                            "merkle_root": root, "scope_commitment": commitment,
+                            "event_count": len(events),
+                            "issued_at": f"2026-10-30T12:00:{second:02}Z"}, key)
+    return pack
+
+
+def make_trust(scope):
+    roles = {}
+    for role, key in PRIVATE_KEYS.items():
+        raw = key.public_key().public_bytes(serialization.Encoding.Raw,
+                                            serialization.PublicFormat.Raw)
+        roles[role] = {"key_id": KEY_IDS[role],
+                       "public_key": base64.b64encode(raw).decode("ascii")}
+    return {"contract_id": CONTRACT_ID, "trust_version": "demo-trust/1",
+            "scope_commitment": digest(scope), "roles": roles}
+
+
+def serialize(value):
+    return (json.dumps(value, indent=2, sort_keys=True, ensure_ascii=True,
+                       allow_nan=False) + "\n").encode("ascii")
+
+
+def generated_files():
+    scope = make_scope(2)
+    base = assemble(scope, make_events(scope))
+    six_scope = make_scope(3)
+    six = assemble(six_scope, make_events(six_scope))
+    tampered = copy.deepcopy(base)
+    tampered["events"][0]["provenance"]["action"] = "different-synthetic-action"
+    omitted_outcome = assemble(scope, [event for index, event in enumerate(base["events"]) if index != 1])
+    split_view = copy.deepcopy(base)
+    split_view["observer_receipt"]["merkle_root"] = "ab" * 32
+    split_view["observer_receipt"] = sign(split_view["observer_receipt"], PRIVATE_KEYS["observer"])
+    omitted_pair = assemble(scope, base["events"][:2])
+    rebound_scope = copy.deepcopy(scope)
+    rebound_scope["expected_attempt_count"] = 1
+    rebound = assemble(rebound_scope, base["events"][:2])
+    # A fourth public TEST secret signs under the producer label, but the caller
+    # still supplies the original producer public key in the separate trust file.
+    untrusted_key = Ed25519PrivateKey.from_private_bytes(bytes([0x44]) * 32)
+    untrusted = assemble(scope, base["events"], producer_key=untrusted_key)
+    packs = {
+        "valid-pack.json": base,
+        "valid-six-events.json": six,
+        "invalid-tampered-event.json": tampered,
+        "invalid-omitted-outcome.json": omitted_outcome,
+        "invalid-split-view.json": split_view,
+        "invalid-omitted-pair.json": omitted_pair,
+        "invalid-rebound-scope.json": rebound,
+        "invalid-untrusted-signer.json": untrusted,
+    }
+    artifacts = {**packs, "demo-trust.json": make_trust(scope),
+                 "demo-trust-six.json": make_trust(six_scope)}
+    files = {name: serialize(value) for name, value in artifacts.items()}
+    vectors = []
+    for name, pack in packs.items():
+        positive = name.startswith("valid-")
+        vector = {"pack": name,
+                  "trust": "demo-trust-six.json" if name == "valid-six-events.json" else "demo-trust.json",
+                  "expected_verdict": "PASS" if positive else "FAIL",
+                  "expected_exit_code": 0 if positive else 1}
+        if positive:
+            vector.update({"merkle_root": pack["merkle"]["root"],
+                           "scope_commitment": pack["scope_commitment"]})
+        vectors.append(vector)
+    manifest = {"contract_id": CONTRACT_ID, "manifest_version": "demo-vector-manifest/1",
+                "files": {name: {"sha256": hashlib.sha256(content).hexdigest(), "bytes": len(content)}
+                          for name, content in files.items()}, "vectors": vectors}
+    files["manifest.json"] = serialize(manifest)
+    return files
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    mode = parser.add_mutually_exclusive_group(required=True)
+    mode.add_argument("--output-dir", type=Path, help="write generated copies only to this explicit directory")
+    mode.add_argument("--check", action="store_true", help="compare committed fixture bytes without writing")
+    args = parser.parse_args(argv)
+    files = generated_files()
+    if args.check:
+        differences = []
+        for name, expected in files.items():
+            path = HERE / "test-vectors" / name
+            if not path.is_file() or path.read_bytes() != expected:
+                differences.append(name)
+        if differences:
+            print("FAIL: committed fixture bytes differ: " + ", ".join(differences))
+            return 1
+        print(f"PASS: {len(files)} committed fixture/manifest files match generated bytes; no files written")
+        return 0
+    try:
+        args.output_dir.mkdir(parents=True, exist_ok=True)
+        collisions = [name for name in files if (args.output_dir / name).exists()
+                      or (args.output_dir / name).is_symlink()]
+        if collisions:
+            print("ERROR: refusing to overwrite existing paths: " + ", ".join(collisions))
+            return 2
+        for name, content in files.items():
+            # Exclusive creation also protects a path created after the check.
+            with (args.output_dir / name).open("xb") as stream:
+                stream.write(content)
+    except OSError as exc:
+        print("ERROR: cannot create output files: " + str(exc))
+        return 2
+    print(f"Wrote {len(files)} deterministic synthetic files to {args.output_dir}")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

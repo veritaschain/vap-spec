@@ -1,0 +1,69 @@
+{
+  "format": "collector-pilot-ci-provenance/0.1",
+  "implementation_commit": "7b3c8e4a2e8205b550a0b5a6764a7687375d0050",
+  "base_commit": "433f019513d991982fc6fb08bd4529808cc9f6a1",
+  "workflow_run_id": 41030433885,
+  "workflow_url": "https://github.com/veritaschain/vap-spec/actions/runs/41030433885",
+  "event": "push",
+  "source_sha256": "efff3250a1c808168c137572517f2ec10268b6b1a7cd2524a27eb0d81a421b15",
+  "source_files": 176,
+  "frozen_source_sha256": "1b6187b8d732e299de389e957601b96ad971f908f1b96cc6da11d2662e2efb3b",
+  "frozen_source_files": 154,
+  "archive_preservation": "ORIGINAL_GITHUB_ARTIFACT_ZIP_BYTES",
+  "local_recheck": {
+    "capture_files_per_archive": 19,
+    "case_exports_per_archive": 18,
+    "audit_guard": "NETWORK_AND_PROCESS_EVENTS_BLOCKED",
+    "actions_reexecuted": false
+  },
+  "captures": [
+    {
+      "python_matrix": "3.12",
+      "python": "3.12.15 (main, Oct  1 2026, 02:35:59) [GCC 13.3.0]",
+      "job_id": 123978609827,
+      "job_url": "https://github.com/veritaschain/vap-spec/actions/runs/41030433885/job/123978609827",
+      "conclusion": "success",
+      "tests_run": 41,
+      "tests_skipped": 0,
+      "measured_cases": 18,
+      "matched_cases": 18,
+      "rechecked_exports": 18,
+      "artifact_id": 12964779861,
+      "artifact_name": "incident-collector-python-3.12",
+      "archive_file": "capture-python-3.12.zip",
+      "archive_bytes": 112378,
+      "archive_sha256": "bdd3944936e01ab6e673394b1bfbd4727653ed7136cae502fc9570c0e2943348",
+      "summary_sha256": "80aa54f50f7cbaffcab5cd9b4c6720d0f11d30eb2a35c5f90c70a9872c5c131a",
+      "summary_recorded_at": "2026-10-30T09:02:12.266775Z"
+    },
+    {
+      "python_matrix": "3.14",
+      "python": "3.14.9 (main, Oct 21 2026, 14:50:29) [GCC 13.3.0]",
+      "job_id": 123978609333,
+      "job_url": "https://github.com/veritaschain/vap-spec/actions/runs/41030433885/job/123978609333",
+      "conclusion": "success",
+      "tests_run": 41,
+      "tests_skipped": 0,
+      "measured_cases": 18,
+      "matched_cases": 18,
+      "rechecked_exports": 18,
+      "artifact_id": 12965801022,
+      "artifact_name": "incident-collector-python-3.14",
+      "archive_file": "capture-python-3.14.zip",
+      "archive_bytes": 112385,
+      "archive_sha256": "30d6e82389ac9ed377c267ca52788831c1875035848df95215ee2405a75f4f9b",
+      "summary_sha256": "0494a5ff56ffa38684b14353e362a763b2796b67e2762f8714596fe1a7e06b3d",
+      "summary_recorded_at": "2026-10-30T09:02:22.221672Z"
+    }
+  ],
+  "scope": {
+    "synthetic": true,
+    "same_controller": true,
+    "independent_observation": "NOT_ESTABLISHED",
+    "independent_reproduction": "NOT_ESTABLISHED",
+    "continuous_availability": "NOT_ESTABLISHED",
+    "all_route_prevention": "NOT_ESTABLISHED",
+    "conformance": "NOT_ASSESSED",
+    "legal_compliance": "NOT_ASSESSED"
+  }
+}

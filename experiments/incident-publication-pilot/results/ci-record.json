@@ -1,0 +1,86 @@
+{
+  "format": "incident-publication-ci-record/0.1",
+  "record_date": "2026-10-30",
+  "repository": "veritaschain/vap-spec",
+  "pull_request": 33,
+  "head_commit": "2b126fc0dac76cf0c3a7e4a64b9cb0d9ab87c341",
+  "base_commit": "d1f1441b39ffd18a5f2a274fc3739a4289dbedfd",
+  "ci_checkout_commit": "2b126fc0dac76cf0c3a7e4a64b9cb0d9ab87c341",
+  "workflow_run_id": 40990072945,
+  "workflow_run_url": "https://github.com/veritaschain/vap-spec/actions/runs/40990072945",
+  "workflow_event": "push",
+  "conclusion": "success",
+  "source_manifest_sha256": "78386924abf2ac6819f653d7c282972b86e58ac1379751c213bca1e5334c639c",
+  "source_file_count": 27,
+  "extraction": "Summary JSON retrieved from each completed job's PUBLICATION_PILOT_SUMMARY_JSON marker; JSON whitespace reformatted only. Status and counts checked against job logs and GitHub Actions metadata.",
+  "independent_reproduction": "NOT_ESTABLISHED",
+  "external_publication": "NOT_PERFORMED",
+  "real_ai_service_called": false,
+  "all_route_prevention_established": false,
+  "jobs": [
+    {
+      "python_series": "3.12",
+      "job_id": 123850067638,
+      "job_url": "https://github.com/veritaschain/vap-spec/actions/runs/40990072945/job/123850067638",
+      "conclusion": "success",
+      "tests": {
+        "passed": 45,
+        "skipped": 0,
+        "captured_finalizer_errors": 0
+      },
+      "measured_scenarios": {
+        "total": 18,
+        "matched": 18
+      },
+      "export_recheck": {
+        "verified": 18,
+        "filesystem_actions_reexecuted": false
+      },
+      "unchanged_assessor": {
+        "tests_passed": 20,
+        "scenarios_matched": 23
+      },
+      "summary_file": "summary-python-3.12.json",
+      "artifact": {
+        "id": 12949205621,
+        "name": "incident-publication-python-3.12",
+        "url": "https://github.com/veritaschain/vap-spec/actions/runs/40990072945/artifacts/12949205621",
+        "digest": "sha256:00112f163ae1e284bf5cdbf3db5fff289ce3ce12bbe428a31ea85704d72b3a20",
+        "size_in_bytes": 191384,
+        "expires_at": "2026-11-29T02:10:07Z"
+      }
+    },
+    {
+      "python_series": "3.14",
+      "job_id": 123850067856,
+      "job_url": "https://github.com/veritaschain/vap-spec/actions/runs/40990072945/job/123850067856",
+      "conclusion": "success",
+      "tests": {
+        "passed": 45,
+        "skipped": 0,
+        "captured_finalizer_errors": 0
+      },
+      "measured_scenarios": {
+        "total": 18,
+        "matched": 18
+      },
+      "export_recheck": {
+        "verified": 18,
+        "filesystem_actions_reexecuted": false
+      },
+      "unchanged_assessor": {
+        "tests_passed": 20,
+        "scenarios_matched": 23
+      },
+      "summary_file": "summary-python-3.14.json",
+      "artifact": {
+        "id": 12949051379,
+        "name": "incident-publication-python-3.14",
+        "url": "https://github.com/veritaschain/vap-spec/actions/runs/40990072945/artifacts/12949051379",
+        "digest": "sha256:56d84da226db34f76c127efc7de6f1e41cfc08c816b7f33011b2773b9b42ae4d",
+        "size_in_bytes": 191452,
+        "expires_at": "2026-11-29T02:10:12Z"
+      }
+    }
+  ]
+}

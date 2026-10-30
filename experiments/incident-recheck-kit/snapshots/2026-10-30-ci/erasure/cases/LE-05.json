@@ -1,0 +1,630 @@
+{
+  "format": "incident-erasure-case/0.1",
+  "case_id": "LE-05",
+  "synthetic": true,
+  "records": [
+    {
+      "bundle": {
+        "format": "incident-erasure-bundle/0.1",
+        "task": {
+          "format": "incident-erasure-task/0.1",
+          "manifest": {
+            "provider_id": "provider-local",
+            "tenant_id": "tenant-synthetic",
+            "object_id": "object-synthetic",
+            "version_id": "version-569de57364ff4178bac5e27c29d9beac",
+            "sha256": "95f2f21837656da95e45aa977aa2ae52c8a64c61d0088fd6eb2ee90ded28e108",
+            "byte_length": 68,
+            "location": "active-object-namespace"
+          },
+          "request": {
+            "algorithm": "Ed25519",
+            "key_id": "requester-c0bd72cd51a8",
+            "body": {
+              "record_id": "request-record-80fb3acb618a4bc1bfffa0ed1c97c64e",
+              "evaluation_id": "evaluation-bbe95115de114a69ae68721679cf3128",
+              "kind": "erasure.request",
+              "issuer": "requester-local",
+              "recorded_at": "2026-10-30T03:28:02.632861Z",
+              "binding": {
+                "request_id": "request-2b46aae6262e4d82991752b4f5807651",
+                "provider_id": "provider-local",
+                "tenant_id": "tenant-synthetic",
+                "object_ids": [
+                  "object-synthetic"
+                ],
+                "payload_sha256": "b7aaac46fe385eb462efda6eddd01d291b0349cec196ba2a03a4b3133fc5dd2b",
+                "stage": "erasure"
+              },
+              "data": {
+                "requested_at": "2026-10-30T03:28:02.632861Z",
+                "requested_locations": [
+                  "active-object-namespace",
+                  "backups",
+                  "replicas",
+                  "downstream-copies",
+                  "training-derivatives",
+                  "open-handles-and-memory",
+                  "storage-media"
+                ]
+              }
+            },
+            "signature": "2bbb5b6ce65a4c8d72a0f283552bfd72332acf1b997cda0206a049395e98779fd48fe786adf75779e97af5146adde2fe114ee7aec8de8350e76bab2afb10ef0e"
+          },
+          "authorization": {
+            "algorithm": "Ed25519",
+            "key_id": "requester-c0bd72cd51a8",
+            "body": {
+              "kind": "deletion_authorization",
+              "request_sha256": "ee9976b4ba754a2b4c92b0db20f9ee779deb091f262d569aea04d492785a83ad",
+              "manifest_sha256": "b7aaac46fe385eb462efda6eddd01d291b0349cec196ba2a03a4b3133fc5dd2b",
+              "authorized_at": "2026-10-30T03:28:02.632861Z",
+              "valid_until": "2026-10-30T03:33:02.632861Z"
+            },
+            "signature": "ff4a094ecc58e3e6dbc3c7864bf6ca1a4ce2d354d6da47a4f35e144dd2d17c6743e304f498243d9bfa186b42d05a1b68ebea842bbc7eb05a032a451e8c2a360e"
+          }
+        },
+        "as_of": "2026-10-30T03:28:02.658019Z",
+        "provider_result": {
+          "state": "LOCAL_UNLINK_CONFIRMED",
+          "attempted": true,
+          "acknowledgement": {
+            "algorithm": "Ed25519",
+            "key_id": "provider-66e854d662bf",
+            "body": {
+              "record_id": "ack-93ed56b411561549f96085714f93b8d8ca75fa38be889b91",
+              "evaluation_id": "evaluation-bbe95115de114a69ae68721679cf3128",
+              "kind": "erasure.acknowledgement",
+              "issuer": "provider-local",
+              "recorded_at": "2026-10-30T03:28:02.645052Z",
+              "binding": {
+                "object_ids": [
+                  "object-synthetic"
+                ],
+                "payload_sha256": "b7aaac46fe385eb462efda6eddd01d291b0349cec196ba2a03a4b3133fc5dd2b",
+                "provider_id": "provider-local",
+                "request_id": "request-2b46aae6262e4d82991752b4f5807651",
+                "stage": "erasure",
+                "tenant_id": "tenant-synthetic"
+              },
+              "data": {
+                "request_record_id": "request-record-80fb3acb618a4bc1bfffa0ed1c97c64e",
+                "acknowledged_at": "2026-10-30T03:28:02.645052Z",
+                "queue_state": "received"
+              }
+            },
+            "signature": "eb173bf2b4734c40a42abf65b4b22431a82a5a136d2bab6289357d3b227a7b48c4b2e11502127c4c57af715e87756823f4d83268d84268d9bfa335e727f98201"
+          },
+          "attestation": {
+            "algorithm": "Ed25519",
+            "key_id": "provider-66e854d662bf",
+            "body": {
+              "record_id": "completion-93ed56b411561549f96085714f93b8d8ca75fa38be889b91",
+              "evaluation_id": "evaluation-bbe95115de114a69ae68721679cf3128",
+              "kind": "erasure.provider_attestation",
+              "issuer": "provider-local",
+              "recorded_at": "2026-10-30T03:28:02.648216Z",
+              "binding": {
+                "object_ids": [
+                  "object-synthetic"
+                ],
+                "payload_sha256": "b7aaac46fe385eb462efda6eddd01d291b0349cec196ba2a03a4b3133fc5dd2b",
+                "provider_id": "provider-local",
+                "request_id": "request-2b46aae6262e4d82991752b4f5807651",
+                "stage": "erasure",
+                "tenant_id": "tenant-synthetic"
+              },
+              "data": {
+                "request_record_id": "request-record-80fb3acb618a4bc1bfffa0ed1c97c64e",
+                "completed_at": "2026-10-30T03:28:02.648216Z",
+                "locations": [
+                  "active-object-namespace"
+                ],
+                "exclusions": [
+                  "backups",
+                  "replicas",
+                  "downstream-copies",
+                  "training-derivatives",
+                  "open-handles-and-memory",
+                  "storage-media"
+                ]
+              }
+            },
+            "signature": "37a51c55e2e0e1716b34cf8593df7da1e92aea0234cbc4c67b614eca0e9ddd1f36e2adf4d0774fadd0b449c66b893a033092191122eb448ca8b9a569cd356607"
+          },
+          "receipt": {
+            "algorithm": "Ed25519",
+            "key_id": "provider-66e854d662bf",
+            "body": {
+              "kind": "local_unlink_receipt",
+              "task_sha256": "93ed56b411561549f96085714f93b8d8ca75fa38be889b916971117fbe504e51",
+              "request_id": "request-2b46aae6262e4d82991752b4f5807651",
+              "manifest_sha256": "b7aaac46fe385eb462efda6eddd01d291b0349cec196ba2a03a4b3133fc5dd2b",
+              "before": {
+                "sha256": "95f2f21837656da95e45aa977aa2ae52c8a64c61d0088fd6eb2ee90ded28e108",
+                "byte_length": 68
+              },
+              "unlinked_at": "2026-10-30T03:28:02.646557Z",
+              "observed_at": "2026-10-30T03:28:02.648216Z",
+              "after": "ABSENT"
+            },
+            "signature": "8d4ee8ae696ad5c1426ec41d60f48872e73eaec83b30571661036dea4c72881cb39e214937e43235b45459725f60d996bc5eba8526f0cdd759431be95024d207"
+          },
+          "journal_state": "LOCAL_UNLINK_CONFIRMED",
+          "reason": "EXACT_NAMESPACE_ENTRY_REMOVAL_CONFIRMED"
+        },
+        "before": {
+          "algorithm": "Ed25519",
+          "key_id": "observer-492747b388fc",
+          "body": {
+            "kind": "local_namespace_observation",
+            "task_sha256": "93ed56b411561549f96085714f93b8d8ca75fa38be889b916971117fbe504e51",
+            "manifest_sha256": "b7aaac46fe385eb462efda6eddd01d291b0349cec196ba2a03a4b3133fc5dd2b",
+            "provider_id": "provider-local",
+            "tenant_id": "tenant-synthetic",
+            "location": "active-object-namespace",
+            "object_id": "object-synthetic",
+            "version_id": "version-569de57364ff4178bac5e27c29d9beac",
+            "phase": "before",
+            "previous_sha256": null,
+            "completion_sha256": null,
+            "window_start": "2026-10-30T03:28:02.635398Z",
+            "window_end": "2026-10-30T03:28:02.635490Z",
+            "measurement": {
+              "state": "PRESENT",
+              "sha256": "95f2f21837656da95e45aa977aa2ae52c8a64c61d0088fd6eb2ee90ded28e108",
+              "byte_length": 68
+            }
+          },
+          "signature": "8a3a7c7a32d5f23e20ecdd63dfdda9d65462c8cfd4d8a745b44ddb831a68b3f7d4fdb0715a79a70a2401218e98a0979c3ea089015fbb9f4997b42de06660fe00"
+        },
+        "after": {
+          "algorithm": "Ed25519",
+          "key_id": "observer-492747b388fc",
+          "body": {
+            "kind": "local_namespace_observation",
+            "task_sha256": "93ed56b411561549f96085714f93b8d8ca75fa38be889b916971117fbe504e51",
+            "manifest_sha256": "b7aaac46fe385eb462efda6eddd01d291b0349cec196ba2a03a4b3133fc5dd2b",
+            "provider_id": "provider-local",
+            "tenant_id": "tenant-synthetic",
+            "location": "active-object-namespace",
+            "object_id": "object-synthetic",
+            "version_id": "version-569de57364ff4178bac5e27c29d9beac",
+            "phase": "after",
+            "previous_sha256": "b619c93dae57081d2d2b99715f1831d25b9f63b53ae6f980fcc6bb9469f80696",
+            "completion_sha256": "c39faa5e5df2f71206da62206915a1c124956d6c5894e47ef3bcd379e19c6e81",
+            "window_start": "2026-10-30T03:28:02.657630Z",
+            "window_end": "2026-10-30T03:28:02.657706Z",
+            "measurement": {
+              "state": "ABSENT",
+              "sha256": null,
+              "byte_length": null
+            }
+          },
+          "signature": "d239f0ebee396639b82b5fd9134e06c439f2359e11a8fec4c685da5547c991a70eec9ec6a0301eca9984d5c6ccdb38198e3aed85e6a1323708509bcf5ff30d04"
+        }
+      },
+      "pins": {
+        "provider_id": "provider-local",
+        "tenant_id": "tenant-synthetic",
+        "location": "active-object-namespace",
+        "requester_key_id": "requester-c0bd72cd51a8",
+        "provider_key_id": "provider-66e854d662bf",
+        "observer_key_id": "observer-492747b388fc",
+        "keys": {
+          "requester-c0bd72cd51a8": {
+            "public_key": "0b04585fa98801da8be2f18155e8b9ae3453cf599e976c110179e4b569216c27",
+            "issuer": "requester-local",
+            "organization": "single-local-controller",
+            "roles": [
+              "responder"
+            ],
+            "not_before": "2026-10-30T02:28:02.626826Z",
+            "not_after": "2026-10-31T03:28:02.626826Z"
+          },
+          "provider-66e854d662bf": {
+            "public_key": "404369e5a833ebb812e97a2878405b4b0e946fef2b40caf720b000a981d058a9",
+            "issuer": "provider-local",
+            "organization": "single-local-controller",
+            "roles": [
+              "provider"
+            ],
+            "not_before": "2026-10-30T02:28:02.626826Z",
+            "not_after": "2026-10-31T03:28:02.626826Z"
+          },
+          "observer-492747b388fc": {
+            "public_key": "d2630dbd14543a00c7652b01ae8493cd44cd0c57172494df422efeb1e231e7db",
+            "issuer": "observer-local",
+            "organization": "single-local-controller",
+            "roles": [
+              "reviewer"
+            ],
+            "not_before": "2026-10-30T02:28:02.626826Z",
+            "not_after": "2026-10-31T03:28:02.626826Z"
+          }
+        }
+      },
+      "expected_task_sha256": "93ed56b411561549f96085714f93b8d8ca75fa38be889b916971117fbe504e51",
+      "assessment": {
+        "format": "incident-erasure-assessment/0.1",
+        "task_sha256": "93ed56b411561549f96085714f93b8d8ca75fa38be889b916971117fbe504e51",
+        "assessor_report": {
+          "format": "incident-evidence-report/0.1",
+          "adapter": "incident-evidence-adapter/0.1",
+          "implementation_version": "0.1.0",
+          "evaluation_id": "evaluation-bbe95115de114a69ae68721679cf3128",
+          "workflow": "erasure",
+          "as_of": "2026-10-30T03:28:02.658019Z",
+          "synthetic": true,
+          "input_sha256": "e17be953bc675115e59a918f9373b6505a3990fc518140d5f067226130273b13",
+          "trust_sha256": "ab6b89aef592f9587e5156e61dcf6f535a3cf58e06334101f6d5082fc93744df",
+          "target_sha256": "42f8b20b98c1d10e4ba14bb0d9c0503b9500cea01ebb15e616118fd27ec709bb",
+          "evidence_integrity": "VERIFIED_UNDER_EVALUATOR_TRUST",
+          "assessments": {
+            "deletion_evidence": "PROVIDER_ATTESTED_WITHIN_DECLARED_SCOPE",
+            "provider_completion": "UNKNOWN",
+            "independent_verification": "NOT_ESTABLISHED",
+            "excluded_scope_outcome": "UNKNOWN",
+            "outside_scope_outcome": "UNKNOWN",
+            "target_completion": "UNKNOWN",
+            "receipt_applicability": "MATCHED_WITHIN_DECLARED_SCOPE",
+            "binding_assessment": "MATCH",
+            "review_result": "NOT_ESTABLISHED"
+          },
+          "findings": [
+            {
+              "code": "ERASURE_LOCAL_REQUEST_ESTABLISHED",
+              "record_ids": [
+                "request-record-80fb3acb618a4bc1bfffa0ed1c97c64e"
+              ]
+            },
+            {
+              "code": "ERASURE_ACKNOWLEDGEMENT_IS_NOT_COMPLETION",
+              "record_ids": [
+                "ack-93ed56b411561549f96085714f93b8d8ca75fa38be889b91",
+                "request-record-80fb3acb618a4bc1bfffa0ed1c97c64e"
+              ]
+            },
+            {
+              "code": "ERASURE_PROVIDER_CLAIM_REMAINS_SCOPED",
+              "record_ids": [
+                "completion-93ed56b411561549f96085714f93b8d8ca75fa38be889b91",
+                "request-record-80fb3acb618a4bc1bfffa0ed1c97c64e"
+              ]
+            }
+          ],
+          "evidence_checks": [
+            {
+              "record_id": "request-record-80fb3acb618a4bc1bfffa0ed1c97c64e",
+              "kind": "erasure.request",
+              "signature": "VERIFIED",
+              "identity": "EXPECTED_ISSUER",
+              "role": "AUTHORIZED",
+              "time": "WITHIN_DECLARED_WINDOW",
+              "evaluation": "MATCH",
+              "binding_differences": [],
+              "eligibility": "ELIGIBLE"
+            },
+            {
+              "record_id": "ack-93ed56b411561549f96085714f93b8d8ca75fa38be889b91",
+              "kind": "erasure.acknowledgement",
+              "signature": "VERIFIED",
+              "identity": "EXPECTED_ISSUER",
+              "role": "AUTHORIZED",
+              "time": "WITHIN_DECLARED_WINDOW",
+              "evaluation": "MATCH",
+              "binding_differences": [],
+              "eligibility": "ELIGIBLE"
+            },
+            {
+              "record_id": "completion-93ed56b411561549f96085714f93b8d8ca75fa38be889b91",
+              "kind": "erasure.provider_attestation",
+              "signature": "VERIFIED",
+              "identity": "EXPECTED_ISSUER",
+              "role": "AUTHORIZED",
+              "time": "WITHIN_DECLARED_WINDOW",
+              "evaluation": "MATCH",
+              "binding_differences": [],
+              "eligibility": "ELIGIBLE"
+            }
+          ],
+          "external_anchor_verification": "NOT_IMPLEMENTED",
+          "full_vap_conformance": "NOT_ASSESSED",
+          "full_cap_conformance": "NOT_ASSESSED",
+          "legal_compliance": "NOT_ASSESSED",
+          "limitations": [
+            "Application-layer experimental assessment; no normative VAP or CAP conformance determination.",
+            "Evaluator trust configuration and issuer/organization assignments are explicit external assumptions.",
+            "Valid signatures attribute records; they do not independently prove claim truth or event time.",
+            "Missing records cannot establish absence of activity outside the declared observation scope.",
+            "Block and hold outputs are recommendations; this offline program controls no live gateway or publisher.",
+            "Provider statements and limited reviews cannot establish universal external deletion.",
+            "External anchoring, positive XREF, key revocation, production identity onboarding and legal compliance are not assessed."
+          ]
+        },
+        "local_observation": "REMOVAL_OBSERVED_SAME_CONTROLLER",
+        "unknown_domains": {
+          "backups": "UNKNOWN",
+          "replicas": "UNKNOWN",
+          "downstream-copies": "UNKNOWN",
+          "training-derivatives": "UNKNOWN",
+          "open-handles-and-memory": "UNKNOWN",
+          "storage-media": "UNKNOWN"
+        },
+        "limitations": [
+          "Synthetic application experiment with one immutable object and one active namespace per task.",
+          "Requester, provider and observer share one local controller and organization; no independent review is established.",
+          "Signatures attribute statements under separately supplied pins; they do not prove a malicious controller told the truth or establish external event time.",
+          "Local observations concern a named directory entry during the stated read window, not irreversible deletion or storage-media sanitization.",
+          "Absence without a matching before observation and linked completion does not establish prior presence or a removal operation.",
+          "Missing evidence does not establish absence of copies, activity or contradictory evidence outside the observed namespace.",
+          "No external provider integration, key revocation, normative conformance or legal-compliance determination is performed."
+        ]
+      }
+    }
+  ],
+  "probes": [
+    {
+      "bundle": {
+        "format": "incident-erasure-bundle/0.1",
+        "task": {
+          "format": "incident-erasure-task/0.1",
+          "manifest": {
+            "provider_id": "provider-local",
+            "tenant_id": "tenant-synthetic",
+            "object_id": "object-synthetic",
+            "version_id": "version-569de57364ff4178bac5e27c29d9beac",
+            "sha256": "95f2f21837656da95e45aa977aa2ae52c8a64c61d0088fd6eb2ee90ded28e108",
+            "byte_length": 68,
+            "location": "active-object-namespace"
+          },
+          "request": {
+            "algorithm": "Ed25519",
+            "key_id": "requester-c0bd72cd51a8",
+            "body": {
+              "record_id": "request-record-80fb3acb618a4bc1bfffa0ed1c97c64e",
+              "evaluation_id": "evaluation-bbe95115de114a69ae68721679cf3128",
+              "kind": "erasure.request",
+              "issuer": "requester-local",
+              "recorded_at": "2026-10-30T03:28:02.632861Z",
+              "binding": {
+                "request_id": "request-2b46aae6262e4d82991752b4f5807651",
+                "provider_id": "provider-local",
+                "tenant_id": "tenant-synthetic",
+                "object_ids": [
+                  "object-synthetic"
+                ],
+                "payload_sha256": "b7aaac46fe385eb462efda6eddd01d291b0349cec196ba2a03a4b3133fc5dd2b",
+                "stage": "erasure"
+              },
+              "data": {
+                "requested_at": "2026-10-30T03:28:02.632861Z",
+                "requested_locations": [
+                  "active-object-namespace",
+                  "backups",
+                  "replicas",
+                  "downstream-copies",
+                  "training-derivatives",
+                  "open-handles-and-memory",
+                  "storage-media"
+                ]
+              }
+            },
+            "signature": "2bbb5b6ce65a4c8d72a0f283552bfd72332acf1b997cda0206a049395e98779fd48fe786adf75779e97af5146adde2fe114ee7aec8de8350e76bab2afb10ef0e"
+          },
+          "authorization": {
+            "algorithm": "Ed25519",
+            "key_id": "requester-c0bd72cd51a8",
+            "body": {
+              "kind": "deletion_authorization",
+              "request_sha256": "ee9976b4ba754a2b4c92b0db20f9ee779deb091f262d569aea04d492785a83ad",
+              "manifest_sha256": "b7aaac46fe385eb462efda6eddd01d291b0349cec196ba2a03a4b3133fc5dd2b",
+              "authorized_at": "2026-10-30T03:28:02.632861Z",
+              "valid_until": "2026-10-30T03:33:02.632861Z"
+            },
+            "signature": "ff4a094ecc58e3e6dbc3c7864bf6ca1a4ce2d354d6da47a4f35e144dd2d17c6743e304f498243d9bfa186b42d05a1b68ebea842bbc7eb05a032a451e8c2a360e"
+          }
+        },
+        "as_of": "2026-10-30T03:28:02.658019Z",
+        "provider_result": {
+          "state": "LOCAL_UNLINK_CONFIRMED",
+          "attempted": true,
+          "acknowledgement": {
+            "algorithm": "Ed25519",
+            "key_id": "provider-66e854d662bf",
+            "body": {
+              "record_id": "ack-93ed56b411561549f96085714f93b8d8ca75fa38be889b91",
+              "evaluation_id": "evaluation-bbe95115de114a69ae68721679cf3128",
+              "kind": "erasure.acknowledgement",
+              "issuer": "provider-local",
+              "recorded_at": "2026-10-30T03:28:02.645052Z",
+              "binding": {
+                "object_ids": [
+                  "object-synthetic"
+                ],
+                "payload_sha256": "b7aaac46fe385eb462efda6eddd01d291b0349cec196ba2a03a4b3133fc5dd2b",
+                "provider_id": "provider-local",
+                "request_id": "request-2b46aae6262e4d82991752b4f5807651",
+                "stage": "erasure",
+                "tenant_id": "tenant-synthetic"
+              },
+              "data": {
+                "request_record_id": "request-record-80fb3acb618a4bc1bfffa0ed1c97c64e",
+                "acknowledged_at": "2026-10-30T03:28:02.645052Z",
+                "queue_state": "received"
+              }
+            },
+            "signature": "eb173bf2b4734c40a42abf65b4b22431a82a5a136d2bab6289357d3b227a7b48c4b2e11502127c4c57af715e87756823f4d83268d84268d9bfa335e727f98201"
+          },
+          "attestation": {
+            "algorithm": "Ed25519",
+            "key_id": "provider-66e854d662bf",
+            "body": {
+              "record_id": "completion-93ed56b411561549f96085714f93b8d8ca75fa38be889b91",
+              "evaluation_id": "evaluation-bbe95115de114a69ae68721679cf3128",
+              "kind": "erasure.provider_attestation",
+              "issuer": "provider-local",
+              "recorded_at": "2026-10-30T03:28:02.648216Z",
+              "binding": {
+                "object_ids": [
+                  "object-synthetic"
+                ],
+                "payload_sha256": "b7aaac46fe385eb462efda6eddd01d291b0349cec196ba2a03a4b3133fc5dd2b",
+                "provider_id": "provider-local",
+                "request_id": "request-2b46aae6262e4d82991752b4f5807651",
+                "stage": "erasure",
+                "tenant_id": "different-tenant"
+              },
+              "data": {
+                "request_record_id": "request-record-80fb3acb618a4bc1bfffa0ed1c97c64e",
+                "completed_at": "2026-10-30T03:28:02.648216Z",
+                "locations": [
+                  "active-object-namespace"
+                ],
+                "exclusions": [
+                  "backups",
+                  "replicas",
+                  "downstream-copies",
+                  "training-derivatives",
+                  "open-handles-and-memory",
+                  "storage-media"
+                ]
+              }
+            },
+            "signature": "b3d34d6724d2e88392f22ac8732145395029b91c3b304ad66538d3df18710f91285614efbbc8d94ec9789084693c3f1b70c239be59e3e6edcbedbf58131fe60a"
+          },
+          "receipt": {
+            "algorithm": "Ed25519",
+            "key_id": "provider-66e854d662bf",
+            "body": {
+              "kind": "local_unlink_receipt",
+              "task_sha256": "93ed56b411561549f96085714f93b8d8ca75fa38be889b916971117fbe504e51",
+              "request_id": "request-2b46aae6262e4d82991752b4f5807651",
+              "manifest_sha256": "b7aaac46fe385eb462efda6eddd01d291b0349cec196ba2a03a4b3133fc5dd2b",
+              "before": {
+                "sha256": "95f2f21837656da95e45aa977aa2ae52c8a64c61d0088fd6eb2ee90ded28e108",
+                "byte_length": 68
+              },
+              "unlinked_at": "2026-10-30T03:28:02.646557Z",
+              "observed_at": "2026-10-30T03:28:02.648216Z",
+              "after": "ABSENT"
+            },
+            "signature": "8d4ee8ae696ad5c1426ec41d60f48872e73eaec83b30571661036dea4c72881cb39e214937e43235b45459725f60d996bc5eba8526f0cdd759431be95024d207"
+          },
+          "journal_state": "LOCAL_UNLINK_CONFIRMED",
+          "reason": "EXACT_NAMESPACE_ENTRY_REMOVAL_CONFIRMED"
+        },
+        "before": {
+          "algorithm": "Ed25519",
+          "key_id": "observer-492747b388fc",
+          "body": {
+            "kind": "local_namespace_observation",
+            "task_sha256": "93ed56b411561549f96085714f93b8d8ca75fa38be889b916971117fbe504e51",
+            "manifest_sha256": "b7aaac46fe385eb462efda6eddd01d291b0349cec196ba2a03a4b3133fc5dd2b",
+            "provider_id": "provider-local",
+            "tenant_id": "tenant-synthetic",
+            "location": "active-object-namespace",
+            "object_id": "object-synthetic",
+            "version_id": "version-569de57364ff4178bac5e27c29d9beac",
+            "phase": "before",
+            "previous_sha256": null,
+            "completion_sha256": null,
+            "window_start": "2026-10-30T03:28:02.635398Z",
+            "window_end": "2026-10-30T03:28:02.635490Z",
+            "measurement": {
+              "state": "PRESENT",
+              "sha256": "95f2f21837656da95e45aa977aa2ae52c8a64c61d0088fd6eb2ee90ded28e108",
+              "byte_length": 68
+            }
+          },
+          "signature": "8a3a7c7a32d5f23e20ecdd63dfdda9d65462c8cfd4d8a745b44ddb831a68b3f7d4fdb0715a79a70a2401218e98a0979c3ea089015fbb9f4997b42de06660fe00"
+        },
+        "after": {
+          "algorithm": "Ed25519",
+          "key_id": "observer-492747b388fc",
+          "body": {
+            "kind": "local_namespace_observation",
+            "task_sha256": "93ed56b411561549f96085714f93b8d8ca75fa38be889b916971117fbe504e51",
+            "manifest_sha256": "b7aaac46fe385eb462efda6eddd01d291b0349cec196ba2a03a4b3133fc5dd2b",
+            "provider_id": "provider-local",
+            "tenant_id": "tenant-synthetic",
+            "location": "active-object-namespace",
+            "object_id": "object-synthetic",
+            "version_id": "version-569de57364ff4178bac5e27c29d9beac",
+            "phase": "after",
+            "previous_sha256": "b619c93dae57081d2d2b99715f1831d25b9f63b53ae6f980fcc6bb9469f80696",
+            "completion_sha256": "c39faa5e5df2f71206da62206915a1c124956d6c5894e47ef3bcd379e19c6e81",
+            "window_start": "2026-10-30T03:28:02.657630Z",
+            "window_end": "2026-10-30T03:28:02.657706Z",
+            "measurement": {
+              "state": "ABSENT",
+              "sha256": null,
+              "byte_length": null
+            }
+          },
+          "signature": "d239f0ebee396639b82b5fd9134e06c439f2359e11a8fec4c685da5547c991a70eec9ec6a0301eca9984d5c6ccdb38198e3aed85e6a1323708509bcf5ff30d04"
+        }
+      },
+      "pins": {
+        "provider_id": "provider-local",
+        "tenant_id": "tenant-synthetic",
+        "location": "active-object-namespace",
+        "requester_key_id": "requester-c0bd72cd51a8",
+        "provider_key_id": "provider-66e854d662bf",
+        "observer_key_id": "observer-492747b388fc",
+        "keys": {
+          "requester-c0bd72cd51a8": {
+            "public_key": "0b04585fa98801da8be2f18155e8b9ae3453cf599e976c110179e4b569216c27",
+            "issuer": "requester-local",
+            "organization": "single-local-controller",
+            "roles": [
+              "responder"
+            ],
+            "not_before": "2026-10-30T02:28:02.626826Z",
+            "not_after": "2026-10-31T03:28:02.626826Z"
+          },
+          "provider-66e854d662bf": {
+            "public_key": "404369e5a833ebb812e97a2878405b4b0e946fef2b40caf720b000a981d058a9",
+            "issuer": "provider-local",
+            "organization": "single-local-controller",
+            "roles": [
+              "provider"
+            ],
+            "not_before": "2026-10-30T02:28:02.626826Z",
+            "not_after": "2026-10-31T03:28:02.626826Z"
+          },
+          "observer-492747b388fc": {
+            "public_key": "d2630dbd14543a00c7652b01ae8493cd44cd0c57172494df422efeb1e231e7db",
+            "issuer": "observer-local",
+            "organization": "single-local-controller",
+            "roles": [
+              "reviewer"
+            ],
+            "not_before": "2026-10-30T02:28:02.626826Z",
+            "not_after": "2026-10-31T03:28:02.626826Z"
+          }
+        }
+      },
+      "expected_task_sha256": "93ed56b411561549f96085714f93b8d8ca75fa38be889b916971117fbe504e51",
+      "outcome": "REJECTED"
+    }
+  ],
+  "retained_controls": [],
+  "sort_states": false,
+  "case_as_of": "2026-10-30T03:28:02.675644Z",
+  "actual": {
+    "states": [
+      "LOCAL_UNLINK_CONFIRMED"
+    ],
+    "unlink_attempts": 1,
+    "local_observations": [
+      "REMOVAL_OBSERVED_SAME_CONTROLLER"
+    ],
+    "core_evidence": [
+      "PROVIDER_ATTESTED_WITHIN_DECLARED_SCOPE"
+    ],
+    "rejected_probes": 1,
+    "retained_readable_controls": [],
+    "outside_scope_remains_unknown": true
+  }
+}

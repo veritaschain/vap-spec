@@ -1,0 +1,550 @@
+{
+  "format": "incident-upload-pilot-summary/0.1",
+  "implementation_version": "0.1.0",
+  "synthetic": true,
+  "network_execution": "ACTUAL_LITERAL_LOOPBACK_HTTP",
+  "recorded_at": "2026-10-30T01:24:12.019527Z",
+  "source_sha256": "0f7e7f04c45baca8bc62ea0f8778c79ef5bba22e27faf49fbad92001c617df49",
+  "source_files": {
+    "../../.github/workflows/incident-upload-pilot.yml": "6e5bb3048dcec1acd8273877f1dc13eef8606e777c2b024263311164a62573c3",
+    "../incident-evidence-assessor/incident_assessor/__init__.py": "24ef8b3d35cb02bc85303fc6932a7d9af438c878fd6da427d38c8df295acec72",
+    "../incident-evidence-assessor/incident_assessor/__main__.py": "2add1793b9a1c6db77fab17e592ded6ad44ba230c036e528e6d1b1356422ef7e",
+    "../incident-evidence-assessor/incident_assessor/assess.py": "3e2890d7b6c417e4c10f4c57473de79f5f5b9fb410fcc61b0be905a6bedc8dc0",
+    "../incident-evidence-assessor/incident_assessor/cross_party.py": "f7922f8b457efddb5df13efcbd7095ff81c5c63b429e9d6dbe21636342c479b3",
+    "../incident-evidence-assessor/incident_assessor/erasure.py": "953f1772210059ffe9a7a39f6f00d8bf709c063020e9aa200d4610b9297d0281",
+    "../incident-evidence-assessor/incident_assessor/evidence.py": "a129a6b17a58993d454efae188f16ae5ec24b95fd8335fcb9d63c2e10ce7494c",
+    "../incident-evidence-assessor/incident_assessor/incident_response.py": "c4032159f6d2642307e6eee5b2c570454a7d3ad34eb1259c3f11a8abe8140717",
+    "../incident-evidence-assessor/incident_assessor/model.py": "0a6c26c54d9209874941fadbdc02b5e524deeebf24c9d3cedf5ad99e0be76769",
+    "../incident-evidence-assessor/incident_assessor/publication.py": "af246df6686402de4288f49ec8bc4c228a04c1ee915a2e108338eebbdd55ba99",
+    "../incident-evidence-assessor/incident_assessor/transfer.py": "3f3888cb6797eec5d82bfebd87626cbb20fee5960a16f3ea62477dc3e3f018a8",
+    "../incident-evidence-assessor/requirements.txt": "4e8db0811dba93c1aee12da58f14aa31f96051d04783f156ea8fb15391f821d6",
+    "acceptance.json": "5f822f8a84efd754552e9b41873fb54c663ae10dd1730bac1bef3f1814c919f1",
+    "requirements.txt": "7f68b28a497f02318887f5fb6bc4bfbbc7a73ae7ca290e21e2af28d5a0842299",
+    "run_tests.py": "9d26768d63203a0d55582ce77672e1df924de43bd124ff613a05273cf2fa429f",
+    "tests/test_boundary_review.py": "36d19215e4a1b2d606b1d36441d758925cefb5afdbc76e54ca39763ddb1ea62a",
+    "tests/test_gateway.py": "749ba5b81ec9a210a60682c6259ab579457da78006f6421d67c3d4347325fb6b",
+    "tests/test_runner.py": "dd9004653d8a0a0378e8b40fdc86360cf7267e8277ca8c1eaabe405759c6d666",
+    "tests/test_transport.py": "b059f2e178c21edb6df5edc2319c91b3d2a960da9d9a8765c688064586eb8eb8",
+    "upload_pilot/__init__.py": "e963fa4eb04d29f14afbcafe95a9867deb190c3d187ae95cfefc76edaf1d07e3",
+    "upload_pilot/__main__.py": "cb30e6bbd283ab2e4ec70e74f1822e19ed28ae5c35bd0ba2f663b06d11287b41",
+    "upload_pilot/gateway.py": "3cc33ac6754223fcea38bb8947dbb85a787334ea172a8a3d496bc50b86e8caad",
+    "upload_pilot/harness.py": "fb5991482e08f3906c1c177b9d580e8459a36321b293e8e22a2825b559adfde3",
+    "upload_pilot/journal.py": "955a05015fbe08e21860f31f30bde2da38adde4134956e54a170bd44bb3e0c91",
+    "upload_pilot/protocol.py": "28ef482759c6bfa378d58f5cffb2656603752ca1d50e55d21efc9b67f1625a41",
+    "upload_pilot/receiver.py": "98d896f2fef3e105003e270c640aca0cbabcf71494f33933a758f1861a312119",
+    "upload_pilot/suite.py": "6cd15c28af233c2118aac9400010031e4a262e97aec03cfbef143816d3305afc",
+    "upload_pilot/transport.py": "694c129109bf96bb4ccf3365fcf5aba509026dce6480f5e112b15184ec162371"
+  },
+  "toolchain": {
+    "python": "3.12.15 (main, Oct  1 2026, 02:35:59) [GCC 13.3.0]",
+    "platform": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+    "cryptography": "50.0.2",
+    "rfc8785": "0.1.4"
+  },
+  "total": 17,
+  "matched": 17,
+  "all_expectations_matched": true,
+  "all_route_prevention_established": false,
+  "independent_reproduction": "NOT_ESTABLISHED",
+  "results": [
+    {
+      "case_id": "UL-01",
+      "title": "Allowed immutable raw bytes reach the receiver",
+      "expected": {
+        "states": [
+          "RECEIPT_CONFIRMED"
+        ],
+        "gateway_attempts": 1,
+        "handler_calls": 1,
+        "accepted_count": 1,
+        "received_bytes_match": true
+      },
+      "actual": {
+        "states": [
+          "RECEIPT_CONFIRMED"
+        ],
+        "gateway_attempts": 1,
+        "handler_calls": 1,
+        "accepted_count": 1,
+        "received_bytes_match": true
+      },
+      "matched": true,
+      "differences": {},
+      "export_sha256": "9b4e24bd68b7c20e136e9409d63f7d5823b7969f6788e23cf82455d6cbdb49cf",
+      "cleanup": {
+        "child_stopped": true,
+        "forced_termination": false
+      }
+    },
+    {
+      "case_id": "UL-02",
+      "title": "Unapproved destination grant blocks before transport",
+      "expected": {
+        "states": [
+          "BLOCKED_WITHOUT_ATTEMPT"
+        ],
+        "gateway_attempts": 0,
+        "handler_calls": 0,
+        "accepted_count": 0
+      },
+      "actual": {
+        "states": [
+          "BLOCKED_WITHOUT_ATTEMPT"
+        ],
+        "gateway_attempts": 0,
+        "handler_calls": 0,
+        "accepted_count": 0,
+        "received_bytes_match": false
+      },
+      "matched": true,
+      "differences": {},
+      "export_sha256": "1ddf7f843bad0cf6a6e87213ba3a351f761bdf98f3f4b5cfdf210e43ea01e90d",
+      "cleanup": {
+        "child_stopped": true,
+        "forced_termination": false
+      }
+    },
+    {
+      "case_id": "UL-03",
+      "title": "Wrong tenant grant blocks before transport",
+      "expected": {
+        "states": [
+          "BLOCKED_WITHOUT_ATTEMPT"
+        ],
+        "gateway_attempts": 0,
+        "handler_calls": 0,
+        "accepted_count": 0
+      },
+      "actual": {
+        "states": [
+          "BLOCKED_WITHOUT_ATTEMPT"
+        ],
+        "gateway_attempts": 0,
+        "handler_calls": 0,
+        "accepted_count": 0,
+        "received_bytes_match": false
+      },
+      "matched": true,
+      "differences": {},
+      "export_sha256": "b8cfbfc361e5bd5c008f60cc49c900ce97103afe0872ed60ae99438cb6e1add7",
+      "cleanup": {
+        "child_stopped": true,
+        "forced_termination": false
+      }
+    },
+    {
+      "case_id": "UL-04",
+      "title": "Previously permitted digest cannot authorize changed bytes",
+      "expected": {
+        "states": [
+          "BLOCKED_WITHOUT_ATTEMPT"
+        ],
+        "gateway_attempts": 0,
+        "handler_calls": 0,
+        "accepted_count": 0
+      },
+      "actual": {
+        "states": [
+          "BLOCKED_WITHOUT_ATTEMPT"
+        ],
+        "gateway_attempts": 0,
+        "handler_calls": 0,
+        "accepted_count": 0,
+        "received_bytes_match": false
+      },
+      "matched": true,
+      "differences": {},
+      "export_sha256": "ade923f11ffbe75c536d374e1d2ac41a9a03ab44863044cfab34a0bc7cce61f9",
+      "cleanup": {
+        "child_stopped": true,
+        "forced_termination": false
+      }
+    },
+    {
+      "case_id": "UL-05",
+      "title": "Expired signed permission cannot authorize current execution",
+      "expected": {
+        "states": [
+          "BLOCKED_WITHOUT_ATTEMPT"
+        ],
+        "gateway_attempts": 0,
+        "handler_calls": 0,
+        "accepted_count": 0
+      },
+      "actual": {
+        "states": [
+          "BLOCKED_WITHOUT_ATTEMPT"
+        ],
+        "gateway_attempts": 0,
+        "handler_calls": 0,
+        "accepted_count": 0,
+        "received_bytes_match": false
+      },
+      "matched": true,
+      "differences": {},
+      "export_sha256": "bbc604203a97d26c4ac57b14e94dc28bf20e5a059615f8dce1458de381af63ee",
+      "cleanup": {
+        "child_stopped": true,
+        "forced_termination": false
+      }
+    },
+    {
+      "case_id": "UL-06",
+      "title": "Injected journal claim failure blocks transport",
+      "expected": {
+        "states": [
+          "BLOCKED_WITHOUT_ATTEMPT"
+        ],
+        "gateway_attempts": 0,
+        "handler_calls": 0,
+        "accepted_count": 0
+      },
+      "actual": {
+        "states": [
+          "BLOCKED_WITHOUT_ATTEMPT"
+        ],
+        "gateway_attempts": 0,
+        "handler_calls": 0,
+        "accepted_count": 0,
+        "received_bytes_match": false
+      },
+      "matched": true,
+      "differences": {},
+      "export_sha256": "590fc23eb380b1797d78cd669193c890dc9d9f9f0ea37efbfa2eb52ed7ae364f",
+      "cleanup": {
+        "child_stopped": true,
+        "forced_termination": false
+      }
+    },
+    {
+      "case_id": "UL-07",
+      "title": "Receiver commits and drops response; repeat never resends",
+      "expected": {
+        "states": [
+          "OUTCOME_UNKNOWN",
+          "REPLAY_NO_SEND"
+        ],
+        "gateway_attempts": 1,
+        "handler_calls": 1,
+        "accepted_count": 1,
+        "received_bytes_match": true
+      },
+      "actual": {
+        "states": [
+          "OUTCOME_UNKNOWN",
+          "REPLAY_NO_SEND"
+        ],
+        "gateway_attempts": 1,
+        "handler_calls": 1,
+        "accepted_count": 1,
+        "received_bytes_match": true
+      },
+      "matched": true,
+      "differences": {},
+      "export_sha256": "6a95593eb3f165abef82d75c133ae225855ecf93ec344b3dd55c70e131f9a0b0",
+      "cleanup": {
+        "child_stopped": true,
+        "forced_termination": false
+      }
+    },
+    {
+      "case_id": "UL-08",
+      "title": "Authentic response for wrong payload cannot confirm receipt",
+      "expected": {
+        "states": [
+          "OUTCOME_UNKNOWN"
+        ],
+        "gateway_attempts": 1,
+        "handler_calls": 1,
+        "accepted_count": 1,
+        "received_bytes_match": true
+      },
+      "actual": {
+        "states": [
+          "OUTCOME_UNKNOWN"
+        ],
+        "gateway_attempts": 1,
+        "handler_calls": 1,
+        "accepted_count": 1,
+        "received_bytes_match": true
+      },
+      "matched": true,
+      "differences": {},
+      "export_sha256": "8616b3e64a34ae615e1beb1821bfab364c95e43f2c03c237858416bebc249bb2",
+      "cleanup": {
+        "child_stopped": true,
+        "forced_termination": false
+      }
+    },
+    {
+      "case_id": "UL-09",
+      "title": "Caller mutation after capture cannot replace outgoing bytes",
+      "expected": {
+        "states": [
+          "RECEIPT_CONFIRMED"
+        ],
+        "gateway_attempts": 1,
+        "handler_calls": 1,
+        "accepted_count": 1,
+        "received_bytes_match": true,
+        "source_mutated_after_capture": true
+      },
+      "actual": {
+        "states": [
+          "RECEIPT_CONFIRMED"
+        ],
+        "gateway_attempts": 1,
+        "handler_calls": 1,
+        "accepted_count": 1,
+        "received_bytes_match": true,
+        "source_mutated_after_capture": true
+      },
+      "matched": true,
+      "differences": {},
+      "export_sha256": "1ad78bf70841ccd6f403d84ea70985a7b7ef0163b92df8a850430678d887a4b3",
+      "cleanup": {
+        "child_stopped": true,
+        "forced_termination": false
+      }
+    },
+    {
+      "case_id": "UL-10",
+      "title": "Permission expires during pre-send pause",
+      "expected": {
+        "states": [
+          "BLOCKED_WITHOUT_ATTEMPT"
+        ],
+        "gateway_attempts": 0,
+        "handler_calls": 0,
+        "accepted_count": 0,
+        "admission_allowed": true
+      },
+      "actual": {
+        "states": [
+          "BLOCKED_WITHOUT_ATTEMPT"
+        ],
+        "gateway_attempts": 0,
+        "handler_calls": 0,
+        "accepted_count": 0,
+        "received_bytes_match": false,
+        "admission_allowed": true
+      },
+      "matched": true,
+      "differences": {},
+      "export_sha256": "153f12f722c652277aa8ffe8cb313d569400dd6556db1a514f2dac658d349262",
+      "cleanup": {
+        "child_stopped": true,
+        "forced_termination": false
+      }
+    },
+    {
+      "case_id": "UL-11",
+      "title": "Repeated confirmed request does not send twice",
+      "expected": {
+        "states": [
+          "RECEIPT_CONFIRMED",
+          "REPLAY_NO_SEND"
+        ],
+        "gateway_attempts": 1,
+        "handler_calls": 1,
+        "accepted_count": 1
+      },
+      "actual": {
+        "states": [
+          "RECEIPT_CONFIRMED",
+          "REPLAY_NO_SEND"
+        ],
+        "gateway_attempts": 1,
+        "handler_calls": 1,
+        "accepted_count": 1,
+        "received_bytes_match": true
+      },
+      "matched": true,
+      "differences": {},
+      "export_sha256": "3f4b79bf6807be68ae6abd10ce22c3af0d05b7ae74b34c7e05bef961b8988427",
+      "cleanup": {
+        "child_stopped": true,
+        "forced_termination": false
+      }
+    },
+    {
+      "case_id": "UL-12",
+      "title": "Same request identifier with newly approved other bytes is rejected",
+      "expected": {
+        "states": [
+          "RECEIPT_CONFIRMED",
+          "REQUEST_ID_CONFLICT"
+        ],
+        "gateway_attempts": 1,
+        "handler_calls": 1,
+        "accepted_count": 1
+      },
+      "actual": {
+        "states": [
+          "RECEIPT_CONFIRMED",
+          "REQUEST_ID_CONFLICT"
+        ],
+        "gateway_attempts": 1,
+        "handler_calls": 1,
+        "accepted_count": 1,
+        "received_bytes_match": true
+      },
+      "matched": true,
+      "differences": {},
+      "export_sha256": "c40430611d75c0ed94b69abf64dc73a9a31d24242d87d9e0da2d0654886b730c",
+      "cleanup": {
+        "child_stopped": true,
+        "forced_termination": false
+      }
+    },
+    {
+      "case_id": "UL-13",
+      "title": "HTTP redirect is never followed",
+      "expected": {
+        "states": [
+          "OUTCOME_UNKNOWN"
+        ],
+        "gateway_attempts": 1,
+        "handler_calls": 1,
+        "accepted_count": 0
+      },
+      "actual": {
+        "states": [
+          "OUTCOME_UNKNOWN"
+        ],
+        "gateway_attempts": 1,
+        "handler_calls": 1,
+        "accepted_count": 0,
+        "received_bytes_match": false
+      },
+      "matched": true,
+      "differences": {},
+      "export_sha256": "b1523290251e92478a48266f7d02696f2ad770aa6cd2933daa19810771e043fa",
+      "cleanup": {
+        "child_stopped": true,
+        "forced_termination": false
+      }
+    },
+    {
+      "case_id": "UL-14",
+      "title": "Unauthenticated endpoint exposes the outside-route bypass",
+      "expected": {
+        "states": [
+          "BLOCKED_WITHOUT_ATTEMPT"
+        ],
+        "gateway_attempts": 0,
+        "handler_calls": 1,
+        "accepted_count": 1,
+        "controller_direct_status": 200,
+        "all_route_prevention_established": false
+      },
+      "actual": {
+        "states": [
+          "BLOCKED_WITHOUT_ATTEMPT"
+        ],
+        "gateway_attempts": 0,
+        "handler_calls": 1,
+        "accepted_count": 1,
+        "received_bytes_match": true,
+        "controller_direct_status": 200,
+        "all_route_prevention_established": false
+      },
+      "matched": true,
+      "differences": {},
+      "export_sha256": "2ecd42d0f077f31e4af1f9772633bbfbf71a514bb18691dadf1918f97e6842ab",
+      "cleanup": {
+        "child_stopped": true,
+        "forced_termination": false
+      }
+    },
+    {
+      "case_id": "UL-15",
+      "title": "Concurrent identical calls consume only one dispatch claim",
+      "expected": {
+        "states": [
+          "RECEIPT_CONFIRMED",
+          "REPLAY_NO_SEND"
+        ],
+        "gateway_attempts": 1,
+        "handler_calls": 1,
+        "accepted_count": 1
+      },
+      "actual": {
+        "states": [
+          "RECEIPT_CONFIRMED",
+          "REPLAY_NO_SEND"
+        ],
+        "gateway_attempts": 1,
+        "handler_calls": 1,
+        "accepted_count": 1,
+        "received_bytes_match": true
+      },
+      "matched": true,
+      "differences": {},
+      "export_sha256": "aac1d884d49c7559f20c20b7aebc947ca54ec9904aa90ff33226658e4f5072be",
+      "cleanup": {
+        "child_stopped": true,
+        "forced_termination": false
+      }
+    },
+    {
+      "case_id": "UL-16",
+      "title": "Injected result persistence failure leaves outcome unresolved",
+      "expected": {
+        "states": [
+          "OUTCOME_UNKNOWN"
+        ],
+        "gateway_attempts": 1,
+        "handler_calls": 1,
+        "accepted_count": 1
+      },
+      "actual": {
+        "states": [
+          "OUTCOME_UNKNOWN"
+        ],
+        "gateway_attempts": 1,
+        "handler_calls": 1,
+        "accepted_count": 1,
+        "received_bytes_match": true
+      },
+      "matched": true,
+      "differences": {},
+      "export_sha256": "9141a6ea103b7b8164993f4fb27ef57268304f32c9e0d503d8662bb44cc9b6e2",
+      "cleanup": {
+        "child_stopped": true,
+        "forced_termination": false
+      }
+    },
+    {
+      "case_id": "UL-17",
+      "title": "Worker killed after committed intent is not automatically resent",
+      "expected": {
+        "states": [
+          "REPLAY_NO_SEND"
+        ],
+        "gateway_attempts": 0,
+        "handler_calls": 0,
+        "accepted_count": 0,
+        "worker_killed_after_intent": true
+      },
+      "actual": {
+        "states": [
+          "REPLAY_NO_SEND"
+        ],
+        "gateway_attempts": 0,
+        "handler_calls": 0,
+        "accepted_count": 0,
+        "received_bytes_match": false,
+        "worker_killed_after_intent": true,
+        "worker_exitcode": -9
+      },
+      "matched": true,
+      "differences": {},
+      "export_sha256": "7f8c298aa5615595e5c812494e96ec69fe51282c30033b98a935aebfb4664b93",
+      "cleanup": {
+        "child_stopped": true,
+        "forced_termination": false
+      }
+    }
+  ]
+}

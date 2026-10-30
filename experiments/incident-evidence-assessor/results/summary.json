@@ -1,0 +1,700 @@
+{
+  "format": "incident-evidence-suite/0.1",
+  "synthetic": true,
+  "scope": "Offline assessment of structured translations; not real institutional evidence or independent reproduction.",
+  "catalogue_path": "proposals/incident-evidence-bindings/acceptance-cases.json",
+  "catalogue_sha256": "59db1059645bdfe632c7db6d707dd619b8bcfe00be36430f71ee6fa3e6bcee9b",
+  "catalogue_baseline_commit": "ff759c9f244f04edddc4bda36be8fc8e05f4a96c",
+  "comparison": "All named expected assessment fields except explanatory prose reasons; no global evidence pass.",
+  "source_sha256": "dcc92ce4a3ca89dec06b1655ef775f59df3de7706fc07735cef62dfea375a3fc",
+  "source_files": {
+    "fixture_publication_response.py": "2581be78464883fd6e68e73d1035d6f9f3929073c6c3454faa3dd9a973ffee27",
+    "fixture_support.py": "71342c81db6d5141d0d03542f4bd82d48263b899d8e78c53221bf79240b19cc5",
+    "fixture_transfer_erasure.py": "ac514f94b37af891f2035a4c09807c8cfc9e9e59c4f86bc2bbc89b062a308cea",
+    "incident_assessor/__init__.py": "24ef8b3d35cb02bc85303fc6932a7d9af438c878fd6da427d38c8df295acec72",
+    "incident_assessor/__main__.py": "2add1793b9a1c6db77fab17e592ded6ad44ba230c036e528e6d1b1356422ef7e",
+    "incident_assessor/assess.py": "3e2890d7b6c417e4c10f4c57473de79f5f5b9fb410fcc61b0be905a6bedc8dc0",
+    "incident_assessor/cross_party.py": "f7922f8b457efddb5df13efcbd7095ff81c5c63b429e9d6dbe21636342c479b3",
+    "incident_assessor/erasure.py": "953f1772210059ffe9a7a39f6f00d8bf709c063020e9aa200d4610b9297d0281",
+    "incident_assessor/evidence.py": "a129a6b17a58993d454efae188f16ae5ec24b95fd8335fcb9d63c2e10ce7494c",
+    "incident_assessor/incident_response.py": "c4032159f6d2642307e6eee5b2c570454a7d3ad34eb1259c3f11a8abe8140717",
+    "incident_assessor/model.py": "0a6c26c54d9209874941fadbdc02b5e524deeebf24c9d3cedf5ad99e0be76769",
+    "incident_assessor/publication.py": "af246df6686402de4288f49ec8bc4c228a04c1ee915a2e108338eebbdd55ba99",
+    "incident_assessor/transfer.py": "3f3888cb6797eec5d82bfebd87626cbb20fee5960a16f3ea62477dc3e3f018a8",
+    "requirements.txt": "4e8db0811dba93c1aee12da58f14aa31f96051d04783f156ea8fb15391f821d6",
+    "suite.py": "634f5b90db8ead494e11530ed2038eb7c747e514a0f6470d8f94d0c5b1bccfd6",
+    "tests/test_adversarial.py": "c43455056703637ee6236983075f9f95ea3c830733af14ca2c62699c8dbb879a",
+    "tests/test_catalogue.py": "0b95acb1f8c6b264ef028d448735893c5ef93d282e450f1ed68968ba4905ba0a",
+    "tests/test_controls.py": "c48b21175f931d6dd46f2dd0fac6f1275ac3587f035f0417f71a29296f47776b"
+  },
+  "toolchain": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+    "cryptography": "50.0.2",
+    "rfc8785": "0.1.4"
+  },
+  "total": 23,
+  "matched": 23,
+  "all_named_expectations_matched": true,
+  "results": [
+    {
+      "case_id": "UP-01",
+      "workflow": "transfer",
+      "expected_fields": {
+        "transfer_authorization": "DENY",
+        "transfer_observation": "NOT_OBSERVED",
+        "coverage": "DECLARED_GATEWAY_ROUTE_ONLY"
+      },
+      "actual_assessments": {
+        "transfer_authorization": "DENY",
+        "transfer_observation": "NOT_OBSERVED",
+        "coverage": "DECLARED_GATEWAY_ROUTE_ONLY",
+        "binding_assessment": "ENDPOINT_NOT_APPROVED",
+        "policy_binding": "CURRENT_CONTENT_BOUND",
+        "dispatch_action": "BLOCK_CONTROLLED_ROUTE",
+        "control_assessment": "UNKNOWN",
+        "remote_outcome": "UNKNOWN",
+        "retry_action": "NOT_ASSESSED",
+        "collector_health": "UNKNOWN",
+        "application_route_action": "BLOCK",
+        "external_activity_assessment": "UNKNOWN",
+        "proposed_transfer_authorization": "DENY",
+        "observed_action_authorization": "UNKNOWN"
+      },
+      "matched": true,
+      "differences": {},
+      "input_sha256": "48548976e3b087bc98211afd8bb595241c9f83fb3b81a82d800c4e20dbb0b247",
+      "trust_sha256": "c20eaceff7546d7521aa5c85dda65de57a559e05144af97b102b2b6f987b2a8f",
+      "report_sha256": "15d804680d1c09166c7c379d1cc76450d14fd83f71fb890edf04a2a51063fdf0"
+    },
+    {
+      "case_id": "UP-02",
+      "workflow": "transfer",
+      "expected_fields": {
+        "transfer_authorization": "DENY",
+        "binding_assessment": "TENANT_MISMATCH"
+      },
+      "actual_assessments": {
+        "transfer_authorization": "DENY",
+        "transfer_observation": "UNKNOWN",
+        "coverage": "INCOMPLETE",
+        "binding_assessment": "TENANT_MISMATCH",
+        "policy_binding": "CURRENT_CONTENT_BOUND",
+        "dispatch_action": "BLOCK_CONTROLLED_ROUTE",
+        "control_assessment": "UNKNOWN",
+        "remote_outcome": "UNKNOWN",
+        "retry_action": "NOT_ASSESSED",
+        "collector_health": "UNKNOWN",
+        "application_route_action": "BLOCK",
+        "external_activity_assessment": "UNKNOWN",
+        "proposed_transfer_authorization": "DENY",
+        "observed_action_authorization": "UNKNOWN"
+      },
+      "matched": true,
+      "differences": {},
+      "input_sha256": "dde0d68169aec922a2197dfda1f9d014504a5ccc6d5e73c0f712a6e836d07788",
+      "trust_sha256": "8185e2acece4a9cbc6085c304a1495447a34f9112de2ba6136e95c68a494c03b",
+      "report_sha256": "c7cda09aeb99a6f4eeecaa824a8e5c839ff06dd6c2e8ce4f39e545882d09523e"
+    },
+    {
+      "case_id": "UP-03",
+      "workflow": "transfer",
+      "expected_fields": {
+        "transfer_authorization": "REVIEW",
+        "dispatch_action": "HOLD_PENDING_CURRENT_AUTHORIZATION",
+        "policy_binding": "EXPIRED_OR_UNRESOLVED"
+      },
+      "actual_assessments": {
+        "transfer_authorization": "REVIEW",
+        "transfer_observation": "NOT_OBSERVED",
+        "coverage": "DECLARED_GATEWAY_ROUTE_ONLY",
+        "binding_assessment": "UNRESOLVED",
+        "policy_binding": "EXPIRED_OR_UNRESOLVED",
+        "dispatch_action": "HOLD_PENDING_CURRENT_AUTHORIZATION",
+        "control_assessment": "UNKNOWN",
+        "remote_outcome": "UNKNOWN",
+        "retry_action": "NOT_ASSESSED",
+        "collector_health": "UNKNOWN",
+        "application_route_action": "REVIEW",
+        "external_activity_assessment": "UNKNOWN",
+        "proposed_transfer_authorization": "REVIEW",
+        "observed_action_authorization": "UNKNOWN"
+      },
+      "matched": true,
+      "differences": {},
+      "input_sha256": "6797fb4540e27ffd999b3e584de296ce612b1830a73c31dc1121aae6cfa24f39",
+      "trust_sha256": "1892f25e005cf5f282c239f0e455639292f7e6edf45b544f644aad04a6742b18",
+      "report_sha256": "f10e642a6f51291b32d87f513df55a0c14137f7a22af85653aea1b2c7e4af000"
+    },
+    {
+      "case_id": "UP-04",
+      "workflow": "transfer",
+      "expected_fields": {
+        "transfer_authorization": "DENY",
+        "binding_assessment": "PAYLOAD_MISMATCH"
+      },
+      "actual_assessments": {
+        "transfer_authorization": "DENY",
+        "transfer_observation": "NOT_OBSERVED",
+        "coverage": "DECLARED_GATEWAY_ROUTE_ONLY",
+        "binding_assessment": "PAYLOAD_MISMATCH",
+        "policy_binding": "CURRENT_CONTENT_BOUND",
+        "dispatch_action": "BLOCK_CONTROLLED_ROUTE",
+        "control_assessment": "UNKNOWN",
+        "remote_outcome": "UNKNOWN",
+        "retry_action": "NOT_ASSESSED",
+        "collector_health": "UNKNOWN",
+        "application_route_action": "BLOCK",
+        "external_activity_assessment": "UNKNOWN",
+        "proposed_transfer_authorization": "DENY",
+        "observed_action_authorization": "UNKNOWN"
+      },
+      "matched": true,
+      "differences": {},
+      "input_sha256": "05149822d7abdb0f383a47785e7f7cc740f762d2e33e678f99fb07d8a4b25e5c",
+      "trust_sha256": "41f61b3ed2ae22ad5689d44e14bda258bccfe16d5490e8224760e0f19a134652",
+      "report_sha256": "a272f0bfbc79f3d9243a1f64b4ff7b53d10b4385d4b69a451faa1b25231fd015"
+    },
+    {
+      "case_id": "UP-05",
+      "workflow": "transfer",
+      "expected_fields": {
+        "transfer_authorization": "DENY",
+        "transfer_observation": "OBSERVED",
+        "control_assessment": "VIOLATION"
+      },
+      "actual_assessments": {
+        "transfer_authorization": "DENY",
+        "transfer_observation": "OBSERVED",
+        "coverage": "DECLARED_GATEWAY_ROUTE_ONLY",
+        "binding_assessment": "MATCH",
+        "policy_binding": "CURRENT_CONTENT_BOUND",
+        "dispatch_action": "BLOCK_CONTROLLED_ROUTE",
+        "control_assessment": "VIOLATION",
+        "remote_outcome": "UNKNOWN",
+        "retry_action": "NOT_ASSESSED",
+        "collector_health": "UNKNOWN",
+        "application_route_action": "BLOCK",
+        "external_activity_assessment": "UNKNOWN",
+        "proposed_transfer_authorization": "DENY",
+        "observed_action_authorization": "DENY"
+      },
+      "matched": true,
+      "differences": {},
+      "input_sha256": "52734cf612aee7c0e187023ea99c8223b2e7420ba52d04b10a530c06bbe1a540",
+      "trust_sha256": "d31beb3cfddd44caf264e86f41acbfa8cc51249ae8f74c505ee742f7d25a9a28",
+      "report_sha256": "7f12e79ec8f3b1c1c1ea0e55a9b5d32258fe4dd1dbdb716d7559053854bd1ab5"
+    },
+    {
+      "case_id": "UP-06",
+      "workflow": "transfer",
+      "expected_fields": {
+        "transfer_observation": "DISPATCH_OBSERVED",
+        "remote_outcome": "UNKNOWN",
+        "retry_action": "RECONCILE_BEFORE_RETRY"
+      },
+      "actual_assessments": {
+        "transfer_authorization": "ALLOW",
+        "transfer_observation": "DISPATCH_OBSERVED",
+        "coverage": "INCOMPLETE",
+        "binding_assessment": "MATCH",
+        "policy_binding": "CURRENT_CONTENT_BOUND",
+        "dispatch_action": "PERMITTED_WITHIN_BOUND_SCOPE",
+        "control_assessment": "UNKNOWN",
+        "remote_outcome": "UNKNOWN",
+        "retry_action": "RECONCILE_BEFORE_RETRY",
+        "collector_health": "UNKNOWN",
+        "application_route_action": "PERMITTED_WITHIN_BOUND_SCOPE",
+        "external_activity_assessment": "UNKNOWN",
+        "proposed_transfer_authorization": "ALLOW",
+        "observed_action_authorization": "ALLOW"
+      },
+      "matched": true,
+      "differences": {},
+      "input_sha256": "e1058cee20895eafc34f694d81e79cf0c31e17c8779866e6b4c712c1bd04c02e",
+      "trust_sha256": "d31beb3cfddd44caf264e86f41acbfa8cc51249ae8f74c505ee742f7d25a9a28",
+      "report_sha256": "00d4500f5850c5cfcbc81bc1d6089f5f2c9732ca3ca2549743257e04e0bb7bbf"
+    },
+    {
+      "case_id": "UP-07",
+      "workflow": "transfer",
+      "expected_fields": {
+        "transfer_observation": "UNKNOWN",
+        "coverage": "INCOMPLETE"
+      },
+      "actual_assessments": {
+        "transfer_authorization": "REVIEW",
+        "transfer_observation": "UNKNOWN",
+        "coverage": "INCOMPLETE",
+        "binding_assessment": "UNRESOLVED",
+        "policy_binding": "CURRENT_CONTENT_BOUND",
+        "dispatch_action": "HOLD_PENDING_CURRENT_AUTHORIZATION",
+        "control_assessment": "UNKNOWN",
+        "remote_outcome": "UNKNOWN",
+        "retry_action": "NOT_ASSESSED",
+        "collector_health": "UNKNOWN",
+        "application_route_action": "REVIEW",
+        "external_activity_assessment": "UNKNOWN",
+        "proposed_transfer_authorization": "REVIEW",
+        "observed_action_authorization": "UNKNOWN"
+      },
+      "matched": true,
+      "differences": {},
+      "input_sha256": "ac055d51035ea747c2825bf7795549f06587523db20e8a186e8dcb142c91c672",
+      "trust_sha256": "98f53689e3f998d681324d6f0c89f45af688d34cd23e26d25de844af929d246e",
+      "report_sha256": "ea41a5ed98131a58dd70cca12729391091b7f1f0c4b95df79ec5f89ae84e9e90"
+    },
+    {
+      "case_id": "UP-08",
+      "workflow": "transfer",
+      "expected_fields": {
+        "application_route_action": "BLOCK",
+        "collector_health": "UNAVAILABLE",
+        "external_activity_assessment": "UNKNOWN"
+      },
+      "actual_assessments": {
+        "transfer_authorization": "DENY",
+        "transfer_observation": "UNKNOWN",
+        "coverage": "INCOMPLETE",
+        "binding_assessment": "UNRESOLVED",
+        "policy_binding": "CURRENT_CONTENT_BOUND",
+        "dispatch_action": "BLOCK_CONTROLLED_ROUTE",
+        "control_assessment": "UNKNOWN",
+        "remote_outcome": "UNKNOWN",
+        "retry_action": "NOT_ASSESSED",
+        "collector_health": "UNAVAILABLE",
+        "application_route_action": "BLOCK",
+        "external_activity_assessment": "UNKNOWN",
+        "proposed_transfer_authorization": "DENY",
+        "observed_action_authorization": "UNKNOWN"
+      },
+      "matched": true,
+      "differences": {},
+      "input_sha256": "3f91eb1a2723a490bc4efae46084f79cf6e314c6d2063336782bb7a0de4913a9",
+      "trust_sha256": "1cee80ebf0cc48e07a8961e2bfae147a1e26d213869c891f134560d9fc6ac7e3",
+      "report_sha256": "f7c866a82632c60b2459041477f59db38d463eb8a1e2df0f4086647ea89fa029"
+    },
+    {
+      "case_id": "ER-01",
+      "workflow": "erasure",
+      "expected_fields": {
+        "deletion_evidence": "REQUEST_ONLY",
+        "provider_completion": "UNKNOWN"
+      },
+      "actual_assessments": {
+        "deletion_evidence": "REQUEST_ONLY",
+        "provider_completion": "UNKNOWN",
+        "independent_verification": "NOT_ESTABLISHED",
+        "excluded_scope_outcome": "UNKNOWN",
+        "outside_scope_outcome": "UNKNOWN",
+        "target_completion": "UNKNOWN",
+        "receipt_applicability": "NOT_ESTABLISHED",
+        "binding_assessment": "MATCH",
+        "review_result": "NOT_ESTABLISHED"
+      },
+      "matched": true,
+      "differences": {},
+      "input_sha256": "7af1b3b4c8e601613b381ca5ed37526d38c19143b790abb8b35c782c3b17af8a",
+      "trust_sha256": "a5da1da6c644f1f6e69c78f1d81826fb336e9da1dcad2e25aeca068fa19f35e7",
+      "report_sha256": "8d66f9fb234d377d1f667910a4a1aa5c891565aecf6b589d9a8ec93a1a799f3c"
+    },
+    {
+      "case_id": "ER-02",
+      "workflow": "erasure",
+      "expected_fields": {
+        "deletion_evidence": "ACKNOWLEDGED",
+        "provider_completion": "UNKNOWN"
+      },
+      "actual_assessments": {
+        "deletion_evidence": "ACKNOWLEDGED",
+        "provider_completion": "UNKNOWN",
+        "independent_verification": "NOT_ESTABLISHED",
+        "excluded_scope_outcome": "UNKNOWN",
+        "outside_scope_outcome": "UNKNOWN",
+        "target_completion": "UNKNOWN",
+        "receipt_applicability": "MATCHED_WITHIN_DECLARED_SCOPE",
+        "binding_assessment": "MATCH",
+        "review_result": "NOT_ESTABLISHED"
+      },
+      "matched": true,
+      "differences": {},
+      "input_sha256": "d0739484da55dd0cc043baf9b51b70e50c921225fb94eed0f99084902b8b8035",
+      "trust_sha256": "a5da1da6c644f1f6e69c78f1d81826fb336e9da1dcad2e25aeca068fa19f35e7",
+      "report_sha256": "4ab76384b3959ffea8d16c1ff65aa83f725ab10b88b714b0a99c76c97c8ca815"
+    },
+    {
+      "case_id": "ER-03",
+      "workflow": "erasure",
+      "expected_fields": {
+        "deletion_evidence": "PROVIDER_ATTESTED_WITHIN_DECLARED_SCOPE",
+        "independent_verification": "NOT_ESTABLISHED",
+        "excluded_scope_outcome": "UNKNOWN"
+      },
+      "actual_assessments": {
+        "deletion_evidence": "PROVIDER_ATTESTED_WITHIN_DECLARED_SCOPE",
+        "provider_completion": "UNKNOWN",
+        "independent_verification": "NOT_ESTABLISHED",
+        "excluded_scope_outcome": "UNKNOWN",
+        "outside_scope_outcome": "UNKNOWN",
+        "target_completion": "UNKNOWN",
+        "receipt_applicability": "MATCHED_WITHIN_DECLARED_SCOPE",
+        "binding_assessment": "MATCH",
+        "review_result": "NOT_ESTABLISHED"
+      },
+      "matched": true,
+      "differences": {},
+      "input_sha256": "65268662a7694a124e068d419d3abe67c5eec5a2ac6eb670dc3a104c2eeddab1",
+      "trust_sha256": "a5da1da6c644f1f6e69c78f1d81826fb336e9da1dcad2e25aeca068fa19f35e7",
+      "report_sha256": "0c63ccadbbe6cd01808802aaef00ca7051ef5fc51905fb6885fb3adeb5cd6460"
+    },
+    {
+      "case_id": "ER-04",
+      "workflow": "erasure",
+      "expected_fields": {
+        "receipt_applicability": "UNUSABLE_FOR_TARGET_CLAIM",
+        "binding_assessment": "OBJECT_AND_TENANT_MISMATCH",
+        "target_completion": "UNKNOWN"
+      },
+      "actual_assessments": {
+        "deletion_evidence": "REQUEST_ONLY",
+        "provider_completion": "UNKNOWN",
+        "independent_verification": "NOT_ESTABLISHED",
+        "excluded_scope_outcome": "UNKNOWN",
+        "outside_scope_outcome": "UNKNOWN",
+        "target_completion": "UNKNOWN",
+        "receipt_applicability": "UNUSABLE_FOR_TARGET_CLAIM",
+        "binding_assessment": "OBJECT_AND_TENANT_MISMATCH",
+        "review_result": "NOT_ESTABLISHED"
+      },
+      "matched": true,
+      "differences": {},
+      "input_sha256": "d79b5236488a3a24c2ee04f90bc87eb292f0c7853ba0763999cd44a780b92b38",
+      "trust_sha256": "a5da1da6c644f1f6e69c78f1d81826fb336e9da1dcad2e25aeca068fa19f35e7",
+      "report_sha256": "5af0dc4178ffb73ed8d4ad0560abde69c80c4058586885f8418bec01b32a8a2a"
+    },
+    {
+      "case_id": "ER-05",
+      "workflow": "erasure",
+      "expected_fields": {
+        "deletion_evidence": "INDEPENDENTLY_REVIEWED_WITHIN_DECLARED_SCOPE",
+        "review_result": "SUPPORTED_WITHIN_REVIEW_METHOD_AND_LIMITATIONS",
+        "outside_scope_outcome": "UNKNOWN"
+      },
+      "actual_assessments": {
+        "deletion_evidence": "INDEPENDENTLY_REVIEWED_WITHIN_DECLARED_SCOPE",
+        "provider_completion": "UNKNOWN",
+        "independent_verification": "ESTABLISHED_WITHIN_REVIEW_METHOD_AND_SCOPE",
+        "excluded_scope_outcome": "UNKNOWN",
+        "outside_scope_outcome": "UNKNOWN",
+        "target_completion": "UNKNOWN",
+        "receipt_applicability": "MATCHED_WITHIN_DECLARED_SCOPE",
+        "binding_assessment": "MATCH",
+        "review_result": "SUPPORTED_WITHIN_REVIEW_METHOD_AND_LIMITATIONS"
+      },
+      "matched": true,
+      "differences": {},
+      "input_sha256": "126d0626a7460e7655b7cee981ebc7ef4ef81a7dfcdea9cd1192371b8a929dc2",
+      "trust_sha256": "a5da1da6c644f1f6e69c78f1d81826fb336e9da1dcad2e25aeca068fa19f35e7",
+      "report_sha256": "18fbeacd20b211791f548ae9a5f1676e7a23d7ef15d77c5ee6da879d12a41400"
+    },
+    {
+      "case_id": "PB-01",
+      "workflow": "publication",
+      "expected_fields": {
+        "publication_action": "BLOCK",
+        "policy_assessment": "PROHIBITED_USE",
+        "evidence_integrity": "ESTABLISHED_UNDER_GIVEN_ASSUMPTIONS"
+      },
+      "actual_assessments": {
+        "publication_action": "BLOCK",
+        "policy_assessment": "PROHIBITED_USE",
+        "policy_applicability": "BOUND_AND_EFFECTIVE_UNDER_GIVEN_ASSUMPTIONS",
+        "evidence_integrity": "ESTABLISHED_UNDER_GIVEN_ASSUMPTIONS",
+        "ai_involvement": "OBSERVED_UNDER_GIVEN_ASSUMPTIONS",
+        "coverage": "UNKNOWN",
+        "approval_applicability": "NOT_ESTABLISHED",
+        "disclosure_assessment": "REQUIRES_CONTENT_REVIEW",
+        "evidence_retention": "PRESERVE_PER_STAGE_POLICY_AND_REVISION_BINDINGS",
+        "evidence_basis": "INSTRUMENTED_OBSERVATION",
+        "declarant_attribution": "NOT_ESTABLISHED",
+        "activity_completeness": "UNKNOWN",
+        "disclosure_preparation": "RECORDED",
+        "dispatch_observation": "NOT_ESTABLISHED",
+        "delivery_status": "UNCONFIRMED",
+        "acceptance_status": "UNKNOWN"
+      },
+      "matched": true,
+      "differences": {},
+      "input_sha256": "cbe632cc04fec9ec3f80c8de4e36a9e4550594b33bfb61165853f3bbf0f73d3d",
+      "trust_sha256": "dce304c9f7cdd0cbf3081c34567bd953330f1eedeab62465c31f0769ca4c7066",
+      "report_sha256": "8b2443eddce016222f6b65fc39b2ec880d5d3e4855702588b814fa0975371667"
+    },
+    {
+      "case_id": "PB-02",
+      "workflow": "publication",
+      "expected_fields": {
+        "ai_involvement": "UNKNOWN",
+        "coverage": "INCOMPLETE",
+        "publication_action": "REVIEW"
+      },
+      "actual_assessments": {
+        "publication_action": "REVIEW",
+        "policy_assessment": "UNKNOWN",
+        "policy_applicability": "BOUND_AND_EFFECTIVE_UNDER_GIVEN_ASSUMPTIONS",
+        "evidence_integrity": "ESTABLISHED_UNDER_GIVEN_ASSUMPTIONS",
+        "ai_involvement": "UNKNOWN",
+        "coverage": "INCOMPLETE",
+        "approval_applicability": "NOT_ESTABLISHED",
+        "disclosure_assessment": "UNKNOWN",
+        "evidence_retention": "PRESERVE_PER_STAGE_POLICY_AND_REVISION_BINDINGS",
+        "evidence_basis": "UNKNOWN",
+        "declarant_attribution": "NOT_ESTABLISHED",
+        "activity_completeness": "UNKNOWN",
+        "disclosure_preparation": "NOT_ESTABLISHED",
+        "dispatch_observation": "NOT_ESTABLISHED",
+        "delivery_status": "UNCONFIRMED",
+        "acceptance_status": "UNKNOWN"
+      },
+      "matched": true,
+      "differences": {},
+      "input_sha256": "81896ecaeac3945e0a69c575ef43db73670f0c5083fb1cc19a7c81ea3512d7ba",
+      "trust_sha256": "d5d0895ffbd9076cff051dbbd5caeeffb29c355ad757c457bcd05133acb89ec3",
+      "report_sha256": "154a264d5fec21ef07384dad9104bd38f929eb4edb6f146db1ce7e1ce8f98059"
+    },
+    {
+      "case_id": "PB-03",
+      "workflow": "publication",
+      "expected_fields": {
+        "publication_action": "REVIEW",
+        "approval_applicability": "PRIOR_REVISION_ONLY"
+      },
+      "actual_assessments": {
+        "publication_action": "REVIEW",
+        "policy_assessment": "UNKNOWN",
+        "policy_applicability": "BOUND_AND_EFFECTIVE_UNDER_GIVEN_ASSUMPTIONS",
+        "evidence_integrity": "ESTABLISHED_UNDER_GIVEN_ASSUMPTIONS",
+        "ai_involvement": "UNKNOWN",
+        "coverage": "UNKNOWN",
+        "approval_applicability": "PRIOR_REVISION_ONLY",
+        "disclosure_assessment": "UNKNOWN",
+        "evidence_retention": "PRESERVE_PER_STAGE_POLICY_AND_REVISION_BINDINGS",
+        "evidence_basis": "UNKNOWN",
+        "declarant_attribution": "NOT_ESTABLISHED",
+        "activity_completeness": "UNKNOWN",
+        "disclosure_preparation": "NOT_ESTABLISHED",
+        "dispatch_observation": "NOT_ESTABLISHED",
+        "delivery_status": "UNCONFIRMED",
+        "acceptance_status": "UNKNOWN"
+      },
+      "matched": true,
+      "differences": {},
+      "input_sha256": "a36e6ba87e1b9b33db5daaabb2327629d71c3c6c50fe7069c0d81316114ba20d",
+      "trust_sha256": "b8523c110680f33ca5bb2f815d273f2aed0f7356978de1c15151828201266882",
+      "report_sha256": "8c230aa2c28fe814b7c0fa29a7fba9bd0129669b4c8a5653cea8eabab2b2d941"
+    },
+    {
+      "case_id": "PB-04",
+      "workflow": "publication",
+      "expected_fields": {
+        "disclosure_assessment": "INCOMPLETE",
+        "publication_action": "REVIEW"
+      },
+      "actual_assessments": {
+        "publication_action": "REVIEW",
+        "policy_assessment": "UNKNOWN",
+        "policy_applicability": "BOUND_AND_EFFECTIVE_UNDER_GIVEN_ASSUMPTIONS",
+        "evidence_integrity": "ESTABLISHED_UNDER_GIVEN_ASSUMPTIONS",
+        "ai_involvement": "OBSERVED_UNDER_GIVEN_ASSUMPTIONS",
+        "coverage": "UNKNOWN",
+        "approval_applicability": "NOT_ESTABLISHED",
+        "disclosure_assessment": "INCOMPLETE",
+        "evidence_retention": "PRESERVE_PER_STAGE_POLICY_AND_REVISION_BINDINGS",
+        "evidence_basis": "INSTRUMENTED_OBSERVATION",
+        "declarant_attribution": "NOT_ESTABLISHED",
+        "activity_completeness": "UNKNOWN",
+        "disclosure_preparation": "RECORDED",
+        "dispatch_observation": "NOT_ESTABLISHED",
+        "delivery_status": "UNCONFIRMED",
+        "acceptance_status": "UNKNOWN"
+      },
+      "matched": true,
+      "differences": {},
+      "input_sha256": "f16ece26bad698deadf54270d9f368314569437babf84864a029cfc95e96afec",
+      "trust_sha256": "6cb5a8955205f1c7abdc00b17d9ad3233cbd01c046891f0d01025c4bb73186a8",
+      "report_sha256": "61ae8e97ef47717504906f4c5d79084fc59d414cea9191667bb032978f7614aa"
+    },
+    {
+      "case_id": "PB-05",
+      "workflow": "publication",
+      "expected_fields": {
+        "publication_action": "REVIEW",
+        "policy_applicability": "UNRESOLVED",
+        "evidence_retention": "PRESERVE_PER_STAGE_POLICY_AND_REVISION_BINDINGS"
+      },
+      "actual_assessments": {
+        "publication_action": "REVIEW",
+        "policy_assessment": "UNKNOWN",
+        "policy_applicability": "UNRESOLVED",
+        "evidence_integrity": "ESTABLISHED_UNDER_GIVEN_ASSUMPTIONS",
+        "ai_involvement": "OBSERVED_UNDER_GIVEN_ASSUMPTIONS",
+        "coverage": "UNKNOWN",
+        "approval_applicability": "NOT_ESTABLISHED",
+        "disclosure_assessment": "UNKNOWN",
+        "evidence_retention": "PRESERVE_PER_STAGE_POLICY_AND_REVISION_BINDINGS",
+        "evidence_basis": "INSTRUMENTED_OBSERVATION",
+        "declarant_attribution": "NOT_ESTABLISHED",
+        "activity_completeness": "UNKNOWN",
+        "disclosure_preparation": "NOT_ESTABLISHED",
+        "dispatch_observation": "NOT_ESTABLISHED",
+        "delivery_status": "UNCONFIRMED",
+        "acceptance_status": "UNKNOWN"
+      },
+      "matched": true,
+      "differences": {},
+      "input_sha256": "d68cb7f6f31a4c404545f8acaf92b6e2811d23925700bc66a658aacafbc720b6",
+      "trust_sha256": "ab968340fa086b76098a7c7afd1ceb86a85b1070914b5e90071ff208904d6e8e",
+      "report_sha256": "90ea2d9189d50db8dcdb3fefeb6af6281b652bb5bd978a03e1c4e4405f60828c"
+    },
+    {
+      "case_id": "PB-06",
+      "workflow": "publication",
+      "expected_fields": {
+        "evidence_basis": "SELF_DECLARED",
+        "declarant_attribution": "ESTABLISHED_UNDER_GIVEN_ASSUMPTIONS",
+        "activity_completeness": "UNKNOWN"
+      },
+      "actual_assessments": {
+        "publication_action": "REVIEW",
+        "policy_assessment": "UNKNOWN",
+        "policy_applicability": "UNRESOLVED",
+        "evidence_integrity": "ESTABLISHED_UNDER_GIVEN_ASSUMPTIONS",
+        "ai_involvement": "UNKNOWN",
+        "coverage": "UNKNOWN",
+        "approval_applicability": "NOT_ESTABLISHED",
+        "disclosure_assessment": "UNKNOWN",
+        "evidence_retention": "PRESERVE_PER_STAGE_POLICY_AND_REVISION_BINDINGS",
+        "evidence_basis": "SELF_DECLARED",
+        "declarant_attribution": "ESTABLISHED_UNDER_GIVEN_ASSUMPTIONS",
+        "activity_completeness": "UNKNOWN",
+        "disclosure_preparation": "NOT_ESTABLISHED",
+        "dispatch_observation": "NOT_ESTABLISHED",
+        "delivery_status": "UNCONFIRMED",
+        "acceptance_status": "UNKNOWN"
+      },
+      "matched": true,
+      "differences": {},
+      "input_sha256": "6c9e1abcb5655533799e4151c04cbb690cd7e47ac94c27073d1f712c9eed9df2",
+      "trust_sha256": "d5d0895ffbd9076cff051dbbd5caeeffb29c355ad757c457bcd05133acb89ec3",
+      "report_sha256": "62495cf72bc2eddb99c247cde87a4c5a7264959fe3368f4680a085bef70c54de"
+    },
+    {
+      "case_id": "PB-07",
+      "workflow": "publication",
+      "expected_fields": {
+        "disclosure_preparation": "RECORDED",
+        "dispatch_observation": "ATTEMPT_RECORDED",
+        "delivery_status": "UNCONFIRMED",
+        "acceptance_status": "UNKNOWN"
+      },
+      "actual_assessments": {
+        "publication_action": "REVIEW",
+        "policy_assessment": "UNKNOWN",
+        "policy_applicability": "BOUND_AND_EFFECTIVE_UNDER_GIVEN_ASSUMPTIONS",
+        "evidence_integrity": "ESTABLISHED_UNDER_GIVEN_ASSUMPTIONS",
+        "ai_involvement": "UNKNOWN",
+        "coverage": "UNKNOWN",
+        "approval_applicability": "NOT_ESTABLISHED",
+        "disclosure_assessment": "REQUIRES_CONTENT_REVIEW",
+        "evidence_retention": "PRESERVE_PER_STAGE_POLICY_AND_REVISION_BINDINGS",
+        "evidence_basis": "UNKNOWN",
+        "declarant_attribution": "NOT_ESTABLISHED",
+        "activity_completeness": "UNKNOWN",
+        "disclosure_preparation": "RECORDED",
+        "dispatch_observation": "ATTEMPT_RECORDED",
+        "delivery_status": "UNCONFIRMED",
+        "acceptance_status": "UNKNOWN"
+      },
+      "matched": true,
+      "differences": {},
+      "input_sha256": "b763c889c19de8cac3bbacb85439d7770eaf4d7121d3ae00ca917401930440c4",
+      "trust_sha256": "6c0fc10e765e949040a131dd95e6abe659cd47598fff95196d14dbcad742823e",
+      "report_sha256": "44e4e386de1394847878701a45e8b7646ff3fa41fe25daaccb01365838ccc7c8"
+    },
+    {
+      "case_id": "IR-01",
+      "workflow": "incident_response",
+      "expected_fields": {
+        "request_delivery": "RECEIPT_ESTABLISHED_UNDER_GIVEN_ASSUMPTIONS",
+        "response_status": "NO_RESPONSE_OBSERVED_BY_CUTOFF",
+        "requested_facts": "UNKNOWN",
+        "reason_for_absent_response": "UNKNOWN"
+      },
+      "actual_assessments": {
+        "request_delivery": "RECEIPT_ESTABLISHED_UNDER_GIVEN_ASSUMPTIONS",
+        "response_status": "NO_RESPONSE_OBSERVED_BY_CUTOFF",
+        "requested_facts": "UNKNOWN",
+        "reason_for_absent_response": "UNKNOWN",
+        "containment_action": "UNKNOWN",
+        "preservation_status": "UNKNOWN",
+        "evidence_gap": "UNKNOWN",
+        "missing_history_and_downstream_activity": "UNKNOWN",
+        "capture_timing": "NOT_INDEPENDENTLY_ESTABLISHED",
+        "anchor_verification": "NOT_SUPPORTED",
+        "request_status": "REQUEST_RECORDED"
+      },
+      "matched": true,
+      "differences": {},
+      "input_sha256": "be8a1b097b35aa4f6d498103f84b697441ab537ca3ac9724605defb9274cd71c",
+      "trust_sha256": "343bd840e3086ce0f995afcec78c761e4b6e1e856b17502ae7c4142c3dd9e884",
+      "report_sha256": "d302000603fe263f933d49c5378c293de8acf4e108edcbc1d0d477a58c6a5698"
+    },
+    {
+      "case_id": "IR-02",
+      "workflow": "incident_response",
+      "expected_fields": {
+        "containment_action": "AUTHORIZED_HISTORY_REMOVAL_RECORDED",
+        "preservation_status": "MINIMUM_HISTORY_UNAVAILABLE",
+        "evidence_gap": "SOURCE_TIME_AND_UNAVAILABLE_MATERIAL_RECORDED",
+        "missing_history_and_downstream_activity": "UNKNOWN",
+        "capture_timing": "LATER_ANCHOR_DOES_NOT_ESTABLISH_CONTEMPORANEOUS_CAPTURE"
+      },
+      "actual_assessments": {
+        "request_delivery": "UNKNOWN",
+        "response_status": "UNKNOWN",
+        "requested_facts": "UNKNOWN",
+        "reason_for_absent_response": "UNKNOWN",
+        "containment_action": "AUTHORIZED_HISTORY_REMOVAL_RECORDED",
+        "preservation_status": "MINIMUM_HISTORY_UNAVAILABLE",
+        "evidence_gap": "SOURCE_TIME_AND_UNAVAILABLE_MATERIAL_RECORDED",
+        "missing_history_and_downstream_activity": "UNKNOWN",
+        "capture_timing": "LATER_ANCHOR_DOES_NOT_ESTABLISH_CONTEMPORANEOUS_CAPTURE",
+        "anchor_verification": "NOT_SUPPORTED"
+      },
+      "matched": true,
+      "differences": {},
+      "input_sha256": "37b8ffb74baf091965adad06156cec76a688d9c1ed98a04d307789183e8b7d50",
+      "trust_sha256": "343bd840e3086ce0f995afcec78c761e4b6e1e856b17502ae7c4142c3dd9e884",
+      "report_sha256": "a9f1da22411751a233ca1079cabb9b0ec437478736668fc68ae6264b2cf79ada"
+    },
+    {
+      "case_id": "XR-01",
+      "workflow": "cross_party",
+      "expected_fields": {
+        "receipt_attribution": "ESTABLISHED_UNDER_GIVEN_ASSUMPTIONS",
+        "evidence_basis": "AUTHENTICATED_IMPORTED_PROVIDER_STATEMENT",
+        "xref_assessment": "NOT_ESTABLISHED"
+      },
+      "actual_assessments": {
+        "receipt_attribution": "ESTABLISHED_UNDER_GIVEN_ASSUMPTIONS",
+        "evidence_basis": "AUTHENTICATED_IMPORTED_PROVIDER_STATEMENT",
+        "xref_assessment": "NOT_ESTABLISHED",
+        "anchor_verification": "NOT_SUPPORTED"
+      },
+      "matched": true,
+      "differences": {},
+      "input_sha256": "fa9d7856dcaf198686c3f4c8ba7a8a18e1e0f50fd2cc8f82a12853b8ea6ffee0",
+      "trust_sha256": "18bbd90e601f7890c5baa01feaa2eef475048f39dbd525003b10fae261c7e6bc",
+      "report_sha256": "3355d7c47bec4d4efdcff810eccc31cd0dfde870b151a84c994be98d670e87bb"
+    }
+  ]
+}

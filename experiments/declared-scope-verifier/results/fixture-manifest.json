@@ -1,0 +1,86 @@
+[
+  {
+    "case": "01",
+    "evaluation_time": 2000000400,
+    "evidence_digest": "140beb8adfd5e94825b1275bceb166437d462271896eca53b9765bdf896740ac",
+    "trust_digest": "4bf5834dfff29d1d4b8440cb3be963f6ef10d06abfa31fcecaf5e633bf0e4558"
+  },
+  {
+    "case": "02",
+    "evaluation_time": 2000000400,
+    "evidence_digest": "cfb2142f9a77f6268bb4742230fa315708ed6a06d424ea98d56f829b804bca7b",
+    "trust_digest": "4bf5834dfff29d1d4b8440cb3be963f6ef10d06abfa31fcecaf5e633bf0e4558"
+  },
+  {
+    "case": "03",
+    "evaluation_time": 2000000400,
+    "evidence_digest": "42ee31caf892dedb0bb3636080ded258e40e2f6de4ceba9ddc59db6a5c6ee0ae",
+    "trust_digest": "4bf5834dfff29d1d4b8440cb3be963f6ef10d06abfa31fcecaf5e633bf0e4558"
+  },
+  {
+    "case": "04",
+    "evaluation_time": 2000000400,
+    "evidence_digest": "bf6facf17397e3dc34f3696f76ca850c40f56cfb25b0d6e92be3e94d94461e7b",
+    "trust_digest": "4bf5834dfff29d1d4b8440cb3be963f6ef10d06abfa31fcecaf5e633bf0e4558"
+  },
+  {
+    "case": "05",
+    "evaluation_time": 2000000400,
+    "evidence_digest": "a01e7da0c02261eb4c523751a9cdf7d25c8937a3123578cdcdbfe5a047a95a12",
+    "trust_digest": "4bf5834dfff29d1d4b8440cb3be963f6ef10d06abfa31fcecaf5e633bf0e4558"
+  },
+  {
+    "case": "06",
+    "evaluation_time": 2000000400,
+    "evidence_digest": "41126bbf746d944eba46f0e8c8cce26ce39f9a1f53e7ccb7417dabf645b81249",
+    "trust_digest": "072223acb94365e5b77e519f1016913f830e2ae2bbe5b299282503ee0ef4ef6b"
+  },
+  {
+    "case": "07",
+    "evaluation_time": 2000000400,
+    "evidence_digest": "f2e00ac55829bd3aafb085e63d03e1d512e2d230a08d616e0b4b5277a16cf9ba",
+    "trust_digest": "072223acb94365e5b77e519f1016913f830e2ae2bbe5b299282503ee0ef4ef6b"
+  },
+  {
+    "case": "08",
+    "evaluation_time": 2000000400,
+    "evidence_digest": "7ef4d66b4319bb4552ee0f007d783d288cdc294697061f36430112d4a91dbdc1",
+    "trust_digest": "4bf5834dfff29d1d4b8440cb3be963f6ef10d06abfa31fcecaf5e633bf0e4558"
+  },
+  {
+    "case": "09",
+    "evaluation_time": 2000000400,
+    "evidence_digest": "15c611f5f24eced799ab5301ae79330cc3cdc3fa35ba00c31a3cdd3aa3f68946",
+    "trust_digest": "9858bc93106d15a6d5c5fd5206299af81dc5db1ef06990bf2bbec019ad460f7c"
+  },
+  {
+    "case": "10",
+    "evaluation_time": 2000000400,
+    "evidence_digest": "c7fc88ef91bf8d5241e5dcf9c9c1e7d1959a9c5864276c58d9d4362e80fa6fb2",
+    "trust_digest": "9973fdff6452c0f764bd5efaf556eba1265a3dda49286caa1dca9f09ac2e2c16"
+  },
+  {
+    "case": "11",
+    "evaluation_time": 2000000400,
+    "evidence_digest": "53deb820f4e0b78bf92d07cb9cef84dfff827b89f13bbc80100ce85307e5fcb1",
+    "trust_digest": "4bf5834dfff29d1d4b8440cb3be963f6ef10d06abfa31fcecaf5e633bf0e4558"
+  },
+  {
+    "case": "12",
+    "evaluation_time": 2000000400,
+    "evidence_digest": "d61afe0626f387174927bf1f6d676b5d336d7eff579af1557f060c88cb5bc514",
+    "trust_digest": "4bf5834dfff29d1d4b8440cb3be963f6ef10d06abfa31fcecaf5e633bf0e4558"
+  },
+  {
+    "case": "13",
+    "evaluation_time": 2000000400,
+    "evidence_digest": "1971a66014b4eaa9cc3090bd9f4b60dd37613fd5ebf4b4b5611512e8ccdd90c8",
+    "trust_digest": "4bf5834dfff29d1d4b8440cb3be963f6ef10d06abfa31fcecaf5e633bf0e4558"
+  },
+  {
+    "case": "14",
+    "evaluation_time": 2000000400,
+    "evidence_digest": "2bedac418dbeb542fd46de5a90fade35f20dd33cae83822a5abda7b70b3883ff",
+    "trust_digest": "4bf5834dfff29d1d4b8440cb3be963f6ef10d06abfa31fcecaf5e633bf0e4558"
+  }
+]

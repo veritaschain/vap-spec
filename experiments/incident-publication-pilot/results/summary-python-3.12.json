@@ -1,0 +1,530 @@
+{
+  "format": "incident-publication-summary/0.1",
+  "implementation_version": "0.1.0",
+  "synthetic": true,
+  "execution": "ACTUAL_LOCAL_FILESYSTEM",
+  "recorded_at": "2026-10-30T02:10:06.270998Z",
+  "source_files": {
+    "../../.github/workflows/incident-publication-pilot.yml": "39fdccf802e2a963beef12def6f7c144c073635f2bf18fb794c3f6d012203bbb",
+    "../incident-evidence-assessor/incident_assessor/__init__.py": "24ef8b3d35cb02bc85303fc6932a7d9af438c878fd6da427d38c8df295acec72",
+    "../incident-evidence-assessor/incident_assessor/__main__.py": "2add1793b9a1c6db77fab17e592ded6ad44ba230c036e528e6d1b1356422ef7e",
+    "../incident-evidence-assessor/incident_assessor/assess.py": "3e2890d7b6c417e4c10f4c57473de79f5f5b9fb410fcc61b0be905a6bedc8dc0",
+    "../incident-evidence-assessor/incident_assessor/cross_party.py": "f7922f8b457efddb5df13efcbd7095ff81c5c63b429e9d6dbe21636342c479b3",
+    "../incident-evidence-assessor/incident_assessor/erasure.py": "953f1772210059ffe9a7a39f6f00d8bf709c063020e9aa200d4610b9297d0281",
+    "../incident-evidence-assessor/incident_assessor/evidence.py": "a129a6b17a58993d454efae188f16ae5ec24b95fd8335fcb9d63c2e10ce7494c",
+    "../incident-evidence-assessor/incident_assessor/incident_response.py": "c4032159f6d2642307e6eee5b2c570454a7d3ad34eb1259c3f11a8abe8140717",
+    "../incident-evidence-assessor/incident_assessor/model.py": "0a6c26c54d9209874941fadbdc02b5e524deeebf24c9d3cedf5ad99e0be76769",
+    "../incident-evidence-assessor/incident_assessor/publication.py": "af246df6686402de4288f49ec8bc4c228a04c1ee915a2e108338eebbdd55ba99",
+    "../incident-evidence-assessor/incident_assessor/transfer.py": "3f3888cb6797eec5d82bfebd87626cbb20fee5960a16f3ea62477dc3e3f018a8",
+    "../incident-evidence-assessor/requirements.txt": "4e8db0811dba93c1aee12da58f14aa31f96051d04783f156ea8fb15391f821d6",
+    "acceptance.json": "d9165e7e1fd1cc518672c3d67eea50ec07c4ec027276c5e36186664443eedc2e",
+    "publication_pilot/__init__.py": "2bd940af4b4e5fa33151643624c145e19621456a0e3caf9d5304f0b4116fa9f8",
+    "publication_pilot/__main__.py": "108b0414f9c83e924a6495fbe9a6e47fb64a5f9017f8674ab341cd97512b630a",
+    "publication_pilot/editor.py": "5d8510973a3cde50d5a8e0e6caec0df4ecfb74a38493f814a6f612f3c1949f5f",
+    "publication_pilot/gate.py": "ea620f02ca8f5e5f6df06f8cdd88f79574ba2713972205c81949efa55569f858",
+    "publication_pilot/harness.py": "a5e2f50b85dcc7a1e882c34387c9fd0484a04f385ee1af5198fef60da5109d52",
+    "publication_pilot/protocol.py": "21c00469acc0cc58d32cd412c7bc97b44cc8178f11f4c3bd8ef9656ce1d7797c",
+    "publication_pilot/store.py": "59e978af93a6372cace8d32be6cd6c80814ada1429011d3a6abe5efdeb4496ff",
+    "publication_pilot/suite.py": "c7f0782b4d0303523c9b160d6e72180a62ac4b7f9b022a5169659984582906c3",
+    "requirements.txt": "7f68b28a497f02318887f5fb6bc4bfbbc7a73ae7ca290e21e2af28d5a0842299",
+    "run_tests.py": "91d9cb5f790858d2dff8c5a66e5c487eb56142a4086507a83a06bda7ec044a5f",
+    "tests/test_boundary.py": "968195ef49f9481d8def135df93744473a4f0c0275f4955119e9cdef6b68e8b3",
+    "tests/test_editor.py": "7d066d121990c36ee53db36d5c9c3557873e481504ab2330a640d022de34accc",
+    "tests/test_store.py": "c1c92266b9e7048ada0cbe708bf4b80df5aa1ceb9ab0221f7d24187298473a5b",
+    "tests/test_suite.py": "0813fb10d0bce6074844999d3c365d1cc23f71fdacbe8782f9e3b3fe8092107a"
+  },
+  "source_sha256": "78386924abf2ac6819f653d7c282972b86e58ac1379751c213bca1e5334c639c",
+  "toolchain": {
+    "python": "3.12.15 (main, Oct  1 2026, 02:35:59) [GCC 13.3.0]",
+    "platform": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+    "cryptography": "50.0.2",
+    "rfc8785": "0.1.4"
+  },
+  "total": 18,
+  "matched": 18,
+  "all_expectations_matched": true,
+  "independent_reproduction": "NOT_ESTABLISHED",
+  "external_publication": "NOT_PERFORMED",
+  "real_ai_service_called": false,
+  "all_route_prevention_established": false,
+  "results": [
+    {
+      "case_id": "LP-01",
+      "title": "Exact approved final HTML is materialized and measured",
+      "expected": {
+        "states": [
+          "LOCAL_OUTPUT_CONFIRMED"
+        ],
+        "publication_attempts": 1,
+        "unknown_attempt_observations": 0,
+        "visible_count": 1,
+        "visible_bytes_match_candidate": true
+      },
+      "actual": {
+        "states": [
+          "LOCAL_OUTPUT_CONFIRMED"
+        ],
+        "publication_attempts": 1,
+        "unknown_attempt_observations": 0,
+        "visible_count": 1,
+        "visible_bytes_match_candidate": true
+      },
+      "matched": true,
+      "differences": {},
+      "export_sha256": "df89f468ffdefaf45404839c67409165105b9db1f9dfdf8cf1c7434cad1e92e6"
+    },
+    {
+      "case_id": "LP-02",
+      "title": "Changed article cannot reuse the earlier approval",
+      "expected": {
+        "states": [
+          "BLOCKED_WITHOUT_PUBLICATION"
+        ],
+        "publication_attempts": 0,
+        "unknown_attempt_observations": 0,
+        "visible_count": 0,
+        "visible_bytes_match_candidate": false
+      },
+      "actual": {
+        "states": [
+          "BLOCKED_WITHOUT_PUBLICATION"
+        ],
+        "publication_attempts": 0,
+        "unknown_attempt_observations": 0,
+        "visible_count": 0,
+        "visible_bytes_match_candidate": false
+      },
+      "matched": true,
+      "differences": {},
+      "export_sha256": "52656c8dd104a96a7fe5b8d03b911b92b0c0aac66e45850ec94b43db69f06dd9"
+    },
+    {
+      "case_id": "LP-03",
+      "title": "Removed disclosure cannot reuse signed preparation evidence",
+      "expected": {
+        "states": [
+          "BLOCKED_WITHOUT_PUBLICATION"
+        ],
+        "publication_attempts": 0,
+        "unknown_attempt_observations": 0,
+        "visible_count": 0,
+        "visible_bytes_match_candidate": false
+      },
+      "actual": {
+        "states": [
+          "BLOCKED_WITHOUT_PUBLICATION"
+        ],
+        "publication_attempts": 0,
+        "unknown_attempt_observations": 0,
+        "visible_count": 0,
+        "visible_bytes_match_candidate": false
+      },
+      "matched": true,
+      "differences": {},
+      "export_sha256": "0a350a110a1d7a761291c56facbb542c89370030316534837a74f2873768278d"
+    },
+    {
+      "case_id": "LP-04",
+      "title": "A valid policy package for another venue is rejected",
+      "expected": {
+        "states": [
+          "BLOCKED_WITHOUT_PUBLICATION"
+        ],
+        "publication_attempts": 0,
+        "unknown_attempt_observations": 0,
+        "visible_count": 0,
+        "visible_bytes_match_candidate": false
+      },
+      "actual": {
+        "states": [
+          "BLOCKED_WITHOUT_PUBLICATION"
+        ],
+        "publication_attempts": 0,
+        "unknown_attempt_observations": 0,
+        "visible_count": 0,
+        "visible_bytes_match_candidate": false
+      },
+      "matched": true,
+      "differences": {},
+      "export_sha256": "44fbdd5fa6220ffc415bab23f5dc8b821b22fb3fe117d68e8b8488a9d945f5f2"
+    },
+    {
+      "case_id": "LP-05",
+      "title": "Disclosure and reviewer approval do not override prohibited use",
+      "expected": {
+        "states": [
+          "BLOCKED_WITHOUT_PUBLICATION"
+        ],
+        "publication_attempts": 0,
+        "unknown_attempt_observations": 0,
+        "visible_count": 0,
+        "visible_bytes_match_candidate": false
+      },
+      "actual": {
+        "states": [
+          "BLOCKED_WITHOUT_PUBLICATION"
+        ],
+        "publication_attempts": 0,
+        "unknown_attempt_observations": 0,
+        "visible_count": 0,
+        "visible_bytes_match_candidate": false
+      },
+      "matched": true,
+      "differences": {},
+      "export_sha256": "5b95e24998df2aed3a030dda60ae501cdb9290012669dc8486a4b39679fa508f"
+    },
+    {
+      "case_id": "LP-06",
+      "title": "Missing explicit reviewer authorization prevents output",
+      "expected": {
+        "states": [
+          "BLOCKED_WITHOUT_PUBLICATION"
+        ],
+        "publication_attempts": 0,
+        "unknown_attempt_observations": 0,
+        "visible_count": 0,
+        "visible_bytes_match_candidate": false
+      },
+      "actual": {
+        "states": [
+          "BLOCKED_WITHOUT_PUBLICATION"
+        ],
+        "publication_attempts": 0,
+        "unknown_attempt_observations": 0,
+        "visible_count": 0,
+        "visible_bytes_match_candidate": false
+      },
+      "matched": true,
+      "differences": {},
+      "export_sha256": "2e540bc6f9f370da67697eccb497a248228e13ab6f366ef0e555d966e9fd0d4a"
+    },
+    {
+      "case_id": "LP-07",
+      "title": "Untrusted reviewer signature prevents output",
+      "expected": {
+        "states": [
+          "BLOCKED_WITHOUT_PUBLICATION"
+        ],
+        "publication_attempts": 0,
+        "unknown_attempt_observations": 0,
+        "visible_count": 0,
+        "visible_bytes_match_candidate": false
+      },
+      "actual": {
+        "states": [
+          "BLOCKED_WITHOUT_PUBLICATION"
+        ],
+        "publication_attempts": 0,
+        "unknown_attempt_observations": 0,
+        "visible_count": 0,
+        "visible_bytes_match_candidate": false
+      },
+      "matched": true,
+      "differences": {},
+      "export_sha256": "223ceccd23d6e4cb7ea46ffba0a4e87d685fa931346269193ecc2ca212809bd9"
+    },
+    {
+      "case_id": "LP-08",
+      "title": "Approval expires during an actual pre-link pause",
+      "expected": {
+        "states": [
+          "BLOCKED_WITHOUT_PUBLICATION"
+        ],
+        "publication_attempts": 0,
+        "unknown_attempt_observations": 0,
+        "visible_count": 0,
+        "visible_bytes_match_candidate": false
+      },
+      "actual": {
+        "states": [
+          "BLOCKED_WITHOUT_PUBLICATION"
+        ],
+        "publication_attempts": 0,
+        "unknown_attempt_observations": 0,
+        "visible_count": 0,
+        "visible_bytes_match_candidate": false
+      },
+      "matched": true,
+      "differences": {},
+      "export_sha256": "193accfcc80cab3024655e7c562a1e8ef17de1b3efa8356e9daef5cb7db366a8"
+    },
+    {
+      "case_id": "LP-09",
+      "title": "Unknown imported origin remains unknown after approved local export",
+      "expected": {
+        "states": [
+          "LOCAL_OUTPUT_CONFIRMED"
+        ],
+        "publication_attempts": 1,
+        "unknown_attempt_observations": 0,
+        "visible_count": 1,
+        "visible_bytes_match_candidate": true,
+        "core_ai_involvement": "UNKNOWN",
+        "core_activity_completeness": "UNKNOWN",
+        "declared_activities": []
+      },
+      "actual": {
+        "states": [
+          "LOCAL_OUTPUT_CONFIRMED"
+        ],
+        "publication_attempts": 1,
+        "unknown_attempt_observations": 0,
+        "visible_count": 1,
+        "visible_bytes_match_candidate": true,
+        "core_ai_involvement": "UNKNOWN",
+        "core_activity_completeness": "UNKNOWN",
+        "declared_activities": []
+      },
+      "matched": true,
+      "differences": {},
+      "export_sha256": "11eb326023cee09ad8789129d98152aa2090491ca30a687c5dda1f1682acc73c"
+    },
+    {
+      "case_id": "LP-10",
+      "title": "Replaced synthetic AI operation remains history without exact final adoption",
+      "expected": {
+        "states": [
+          "LOCAL_OUTPUT_CONFIRMED"
+        ],
+        "publication_attempts": 1,
+        "unknown_attempt_observations": 0,
+        "visible_count": 1,
+        "visible_bytes_match_candidate": true,
+        "core_ai_involvement": "UNKNOWN",
+        "core_activity_completeness": "UNKNOWN",
+        "declared_activities": [
+          "generation"
+        ]
+      },
+      "actual": {
+        "states": [
+          "LOCAL_OUTPUT_CONFIRMED"
+        ],
+        "publication_attempts": 1,
+        "unknown_attempt_observations": 0,
+        "visible_count": 1,
+        "visible_bytes_match_candidate": true,
+        "core_ai_involvement": "UNKNOWN",
+        "core_activity_completeness": "UNKNOWN",
+        "declared_activities": [
+          "generation"
+        ]
+      },
+      "matched": true,
+      "differences": {},
+      "export_sha256": "331fc043fca446327a397aea62521017c21f0fd1c03eb6e43dd230eac7d125d1"
+    },
+    {
+      "case_id": "LP-11",
+      "title": "Truncated signed edit history cannot become a valid candidate",
+      "expected": {
+        "states": [
+          "BLOCKED_WITHOUT_PUBLICATION"
+        ],
+        "publication_attempts": 0,
+        "unknown_attempt_observations": 0,
+        "visible_count": 0,
+        "visible_bytes_match_candidate": false
+      },
+      "actual": {
+        "states": [
+          "BLOCKED_WITHOUT_PUBLICATION"
+        ],
+        "publication_attempts": 0,
+        "unknown_attempt_observations": 0,
+        "visible_count": 0,
+        "visible_bytes_match_candidate": false
+      },
+      "matched": true,
+      "differences": {},
+      "export_sha256": "6da1acff6573cb3f576a0a0df8cf6965fc10b06796925c5e6bfdc3f2856e6541"
+    },
+    {
+      "case_id": "LP-12",
+      "title": "Unresolved policy interpretation prevents output",
+      "expected": {
+        "states": [
+          "BLOCKED_WITHOUT_PUBLICATION"
+        ],
+        "publication_attempts": 0,
+        "unknown_attempt_observations": 0,
+        "visible_count": 0,
+        "visible_bytes_match_candidate": false
+      },
+      "actual": {
+        "states": [
+          "BLOCKED_WITHOUT_PUBLICATION"
+        ],
+        "publication_attempts": 0,
+        "unknown_attempt_observations": 0,
+        "visible_count": 0,
+        "visible_bytes_match_candidate": false
+      },
+      "matched": true,
+      "differences": {},
+      "export_sha256": "609b0aeddc2f08c1303a996526c9f8f18776c6b16997a19412020ced0057ecc8"
+    },
+    {
+      "case_id": "LP-13",
+      "title": "Repeated identical request does not publish again",
+      "expected": {
+        "states": [
+          "LOCAL_OUTPUT_CONFIRMED",
+          "REPLAY_NO_PUBLICATION"
+        ],
+        "publication_attempts": 1,
+        "unknown_attempt_observations": 0,
+        "visible_count": 1,
+        "visible_bytes_match_candidate": true
+      },
+      "actual": {
+        "states": [
+          "LOCAL_OUTPUT_CONFIRMED",
+          "REPLAY_NO_PUBLICATION"
+        ],
+        "publication_attempts": 1,
+        "unknown_attempt_observations": 0,
+        "visible_count": 1,
+        "visible_bytes_match_candidate": true
+      },
+      "matched": true,
+      "differences": {},
+      "export_sha256": "d3b194272e0b04d03f3c6062278b23e9c1f3ec164f2050be63ff4fc3976e9fd2"
+    },
+    {
+      "case_id": "LP-14",
+      "title": "Result persistence failure leaves visible output unresolved and never retries",
+      "expected": {
+        "states": [
+          "OUTCOME_UNKNOWN",
+          "REPLAY_NO_PUBLICATION"
+        ],
+        "publication_attempts": 1,
+        "unknown_attempt_observations": 0,
+        "visible_count": 1,
+        "visible_bytes_match_candidate": true
+      },
+      "actual": {
+        "states": [
+          "OUTCOME_UNKNOWN",
+          "REPLAY_NO_PUBLICATION"
+        ],
+        "publication_attempts": 1,
+        "unknown_attempt_observations": 0,
+        "visible_count": 1,
+        "visible_bytes_match_candidate": true
+      },
+      "matched": true,
+      "differences": {},
+      "export_sha256": "5adbe117ce41f9eda73e769443ad95f28215ddb7c1421e289339c3ca028fbab9"
+    },
+    {
+      "case_id": "LP-15",
+      "title": "Concurrent identical requests consume one publication claim",
+      "expected": {
+        "states": [
+          "LOCAL_OUTPUT_CONFIRMED",
+          "REPLAY_NO_PUBLICATION"
+        ],
+        "publication_attempts": 1,
+        "unknown_attempt_observations": 0,
+        "visible_count": 1,
+        "visible_bytes_match_candidate": true
+      },
+      "actual": {
+        "states": [
+          "LOCAL_OUTPUT_CONFIRMED",
+          "REPLAY_NO_PUBLICATION"
+        ],
+        "publication_attempts": 1,
+        "unknown_attempt_observations": 0,
+        "visible_count": 1,
+        "visible_bytes_match_candidate": true
+      },
+      "matched": true,
+      "differences": {},
+      "export_sha256": "4f93a498b4c4832b47335402dcd556e4d54df540854916cb02c16bc078d39806"
+    },
+    {
+      "case_id": "LP-16",
+      "title": "Outside-gate direct write demonstrates incomplete route control",
+      "expected": {
+        "states": [
+          "BLOCKED_WITHOUT_PUBLICATION"
+        ],
+        "publication_attempts": 0,
+        "unknown_attempt_observations": 0,
+        "visible_count": 1,
+        "visible_bytes_match_candidate": true,
+        "outside_gate_write_observed": true,
+        "all_route_prevention_established": false
+      },
+      "actual": {
+        "states": [
+          "BLOCKED_WITHOUT_PUBLICATION"
+        ],
+        "publication_attempts": 0,
+        "unknown_attempt_observations": 0,
+        "visible_count": 1,
+        "visible_bytes_match_candidate": true,
+        "outside_gate_write_observed": true,
+        "all_route_prevention_established": false
+      },
+      "matched": true,
+      "differences": {},
+      "export_sha256": "4138b40829ceb8111ce9dcda3e3ee02e30f69bb239844db4685bab6dca58f919"
+    },
+    {
+      "case_id": "LP-17",
+      "title": "Structured disclosure omitting recorded assistance prevents output",
+      "expected": {
+        "states": [
+          "BLOCKED_WITHOUT_PUBLICATION"
+        ],
+        "publication_attempts": 0,
+        "unknown_attempt_observations": 0,
+        "visible_count": 0,
+        "visible_bytes_match_candidate": false
+      },
+      "actual": {
+        "states": [
+          "BLOCKED_WITHOUT_PUBLICATION"
+        ],
+        "publication_attempts": 0,
+        "unknown_attempt_observations": 0,
+        "visible_count": 0,
+        "visible_bytes_match_candidate": false
+      },
+      "matched": true,
+      "differences": {},
+      "export_sha256": "d97a378927ac77ac8117cd32a4db1ce2101bfdf5434266f3696c00a3030d57bd"
+    },
+    {
+      "case_id": "LP-18",
+      "title": "Reusing a request ID for a newly approved different artifact conflicts",
+      "expected": {
+        "states": [
+          "LOCAL_OUTPUT_CONFIRMED",
+          "REQUEST_ID_CONFLICT"
+        ],
+        "publication_attempts": 1,
+        "unknown_attempt_observations": 0,
+        "visible_count": 1,
+        "visible_bytes_match_candidate": true
+      },
+      "actual": {
+        "states": [
+          "LOCAL_OUTPUT_CONFIRMED",
+          "REQUEST_ID_CONFLICT"
+        ],
+        "publication_attempts": 1,
+        "unknown_attempt_observations": 0,
+        "visible_count": 1,
+        "visible_bytes_match_candidate": true
+      },
+      "matched": true,
+      "differences": {},
+      "export_sha256": "b30fccb7007c2f9ab9c56e54c761a7fc580b44ebf09acf0f3cf507b6c85af892"
+    }
+  ]
+}

@@ -1,2 +1,4 @@
-cryptography>=42,<47
-pytest>=8,<9
+# Runtime verifier dependency. Deterministic synthetic test keys are public.
+cryptography==50.0.2
+# Test-only structural validation of the published Draft 2020-12 schemas.
+jsonschema==4.25.1

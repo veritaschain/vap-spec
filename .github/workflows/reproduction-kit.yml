@@ -1,0 +1,58 @@
+name: Independent reproduction kit
+
+on:
+  pull_request:
+    paths:
+      - 'reproduction/os-isolation/**'
+      - '.github/workflows/reproduction-kit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONDONTWRITEBYTECODE: '1'
+
+jobs:
+  unpack-and-reproduce:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          path: authoring
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: c8ccf972196a16d11429a478f4918a08fe27bb73
+          path: source
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.12'
+      - name: Verify subject before installing its dependencies
+        run: python authoring/reproduction/os-isolation/reproduce.py verify-source --source "$GITHUB_WORKSPACE/source"
+      - run: python -m pip install -r source/experiments/os-isolated-gate/requirements.txt
+      - name: Package regressions
+        run: python -W error::ResourceWarning -m unittest discover -s authoring/reproduction/os-isolation/tests -v
+      - name: Build distribution and verify extracted checksums
+        run: |
+          mkdir -p "$RUNNER_TEMP/distribution" "$RUNNER_TEMP/unpacked"
+          python authoring/reproduction/os-isolation/reproduce.py pack --output "$RUNNER_TEMP/distribution/kit.zip"
+          cd "$RUNNER_TEMP/distribution"
+          sha256sum kit.zip > kit.zip.sha256
+          python -m zipfile -e kit.zip "$RUNNER_TEMP/unpacked"
+          cd "$RUNNER_TEMP/unpacked/vap-os-isolation-kit"
+          sha256sum -c SHA256SUMS
+      - name: Run the extracted kit against the separately checked-out subject
+        run: |
+          python "$RUNNER_TEMP/unpacked/vap-os-isolation-kit/reproduce.py" run --source "$GITHUB_WORKSPACE/source" --output "$RUNNER_TEMP/reproduction-results"
+          python "$RUNNER_TEMP/unpacked/vap-os-isolation-kit/reproduce.py" check --source "$GITHUB_WORKSPACE/source" --output "$RUNNER_TEMP/reproduction-results"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: reproduction-kit-and-internal-validation
+          path: |
+            ${{ runner.temp }}/distribution/
+            ${{ runner.temp }}/reproduction-results/
+          if-no-files-found: error
+          retention-days: 30

@@ -1,0 +1,143 @@
+{
+  "canonicalization": "DEMO-ASCII-SAFEINT-JSON-v1",
+  "contract_id": "vap-interop-demo/0.2.0",
+  "demo_anchor_receipt": {
+    "event_count": 4,
+    "issued_at": "2026-10-30T12:00:13Z",
+    "key_id": "demo-anchor-key-1",
+    "merkle_root": "917975d46e43f8930970854cc35793089a42f76cced79c474a5fd9a65c9bed5e",
+    "record_type": "DEMO_ANCHOR_RECEIPT",
+    "scope_commitment": "302daef0d10b1f35a012e6bdefa59416561c4a1a118f19401d41e4a65989541b",
+    "signature": "2AUjUY/ClI9iVQUssFgJBd3fVi5kpBPKHVuq9+Ve29hSp8yq1et4dZKOyHzscAo/JuWhv3r7yD3Pv0ORYSYYDA=="
+  },
+  "events": [
+    {
+      "chain_id": "demo-claim-triage",
+      "contract_id": "vap-interop-demo/0.2.0",
+      "event_id": "event-001",
+      "event_type": "AI_DECISION_ATTEMPT",
+      "issuer_id": "synthetic-demo-producer",
+      "key_id": "demo-producer-key-1",
+      "model_id": "fictional-triage-model/1",
+      "payload_hash": "5b7fd7673f36118fe225c1d274a99b835cd2206eb2b47377adf5e119a2ed61aa",
+      "policy_id": "synthetic-triage-policy/1",
+      "provenance": {
+        "action": "claim-triage",
+        "actor": "synthetic-claim-service",
+        "attempt_id": "attempt-001",
+        "context": {
+          "jurisdiction": "FICTIONAL-DEMO"
+        },
+        "input_hash": "4b58084a3c90c7129520ecbdc381d1f987bb56d90b036da77b3b17a6a7dbceeb"
+      },
+      "sequence_no": 1,
+      "signature": "iKc/XsZs8LPWClIVjB9lHaEFJSAX3Y1zy9reh+yvIy7V0HT+9UFfEoGsZcx/dPulVJmfNDnRrh1YTTi6SqrICw==",
+      "timestamp": "2026-10-30T12:00:00Z"
+    },
+    {
+      "chain_id": "demo-claim-triage",
+      "contract_id": "vap-interop-demo/0.2.0",
+      "event_id": "event-002",
+      "event_type": "AI_DECISION_OUTCOME",
+      "issuer_id": "synthetic-demo-producer",
+      "key_id": "demo-producer-key-1",
+      "model_id": "fictional-triage-model/1",
+      "payload_hash": "bf387ca88b497b2e53e8323afc66b8d607fecb0b5f9e26606bbf34900169ebcf",
+      "policy_id": "synthetic-triage-policy/1",
+      "provenance": {
+        "action": "claim-triage",
+        "actor": "synthetic-claim-service",
+        "attempt_id": "attempt-001",
+        "human_review_required": true,
+        "outcome": "DENIED_AUTOMATION",
+        "reason_code": "LOW_CONFIDENCE"
+      },
+      "sequence_no": 2,
+      "signature": "Dyiagw0RqfTbnr5C0q3mQ9UMq7pzrIJKZUkKAA4FPZCyqEKgD/jcbjpJtukUU5Wqb57/UZ0vvxczDV17O1yFDw==",
+      "timestamp": "2026-10-30T12:00:01Z"
+    },
+    {
+      "chain_id": "demo-claim-triage",
+      "contract_id": "vap-interop-demo/0.2.0",
+      "event_id": "event-003",
+      "event_type": "AI_DECISION_ATTEMPT",
+      "issuer_id": "synthetic-demo-producer",
+      "key_id": "demo-producer-key-1",
+      "model_id": "fictional-triage-model/1",
+      "payload_hash": "0c6bc885f28f7266bc776ec56aa7ef31d6ae61bfc4a1615adc98217cc0173147",
+      "policy_id": "synthetic-triage-policy/1",
+      "provenance": {
+        "action": "claim-triage",
+        "actor": "synthetic-claim-service",
+        "attempt_id": "attempt-002",
+        "context": {
+          "jurisdiction": "FICTIONAL-DEMO"
+        },
+        "input_hash": "76ba67c26ad6e7c9daa5ad3e4453158e58ae633e9358c076e53983650ba897b7"
+      },
+      "sequence_no": 3,
+      "signature": "zWvslyLpiAinH6AIc1pdoMuP012nq/CZYHpzuXWAZTGv1Vy1NgolnoayQMhnqi2LYQSYhluYBCFjQ9FYRVZDCw==",
+      "timestamp": "2026-10-30T12:00:02Z"
+    },
+    {
+      "chain_id": "demo-claim-triage",
+      "contract_id": "vap-interop-demo/0.2.0",
+      "event_id": "event-004",
+      "event_type": "AI_DECISION_OUTCOME",
+      "issuer_id": "synthetic-demo-producer",
+      "key_id": "demo-producer-key-1",
+      "model_id": "fictional-triage-model/1",
+      "payload_hash": "e17e4636936dea304efbb9fc47280efae9947d44bb76128929fa21547f0a7b36",
+      "policy_id": "synthetic-triage-policy/1",
+      "provenance": {
+        "action": "claim-triage",
+        "actor": "synthetic-claim-service",
+        "attempt_id": "attempt-002",
+        "human_review_required": false,
+        "outcome": "APPROVED",
+        "reason_code": "POLICY_THRESHOLD_MET"
+      },
+      "sequence_no": 4,
+      "signature": "AMPn33RrqHk0wxHxEWIdM3fwdinS2sD8NQ9DeJQHX49olh0Z8/10AaEH2sKXdoBRgGrfXx5L6Jq+h5PIemuYBQ==",
+      "timestamp": "2026-10-30T12:00:03Z"
+    }
+  ],
+  "hash_algorithm": "SHA-256",
+  "merkle": {
+    "algorithm": "RFC6962-SHA256",
+    "root": "917975d46e43f8930970854cc35793089a42f76cced79c474a5fd9a65c9bed5e"
+  },
+  "observer_receipt": {
+    "event_count": 4,
+    "issued_at": "2026-10-30T12:00:12Z",
+    "key_id": "demo-observer-key-1",
+    "merkle_root": "917975d46e43f8930970854cc35793089a42f76cced79c474a5fd9a65c9bed5e",
+    "record_type": "OBSERVER_RECEIPT",
+    "scope_commitment": "302daef0d10b1f35a012e6bdefa59416561c4a1a118f19401d41e4a65989541b",
+    "signature": "kPZBPZ39SfAxr2Fz2MjTQelA/vDIok15aF1owDF1fkW2xm5rSSb3tmUZSOpG38ibiSPqfXZ98ioILs9u3QAcDQ=="
+  },
+  "producer_manifest": {
+    "event_count": 4,
+    "issued_at": "2026-10-30T12:00:11Z",
+    "key_id": "demo-producer-key-1",
+    "merkle_root": "917975d46e43f8930970854cc35793089a42f76cced79c474a5fd9a65c9bed5e",
+    "record_type": "PRODUCER_MANIFEST",
+    "scope_commitment": "302daef0d10b1f35a012e6bdefa59416561c4a1a118f19401d41e4a65989541b",
+    "signature": "5SWtrLb0uqwJj/1d83XkxaFNw6NkaRzWr2cbPZHSM/V0x8aCMo82S+YYjOpDmkylye+PUe4VH8MkcGuXLS/ADw=="
+  },
+  "scope": {
+    "batch_id": "demo-batch-2",
+    "chain_id": "demo-claim-triage",
+    "completeness_rule": "ATTEMPT_OUTCOME_BIJECTION",
+    "expected_attempt_count": 2,
+    "in_scope_event_types": [
+      "AI_DECISION_ATTEMPT",
+      "AI_DECISION_OUTCOME"
+    ],
+    "policy_id": "synthetic-triage-policy/1",
+    "window_end": "2026-10-30T12:00:10Z",
+    "window_start": "2026-10-30T12:00:00Z"
+  },
+  "scope_commitment": "302daef0d10b1f35a012e6bdefa59416561c4a1a118f19401d41e4a65989541b",
+  "signature_algorithm": "Ed25519"
+}

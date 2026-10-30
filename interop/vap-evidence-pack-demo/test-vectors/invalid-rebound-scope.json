@@ -1,0 +1,98 @@
+{
+  "canonicalization": "DEMO-ASCII-SAFEINT-JSON-v1",
+  "contract_id": "vap-interop-demo/0.2.0",
+  "demo_anchor_receipt": {
+    "event_count": 2,
+    "issued_at": "2026-10-30T12:00:13Z",
+    "key_id": "demo-anchor-key-1",
+    "merkle_root": "7a5c3ba597071a540cd7c99e69beaec6d005336e816b749589a8696d72741e8d",
+    "record_type": "DEMO_ANCHOR_RECEIPT",
+    "scope_commitment": "3b66e8bb6a5a965cf6b688c809df5da5e15ef6bab72eb9a6bbdc3c26b4a45eb0",
+    "signature": "LkUoVUqdT3vv2TxXON1n+C4NlLuirrLQni6yPAi70SjXhpOm0cVp7IKGlnxYfaT8xPC7nZVnFI0py3MPjUC0Cw=="
+  },
+  "events": [
+    {
+      "chain_id": "demo-claim-triage",
+      "contract_id": "vap-interop-demo/0.2.0",
+      "event_id": "event-001",
+      "event_type": "AI_DECISION_ATTEMPT",
+      "issuer_id": "synthetic-demo-producer",
+      "key_id": "demo-producer-key-1",
+      "model_id": "fictional-triage-model/1",
+      "payload_hash": "5b7fd7673f36118fe225c1d274a99b835cd2206eb2b47377adf5e119a2ed61aa",
+      "policy_id": "synthetic-triage-policy/1",
+      "provenance": {
+        "action": "claim-triage",
+        "actor": "synthetic-claim-service",
+        "attempt_id": "attempt-001",
+        "context": {
+          "jurisdiction": "FICTIONAL-DEMO"
+        },
+        "input_hash": "4b58084a3c90c7129520ecbdc381d1f987bb56d90b036da77b3b17a6a7dbceeb"
+      },
+      "sequence_no": 1,
+      "signature": "iKc/XsZs8LPWClIVjB9lHaEFJSAX3Y1zy9reh+yvIy7V0HT+9UFfEoGsZcx/dPulVJmfNDnRrh1YTTi6SqrICw==",
+      "timestamp": "2026-10-30T12:00:00Z"
+    },
+    {
+      "chain_id": "demo-claim-triage",
+      "contract_id": "vap-interop-demo/0.2.0",
+      "event_id": "event-002",
+      "event_type": "AI_DECISION_OUTCOME",
+      "issuer_id": "synthetic-demo-producer",
+      "key_id": "demo-producer-key-1",
+      "model_id": "fictional-triage-model/1",
+      "payload_hash": "bf387ca88b497b2e53e8323afc66b8d607fecb0b5f9e26606bbf34900169ebcf",
+      "policy_id": "synthetic-triage-policy/1",
+      "provenance": {
+        "action": "claim-triage",
+        "actor": "synthetic-claim-service",
+        "attempt_id": "attempt-001",
+        "human_review_required": true,
+        "outcome": "DENIED_AUTOMATION",
+        "reason_code": "LOW_CONFIDENCE"
+      },
+      "sequence_no": 2,
+      "signature": "Dyiagw0RqfTbnr5C0q3mQ9UMq7pzrIJKZUkKAA4FPZCyqEKgD/jcbjpJtukUU5Wqb57/UZ0vvxczDV17O1yFDw==",
+      "timestamp": "2026-10-30T12:00:01Z"
+    }
+  ],
+  "hash_algorithm": "SHA-256",
+  "merkle": {
+    "algorithm": "RFC6962-SHA256",
+    "root": "7a5c3ba597071a540cd7c99e69beaec6d005336e816b749589a8696d72741e8d"
+  },
+  "observer_receipt": {
+    "event_count": 2,
+    "issued_at": "2026-10-30T12:00:12Z",
+    "key_id": "demo-observer-key-1",
+    "merkle_root": "7a5c3ba597071a540cd7c99e69beaec6d005336e816b749589a8696d72741e8d",
+    "record_type": "OBSERVER_RECEIPT",
+    "scope_commitment": "3b66e8bb6a5a965cf6b688c809df5da5e15ef6bab72eb9a6bbdc3c26b4a45eb0",
+    "signature": "XPP53HS2Kc+GdSUE1OBSsfFtIagM9y9sS5d5Zlt2SJkJS83E4V/qMJMYee10MGWZULsDT9fAaQBs9vnMInhMCA=="
+  },
+  "producer_manifest": {
+    "event_count": 2,
+    "issued_at": "2026-10-30T12:00:11Z",
+    "key_id": "demo-producer-key-1",
+    "merkle_root": "7a5c3ba597071a540cd7c99e69beaec6d005336e816b749589a8696d72741e8d",
+    "record_type": "PRODUCER_MANIFEST",
+    "scope_commitment": "3b66e8bb6a5a965cf6b688c809df5da5e15ef6bab72eb9a6bbdc3c26b4a45eb0",
+    "signature": "pdsP1OInlchCGRjAxYOZcwrs9ttFV7Kwy83cM/f3CuMUm0yMT9cMHAtnneMlHu6q7qZ9IBm2ZiEzbqjqpdcTAA=="
+  },
+  "scope": {
+    "batch_id": "demo-batch-2",
+    "chain_id": "demo-claim-triage",
+    "completeness_rule": "ATTEMPT_OUTCOME_BIJECTION",
+    "expected_attempt_count": 1,
+    "in_scope_event_types": [
+      "AI_DECISION_ATTEMPT",
+      "AI_DECISION_OUTCOME"
+    ],
+    "policy_id": "synthetic-triage-policy/1",
+    "window_end": "2026-10-30T12:00:10Z",
+    "window_start": "2026-10-30T12:00:00Z"
+  },
+  "scope_commitment": "3b66e8bb6a5a965cf6b688c809df5da5e15ef6bab72eb9a6bbdc3c26b4a45eb0",
+  "signature_algorithm": "Ed25519"
+}
