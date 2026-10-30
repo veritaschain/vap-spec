@@ -47,4 +47,18 @@ Use the service documentation for currently available product features and the r
 Appendix C of `-05` reports no independently validated conforming implementation of that revision. This introduction
 makes no LAP or VAP conformance or certification claim for AILEX.
 
+## External AI service boundaries
+
+Legal-workflow records and professional review do not by themselves establish that a transfer to an
+external AI service was authorized or that retained data was deleted. Deployment review should bind
+the destination account, tenant, route and authorization to the actual payload.
+
+Processing location, training use, retention conditions and deletion evidence are separate assessment
+questions. A stated processing region or disabled training setting does not establish the answers to
+the other questions; a reached retention deadline does not independently establish completed deletion.
+
+The [incident-derived evidence bindings](../incident-evidence-bindings/README.md) provide informative
+integration guidance. Applying it to AILEX requires inspection of its deployed paths and controls;
+this page does not claim that such integration or an independent assessment has been completed.
+
 [Return to the VAP family overview](../../README.md#relationship)

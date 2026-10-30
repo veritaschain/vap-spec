@@ -1,6 +1,6 @@
 # Incident-derived evidence bindings
 
-**Status:** Informative discussion proposal; not adopted. **Date:** 2026-10-30 JST.
+**Status:** Informative discussion proposal; not adopted. **Updated:** 2026-10-31 JST.
 **Formal proposal number:** Unassigned. **Target release:** Undecided.
 **Baseline:** VAP v1.2.0 Draft 3 at `357b8e6b232750180a2a0ce185355e31880edaf6`.
 **License:** CC BY 4.0 International.
@@ -12,6 +12,9 @@ This proposal connects recorded AI activity to three practical questions:
 3. Does a particular submitted artifact match its AI-use disclosure and applicable publication policy?
 
 The motivation and source limitations are recorded in the [incident claim ledger](INCIDENTS.md).
+The [Panasonic source update](INCIDENTS.md#panasonic-group) and
+[Japanese regulatory context](INCIDENTS.md#japanese-regulatory-context-not-an-incident-finding)
+add a distinction between disabled training use, retained data and evidence of later deletion.
 The [synthetic acceptance catalogue](acceptance-cases.json) specifies proposed test inputs and expected
 application-layer assessments. Those cases have not been executed against a gateway, provider, editor,
 publisher, or VAP verifier. They are not an incident reconstruction or evidence of product readiness.
@@ -56,7 +59,7 @@ released v1.0 text and VAP. This proposal does not relabel those schemas or esta
 
 The healthcare upload workflow is a cross-domain data-governance integration. Patient data in a file
 does not by itself make the workflow a medical-device profile or prove any regulatory classification.
-DAP may inform later delegated-agent bindings; these two incidents do not establish autonomous-agent
+DAP may inform later delegated-agent bindings; the motivating incidents do not establish autonomous-agent
 misconduct, and this proposal does not depend on unpublished DAP or MAP specifications.
 
 ## 2. Enforcement and evidence have separate responsibilities
@@ -146,6 +149,20 @@ The initial pilot can use an application policy that blocks covered transfers wh
 collector or policy service is unavailable. That is a deployment decision, not a new VAP requirement.
 Test alternate network paths and tenant switching separately from evidence-file validation.
 
+### 4.1 Processing conditions are separate from transfer permission
+
+Review processing location, training use, retention and deletion evidence as separate dimensions.
+For each relevant service/model/feature and account configuration, retain the dated source of the
+condition, its effective version and exceptions. A region label does not establish a retention
+period; a disabled training setting does not authorize a transfer or establish zero retention.
+Apply the review to the actual processing path, including application logs, attachments, caches,
+backups and downstream services where relevant. Unknown conditions remain unknown.
+
+Link those conditions to the organization's approval of the specific route and data classification.
+Where changed conditions affect that approval, re-evaluate the affected authorization before further
+use rather than replacing the historical policy snapshot. These are proposed integration checks,
+not claims about a deployed AILEX service, AWS configuration or an additional normative VAP field.
+
 ## 5. Deletion evidence is scoped and does not collapse into one success flag
 
 | Proposed evidence state | Supported conclusion | Conclusion not established |
@@ -165,7 +182,7 @@ Evaluate active objects, conversation history, provider logs, backups, derived o
 use separately when relevant. Record `unknown`, `not assessed`, a specific retention exception or a
 bounded claim instead of inferring an answer. A training-data deletion claim is not automatically a
 claim that model parameters were unlearned. Do not infer that any of these uses actually happened in
-the Bayview incident.
+any motivating upload incident.
 
 Conflicting observations take precedence over an unqualified success presentation: a signed provider
 statement and an accessible supposedly deleted object belong in the same review package. Absence of
@@ -176,6 +193,34 @@ from chat history is not a VAP ERASURE event. Local destruction of a data-encryp
 only the protected material and key copies within that operation's stated scope. It cannot erase a
 plaintext copy previously delivered to another service. Record a genuine local crypto-shredding
 operation using the existing specification, with separately linked external claims if available.
+
+### 5.1 Retention deadlines do not establish completed deletion
+
+The [Panasonic notice](INCIDENTS.md#panasonic-group) illustrates a company reporting a provider's
+future retention cutoff. Keep the source publication time, claimed deletion/request time,
+retention start trigger, stated duration/end, exceptions and observation cutoff distinguishable.
+Do not back-calculate an undisclosed deletion date from an end date without evidence of the
+provider's clock, timezone and calculation rule.
+
+| Available material | Interpretation for review |
+| --- | --- |
+| Training use reported disabled | An attributed setting/use statement; retention and transfer authorization need their own evidence |
+| History-removal record and a 30-day retention term | A scoped removal/retention statement; retained copies are not thereby erased |
+| Stated retention deadline has passed | The planned boundary has passed; actual completion remains unestablished without further evidence |
+| Later provider completion statement | Preserve its issuer, request/object/account binding, scope, time and exceptions; assess authentication separately |
+| Later scoped independent review | Assess the method, trusted reviewer independence and covered environment; uncovered copies remain unresolved |
+
+A timeout or a reached deadline must not automatically generate a completion attestation,
+an independent-review finding or an ERASURE event. An unavailable follow-up response is a gap,
+not proof of either deletion or a retention violation. Preserve a specific contradictory observation
+when one exists rather than hiding it behind a general unknown result.
+
+This guidance adds no executable record type. The current
+[offline erasure types](../../experiments/incident-evidence-assessor/TYPE-TRANSFER-ERASURE.md#erasure)
+do not model retention schedules, legal holds or training settings; unsupported fields/kinds are
+rejected. The original 23-case catalogue, fixed 53-case capture and recorded pilot results do not
+establish execution of these additional review scenarios. A future adapter needs its own versioned
+contract, tests and measured evidence before claiming support.
 
 ## 6. AI-use disclosure bound to a publication attempt
 
@@ -224,6 +269,7 @@ Present the evidence and its implications without a single misleading green badg
 | Collection coverage | Evidence covers a stated route/account/time; other routes are unknown |
 | Operational authorization | Bound request allowed, forbidden, expired or requires review |
 | Observed operation | Dispatch observed; response pending; completion unknown; contradictory result |
+| Processing conditions | Source-attributed location, training setting and retention terms; effective time and exceptions; unverified conditions remain unknown |
 | External deletion | Requested, acknowledged, scoped provider claim or bounded independent assessment |
 | Disclosure assessment | Matches observed activities, omits an observed activity, or cannot be evaluated |
 | Publication permission | Allowed, blocked or requires policy/context review |
@@ -255,7 +301,7 @@ urgent containment, indiscriminate copying of personal data or overriding applic
 retention duties. If urgent removal proceeds while preservation is unavailable, record the decision,
 its time and the resulting evidence gap; preserve unknown outcomes. Later preservation or anchoring
 does not establish contemporaneous capture. This design guidance does not establish whether evidence
-was preserved before history removal in either motivating incident.
+was preserved before history removal in any motivating incident.
 
 Record external information or log requests separately from deletion requests. Preserve the requested
 scope and questions, recipient, request time, dispatch and receipt evidence, response deadline or
@@ -267,7 +313,9 @@ refusal or misconduct, and a later response should be linked without rewriting t
 VAP evidence does not replace legal assessment. [HHS breach-notification guidance][hhs-breach] and
 [HHS cloud guidance][hhs-cloud] illustrate notification, contract and risk-management questions that
 remain outside an integrity check. This proposal makes no HIPAA violation finding and does not
-establish GDPR or EU AI Act applicability to either incident.
+establish GDPR or EU AI Act applicability to any motivating incident. The
+[Japanese consultation note](INCIDENTS.md#japanese-regulatory-context-not-an-incident-finding)
+describes general security-measures examples, not an AI-specific duty or a VAP mandate.
 
 ## 9. Implementation sequence and exit criteria
 
@@ -298,6 +346,9 @@ claim that AILEX implements this design or is independently conformant.
 - 2026-10-30 JST: Linked the PR36 implementation checkpoint, a source-bound 23-case crosswalk,
   remaining integration conditions and a proposed external-review handoff. This documentation update
   neither reruns the existing experiments nor asserts a new independent result.
+- 2026-10-31 JST: Added the Panasonic primary-source ledger and Japanese consultation context;
+  clarified processing-condition and retention-deadline evidence. This is informative guidance;
+  runtime types, normative requirements and recorded experiment results are not extended by it.
 - Standardization decisions, interoperability results and future corrections will be separately dated.
 
 [vap]: https://github.com/veritaschain/vap-spec/blob/357b8e6b232750180a2a0ce185355e31880edaf6/spec/v1.2/VAP_Framework_Specification.md
