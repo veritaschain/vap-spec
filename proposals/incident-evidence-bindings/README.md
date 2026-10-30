@@ -215,12 +215,20 @@ an independent-review finding or an ERASURE event. An unavailable follow-up resp
 not proof of either deletion or a retention violation. Preserve a specific contradictory observation
 when one exists rather than hiding it behind a general unknown result.
 
-This guidance adds no executable record type. The current
+This guidance does not extend the original
 [offline erasure types](../../experiments/incident-evidence-assessor/TYPE-TRANSFER-ERASURE.md#erasure)
-do not model retention schedules, legal holds or training settings; unsupported fields/kinds are
-rejected. The original 23-case catalogue, fixed 53-case capture and recorded pilot results do not
-establish execution of these additional review scenarios. A future adapter needs its own versioned
-contract, tests and measured evidence before claiming support.
+to retention schedules, legal holds or training settings; unsupported fields/kinds are still
+rejected by that assessor. A separately versioned
+[experimental retention adapter](../../experiments/incident-retention-adapter/README.md) now
+accepts signed provider statements and collector presence statements around an unchanged erasure
+package. It compares explicit timezone-bearing deadlines, preserves unknown schedules and stated
+exceptions, and matches completion claims by request and location. It does not calculate missing
+start times, decide legal holds, inspect external storage or generate deletion events.
+
+The adapter has its own contract, regression tests and synthetic execution/recheck command. The
+original 23-case catalogue, fixed 53-case capture and recorded pilot results remain unchanged and
+do not establish execution of the new retention cases. Any claim about the new cases must identify
+their own run and captured evidence; no independent reproduction is implied.
 
 ## 6. AI-use disclosure bound to a publication attempt
 
@@ -349,6 +357,9 @@ claim that AILEX implements this design or is independently conformant.
 - 2026-10-31 JST: Added the Panasonic primary-source ledger and Japanese consultation context;
   clarified processing-condition and retention-deadline evidence. This is informative guidance;
   runtime types, normative requirements and recorded experiment results are not extended by it.
+- 2026-10-31 JST: Added a separately versioned experimental retention adapter with signed
+  statements, explicit cutoff comparisons and captured-evidence rechecking. The legacy assessor,
+  original case catalogues and normative specifications remain unchanged.
 - Standardization decisions, interoperability results and future corrections will be separately dated.
 
 [vap]: https://github.com/veritaschain/vap-spec/blob/357b8e6b232750180a2a0ce185355e31880edaf6/spec/v1.2/VAP_Framework_Specification.md

@@ -1,0 +1,120 @@
+{
+  "adapter": "incident-retention-adapter/0.1",
+  "case_count": 16,
+  "cases": {
+    "RT-01": {
+      "matches_expectations": true,
+      "path": "cases/RT-01.json",
+      "sha256": "f31346bf9fe67be83ec4a7b250dd0c6fbe02d3aab9ddfa59ae990088c2b68b20"
+    },
+    "RT-02": {
+      "matches_expectations": true,
+      "path": "cases/RT-02.json",
+      "sha256": "4555ef497a8486bdc5c1939dafdbc5a6cac677851e042c6a6169c8a2a15706e2"
+    },
+    "RT-03": {
+      "matches_expectations": true,
+      "path": "cases/RT-03.json",
+      "sha256": "e026889aad7a32f606eee58e30116f27a6286a96f32f09ac85c1230a35600741"
+    },
+    "RT-04": {
+      "matches_expectations": true,
+      "path": "cases/RT-04.json",
+      "sha256": "a6448195bd4e6fbbf95e1a3c70737678e0b9e609169a9bcdf986a7d160778bb9"
+    },
+    "RT-05": {
+      "matches_expectations": true,
+      "path": "cases/RT-05.json",
+      "sha256": "50dd36d36a4451241d01ed522d803f5ae6386bca1c9b80fa094b56460c36ddc7"
+    },
+    "RT-06": {
+      "matches_expectations": true,
+      "path": "cases/RT-06.json",
+      "sha256": "cb5c55f34cc4462e2e4b450989ffeeb7a853f9b33a3366124293be3827300c2f"
+    },
+    "RT-07": {
+      "matches_expectations": true,
+      "path": "cases/RT-07.json",
+      "sha256": "2472d94b1ead981793e04b8d1890b582f714b1ad97a1462c98989bd00bb393ce"
+    },
+    "RT-08": {
+      "matches_expectations": true,
+      "path": "cases/RT-08.json",
+      "sha256": "64741bce012f1e50d1356de1ec7c2fb531c5f887e1d38c27d148b7233af6cdbd"
+    },
+    "RT-09": {
+      "matches_expectations": true,
+      "path": "cases/RT-09.json",
+      "sha256": "f4f5faff8a92bc46eb521328a1064e0341bdc5f611cc5bae68abe68786e33774"
+    },
+    "RT-10": {
+      "matches_expectations": true,
+      "path": "cases/RT-10.json",
+      "sha256": "88e8f1fb954c60b91e5cace9eb3cfaf5b631e4561fd962936c739f430f8bd0e4"
+    },
+    "RT-11": {
+      "matches_expectations": true,
+      "path": "cases/RT-11.json",
+      "sha256": "2f64627747e641bfef2cb0672c9c1435f226589520b7c6c8d9ddb0ab69329191"
+    },
+    "RT-12": {
+      "matches_expectations": true,
+      "path": "cases/RT-12.json",
+      "sha256": "cda8dab1983a7e326c19af2ad8b7cc998a2c2e46b55fab2fb76c41bbb1852f3c"
+    },
+    "RT-13": {
+      "matches_expectations": true,
+      "path": "cases/RT-13.json",
+      "sha256": "f6fe8a2df6e11ae3e8172ada002d065854d096b839a0fe4a70394697027a2a84"
+    },
+    "RT-14": {
+      "matches_expectations": true,
+      "path": "cases/RT-14.json",
+      "sha256": "aaf63142ccfca21dac839a5b12c7c9430c1f6819225e7424fe421eff816e84e1"
+    },
+    "RT-15": {
+      "matches_expectations": true,
+      "path": "cases/RT-15.json",
+      "sha256": "1226daaf72688d7a6a8009421c27116cfe021e7725fc5f7e5dbd606dacdbc603"
+    },
+    "RT-16": {
+      "matches_expectations": true,
+      "path": "cases/RT-16.json",
+      "sha256": "cedab3248f97234d500043317fa8f7ab5c14874da04c470e4d4f1b998447c61a"
+    }
+  },
+  "created_at": "2026-10-30T19:38:08.739884+00:00",
+  "cross_case_checks": {
+    "clock_only_change_preserves_deletion_assessment": true,
+    "clock_only_inputs_reuse_identical_signed_records": true
+  },
+  "failed": 0,
+  "format": "retention-synthetic-summary/0.1",
+  "limitations": "Internal synthetic execution only. Captured public pins are test assumptions, not independent identity or storage evidence.",
+  "passed": 16,
+  "python_version": "3.12.14",
+  "source_manifest": {
+    ".github/workflows/incident-retention-adapter.yml": "fa8db769c7d1bed62e2f3028432cddcaa4b5b8179fdee3b1a6bba34521fe11d7",
+    "experiments/incident-evidence-assessor/incident_assessor/__init__.py": "24ef8b3d35cb02bc85303fc6932a7d9af438c878fd6da427d38c8df295acec72",
+    "experiments/incident-evidence-assessor/incident_assessor/__main__.py": "2add1793b9a1c6db77fab17e592ded6ad44ba230c036e528e6d1b1356422ef7e",
+    "experiments/incident-evidence-assessor/incident_assessor/assess.py": "3e2890d7b6c417e4c10f4c57473de79f5f5b9fb410fcc61b0be905a6bedc8dc0",
+    "experiments/incident-evidence-assessor/incident_assessor/cross_party.py": "f7922f8b457efddb5df13efcbd7095ff81c5c63b429e9d6dbe21636342c479b3",
+    "experiments/incident-evidence-assessor/incident_assessor/erasure.py": "953f1772210059ffe9a7a39f6f00d8bf709c063020e9aa200d4610b9297d0281",
+    "experiments/incident-evidence-assessor/incident_assessor/evidence.py": "a129a6b17a58993d454efae188f16ae5ec24b95fd8335fcb9d63c2e10ce7494c",
+    "experiments/incident-evidence-assessor/incident_assessor/incident_response.py": "c4032159f6d2642307e6eee5b2c570454a7d3ad34eb1259c3f11a8abe8140717",
+    "experiments/incident-evidence-assessor/incident_assessor/model.py": "0a6c26c54d9209874941fadbdc02b5e524deeebf24c9d3cedf5ad99e0be76769",
+    "experiments/incident-evidence-assessor/incident_assessor/publication.py": "af246df6686402de4288f49ec8bc4c228a04c1ee915a2e108338eebbdd55ba99",
+    "experiments/incident-evidence-assessor/incident_assessor/transfer.py": "3f3888cb6797eec5d82bfebd87626cbb20fee5960a16f3ea62477dc3e3f018a8",
+    "experiments/incident-evidence-assessor/requirements.txt": "4e8db0811dba93c1aee12da58f14aa31f96051d04783f156ea8fb15391f821d6",
+    "experiments/incident-retention-adapter/CONTRACT.md": "92b8c222fec00c66f88147b0e1258c6cc7efe5efa5bd2bb20f1d37c4c8380611",
+    "experiments/incident-retention-adapter/fixture_support.py": "70b291ff2ccf15e5a226d1816234b7a74399fd0cc8c35f7494b388aa24e7a25d",
+    "experiments/incident-retention-adapter/requirements.txt": "7f68b28a497f02318887f5fb6bc4bfbbc7a73ae7ca290e21e2af28d5a0842299",
+    "experiments/incident-retention-adapter/retention_adapter/__init__.py": "4716e05272ddccbf7965ce0386e9136d4c30026ac5ad83bd5f65b08f05f99f2c",
+    "experiments/incident-retention-adapter/retention_adapter/__main__.py": "3e86ead2ba701e70d1169927d90d740711f764e39330a48d84fe3cf934b0942b",
+    "experiments/incident-retention-adapter/retention_adapter/core.py": "67128844e2f6090e7dfe3805aef9f944276eab0812c084f051610e59dc9dc587",
+    "experiments/incident-retention-adapter/suite.py": "74a692d1895c09eb317342680198d00672c2f4103090dd26009888465e11dc2c",
+    "experiments/incident-retention-adapter/tests/test_adapter.py": "9c724b32a58b122aec488896ac4a124dc13700aa3170594d98ff5feaf340c363",
+    "experiments/incident-retention-adapter/tests/test_cli.py": "20307a6d9a664abe36d2e74c0f18610e8b3e2f01d6156e956e3123b25c596022",
+    "experiments/incident-retention-adapter/tests/test_suite.py": "bbd85e3ebbbb0f35ccaed31b1f9e0628443bbd8a212ce2f13c360b06bf7dc511"
+  }
+}
