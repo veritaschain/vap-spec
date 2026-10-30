@@ -119,6 +119,8 @@ The dedicated workflow runs the strict zero-skip tests, measured scenario suite,
 export recheck and unchanged assessor regression on Ubuntu with Python 3.12 and
 3.14. Local completion does not establish CI completion; the workflow results
 and retained artifacts for the reviewed commit determine that separately.
+The subsequently retrieved successful runs and source manifest are recorded in
+[Execution records](results/README.md).
 
 The source manifest covers pilot modules, tests and root entry points, the
 acceptance catalogue, requirements, imported assessor modules and the workflow.
