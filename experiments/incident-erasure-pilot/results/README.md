@@ -53,9 +53,13 @@ exports. To recheck, use the matching source commit and run
 directory, with `EXTRACTED_DIRECTORY` pointing to the extracted summary and
 `cases/`. This performs no deletion.
 
-Full case exports are GitHub Actions artifacts with 30-day retention. This
-directory retains summary records and CI identifiers; summaries alone cannot
-reconstruct original signed case evidence or satisfy `verify-exports`.
+The original Actions artifacts have 30-day retention. On 2026-10-30 JST, the
+[offline recheck kit](../../incident-recheck-kit/README.md) additionally preserved
+the exact original Python 3.12 summary and all 18 public case exports in Git after
+checking the downloaded artifact's recorded digest. They remain recheckable after
+artifact expiry. The kit does not copy the Python 3.14 case directory. This result
+directory still contains summaries and CI identifiers; those summaries alone
+cannot reconstruct original signed case evidence or satisfy `verify-exports`.
 
 Rechecking requires the matching tested source manifest. It validates captured
 statements under the recorded controller pins and does not perform new deletion,

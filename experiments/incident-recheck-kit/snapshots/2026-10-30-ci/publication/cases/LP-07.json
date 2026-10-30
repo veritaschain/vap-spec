@@ -1,0 +1,987 @@
+{
+  "format": "incident-publication-case/0.1",
+  "case_id": "LP-07",
+  "synthetic": true,
+  "records": [
+    {
+      "candidate": {
+        "format": "incident-publication-candidate/0.1",
+        "source": {
+          "format": "publication-editor-snapshot/0.1",
+          "document_id": "synthetic-note",
+          "operations": [
+            {
+              "algorithm": "Ed25519",
+              "key_id": "publication-collector",
+              "body": {
+                "kind": "editor_operation",
+                "document_id": "synthetic-note",
+                "sequence": 1,
+                "previous_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+                "before_sha256": "89576f6983e9708c9a5100844f4dcb693d4da4259edb2277e7f4ef5d8f04cf81",
+                "after_sha256": "f05dedecbe15e46ac417b6613f66c49b19c979a3c498b8e0b25eea2fdc717bfa",
+                "block_id": "paragraph-1",
+                "text": "Synthetic research note. Imported text has unknown origin.",
+                "activity": "import",
+                "observed_at": "2026-10-30T02:10:03.686425Z"
+              },
+              "signature": "90b0e282c2b798d76e22031a122e25528a26b4fe41ed478cb0621bc7dfa6a731e3a3a2856dd21afea93824c2784c081eaaafae89e3cd4dfc72185a844b552e01"
+            },
+            {
+              "algorithm": "Ed25519",
+              "key_id": "publication-collector",
+              "body": {
+                "kind": "editor_operation",
+                "document_id": "synthetic-note",
+                "sequence": 2,
+                "previous_sha256": "7a777737f3986b557610bba081244e3ef327ff50f08133dae931bb8d29f8eac7",
+                "before_sha256": "f05dedecbe15e46ac417b6613f66c49b19c979a3c498b8e0b25eea2fdc717bfa",
+                "after_sha256": "55da770085f3591e206924d1e615e358a42224971ff1da8add6696fa4d6e84f0",
+                "block_id": "paragraph-1",
+                "text": "Simulated assistance revised this synthetic paragraph. 日本語 <script> is plain text.",
+                "activity": "generation",
+                "observed_at": "2026-10-30T02:10:03.686579Z"
+              },
+              "signature": "9b9b615c29fa3356305e3e01783a5dfc0e3323becb9d339f187f3d7bdf6839e147f2070de8613b21c8bd05947736572b65b1fbebca68d06290f4174289684f08"
+            }
+          ],
+          "checkpoint": {
+            "algorithm": "Ed25519",
+            "key_id": "publication-collector",
+            "body": {
+              "kind": "editor_checkpoint",
+              "document_id": "synthetic-note",
+              "sequence": 2,
+              "chain_head_sha256": "2d6b33da970c963d070a54f1e5cf57356d2036660286628f0861360ac2837017",
+              "document": {
+                "document_id": "synthetic-note",
+                "blocks": [
+                  {
+                    "block_id": "paragraph-1",
+                    "text": "Simulated assistance revised this synthetic paragraph. 日本語 <script> is plain text."
+                  }
+                ]
+              },
+              "observed_at": "2026-10-30T02:10:03.686754Z"
+            },
+            "signature": "97b23356cba071e920e6e22e6fa9a029e45bbec2cd42f04ceff0b6cfd3cb1313f34b66c83c2fd713490c536c45f3fd2ec8f1653947fad983690d78a47c4a1805"
+          }
+        },
+        "disclosure": {
+          "activities": [
+            "generation"
+          ],
+          "scope": "recorded_local_session_only"
+        },
+        "html": "<!doctype html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<meta http-equiv=\"Content-Security-Policy\" content=\"default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'\">\n<title>Prepared publication | synthetic-note</title>\n<style>\n:root{color-scheme:light}*{box-sizing:border-box}body{margin:0;background:#f3f5f8;color:#182536;font:17px/1.65 system-ui,-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif}main{max-width:900px;margin:48px auto;padding:44px 52px;background:#fff;border:1px solid #dce3eb;border-radius:16px}header{padding-bottom:28px;border-bottom:1px solid #dce3eb}.eyebrow{margin:0 0 8px;color:#315779;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}h1{font-size:36px;line-height:1.15;margin:0 0 16px;letter-spacing:-.025em}.metadata{font-size:13px;color:#526579;overflow-wrap:anywhere;margin:0}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}.content-block{margin:32px 0}.content-block h2{font-size:17px;text-transform:capitalize;color:#315779;margin:0 0 10px}.block-text{white-space:pre-wrap;overflow-wrap:anywhere;margin:0}#ai-use-disclosure{margin-top:40px;padding:24px;background:#edf3fa;border:1px solid #cadbed;border-radius:10px}#ai-use-disclosure h2{font-size:20px;line-height:1.3;margin:0 0 12px}.disclosure-text{margin:0;font-size:15px}footer{font-size:13px;color:#526579;margin-top:24px}@media(max-width:640px){main{margin:12px;padding:26px 22px;border-radius:10px}h1{font-size:29px}}@media print{body{background:#fff}main{margin:0;max-width:none;padding:18px;border:0}#ai-use-disclosure{break-inside:avoid}}\n</style>\n</head>\n<body>\n<main>\n<header>\n<p class=\"eyebrow\">Synthetic local example</p>\n<h1>Prepared publication</h1>\n<p class=\"metadata\">Document <code>synthetic-note</code><br>Source revision <code>rev-2-55da770085f3591e206924d1</code></p>\n</header>\n<article aria-label=\"Publication content\">\n<section class=\"content-block\" data-block-id=\"paragraph-1\">\n<h2>paragraph 1</h2>\n<p class=\"block-text\">Simulated assistance revised this synthetic paragraph. 日本語 &lt;script&gt; is plain text.</p>\n</section>\n</article>\n<section id=\"ai-use-disclosure\" aria-labelledby=\"disclosure-heading\">\n<h2 id=\"disclosure-heading\">AI-use disclosure</h2>\n<p class=\"disclosure-text\">Synthetic local publication pilot. Declared simulated AI activities: generation. Coverage is limited to this recorded local editing session. This editor invokes no external AI model. The origin of imported content and activity outside this session is unknown; this disclosure does not establish human-only authorship or complete AI provenance.</p>\n</section>\n<footer>Prepared for local review. This file does not establish publisher receipt, acceptance, or legal compliance.</footer>\n</main>\n</body>\n</html>\n",
+        "evidence": {
+          "format": "incident-evidence-input/0.1",
+          "evaluation_id": "evaluation-dcd6adbf26cf4266ae9294c53ebc2b1e",
+          "workflow": "publication",
+          "as_of": "2026-10-30T02:10:03.687686Z",
+          "target": {
+            "subject": {
+              "request_id": "publication-c942e19374e345ee813cd4e59b467696",
+              "actor_id": "synthetic-author",
+              "provider_id": "synthetic-venue",
+              "endpoint": "local-publication://synthetic-venue/release",
+              "tenant_id": "synthetic-tenant",
+              "account_id": "synthetic-account",
+              "purpose": "synthetic_local_export",
+              "route_id": "controlled-local-publication",
+              "stage": "publication",
+              "artifact_id": "synthetic-note",
+              "revision_id": "rev-2-55da770085f3591e206924d1",
+              "payload_sha256": "66c3dce462be32682b67aba66d9aa1a871266e3bd013193152dd93e913d47b9e",
+              "disclosure_sha256": "806e9855d8252a6930d98262c62dda3537d38d81932bacd1ecc6e959bae3a4b7",
+              "policy_id": "synthetic-publication-policy",
+              "policy_version": "1",
+              "policy_sha256": "8e3b222fadb75a01ace7da9729b0353240005b8735d8189d8f153348167da01a"
+            },
+            "operation_at": "2026-10-30T02:10:03.687686Z",
+            "coverage_requested": "managed_route",
+            "authorities": {
+              "policy": "synthetic-policy",
+              "collector": "synthetic-collector",
+              "author": "synthetic-author",
+              "reviewer": "synthetic-reviewer"
+            }
+          },
+          "records": [
+            {
+              "algorithm": "Ed25519",
+              "key_id": "publication-policy",
+              "body": {
+                "record_id": "record-d014c29db9be4d98a64581338409e149",
+                "evaluation_id": "evaluation-dcd6adbf26cf4266ae9294c53ebc2b1e",
+                "kind": "publication_policy",
+                "issuer": "synthetic-policy",
+                "recorded_at": "2026-10-30T02:10:03.687686Z",
+                "binding": {
+                  "request_id": "publication-c942e19374e345ee813cd4e59b467696",
+                  "actor_id": "synthetic-author",
+                  "provider_id": "synthetic-venue",
+                  "endpoint": "local-publication://synthetic-venue/release",
+                  "tenant_id": "synthetic-tenant",
+                  "account_id": "synthetic-account",
+                  "purpose": "synthetic_local_export",
+                  "route_id": "controlled-local-publication",
+                  "stage": "publication",
+                  "artifact_id": "synthetic-note",
+                  "revision_id": "rev-2-55da770085f3591e206924d1",
+                  "payload_sha256": "66c3dce462be32682b67aba66d9aa1a871266e3bd013193152dd93e913d47b9e",
+                  "disclosure_sha256": "806e9855d8252a6930d98262c62dda3537d38d81932bacd1ecc6e959bae3a4b7",
+                  "policy_id": "synthetic-publication-policy",
+                  "policy_version": "1",
+                  "policy_sha256": "8e3b222fadb75a01ace7da9729b0353240005b8735d8189d8f153348167da01a"
+                },
+                "data": {
+                  "effective_from": "2026-10-30T01:10:03.686744Z",
+                  "effective_until": "2026-10-30T02:15:03.686744Z",
+                  "prohibited_activities": [],
+                  "disclosure_categories": [
+                    "text"
+                  ],
+                  "approval_required": true,
+                  "interpretation": "resolved"
+                }
+              },
+              "signature": "cd0b0d2d13ae937d97738fb29bf2b9c5a44d35ff9e293ecb85afbd79318b49dc4437a33a6d86e3a395336871c205938591e0213b24f97b8e81d9a62457f2870f"
+            },
+            {
+              "algorithm": "Ed25519",
+              "key_id": "publication-collector",
+              "body": {
+                "record_id": "record-0187fb9096e64a20ab295bef65e0929a",
+                "evaluation_id": "evaluation-dcd6adbf26cf4266ae9294c53ebc2b1e",
+                "kind": "publication_manifest",
+                "issuer": "synthetic-collector",
+                "recorded_at": "2026-10-30T02:10:03.687686Z",
+                "binding": {
+                  "request_id": "publication-c942e19374e345ee813cd4e59b467696",
+                  "actor_id": "synthetic-author",
+                  "provider_id": "synthetic-venue",
+                  "endpoint": "local-publication://synthetic-venue/release",
+                  "tenant_id": "synthetic-tenant",
+                  "account_id": "synthetic-account",
+                  "purpose": "synthetic_local_export",
+                  "route_id": "controlled-local-publication",
+                  "stage": "publication",
+                  "artifact_id": "synthetic-note",
+                  "revision_id": "rev-2-55da770085f3591e206924d1",
+                  "payload_sha256": "66c3dce462be32682b67aba66d9aa1a871266e3bd013193152dd93e913d47b9e",
+                  "disclosure_sha256": "806e9855d8252a6930d98262c62dda3537d38d81932bacd1ecc6e959bae3a4b7",
+                  "policy_id": "synthetic-publication-policy",
+                  "policy_version": "1",
+                  "policy_sha256": "8e3b222fadb75a01ace7da9729b0353240005b8735d8189d8f153348167da01a"
+                },
+                "data": {
+                  "observed_at": "2026-10-30T02:10:03.687686Z",
+                  "components": [
+                    {
+                      "artifact_id": "synthetic-note",
+                      "revision_id": "rev-2-55da770085f3591e206924d1",
+                      "sha256": "66c3dce462be32682b67aba66d9aa1a871266e3bd013193152dd93e913d47b9e",
+                      "category": "text"
+                    },
+                    {
+                      "artifact_id": "synthetic-note:paragraph-1",
+                      "revision_id": "rev-2-1507d08b88744b23e7d59368",
+                      "sha256": "1507d08b88744b23e7d59368a711e647326ae7a13b04255cc17430b0a1965230",
+                      "category": "text"
+                    }
+                  ]
+                }
+              },
+              "signature": "6b3c4258d8e566a7847e39c3a516b38ff6d4e0fb819f2975fc83c4cfd7fae67c2e66e63fbca81d5273bfaaa850dd9af2f3774bf3cc090d5c01d6d59d01478b0a"
+            },
+            {
+              "algorithm": "Ed25519",
+              "key_id": "publication-collector",
+              "body": {
+                "record_id": "record-9c3c7e7526f64aa5baa3f445c8caf9c3",
+                "evaluation_id": "evaluation-dcd6adbf26cf4266ae9294c53ebc2b1e",
+                "kind": "publication_coverage",
+                "issuer": "synthetic-collector",
+                "recorded_at": "2026-10-30T02:10:03.687686Z",
+                "binding": {
+                  "request_id": "publication-c942e19374e345ee813cd4e59b467696",
+                  "actor_id": "synthetic-author",
+                  "provider_id": "synthetic-venue",
+                  "endpoint": "local-publication://synthetic-venue/release",
+                  "tenant_id": "synthetic-tenant",
+                  "account_id": "synthetic-account",
+                  "purpose": "synthetic_local_export",
+                  "route_id": "controlled-local-publication",
+                  "stage": "publication",
+                  "artifact_id": "synthetic-note",
+                  "revision_id": "rev-2-55da770085f3591e206924d1",
+                  "payload_sha256": "66c3dce462be32682b67aba66d9aa1a871266e3bd013193152dd93e913d47b9e",
+                  "disclosure_sha256": "806e9855d8252a6930d98262c62dda3537d38d81932bacd1ecc6e959bae3a4b7",
+                  "policy_id": "synthetic-publication-policy",
+                  "policy_version": "1",
+                  "policy_sha256": "8e3b222fadb75a01ace7da9729b0353240005b8735d8189d8f153348167da01a"
+                },
+                "data": {
+                  "scope": "declared_editor_only",
+                  "from": "2026-10-30T02:10:03.686425Z",
+                  "until": "2026-10-30T02:10:03.687686Z"
+                }
+              },
+              "signature": "e50059c162db3df6ef8f45a9977b2ea4fea4f190793f7f417a3c8f1014b77f460658f64531d949ede0d2e13de90e7605006bbbe196c7041a5567f68480345608"
+            },
+            {
+              "algorithm": "Ed25519",
+              "key_id": "publication-author",
+              "body": {
+                "record_id": "record-672a4ac1e6544d52b04bd736ac3d7dec",
+                "evaluation_id": "evaluation-dcd6adbf26cf4266ae9294c53ebc2b1e",
+                "kind": "publication_disclosure",
+                "issuer": "synthetic-author",
+                "recorded_at": "2026-10-30T02:10:03.687686Z",
+                "binding": {
+                  "request_id": "publication-c942e19374e345ee813cd4e59b467696",
+                  "actor_id": "synthetic-author",
+                  "provider_id": "synthetic-venue",
+                  "endpoint": "local-publication://synthetic-venue/release",
+                  "tenant_id": "synthetic-tenant",
+                  "account_id": "synthetic-account",
+                  "purpose": "synthetic_local_export",
+                  "route_id": "controlled-local-publication",
+                  "stage": "publication",
+                  "artifact_id": "synthetic-note",
+                  "revision_id": "rev-2-55da770085f3591e206924d1",
+                  "payload_sha256": "66c3dce462be32682b67aba66d9aa1a871266e3bd013193152dd93e913d47b9e",
+                  "disclosure_sha256": "806e9855d8252a6930d98262c62dda3537d38d81932bacd1ecc6e959bae3a4b7",
+                  "policy_id": "synthetic-publication-policy",
+                  "policy_version": "1",
+                  "policy_sha256": "8e3b222fadb75a01ace7da9729b0353240005b8735d8189d8f153348167da01a"
+                },
+                "data": {
+                  "categories": [
+                    "text"
+                  ],
+                  "prepared_at": "2026-10-30T02:10:03.687686Z",
+                  "text": "Synthetic local publication pilot. Declared simulated AI activities: generation. Coverage is limited to this recorded local editing session. This editor invokes no external AI model. The origin of imported content and activity outside this session is unknown; this disclosure does not establish human-only authorship or complete AI provenance."
+                }
+              },
+              "signature": "83e8eed37290be61487f5d563fa2b5c33838168549a89953500a4be0315bb6e029f516455ff74d54dc94d7e7fea3b8114fff8b389b257dc3b75f51b1944e920e"
+            },
+            {
+              "algorithm": "Ed25519",
+              "key_id": "publication-collector",
+              "body": {
+                "record_id": "record-d421657b20e940f7bc0976598e7b0728",
+                "evaluation_id": "evaluation-dcd6adbf26cf4266ae9294c53ebc2b1e",
+                "kind": "publication_activity",
+                "issuer": "synthetic-collector",
+                "recorded_at": "2026-10-30T02:10:03.687686Z",
+                "binding": {
+                  "request_id": "publication-c942e19374e345ee813cd4e59b467696",
+                  "actor_id": "synthetic-author",
+                  "provider_id": "synthetic-venue",
+                  "endpoint": "local-publication://synthetic-venue/release",
+                  "tenant_id": "synthetic-tenant",
+                  "account_id": "synthetic-account",
+                  "purpose": "synthetic_local_export",
+                  "route_id": "controlled-local-publication",
+                  "stage": "publication",
+                  "artifact_id": "synthetic-note",
+                  "revision_id": "rev-2-55da770085f3591e206924d1",
+                  "payload_sha256": "66c3dce462be32682b67aba66d9aa1a871266e3bd013193152dd93e913d47b9e",
+                  "disclosure_sha256": "806e9855d8252a6930d98262c62dda3537d38d81932bacd1ecc6e959bae3a4b7",
+                  "policy_id": "synthetic-publication-policy",
+                  "policy_version": "1",
+                  "policy_sha256": "8e3b222fadb75a01ace7da9729b0353240005b8735d8189d8f153348167da01a"
+                },
+                "data": {
+                  "activity": "generation",
+                  "observed_at": "2026-10-30T02:10:03.686579Z",
+                  "adoption_basis": "observed_in_artifact",
+                  "included_in_artifact_sha256": "66c3dce462be32682b67aba66d9aa1a871266e3bd013193152dd93e913d47b9e",
+                  "component": {
+                    "artifact_id": "synthetic-note:paragraph-1",
+                    "revision_id": "rev-2-1507d08b88744b23e7d59368",
+                    "sha256": "1507d08b88744b23e7d59368a711e647326ae7a13b04255cc17430b0a1965230",
+                    "category": "text"
+                  }
+                }
+              },
+              "signature": "5cf17859bcd7512a7908077cce64d2e02751576252be7f14b14902bb7cfd77eb4fa06cae2afe5bfc4f103b4d659f7572088e55b3b8d4cde63e82d4f2b8eaf303"
+            }
+          ]
+        }
+      },
+      "trust": {
+        "format": "incident-evidence-trust/0.1",
+        "evaluation_id": "evaluation-dcd6adbf26cf4266ae9294c53ebc2b1e",
+        "workflow": "publication",
+        "as_of": "2026-10-30T02:10:03.687686Z",
+        "target_sha256": "41f8f3ed93ee9839ab5f944701e97de30d11bff6c20d478fd3db5be7246c4f13",
+        "mode": "synthetic-test-only",
+        "keys": {
+          "publication-policy": {
+            "public_key": "601f40885b63db4fe3ef670123c8793599f10d0c3a181400a1cfb0013edf6595",
+            "issuer": "synthetic-policy",
+            "organization": "single-test-controller",
+            "roles": [
+              "policy"
+            ],
+            "not_before": "2026-10-29T02:10:03.686117Z",
+            "not_after": "2026-10-31T02:10:03.686117Z"
+          },
+          "publication-collector": {
+            "public_key": "6c5cc417b56713cde5240b8be7eb650c0f3c443926041c531f4f0beddac5627e",
+            "issuer": "synthetic-collector",
+            "organization": "single-test-controller",
+            "roles": [
+              "collector"
+            ],
+            "not_before": "2026-10-29T02:10:03.686117Z",
+            "not_after": "2026-10-31T02:10:03.686117Z"
+          },
+          "publication-author": {
+            "public_key": "5bd7974cf11f48e75db8296d2a4c856c01dc5a13776da1117851e27b5c0a1603",
+            "issuer": "synthetic-author",
+            "organization": "single-test-controller",
+            "roles": [
+              "author"
+            ],
+            "not_before": "2026-10-29T02:10:03.686117Z",
+            "not_after": "2026-10-31T02:10:03.686117Z"
+          },
+          "publication-reviewer": {
+            "public_key": "4839eeb43c42a6f579321bcbec4fa97c953a38a7beb69b47096efb260788da03",
+            "issuer": "synthetic-reviewer",
+            "organization": "single-test-controller",
+            "roles": [
+              "reviewer"
+            ],
+            "not_before": "2026-10-29T02:10:03.686117Z",
+            "not_after": "2026-10-31T02:10:03.686117Z"
+          }
+        }
+      },
+      "approval": {
+        "release": {
+          "algorithm": "Ed25519",
+          "key_id": "publication-reviewer",
+          "body": {
+            "kind": "release_approval",
+            "request_id": "publication-c942e19374e345ee813cd4e59b467696",
+            "candidate_sha256": "10e11a97e168fe0e53c115422c5000d10b05fc3d0a7fb6e367136ed0091f37e9",
+            "artifact_sha256": "66c3dce462be32682b67aba66d9aa1a871266e3bd013193152dd93e913d47b9e",
+            "disclosure_sha256": "806e9855d8252a6930d98262c62dda3537d38d81932bacd1ecc6e959bae3a4b7",
+            "policy_sha256": "8e3b222fadb75a01ace7da9729b0353240005b8735d8189d8f153348167da01a",
+            "destination_id": "synthetic-venue",
+            "approved_at": "2026-10-30T02:10:03.689094Z",
+            "valid_until": "2026-10-30T02:12:03.689094Z",
+            "decision": "approve",
+            "review_scope": "exact_local_artifact_and_disclosure"
+          },
+          "signature": "73b917caabe8c180e94d45c7c48062137fbf081f6fe60623c7f77ad2d24e1de4e545fb3ba5070db9b34b2b3f357306d1fffa5091a550320e9568b9d3ad3fcf07"
+        },
+        "evidence": {
+          "algorithm": "Ed25519",
+          "key_id": "publication-reviewer",
+          "body": {
+            "record_id": "record-702ee1f6ccd648738929547c6dc331b2",
+            "evaluation_id": "evaluation-dcd6adbf26cf4266ae9294c53ebc2b1e",
+            "kind": "publication_approval",
+            "issuer": "synthetic-reviewer",
+            "recorded_at": "2026-10-30T02:10:03.689094Z",
+            "binding": {
+              "request_id": "publication-c942e19374e345ee813cd4e59b467696",
+              "actor_id": "synthetic-author",
+              "provider_id": "synthetic-venue",
+              "endpoint": "local-publication://synthetic-venue/release",
+              "tenant_id": "synthetic-tenant",
+              "account_id": "synthetic-account",
+              "purpose": "synthetic_local_export",
+              "route_id": "controlled-local-publication",
+              "stage": "publication",
+              "artifact_id": "synthetic-note",
+              "revision_id": "rev-2-55da770085f3591e206924d1",
+              "payload_sha256": "66c3dce462be32682b67aba66d9aa1a871266e3bd013193152dd93e913d47b9e",
+              "disclosure_sha256": "806e9855d8252a6930d98262c62dda3537d38d81932bacd1ecc6e959bae3a4b7",
+              "policy_id": "synthetic-publication-policy",
+              "policy_version": "1",
+              "policy_sha256": "8e3b222fadb75a01ace7da9729b0353240005b8735d8189d8f153348167da01a"
+            },
+            "data": {
+              "valid_from": "2026-10-30T02:10:03.689094Z",
+              "valid_until": "2026-10-30T02:12:03.689094Z",
+              "approval": "approved"
+            }
+          },
+          "signature": "1a6ae95ca5ee20e7e8a558ebf59235153a594be47ab658e39ffd1cd74a18ecc5df9a3b6259e7b17361ea2301b16e5867bc56143b36162503e8666ec0a9d88f01"
+        }
+      },
+      "config": {
+        "route": {
+          "actor_id": "synthetic-author",
+          "provider_id": "synthetic-venue",
+          "endpoint": "local-publication://synthetic-venue/release",
+          "tenant_id": "synthetic-tenant",
+          "account_id": "synthetic-account",
+          "purpose": "synthetic_local_export",
+          "route_id": "controlled-local-publication",
+          "stage": "publication"
+        },
+        "policy_id": "synthetic-publication-policy",
+        "policy_version": "1",
+        "policy_sha256": "8e3b222fadb75a01ace7da9729b0353240005b8735d8189d8f153348167da01a",
+        "keys": {
+          "publication-policy": {
+            "public_key": "601f40885b63db4fe3ef670123c8793599f10d0c3a181400a1cfb0013edf6595",
+            "issuer": "synthetic-policy",
+            "organization": "single-test-controller",
+            "roles": [
+              "policy"
+            ],
+            "not_before": "2026-10-29T02:10:03.686117Z",
+            "not_after": "2026-10-31T02:10:03.686117Z"
+          },
+          "publication-collector": {
+            "public_key": "6c5cc417b56713cde5240b8be7eb650c0f3c443926041c531f4f0beddac5627e",
+            "issuer": "synthetic-collector",
+            "organization": "single-test-controller",
+            "roles": [
+              "collector"
+            ],
+            "not_before": "2026-10-29T02:10:03.686117Z",
+            "not_after": "2026-10-31T02:10:03.686117Z"
+          },
+          "publication-author": {
+            "public_key": "5bd7974cf11f48e75db8296d2a4c856c01dc5a13776da1117851e27b5c0a1603",
+            "issuer": "synthetic-author",
+            "organization": "single-test-controller",
+            "roles": [
+              "author"
+            ],
+            "not_before": "2026-10-29T02:10:03.686117Z",
+            "not_after": "2026-10-31T02:10:03.686117Z"
+          },
+          "publication-reviewer": {
+            "public_key": "4839eeb43c42a6f579321bcbec4fa97c953a38a7beb69b47096efb260788da03",
+            "issuer": "synthetic-reviewer",
+            "organization": "single-test-controller",
+            "roles": [
+              "reviewer"
+            ],
+            "not_before": "2026-10-29T02:10:03.686117Z",
+            "not_after": "2026-10-31T02:10:03.686117Z"
+          }
+        },
+        "authorities": {
+          "policy": "synthetic-policy",
+          "collector": "synthetic-collector",
+          "author": "synthetic-author",
+          "reviewer": "synthetic-reviewer"
+        },
+        "collector_key_id": "publication-collector",
+        "reviewer_key_id": "publication-reviewer",
+        "publisher_public": "c04eaeebcd182a2dbcb7a6cd7c0e3ce494d5faadeda6f6aab00d8015a0223de6",
+        "publisher_key_id": "publication-publisher"
+      },
+      "report": {
+        "format": "incident-publication-release/0.1",
+        "state": "BLOCKED_WITHOUT_PUBLICATION",
+        "attempted": false,
+        "reason": "Required evidence signature, identity, role or recording time failed",
+        "preflight": {
+          "at": "2026-10-30T02:10:03.693791Z",
+          "authorized_local_export": false,
+          "reason": "Required evidence signature, identity, role or recording time failed",
+          "measurements": {
+            "request_id": "publication-c942e19374e345ee813cd4e59b467696",
+            "candidate_sha256": "10e11a97e168fe0e53c115422c5000d10b05fc3d0a7fb6e367136ed0091f37e9",
+            "source_sha256": "55da770085f3591e206924d1e615e358a42224971ff1da8add6696fa4d6e84f0",
+            "lineage_sha256": "ead383940a632f8a2d2875a91bd512e122b7ae7bd9373e78d48f0cfdc3f5efb6",
+            "artifact_sha256": "66c3dce462be32682b67aba66d9aa1a871266e3bd013193152dd93e913d47b9e",
+            "disclosure_sha256": "806e9855d8252a6930d98262c62dda3537d38d81932bacd1ecc6e959bae3a4b7",
+            "byte_length": 2856,
+            "destination_id": "synthetic-venue",
+            "fingerprint": "004dab9b6ce327915f0d0534f6a5a775fb7bfe56af9eaa2ccc5b3fa87c9cdd5f"
+          },
+          "assessor_frame": {
+            "evidence": {
+              "as_of": "2026-10-30T02:10:03.693791Z",
+              "evaluation_id": "evaluation-dcd6adbf26cf4266ae9294c53ebc2b1e",
+              "format": "incident-evidence-input/0.1",
+              "records": [
+                {
+                  "algorithm": "Ed25519",
+                  "body": {
+                    "binding": {
+                      "account_id": "synthetic-account",
+                      "actor_id": "synthetic-author",
+                      "artifact_id": "synthetic-note",
+                      "disclosure_sha256": "806e9855d8252a6930d98262c62dda3537d38d81932bacd1ecc6e959bae3a4b7",
+                      "endpoint": "local-publication://synthetic-venue/release",
+                      "payload_sha256": "66c3dce462be32682b67aba66d9aa1a871266e3bd013193152dd93e913d47b9e",
+                      "policy_id": "synthetic-publication-policy",
+                      "policy_sha256": "8e3b222fadb75a01ace7da9729b0353240005b8735d8189d8f153348167da01a",
+                      "policy_version": "1",
+                      "provider_id": "synthetic-venue",
+                      "purpose": "synthetic_local_export",
+                      "request_id": "publication-c942e19374e345ee813cd4e59b467696",
+                      "revision_id": "rev-2-55da770085f3591e206924d1",
+                      "route_id": "controlled-local-publication",
+                      "stage": "publication",
+                      "tenant_id": "synthetic-tenant"
+                    },
+                    "data": {
+                      "approval_required": true,
+                      "disclosure_categories": [
+                        "text"
+                      ],
+                      "effective_from": "2026-10-30T01:10:03.686744Z",
+                      "effective_until": "2026-10-30T02:15:03.686744Z",
+                      "interpretation": "resolved",
+                      "prohibited_activities": []
+                    },
+                    "evaluation_id": "evaluation-dcd6adbf26cf4266ae9294c53ebc2b1e",
+                    "issuer": "synthetic-policy",
+                    "kind": "publication_policy",
+                    "record_id": "record-d014c29db9be4d98a64581338409e149",
+                    "recorded_at": "2026-10-30T02:10:03.687686Z"
+                  },
+                  "key_id": "publication-policy",
+                  "signature": "cd0b0d2d13ae937d97738fb29bf2b9c5a44d35ff9e293ecb85afbd79318b49dc4437a33a6d86e3a395336871c205938591e0213b24f97b8e81d9a62457f2870f"
+                },
+                {
+                  "algorithm": "Ed25519",
+                  "body": {
+                    "binding": {
+                      "account_id": "synthetic-account",
+                      "actor_id": "synthetic-author",
+                      "artifact_id": "synthetic-note",
+                      "disclosure_sha256": "806e9855d8252a6930d98262c62dda3537d38d81932bacd1ecc6e959bae3a4b7",
+                      "endpoint": "local-publication://synthetic-venue/release",
+                      "payload_sha256": "66c3dce462be32682b67aba66d9aa1a871266e3bd013193152dd93e913d47b9e",
+                      "policy_id": "synthetic-publication-policy",
+                      "policy_sha256": "8e3b222fadb75a01ace7da9729b0353240005b8735d8189d8f153348167da01a",
+                      "policy_version": "1",
+                      "provider_id": "synthetic-venue",
+                      "purpose": "synthetic_local_export",
+                      "request_id": "publication-c942e19374e345ee813cd4e59b467696",
+                      "revision_id": "rev-2-55da770085f3591e206924d1",
+                      "route_id": "controlled-local-publication",
+                      "stage": "publication",
+                      "tenant_id": "synthetic-tenant"
+                    },
+                    "data": {
+                      "components": [
+                        {
+                          "artifact_id": "synthetic-note",
+                          "category": "text",
+                          "revision_id": "rev-2-55da770085f3591e206924d1",
+                          "sha256": "66c3dce462be32682b67aba66d9aa1a871266e3bd013193152dd93e913d47b9e"
+                        },
+                        {
+                          "artifact_id": "synthetic-note:paragraph-1",
+                          "category": "text",
+                          "revision_id": "rev-2-1507d08b88744b23e7d59368",
+                          "sha256": "1507d08b88744b23e7d59368a711e647326ae7a13b04255cc17430b0a1965230"
+                        }
+                      ],
+                      "observed_at": "2026-10-30T02:10:03.687686Z"
+                    },
+                    "evaluation_id": "evaluation-dcd6adbf26cf4266ae9294c53ebc2b1e",
+                    "issuer": "synthetic-collector",
+                    "kind": "publication_manifest",
+                    "record_id": "record-0187fb9096e64a20ab295bef65e0929a",
+                    "recorded_at": "2026-10-30T02:10:03.687686Z"
+                  },
+                  "key_id": "publication-collector",
+                  "signature": "6b3c4258d8e566a7847e39c3a516b38ff6d4e0fb819f2975fc83c4cfd7fae67c2e66e63fbca81d5273bfaaa850dd9af2f3774bf3cc090d5c01d6d59d01478b0a"
+                },
+                {
+                  "algorithm": "Ed25519",
+                  "body": {
+                    "binding": {
+                      "account_id": "synthetic-account",
+                      "actor_id": "synthetic-author",
+                      "artifact_id": "synthetic-note",
+                      "disclosure_sha256": "806e9855d8252a6930d98262c62dda3537d38d81932bacd1ecc6e959bae3a4b7",
+                      "endpoint": "local-publication://synthetic-venue/release",
+                      "payload_sha256": "66c3dce462be32682b67aba66d9aa1a871266e3bd013193152dd93e913d47b9e",
+                      "policy_id": "synthetic-publication-policy",
+                      "policy_sha256": "8e3b222fadb75a01ace7da9729b0353240005b8735d8189d8f153348167da01a",
+                      "policy_version": "1",
+                      "provider_id": "synthetic-venue",
+                      "purpose": "synthetic_local_export",
+                      "request_id": "publication-c942e19374e345ee813cd4e59b467696",
+                      "revision_id": "rev-2-55da770085f3591e206924d1",
+                      "route_id": "controlled-local-publication",
+                      "stage": "publication",
+                      "tenant_id": "synthetic-tenant"
+                    },
+                    "data": {
+                      "from": "2026-10-30T02:10:03.686425Z",
+                      "scope": "declared_editor_only",
+                      "until": "2026-10-30T02:10:03.687686Z"
+                    },
+                    "evaluation_id": "evaluation-dcd6adbf26cf4266ae9294c53ebc2b1e",
+                    "issuer": "synthetic-collector",
+                    "kind": "publication_coverage",
+                    "record_id": "record-9c3c7e7526f64aa5baa3f445c8caf9c3",
+                    "recorded_at": "2026-10-30T02:10:03.687686Z"
+                  },
+                  "key_id": "publication-collector",
+                  "signature": "e50059c162db3df6ef8f45a9977b2ea4fea4f190793f7f417a3c8f1014b77f460658f64531d949ede0d2e13de90e7605006bbbe196c7041a5567f68480345608"
+                },
+                {
+                  "algorithm": "Ed25519",
+                  "body": {
+                    "binding": {
+                      "account_id": "synthetic-account",
+                      "actor_id": "synthetic-author",
+                      "artifact_id": "synthetic-note",
+                      "disclosure_sha256": "806e9855d8252a6930d98262c62dda3537d38d81932bacd1ecc6e959bae3a4b7",
+                      "endpoint": "local-publication://synthetic-venue/release",
+                      "payload_sha256": "66c3dce462be32682b67aba66d9aa1a871266e3bd013193152dd93e913d47b9e",
+                      "policy_id": "synthetic-publication-policy",
+                      "policy_sha256": "8e3b222fadb75a01ace7da9729b0353240005b8735d8189d8f153348167da01a",
+                      "policy_version": "1",
+                      "provider_id": "synthetic-venue",
+                      "purpose": "synthetic_local_export",
+                      "request_id": "publication-c942e19374e345ee813cd4e59b467696",
+                      "revision_id": "rev-2-55da770085f3591e206924d1",
+                      "route_id": "controlled-local-publication",
+                      "stage": "publication",
+                      "tenant_id": "synthetic-tenant"
+                    },
+                    "data": {
+                      "categories": [
+                        "text"
+                      ],
+                      "prepared_at": "2026-10-30T02:10:03.687686Z",
+                      "text": "Synthetic local publication pilot. Declared simulated AI activities: generation. Coverage is limited to this recorded local editing session. This editor invokes no external AI model. The origin of imported content and activity outside this session is unknown; this disclosure does not establish human-only authorship or complete AI provenance."
+                    },
+                    "evaluation_id": "evaluation-dcd6adbf26cf4266ae9294c53ebc2b1e",
+                    "issuer": "synthetic-author",
+                    "kind": "publication_disclosure",
+                    "record_id": "record-672a4ac1e6544d52b04bd736ac3d7dec",
+                    "recorded_at": "2026-10-30T02:10:03.687686Z"
+                  },
+                  "key_id": "publication-author",
+                  "signature": "83e8eed37290be61487f5d563fa2b5c33838168549a89953500a4be0315bb6e029f516455ff74d54dc94d7e7fea3b8114fff8b389b257dc3b75f51b1944e920e"
+                },
+                {
+                  "algorithm": "Ed25519",
+                  "body": {
+                    "binding": {
+                      "account_id": "synthetic-account",
+                      "actor_id": "synthetic-author",
+                      "artifact_id": "synthetic-note",
+                      "disclosure_sha256": "806e9855d8252a6930d98262c62dda3537d38d81932bacd1ecc6e959bae3a4b7",
+                      "endpoint": "local-publication://synthetic-venue/release",
+                      "payload_sha256": "66c3dce462be32682b67aba66d9aa1a871266e3bd013193152dd93e913d47b9e",
+                      "policy_id": "synthetic-publication-policy",
+                      "policy_sha256": "8e3b222fadb75a01ace7da9729b0353240005b8735d8189d8f153348167da01a",
+                      "policy_version": "1",
+                      "provider_id": "synthetic-venue",
+                      "purpose": "synthetic_local_export",
+                      "request_id": "publication-c942e19374e345ee813cd4e59b467696",
+                      "revision_id": "rev-2-55da770085f3591e206924d1",
+                      "route_id": "controlled-local-publication",
+                      "stage": "publication",
+                      "tenant_id": "synthetic-tenant"
+                    },
+                    "data": {
+                      "activity": "generation",
+                      "adoption_basis": "observed_in_artifact",
+                      "component": {
+                        "artifact_id": "synthetic-note:paragraph-1",
+                        "category": "text",
+                        "revision_id": "rev-2-1507d08b88744b23e7d59368",
+                        "sha256": "1507d08b88744b23e7d59368a711e647326ae7a13b04255cc17430b0a1965230"
+                      },
+                      "included_in_artifact_sha256": "66c3dce462be32682b67aba66d9aa1a871266e3bd013193152dd93e913d47b9e",
+                      "observed_at": "2026-10-30T02:10:03.686579Z"
+                    },
+                    "evaluation_id": "evaluation-dcd6adbf26cf4266ae9294c53ebc2b1e",
+                    "issuer": "synthetic-collector",
+                    "kind": "publication_activity",
+                    "record_id": "record-d421657b20e940f7bc0976598e7b0728",
+                    "recorded_at": "2026-10-30T02:10:03.687686Z"
+                  },
+                  "key_id": "publication-collector",
+                  "signature": "5cf17859bcd7512a7908077cce64d2e02751576252be7f14b14902bb7cfd77eb4fa06cae2afe5bfc4f103b4d659f7572088e55b3b8d4cde63e82d4f2b8eaf303"
+                },
+                {
+                  "algorithm": "Ed25519",
+                  "body": {
+                    "binding": {
+                      "account_id": "synthetic-account",
+                      "actor_id": "synthetic-author",
+                      "artifact_id": "synthetic-note",
+                      "disclosure_sha256": "806e9855d8252a6930d98262c62dda3537d38d81932bacd1ecc6e959bae3a4b7",
+                      "endpoint": "local-publication://synthetic-venue/release",
+                      "payload_sha256": "66c3dce462be32682b67aba66d9aa1a871266e3bd013193152dd93e913d47b9e",
+                      "policy_id": "synthetic-publication-policy",
+                      "policy_sha256": "8e3b222fadb75a01ace7da9729b0353240005b8735d8189d8f153348167da01a",
+                      "policy_version": "1",
+                      "provider_id": "synthetic-venue",
+                      "purpose": "synthetic_local_export",
+                      "request_id": "publication-c942e19374e345ee813cd4e59b467696",
+                      "revision_id": "rev-2-55da770085f3591e206924d1",
+                      "route_id": "controlled-local-publication",
+                      "stage": "publication",
+                      "tenant_id": "synthetic-tenant"
+                    },
+                    "data": {
+                      "approval": "approved",
+                      "valid_from": "2026-10-30T02:10:03.689094Z",
+                      "valid_until": "2026-10-30T02:12:03.689094Z"
+                    },
+                    "evaluation_id": "evaluation-dcd6adbf26cf4266ae9294c53ebc2b1e",
+                    "issuer": "synthetic-reviewer",
+                    "kind": "publication_approval",
+                    "record_id": "record-702ee1f6ccd648738929547c6dc331b2",
+                    "recorded_at": "2026-10-30T02:10:03.689094Z"
+                  },
+                  "key_id": "publication-reviewer",
+                  "signature": "1a6ae95ca5ee20e7e8a558ebf59235153a594be47ab658e39ffd1cd74a18ecc5df9a3b6259e7b17361ea2301b16e5867bc56143b36162503e8666ec0a9d88f01"
+                }
+              ],
+              "target": {
+                "authorities": {
+                  "author": "synthetic-author",
+                  "collector": "synthetic-collector",
+                  "policy": "synthetic-policy",
+                  "reviewer": "synthetic-reviewer"
+                },
+                "coverage_requested": "managed_route",
+                "operation_at": "2026-10-30T02:10:03.693791Z",
+                "subject": {
+                  "account_id": "synthetic-account",
+                  "actor_id": "synthetic-author",
+                  "artifact_id": "synthetic-note",
+                  "disclosure_sha256": "806e9855d8252a6930d98262c62dda3537d38d81932bacd1ecc6e959bae3a4b7",
+                  "endpoint": "local-publication://synthetic-venue/release",
+                  "payload_sha256": "66c3dce462be32682b67aba66d9aa1a871266e3bd013193152dd93e913d47b9e",
+                  "policy_id": "synthetic-publication-policy",
+                  "policy_sha256": "8e3b222fadb75a01ace7da9729b0353240005b8735d8189d8f153348167da01a",
+                  "policy_version": "1",
+                  "provider_id": "synthetic-venue",
+                  "purpose": "synthetic_local_export",
+                  "request_id": "publication-c942e19374e345ee813cd4e59b467696",
+                  "revision_id": "rev-2-55da770085f3591e206924d1",
+                  "route_id": "controlled-local-publication",
+                  "stage": "publication",
+                  "tenant_id": "synthetic-tenant"
+                }
+              },
+              "workflow": "publication"
+            },
+            "trust": {
+              "as_of": "2026-10-30T02:10:03.693791Z",
+              "evaluation_id": "evaluation-dcd6adbf26cf4266ae9294c53ebc2b1e",
+              "format": "incident-evidence-trust/0.1",
+              "keys": {
+                "publication-author": {
+                  "issuer": "synthetic-author",
+                  "not_after": "2026-10-31T02:10:03.686117Z",
+                  "not_before": "2026-10-29T02:10:03.686117Z",
+                  "organization": "single-test-controller",
+                  "public_key": "5bd7974cf11f48e75db8296d2a4c856c01dc5a13776da1117851e27b5c0a1603",
+                  "roles": [
+                    "author"
+                  ]
+                },
+                "publication-collector": {
+                  "issuer": "synthetic-collector",
+                  "not_after": "2026-10-31T02:10:03.686117Z",
+                  "not_before": "2026-10-29T02:10:03.686117Z",
+                  "organization": "single-test-controller",
+                  "public_key": "6c5cc417b56713cde5240b8be7eb650c0f3c443926041c531f4f0beddac5627e",
+                  "roles": [
+                    "collector"
+                  ]
+                },
+                "publication-policy": {
+                  "issuer": "synthetic-policy",
+                  "not_after": "2026-10-31T02:10:03.686117Z",
+                  "not_before": "2026-10-29T02:10:03.686117Z",
+                  "organization": "single-test-controller",
+                  "public_key": "601f40885b63db4fe3ef670123c8793599f10d0c3a181400a1cfb0013edf6595",
+                  "roles": [
+                    "policy"
+                  ]
+                },
+                "publication-reviewer": {
+                  "issuer": "synthetic-reviewer",
+                  "not_after": "2026-10-31T02:10:03.686117Z",
+                  "not_before": "2026-10-29T02:10:03.686117Z",
+                  "organization": "single-test-controller",
+                  "public_key": "4839eeb43c42a6f579321bcbec4fa97c953a38a7beb69b47096efb260788da03",
+                  "roles": [
+                    "reviewer"
+                  ]
+                }
+              },
+              "mode": "synthetic-test-only",
+              "target_sha256": "22063bc3f83e1870998c040a17e9148be7db04d9acf6aa766886803e6c1d48ba",
+              "workflow": "publication"
+            },
+            "report": {
+              "format": "incident-evidence-report/0.1",
+              "adapter": "incident-evidence-adapter/0.1",
+              "implementation_version": "0.1.0",
+              "evaluation_id": "evaluation-dcd6adbf26cf4266ae9294c53ebc2b1e",
+              "workflow": "publication",
+              "as_of": "2026-10-30T02:10:03.693791Z",
+              "synthetic": true,
+              "input_sha256": "4f879c213bf062208853b38a23b379327038cfe0e2e893c87edc78e595aeb32e",
+              "trust_sha256": "6da320a27061103dd55aa6af32fe763f8745accf4206416bdb8a87ce3b5c9106",
+              "target_sha256": "22063bc3f83e1870998c040a17e9148be7db04d9acf6aa766886803e6c1d48ba",
+              "evidence_integrity": "FAILED",
+              "assessments": {
+                "publication_action": "REVIEW",
+                "policy_assessment": "UNKNOWN",
+                "policy_applicability": "BOUND_AND_EFFECTIVE_UNDER_GIVEN_ASSUMPTIONS",
+                "evidence_integrity": "NOT_ESTABLISHED",
+                "ai_involvement": "OBSERVED_UNDER_GIVEN_ASSUMPTIONS",
+                "coverage": "UNKNOWN",
+                "approval_applicability": "NOT_ESTABLISHED",
+                "disclosure_assessment": "REQUIRES_CONTENT_REVIEW",
+                "evidence_retention": "PRESERVE_PER_STAGE_POLICY_AND_REVISION_BINDINGS",
+                "evidence_basis": "INSTRUMENTED_OBSERVATION",
+                "declarant_attribution": "NOT_ESTABLISHED",
+                "activity_completeness": "UNKNOWN",
+                "disclosure_preparation": "RECORDED",
+                "dispatch_observation": "NOT_ESTABLISHED",
+                "delivery_status": "UNCONFIRMED",
+                "acceptance_status": "UNKNOWN"
+              },
+              "findings": [
+                {
+                  "code": "publication_activity_bound_to_artifact",
+                  "record_ids": [
+                    "record-d421657b20e940f7bc0976598e7b0728"
+                  ]
+                },
+                {
+                  "code": "publication_preparation_is_not_delivery",
+                  "record_ids": [
+                    "record-672a4ac1e6544d52b04bd736ac3d7dec"
+                  ]
+                },
+                {
+                  "code": "publication_required_approval_not_established",
+                  "record_ids": [
+                    "record-d014c29db9be4d98a64581338409e149"
+                  ]
+                }
+              ],
+              "evidence_checks": [
+                {
+                  "record_id": "record-d014c29db9be4d98a64581338409e149",
+                  "kind": "publication_policy",
+                  "signature": "VERIFIED",
+                  "identity": "EXPECTED_ISSUER",
+                  "role": "AUTHORIZED",
+                  "time": "WITHIN_DECLARED_WINDOW",
+                  "evaluation": "MATCH",
+                  "binding_differences": [],
+                  "eligibility": "ELIGIBLE"
+                },
+                {
+                  "record_id": "record-0187fb9096e64a20ab295bef65e0929a",
+                  "kind": "publication_manifest",
+                  "signature": "VERIFIED",
+                  "identity": "EXPECTED_ISSUER",
+                  "role": "AUTHORIZED",
+                  "time": "WITHIN_DECLARED_WINDOW",
+                  "evaluation": "MATCH",
+                  "binding_differences": [],
+                  "eligibility": "ELIGIBLE"
+                },
+                {
+                  "record_id": "record-9c3c7e7526f64aa5baa3f445c8caf9c3",
+                  "kind": "publication_coverage",
+                  "signature": "VERIFIED",
+                  "identity": "EXPECTED_ISSUER",
+                  "role": "AUTHORIZED",
+                  "time": "WITHIN_DECLARED_WINDOW",
+                  "evaluation": "MATCH",
+                  "binding_differences": [],
+                  "eligibility": "ELIGIBLE"
+                },
+                {
+                  "record_id": "record-672a4ac1e6544d52b04bd736ac3d7dec",
+                  "kind": "publication_disclosure",
+                  "signature": "VERIFIED",
+                  "identity": "EXPECTED_ISSUER",
+                  "role": "AUTHORIZED",
+                  "time": "WITHIN_DECLARED_WINDOW",
+                  "evaluation": "MATCH",
+                  "binding_differences": [],
+                  "eligibility": "ELIGIBLE"
+                },
+                {
+                  "record_id": "record-d421657b20e940f7bc0976598e7b0728",
+                  "kind": "publication_activity",
+                  "signature": "VERIFIED",
+                  "identity": "EXPECTED_ISSUER",
+                  "role": "AUTHORIZED",
+                  "time": "WITHIN_DECLARED_WINDOW",
+                  "evaluation": "MATCH",
+                  "binding_differences": [],
+                  "eligibility": "ELIGIBLE"
+                },
+                {
+                  "record_id": "record-702ee1f6ccd648738929547c6dc331b2",
+                  "kind": "publication_approval",
+                  "signature": "FAILED",
+                  "identity": "EXPECTED_ISSUER",
+                  "role": "AUTHORIZED",
+                  "time": "WITHIN_DECLARED_WINDOW",
+                  "evaluation": "MATCH",
+                  "binding_differences": [],
+                  "eligibility": "INELIGIBLE"
+                }
+              ],
+              "external_anchor_verification": "NOT_IMPLEMENTED",
+              "full_vap_conformance": "NOT_ASSESSED",
+              "full_cap_conformance": "NOT_ASSESSED",
+              "legal_compliance": "NOT_ASSESSED",
+              "limitations": [
+                "Application-layer experimental assessment; no normative VAP or CAP conformance determination.",
+                "Evaluator trust configuration and issuer/organization assignments are explicit external assumptions.",
+                "Valid signatures attribute records; they do not independently prove claim truth or event time.",
+                "Missing records cannot establish absence of activity outside the declared observation scope.",
+                "Block and hold outputs are recommendations; this offline program controls no live gateway or publisher.",
+                "Provider statements and limited reviews cannot establish universal external deletion.",
+                "External anchoring, positive XREF, key revocation, production identity onboarding and legal compliance are not assessed."
+              ]
+            }
+          }
+        },
+        "final_gate": null,
+        "publication": null,
+        "receipt": null,
+        "post_at": "2026-10-30T02:10:03.693791Z"
+      }
+    }
+  ],
+  "visible": {
+    "visible_count": 0,
+    "files": {}
+  },
+  "actual": {
+    "states": [
+      "BLOCKED_WITHOUT_PUBLICATION"
+    ],
+    "publication_attempts": 0,
+    "unknown_attempt_observations": 0,
+    "visible_count": 0,
+    "visible_bytes_match_candidate": false
+  },
+  "additional_observations": {},
+  "sort_states": false,
+  "outside_gate_write_observed": false
+}

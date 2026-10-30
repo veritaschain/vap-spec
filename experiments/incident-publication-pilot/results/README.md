@@ -69,10 +69,15 @@ on **2026-11-29**:
 - [Python 3.12 artifact](https://github.com/veritaschain/vap-spec/actions/runs/40990072945/artifacts/12949205621).
 - [Python 3.14 artifact](https://github.com/veritaschain/vap-spec/actions/runs/40990072945/artifacts/12949051379).
 
-The repository retains the retrieved summaries, provenance metadata and source
-hashes. It does not retain the complete case directories after artifact expiry.
-A summary alone cannot replace those directories for `verify-exports`. A fresh
-run after expiry uses the [reproduction instructions](../README.md#reproduce);
+The original result directory retains summaries, provenance metadata and source
+hashes. On 2026-10-30 JST, the [offline recheck kit](../../incident-recheck-kit/README.md)
+additionally preserved the exact original Python 3.12 summary and all 18 public
+case exports in Git, after checking the downloaded artifact's recorded digest.
+These include the synthetic article content needed for verification and remain
+available after artifact expiry. Separate runtime HTML/journals and Python 3.14
+case exports are not copied by the kit. A summary alone cannot replace the full
+public case directory for `verify-exports`. A fresh execution uses the
+[reproduction instructions](../README.md#reproduce);
 fresh keys, IDs and times legitimately produce different evidence hashes.
 
 Offline rechecking verifies supplied signatures, decisions, bindings, observations

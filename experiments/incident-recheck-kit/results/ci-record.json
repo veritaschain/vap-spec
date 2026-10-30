@@ -1,0 +1,118 @@
+{
+  "format": "incident-recheck-ci-record/0.1",
+  "experiment": "Incident evidence offline recheck kit",
+  "status": "Informative synthetic experiment; unadopted",
+  "checked_on": "2026-10-30 JST",
+  "tested_commit": "1205280216ba2463addc03b7c2bd55116475153a",
+  "tested_tree": "3f7bc9c69012b04a51d08720a0a3397292754f68",
+  "source_sha256": "8fb9b95553ef60b54419f0542b555e7c797c58cc92d1bba2a7a0c256694bd3c0",
+  "source_file_count": 136,
+  "workflow_run": {
+    "id": 41000265431,
+    "url": "https://github.com/veritaschain/vap-spec/actions/runs/41000265431",
+    "event": "push",
+    "run_attempt": 1,
+    "conclusion": "success",
+    "created_at": "2026-10-30T03:58:19Z",
+    "updated_at": "2026-10-30T03:58:45Z"
+  },
+  "jobs": [
+    {
+      "python_matrix": "3.12",
+      "python_runtime": "3.12.15",
+      "job_id": 123882786419,
+      "job_url": "https://github.com/veritaschain/vap-spec/actions/runs/41000265431/job/123882786419",
+      "conclusion": "success",
+      "started_at": "2026-10-30T03:58:22Z",
+      "completed_at": "2026-10-30T03:58:43Z",
+      "checkout_commit": "1205280216ba2463addc03b7c2bd55116475153a",
+      "test_methods": 29,
+      "skipped_methods": 0,
+      "unraisable_finalizer_errors": 0,
+      "verified_exports": 53,
+      "deterministic_rebuild": true,
+      "source_unchanged": true,
+      "summary_file": "summary-python-3.12.json",
+      "artifact": {
+        "id": 12952509821,
+        "name": "incident-recheck-python-3.12",
+        "digest": "sha256:e09e4bce774641a97f1d8b4873c42aa77efa97af93c3a496be624c4be54516f1",
+        "size_in_bytes": 372605,
+        "expires_at": "2026-11-29T03:58:39Z",
+        "url": "https://github.com/veritaschain/vap-spec/actions/runs/41000265431/artifacts/12952509821"
+      },
+      "downloaded_artifact_digest_matched": true,
+      "downloaded_inner_kit_digest_matched": true,
+      "downloaded_summary_matches_job_log": true
+    },
+    {
+      "python_matrix": "3.14",
+      "python_runtime": "3.14.9",
+      "job_id": 123882786160,
+      "job_url": "https://github.com/veritaschain/vap-spec/actions/runs/41000265431/job/123882786160",
+      "conclusion": "success",
+      "started_at": "2026-10-30T03:58:21Z",
+      "completed_at": "2026-10-30T03:58:45Z",
+      "checkout_commit": "1205280216ba2463addc03b7c2bd55116475153a",
+      "test_methods": 29,
+      "skipped_methods": 0,
+      "unraisable_finalizer_errors": 0,
+      "verified_exports": 53,
+      "deterministic_rebuild": true,
+      "source_unchanged": true,
+      "summary_file": "summary-python-3.14.json",
+      "artifact": {
+        "id": 12952753979,
+        "name": "incident-recheck-python-3.14",
+        "digest": "sha256:b7187cccc53f02319b39144e7b5a9540d2be78a5a844ad065dfdaafc4c440a02",
+        "size_in_bytes": 372602,
+        "expires_at": "2026-11-29T03:58:41Z",
+        "url": "https://github.com/veritaschain/vap-spec/actions/runs/41000265431/artifacts/12952753979"
+      },
+      "downloaded_artifact_digest_matched": true,
+      "downloaded_inner_kit_digest_matched": true,
+      "downloaded_summary_matches_job_log": true
+    }
+  ],
+  "kit": {
+    "snapshot_id": "incident-ci-2026-10-30",
+    "archive_name": "incident-ci-2026-10-30.zip",
+    "archive_sha256": "06bdb46eade7ef5c2f041797007d1f7ef3aaa55ad17d88a90b28276be17d865f",
+    "file_count": 129,
+    "manifest_sha256": "808cac08a06e2f543683e4499645d1eda3860a400406efe1cbd206614490a76d",
+    "payload_bytes": 2858319,
+    "archive_byte_length": 2902071,
+    "original_case_count": 53,
+    "original_summary_count": 3,
+    "capture_record_count": 1,
+    "unique_original_source_files": 61,
+    "identical_across_tested_python_versions": true
+  },
+  "source_capture": "INCIDENT_RECHECK_SUMMARY_JSON marker extracted from each completed job; every source hash matched reviewed bytes. Downloaded artifact summaries matched those markers; only stored JSON whitespace is reformatted.",
+  "local_checkpoint_before_workflow_correction": {
+    "python": "3.12.14",
+    "source_sha256": "925ee33f4a3d5bd9c8babdd430a9329e07a20e6c5eb8cb20d5db23078e81e5ec",
+    "test_methods": 29,
+    "verified_exports": 53,
+    "archive_sha256": "06bdb46eade7ef5c2f041797007d1f7ef3aaa55ad17d88a90b28276be17d865f"
+  },
+  "workflow_correction": {
+    "initial_commit": "3b5bc1be0cbd127bd87127e41409e450aaaac70e",
+    "failed_run_id": 41000163272,
+    "failure_stage": "WORKFLOW_YAML_PARSE_BEFORE_JOBS",
+    "cause": "An inline --only-binary=:all: command contained a YAML-significant colon-space sequence.",
+    "correction": "Use a literal command block; parse YAML locally; execute both Python CI jobs again."
+  },
+  "actions_reexecuted": false,
+  "independent_reproduction": "NOT_ESTABLISHED",
+  "conformance": "NOT_ASSESSED",
+  "dependency_scope": "PINNED_VERSIONS_NOT_HERMETIC",
+  "limitations": [
+    "The offline kit does not reexecute the original upload, publication or erasure actions. Integration tests make temporary synthetic files and action-denial attempts.",
+    "Matching signatures, source bytes and same-controller CI do not establish independent reproduction or truthful original observations.",
+    "The Python audit guard is not an OS sandbox; interpreter, host and installed dependency binaries remain trusted external inputs.",
+    "Only the original Python 3.12 public capture is durably retained. Runtime databases and original Python 3.14 case directories are not included.",
+    "Outer CI artifact ZIPs expire after 30 days. The fixed public capture and matching source remain in Git; the inner deterministic kit can be rebuilt.",
+    "This tested commit precedes the result-recording commit. The recorded execution manifest excludes results and review documents to avoid self-reference."
+  ]
+}
