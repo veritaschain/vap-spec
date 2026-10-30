@@ -65,6 +65,12 @@ recorded actor's write authority. A pilot needs an explicit trust model: trusted
 key rotation and compromise handling, anchor verification, clock uncertainty, and independent evidence
 sources. Signing a false assertion preserves a false assertion; it does not make the assertion true.
 
+XREF applies only where participating parties independently log and anchor corresponding records
+under the declared matching and reconciliation rules. A local request record, an imported provider
+response or access to an external service does not by itself establish TRC-005 XREF. An authenticated
+imported response can still provide source-attributed evidence within its stated scope. Organizational
+approval of a service and its technical participation in a provenance exchange are separate questions.
+
 Describe records as **tamper-evident under stated trust assumptions**. Keep the observed time,
 recording time, provider-claimed time and external anchoring time distinguishable. A later timestamp
 does not independently establish the time of the underlying operation.
@@ -226,6 +232,22 @@ known recipients, mitigation requests/responses, notifications and unresolved qu
 making the underlying personal data public. Retain corrections as new dated records rather than
 rewriting historical signed evidence.
 
+Before removing accessible account history, coordinate proportionate, authorized preservation of the
+minimum evidence needed for incident review, where feasible. Record the source, acquisition time,
+access restrictions, retention basis and any unavailable material. This does not justify delaying
+urgent containment, indiscriminate copying of personal data or overriding applicable erasure and
+retention duties. If urgent removal proceeds while preservation is unavailable, record the decision,
+its time and the resulting evidence gap; preserve unknown outcomes. Later preservation or anchoring
+does not establish contemporaneous capture. This design guidance does not establish whether evidence
+was preserved before history removal in either motivating incident.
+
+Record external information or log requests separately from deletion requests. Preserve the requested
+scope and questions, recipient, request time, dispatch and receipt evidence, response deadline or
+observation cutoff, and complete, partial or absent responses. Record the authority or basis for the
+request where relevant; recording a request does not create authority to compel disclosure. No response
+by the recorded cutoff leaves the requested facts unresolved. It does not establish deletion, non-use,
+refusal or misconduct, and a later response should be linked without rewriting the earlier observation.
+
 VAP evidence does not replace legal assessment. [HHS breach-notification guidance][hhs-breach] and
 [HHS cloud guidance][hhs-cloud] illustrate notification, contract and risk-management questions that
 remain outside an integrity check. This proposal makes no HIPAA violation finding and does not
@@ -251,6 +273,9 @@ claim that AILEX implements this design or is independently conformant.
 ## 10. Review and change history
 
 - 2026-10-30 JST: Initial source-checked proposal and synthetic acceptance catalogue.
+- 2026-10-30 JST: Follow-up design review added scoped XREF participation, external-information-request
+  tracking and proportionate evidence preservation during containment; three synthetic cases added,
+  still not executed.
 - Standardization decisions, interoperability results and future corrections will be separately dated.
 
 [vap]: https://github.com/veritaschain/vap-spec/blob/357b8e6b232750180a2a0ce185355e31880edaf6/spec/v1.2/VAP_Framework_Specification.md

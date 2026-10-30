@@ -498,6 +498,89 @@
         "The publisher accepted the submission or approved the AI use.",
         "Preparing or sending a disclosure automatically satisfies the applicable policy or law."
       ]
+    },
+    {
+      "id": "IR-01",
+      "area": "incident_response",
+      "title": "An external information request has no response by the observation cutoff",
+      "given": [
+        "An authorized reviewer requests specified processing information and account logs from an external party for a defined object set and time interval.",
+        "The request record binds the questions, recipient, request time, and observation cutoff; separate authenticated evidence confirms receipt of the request.",
+        "No substantive response is available by the recorded cutoff.",
+        "No other evidence resolves the requested processing activity, record availability, or reason for the absent response."
+      ],
+      "expected": {
+        "request_delivery": "RECEIPT_ESTABLISHED_UNDER_GIVEN_ASSUMPTIONS",
+        "response_status": "NO_RESPONSE_OBSERVED_BY_CUTOFF",
+        "requested_facts": "UNKNOWN",
+        "reason_for_absent_response": "UNKNOWN",
+        "reasons": [
+          "The recorded request and its receipt do not establish the requested facts or the recipient's reason for not responding by the cutoff.",
+          "A later response can update the assessment while preserving the earlier cutoff observation."
+        ]
+      },
+      "forbidden_conclusions": [
+        "The recipient refused to cooperate or committed misconduct.",
+        "The requested records or underlying activity did not exist.",
+        "The absence of a response proves deletion, non-use, or compliance.",
+        "Recording the request creates authority to compel disclosure."
+      ]
+    },
+    {
+      "id": "IR-02",
+      "area": "incident_response",
+      "title": "Urgent history removal proceeds when minimum evidence preservation is unavailable",
+      "given": [
+        "An authorized incident responder determines that urgent removal of accessible account history is required under the applicable containment policy.",
+        "Proportionate preservation of the minimum relevant history is unavailable before removal, and delaying containment is not justified.",
+        "The responder records the source account reference, decision authority, removal-observation time, unavailable material, and applicable access and retention constraints without copying the missing personal data.",
+        "No other evidence resolves the missing history or downstream processing; the incident record is anchored only later."
+      ],
+      "expected": {
+        "containment_action": "AUTHORIZED_HISTORY_REMOVAL_RECORDED",
+        "preservation_status": "MINIMUM_HISTORY_UNAVAILABLE",
+        "evidence_gap": "SOURCE_TIME_AND_UNAVAILABLE_MATERIAL_RECORDED",
+        "missing_history_and_downstream_activity": "UNKNOWN",
+        "capture_timing": "LATER_ANCHOR_DOES_NOT_ESTABLISH_CONTEMPORANEOUS_CAPTURE",
+        "reasons": [
+          "A recorded preservation gap remains an evidentiary limitation after authorized urgent containment.",
+          "Preservation guidance does not require delaying urgent containment, indiscriminate copying, or overriding erasure and retention duties.",
+          "The later anchor protects the later record under its verification assumptions; it cannot reconstruct missing history or independently establish when the underlying action occurred."
+        ]
+      },
+      "forbidden_conclusions": [
+        "Containment must always wait until all account contents have been copied.",
+        "The removed history or downstream data has been fully reconstructed or universally erased.",
+        "The later anchor proves contemporaneous collection of the missing history.",
+        "This synthetic case establishes that either motivating institution failed to preserve evidence."
+      ]
+    },
+    {
+      "id": "XR-01",
+      "area": "cross_party",
+      "title": "An authentic imported provider receipt does not by itself establish XREF",
+      "given": [
+        "An imported provider receipt binds the expected request, tenant, and object set.",
+        "Signature and identity checks attribute the receipt to the expected provider under the stated verification assumptions.",
+        "The available package does not establish independently anchored corresponding records from the participating parties under declared matching and reconciliation rules.",
+        "No additional evidence establishes TRC-005 XREF participation for this exchange."
+      ],
+      "expected": {
+        "receipt_attribution": "ESTABLISHED_UNDER_GIVEN_ASSUMPTIONS",
+        "evidence_basis": "AUTHENTICATED_IMPORTED_PROVIDER_STATEMENT",
+        "xref_assessment": "NOT_ESTABLISHED",
+        "reasons": [
+          "The authenticated receipt remains source-attributed evidence within the scope of the provider's statement.",
+          "Receipt authenticity and local import do not establish the independently anchored cross-party records and matching rules required for XREF.",
+          "Organizational approval of the service does not determine whether that technical exchange participates in XREF."
+        ]
+      },
+      "forbidden_conclusions": [
+        "Every authentic provider response is a complete TRC-005 XREF exchange.",
+        "The imported receipt provides automatic coverage of arbitrary external service activity.",
+        "The receipt is false or worthless solely because XREF is not established.",
+        "A provider signature independently proves the truth of all claimed processing actions."
+      ]
     }
   ]
 }
