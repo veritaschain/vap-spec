@@ -21,6 +21,17 @@ structured, signed synthetic translations of all 23 cases and separately records
 The original catalogue remains the proposal-stage oracle. Its `not-executed` marker refers to that
 original publication state; the new offline results do not establish live integration or independent reproduction.
 
+### Implementation checkpoint — 2026-10-30 JST
+
+Three separately recorded local pilots now exercise upload, publication and scoped unlink
+operations in 53 synthetic scenarios. A fixed evidence kit and source-attributed Japanese/English
+reports preserve their observations. The [implementation crosswalk and review handoff](integration/README.md)
+([日本語](integration/README-ja.md)) maps all 23 original proposal cases to the offline assessor and
+related local evidence, records unmet conditions, and supplies a blank external-review response form.
+Related scenarios do not establish every original assumption: collector outages, figure/code
+disclosure, independent deletion review, external delivery, incident-response operations and
+cross-party anchoring retain specific gaps. The handoff is not a completed external review.
+
 Repository publication or merge of this document does not adopt a standard. It introduces no new
 normative event, event code, field, registered profile, conformance level, or core-verifier result.
 Names and status values below are illustrative application vocabulary. Existing normative algorithms,
@@ -284,6 +295,9 @@ claim that AILEX implements this design or is independently conformant.
 - 2026-10-30 JST: Added a separately versioned offline application assessor, structured translations
   of all 23 cases, actual signature and binding checks, regression tests and a reproducible execution summary.
   The proposal catalogue and normative specification were not changed.
+- 2026-10-30 JST: Linked the PR36 implementation checkpoint, a source-bound 23-case crosswalk,
+  remaining integration conditions and a proposed external-review handoff. This documentation update
+  neither reruns the existing experiments nor asserts a new independent result.
 - Standardization decisions, interoperability results and future corrections will be separately dated.
 
 [vap]: https://github.com/veritaschain/vap-spec/blob/357b8e6b232750180a2a0ce185355e31880edaf6/spec/v1.2/VAP_Framework_Specification.md

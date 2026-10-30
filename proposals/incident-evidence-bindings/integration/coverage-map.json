@@ -1,0 +1,525 @@
+{
+  "format": "incident-integration-map/0.1",
+  "status": "INFORMATIVE_UNADOPTED",
+  "assessment_basis": "Interpretation of existing synthetic proposal, offline-assessor and measured local-pilot evidence at the declared source snapshot. Related observations and partial analogues do not certify complete requirement coverage, deployment readiness, independent reproduction, performed human review, legal compliance or VAP/CAP conformance. Creating this map performs no new case execution and does not change the frozen inputs.",
+  "snapshot_commit": "3e621d522c4e5f536c850aa1e17821328680bfe6",
+  "source_refs": {
+    "catalogue": {
+      "path": "proposals/incident-evidence-bindings/acceptance-cases.json",
+      "sha256": "59db1059645bdfe632c7db6d707dd619b8bcfe00be36430f71ee6fa3e6bcee9b"
+    },
+    "assessor_summary": {
+      "path": "experiments/incident-evidence-assessor/results/summary.json",
+      "sha256": "48b44670371fd64ae6bd11701b5bd412dbea6f8b76aa48a3194c07e8d4a08493"
+    },
+    "review_json": {
+      "path": "experiments/incident-review-report/results/review.json",
+      "sha256": "0de419ece3f344b763122d0dfc69ec4649cf0867c3438e829f2e90031401a316"
+    }
+  },
+  "entries": [
+    {
+      "proposal_case_id": "UP-01",
+      "catalogue_pointer": "/cases/0",
+      "assessor_result_pointer": "/results/0",
+      "pilot_links": [
+        {
+          "case_id": "UL-02",
+          "review_pointer": "/cases/1",
+          "relationship": "RELATED_LOCAL_OBSERVATION",
+          "reason": "A synthetic unapproved destination grant causes the controlled gateway to block before transport, with zero recorded gateway attempts and receiver calls."
+        }
+      ],
+      "unmet_conditions": [
+        "The destination registry, policy authority and route configuration are synthetic; no intended organization or real provider registry has been integrated.",
+        "The managed route observation does not establish coverage of other clients, accounts, devices or network paths."
+      ],
+      "next_evidence": [
+        "A reviewed destination-and-purpose policy snapshot and authenticated destination mapping for the intended managed route.",
+        "Bound allow/deny and egress observations from that route, with its monitoring interval and excluded paths stated explicitly."
+      ]
+    },
+    {
+      "proposal_case_id": "UP-02",
+      "catalogue_pointer": "/cases/1",
+      "assessor_result_pointer": "/results/1",
+      "pilot_links": [
+        {
+          "case_id": "UL-03",
+          "review_pointer": "/cases/2",
+          "relationship": "RELATED_LOCAL_OBSERVATION",
+          "reason": "The synthetic wrong-tenant grant is denied before the local transport is entered; provider-name agreement does not override the tenant binding."
+        }
+      ],
+      "unmet_conditions": [
+        "Configured synthetic tenant/account labels are not evidence of a real authenticated provider account or its approval.",
+        "Production identity enrollment, policy ownership and account-change handling are not established."
+      ],
+      "next_evidence": [
+        "Authoritative account-to-tenant evidence bound to the destination, purpose and applicable policy version.",
+        "Recorded mismatched-account behavior at the intended authorization boundary, without inferring approval from a provider brand or hostname."
+      ]
+    },
+    {
+      "proposal_case_id": "UP-03",
+      "catalogue_pointer": "/cases/2",
+      "assessor_result_pointer": "/results/2",
+      "pilot_links": [
+        {
+          "case_id": "UL-05",
+          "review_pointer": "/cases/4",
+          "relationship": "RELATED_LOCAL_OBSERVATION",
+          "reason": "A historically valid signed permission is expired at the actual gateway evaluation and cannot authorize an upload."
+        },
+        {
+          "case_id": "UL-10",
+          "review_pointer": "/cases/9",
+          "relationship": "RELATED_LOCAL_OBSERVATION",
+          "reason": "Permission expires during an actual pre-send pause; the final gate blocks the attempt while admission and postflight frames preserve their original operation time."
+        }
+      ],
+      "unmet_conditions": [
+        "A governed live policy source, version-transition rules and trusted deployment clock have not been integrated.",
+        "Expiry checks in the local pilot do not establish that an organizational policy remains applicable or that its source is current."
+      ],
+      "next_evidence": [
+        "Policy source, effective interval, retrieval time and transition evidence for the intended operation.",
+        "An authorized current decision bound to the measured request, with admission and final-gate times retained separately."
+      ]
+    },
+    {
+      "proposal_case_id": "UP-04",
+      "catalogue_pointer": "/cases/3",
+      "assessor_result_pointer": "/results/3",
+      "pilot_links": [
+        {
+          "case_id": "UL-04",
+          "review_pointer": "/cases/3",
+          "relationship": "RELATED_LOCAL_OBSERVATION",
+          "reason": "Changed outgoing bytes cannot reuse the earlier signed payload permission."
+        },
+        {
+          "case_id": "UL-09",
+          "review_pointer": "/cases/8",
+          "relationship": "RELATED_LOCAL_OBSERVATION",
+          "reason": "Mutation of caller-owned input after capture does not replace the immutable bytes actually sent and measured by the receiver."
+        }
+      ],
+      "unmet_conditions": [
+        "The measured path is the local binary transport; real serialization, intermediaries and provider-side transformations are outside this experiment.",
+        "A content digest binds bytes but does not classify their sensitivity or authorize their use."
+      ],
+      "next_evidence": [
+        "An exact-byte capture and permit binding at the intended transport boundary, including destination, tenant, purpose and policy version.",
+        "Attributable receiver measurements or transformation records connecting the authorized bytes to the actual received version."
+      ]
+    },
+    {
+      "proposal_case_id": "UP-05",
+      "catalogue_pointer": "/cases/4",
+      "assessor_result_pointer": "/results/4",
+      "pilot_links": [
+        {
+          "case_id": "UL-14",
+          "review_pointer": "/cases/13",
+          "relationship": "PARTIAL_ANALOGUE",
+          "reason": "The gateway denies its own route, then a separate direct controller request reaches a deliberately unauthenticated endpoint. This is an observed outside-route bypass, not the proposal's separately authenticated in-scope egress observation for the same denied request."
+        }
+      ],
+      "unmet_conditions": [
+        "No measured pilot case establishes the exact same-request denial-plus-transmission conjunction within the proposal's declared monitoring scope.",
+        "The direct-controller negative control is not an independently authenticated observation of a production enforcement violation."
+      ],
+      "next_evidence": [
+        "A bound denial and a separately authenticated egress observation for the same request, payload, destination and tenant within the declared interval.",
+        "Evidence of applicable override or later-permit history and the monitoring scope, sufficient to assess the contradiction without treating it as a legal finding."
+      ]
+    },
+    {
+      "proposal_case_id": "UP-06",
+      "catalogue_pointer": "/cases/5",
+      "assessor_result_pointer": "/results/5",
+      "pilot_links": [
+        {
+          "case_id": "UL-07",
+          "review_pointer": "/cases/6",
+          "relationship": "RELATED_LOCAL_OBSERVATION",
+          "reason": "The local receiver commits an accepted request and drops its response; the gateway retains OUTCOME_UNKNOWN and a repeat does not resend. The captured receiver observation remains distinct from the gateway outcome."
+        },
+        {
+          "case_id": "UL-16",
+          "review_pointer": "/cases/15",
+          "relationship": "PARTIAL_ANALOGUE",
+          "reason": "Result-persistence failure leaves the gateway outcome unknown despite receiver acceptance. This concerns terminal local persistence, rather than the proposal's connection timeout."
+        }
+      ],
+      "unmet_conditions": [
+        "No real provider processing outcome, idempotency contract or reconciliation interface has been established.",
+        "Preventing an automatic resend does not resolve the first attempt or prove that an external retry is safe."
+      ],
+      "next_evidence": [
+        "Provider status evidence tied to the original request and any provider-supported idempotency scope.",
+        "An authorized reconciliation decision that retains the initial unknown outcome and distinguishes observation from any newly authorized action."
+      ]
+    },
+    {
+      "proposal_case_id": "UP-07",
+      "catalogue_pointer": "/cases/6",
+      "assessor_result_pointer": "/results/6",
+      "pilot_links": [
+        {
+          "case_id": "UL-14",
+          "review_pointer": "/cases/13",
+          "relationship": "PARTIAL_ANALOGUE",
+          "reason": "This capture positively observes a direct outside-route request being accepted. It illustrates limited route control, but differs from UP-07, where uncovered activity remains unresolved because no additional observation exists."
+        }
+      ],
+      "unmet_conditions": [
+        "The pilot does not inventory or observe every client, account, device or alternative route in an organization.",
+        "An observed bypass in one synthetic case cannot be substituted for an unknown uncovered-path outcome in another case."
+      ],
+      "next_evidence": [
+        "An explicit deployment observation boundary with covered routes, time intervals and known exclusions.",
+        "Additional attributable observations for a suspected uncovered transfer, or an explicit unresolved outcome when those observations are unavailable."
+      ]
+    },
+    {
+      "proposal_case_id": "UP-08",
+      "catalogue_pointer": "/cases/7",
+      "assessor_result_pointer": "/results/7",
+      "pilot_links": [
+        {
+          "case_id": "UL-06",
+          "review_pointer": "/cases/5",
+          "relationship": "PARTIAL_ANALOGUE",
+          "reason": "An injected local journal-claim failure blocks transport under the pilot's additional durability rule. The signed upload policy deliberately uses require_collector=false, so this is not a measurement of a required collector becoming unavailable."
+        }
+      ],
+      "unmet_conditions": [
+        "A live required-collector availability and durable-acknowledgement condition is not exercised by this upload pilot.",
+        "A failed local journal prerequisite and an unavailable evidence collector are different mechanisms; neither establishes all-route prevention."
+      ],
+      "next_evidence": [
+        "A separately authorized integration policy that requires the actual collector and specifies the relevant health and acknowledgement evidence.",
+        "Bound collector failure, recovery and dispatch observations at that integration's final authorization boundary, with excluded routes retained."
+      ]
+    },
+    {
+      "proposal_case_id": "ER-01",
+      "catalogue_pointer": "/cases/8",
+      "assessor_result_pointer": "/results/8",
+      "pilot_links": [
+        {
+          "case_id": "LE-03",
+          "review_pointer": "/cases/37",
+          "relationship": "RELATED_LOCAL_OBSERVATION",
+          "reason": "The local case retains a signed request without calling the provider; its core evidence remains REQUEST_ONLY with no provider completion established."
+        }
+      ],
+      "unmet_conditions": [
+        "No real provider delivery or processing of a deletion request is established.",
+        "The local request cannot identify external retained copies that are outside its object manifest."
+      ],
+      "next_evidence": [
+        "An authorized request binding the intended provider, tenant, exact object/version set and requested locations.",
+        "Separate attributable delivery or receipt evidence if available, while retaining REQUEST_ONLY when it is absent."
+      ]
+    },
+    {
+      "proposal_case_id": "ER-02",
+      "catalogue_pointer": "/cases/9",
+      "assessor_result_pointer": "/results/9",
+      "pilot_links": [
+        {
+          "case_id": "LE-02",
+          "review_pointer": "/cases/36",
+          "relationship": "RELATED_LOCAL_OBSERVATION",
+          "reason": "The provider acknowledges the request without removal; the object remains present and the core evidence is ACKNOWLEDGED, not completion."
+        }
+      ],
+      "unmet_conditions": [
+        "The local acknowledge-only mode has no later resumption worker and does not establish an external provider queue's behavior.",
+        "No real provider completion, retention exception or downstream-copy outcome follows from this acknowledgement."
+      ],
+      "next_evidence": [
+        "An authenticated acknowledgement bound to the original request, tenant, object/version set and declared queue state.",
+        "Any later completion or exception as a separate scoped record with its own time and binding, rather than a reinterpretation of the acknowledgement."
+      ]
+    },
+    {
+      "proposal_case_id": "ER-03",
+      "catalogue_pointer": "/cases/10",
+      "assessor_result_pointer": "/results/10",
+      "pilot_links": [
+        {
+          "case_id": "LE-01",
+          "review_pointer": "/cases/35",
+          "relationship": "RELATED_LOCAL_OBSERVATION",
+          "reason": "A measured local namespace removal yields a scoped provider attestation and same-controller before/after observation; broader core completion and excluded-domain outcomes remain unknown."
+        },
+        {
+          "case_id": "LE-12",
+          "review_pointer": "/cases/46",
+          "relationship": "RELATED_LOCAL_OBSERVATION",
+          "reason": "An explicitly excluded copy remains readable after the scoped local removal."
+        },
+        {
+          "case_id": "LE-13",
+          "review_pointer": "/cases/47",
+          "relationship": "RELATED_LOCAL_OBSERVATION",
+          "reason": "A previously opened handle remains readable after the directory entry is removed."
+        }
+      ],
+      "unmet_conditions": [
+        "Same-controller local observations do not independently establish a remote provider's deletion claim.",
+        "Backups, replicas, downstream copies, training derivatives, memory/open handles and storage-media outcomes are not universally established."
+      ],
+      "next_evidence": [
+        "A provider statement tied to the actual object manifest, requested locations, completion time and explicit exclusions.",
+        "Attributable observations for each additional domain actually examined, retaining known readable instances and unresolved domains separately."
+      ]
+    },
+    {
+      "proposal_case_id": "ER-04",
+      "catalogue_pointer": "/cases/11",
+      "assessor_result_pointer": "/results/11",
+      "pilot_links": [
+        {
+          "case_id": "LE-05",
+          "review_pointer": "/cases/39",
+          "relationship": "PARTIAL_ANALOGUE",
+          "reason": "A validly signed wrong-tenant completion probe is rejected after a separately measured valid local operation. The retained valid operation evidence means this is not ER-04's scenario where only a mismatched object-and-tenant receipt is available for an unresolved target."
+        }
+      ],
+      "unmet_conditions": [
+        "The local probe does not reproduce the complete object-and-tenant mismatch with no other target-completion evidence.",
+        "Rejecting a mismatched receipt does not establish either deletion or retention of the intended external object."
+      ],
+      "next_evidence": [
+        "An authenticated receipt whose complete request, object/version and tenant bindings can be compared with the intended target.",
+        "Documented mapping or correction evidence if a migration is asserted; otherwise retain the target outcome as unknown without borrowing an unrelated completion."
+      ]
+    },
+    {
+      "proposal_case_id": "ER-05",
+      "catalogue_pointer": "/cases/12",
+      "assessor_result_pointer": "/results/12",
+      "pilot_links": [
+        {
+          "case_id": "LE-01",
+          "review_pointer": "/cases/35",
+          "relationship": "PARTIAL_ANALOGUE",
+          "reason": "The provider and observer use separate keys but share one controller. Its bounded readback illustrates the scope that a future review might examine; it is not an actual independent review and produces no erasure.review record."
+        }
+      ],
+      "unmet_conditions": [
+        "Actual organizational independence, separate evidence custody and a performed independent deletion review are not established.",
+        "The offline synthetic reviewer result is conditional on supplied identity and method assumptions; it is not an external reviewer's finding."
+      ],
+      "next_evidence": [
+        "An authorized reviewer with documented independence, key provenance and access scope.",
+        "A performed review identifying method, evidence set, object/location bindings, observation interval, exclusions and limitations; any conclusion remains limited to that review."
+      ]
+    },
+    {
+      "proposal_case_id": "PB-01",
+      "catalogue_pointer": "/cases/13",
+      "assessor_result_pointer": "/results/13",
+      "pilot_links": [
+        {
+          "case_id": "LP-05",
+          "review_pointer": "/cases/21",
+          "relationship": "RELATED_LOCAL_OBSERVATION",
+          "reason": "The local gate blocks a recorded simulated activity prohibited by its synthetic policy despite disclosure and reviewer authorization."
+        }
+      ],
+      "unmet_conditions": [
+        "The policy and reviewer are synthetic; the case is not an interpretation of a real venue's rules or an institutional finding.",
+        "Activity outside the recorded session and policy applicability to earlier use remain outside the local release decision."
+      ],
+      "next_evidence": [
+        "An authoritative venue policy snapshot for the relevant stage, together with any applicable authorized exception.",
+        "Evidence binding the observed activity, final artifact, disclosure and decision to that policy version without treating disclosure as an override."
+      ]
+    },
+    {
+      "proposal_case_id": "PB-02",
+      "catalogue_pointer": "/cases/14",
+      "assessor_result_pointer": "/results/14",
+      "pilot_links": [
+        {
+          "case_id": "LP-09",
+          "review_pointer": "/cases/25",
+          "relationship": "RELATED_LOCAL_OBSERVATION",
+          "reason": "An imported document has unknown origin and no declared recorded AI activity; approved local output leaves AI involvement and activity completeness UNKNOWN."
+        },
+        {
+          "case_id": "LP-10",
+          "review_pointer": "/cases/26",
+          "relationship": "PARTIAL_ANALOGUE",
+          "reason": "A simulated AI-labelled operation is retained in history but its exact output is later replaced. Current adoption remains unknown; unlike PB-02, the session does contain an earlier recorded AI-labelled activity."
+        }
+      ],
+      "unmet_conditions": [
+        "The editor cannot observe imported prehistory, external tools or all collaborator activity.",
+        "Neither absent records nor a later manual replacement establishes human-only authorship or a complete account of AI assistance."
+      ],
+      "next_evidence": [
+        "A declared collection boundary and attributable provenance for the actual editor/provider activities that can be observed.",
+        "A recorded review of unresolved imports or collaborator contributions that preserves uncertainty and does not infer an AI percentage or misconduct from missing evidence."
+      ]
+    },
+    {
+      "proposal_case_id": "PB-03",
+      "catalogue_pointer": "/cases/15",
+      "assessor_result_pointer": "/results/15",
+      "pilot_links": [
+        {
+          "case_id": "LP-02",
+          "review_pointer": "/cases/18",
+          "relationship": "RELATED_LOCAL_OBSERVATION",
+          "reason": "Changing article bytes after approval prevents the local candidate from reusing the earlier authorization."
+        },
+        {
+          "case_id": "LP-03",
+          "review_pointer": "/cases/19",
+          "relationship": "RELATED_LOCAL_OBSERVATION",
+          "reason": "Removing the disclosure changes the bound candidate and cannot reuse its earlier signed preparation evidence."
+        }
+      ],
+      "unmet_conditions": [
+        "No external submission, actual human review or publisher transformation has been observed.",
+        "A local block and the proposal's REVIEW assessment describe different layers and need not use equal status strings."
+      ],
+      "next_evidence": [
+        "A reviewer authorization for the actual final article/disclosure/policy/destination combination and its validity interval.",
+        "Any transformed or resubmitted publisher version bound to a new revision and the required reassessment, with the prior revision evidence preserved."
+      ]
+    },
+    {
+      "proposal_case_id": "PB-04",
+      "catalogue_pointer": "/cases/16",
+      "assessor_result_pointer": "/results/16",
+      "pilot_links": [
+        {
+          "case_id": "LP-17",
+          "review_pointer": "/cases/33",
+          "relationship": "PARTIAL_ANALOGUE",
+          "reason": "The local text-only disclosure omits a recorded simulated assistance activity and is blocked. The pilot does not support figure/code attachments, so this does not exercise PB-04's omitted figure and code provenance."
+        }
+      ],
+      "unmet_conditions": [
+        "Measured figure/code generation, revision binding and attachment inclusion are not implemented by the text-only pilot.",
+        "No real venue's required artifact categories or exceptions have been resolved."
+      ],
+      "next_evidence": [
+        "A final-submission component manifest binding each text, figure and code artifact version to observed activities and inclusion.",
+        "Disclosure and policy evidence covering the required categories, with an observed omitted-component case and any authorized exception recorded explicitly."
+      ]
+    },
+    {
+      "proposal_case_id": "PB-05",
+      "catalogue_pointer": "/cases/17",
+      "assessor_result_pointer": "/results/17",
+      "pilot_links": [
+        {
+          "case_id": "LP-12",
+          "review_pointer": "/cases/28",
+          "relationship": "PARTIAL_ANALOGUE",
+          "reason": "An unresolved interpretation blocks the local publication gate. The pilot evaluates a synthetic publication-stage rule; it does not implement the full drafting/submission/revision policy-precedence transition in PB-05."
+        }
+      ],
+      "unmet_conditions": [
+        "Use-time, submission, revision and publication policy histories and precedence rules are not integrated.",
+        "There is no authorized institutional interpretation of the real stage transition."
+      ],
+      "next_evidence": [
+        "Source policy versions, effective intervals and artifact revisions for each relevant stage and observed use time.",
+        "An authorized interpretation or continued unresolved status for the proposed transition, preserving earlier policy and revision evidence."
+      ]
+    },
+    {
+      "proposal_case_id": "PB-06",
+      "catalogue_pointer": "/cases/18",
+      "assessor_result_pointer": "/results/18",
+      "pilot_links": [],
+      "unmet_conditions": [
+        "No measured pilot equivalent is mapped for an author-only declaration without contemporaneous activity corroboration.",
+        "The publication pilot's instrumented local edit history and structured disclosure are different evidence bases from a declaration-only assertion; neither establishes factual completeness."
+      ],
+      "next_evidence": [
+        "An authenticated declarant statement bound to the exact artifact and attributed explicitly as self-declared.",
+        "The available corroboration and collection limits, keeping attribution separate from observation and leaving completeness unknown when it is unresolved."
+      ]
+    },
+    {
+      "proposal_case_id": "PB-07",
+      "catalogue_pointer": "/cases/19",
+      "assessor_result_pointer": "/results/19",
+      "pilot_links": [
+        {
+          "case_id": "LP-01",
+          "review_pointer": "/cases/17",
+          "relationship": "PARTIAL_ANALOGUE",
+          "reason": "Exact article and disclosure bytes are created and measured locally. The local filesystem receipt is not a publisher dispatch, destination receipt or editorial acceptance."
+        },
+        {
+          "case_id": "LP-14",
+          "review_pointer": "/cases/30",
+          "relationship": "PARTIAL_ANALOGUE",
+          "reason": "A local result-persistence failure leaves visible output with an unresolved result and no automatic retry. This preserves an uncertainty distinction, but is not an attempted external submission lacking a trustworthy publisher receipt."
+        }
+      ],
+      "unmet_conditions": [
+        "No destination-publisher adapter, external transmission or publisher receipt/acceptance is implemented.",
+        "Local publication receipts are deliberately not converted into core publication_dispatch or publication_receipt events."
+      ],
+      "next_evidence": [
+        "An authorized external submission record binding exact article/disclosure versions, destination and applicable policy.",
+        "Separate attributable destination-receipt and editorial-acceptance evidence, including any transformed version; missing receipt or acceptance remains unresolved."
+      ]
+    },
+    {
+      "proposal_case_id": "IR-01",
+      "catalogue_pointer": "/cases/20",
+      "assessor_result_pointer": "/results/20",
+      "pilot_links": [],
+      "unmet_conditions": [
+        "There is no measured pilot of an external information/log request, receipt and response-cutoff lifecycle.",
+        "The offline case's absent response does not establish refusal, misconduct, unavailable logs, non-use or deletion."
+      ],
+      "next_evidence": [
+        "An authorized request with concrete questions, recipient, source/object scope, request time and observation cutoff, plus separate delivery/receipt evidence.",
+        "Responses or a bounded no-response observation with later responses preserved separately; unresolved requested facts and reasons remain unknown."
+      ]
+    },
+    {
+      "proposal_case_id": "IR-02",
+      "catalogue_pointer": "/cases/21",
+      "assessor_result_pointer": "/results/21",
+      "pilot_links": [],
+      "unmet_conditions": [
+        "No measured pilot performs urgent account-history containment with unavailable minimum preservation; the local object-unlink pilot is a different operation.",
+        "A later anchor cannot establish contemporaneous capture or recover missing history, and the existing local durability rule is not a mandate to delay urgent containment."
+      ],
+      "next_evidence": [
+        "An authorized containment decision with source account, urgency, access/retention basis, unavailable material and actual removal-observation time recorded proportionately.",
+        "Evidence of what was and was not preserved without compelled copying or unjustified delay; any later anchoring remains separately timed and scoped."
+      ]
+    },
+    {
+      "proposal_case_id": "XR-01",
+      "catalogue_pointer": "/cases/22",
+      "assessor_result_pointer": "/results/22",
+      "pilot_links": [],
+      "unmet_conditions": [
+        "No measured pilot establishes independently anchored corresponding records from participating external parties.",
+        "Local authenticated receipts and separate keys do not demonstrate TRC-005 XREF participation or organizational independence; this assessor does not implement positive XREF or anchor verification."
+      ],
+      "next_evidence": [
+        "Participating parties' independently operated records and verified anchors for the same exchange, with declared scopes and matching/reconciliation rules.",
+        "Source identity, organizational separation and exceptions sufficient for a separately authorized XREF assessment; an imported receipt alone remains attributed evidence."
+      ]
+    }
+  ]
+}
