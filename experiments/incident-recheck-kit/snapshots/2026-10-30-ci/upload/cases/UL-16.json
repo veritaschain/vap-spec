@@ -1,0 +1,768 @@
+{
+  "format": "incident-upload-case/0.1",
+  "case_id": "UL-16",
+  "synthetic": true,
+  "actual": {
+    "states": [
+      "OUTCOME_UNKNOWN"
+    ],
+    "gateway_attempts": 1,
+    "handler_calls": 1,
+    "accepted_count": 1,
+    "received_bytes_match": true
+  },
+  "reports": [
+    {
+      "format": "upload-pilot-report/0.1",
+      "state": "OUTCOME_UNKNOWN",
+      "attempted": true,
+      "reason": "JOURNAL_RESULT_PERSISTENCE_FAILED",
+      "payload_sha256": "dede6e85561971337af3f7d5e458b2457a306cd17a9de83b4ab7653fa621e201",
+      "byte_length": 62,
+      "journal_state": "dispatch_intent",
+      "receipt": null,
+      "preflight_evidence": {
+        "format": "incident-evidence-input/0.1",
+        "evaluation_id": "evaluation-b932f7b0046545db9c6d03df1c47aba4",
+        "workflow": "transfer",
+        "as_of": "2026-10-30T01:24:11.562895Z",
+        "target": {
+          "subject": {
+            "request_id": "upload-61e12a8d3d45469ea75315c3557f1eb1",
+            "actor_id": "synthetic-client",
+            "provider_id": "synthetic-receiver",
+            "endpoint": "http://127.0.0.1:42189/upload",
+            "tenant_id": "tenant-enterprise-a",
+            "account_id": "account-enterprise-a",
+            "purpose": "synthetic-upload",
+            "route_id": "controlled-local-upload",
+            "stage": "transfer",
+            "payload_sha256": "dede6e85561971337af3f7d5e458b2457a306cd17a9de83b4ab7653fa621e201",
+            "policy_id": "synthetic-upload-permission",
+            "policy_version": "1",
+            "policy_sha256": "23239a0b5a7d0fa0b3414194bf8b131875b7ee4ef96d14ace87b5bc689566eb4"
+          },
+          "operation_at": "2026-10-30T01:24:11.562895Z",
+          "coverage_requested": "managed_route",
+          "authorities": {
+            "policy": "pilot-policy",
+            "gateway": "pilot-gateway"
+          }
+        },
+        "records": [
+          {
+            "algorithm": "Ed25519",
+            "key_id": "pilot-policy",
+            "body": {
+              "record_id": "initial-policy",
+              "evaluation_id": "evaluation-b932f7b0046545db9c6d03df1c47aba4",
+              "kind": "transfer.policy",
+              "issuer": "pilot-policy",
+              "recorded_at": "2026-10-30T01:24:11.557047Z",
+              "binding": {
+                "request_id": "upload-61e12a8d3d45469ea75315c3557f1eb1",
+                "actor_id": "synthetic-client",
+                "provider_id": "synthetic-receiver",
+                "endpoint": "http://127.0.0.1:42189/upload",
+                "tenant_id": "tenant-enterprise-a",
+                "account_id": "account-enterprise-a",
+                "purpose": "synthetic-upload",
+                "route_id": "controlled-local-upload",
+                "stage": "transfer",
+                "payload_sha256": "dede6e85561971337af3f7d5e458b2457a306cd17a9de83b4ab7653fa621e201",
+                "policy_id": "synthetic-upload-permission",
+                "policy_version": "1",
+                "policy_sha256": "23239a0b5a7d0fa0b3414194bf8b131875b7ee4ef96d14ace87b5bc689566eb4"
+              },
+              "data": {
+                "effective_from": "2026-10-30T00:24:11.556869Z",
+                "effective_until": "2026-10-30T01:26:11.556869Z",
+                "grants": [
+                  {
+                    "actor_id": "synthetic-client",
+                    "provider_id": "synthetic-receiver",
+                    "endpoint": "http://127.0.0.1:42189/upload",
+                    "tenant_id": "tenant-enterprise-a",
+                    "account_id": "account-enterprise-a",
+                    "purpose": "synthetic-upload",
+                    "route_id": "controlled-local-upload"
+                  }
+                ],
+                "require_collector": false
+              }
+            },
+            "signature": "ac7db4d86f1aa65e69154ba9c72c1475962329c28ff09e96b7f0127917b90f16e79f102ba4bad5571d11efa3dc8c80e2ff47a5056228f1d48021699153db6307"
+          },
+          {
+            "algorithm": "Ed25519",
+            "key_id": "pilot-gateway",
+            "body": {
+              "record_id": "initial-gateway",
+              "evaluation_id": "evaluation-b932f7b0046545db9c6d03df1c47aba4",
+              "kind": "transfer.decision",
+              "issuer": "pilot-gateway",
+              "recorded_at": "2026-10-30T01:24:11.557340Z",
+              "binding": {
+                "request_id": "upload-61e12a8d3d45469ea75315c3557f1eb1",
+                "actor_id": "synthetic-client",
+                "provider_id": "synthetic-receiver",
+                "endpoint": "http://127.0.0.1:42189/upload",
+                "tenant_id": "tenant-enterprise-a",
+                "account_id": "account-enterprise-a",
+                "purpose": "synthetic-upload",
+                "route_id": "controlled-local-upload",
+                "stage": "transfer",
+                "payload_sha256": "dede6e85561971337af3f7d5e458b2457a306cd17a9de83b4ab7653fa621e201",
+                "policy_id": "synthetic-upload-permission",
+                "policy_version": "1",
+                "policy_sha256": "23239a0b5a7d0fa0b3414194bf8b131875b7ee4ef96d14ace87b5bc689566eb4"
+              },
+              "data": {
+                "decision": "permit",
+                "valid_from": "2026-10-30T00:24:11.556869Z",
+                "valid_until": "2026-10-30T01:26:11.556869Z"
+              }
+            },
+            "signature": "a0a5c2ba11d55d0bab7b5232b368d0943b2a13af4752a7bf56ad13f60d6042f1548b4f20e8a7b3ea6620650abccbebc1bc7dd3606ce5e21621edd3b3b2ce9506"
+          }
+        ]
+      },
+      "preflight_trust": {
+        "format": "incident-evidence-trust/0.1",
+        "evaluation_id": "evaluation-b932f7b0046545db9c6d03df1c47aba4",
+        "workflow": "transfer",
+        "as_of": "2026-10-30T01:24:11.562895Z",
+        "target_sha256": "2074fc22efd6d557ac9b94a0c683250b02764d166fbef50286ff824d869e4b7c",
+        "mode": "synthetic-test-only",
+        "keys": {
+          "pilot-policy": {
+            "public_key": "66b7b8a7884b4d8b6e7ba00a33e42d0ebae42119d3999beafe5b508e98372dc0",
+            "issuer": "pilot-policy",
+            "organization": "pilot-policy-org",
+            "roles": [
+              "policy"
+            ],
+            "not_before": "2026-10-29T01:24:11.556869Z",
+            "not_after": "2026-10-31T01:24:11.556869Z"
+          },
+          "pilot-gateway": {
+            "public_key": "058ad8c3363dba30cf443724557fbc17dbb26dfc90737267a0a34e31f2e9af03",
+            "issuer": "pilot-gateway",
+            "organization": "pilot-gateway-org",
+            "roles": [
+              "gateway"
+            ],
+            "not_before": "2026-10-29T01:24:11.556869Z",
+            "not_after": "2026-10-31T01:24:11.556869Z"
+          }
+        }
+      },
+      "preflight_assessment": {
+        "format": "incident-evidence-report/0.1",
+        "adapter": "incident-evidence-adapter/0.1",
+        "implementation_version": "0.1.0",
+        "evaluation_id": "evaluation-b932f7b0046545db9c6d03df1c47aba4",
+        "workflow": "transfer",
+        "as_of": "2026-10-30T01:24:11.562895Z",
+        "synthetic": true,
+        "input_sha256": "29e314804711646f02de017a08ff214f9c7ad8644aae77fb16364abb610a127a",
+        "trust_sha256": "1ff48cc66c546a7a29ed8421c1908c5ce045d3f78e68fd68ccb4a57f27a0f63d",
+        "target_sha256": "2074fc22efd6d557ac9b94a0c683250b02764d166fbef50286ff824d869e4b7c",
+        "evidence_integrity": "VERIFIED_UNDER_EVALUATOR_TRUST",
+        "assessments": {
+          "transfer_authorization": "ALLOW",
+          "transfer_observation": "UNKNOWN",
+          "coverage": "INCOMPLETE",
+          "binding_assessment": "MATCH",
+          "policy_binding": "CURRENT_CONTENT_BOUND",
+          "dispatch_action": "PERMITTED_WITHIN_BOUND_SCOPE",
+          "control_assessment": "UNKNOWN",
+          "remote_outcome": "UNKNOWN",
+          "retry_action": "NOT_ASSESSED",
+          "collector_health": "UNKNOWN",
+          "application_route_action": "PERMITTED_WITHIN_BOUND_SCOPE",
+          "external_activity_assessment": "UNKNOWN",
+          "proposed_transfer_authorization": "ALLOW",
+          "observed_action_authorization": "UNKNOWN"
+        },
+        "findings": [
+          {
+            "code": "TRANSFER_CURRENT_POLICY_AND_PERMIT_BIND_TARGET",
+            "record_ids": [
+              "initial-gateway",
+              "initial-policy"
+            ]
+          }
+        ],
+        "evidence_checks": [
+          {
+            "record_id": "initial-policy",
+            "kind": "transfer.policy",
+            "signature": "VERIFIED",
+            "identity": "EXPECTED_ISSUER",
+            "role": "AUTHORIZED",
+            "time": "WITHIN_DECLARED_WINDOW",
+            "evaluation": "MATCH",
+            "binding_differences": [],
+            "eligibility": "ELIGIBLE"
+          },
+          {
+            "record_id": "initial-gateway",
+            "kind": "transfer.decision",
+            "signature": "VERIFIED",
+            "identity": "EXPECTED_ISSUER",
+            "role": "AUTHORIZED",
+            "time": "WITHIN_DECLARED_WINDOW",
+            "evaluation": "MATCH",
+            "binding_differences": [],
+            "eligibility": "ELIGIBLE"
+          }
+        ],
+        "external_anchor_verification": "NOT_IMPLEMENTED",
+        "full_vap_conformance": "NOT_ASSESSED",
+        "full_cap_conformance": "NOT_ASSESSED",
+        "legal_compliance": "NOT_ASSESSED",
+        "limitations": [
+          "Application-layer experimental assessment; no normative VAP or CAP conformance determination.",
+          "Evaluator trust configuration and issuer/organization assignments are explicit external assumptions.",
+          "Valid signatures attribute records; they do not independently prove claim truth or event time.",
+          "Missing records cannot establish absence of activity outside the declared observation scope.",
+          "Block and hold outputs are recommendations; this offline program controls no live gateway or publisher.",
+          "Provider statements and limited reviews cannot establish universal external deletion.",
+          "External anchoring, positive XREF, key revocation, production identity onboarding and legal compliance are not assessed."
+        ]
+      },
+      "evidence": {
+        "format": "incident-evidence-input/0.1",
+        "evaluation_id": "evaluation-b932f7b0046545db9c6d03df1c47aba4",
+        "workflow": "transfer",
+        "as_of": "2026-10-30T01:24:11.579812Z",
+        "target": {
+          "subject": {
+            "request_id": "upload-61e12a8d3d45469ea75315c3557f1eb1",
+            "actor_id": "synthetic-client",
+            "provider_id": "synthetic-receiver",
+            "endpoint": "http://127.0.0.1:42189/upload",
+            "tenant_id": "tenant-enterprise-a",
+            "account_id": "account-enterprise-a",
+            "purpose": "synthetic-upload",
+            "route_id": "controlled-local-upload",
+            "stage": "transfer",
+            "payload_sha256": "dede6e85561971337af3f7d5e458b2457a306cd17a9de83b4ab7653fa621e201",
+            "policy_id": "synthetic-upload-permission",
+            "policy_version": "1",
+            "policy_sha256": "23239a0b5a7d0fa0b3414194bf8b131875b7ee4ef96d14ace87b5bc689566eb4"
+          },
+          "operation_at": "2026-10-30T01:24:11.562895Z",
+          "coverage_requested": "managed_route",
+          "authorities": {
+            "policy": "pilot-policy",
+            "gateway": "pilot-gateway"
+          }
+        },
+        "records": [
+          {
+            "algorithm": "Ed25519",
+            "key_id": "pilot-policy",
+            "body": {
+              "record_id": "initial-policy",
+              "evaluation_id": "evaluation-b932f7b0046545db9c6d03df1c47aba4",
+              "kind": "transfer.policy",
+              "issuer": "pilot-policy",
+              "recorded_at": "2026-10-30T01:24:11.557047Z",
+              "binding": {
+                "request_id": "upload-61e12a8d3d45469ea75315c3557f1eb1",
+                "actor_id": "synthetic-client",
+                "provider_id": "synthetic-receiver",
+                "endpoint": "http://127.0.0.1:42189/upload",
+                "tenant_id": "tenant-enterprise-a",
+                "account_id": "account-enterprise-a",
+                "purpose": "synthetic-upload",
+                "route_id": "controlled-local-upload",
+                "stage": "transfer",
+                "payload_sha256": "dede6e85561971337af3f7d5e458b2457a306cd17a9de83b4ab7653fa621e201",
+                "policy_id": "synthetic-upload-permission",
+                "policy_version": "1",
+                "policy_sha256": "23239a0b5a7d0fa0b3414194bf8b131875b7ee4ef96d14ace87b5bc689566eb4"
+              },
+              "data": {
+                "effective_from": "2026-10-30T00:24:11.556869Z",
+                "effective_until": "2026-10-30T01:26:11.556869Z",
+                "grants": [
+                  {
+                    "actor_id": "synthetic-client",
+                    "provider_id": "synthetic-receiver",
+                    "endpoint": "http://127.0.0.1:42189/upload",
+                    "tenant_id": "tenant-enterprise-a",
+                    "account_id": "account-enterprise-a",
+                    "purpose": "synthetic-upload",
+                    "route_id": "controlled-local-upload"
+                  }
+                ],
+                "require_collector": false
+              }
+            },
+            "signature": "ac7db4d86f1aa65e69154ba9c72c1475962329c28ff09e96b7f0127917b90f16e79f102ba4bad5571d11efa3dc8c80e2ff47a5056228f1d48021699153db6307"
+          },
+          {
+            "algorithm": "Ed25519",
+            "key_id": "pilot-gateway",
+            "body": {
+              "record_id": "initial-gateway",
+              "evaluation_id": "evaluation-b932f7b0046545db9c6d03df1c47aba4",
+              "kind": "transfer.decision",
+              "issuer": "pilot-gateway",
+              "recorded_at": "2026-10-30T01:24:11.557340Z",
+              "binding": {
+                "request_id": "upload-61e12a8d3d45469ea75315c3557f1eb1",
+                "actor_id": "synthetic-client",
+                "provider_id": "synthetic-receiver",
+                "endpoint": "http://127.0.0.1:42189/upload",
+                "tenant_id": "tenant-enterprise-a",
+                "account_id": "account-enterprise-a",
+                "purpose": "synthetic-upload",
+                "route_id": "controlled-local-upload",
+                "stage": "transfer",
+                "payload_sha256": "dede6e85561971337af3f7d5e458b2457a306cd17a9de83b4ab7653fa621e201",
+                "policy_id": "synthetic-upload-permission",
+                "policy_version": "1",
+                "policy_sha256": "23239a0b5a7d0fa0b3414194bf8b131875b7ee4ef96d14ace87b5bc689566eb4"
+              },
+              "data": {
+                "decision": "permit",
+                "valid_from": "2026-10-30T00:24:11.556869Z",
+                "valid_until": "2026-10-30T01:26:11.556869Z"
+              }
+            },
+            "signature": "a0a5c2ba11d55d0bab7b5232b368d0943b2a13af4752a7bf56ad13f60d6042f1548b4f20e8a7b3ea6620650abccbebc1bc7dd3606ce5e21621edd3b3b2ce9506"
+          },
+          {
+            "algorithm": "Ed25519",
+            "key_id": "pilot-gateway",
+            "body": {
+              "record_id": "actual-dispatch-7b0605b83cc442a6b5b9ed70ecbc85ef",
+              "evaluation_id": "evaluation-b932f7b0046545db9c6d03df1c47aba4",
+              "kind": "transfer.dispatch",
+              "issuer": "pilot-gateway",
+              "recorded_at": "2026-10-30T01:24:11.579812Z",
+              "binding": {
+                "request_id": "upload-61e12a8d3d45469ea75315c3557f1eb1",
+                "actor_id": "synthetic-client",
+                "provider_id": "synthetic-receiver",
+                "endpoint": "http://127.0.0.1:42189/upload",
+                "tenant_id": "tenant-enterprise-a",
+                "account_id": "account-enterprise-a",
+                "purpose": "synthetic-upload",
+                "route_id": "controlled-local-upload",
+                "stage": "transfer",
+                "payload_sha256": "dede6e85561971337af3f7d5e458b2457a306cd17a9de83b4ab7653fa621e201",
+                "policy_id": "synthetic-upload-permission",
+                "policy_version": "1",
+                "policy_sha256": "23239a0b5a7d0fa0b3414194bf8b131875b7ee4ef96d14ace87b5bc689566eb4"
+              },
+              "data": {
+                "dispatched_at": "2026-10-30T01:24:11.573877Z"
+              }
+            },
+            "signature": "6121210c4ae7e3d2e17d90db6cfb64db2a81058a69b5ba1a4a0e195c42e3cb0eba4e4baf1ea0e25c771169d45e6ae9b660872005ecbee6b20dda26fe5d87e002"
+          }
+        ]
+      },
+      "trust": {
+        "format": "incident-evidence-trust/0.1",
+        "evaluation_id": "evaluation-b932f7b0046545db9c6d03df1c47aba4",
+        "workflow": "transfer",
+        "as_of": "2026-10-30T01:24:11.579812Z",
+        "target_sha256": "2074fc22efd6d557ac9b94a0c683250b02764d166fbef50286ff824d869e4b7c",
+        "mode": "synthetic-test-only",
+        "keys": {
+          "pilot-policy": {
+            "public_key": "66b7b8a7884b4d8b6e7ba00a33e42d0ebae42119d3999beafe5b508e98372dc0",
+            "issuer": "pilot-policy",
+            "organization": "pilot-policy-org",
+            "roles": [
+              "policy"
+            ],
+            "not_before": "2026-10-29T01:24:11.556869Z",
+            "not_after": "2026-10-31T01:24:11.556869Z"
+          },
+          "pilot-gateway": {
+            "public_key": "058ad8c3363dba30cf443724557fbc17dbb26dfc90737267a0a34e31f2e9af03",
+            "issuer": "pilot-gateway",
+            "organization": "pilot-gateway-org",
+            "roles": [
+              "gateway"
+            ],
+            "not_before": "2026-10-29T01:24:11.556869Z",
+            "not_after": "2026-10-31T01:24:11.556869Z"
+          }
+        }
+      },
+      "postflight_assessment": {
+        "format": "incident-evidence-report/0.1",
+        "adapter": "incident-evidence-adapter/0.1",
+        "implementation_version": "0.1.0",
+        "evaluation_id": "evaluation-b932f7b0046545db9c6d03df1c47aba4",
+        "workflow": "transfer",
+        "as_of": "2026-10-30T01:24:11.579812Z",
+        "synthetic": true,
+        "input_sha256": "21bcf7c49bd6f8b9bcc1ed39fc45460dfdc1f3689345b8adbcb9924c6107fbfa",
+        "trust_sha256": "3f140b103115de18c6fc4eae7c8db7d9c18bea12a168d541eeffda41452f18df",
+        "target_sha256": "2074fc22efd6d557ac9b94a0c683250b02764d166fbef50286ff824d869e4b7c",
+        "evidence_integrity": "VERIFIED_UNDER_EVALUATOR_TRUST",
+        "assessments": {
+          "transfer_authorization": "ALLOW",
+          "transfer_observation": "DISPATCH_OBSERVED",
+          "coverage": "INCOMPLETE",
+          "binding_assessment": "MATCH",
+          "policy_binding": "CURRENT_CONTENT_BOUND",
+          "dispatch_action": "PERMITTED_WITHIN_BOUND_SCOPE",
+          "control_assessment": "UNKNOWN",
+          "remote_outcome": "UNKNOWN",
+          "retry_action": "NOT_ASSESSED",
+          "collector_health": "UNKNOWN",
+          "application_route_action": "PERMITTED_WITHIN_BOUND_SCOPE",
+          "external_activity_assessment": "UNKNOWN",
+          "proposed_transfer_authorization": "ALLOW",
+          "observed_action_authorization": "ALLOW"
+        },
+        "findings": [
+          {
+            "code": "TRANSFER_CURRENT_POLICY_AND_PERMIT_BIND_TARGET",
+            "record_ids": [
+              "initial-gateway",
+              "initial-policy"
+            ]
+          },
+          {
+            "code": "TRANSFER_BOUND_DISPATCH_OBSERVED",
+            "record_ids": [
+              "actual-dispatch-7b0605b83cc442a6b5b9ed70ecbc85ef"
+            ]
+          },
+          {
+            "code": "TRANSFER_OBSERVED_ACTION_HAS_APPLICABLE_AUTHORIZATION",
+            "record_ids": [
+              "actual-dispatch-7b0605b83cc442a6b5b9ed70ecbc85ef",
+              "initial-gateway",
+              "initial-policy"
+            ]
+          }
+        ],
+        "evidence_checks": [
+          {
+            "record_id": "initial-policy",
+            "kind": "transfer.policy",
+            "signature": "VERIFIED",
+            "identity": "EXPECTED_ISSUER",
+            "role": "AUTHORIZED",
+            "time": "WITHIN_DECLARED_WINDOW",
+            "evaluation": "MATCH",
+            "binding_differences": [],
+            "eligibility": "ELIGIBLE"
+          },
+          {
+            "record_id": "initial-gateway",
+            "kind": "transfer.decision",
+            "signature": "VERIFIED",
+            "identity": "EXPECTED_ISSUER",
+            "role": "AUTHORIZED",
+            "time": "WITHIN_DECLARED_WINDOW",
+            "evaluation": "MATCH",
+            "binding_differences": [],
+            "eligibility": "ELIGIBLE"
+          },
+          {
+            "record_id": "actual-dispatch-7b0605b83cc442a6b5b9ed70ecbc85ef",
+            "kind": "transfer.dispatch",
+            "signature": "VERIFIED",
+            "identity": "EXPECTED_ISSUER",
+            "role": "AUTHORIZED",
+            "time": "WITHIN_DECLARED_WINDOW",
+            "evaluation": "MATCH",
+            "binding_differences": [],
+            "eligibility": "ELIGIBLE"
+          }
+        ],
+        "external_anchor_verification": "NOT_IMPLEMENTED",
+        "full_vap_conformance": "NOT_ASSESSED",
+        "full_cap_conformance": "NOT_ASSESSED",
+        "legal_compliance": "NOT_ASSESSED",
+        "limitations": [
+          "Application-layer experimental assessment; no normative VAP or CAP conformance determination.",
+          "Evaluator trust configuration and issuer/organization assignments are explicit external assumptions.",
+          "Valid signatures attribute records; they do not independently prove claim truth or event time.",
+          "Missing records cannot establish absence of activity outside the declared observation scope.",
+          "Block and hold outputs are recommendations; this offline program controls no live gateway or publisher.",
+          "Provider statements and limited reviews cannot establish universal external deletion.",
+          "External anchoring, positive XREF, key revocation, production identity onboarding and legal compliance are not assessed."
+        ]
+      },
+      "final_gate_evidence": {
+        "format": "incident-evidence-input/0.1",
+        "evaluation_id": "evaluation-b932f7b0046545db9c6d03df1c47aba4",
+        "workflow": "transfer",
+        "as_of": "2026-10-30T01:24:11.570175Z",
+        "target": {
+          "subject": {
+            "request_id": "upload-61e12a8d3d45469ea75315c3557f1eb1",
+            "actor_id": "synthetic-client",
+            "provider_id": "synthetic-receiver",
+            "endpoint": "http://127.0.0.1:42189/upload",
+            "tenant_id": "tenant-enterprise-a",
+            "account_id": "account-enterprise-a",
+            "purpose": "synthetic-upload",
+            "route_id": "controlled-local-upload",
+            "stage": "transfer",
+            "payload_sha256": "dede6e85561971337af3f7d5e458b2457a306cd17a9de83b4ab7653fa621e201",
+            "policy_id": "synthetic-upload-permission",
+            "policy_version": "1",
+            "policy_sha256": "23239a0b5a7d0fa0b3414194bf8b131875b7ee4ef96d14ace87b5bc689566eb4"
+          },
+          "operation_at": "2026-10-30T01:24:11.570175Z",
+          "coverage_requested": "managed_route",
+          "authorities": {
+            "policy": "pilot-policy",
+            "gateway": "pilot-gateway"
+          }
+        },
+        "records": [
+          {
+            "algorithm": "Ed25519",
+            "key_id": "pilot-policy",
+            "body": {
+              "record_id": "initial-policy",
+              "evaluation_id": "evaluation-b932f7b0046545db9c6d03df1c47aba4",
+              "kind": "transfer.policy",
+              "issuer": "pilot-policy",
+              "recorded_at": "2026-10-30T01:24:11.557047Z",
+              "binding": {
+                "request_id": "upload-61e12a8d3d45469ea75315c3557f1eb1",
+                "actor_id": "synthetic-client",
+                "provider_id": "synthetic-receiver",
+                "endpoint": "http://127.0.0.1:42189/upload",
+                "tenant_id": "tenant-enterprise-a",
+                "account_id": "account-enterprise-a",
+                "purpose": "synthetic-upload",
+                "route_id": "controlled-local-upload",
+                "stage": "transfer",
+                "payload_sha256": "dede6e85561971337af3f7d5e458b2457a306cd17a9de83b4ab7653fa621e201",
+                "policy_id": "synthetic-upload-permission",
+                "policy_version": "1",
+                "policy_sha256": "23239a0b5a7d0fa0b3414194bf8b131875b7ee4ef96d14ace87b5bc689566eb4"
+              },
+              "data": {
+                "effective_from": "2026-10-30T00:24:11.556869Z",
+                "effective_until": "2026-10-30T01:26:11.556869Z",
+                "grants": [
+                  {
+                    "actor_id": "synthetic-client",
+                    "provider_id": "synthetic-receiver",
+                    "endpoint": "http://127.0.0.1:42189/upload",
+                    "tenant_id": "tenant-enterprise-a",
+                    "account_id": "account-enterprise-a",
+                    "purpose": "synthetic-upload",
+                    "route_id": "controlled-local-upload"
+                  }
+                ],
+                "require_collector": false
+              }
+            },
+            "signature": "ac7db4d86f1aa65e69154ba9c72c1475962329c28ff09e96b7f0127917b90f16e79f102ba4bad5571d11efa3dc8c80e2ff47a5056228f1d48021699153db6307"
+          },
+          {
+            "algorithm": "Ed25519",
+            "key_id": "pilot-gateway",
+            "body": {
+              "record_id": "initial-gateway",
+              "evaluation_id": "evaluation-b932f7b0046545db9c6d03df1c47aba4",
+              "kind": "transfer.decision",
+              "issuer": "pilot-gateway",
+              "recorded_at": "2026-10-30T01:24:11.557340Z",
+              "binding": {
+                "request_id": "upload-61e12a8d3d45469ea75315c3557f1eb1",
+                "actor_id": "synthetic-client",
+                "provider_id": "synthetic-receiver",
+                "endpoint": "http://127.0.0.1:42189/upload",
+                "tenant_id": "tenant-enterprise-a",
+                "account_id": "account-enterprise-a",
+                "purpose": "synthetic-upload",
+                "route_id": "controlled-local-upload",
+                "stage": "transfer",
+                "payload_sha256": "dede6e85561971337af3f7d5e458b2457a306cd17a9de83b4ab7653fa621e201",
+                "policy_id": "synthetic-upload-permission",
+                "policy_version": "1",
+                "policy_sha256": "23239a0b5a7d0fa0b3414194bf8b131875b7ee4ef96d14ace87b5bc689566eb4"
+              },
+              "data": {
+                "decision": "permit",
+                "valid_from": "2026-10-30T00:24:11.556869Z",
+                "valid_until": "2026-10-30T01:26:11.556869Z"
+              }
+            },
+            "signature": "a0a5c2ba11d55d0bab7b5232b368d0943b2a13af4752a7bf56ad13f60d6042f1548b4f20e8a7b3ea6620650abccbebc1bc7dd3606ce5e21621edd3b3b2ce9506"
+          }
+        ]
+      },
+      "final_gate_trust": {
+        "format": "incident-evidence-trust/0.1",
+        "evaluation_id": "evaluation-b932f7b0046545db9c6d03df1c47aba4",
+        "workflow": "transfer",
+        "as_of": "2026-10-30T01:24:11.570175Z",
+        "target_sha256": "215076e163556837a6c33873c7a1cf580094b850cfa9bdd4c37fac91c2642031",
+        "mode": "synthetic-test-only",
+        "keys": {
+          "pilot-policy": {
+            "public_key": "66b7b8a7884b4d8b6e7ba00a33e42d0ebae42119d3999beafe5b508e98372dc0",
+            "issuer": "pilot-policy",
+            "organization": "pilot-policy-org",
+            "roles": [
+              "policy"
+            ],
+            "not_before": "2026-10-29T01:24:11.556869Z",
+            "not_after": "2026-10-31T01:24:11.556869Z"
+          },
+          "pilot-gateway": {
+            "public_key": "058ad8c3363dba30cf443724557fbc17dbb26dfc90737267a0a34e31f2e9af03",
+            "issuer": "pilot-gateway",
+            "organization": "pilot-gateway-org",
+            "roles": [
+              "gateway"
+            ],
+            "not_before": "2026-10-29T01:24:11.556869Z",
+            "not_after": "2026-10-31T01:24:11.556869Z"
+          }
+        }
+      },
+      "final_gate_assessment": {
+        "format": "incident-evidence-report/0.1",
+        "adapter": "incident-evidence-adapter/0.1",
+        "implementation_version": "0.1.0",
+        "evaluation_id": "evaluation-b932f7b0046545db9c6d03df1c47aba4",
+        "workflow": "transfer",
+        "as_of": "2026-10-30T01:24:11.570175Z",
+        "synthetic": true,
+        "input_sha256": "aed9ab4cb3882df1ec46dbcac2b6bf809817e0ce3d4ab6f5b74f8e66582e2f1e",
+        "trust_sha256": "2b046d060113cefa6b5d703cabfc061545d31dc719615917f6906430e2473515",
+        "target_sha256": "215076e163556837a6c33873c7a1cf580094b850cfa9bdd4c37fac91c2642031",
+        "evidence_integrity": "VERIFIED_UNDER_EVALUATOR_TRUST",
+        "assessments": {
+          "transfer_authorization": "ALLOW",
+          "transfer_observation": "UNKNOWN",
+          "coverage": "INCOMPLETE",
+          "binding_assessment": "MATCH",
+          "policy_binding": "CURRENT_CONTENT_BOUND",
+          "dispatch_action": "PERMITTED_WITHIN_BOUND_SCOPE",
+          "control_assessment": "UNKNOWN",
+          "remote_outcome": "UNKNOWN",
+          "retry_action": "NOT_ASSESSED",
+          "collector_health": "UNKNOWN",
+          "application_route_action": "PERMITTED_WITHIN_BOUND_SCOPE",
+          "external_activity_assessment": "UNKNOWN",
+          "proposed_transfer_authorization": "ALLOW",
+          "observed_action_authorization": "UNKNOWN"
+        },
+        "findings": [
+          {
+            "code": "TRANSFER_CURRENT_POLICY_AND_PERMIT_BIND_TARGET",
+            "record_ids": [
+              "initial-gateway",
+              "initial-policy"
+            ]
+          }
+        ],
+        "evidence_checks": [
+          {
+            "record_id": "initial-policy",
+            "kind": "transfer.policy",
+            "signature": "VERIFIED",
+            "identity": "EXPECTED_ISSUER",
+            "role": "AUTHORIZED",
+            "time": "WITHIN_DECLARED_WINDOW",
+            "evaluation": "MATCH",
+            "binding_differences": [],
+            "eligibility": "ELIGIBLE"
+          },
+          {
+            "record_id": "initial-gateway",
+            "kind": "transfer.decision",
+            "signature": "VERIFIED",
+            "identity": "EXPECTED_ISSUER",
+            "role": "AUTHORIZED",
+            "time": "WITHIN_DECLARED_WINDOW",
+            "evaluation": "MATCH",
+            "binding_differences": [],
+            "eligibility": "ELIGIBLE"
+          }
+        ],
+        "external_anchor_verification": "NOT_IMPLEMENTED",
+        "full_vap_conformance": "NOT_ASSESSED",
+        "full_cap_conformance": "NOT_ASSESSED",
+        "legal_compliance": "NOT_ASSESSED",
+        "limitations": [
+          "Application-layer experimental assessment; no normative VAP or CAP conformance determination.",
+          "Evaluator trust configuration and issuer/organization assignments are explicit external assumptions.",
+          "Valid signatures attribute records; they do not independently prove claim truth or event time.",
+          "Missing records cannot establish absence of activity outside the declared observation scope.",
+          "Block and hold outputs are recommendations; this offline program controls no live gateway or publisher.",
+          "Provider statements and limited reviews cannot establish universal external deletion.",
+          "External anchoring, positive XREF, key revocation, production identity onboarding and legal compliance are not assessed."
+        ]
+      },
+      "dispatch_intent": {
+        "algorithm": "Ed25519",
+        "key_id": "pilot-gateway",
+        "body": {
+          "kind": "dispatch_intent",
+          "request_id": "upload-61e12a8d3d45469ea75315c3557f1eb1",
+          "subject_sha256": "bbb4d02cdf78f2c6d6a4cf52767994d3e3f911e52478553500e51cfb2a1297a5",
+          "payload_sha256": "dede6e85561971337af3f7d5e458b2457a306cd17a9de83b4ab7653fa621e201",
+          "byte_length": 62,
+          "created_at": "2026-10-30T01:24:11.562895Z"
+        },
+        "signature": "8e68801e3be29eddb63e6776b18be826ca3bb2aaedeca82d86c8e0bf49537e05e1c29a23eb9955cb8341072158fd8341272fe10525495b0842a4896854191700"
+      },
+      "transport_observation": {
+        "attempted": true,
+        "body_send_completed": true,
+        "attempted_at": "2026-10-30T01:24:11.573688Z",
+        "dispatched_at": "2026-10-30T01:24:11.573877Z",
+        "status": 200
+      }
+    }
+  ],
+  "receiver_snapshot": {
+    "handler_calls": 1,
+    "accepted_count": 1,
+    "rows": [
+      {
+        "request_id": "upload-61e12a8d3d45469ea75315c3557f1eb1",
+        "subject_sha256": "bbb4d02cdf78f2c6d6a4cf52767994d3e3f911e52478553500e51cfb2a1297a5",
+        "payload_sha256": "dede6e85561971337af3f7d5e458b2457a306cd17a9de83b4ab7653fa621e201",
+        "byte_length": 62,
+        "receipt": {
+          "algorithm": "Ed25519",
+          "body": {
+            "byte_length": 62,
+            "kind": "upload_receipt",
+            "payload_sha256": "dede6e85561971337af3f7d5e458b2457a306cd17a9de83b4ab7653fa621e201",
+            "receipt_id": "receipt-b6c28f605def4a369fba886e90a653e8",
+            "received_at": "2026-10-30T01:24:11.575782Z",
+            "request_id": "upload-61e12a8d3d45469ea75315c3557f1eb1",
+            "subject_sha256": "bbb4d02cdf78f2c6d6a4cf52767994d3e3f911e52478553500e51cfb2a1297a5"
+          },
+          "key_id": "pilot-receiver",
+          "signature": "56b9f779ea52d9e5541fdb15f447544bae592682850a95df3ce8ce1fa821b414ad186c85503367aa3527f954253d32d391546a57cfb0bd400800c44fb3992808"
+        }
+      }
+    ]
+  },
+  "receiver_public": "912f7259e4961ee71555a68caf5cd3907db3fa78f4852d37aefcc5ad989109f3",
+  "receiver_key_id": "pilot-receiver",
+  "payload_sha256": "dede6e85561971337af3f7d5e458b2457a306cd17a9de83b4ab7653fa621e201",
+  "byte_length": 62,
+  "cleanup": {
+    "child_stopped": true,
+    "forced_termination": false
+  }
+}

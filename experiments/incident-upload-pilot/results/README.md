@@ -72,10 +72,14 @@ associated GitHub Actions artifacts for 30 days, with recorded expiry on
 - [Python 3.12 artifact](https://github.com/veritaschain/vap-spec/actions/runs/40985604010/artifacts/12946428867).
 - [Python 3.14 artifact](https://github.com/veritaschain/vap-spec/actions/runs/40985604010/artifacts/12947190656).
 
-The repository retains the summaries and source hashes; it does not retain the
-complete case exports or runtime databases after the Actions artifacts expire.
-The summaries alone are not inputs for `verify-exports`: that command needs the
-complete extracted run directory. For a fresh run after expiry, follow the
+The original result directory retains summaries and source hashes. On 2026-10-30
+JST, the [offline recheck kit](../../incident-recheck-kit/README.md) additionally
+preserved the exact original Python 3.12 summary and all 17 public case exports
+in Git, after matching the downloaded artifact digest to this recorded artifact.
+Those public records remain recheckable after artifact expiry; runtime databases
+and the Python 3.14 case directory are not preserved by that kit. The summaries
+alone are not inputs for `verify-exports`: that command needs the matching full
+public case directory. For a fresh execution after expiry, follow the
 [reproduction instructions](../README.md#reproduce-on-linux). New keys, IDs and
 observation times are expected, so new export hashes will differ.
 

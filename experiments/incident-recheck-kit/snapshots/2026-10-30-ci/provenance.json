@@ -1,0 +1,282 @@
+{
+  "format": "incident-recheck-provenance/0.1",
+  "snapshot_id": "incident-ci-2026-10-30",
+  "repository": "veritaschain/vap-spec",
+  "pilot_source_snapshot_commit": "b72bbf05c912f5b87560f4c809298c7bbcaf05e4",
+  "capture_method": "ORIGINAL_CI_ARTIFACT_BYTES",
+  "independent_reproduction": "NOT_ESTABLISHED",
+  "pilots": {
+    "upload": {
+      "workflow_run_id": 40985604010,
+      "workflow_run_url": "https://github.com/veritaschain/vap-spec/actions/runs/40985604010",
+      "workflow_event": "pull_request",
+      "job_id": 123835777774,
+      "checkout_commit": "9cbbace88a7463ef72816a714764c01eb124611b",
+      "artifact_id": 12946428867,
+      "artifact_sha256": "d5f1b9c9fc7853949723918ed70c06ece0945ea0fa56c5d7a9fa21f81f8ca058",
+      "artifact_byte_length": 137295,
+      "original_artifact_expires_at": "2026-11-29T01:24:13Z",
+      "python_series": "3.12",
+      "source_sha256": "0f7e7f04c45baca8bc62ea0f8778c79ef5bba22e27faf49fbad92001c617df49",
+      "case_count": 17,
+      "files": {
+        "summary.json": {
+          "sha256": "d041087291a95babd2603d7645321c8b7732a10ec2d73f5edd70d94443d7cc22",
+          "byte_length": 17283
+        },
+        "cases/UL-01.json": {
+          "sha256": "b2dcfd04482bc9155623d29cc0a47a498fc481e12d736e8bee8617157dcc27df",
+          "byte_length": 34927
+        },
+        "cases/UL-02.json": {
+          "sha256": "9269839f47e1fb1d10770108af3eca20c3305c006a9c3c593f93c31a0bab672a",
+          "byte_length": 20339
+        },
+        "cases/UL-03.json": {
+          "sha256": "ae52f9b87407dd2e2c67f1a0f3871d7b5be501f1faaf23c8d553d9767177f742",
+          "byte_length": 20347
+        },
+        "cases/UL-04.json": {
+          "sha256": "db5526138e9d772e7a495777d58cf62ddbe669f6d499a0d2c7a7f8b4aea1157e",
+          "byte_length": 20737
+        },
+        "cases/UL-05.json": {
+          "sha256": "d0aec622abc8fbd50668b5f7a61522cbc647da487c0712c7a4fbc7efcd0335c1",
+          "byte_length": 20587
+        },
+        "cases/UL-06.json": {
+          "sha256": "a0e0adfa565e4caccf985476826302c2c63e97a72d66a43c27ea6174e2b5f276",
+          "byte_length": 21062
+        },
+        "cases/UL-07.json": {
+          "sha256": "5e4248bb28da61796158676172af2243678b18454fdc8a6f9a1a34c413d37dce",
+          "byte_length": 53971
+        },
+        "cases/UL-08.json": {
+          "sha256": "a171c8159b7182a1a964c0b0281da09db3788b10f5cce1b218683d036827566a",
+          "byte_length": 34211
+        },
+        "cases/UL-09.json": {
+          "sha256": "2fc28cf4f0de80e772b9e0f640c2ff8eda3ba56a6b2e6c009997376f8c0e3b72",
+          "byte_length": 34969
+        },
+        "cases/UL-10.json": {
+          "sha256": "b70c8e6aa3fd265c8c77f21f8d8f40b9fbb6a0156a4aa57cc61e75671910c563",
+          "byte_length": 30688
+        },
+        "cases/UL-11.json": {
+          "sha256": "1bde2245d696f67e1b03f8f11ef4882812026c8ac93974b39e4d91ee0bd8ff31",
+          "byte_length": 54688
+        },
+        "cases/UL-12.json": {
+          "sha256": "b48d649ef250c60fb40cf2276941664824c24e3be6cdecf1383a6237c0261d3b",
+          "byte_length": 54696
+        },
+        "cases/UL-13.json": {
+          "sha256": "63415440b019487a71bdac8ea053c156f069fbf31ff4c08ae11f42e4ffcb53f2",
+          "byte_length": 33160
+        },
+        "cases/UL-14.json": {
+          "sha256": "8de2786ecce446f3c446293744e07e35ad671c94c89e2a64c7c49f1b28697197",
+          "byte_length": 21404
+        },
+        "cases/UL-15.json": {
+          "sha256": "97b43319ab4bb879c88cf142e1c62cfb832deb38778af344df82fba7876661b3",
+          "byte_length": 55318
+        },
+        "cases/UL-16.json": {
+          "sha256": "79b14d4bea0893d4de029568698a48f6d183d0c785139456d1f9b3817e339833",
+          "byte_length": 34214
+        },
+        "cases/UL-17.json": {
+          "sha256": "b07192b11f2e2d763c0eea9a5fe674f6dded9cdb9e06f8579bbff32a0ba1f550",
+          "byte_length": 20492
+        }
+      }
+    },
+    "publication": {
+      "workflow_run_id": 40990072945,
+      "workflow_run_url": "https://github.com/veritaschain/vap-spec/actions/runs/40990072945",
+      "workflow_event": "push",
+      "job_id": 123850067638,
+      "checkout_commit": "2b126fc0dac76cf0c3a7e4a64b9cb0d9ab87c341",
+      "artifact_id": 12949205621,
+      "artifact_sha256": "00112f163ae1e284bf5cdbf3db5fff289ce3ce12bbe428a31ea85704d72b3a20",
+      "artifact_byte_length": 191384,
+      "original_artifact_expires_at": "2026-11-29T02:10:07Z",
+      "python_series": "3.12",
+      "source_sha256": "78386924abf2ac6819f653d7c282972b86e58ac1379751c213bca1e5334c639c",
+      "case_count": 18,
+      "files": {
+        "summary.json": {
+          "sha256": "9ba90113030418a5b04ad989ec5383b35ee76073b085460091b8e2ec5c715fc1",
+          "byte_length": 18465
+        },
+        "cases/LP-01.json": {
+          "sha256": "df89f468ffdefaf45404839c67409165105b9db1f9dfdf8cf1c7434cad1e92e6",
+          "byte_length": 81959
+        },
+        "cases/LP-02.json": {
+          "sha256": "52656c8dd104a96a7fe5b8d03b911b92b0c0aac66e45850ec94b43db69f06dd9",
+          "byte_length": 48443
+        },
+        "cases/LP-03.json": {
+          "sha256": "0a350a110a1d7a761291c56facbb542c89370030316534837a74f2873768278d",
+          "byte_length": 25228
+        },
+        "cases/LP-04.json": {
+          "sha256": "44fbdd5fa6220ffc415bab23f5dc8b821b22fb3fe117d68e8b8488a9d945f5f2",
+          "byte_length": 28059
+        },
+        "cases/LP-05.json": {
+          "sha256": "5b95e24998df2aed3a030dda60ae501cdb9290012669dc8486a4b39679fa508f",
+          "byte_length": 54106
+        },
+        "cases/LP-06.json": {
+          "sha256": "2e540bc6f9f370da67697eccb497a248228e13ab6f366ef0e555d966e9fd0d4a",
+          "byte_length": 48219
+        },
+        "cases/LP-07.json": {
+          "sha256": "223ceccd23d6e4cb7ea46ffba0a4e87d685fa931346269193ecc2ca212809bd9",
+          "byte_length": 53638
+        },
+        "cases/LP-08.json": {
+          "sha256": "193accfcc80cab3024655e7c562a1e8ef17de1b3efa8356e9daef5cb7db366a8",
+          "byte_length": 80053
+        },
+        "cases/LP-09.json": {
+          "sha256": "11eb326023cee09ad8789129d98152aa2090491ca30a687c5dda1f1682acc73c",
+          "byte_length": 71144
+        },
+        "cases/LP-10.json": {
+          "sha256": "331fc043fca446327a397aea62521017c21f0fd1c03eb6e43dd230eac7d125d1",
+          "byte_length": 73288
+        },
+        "cases/LP-11.json": {
+          "sha256": "6da1acff6573cb3f576a0a0df8cf6965fc10b06796925c5e6bfdc3f2856e6541",
+          "byte_length": 27066
+        },
+        "cases/LP-12.json": {
+          "sha256": "609b0aeddc2f08c1303a996526c9f8f18776c6b16997a19412020ced0057ecc8",
+          "byte_length": 53882
+        },
+        "cases/LP-13.json": {
+          "sha256": "d3b194272e0b04d03f3c6062278b23e9c1f3ec164f2050be63ff4fc3976e9fd2",
+          "byte_length": 135520
+        },
+        "cases/LP-14.json": {
+          "sha256": "5adbe117ce41f9eda73e769443ad95f28215ddb7c1421e289339c3ca028fbab9",
+          "byte_length": 133633
+        },
+        "cases/LP-15.json": {
+          "sha256": "4f93a498b4c4832b47335402dcd556e4d54df540854916cb02c16bc078d39806",
+          "byte_length": 135515
+        },
+        "cases/LP-16.json": {
+          "sha256": "4138b40829ceb8111ce9dcda3e3ee02e30f69bb239844db4685bab6dca58f919",
+          "byte_length": 48513
+        },
+        "cases/LP-17.json": {
+          "sha256": "d97a378927ac77ac8117cd32a4db1ce2101bfdf5434266f3696c00a3030d57bd",
+          "byte_length": 28713
+        },
+        "cases/LP-18.json": {
+          "sha256": "b30fccb7007c2f9ab9c56e54c761a7fc580b44ebf09acf0f3cf507b6c85af892",
+          "byte_length": 136770
+        }
+      }
+    },
+    "erasure": {
+      "workflow_run_id": 40997508247,
+      "workflow_run_url": "https://github.com/veritaschain/vap-spec/actions/runs/40997508247",
+      "workflow_event": "push",
+      "job_id": 123873984383,
+      "checkout_commit": "ff54a5d302bc014df57736e6bcd5b0e44acc01b7",
+      "artifact_id": 12952440268,
+      "artifact_sha256": "01e64f5d2a09103d64030523c0f6e2875f00694478d6f3cea28fef9ecfbd308f",
+      "artifact_byte_length": 78774,
+      "original_artifact_expires_at": "2026-11-29T03:28:06Z",
+      "python_series": "3.12",
+      "source_sha256": "fb0dc41bde92840e06f11c9077c41743dc8c1255b4404aaa464b7455fa829191",
+      "case_count": 18,
+      "files": {
+        "summary.json": {
+          "sha256": "8ca8ab03504322e293360fe98d4e16ee278e9f7eb3bb0e3b237f4f5948b3a16d",
+          "byte_length": 23556
+        },
+        "cases/LE-01.json": {
+          "sha256": "b085c5a37d0291c50eb1e13edf84da5a6fd5926336a6468a05e8dd7079421c30",
+          "byte_length": 17671
+        },
+        "cases/LE-02.json": {
+          "sha256": "0fdeb884e061dccf387599ea9f83cc550e8eefb344d17d4aeea4d840d29eff72",
+          "byte_length": 14306
+        },
+        "cases/LE-03.json": {
+          "sha256": "29fcc4461c4daeeed2bbcfd8824b1c0305324dbe03f61556a25e2a20eade7cde",
+          "byte_length": 9539
+        },
+        "cases/LE-04.json": {
+          "sha256": "8d440bb339f7f594390b06e6c34a77c73037b4baecc98a160540bece6fd4d629",
+          "byte_length": 28807
+        },
+        "cases/LE-05.json": {
+          "sha256": "4ee5b6e8af17d0a5d3f4e1b9b803e73c77daf7896d687e54221308bd213a719f",
+          "byte_length": 28807
+        },
+        "cases/LE-06.json": {
+          "sha256": "cac664e14d7c12a4a11267af1d54a022d04a70ac6cd50680fb79d265e65cee3c",
+          "byte_length": 14288
+        },
+        "cases/LE-07.json": {
+          "sha256": "23ebb972efe8793cda25efedeb09c99d4cdb337a5df6555070d460ef4c2cba4f",
+          "byte_length": 12269
+        },
+        "cases/LE-08.json": {
+          "sha256": "d92b933f6b546fb684cd3684ef3a8604551545052456083a7cf40b93c5ba1875",
+          "byte_length": 12127
+        },
+        "cases/LE-09.json": {
+          "sha256": "8e2908ba81397e74006ea42a4a3c55af6de18c2789b2e8c441781e1740961348",
+          "byte_length": 29380
+        },
+        "cases/LE-10.json": {
+          "sha256": "d7b9a63bcfdf674c63baa8a866237bf3a65c09afe9ddc54a132ae9fbb9f6f596",
+          "byte_length": 25921
+        },
+        "cases/LE-11.json": {
+          "sha256": "d09b54f59e05969bd61d7bf399518f173427a00fdf7e3ebb7bc381d66e56f19c",
+          "byte_length": 29433
+        },
+        "cases/LE-12.json": {
+          "sha256": "4ea0f643e31cbe08d39e464e6c877e42b9036b9c07c20e31bc94905b70dbc2dc",
+          "byte_length": 18423
+        },
+        "cases/LE-13.json": {
+          "sha256": "51ccf42ab0711205ca3a32a1728e1260e424fd7f672e58b74e50f9450baa1f99",
+          "byte_length": 18419
+        },
+        "cases/LE-14.json": {
+          "sha256": "23464e74e336f2a3fdf87b845bdb55f0f3ff703eb0adbd8bb4f3aa32c8724fad",
+          "byte_length": 16371
+        },
+        "cases/LE-15.json": {
+          "sha256": "a24b083e683082af77a58e939618e6694faa4d9eb9fda241e85e6d2ef769c60a",
+          "byte_length": 17712
+        },
+        "cases/LE-16.json": {
+          "sha256": "7ae8a0c12f6d04c9613d1baadca4f178dfd76afbd6dd3ffaefe424567a7acb25",
+          "byte_length": 12270
+        },
+        "cases/LE-17.json": {
+          "sha256": "69e7aead108c0bd3fad7388455c74f24e29e98174c78f12ca6eac2a5899d2447",
+          "byte_length": 29513
+        },
+        "cases/LE-18.json": {
+          "sha256": "9b343c13953d03dbd8dee0fce04afc7bc99a4626373647fc133e4bac1ed61401",
+          "byte_length": 15173
+        }
+      }
+    }
+  }
+}

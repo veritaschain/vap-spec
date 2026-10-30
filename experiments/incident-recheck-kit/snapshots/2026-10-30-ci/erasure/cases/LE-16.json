@@ -1,0 +1,270 @@
+{
+  "format": "incident-erasure-case/0.1",
+  "case_id": "LE-16",
+  "synthetic": true,
+  "records": [
+    {
+      "bundle": {
+        "format": "incident-erasure-bundle/0.1",
+        "task": {
+          "format": "incident-erasure-task/0.1",
+          "manifest": {
+            "provider_id": "provider-local",
+            "tenant_id": "tenant-synthetic",
+            "object_id": "object-synthetic",
+            "version_id": "version-771a4baa11844d879502c8388c144873",
+            "sha256": "95f2f21837656da95e45aa977aa2ae52c8a64c61d0088fd6eb2ee90ded28e108",
+            "byte_length": 68,
+            "location": "active-object-namespace"
+          },
+          "request": {
+            "algorithm": "Ed25519",
+            "key_id": "requester-4e6a2f1998bf",
+            "body": {
+              "record_id": "request-record-a2590d2f3bd0450bb674bf38de8d0674",
+              "evaluation_id": "evaluation-0fb4c2a0459444349ca7f51cb29d73f9",
+              "kind": "erasure.request",
+              "issuer": "requester-local",
+              "recorded_at": "2026-10-30T03:28:05.269116Z",
+              "binding": {
+                "request_id": "request-8b9db4f415dc4ae597208ce863ab19df",
+                "provider_id": "provider-local",
+                "tenant_id": "tenant-synthetic",
+                "object_ids": [
+                  "object-synthetic"
+                ],
+                "payload_sha256": "e4779dea66fcd7ac7cd467ee77a92183bc52153fc7b709c0c6b8703f7dd0737a",
+                "stage": "erasure"
+              },
+              "data": {
+                "requested_at": "2026-10-30T03:28:05.269116Z",
+                "requested_locations": [
+                  "active-object-namespace",
+                  "backups",
+                  "replicas",
+                  "downstream-copies",
+                  "training-derivatives",
+                  "open-handles-and-memory",
+                  "storage-media"
+                ]
+              }
+            },
+            "signature": "cfba77d9b1149674bbcdf0ae3015cbbce6c980168ab836dc45b59f95f96fe46b9af5b191f7338d22c8ede75ddcfad8d2a3b961571f83d20ab1e61b13344a5804"
+          },
+          "authorization": {
+            "algorithm": "Ed25519",
+            "key_id": "requester-4e6a2f1998bf",
+            "body": {
+              "kind": "deletion_authorization",
+              "request_sha256": "84f40801aa033feafdb5ef50187cd3cf8946ff6675ee5f9b302623347ed4040e",
+              "manifest_sha256": "e4779dea66fcd7ac7cd467ee77a92183bc52153fc7b709c0c6b8703f7dd0737a",
+              "authorized_at": "2026-10-30T03:28:05.269116Z",
+              "valid_until": "2026-10-30T03:33:05.269116Z"
+            },
+            "signature": "a97b1b3fa867bd724e46794deccdc0cf0ee03567b04dd1d6c2976514fa37d1bdbeb42d2fa12ef0ac71791189c682b65f03fd3be183147558834cf5b72727ef0a"
+          }
+        },
+        "as_of": "2026-10-30T03:28:05.277936Z",
+        "provider_result": {
+          "state": "BLOCKED",
+          "attempted": false,
+          "acknowledgement": null,
+          "attestation": null,
+          "receipt": null,
+          "journal_state": "NOT_CLAIMED",
+          "reason": "INTENT_ACKNOWLEDGEMENT_NOT_ESTABLISHED"
+        },
+        "before": {
+          "algorithm": "Ed25519",
+          "key_id": "observer-e965050ce652",
+          "body": {
+            "kind": "local_namespace_observation",
+            "task_sha256": "be0b88e1daef8aab35fe32837035d062560c2c3925a6cb1b8726dd7f783c3186",
+            "manifest_sha256": "e4779dea66fcd7ac7cd467ee77a92183bc52153fc7b709c0c6b8703f7dd0737a",
+            "provider_id": "provider-local",
+            "tenant_id": "tenant-synthetic",
+            "location": "active-object-namespace",
+            "object_id": "object-synthetic",
+            "version_id": "version-771a4baa11844d879502c8388c144873",
+            "phase": "before",
+            "previous_sha256": null,
+            "completion_sha256": null,
+            "window_start": "2026-10-30T03:28:05.271662Z",
+            "window_end": "2026-10-30T03:28:05.271753Z",
+            "measurement": {
+              "state": "PRESENT",
+              "sha256": "95f2f21837656da95e45aa977aa2ae52c8a64c61d0088fd6eb2ee90ded28e108",
+              "byte_length": 68
+            }
+          },
+          "signature": "ebf8b9005814c48ba3925496cb7955d229d26cdaeb4b055e1c92cc438d315a8bd94f271b6906ed614b963c4ec5da45f722fbbd6179bd94778f6945f4c9105106"
+        },
+        "after": {
+          "algorithm": "Ed25519",
+          "key_id": "observer-e965050ce652",
+          "body": {
+            "kind": "local_namespace_observation",
+            "task_sha256": "be0b88e1daef8aab35fe32837035d062560c2c3925a6cb1b8726dd7f783c3186",
+            "manifest_sha256": "e4779dea66fcd7ac7cd467ee77a92183bc52153fc7b709c0c6b8703f7dd0737a",
+            "provider_id": "provider-local",
+            "tenant_id": "tenant-synthetic",
+            "location": "active-object-namespace",
+            "object_id": "object-synthetic",
+            "version_id": "version-771a4baa11844d879502c8388c144873",
+            "phase": "after",
+            "previous_sha256": "40e0666e712dd5d6381858b7323477167ac4d8fb97cf4b24a8ee5ba258bbed8a",
+            "completion_sha256": null,
+            "window_start": "2026-10-30T03:28:05.277595Z",
+            "window_end": "2026-10-30T03:28:05.277689Z",
+            "measurement": {
+              "state": "PRESENT",
+              "sha256": "95f2f21837656da95e45aa977aa2ae52c8a64c61d0088fd6eb2ee90ded28e108",
+              "byte_length": 68
+            }
+          },
+          "signature": "dea6c446291831c6d442e8e83050df587079c43fb723c17c7755cb757c1176b4bc66b2063dc55447540766fd06a2e0eb673bde54aba3e808b967b9b3377b3002"
+        }
+      },
+      "pins": {
+        "provider_id": "provider-local",
+        "tenant_id": "tenant-synthetic",
+        "location": "active-object-namespace",
+        "requester_key_id": "requester-4e6a2f1998bf",
+        "provider_key_id": "provider-5b65376d6962",
+        "observer_key_id": "observer-e965050ce652",
+        "keys": {
+          "requester-4e6a2f1998bf": {
+            "public_key": "970c86a49a2f1bd739b34556cf37a191ef4b21e031428d85deb73f44bdaeb729",
+            "issuer": "requester-local",
+            "organization": "single-local-controller",
+            "roles": [
+              "responder"
+            ],
+            "not_before": "2026-10-30T02:28:05.263904Z",
+            "not_after": "2026-10-31T03:28:05.263904Z"
+          },
+          "provider-5b65376d6962": {
+            "public_key": "7207ebf6436cf14f248b95029ff8e8392c1c1152fd008229f5034a965e2dd0bd",
+            "issuer": "provider-local",
+            "organization": "single-local-controller",
+            "roles": [
+              "provider"
+            ],
+            "not_before": "2026-10-30T02:28:05.263904Z",
+            "not_after": "2026-10-31T03:28:05.263904Z"
+          },
+          "observer-e965050ce652": {
+            "public_key": "2b5fcc62d05d53b81bcbe74bf72c756c112411ef65a83f955baf8ea5bca10924",
+            "issuer": "observer-local",
+            "organization": "single-local-controller",
+            "roles": [
+              "reviewer"
+            ],
+            "not_before": "2026-10-30T02:28:05.263904Z",
+            "not_after": "2026-10-31T03:28:05.263904Z"
+          }
+        }
+      },
+      "expected_task_sha256": "be0b88e1daef8aab35fe32837035d062560c2c3925a6cb1b8726dd7f783c3186",
+      "assessment": {
+        "format": "incident-erasure-assessment/0.1",
+        "task_sha256": "be0b88e1daef8aab35fe32837035d062560c2c3925a6cb1b8726dd7f783c3186",
+        "assessor_report": {
+          "format": "incident-evidence-report/0.1",
+          "adapter": "incident-evidence-adapter/0.1",
+          "implementation_version": "0.1.0",
+          "evaluation_id": "evaluation-0fb4c2a0459444349ca7f51cb29d73f9",
+          "workflow": "erasure",
+          "as_of": "2026-10-30T03:28:05.277936Z",
+          "synthetic": true,
+          "input_sha256": "96e44a65df765150ad0678205892f71ab7f484077e962c0eb88e72b2b53ae6e0",
+          "trust_sha256": "d0c410f140761bdef0c3e73c7d91ec732829a917b49e98ccc6dfc06c10e49e93",
+          "target_sha256": "c4eac1433ebbbce48dac8cd73b058e100eb848120e142465ce794d907c1ab6bc",
+          "evidence_integrity": "VERIFIED_UNDER_EVALUATOR_TRUST",
+          "assessments": {
+            "deletion_evidence": "REQUEST_ONLY",
+            "provider_completion": "UNKNOWN",
+            "independent_verification": "NOT_ESTABLISHED",
+            "excluded_scope_outcome": "UNKNOWN",
+            "outside_scope_outcome": "UNKNOWN",
+            "target_completion": "UNKNOWN",
+            "receipt_applicability": "NOT_ESTABLISHED",
+            "binding_assessment": "MATCH",
+            "review_result": "NOT_ESTABLISHED"
+          },
+          "findings": [
+            {
+              "code": "ERASURE_LOCAL_REQUEST_ESTABLISHED",
+              "record_ids": [
+                "request-record-a2590d2f3bd0450bb674bf38de8d0674"
+              ]
+            }
+          ],
+          "evidence_checks": [
+            {
+              "record_id": "request-record-a2590d2f3bd0450bb674bf38de8d0674",
+              "kind": "erasure.request",
+              "signature": "VERIFIED",
+              "identity": "EXPECTED_ISSUER",
+              "role": "AUTHORIZED",
+              "time": "WITHIN_DECLARED_WINDOW",
+              "evaluation": "MATCH",
+              "binding_differences": [],
+              "eligibility": "ELIGIBLE"
+            }
+          ],
+          "external_anchor_verification": "NOT_IMPLEMENTED",
+          "full_vap_conformance": "NOT_ASSESSED",
+          "full_cap_conformance": "NOT_ASSESSED",
+          "legal_compliance": "NOT_ASSESSED",
+          "limitations": [
+            "Application-layer experimental assessment; no normative VAP or CAP conformance determination.",
+            "Evaluator trust configuration and issuer/organization assignments are explicit external assumptions.",
+            "Valid signatures attribute records; they do not independently prove claim truth or event time.",
+            "Missing records cannot establish absence of activity outside the declared observation scope.",
+            "Block and hold outputs are recommendations; this offline program controls no live gateway or publisher.",
+            "Provider statements and limited reviews cannot establish universal external deletion.",
+            "External anchoring, positive XREF, key revocation, production identity onboarding and legal compliance are not assessed."
+          ]
+        },
+        "local_observation": "PRESENT_AT_OBSERVATION",
+        "unknown_domains": {
+          "backups": "UNKNOWN",
+          "replicas": "UNKNOWN",
+          "downstream-copies": "UNKNOWN",
+          "training-derivatives": "UNKNOWN",
+          "open-handles-and-memory": "UNKNOWN",
+          "storage-media": "UNKNOWN"
+        },
+        "limitations": [
+          "Synthetic application experiment with one immutable object and one active namespace per task.",
+          "Requester, provider and observer share one local controller and organization; no independent review is established.",
+          "Signatures attribute statements under separately supplied pins; they do not prove a malicious controller told the truth or establish external event time.",
+          "Local observations concern a named directory entry during the stated read window, not irreversible deletion or storage-media sanitization.",
+          "Absence without a matching before observation and linked completion does not establish prior presence or a removal operation.",
+          "Missing evidence does not establish absence of copies, activity or contradictory evidence outside the observed namespace.",
+          "No external provider integration, key revocation, normative conformance or legal-compliance determination is performed."
+        ]
+      }
+    }
+  ],
+  "probes": [],
+  "retained_controls": [],
+  "sort_states": false,
+  "case_as_of": "2026-10-30T03:28:05.282018Z",
+  "actual": {
+    "states": [
+      "BLOCKED"
+    ],
+    "unlink_attempts": 0,
+    "local_observations": [
+      "PRESENT_AT_OBSERVATION"
+    ],
+    "core_evidence": [
+      "REQUEST_ONLY"
+    ],
+    "rejected_probes": 0,
+    "retained_readable_controls": [],
+    "outside_scope_remains_unknown": true
+  }
+}
