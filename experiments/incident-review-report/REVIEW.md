@@ -136,8 +136,48 @@ The focused local command was:
 
 It completed **8/8 methods**, with zero failures, errors or skips. Resource
 warnings were treated as errors. The kit's full 53-case verification was exercised
-as described above. Broader integration and CI checkpoints are recorded
-separately; this focused result is not evidence of an independent external run.
+as described above. This focused result is not evidence of an independent
+external run.
+
+### Final integrated local checkpoint
+
+The completed local `record_run.py` execution used **Python 3.12.14** and passed
+**37/37 methods**: 12 projection, 15 delivery, eight boundary and two integration
+methods. Its record reports zero failures, errors, skips or unraisable exceptions.
+It generated the report through actual verification of all 53 saved cases and
+then verified the report by exact byte-for-byte rederivation.
+
+All **136 frozen execution-source files remained unchanged**. The complete new
+execution identity covers **154 files** with aggregate SHA-256:
+
+```text
+1b6187b8d732e299de389e957601b96ad971f908f1b96cc6da11d2662e2efb3b
+```
+
+The final local report ZIP is **2,237,333 bytes**, with SHA-256:
+
+```text
+df971f32b68efc20bb76352076266747485bc9c49a26e248aec6af444a399360
+```
+
+The presentation retains **129 assessor frames: 100 recorded and 29 not
+recorded**, plus 87 interpretation-note instances. Those are presentation
+inventories, not additional observations or security results. The compact case
+index identifies state arrays as case-level aggregates and explicitly declines
+to pair their positions with operations or core assessments. The deduplicated
+F/S reference registry retains each source file's raw hash and every concrete
+pointer.
+
+A final wording review read the generated Japanese and English openings and
+the key unknown-outcome, final-gate, bypass, unknown-origin and erasure-control
+excerpts. Both views state upfront that 53 matched scenarios are not 53 security
+successes and retain the limits on observation truth, human review, independence,
+conformance and legal compliance. The excerpts preserve the paired observations
+and scope qualifications described above. No misleading guarantee promotion or
+blocking wording issue was found; no further runtime or test changes were made.
+
+This is the internal local development checkpoint. CI runs and any future
+external reproduction must be identified separately; neither is preclaimed here.
 
 ## Remaining limits and disposition
 
