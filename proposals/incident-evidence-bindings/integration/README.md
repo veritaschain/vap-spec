@@ -1,13 +1,16 @@
 # Incident integration and review handoff
 
-**Informative, unadopted design guidance — 2026-10-30 JST.**
-Evidence checkpoint: [PR36 merge, 3e621d522c](https://github.com/veritaschain/vap-spec/commit/3e621d522c4e5f536c850aa1e17821328680bfe6).
+**Informative, unadopted design guidance — original checkpoint 2026-10-30 JST;
+retention addendum 2026-10-31 JST.**
+Original evidence checkpoint: [PR36 merge, 3e621d522c](https://github.com/veritaschain/vap-spec/commit/3e621d522c4e5f536c850aa1e17821328680bfe6).
+Separate retention checkpoint: [PR40 merge, 62d15f1b8d][retention-source].
 Normative baseline: VAP v1.2 Draft 3. This guide introduces no conformance rule or certification.
 
 [日本語](README-ja.md) · [23-case crosswalk](COVERAGE.md) ·
 [Machine-readable crosswalk](coverage-map.json) ·
 [External review procedure](EXTERNAL-REVIEW.md) ·
-[Blank response template](external-review-template.json)
+[Blank response template for PR36](external-review-template.json) ·
+[Separate retention review](RETENTION-REVIEW.md)
 
 The incident proposal, offline assessor, three local execution pilots and saved-evidence
 report answer different questions. This handoff connects them without treating a related
@@ -15,7 +18,11 @@ local test as a completed deployment requirement. The proposed next step is a bo
 external review of the saved evidence, followed by separately scoped integration work.
 No external review has been commissioned or completed by publishing this guide.
 
-## 1. What is available at this checkpoint
+Sections 1–6 retain the PR36 baseline and its review scope. Section 7 records the
+separate PR40 retention experiment. The baseline's gaps are not a current inventory
+of every later experiment in this repository.
+
+## 1. What is available at the PR36 checkpoint
 
 | Layer | Existing deliverable | What the record supports |
 | --- | --- | --- |
@@ -65,8 +72,10 @@ legacy citation identifiers are not used as new factual authority in this handof
 
 ## 3. Relationships that must stay explicit
 
-The [complete crosswalk](COVERAGE.md) addresses every original proposal case. These
-differences are especially relevant before selecting a deployment pilot:
+The [complete crosswalk](COVERAGE.md) addresses every original proposal case at
+the PR36 snapshot. In particular, UP-08 below describes the original upload pilot;
+it does not assess later collector experiments. These baseline differences remain
+relevant when selecting the evidence for a deployment pilot:
 
 | Original question | Related local evidence | Condition still unestablished |
 | --- | --- | --- |
@@ -130,6 +139,36 @@ The normative specification, fixed evidence and execution source keep their exis
 Conformance, legal compliance, universal erasure, complete AI-use attribution and production
 readiness are not established by this guide.
 
+## 7. Retention addendum — 2026-10-31 JST
+
+The [PR40 retention adapter][retention-adapter] adds a separately versioned offline
+assessment around the unchanged erasure assessor. Its [retained internal record][retention-results]
+reports 42 software test methods, 16 matched synthetic scenarios and 16 saved-evidence
+rechecks. These figures refer to the adapter's prior recorded executions; this handoff
+does not present them as newly executed tests or an external review. The 16 scenarios
+are a separate set of synthetic inputs, not additional operations in the fixed 53-case capture or
+new entries in the original 23-case catalogue.
+
+| Implemented assessment | Boundary that remains |
+| --- | --- |
+| Separate attributed processing locations, training use, retention schedules and deletion evidence | Statements do not independently establish actual location, training use or transfer authorization |
+| Compare an explicit timezone-bearing deadline with the pinned cutoff; retain unknown schedules and exceptions | Reaching a deadline never establishes deletion; missing starting events or calendar rules are not inferred |
+| Match scoped completion claims by request and location; preserve later presence and multiple statements | Provider claims and collector statements do not themselves inspect external storage or establish independent review |
+| Re-evaluate captured signed inputs and their complete reports | Supplied trust and hashes establish consistency under stated assumptions, not an external identity or timestamp anchor |
+
+The remaining deployment work is to bind actual sent bytes to the retained object and
+version, obtain attributable provider conditions and responses, establish the real
+identity/role and clock assumptions, and observe the declared storage locations and
+exceptions. A scoped independent assessment needs its own reviewer, method and evidence.
+The adapter does not join the earlier pilots into an observed upload-to-deletion lifecycle.
+
+Use the [separate retention review procedure](RETENTION-REVIEW.md) for the preserved
+16-case capture at the PR40 source checkpoint. It identifies the source, summary hash,
+commands, expected observations and information to record. The PR36 blank response
+template contains different archive hashes and must not be used as the target record
+for these 16 cases. Keep actual observations and any reviewer conclusion separate from
+the producer's existing results and expected outputs.
+
 [catalogue]: https://github.com/veritaschain/vap-spec/blob/3e621d522c4e5f536c850aa1e17821328680bfe6/proposals/incident-evidence-bindings/acceptance-cases.json
 [assessor]: https://github.com/veritaschain/vap-spec/blob/3e621d522c4e5f536c850aa1e17821328680bfe6/experiments/incident-evidence-assessor/results/summary.json
 [upload]: https://github.com/veritaschain/vap-spec/blob/3e621d522c4e5f536c850aa1e17821328680bfe6/experiments/incident-upload-pilot/README.md
@@ -144,3 +183,6 @@ readiness are not established by this guide.
 [bayview]: https://www.beckershospitalreview.com/healthcare-information-technology/ai/johns-hopkins-alerts-3182-patients-after-worker-uploads-data-to-unapproved-ai-tool/
 [dartmouth-report]: https://president.dartmouth.edu/sites/president/files/2026-10/Advisory%20Committee%20Report%20to%20President%202026-10-27.pdf
 [counting]: https://github.com/veritaschain/vap-spec/blob/3e621d522c4e5f536c850aa1e17821328680bfe6/disclosures/2026-10-24-counting-criteria.md
+[retention-source]: https://github.com/veritaschain/vap-spec/commit/62d15f1b8d3c46a1704acb7c0d5631622e1a5608
+[retention-adapter]: https://github.com/veritaschain/vap-spec/blob/62d15f1b8d3c46a1704acb7c0d5631622e1a5608/experiments/incident-retention-adapter/README.md
+[retention-results]: https://github.com/veritaschain/vap-spec/blob/62d15f1b8d3c46a1704acb7c0d5631622e1a5608/experiments/incident-retention-adapter/results/README.md

@@ -4,6 +4,10 @@
 No reviewer has been appointed and no external result is asserted here.
 This is a procedure for reporting a review, not a certification or an automatic independence decision.
 
+Sections 1–7 retain the PR36 saved-evidence target and its 53-case review scope.
+The [2026-10-31 retention addendum](#8-separate-retention-review--2026-10-31-jst)
+routes the later PR40 experiment to a different source, capture and procedure.
+
 Use [external-review-template.json](external-review-template.json) as a blank working
 form. Its prefilled hashes identify the review target; they are not reviewer observations.
 Empty arrays and null fields mean not recorded, not a successful check or an absence of conflicts.
@@ -145,6 +149,25 @@ it is not agreement, acceptance, rejection or evidence that the system is safe.
 Any resulting claim must name the exact review scope. A saved-evidence recheck does not
 establish the original events' truth, external deployment, universal deletion, complete
 authorship attribution, conformance or legal compliance.
+
+## 8. Separate retention review — 2026-10-31 JST
+
+The PR40 retention adapter has a different preserved target: 16 synthetic cases,
+an unchanged embedded erasure assessment and its own source manifest. Use
+[RETENTION-REVIEW.md](RETENTION-REVIEW.md) for the fixed source checkpoint,
+summary hash, commands, expected observations and return record for that scope.
+
+The existing `external-review-template.json` identifies PR36 and its kit/report
+archive hashes. Do not reuse those target identities for the retention capture,
+append 16 results to its 53-case count or substitute the retention summary hash
+for an archive hash. Record any retention review separately, including its actual
+source, scope, trust/hash acquisition basis, commands and conclusions.
+
+Publishing this addendum does not itself record a new adapter execution or appoint
+a reviewer. A successful retention recheck evaluates saved signed inputs under supplied assumptions; it
+does not inspect a provider, perform deletion or independently establish the
+original statements' truth. The independence and publication considerations
+above apply only after the actual activity and relationships are recorded.
 
 [kit-run]: https://github.com/veritaschain/vap-spec/blob/3e621d522c4e5f536c850aa1e17821328680bfe6/experiments/incident-recheck-kit/README.md
 [report-run]: https://github.com/veritaschain/vap-spec/blob/3e621d522c4e5f536c850aa1e17821328680bfe6/experiments/incident-review-report/README.md
