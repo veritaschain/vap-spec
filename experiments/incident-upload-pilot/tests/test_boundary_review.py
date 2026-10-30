@@ -9,6 +9,7 @@ import hashlib
 import sqlite3
 import tempfile
 import unittest
+from contextlib import closing
 from copy import deepcopy
 from datetime import timedelta
 from pathlib import Path
@@ -284,11 +285,12 @@ class BoundaryReviewTests(unittest.TestCase):
             )
             for name, snapshot, details, state in variants:
                 with self.subTest(name=name):
-                    with sqlite3.connect(path) as connection:
-                        connection.execute(
-                            "UPDATE request_journal SET snapshot_json=?,details_json=? WHERE request_id=?",
-                            (canonical(snapshot).decode(), details, saved["request_id"]),
-                        )
+                    with closing(sqlite3.connect(path)) as connection:
+                        with connection:
+                            connection.execute(
+                                "UPDATE request_journal SET snapshot_json=?,details_json=? WHERE request_id=?",
+                                (canonical(snapshot).decode(), details, saved["request_id"]),
+                            )
                     restarted = Gateway(config, Journal(path), transport, clock=lambda: package["as_of"])
                     replay = restarted.execute(package, trust, payload)
                     self.assertEqual(replay["state"], state)

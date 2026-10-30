@@ -6,6 +6,7 @@ import tempfile
 import threading
 import unittest
 from concurrent.futures import ThreadPoolExecutor
+from contextlib import closing
 from copy import deepcopy
 from datetime import timedelta
 from pathlib import Path
@@ -111,7 +112,7 @@ class GatewayTests(unittest.TestCase):
             policy = snapshot["evidence"]["records"][0]["body"]["data"]
             self.assertIs(policy["require_collector"], False)
             self.assertEqual(snapshot["preflight_assessment"]["assessments"]["transfer_authorization"], "ALLOW")
-            with journal._connect() as connection:
+            with closing(journal._connect()) as connection:
                 self.assertEqual(connection.execute("PRAGMA journal_mode").fetchone()[0], "wal")
                 self.assertEqual(connection.execute("PRAGMA synchronous").fetchone()[0], 2)
 
