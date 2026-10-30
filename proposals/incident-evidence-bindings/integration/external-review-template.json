@@ -1,0 +1,121 @@
+{
+  "format": "incident-external-review-response/0.1-draft",
+  "record_state": "BLANK_TEMPLATE_NOT_EVIDENCE",
+  "instructions": "Prefilled target values identify a proposed review. Nulls and empty arrays mean not recorded, not success or absence. Use REVIEWER_STATEMENT as record_state when recording an actual response. Expected archive hashes apply only to SAVED_EVIDENCE_RECHECK; for other scopes they are baseline references, not expected hashes for new captures. This is a working form, not a conformance schema or authenticated result.",
+  "review_kind": null,
+  "review_kind_options": [
+    "SAVED_EVIDENCE_RECHECK",
+    "FRESH_SYNTHETIC_LOCAL_RUN",
+    "DEPLOYMENT_EVALUATION"
+  ],
+  "target": {
+    "repository": "https://github.com/veritaschain/vap-spec",
+    "reviewed_commit": "3e621d522c4e5f536c850aa1e17821328680bfe6",
+    "expected_kit_sha256": "06bdb46eade7ef5c2f041797007d1f7ef3aaa55ad17d88a90b28276be17d865f",
+    "expected_report_sha256": "df971f32b68efc20bb76352076266747485bc9c49a26e248aec6af444a399360",
+    "expected_report_source_sha256": "1b6187b8d732e299de389e957601b96ad971f908f1b96cc6da11d2662e2efb3b",
+    "expected_hash_acquisition_basis": null,
+    "actual_checkout_commit": null,
+    "source_modifications": null
+  },
+  "reviewer": {
+    "name_or_review_identifier": null,
+    "organization": null,
+    "contact_or_return_channel": null,
+    "relationship_to_maintainer": null
+  },
+  "preregistered_plan": {
+    "recorded_at": null,
+    "review_question": null,
+    "allowed_environment": null,
+    "expected_observations": [],
+    "failure_criteria": [],
+    "planned_commands": [],
+    "plan_artifact_ref": null
+  },
+  "execution": {
+    "started_at": null,
+    "ended_at": null,
+    "time_zone": null,
+    "platform": null,
+    "python_version": null,
+    "dependency_versions": [],
+    "dependency_distribution_origins": [],
+    "network_restrictions": null,
+    "commands_and_exit_statuses": [],
+    "stdout_stderr_artifacts": [],
+    "computed_hashes": [],
+    "saved_cases_rechecked": null,
+    "original_actions_reexecuted": null,
+    "reporter_test_methods_executed": null
+  },
+  "findings": [],
+  "finding_record_fields": [
+    "finding_id",
+    "case_ids",
+    "claim_under_review",
+    "observed_result",
+    "evidence_refs",
+    "limitations",
+    "unresolved_questions"
+  ],
+  "evidence_reference_fields": [
+    "artifact_ref",
+    "sha256",
+    "pointer_or_location"
+  ],
+  "artifacts": [],
+  "artifact_record_fields": [
+    "artifact_ref",
+    "byte_length",
+    "sha256",
+    "access_restrictions",
+    "publicly_shareable"
+  ],
+  "deviations_and_assistance": [],
+  "reviewer_conclusion": {
+    "recorded_at": null,
+    "conclusion": null,
+    "limitations": [],
+    "unresolved_items": []
+  },
+  "independence_assessment": {
+    "status": "NOT_ASSESSED",
+    "assessed_by": null,
+    "assessed_at": null,
+    "factors": {
+      "involvement_in_building_or_running_subject": null,
+      "control_of_environment": null,
+      "control_or_approval_of_conclusion": null,
+      "financial_or_contractual_relationships": null
+    },
+    "supporting_evidence": [],
+    "unresolved_questions": []
+  },
+  "publication_authorization": {
+    "status": "NOT_GRANTED",
+    "authorized_by": null,
+    "recorded_at": null,
+    "permitted_fields": [],
+    "permitted_artifacts": [],
+    "redactions_required": [],
+    "authorization_evidence_ref": null
+  },
+  "maintainer_response": {
+    "recorded_at": null,
+    "response": null,
+    "reviewer_conclusion_modified": null
+  },
+  "authenticity": {
+    "statement_issuer": null,
+    "signature_or_authentication_evidence": null,
+    "verification_basis": null,
+    "verification_result": "NOT_ASSESSED"
+  },
+  "scope_assessments": {
+    "original_observation_truth": "NOT_ASSESSED",
+    "external_implementation": "NOT_ASSESSED",
+    "conformance": "NOT_ASSESSED",
+    "legal_compliance": "NOT_ASSESSED"
+  }
+}

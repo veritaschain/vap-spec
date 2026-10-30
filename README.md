@@ -110,7 +110,7 @@ The normative registry above is unchanged; the following entry introduces publis
 |----------|------|
 | **VAP v1.2 Specification** | [spec/v1.2/VAP_Framework_Specification.md](./spec/v1.2/VAP_Framework_Specification.md) |
 | **Unadopted research reproduction kit** | [Fixed kit, complete historical evidence and evaluation terms](./research-distribution/2026-10-24/) — internal validation only; independent third-party reproduction not established |
-| **Incident-derived evidence bindings** | [Transfer authorization, scoped deletion evidence and AI-use disclosure](./proposals/incident-evidence-bindings/README.md) — informative, unadopted integration proposal with a sourced incident ledger and synthetic acceptance cases |
+| **Incident-derived evidence bindings** | [Proposal and incident ledger](./proposals/incident-evidence-bindings/README.md) · [Implementation crosswalk and review handoff](./proposals/incident-evidence-bindings/integration/README.md) · [日本語](./proposals/incident-evidence-bindings/integration/README-ja.md) — informative, unadopted; related local tests and remaining deployment conditions are distinguished |
 | **Incident evidence offline recheck kit** | [Preserved original 53-case capture, matching source and deterministic archive](./experiments/incident-recheck-kit/) — offline recheck only; independent reproduction and conformance not established |
 | **Incident evidence review reports** | [Japanese and English views with source-file hashes and JSON Pointers](./experiments/incident-review-report/) — generated from the fixed 53-case capture; human review not performed |
 | **VCP** (Finance Profile) | [github.com/veritaschain/vcp-spec](https://github.com/veritaschain/vcp-spec) |
