@@ -137,6 +137,13 @@ retention. A workflow configuration alone is not a successful execution claim.
 [CONTRACT.md](CONTRACT.md) defines the exact application protocol;
 [RUN-ja.md](RUN-ja.md) provides Japanese instructions.
 
+The recorded [implementation CI run](https://github.com/veritaschain/vap-spec/actions/runs/40997508247)
+passed on Python 3.12.15 and 3.14.9: **54 test methods, 18 measured scenarios and
+18 offline export rechecks on each runtime**, with zero skips. The unchanged
+assessor also passed 20 methods and 23 catalogue cases. The linked results record
+the exact tested commit, shared source manifest and expiring full evidence
+artifacts; this is internally executed synthetic validation.
+
 ## Technical references and limits
 
 Python documents that on Unix an unlink removes a directory entry while an
