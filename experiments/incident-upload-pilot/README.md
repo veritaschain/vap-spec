@@ -75,6 +75,8 @@ That explicitly skips the four actual HTTP test methods. Such a local result
 does not establish HTTP execution. The dedicated CI sets `PILOT_NETWORK_TESTS=1`,
 requires **zero skipped tests**, runs the actual 17-case suite on Python 3.12 and
 3.14, rechecks exports, and reruns the unchanged assessor's tests and 23-case suite.
+The test runner also treats resource warnings and captured finalizer exceptions
+as failures, including exceptions reported only during garbage collection.
 
 ## Seventeen observed scenarios
 

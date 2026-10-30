@@ -82,13 +82,25 @@ HTTP execution.
 
 ## Validation record and required live execution
 
-After the review corrections, the final local invocation discovered **37 test
-methods: 33 passed and four live HTTP methods were explicitly skipped**. All
+After the review corrections, the final local invocation discovered **39 test
+methods: 35 passed and four live HTTP methods were explicitly skipped**. All
 ten independent boundary-review methods passed, including the offline-recheck
 regressions that failed before repair. The local command was
-`python -m unittest discover -s tests -v`. No blocking implementation finding
-remained within this declared boundary. The live HTTP tests and scenario suite
-remain a separate required validation step; no local result substitutes for them.
+`python -W error::ResourceWarning run_tests.py`. No blocking implementation
+finding remained within this declared boundary. Actual live execution and
+retrieved CI results are recorded in [Execution records](results/README.md);
+no local result substitutes for them.
+
+The first actual CI run matched all 17 scenarios on both Python versions, but
+inspection of the Python 3.14 logs found four unclosed test SQLite connections.
+Those finalizer warnings had not failed unittest despite `-W error`. The test
+connections now close explicitly while preserving transaction commits. A
+separate audit of the 22 affected methods observed 216 connections created and
+216 explicitly closed, with no unraisable exceptions. Runtime journal code did
+not require a change. The file-backed runner now captures finalizer exceptions,
+performs garbage collection before its final decision, and returns failure if
+any were observed. Two subprocess regressions check clean success and failure
+for an otherwise-passing test with an unraisable resource warning.
 
 This workspace does not permit loopback socket creation. The independent
 boundary tests therefore use explicitly named transport doubles while exercising
@@ -100,7 +112,7 @@ fatal. A CI guard rejects a CI invocation that omits that flag.
 The reviewed `.github/workflows/incident-upload-pilot.yml` runs on Ubuntu with
 Python 3.12 and 3.14, sets `PILOT_NETWORK_TESTS=1`, and calls the file-backed
 `run_tests.py --require-network` entry point. That runner rejects missing network
-opt-in and any skipped test. The workflow then runs all 17 actual loopback
+opt-in, any skipped test and captured finalizer exceptions. The workflow then runs all 17 actual loopback
 scenarios, rechecks the exports, repeats the unchanged assessor tests and
 catalogue, and retains generated evidence even when a later step fails.
 
