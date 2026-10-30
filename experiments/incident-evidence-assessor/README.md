@@ -11,6 +11,11 @@ this unchanged assessor to measured immutable bytes, mandatory local pre-recordi
 and a separate local HTTP receiver. Its execution controls and receiver statements
 remain application-side experimental behavior, not additional core verdicts.
 
+The separate [local publication pilot](../incident-publication-pilot/README.md)
+records synthetic editing operations, binds disclosure and reviewer authorization
+to final rendered bytes, and measures one-shot local output. The core publication
+assessment remains `REVIEW`; local output does not establish publisher acceptance.
+
 [日本語実行ガイド](RUN-ja.md) · [Input/trust contract](CONTRACT.md) ·
 [Transfer/erasure types](TYPE-TRANSFER-ERASURE.md) ·
 [Publication/response types](TYPE-PUBLICATION-RESPONSE.md) ·

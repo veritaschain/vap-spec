@@ -1,0 +1,53 @@
+name: Local incident publication pilot
+
+on:
+  push:
+    paths:
+      - 'experiments/incident-publication-pilot/**'
+      - 'experiments/incident-evidence-assessor/**'
+      - '.github/workflows/incident-publication-pilot.yml'
+  pull_request:
+    paths:
+      - 'experiments/incident-publication-pilot/**'
+      - 'experiments/incident-evidence-assessor/**'
+      - '.github/workflows/incident-publication-pilot.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  local-publication:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.12', '3.14']
+    defaults:
+      run:
+        working-directory: experiments/incident-publication-pilot
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m pip install -r requirements.txt
+      - name: Actual filesystem and boundary tests; zero skips required
+        run: python -W error::ResourceWarning run_tests.py --require-no-skips
+      - name: Execute all 18 measured local publication scenarios
+        run: python -m publication_pilot run-suite --output generated --print-summary
+      - name: Recheck captured evidence without repeating publication
+        run: python -m publication_pilot verify-exports generated
+      - name: Preserve unchanged assessor behavior
+        working-directory: experiments/incident-evidence-assessor
+        run: |
+          python -m unittest discover -s tests -v
+          python -m incident_assessor run-suite
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: incident-publication-python-${{ matrix.python-version }}
+          path: experiments/incident-publication-pilot/generated/
+          if-no-files-found: error
+          retention-days: 30

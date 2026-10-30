@@ -1,0 +1,254 @@
+{
+  "format": "incident-publication-acceptance/0.1",
+  "scope": "Synthetic actual local filesystem observations; not external publication or conformance",
+  "cases": [
+    {
+      "case_id": "LP-01",
+      "title": "Exact approved final HTML is materialized and measured",
+      "expected": {
+        "states": [
+          "LOCAL_OUTPUT_CONFIRMED"
+        ],
+        "publication_attempts": 1,
+        "unknown_attempt_observations": 0,
+        "visible_count": 1,
+        "visible_bytes_match_candidate": true
+      }
+    },
+    {
+      "case_id": "LP-02",
+      "title": "Changed article cannot reuse the earlier approval",
+      "expected": {
+        "states": [
+          "BLOCKED_WITHOUT_PUBLICATION"
+        ],
+        "publication_attempts": 0,
+        "unknown_attempt_observations": 0,
+        "visible_count": 0,
+        "visible_bytes_match_candidate": false
+      }
+    },
+    {
+      "case_id": "LP-03",
+      "title": "Removed disclosure cannot reuse signed preparation evidence",
+      "expected": {
+        "states": [
+          "BLOCKED_WITHOUT_PUBLICATION"
+        ],
+        "publication_attempts": 0,
+        "unknown_attempt_observations": 0,
+        "visible_count": 0,
+        "visible_bytes_match_candidate": false
+      }
+    },
+    {
+      "case_id": "LP-04",
+      "title": "A valid policy package for another venue is rejected",
+      "expected": {
+        "states": [
+          "BLOCKED_WITHOUT_PUBLICATION"
+        ],
+        "publication_attempts": 0,
+        "unknown_attempt_observations": 0,
+        "visible_count": 0,
+        "visible_bytes_match_candidate": false
+      }
+    },
+    {
+      "case_id": "LP-05",
+      "title": "Disclosure and reviewer approval do not override prohibited use",
+      "expected": {
+        "states": [
+          "BLOCKED_WITHOUT_PUBLICATION"
+        ],
+        "publication_attempts": 0,
+        "unknown_attempt_observations": 0,
+        "visible_count": 0,
+        "visible_bytes_match_candidate": false
+      }
+    },
+    {
+      "case_id": "LP-06",
+      "title": "Missing explicit reviewer authorization prevents output",
+      "expected": {
+        "states": [
+          "BLOCKED_WITHOUT_PUBLICATION"
+        ],
+        "publication_attempts": 0,
+        "unknown_attempt_observations": 0,
+        "visible_count": 0,
+        "visible_bytes_match_candidate": false
+      }
+    },
+    {
+      "case_id": "LP-07",
+      "title": "Untrusted reviewer signature prevents output",
+      "expected": {
+        "states": [
+          "BLOCKED_WITHOUT_PUBLICATION"
+        ],
+        "publication_attempts": 0,
+        "unknown_attempt_observations": 0,
+        "visible_count": 0,
+        "visible_bytes_match_candidate": false
+      }
+    },
+    {
+      "case_id": "LP-08",
+      "title": "Approval expires during an actual pre-link pause",
+      "expected": {
+        "states": [
+          "BLOCKED_WITHOUT_PUBLICATION"
+        ],
+        "publication_attempts": 0,
+        "unknown_attempt_observations": 0,
+        "visible_count": 0,
+        "visible_bytes_match_candidate": false
+      }
+    },
+    {
+      "case_id": "LP-09",
+      "title": "Unknown imported origin remains unknown after approved local export",
+      "expected": {
+        "states": [
+          "LOCAL_OUTPUT_CONFIRMED"
+        ],
+        "publication_attempts": 1,
+        "unknown_attempt_observations": 0,
+        "visible_count": 1,
+        "visible_bytes_match_candidate": true,
+        "core_ai_involvement": "UNKNOWN",
+        "core_activity_completeness": "UNKNOWN",
+        "declared_activities": []
+      }
+    },
+    {
+      "case_id": "LP-10",
+      "title": "Replaced synthetic AI operation remains history without exact final adoption",
+      "expected": {
+        "states": [
+          "LOCAL_OUTPUT_CONFIRMED"
+        ],
+        "publication_attempts": 1,
+        "unknown_attempt_observations": 0,
+        "visible_count": 1,
+        "visible_bytes_match_candidate": true,
+        "core_ai_involvement": "UNKNOWN",
+        "core_activity_completeness": "UNKNOWN",
+        "declared_activities": [
+          "generation"
+        ]
+      }
+    },
+    {
+      "case_id": "LP-11",
+      "title": "Truncated signed edit history cannot become a valid candidate",
+      "expected": {
+        "states": [
+          "BLOCKED_WITHOUT_PUBLICATION"
+        ],
+        "publication_attempts": 0,
+        "unknown_attempt_observations": 0,
+        "visible_count": 0,
+        "visible_bytes_match_candidate": false
+      }
+    },
+    {
+      "case_id": "LP-12",
+      "title": "Unresolved policy interpretation prevents output",
+      "expected": {
+        "states": [
+          "BLOCKED_WITHOUT_PUBLICATION"
+        ],
+        "publication_attempts": 0,
+        "unknown_attempt_observations": 0,
+        "visible_count": 0,
+        "visible_bytes_match_candidate": false
+      }
+    },
+    {
+      "case_id": "LP-13",
+      "title": "Repeated identical request does not publish again",
+      "expected": {
+        "states": [
+          "LOCAL_OUTPUT_CONFIRMED",
+          "REPLAY_NO_PUBLICATION"
+        ],
+        "publication_attempts": 1,
+        "unknown_attempt_observations": 0,
+        "visible_count": 1,
+        "visible_bytes_match_candidate": true
+      }
+    },
+    {
+      "case_id": "LP-14",
+      "title": "Result persistence failure leaves visible output unresolved and never retries",
+      "expected": {
+        "states": [
+          "OUTCOME_UNKNOWN",
+          "REPLAY_NO_PUBLICATION"
+        ],
+        "publication_attempts": 1,
+        "unknown_attempt_observations": 0,
+        "visible_count": 1,
+        "visible_bytes_match_candidate": true
+      }
+    },
+    {
+      "case_id": "LP-15",
+      "title": "Concurrent identical requests consume one publication claim",
+      "expected": {
+        "states": [
+          "LOCAL_OUTPUT_CONFIRMED",
+          "REPLAY_NO_PUBLICATION"
+        ],
+        "publication_attempts": 1,
+        "unknown_attempt_observations": 0,
+        "visible_count": 1,
+        "visible_bytes_match_candidate": true
+      }
+    },
+    {
+      "case_id": "LP-16",
+      "title": "Outside-gate direct write demonstrates incomplete route control",
+      "expected": {
+        "states": [
+          "BLOCKED_WITHOUT_PUBLICATION"
+        ],
+        "publication_attempts": 0,
+        "unknown_attempt_observations": 0,
+        "visible_count": 1,
+        "visible_bytes_match_candidate": true,
+        "outside_gate_write_observed": true,
+        "all_route_prevention_established": false
+      }
+    },
+    {
+      "case_id": "LP-17",
+      "title": "Structured disclosure omitting recorded assistance prevents output",
+      "expected": {
+        "states": [
+          "BLOCKED_WITHOUT_PUBLICATION"
+        ],
+        "publication_attempts": 0,
+        "unknown_attempt_observations": 0,
+        "visible_count": 0,
+        "visible_bytes_match_candidate": false
+      }
+    },
+    {
+      "case_id": "LP-18",
+      "title": "Reusing a request ID for a newly approved different artifact conflicts",
+      "expected": {
+        "states": [
+          "LOCAL_OUTPUT_CONFIRMED",
+          "REQUEST_ID_CONFLICT"
+        ],
+        "publication_attempts": 1,
+        "unknown_attempt_observations": 0,
+        "visible_count": 1,
+        "visible_bytes_match_candidate": true
+      }
+    }
+  ]
+}
