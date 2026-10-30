@@ -1,12 +1,17 @@
 # 事件を参考にした実装の対応表と、次の検証への引き継ぎ
 
-**非規範・未採択の設計資料 — 2026年10月30日 JST。**
-対象は[PR36のマージ時点](https://github.com/veritaschain/vap-spec/commit/3e621d522c4e5f536c850aa1e17821328680bfe6)。
+**非規範・未採択の設計資料 — 元の対象は2026年10月30日 JST、保持条件の追補は2026年10月31日 JST。**
+元の対象は[PR36のマージ時点](https://github.com/veritaschain/vap-spec/commit/3e621d522c4e5f536c850aa1e17821328680bfe6)。
+保持条件の別実験は[PR40のマージ時点][retention-source]を参照します。
 規範仕様はVAP v1.2 Draft 3です。この資料は認証・適合性の新しい要件を定めません。
 
 [English](README.md) · [23ケースの詳細対応表](COVERAGE.md) ·
 [機械可読の対応表](coverage-map.json) · [外部レビュー手順](EXTERNAL-REVIEW.md) ·
-[未記入の回答様式](external-review-template.json)
+[PR36用の未記入の回答様式](external-review-template.json) ·
+[保持条件の別レビュー手順](RETENTION-REVIEW.md)
+
+第1〜6節はPR36時点の基準とレビュー範囲を保持し、第7節でPR40の保持条件実験を
+別に追補します。元の基準で未確認とした事項は、その後の全実験の現況一覧ではありません。
 
 ## 1. この資料でできること
 
@@ -56,8 +61,9 @@ Dartmouthの委員会は企業向けClaudeのログを確認していました�
 
 ## 3. 導入前に埋める必要がある差
 
-全23ケースの根拠と差分は[詳細対応表](COVERAGE.md)と[JSON](coverage-map.json)にあります。
-特に次の違いは、テスト数だけでは見えません。
+PR36時点の全23ケースの根拠と差分は[詳細対応表](COVERAGE.md)と[JSON](coverage-map.json)にあります。
+特にUP-08の行は元の送信パイロットを対象とし、その後の収集基盤の実験を評価したものではありません。
+導入試験の証拠を選ぶ際には、次の基準時点の違いも確認します。
 
 | 元の問い | 既存の関連実験 | 追加で確認すること |
 | --- | --- | --- |
@@ -118,6 +124,33 @@ Dartmouthの委員会は企業向けClaudeのログを確認していました�
 この資料によって、規範仕様・固定証拠・実行ソースの意味は変わりません。
 適合性、法令遵守、完全削除、すべてのAI利用の特定、本番運用への準備完了は確立していません。
 
+## 7. 保持条件の追補 — 2026年10月31日 JST
+
+[PR40の保持条件アダプター][retention-adapter]は、既存の削除証拠評価を変更せず、
+別バージョンのオフライン評価を追加したものです。[保存された内部実行記録][retention-results]には、
+ソフトウェアのテスト42件、期待値と一致した合成シナリオ16件、保存済み証拠の再評価16件が
+記録されています。これらはアダプターのために実行した過去の記録であり、今回の引き継ぎ文書の
+更新で再実行した結果や、外部レビューの結果ではありません。16件は別の合成入力群です。
+固定53件に追加された操作や、元の23ケースのカタログへの追加としては数えません。
+
+| 実装された評価 | 引き続き残る範囲の限界 |
+| --- | --- |
+| 処理場所、学習利用、保持条件、削除証拠の申告を分離する | 申告だけで実際の処理場所、学習利用、送信権限を独立に確定しない |
+| 明示されたタイムゾーン付き期限と評価時点を比較し、不明な条件や例外を保持する | 期限到来で削除完了とは判定せず、不明な起算点や日数の計算規則を推定しない |
+| リクエスト・保存場所ごとに削除申告を照合し、後日の存在申告や複数条件を残す | 事業者や収集者の申告だけで外部保存領域の実測や独立レビューは成立しない |
+| 保存した署名付き入力から判定全体を再計算する | 同梱された信頼設定とハッシュによる整合確認は、外部の身元・時刻の信頼根拠にはならない |
+
+導入環境では、実際に送信した内容を保存オブジェクトと版に結び付け、事業者の条件と応答の
+出所を確認し、実際の本人確認・権限・時刻の前提を確立する必要があります。保存場所と例外の
+観測、範囲を限定した独立評価には、それぞれ固有の方法・証拠・評価者が必要です。
+このアダプターによって、以前の実験が一つの送信・保持・削除の観測に接続されたわけではありません。
+
+PR40のソース時点にある保存済み16ケースには、[保持条件の別レビュー手順](RETENTION-REVIEW.md)を
+使います。対象ソース、summaryのハッシュ、コマンド、期待する観測、実行後に記録する情報を
+分けて示しています。PR36用の未記入の回答様式には別のアーカイブハッシュが入っているため、
+この16ケースの対象記録へ流用しません。実際の観測と評価者の結論は、作成者の過去の結果や
+期待する出力から区別して残します。
+
 [catalogue]: https://github.com/veritaschain/vap-spec/blob/3e621d522c4e5f536c850aa1e17821328680bfe6/proposals/incident-evidence-bindings/acceptance-cases.json
 [assessor]: https://github.com/veritaschain/vap-spec/blob/3e621d522c4e5f536c850aa1e17821328680bfe6/experiments/incident-evidence-assessor/results/summary.json
 [upload]: https://github.com/veritaschain/vap-spec/blob/3e621d522c4e5f536c850aa1e17821328680bfe6/experiments/incident-upload-pilot/README.md
@@ -129,3 +162,6 @@ Dartmouthの委員会は企業向けClaudeのログを確認していました�
 [bayview]: https://www.beckershospitalreview.com/healthcare-information-technology/ai/johns-hopkins-alerts-3182-patients-after-worker-uploads-data-to-unapproved-ai-tool/
 [dartmouth]: https://president.dartmouth.edu/sites/president/files/2026-10/Advisory%20Committee%20Report%20to%20President%202026-10-27.pdf
 [counting]: https://github.com/veritaschain/vap-spec/blob/3e621d522c4e5f536c850aa1e17821328680bfe6/disclosures/2026-10-24-counting-criteria.md
+[retention-source]: https://github.com/veritaschain/vap-spec/commit/62d15f1b8d3c46a1704acb7c0d5631622e1a5608
+[retention-adapter]: https://github.com/veritaschain/vap-spec/blob/62d15f1b8d3c46a1704acb7c0d5631622e1a5608/experiments/incident-retention-adapter/README.md
+[retention-results]: https://github.com/veritaschain/vap-spec/blob/62d15f1b8d3c46a1704acb7c0d5631622e1a5608/experiments/incident-retention-adapter/results/README.md

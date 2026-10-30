@@ -14,6 +14,11 @@ Every mapping is an interpretation of those inputs, with its reason and remainin
 conditions recorded explicitly. Producing this map does not execute a case or
 modify a frozen source, capture or result.
 
+The original map and its remaining-condition descriptions stay fixed to PR36.
+They are not a current inventory of later experiments; this includes UP-08's
+description of the original upload pilot. The dated retention addendum below
+identifies PR40 as a separate evidence set without changing the 23-entry JSON.
+
 ## Three different evidence levels
 
 The [proposal catalogue][catalogue] remains an informative collection marked
@@ -176,6 +181,43 @@ between sent bytes, a retained object/version and a deletion request needs its
 own explicit binding and observations. The machine-readable `next_evidence`
 fields identify evidence still to obtain; they are not present deployment facts.
 
+## Retention addendum — 2026-10-31 JST
+
+The separate [PR40 source checkpoint][retention-source] contains the
+[retention adapter][retention-adapter] and its [preserved execution record][retention-results].
+It evaluates provider retention statements and collector presence statements
+alongside the unchanged erasure report. Its 16 synthetic cases do not extend the
+23-case catalogue, the 27 selected links above or the fixed 53-case capture.
+They do not measure new provider-side storage or deletion operations.
+
+The following relationships describe this additional assessment logic. The case
+references are relative to the preserved [retention case directory][retention-cases];
+they are not pointers into the original 53-case review JSON.
+
+| New cases | Additional question exercised | Evidence still needed for a deployment claim |
+| --- | --- | --- |
+| RT-01–03 | Do identical signed records keep their deletion assessment when only the cutoff crosses a stated deadline? | Actual completion evidence; reaching an attributed deadline alone does not supply it |
+| RT-04 / RT-07 | Do an unknown trigger or missing schedule remain unresolved despite processing-region and training declarations? | Attributable conditions, their effective version, starting event, timezone and calculation rule; actual processing/use evidence where claimed |
+| RT-05 / RT-16 | Does partial versus full location coverage of the same request affect follow-up while leaving reached-deadline review required? | Real request/object/version binding, provider claim scope and observations of declared locations and excluded copies |
+| RT-06 / RT-13 / RT-15 | Are later scoped presence, out-of-scope presence and pre-request presence interpreted distinctly alongside a historical synthetic review? | Actual observation method, custody and time; separately established reviewer independence; evidence distinguishing retention from restoration or recreation |
+| RT-08–10 | Are wrong-tenant, modified-signature-data and future-record statements excluded from applicable retention evidence? | Real identity and role enrollment, key lifecycle, target identity and time assurance |
+| RT-11 / RT-12 | Are exceptions and multiple statements preserved for review? | Evidence of applicable terms and exceptions; an authorized resolution of supersession or conflict |
+| RT-14 | Are equivalent timezone-bearing deadline instants compared equally? | Evidence establishing the relevant timezone and deadline; a date-only notice does not supply an instant |
+
+Each saved case preserves its original input, synthetic trust, report and finite
+expectations. Useful paths include `/report/statements`, `/report/record_checks`,
+`/report/presence_reports`, `/report/follow_up_reasons` and
+`/report/erasure_report/assessments`. The terms reference and hash remain signed
+assertions; this program does not fetch or authenticate the underlying terms
+document. A presence record attributes the collector's statement without making
+the program an observer of external storage.
+
+Use [the separate retention review procedure](RETENTION-REVIEW.md) to recheck
+those preserved records. Its source and summary identity differ from the PR36
+kit and report. The existing machine-readable map and blank review template
+continue to identify their original targets. No independent result or new
+execution is established by adding this explanatory crosswalk.
+
 [snapshot]: https://github.com/veritaschain/vap-spec/commit/3e621d522c4e5f536c850aa1e17821328680bfe6
 [catalogue]: https://github.com/veritaschain/vap-spec/blob/3e621d522c4e5f536c850aa1e17821328680bfe6/proposals/incident-evidence-bindings/acceptance-cases.json
 [assessor]: https://github.com/veritaschain/vap-spec/blob/3e621d522c4e5f536c850aa1e17821328680bfe6/experiments/incident-evidence-assessor/results/summary.json
@@ -184,3 +226,7 @@ fields identify evidence still to obtain; they are not present deployment facts.
 [erasure-boundary]: https://github.com/veritaschain/vap-spec/blob/3e621d522c4e5f536c850aa1e17821328680bfe6/experiments/incident-erasure-pilot/README.md
 [publication-boundary]: https://github.com/veritaschain/vap-spec/blob/3e621d522c4e5f536c850aa1e17821328680bfe6/experiments/incident-publication-pilot/README.md
 [assessor-limits]: https://github.com/veritaschain/vap-spec/blob/3e621d522c4e5f536c850aa1e17821328680bfe6/experiments/incident-evidence-assessor/README.md
+[retention-source]: https://github.com/veritaschain/vap-spec/commit/62d15f1b8d3c46a1704acb7c0d5631622e1a5608
+[retention-adapter]: https://github.com/veritaschain/vap-spec/blob/62d15f1b8d3c46a1704acb7c0d5631622e1a5608/experiments/incident-retention-adapter/README.md
+[retention-results]: https://github.com/veritaschain/vap-spec/blob/62d15f1b8d3c46a1704acb7c0d5631622e1a5608/experiments/incident-retention-adapter/results/README.md
+[retention-cases]: https://github.com/veritaschain/vap-spec/tree/62d15f1b8d3c46a1704acb7c0d5631622e1a5608/experiments/incident-retention-adapter/results/local-python-3.12/cases
