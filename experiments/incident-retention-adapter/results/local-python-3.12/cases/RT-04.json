@@ -1,0 +1,308 @@
+{
+  "case_id": "RT-04",
+  "differences": [],
+  "expected": {
+    "deadline_states": [
+      "UNKNOWN"
+    ],
+    "deletion_evidence": "REQUEST_ONLY",
+    "forbidden_follow_up": [],
+    "presence_count": 0,
+    "required_follow_up": [
+      "UNKNOWN_DEADLINE"
+    ]
+  },
+  "format": "retention-synthetic-case/0.1",
+  "input": {
+    "erasure": {
+      "as_of": "2026-10-31T12:00:00Z",
+      "evaluation_id": "retention-evaluation-synthetic",
+      "format": "incident-evidence-input/0.1",
+      "records": [
+        {
+          "algorithm": "Ed25519",
+          "body": {
+            "binding": {
+              "account_id": "account-synthetic-a",
+              "object_ids": [
+                "object-synthetic-v1"
+              ],
+              "payload_sha256": "2e92384fb162c6201807c7b0419bca9e7ed3fad8d02beec14235cf7915230bd4",
+              "provider_id": "provider-synthetic",
+              "request_id": "retention-request-synthetic",
+              "tenant_id": "tenant-synthetic-a"
+            },
+            "data": {
+              "requested_at": "2026-10-01T00:00:00Z",
+              "requested_locations": [
+                "active",
+                "provider-log",
+                "backup"
+              ]
+            },
+            "evaluation_id": "retention-evaluation-synthetic",
+            "issuer": "responder-synthetic",
+            "kind": "erasure.request",
+            "record_id": "request-record-synthetic",
+            "recorded_at": "2026-10-01T00:00:00Z"
+          },
+          "key_id": "responder-fresh-key",
+          "signature": "d794eb5d141055199f889d246aa6260c798762d72d902d733afdc3adec0d36755aaf24893fa588539ebc0a8fd706bccb36a13b62489c8fedcd3800f25c7bc80b"
+        }
+      ],
+      "target": {
+        "authorities": {
+          "collector": "collector-synthetic",
+          "provider": "provider-synthetic",
+          "responder": "responder-synthetic",
+          "reviewer": "reviewer-synthetic"
+        },
+        "coverage_requested": "managed_route",
+        "operation_at": "2026-10-01T00:00:00Z",
+        "subject": {
+          "account_id": "account-synthetic-a",
+          "object_ids": [
+            "object-synthetic-v1"
+          ],
+          "payload_sha256": "2e92384fb162c6201807c7b0419bca9e7ed3fad8d02beec14235cf7915230bd4",
+          "provider_id": "provider-synthetic",
+          "request_id": "retention-request-synthetic",
+          "tenant_id": "tenant-synthetic-a"
+        }
+      },
+      "workflow": "erasure"
+    },
+    "format": "retention-evidence-input/0.1",
+    "retention_records": [
+      {
+        "algorithm": "Ed25519",
+        "body": {
+          "binding": {
+            "account_id": "account-synthetic-a",
+            "object_ids": [
+              "object-synthetic-v1"
+            ],
+            "payload_sha256": "2e92384fb162c6201807c7b0419bca9e7ed3fad8d02beec14235cf7915230bd4",
+            "provider_id": "provider-synthetic",
+            "request_id": "retention-request-synthetic",
+            "tenant_id": "tenant-synthetic-a"
+          },
+          "data": {
+            "exceptions": [],
+            "locations": [
+              "active",
+              "provider-log"
+            ],
+            "processing_locations": [
+              "JP"
+            ],
+            "request_record_id": "request-record-synthetic",
+            "schedule": {
+              "kind": "unknown",
+              "reason": "Duration reported; no established start or calculation rule."
+            },
+            "terms_ref": "https://provider.example.invalid/terms/synthetic-v1",
+            "terms_sha256": "328522f5f1444cd04dbbf5e1f9497a900f5608a19cc435009a0d675a2597f01b",
+            "training_use": "reported-disabled"
+          },
+          "evaluation_id": "retention-evaluation-synthetic",
+          "issuer": "provider-synthetic",
+          "kind": "retention.statement",
+          "record_id": "retention.statement-1",
+          "recorded_at": "2026-10-01T01:00:00Z"
+        },
+        "key_id": "provider-fresh-key",
+        "signature": "6cce7258b6249c5e23aac6710d3146cf765fc32efe410b3303766b68ec68616f14eb44c596023b5a9e1b81529fba8ba747d90a4b2e10bedd148aadc84f5b3d0c"
+      }
+    ]
+  },
+  "report": {
+    "adapter": "incident-retention-adapter/0.1",
+    "as_of": "2026-10-31T12:00:00Z",
+    "erasure_report": {
+      "adapter": "incident-evidence-adapter/0.1",
+      "as_of": "2026-10-31T12:00:00Z",
+      "assessments": {
+        "binding_assessment": "MATCH",
+        "deletion_evidence": "REQUEST_ONLY",
+        "excluded_scope_outcome": "UNKNOWN",
+        "independent_verification": "NOT_ESTABLISHED",
+        "outside_scope_outcome": "UNKNOWN",
+        "provider_completion": "UNKNOWN",
+        "receipt_applicability": "NOT_ESTABLISHED",
+        "review_result": "NOT_ESTABLISHED",
+        "target_completion": "UNKNOWN"
+      },
+      "evaluation_id": "retention-evaluation-synthetic",
+      "evidence_checks": [
+        {
+          "binding_differences": [],
+          "eligibility": "ELIGIBLE",
+          "evaluation": "MATCH",
+          "identity": "EXPECTED_ISSUER",
+          "kind": "erasure.request",
+          "record_id": "request-record-synthetic",
+          "role": "AUTHORIZED",
+          "signature": "VERIFIED",
+          "time": "WITHIN_DECLARED_WINDOW"
+        }
+      ],
+      "evidence_integrity": "VERIFIED_UNDER_EVALUATOR_TRUST",
+      "external_anchor_verification": "NOT_IMPLEMENTED",
+      "findings": [
+        {
+          "code": "ERASURE_LOCAL_REQUEST_ESTABLISHED",
+          "record_ids": [
+            "request-record-synthetic"
+          ]
+        }
+      ],
+      "format": "incident-evidence-report/0.1",
+      "full_cap_conformance": "NOT_ASSESSED",
+      "full_vap_conformance": "NOT_ASSESSED",
+      "implementation_version": "0.1.0",
+      "input_sha256": "3b83e89c5ab656dcd9c9e9409ba1b514fcae3d4e5bb8532c2ad737a1dbfb09f3",
+      "legal_compliance": "NOT_ASSESSED",
+      "limitations": [
+        "Application-layer experimental assessment; no normative VAP or CAP conformance determination.",
+        "Evaluator trust configuration and issuer/organization assignments are explicit external assumptions.",
+        "Valid signatures attribute records; they do not independently prove claim truth or event time.",
+        "Missing records cannot establish absence of activity outside the declared observation scope.",
+        "Block and hold outputs are recommendations; this offline program controls no live gateway or publisher.",
+        "Provider statements and limited reviews cannot establish universal external deletion.",
+        "External anchoring, positive XREF, key revocation, production identity onboarding and legal compliance are not assessed."
+      ],
+      "synthetic": true,
+      "target_sha256": "5c19a93892baf41d9127f0da0648779f22d5409caf245ca98da14eabf40319e1",
+      "trust_sha256": "e94de0a6e3b28b864a420d9fc1f01b75509054fee76c0cdf2c95de102b23c5b4",
+      "workflow": "erasure"
+    },
+    "evaluation_id": "retention-evaluation-synthetic",
+    "external_anchor_verification": "NOT_IMPLEMENTED",
+    "follow_up_reasons": [
+      "UNKNOWN_DEADLINE"
+    ],
+    "format": "retention-evidence-report/0.1",
+    "full_vap_conformance": "NOT_ASSESSED",
+    "implementation_version": "0.1.0",
+    "input_sha256": "5257a0d28cfd0f7f037e868f0bc27182348ab89015dd29506406b1e7fdd0969f",
+    "legal_compliance": "NOT_ASSESSED",
+    "limitations": [
+      "Experimental offline adapter; no live provider, storage inspection or deletion operation.",
+      "Signatures attribute statements under evaluator-supplied identity and role assumptions; they do not prove their truth or time.",
+      "A source reference and digest do not retrieve or validate the referenced terms document.",
+      "Processing locations, training settings, retention exceptions and presence are attributed statements, not independent measurements by this program.",
+      "Only explicit timezone-bearing deadlines are compared; durations and unknown trigger times are not calculated.",
+      "Later presence may reflect recreation or restoration; it does not establish continuous retention or falsity of an earlier deletion claim.",
+      "The legacy erasure report remains a separate assessment; this adapter never manufactures a completion, review or ERASURE record.",
+      "No independent reproduction, external anchoring, production key onboarding/revocation, legal compliance or VAP conformance is established."
+    ],
+    "presence_reports": [],
+    "record_checks": [
+      {
+        "binding": "MATCH",
+        "binding_differences": [],
+        "eligibility": "ELIGIBLE",
+        "evaluation": "MATCH",
+        "identity": "EXPECTED_ISSUER",
+        "key_validity": "WITHIN_VALIDITY",
+        "kind": "retention.statement",
+        "observation_time": "NOT_APPLICABLE",
+        "record_id": "retention.statement-1",
+        "request": "MATCH",
+        "role": "AUTHORIZED",
+        "scope": "WITHIN_REQUEST",
+        "signature": "VERIFIED",
+        "time": "WITHIN_CUTOFF"
+      }
+    ],
+    "retention_evidence_integrity": "VERIFIED_AND_APPLICABLE_UNDER_EVALUATOR_TRUST",
+    "statements": [
+      {
+        "deadline_state": "UNKNOWN",
+        "evidence_basis": "AUTHENTICATED_PROVIDER_STATEMENT",
+        "exceptions": [],
+        "issuer": "provider-synthetic",
+        "locations": [
+          "active",
+          "provider-log"
+        ],
+        "locations_without_provider_completion_claim": [
+          "active",
+          "provider-log"
+        ],
+        "processing_locations": [
+          "JP"
+        ],
+        "provider_completion_claim_record_ids": [],
+        "record_id": "retention.statement-1",
+        "recorded_at": "2026-10-01T01:00:00Z",
+        "request_record_id": "request-record-synthetic",
+        "schedule": {
+          "kind": "unknown",
+          "reason": "Duration reported; no established start or calculation rule."
+        },
+        "terms_ref": "https://provider.example.invalid/terms/synthetic-v1",
+        "terms_sha256": "328522f5f1444cd04dbbf5e1f9497a900f5608a19cc435009a0d675a2597f01b",
+        "training_use": "reported-disabled"
+      }
+    ],
+    "synthetic": true,
+    "target_sha256": "5c19a93892baf41d9127f0da0648779f22d5409caf245ca98da14eabf40319e1",
+    "trust_sha256": "d2448c587cf9d60e173b4401d142afc516846006d7ced2fd92a0443460d31ece",
+    "universal_deletion": "NOT_ESTABLISHED"
+  },
+  "trust": {
+    "erasure_trust": {
+      "as_of": "2026-10-31T12:00:00Z",
+      "evaluation_id": "retention-evaluation-synthetic",
+      "format": "incident-evidence-trust/0.1",
+      "keys": {
+        "collector-fresh-key": {
+          "issuer": "collector-synthetic",
+          "not_after": "2027-01-01T00:00:00Z",
+          "not_before": "2026-01-01T00:00:00Z",
+          "organization": "requester-organization",
+          "public_key": "bc908c505c026345d7dc4f5296be590e20a9b2cd6fa95d11d453d9bbf25fbb59",
+          "roles": [
+            "collector"
+          ]
+        },
+        "provider-fresh-key": {
+          "issuer": "provider-synthetic",
+          "not_after": "2027-01-01T00:00:00Z",
+          "not_before": "2026-01-01T00:00:00Z",
+          "organization": "provider-organization",
+          "public_key": "e2b925b62d4dc4b0a6757760c55ab8540720e61d0c0fd1ad0eeaeb3c23a2a858",
+          "roles": [
+            "provider"
+          ]
+        },
+        "responder-fresh-key": {
+          "issuer": "responder-synthetic",
+          "not_after": "2027-01-01T00:00:00Z",
+          "not_before": "2026-01-01T00:00:00Z",
+          "organization": "requester-organization",
+          "public_key": "04370826bffadaad18b3718bc31bbff7e8ee7e995d3a0641d8e7920abc53ab30",
+          "roles": [
+            "responder"
+          ]
+        },
+        "reviewer-fresh-key": {
+          "issuer": "reviewer-synthetic",
+          "not_after": "2027-01-01T00:00:00Z",
+          "not_before": "2026-01-01T00:00:00Z",
+          "organization": "reviewer-organization",
+          "public_key": "561574ad702c45477af361b4a6f2647b7ac019b779afccc6c95e21f806923483",
+          "roles": [
+            "reviewer"
+          ]
+        }
+      },
+      "mode": "synthetic-test-only",
+      "target_sha256": "5c19a93892baf41d9127f0da0648779f22d5409caf245ca98da14eabf40319e1",
+      "workflow": "erasure"
+    },
+    "format": "retention-evidence-trust/0.1"
+  }
+}
