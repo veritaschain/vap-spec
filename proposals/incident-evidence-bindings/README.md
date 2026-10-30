@@ -16,6 +16,11 @@ The [synthetic acceptance catalogue](acceptance-cases.json) specifies proposed t
 application-layer assessments. Those cases have not been executed against a gateway, provider, editor,
 publisher, or VAP verifier. They are not an incident reconstruction or evidence of product readiness.
 
+An [offline reference assessor](../../experiments/incident-evidence-assessor/README.md) now provides
+structured, signed synthetic translations of all 23 cases and separately records their execution.
+The original catalogue remains the proposal-stage oracle. Its `not-executed` marker refers to that
+original publication state; the new offline results do not establish live integration or independent reproduction.
+
 Repository publication or merge of this document does not adopt a standard. It introduces no new
 normative event, event code, field, registered profile, conformance level, or core-verifier result.
 Names and status values below are illustrative application vocabulary. Existing normative algorithms,
@@ -276,6 +281,9 @@ claim that AILEX implements this design or is independently conformant.
 - 2026-10-30 JST: Follow-up design review added scoped XREF participation, external-information-request
   tracking and proportionate evidence preservation during containment; three synthetic cases added,
   still not executed.
+- 2026-10-30 JST: Added a separately versioned offline application assessor, structured translations
+  of all 23 cases, actual signature and binding checks, regression tests and a reproducible execution summary.
+  The proposal catalogue and normative specification were not changed.
 - Standardization decisions, interoperability results and future corrections will be separately dated.
 
 [vap]: https://github.com/veritaschain/vap-spec/blob/357b8e6b232750180a2a0ce185355e31880edaf6/spec/v1.2/VAP_Framework_Specification.md
