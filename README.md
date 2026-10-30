@@ -110,6 +110,7 @@ The normative registry above is unchanged; the following entry introduces publis
 |----------|------|
 | **VAP v1.2 Specification** | [spec/v1.2/VAP_Framework_Specification.md](./spec/v1.2/VAP_Framework_Specification.md) |
 | **Unadopted research reproduction kit** | [Fixed kit, complete historical evidence and evaluation terms](./research-distribution/2026-10-24/) — internal validation only; independent third-party reproduction not established |
+| **Incident-derived evidence bindings** | [Transfer authorization, scoped deletion evidence and AI-use disclosure](./proposals/incident-evidence-bindings/README.md) — informative, unadopted integration proposal with a sourced incident ledger and synthetic acceptance cases |
 | **VCP** (Finance Profile) | [github.com/veritaschain/vcp-spec](https://github.com/veritaschain/vcp-spec) |
 | **CAP** (Content / Creative AI Profile) | [github.com/veritaschain/cap-spec](https://github.com/veritaschain/cap-spec) |
 | **CPP** (Capture Provenance Profile) | [github.com/veritaschain/cpp-spec](https://github.com/veritaschain/cpp-spec) |
