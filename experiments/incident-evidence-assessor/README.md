@@ -6,6 +6,11 @@ This executable research adapter assesses structured evidence derived from the
 It does not adopt the proposal or establish VAP/CAP conformance. The normative
 baseline remains **VAP v1.2.0 Draft 3**.
 
+The separate [controlled upload pilot](../incident-upload-pilot/README.md) connects
+this unchanged assessor to measured immutable bytes, mandatory local pre-recording
+and a separate local HTTP receiver. Its execution controls and receiver statements
+remain application-side experimental behavior, not additional core verdicts.
+
 [日本語実行ガイド](RUN-ja.md) · [Input/trust contract](CONTRACT.md) ·
 [Transfer/erasure types](TYPE-TRANSFER-ERASURE.md) ·
 [Publication/response types](TYPE-PUBLICATION-RESPONSE.md) ·
