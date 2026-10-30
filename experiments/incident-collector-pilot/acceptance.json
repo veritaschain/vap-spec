@@ -1,0 +1,434 @@
+{
+  "format": "collector-pilot-acceptance/0.1",
+  "scope": "Fixed finite synthetic scenarios, not conformance or all-route assurance",
+  "cases": [
+    {
+      "id": "CP-01",
+      "title": "Fresh authenticated metadata receipt and readback before one payload attempt",
+      "expected": {
+        "states": [
+          "RECEIPT_CONFIRMED"
+        ],
+        "collector_outcomes": [
+          "FRESH_READBACK_CONFIRMED"
+        ],
+        "collector_write_attempts": 1,
+        "collector_read_attempts": 1,
+        "collector_collect_calls": 1,
+        "collector_status_calls": 1,
+        "collector_rows": 1,
+        "payload_attempts": 1,
+        "receiver_calls": 1,
+        "receiver_rows": 1,
+        "receiver_bytes_match": true,
+        "reconciliation_states": [],
+        "final_authorizations": [
+          "ALLOW"
+        ],
+        "postflight_observed_authorizations": [
+          "REVIEW"
+        ]
+      }
+    },
+    {
+      "id": "CP-02",
+      "title": "Collector process stopped before initial collection",
+      "expected": {
+        "states": [
+          "BLOCKED_WITHOUT_ATTEMPT"
+        ],
+        "collector_outcomes": [
+          "ACKNOWLEDGEMENT_NOT_ESTABLISHED"
+        ],
+        "collector_write_attempts": 1,
+        "collector_read_attempts": 0,
+        "collector_collect_calls": 0,
+        "collector_status_calls": 0,
+        "collector_rows": 0,
+        "payload_attempts": 0,
+        "receiver_calls": 0,
+        "receiver_rows": 0,
+        "receiver_bytes_match": false,
+        "reconciliation_states": []
+      }
+    },
+    {
+      "id": "CP-03",
+      "title": "Collector drops connection before metadata commit",
+      "expected": {
+        "states": [
+          "BLOCKED_WITHOUT_ATTEMPT"
+        ],
+        "collector_outcomes": [
+          "ACKNOWLEDGEMENT_NOT_ESTABLISHED"
+        ],
+        "collector_write_attempts": 1,
+        "collector_read_attempts": 0,
+        "collector_collect_calls": 1,
+        "collector_status_calls": 0,
+        "collector_rows": 0,
+        "payload_attempts": 0,
+        "receiver_calls": 0,
+        "receiver_rows": 0,
+        "receiver_bytes_match": false,
+        "reconciliation_states": []
+      }
+    },
+    {
+      "id": "CP-04",
+      "title": "Metadata committed but acknowledgement lost; restart, read-only reconciliation and replay refusal",
+      "expected": {
+        "states": [
+          "BLOCKED_WITHOUT_ATTEMPT",
+          "REPLAY_NO_SEND"
+        ],
+        "collector_outcomes": [
+          "ACKNOWLEDGEMENT_NOT_ESTABLISHED",
+          "NOT_CONTACTED"
+        ],
+        "collector_write_attempts": 1,
+        "collector_read_attempts": 1,
+        "collector_collect_calls": 1,
+        "collector_status_calls": 1,
+        "collector_rows": 1,
+        "payload_attempts": 0,
+        "receiver_calls": 0,
+        "receiver_rows": 0,
+        "receiver_bytes_match": false,
+        "reconciliation_states": [
+          "FOUND"
+        ]
+      }
+    },
+    {
+      "id": "CP-05",
+      "title": "Recovery requires a new explicitly authorized request ID",
+      "expected": {
+        "states": [
+          "BLOCKED_WITHOUT_ATTEMPT",
+          "REPLAY_NO_SEND",
+          "RECEIPT_CONFIRMED"
+        ],
+        "collector_outcomes": [
+          "ACKNOWLEDGEMENT_NOT_ESTABLISHED",
+          "NOT_CONTACTED",
+          "FRESH_READBACK_CONFIRMED"
+        ],
+        "collector_write_attempts": 2,
+        "collector_read_attempts": 1,
+        "collector_collect_calls": 1,
+        "collector_status_calls": 1,
+        "collector_rows": 1,
+        "payload_attempts": 1,
+        "receiver_calls": 1,
+        "receiver_rows": 1,
+        "receiver_bytes_match": true,
+        "reconciliation_states": []
+      }
+    },
+    {
+      "id": "CP-06",
+      "title": "Collector stops after acknowledgement, before final readback",
+      "expected": {
+        "states": [
+          "BLOCKED_WITHOUT_ATTEMPT"
+        ],
+        "collector_outcomes": [
+          "READBACK_NOT_ESTABLISHED"
+        ],
+        "collector_write_attempts": 1,
+        "collector_read_attempts": 1,
+        "collector_collect_calls": 1,
+        "collector_status_calls": 0,
+        "collector_rows": 1,
+        "payload_attempts": 0,
+        "receiver_calls": 0,
+        "receiver_rows": 0,
+        "receiver_bytes_match": false,
+        "reconciliation_states": []
+      }
+    },
+    {
+      "id": "CP-07",
+      "title": "Real authorization deadline expires between collection and final check",
+      "expected": {
+        "states": [
+          "BLOCKED_WITHOUT_ATTEMPT"
+        ],
+        "collector_outcomes": [
+          "FRESH_READBACK_CONFIRMED"
+        ],
+        "collector_write_attempts": 1,
+        "collector_read_attempts": 1,
+        "collector_collect_calls": 1,
+        "collector_status_calls": 1,
+        "collector_rows": 1,
+        "payload_attempts": 0,
+        "receiver_calls": 0,
+        "receiver_rows": 0,
+        "receiver_bytes_match": false,
+        "reconciliation_states": []
+      }
+    },
+    {
+      "id": "CP-08",
+      "title": "Collector signs a receipt for the wrong intent binding",
+      "expected": {
+        "states": [
+          "BLOCKED_WITHOUT_ATTEMPT"
+        ],
+        "collector_outcomes": [
+          "ACKNOWLEDGEMENT_NOT_ESTABLISHED"
+        ],
+        "collector_write_attempts": 1,
+        "collector_read_attempts": 0,
+        "collector_collect_calls": 1,
+        "collector_status_calls": 0,
+        "collector_rows": 1,
+        "payload_attempts": 0,
+        "receiver_calls": 0,
+        "receiver_rows": 0,
+        "receiver_bytes_match": false,
+        "reconciliation_states": []
+      }
+    },
+    {
+      "id": "CP-09",
+      "title": "Collector signs a response with the wrong fresh-query nonce",
+      "expected": {
+        "states": [
+          "BLOCKED_WITHOUT_ATTEMPT"
+        ],
+        "collector_outcomes": [
+          "READBACK_NOT_ESTABLISHED"
+        ],
+        "collector_write_attempts": 1,
+        "collector_read_attempts": 1,
+        "collector_collect_calls": 1,
+        "collector_status_calls": 1,
+        "collector_rows": 1,
+        "payload_attempts": 0,
+        "receiver_calls": 0,
+        "receiver_rows": 0,
+        "receiver_bytes_match": false,
+        "reconciliation_states": []
+      }
+    },
+    {
+      "id": "CP-10",
+      "title": "Local claim failure before any collector or payload call",
+      "expected": {
+        "states": [
+          "BLOCKED_WITHOUT_ATTEMPT"
+        ],
+        "collector_outcomes": [
+          "NOT_CONTACTED"
+        ],
+        "collector_write_attempts": 0,
+        "collector_read_attempts": 0,
+        "collector_collect_calls": 0,
+        "collector_status_calls": 0,
+        "collector_rows": 0,
+        "payload_attempts": 0,
+        "receiver_calls": 0,
+        "receiver_rows": 0,
+        "receiver_bytes_match": false,
+        "reconciliation_states": []
+      }
+    },
+    {
+      "id": "CP-11",
+      "title": "Valid signed policy for another tenant cannot begin collection",
+      "expected": {
+        "states": [
+          "BLOCKED_WITHOUT_ATTEMPT"
+        ],
+        "collector_outcomes": [
+          "NOT_CONTACTED"
+        ],
+        "collector_write_attempts": 0,
+        "collector_read_attempts": 0,
+        "collector_collect_calls": 0,
+        "collector_status_calls": 0,
+        "collector_rows": 0,
+        "payload_attempts": 0,
+        "receiver_calls": 0,
+        "receiver_rows": 0,
+        "receiver_bytes_match": false,
+        "reconciliation_states": []
+      }
+    },
+    {
+      "id": "CP-12",
+      "title": "Repeated confirmed request cannot create another collection or payload attempt",
+      "expected": {
+        "states": [
+          "RECEIPT_CONFIRMED",
+          "REPLAY_NO_SEND"
+        ],
+        "collector_outcomes": [
+          "FRESH_READBACK_CONFIRMED",
+          "NOT_CONTACTED"
+        ],
+        "collector_write_attempts": 1,
+        "collector_read_attempts": 1,
+        "collector_collect_calls": 1,
+        "collector_status_calls": 1,
+        "collector_rows": 1,
+        "payload_attempts": 1,
+        "receiver_calls": 1,
+        "receiver_rows": 1,
+        "receiver_bytes_match": true,
+        "reconciliation_states": []
+      }
+    },
+    {
+      "id": "CP-13",
+      "title": "Different explicitly permitted payload under the same request ID conflicts",
+      "expected": {
+        "states": [
+          "RECEIPT_CONFIRMED",
+          "REQUEST_ID_CONFLICT"
+        ],
+        "collector_outcomes": [
+          "FRESH_READBACK_CONFIRMED",
+          "NOT_CONTACTED"
+        ],
+        "collector_write_attempts": 1,
+        "collector_read_attempts": 1,
+        "collector_collect_calls": 1,
+        "collector_status_calls": 1,
+        "collector_rows": 1,
+        "payload_attempts": 1,
+        "receiver_calls": 1,
+        "receiver_rows": 1,
+        "receiver_bytes_match": true,
+        "reconciliation_states": []
+      }
+    },
+    {
+      "id": "CP-14",
+      "title": "Concurrent identical callers share one durable claim and one payload attempt",
+      "expected": {
+        "states": [
+          "RECEIPT_CONFIRMED",
+          "REPLAY_NO_SEND"
+        ],
+        "collector_outcomes": [
+          "FRESH_READBACK_CONFIRMED",
+          "NOT_CONTACTED"
+        ],
+        "collector_write_attempts": 1,
+        "collector_read_attempts": 1,
+        "collector_collect_calls": 1,
+        "collector_status_calls": 1,
+        "collector_rows": 1,
+        "payload_attempts": 1,
+        "receiver_calls": 1,
+        "receiver_rows": 1,
+        "receiver_bytes_match": true,
+        "reconciliation_states": []
+      }
+    },
+    {
+      "id": "CP-15",
+      "title": "Receiver commits bytes but response is lost; no automatic replay",
+      "expected": {
+        "states": [
+          "OUTCOME_UNKNOWN",
+          "REPLAY_NO_SEND"
+        ],
+        "collector_outcomes": [
+          "FRESH_READBACK_CONFIRMED",
+          "NOT_CONTACTED"
+        ],
+        "collector_write_attempts": 1,
+        "collector_read_attempts": 1,
+        "collector_collect_calls": 1,
+        "collector_status_calls": 1,
+        "collector_rows": 1,
+        "payload_attempts": 1,
+        "receiver_calls": 1,
+        "receiver_rows": 1,
+        "receiver_bytes_match": true,
+        "reconciliation_states": []
+      }
+    },
+    {
+      "id": "CP-16",
+      "title": "Caller mutations after capture cannot change owned payload or evaluation inputs",
+      "expected": {
+        "states": [
+          "RECEIPT_CONFIRMED"
+        ],
+        "collector_outcomes": [
+          "FRESH_READBACK_CONFIRMED"
+        ],
+        "collector_write_attempts": 1,
+        "collector_read_attempts": 1,
+        "collector_collect_calls": 1,
+        "collector_status_calls": 1,
+        "collector_rows": 1,
+        "payload_attempts": 1,
+        "receiver_calls": 1,
+        "receiver_rows": 1,
+        "receiver_bytes_match": true,
+        "reconciliation_states": [],
+        "final_authorizations": [
+          "ALLOW"
+        ],
+        "postflight_observed_authorizations": [
+          "REVIEW"
+        ]
+      }
+    },
+    {
+      "id": "CP-17",
+      "title": "Local claim commits but acknowledgement is lost; restarted gate refuses replay",
+      "expected": {
+        "states": [
+          "BLOCKED_WITHOUT_ATTEMPT",
+          "REPLAY_NO_SEND"
+        ],
+        "collector_outcomes": [
+          "NOT_CONTACTED",
+          "NOT_CONTACTED"
+        ],
+        "collector_write_attempts": 0,
+        "collector_read_attempts": 0,
+        "collector_collect_calls": 0,
+        "collector_status_calls": 0,
+        "collector_rows": 0,
+        "payload_attempts": 0,
+        "receiver_calls": 0,
+        "receiver_rows": 0,
+        "receiver_bytes_match": false,
+        "reconciliation_states": []
+      }
+    },
+    {
+      "id": "CP-18",
+      "title": "Outcome persistence failure preserves uncertainty and prevents replay",
+      "expected": {
+        "states": [
+          "OUTCOME_UNKNOWN",
+          "REPLAY_NO_SEND"
+        ],
+        "collector_outcomes": [
+          "FRESH_READBACK_CONFIRMED",
+          "NOT_CONTACTED"
+        ],
+        "collector_write_attempts": 1,
+        "collector_read_attempts": 1,
+        "collector_collect_calls": 1,
+        "collector_status_calls": 1,
+        "collector_rows": 1,
+        "payload_attempts": 1,
+        "receiver_calls": 1,
+        "receiver_rows": 1,
+        "receiver_bytes_match": true,
+        "reconciliation_states": []
+      }
+    }
+  ]
+}
