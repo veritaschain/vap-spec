@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:veritaschain:experimental:vap-interop-demo:0.2.0:demo-trust",
+  "title": "Experimental interoperability demo trust structural schema",
+  "description": "Explicit synthetic TEST-key configuration for vap-interop-demo/0.2.0. This is a local pinning mechanism demonstration, not evidence of real identity, origin or organizational independence.",
+  "$comment": "The verifiers enforce strict raw JSON/UTF-8 parsing, duplicate-key rejection, BOM, input-size and depth limits. They require three distinct key IDs and three distinct decoded 32-byte public keys, pin the computed scope digest and enforce every record/event role. A schema-valid configuration alone does not establish trust or cryptographic validity. Base64 patterns constrain padding and unused pad bits; the verifiers decode and validate the keys.",
+  "type": "object",
+  "required": [
+    "contract_id",
+    "trust_version",
+    "scope_commitment",
+    "roles"
+  ],
+  "properties": {
+    "contract_id": {
+      "const": "vap-interop-demo/0.2.0"
+    },
+    "trust_version": {
+      "const": "demo-trust/1"
+    },
+    "scope_commitment": {
+      "$ref": "#/$defs/sha256"
+    },
+    "roles": {
+      "type": "object",
+      "required": [
+        "producer",
+        "observer",
+        "anchor"
+      ],
+      "properties": {
+        "producer": {
+          "$ref": "#/$defs/role"
+        },
+        "observer": {
+          "$ref": "#/$defs/role"
+        },
+        "anchor": {
+          "$ref": "#/$defs/role"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024,
+      "pattern": "^[\\u0020-\\u007E]+(?![\\s\\S])"
+    },
+    "sha256": {
+      "type": "string",
+      "minLength": 64,
+      "maxLength": 64,
+      "pattern": "^[0-9a-f]{64}(?![\\s\\S])"
+    },
+    "publicKey": {
+      "type": "string",
+      "minLength": 44,
+      "maxLength": 44,
+      "pattern": "^[A-Za-z0-9+/]{42}[AEIMQUYcgkosw048]=(?![\\s\\S])",
+      "description": "Canonical padded base64 encoding of exactly 32 bytes; final unused bits must be zero."
+    },
+    "role": {
+      "type": "object",
+      "required": [
+        "key_id",
+        "public_key"
+      ],
+      "properties": {
+        "key_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "public_key": {
+          "$ref": "#/$defs/publicKey"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

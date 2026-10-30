@@ -1,0 +1,19 @@
+{
+  "contract_id": "vap-interop-demo/0.2.0",
+  "roles": {
+    "anchor": {
+      "key_id": "demo-anchor-key-1",
+      "public_key": "F8t5+ytBIPKx7GXkGY1uCLKOgT/rAeSkAIObheGAgM4="
+    },
+    "observer": {
+      "key_id": "demo-observer-key-1",
+      "public_key": "oJql9HpnWYAv+VX43C0qFKXJnSO+l/hkEn/5ODRVpPA="
+    },
+    "producer": {
+      "key_id": "demo-producer-key-1",
+      "public_key": "0EqyMnQrtKs6E2i9RhXk5tAiSrcaAWuvhSCjMsl3hzc="
+    }
+  },
+  "scope_commitment": "302daef0d10b1f35a012e6bdefa59416561c4a1a118f19401d41e4a65989541b",
+  "trust_version": "demo-trust/1"
+}

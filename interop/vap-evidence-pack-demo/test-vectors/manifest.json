@@ -1,0 +1,100 @@
+{
+  "contract_id": "vap-interop-demo/0.2.0",
+  "files": {
+    "demo-trust-six.json": {
+      "bytes": 577,
+      "sha256": "367231f0104f1a56c0a059f6f0a4ab423c0c16fc6337ccec4b0c5b6efd6afe37"
+    },
+    "demo-trust.json": {
+      "bytes": 577,
+      "sha256": "68ab0403bbf07edb134908d9f9dfcd55965e1b64c64d1305fa351c708a12af39"
+    },
+    "invalid-omitted-outcome.json": {
+      "bytes": 4916,
+      "sha256": "14a64548e356dfbd9656617a5c1832bad7768b58f8e64c4e39f4fde3e10416bc"
+    },
+    "invalid-omitted-pair.json": {
+      "bytes": 3989,
+      "sha256": "63d2a65684bab60dd77f709e0647a1b287e891a95e0efa5517bbddc2024f3d5b"
+    },
+    "invalid-rebound-scope.json": {
+      "bytes": 3989,
+      "sha256": "c11e76d163bc2153828ffad119f9f34a2c45bb927c8590caec75f4ee31fb5e69"
+    },
+    "invalid-split-view.json": {
+      "bytes": 5800,
+      "sha256": "60c874c1b2a0043527faa46305c653f0af8966be544788d173c33709deccafd1"
+    },
+    "invalid-tampered-event.json": {
+      "bytes": 5814,
+      "sha256": "a1f3c61d0235ea5db67f5bad08f66decb0b55bd52b514c0e3184489b14173780"
+    },
+    "invalid-untrusted-signer.json": {
+      "bytes": 5800,
+      "sha256": "bbd59cb6eab5747811e4803998a8bfc7a1d32f24c37f8df5ae715de0a442bf78"
+    },
+    "valid-pack.json": {
+      "bytes": 5800,
+      "sha256": "7e0320a98c44d18d56754579ef88e9d4997fbba8b7a51215f41f4b3b78e582a8"
+    },
+    "valid-six-events.json": {
+      "bytes": 7611,
+      "sha256": "171c8a8c683eb234142c0bad5d83e7aca67d504e372b1bfbb3978733adfbbaaa"
+    }
+  },
+  "manifest_version": "demo-vector-manifest/1",
+  "vectors": [
+    {
+      "expected_exit_code": 0,
+      "expected_verdict": "PASS",
+      "merkle_root": "917975d46e43f8930970854cc35793089a42f76cced79c474a5fd9a65c9bed5e",
+      "pack": "valid-pack.json",
+      "scope_commitment": "302daef0d10b1f35a012e6bdefa59416561c4a1a118f19401d41e4a65989541b",
+      "trust": "demo-trust.json"
+    },
+    {
+      "expected_exit_code": 0,
+      "expected_verdict": "PASS",
+      "merkle_root": "710a92493f0ed929a3b26096b4ac099dff91bb6cc2a412fd019825bf69bd50be",
+      "pack": "valid-six-events.json",
+      "scope_commitment": "f07abb475594ea6aed6b17f28048f1933764872a1ab44ed734ce4afa1eb1c360",
+      "trust": "demo-trust-six.json"
+    },
+    {
+      "expected_exit_code": 1,
+      "expected_verdict": "FAIL",
+      "pack": "invalid-tampered-event.json",
+      "trust": "demo-trust.json"
+    },
+    {
+      "expected_exit_code": 1,
+      "expected_verdict": "FAIL",
+      "pack": "invalid-omitted-outcome.json",
+      "trust": "demo-trust.json"
+    },
+    {
+      "expected_exit_code": 1,
+      "expected_verdict": "FAIL",
+      "pack": "invalid-split-view.json",
+      "trust": "demo-trust.json"
+    },
+    {
+      "expected_exit_code": 1,
+      "expected_verdict": "FAIL",
+      "pack": "invalid-omitted-pair.json",
+      "trust": "demo-trust.json"
+    },
+    {
+      "expected_exit_code": 1,
+      "expected_verdict": "FAIL",
+      "pack": "invalid-rebound-scope.json",
+      "trust": "demo-trust.json"
+    },
+    {
+      "expected_exit_code": 1,
+      "expected_verdict": "FAIL",
+      "pack": "invalid-untrusted-signer.json",
+      "trust": "demo-trust.json"
+    }
+  ]
+}
