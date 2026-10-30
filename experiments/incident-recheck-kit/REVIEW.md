@@ -165,6 +165,13 @@ final source.
 
 ## Remaining limits and versioning
 
+The first GitHub workflow submission was rejected before job execution because
+the inline dependency command contained a YAML-significant `: ` sequence. The
+command was changed to a literal block and the YAML was parsed locally before
+resubmission. This changes the execution source manifest's workflow hash, but
+not the archive payload or ZIP digest. The local checkpoint above precedes this
+workflow-only correction; the final CI checkpoint is recorded in results.
+
 This is a bounded Linux/POSIX source-and-evidence distribution. It is not a
 cross-platform executable image. Temporary staging and cleanup are parent
 operations, distinct from repeating the pilot actions. The audit guard is not
