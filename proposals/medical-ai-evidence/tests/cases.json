@@ -1,0 +1,83 @@
+[
+  {
+    "id": "CHECK_NOT_RUN",
+    "expect": "NOT_RUN",
+    "evidence": {
+      "check_status": "not_run"
+    },
+    "expected_result": "NOT_RUN"
+  },
+  {
+    "id": "CHECK_TIMEOUT",
+    "expect": "UNKNOWN_TIMEOUT",
+    "evidence": {
+      "check_status": "timeout"
+    },
+    "expected_result": "UNKNOWN"
+  },
+  {
+    "id": "DISPLAY_DIVERGENCE",
+    "expect": "DISPLAY_DIVERGENCE",
+    "evidence": {
+      "draft_digest": "sha256:a",
+      "display_digest": "sha256:b"
+    },
+    "expected_result": "DIVERGENCE"
+  },
+  {
+    "id": "MISSING_PATIENT_CONTEXT",
+    "expect": "MISSING_CONTEXT",
+    "evidence": {
+      "patient_fields": [
+        "age",
+        "weight"
+      ]
+    },
+    "expected_result": "MISSING"
+  },
+  {
+    "id": "POST_ANCHOR_OMISSION",
+    "expect": "POST_ANCHOR_OMISSION",
+    "evidence": {
+      "anchored_count": 5,
+      "submitted_count": 4,
+      "manifest_bound": true
+    },
+    "expected_result": "INCOMPLETE_SUBMISSION"
+  },
+  {
+    "id": "PRE_COLLECTION_GAP",
+    "expect": "PRE_COLLECTION_GAP",
+    "evidence": {
+      "collector_coverage": "partial"
+    },
+    "expected_result": "UNOBSERVED"
+  },
+  {
+    "id": "TRANSLATION_DERIVATION",
+    "expect": "TRANSLATION_DERIVATION",
+    "evidence": {
+      "original_digest": "sha256:a",
+      "translated_digest": "sha256:b",
+      "parent_ref": "source-1"
+    },
+    "expected_result": "DERIVATIVE"
+  },
+  {
+    "id": "PROVIDER_STATE_UNOBSERVABLE",
+    "expect": "PROVIDER_STATE_UNOBSERVABLE",
+    "evidence": {
+      "provider_filter_state": null
+    },
+    "expected_result": "UNKNOWN"
+  },
+  {
+    "id": "MODEL_REPLAY_DIVERGENCE",
+    "expect": "MODEL_REPLAY_DIVERGENCE",
+    "evidence": {
+      "original_digest": "sha256:a",
+      "replay_digest": "sha256:b"
+    },
+    "expected_result": "REPLAY_DIFFERS"
+  }
+]
