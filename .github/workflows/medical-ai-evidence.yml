@@ -5,6 +5,7 @@ on:
       - 'proposals/medical-ai-evidence/**'
       - '.github/workflows/medical-ai-evidence.yml'
   push:
+    branches: [main]
     paths:
       - 'proposals/medical-ai-evidence/**'
       - '.github/workflows/medical-ai-evidence.yml'
