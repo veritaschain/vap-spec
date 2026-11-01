@@ -51,6 +51,21 @@ def integrity(signature_ok: bool | None, merkle_ok: bool | None) -> Verdict:
         return Verdict.VALID
     return Verdict.INDETERMINATE
 
+def causal_binding(shared_trace: bool, trusted_parent_receipt: bool, verified_time_order: bool) -> Verdict:
+    """A shared trace identifier alone is insufficient to prove causation."""
+    if not shared_trace:
+        return Verdict.INDETERMINATE
+    return Verdict.VALID if trusted_parent_receipt and verified_time_order else Verdict.INDETERMINATE
+
+def exposure_bounds(possible: int | None, observed_read: int | None, observed_egress: int | None) -> tuple[int | None, int | None, int | None]:
+    """Keep maximum exposure, observed reads and observed outbound transfer distinct."""
+    values = (possible, observed_read, observed_egress)
+    if any(v is not None and (type(v) is not int or v < 0) for v in values):
+        raise ValueError("counts must be nonnegative integers or unknown")
+    if possible is not None and observed_read is not None and observed_read > possible:
+        raise ValueError("observed read exceeds declared possible population")
+    return values
+
 def independent_gap(local_present: bool, independent_receipt: bool) -> Verdict:
     if independent_receipt and not local_present:
         return Verdict.INVALID
@@ -74,6 +89,17 @@ class EvidenceBoundaryTests(unittest.TestCase):
         self.assertEqual(authorization(Observation("db", "x", True, False)), Verdict.INVALID)
     def test_t08_collection_outage(self):
         self.assertIsNone(confirmed_count(Observation("db", "x", records=100, observed=False)))
+    def test_t09_shared_trace_not_causation(self):
+        self.assertEqual(causal_binding(True, False, True), Verdict.INDETERMINATE)
+        self.assertEqual(causal_binding(True, True, True), Verdict.VALID)
+    def test_t10_exposure_scopes_not_conflated(self):
+        self.assertEqual(exposure_bounds(4798255, None, None), (4798255, None, None))
+        self.assertEqual(exposure_bounds(4798255, 12, None), (4798255, 12, None))
+    def test_t11_invalid_exposure_counts(self):
+        with self.assertRaises(ValueError):
+            exposure_bounds(10, 11, None)
+        with self.assertRaises(ValueError):
+            exposure_bounds(True, None, None)
     def test_no_claim_without_receipt(self):
         self.assertEqual(independent_gap(False, False), Verdict.INDETERMINATE)
     def test_unverified_signature(self):
