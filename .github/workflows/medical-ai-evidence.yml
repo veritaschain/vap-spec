@@ -20,5 +20,6 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Run nine synthetic evidence cases
+      - name: Run bounded synthetic evidence checks and negative controls
         run: python -m unittest discover -s proposals/medical-ai-evidence/tests -p 'test_*.py' -v
+

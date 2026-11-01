@@ -25,6 +25,9 @@
 
 ## Current evidence
 
-The companion nine-case Python unittest suite is a **synthetic classification smoke test**. It does not perform cryptographic verification, validate drug doses, integrate a healthcare provider, or satisfy the above acceptance gates. Its outcome cannot be described as independent reproduction or MAP conformance.
+The companion nine-case catalogue is exercised by an **illustrative application-level classifier**. Only evidence enters the classifier; scenario names and expected results remain in the tests. Negative controls preserve unknown states for missing or malformed observations and keep different evidence dimensions separate.
+
+Separate tests demonstrate a custom local SHA-256 commitment, with fixed small-tree vectors and a finite example of different full histories producing identical collected evidence. These are not signed-evidence, INT-008 or external-anchor verification. The [test record](tests/README.md) describes the actual local execution and its scope. It does not validate drug doses, integrate a healthcare provider, or satisfy the acceptance gates above. Its outcome cannot be described as independent reproduction or MAP conformance.
 
 Related: [case note](README.md), [test fixtures](tests/README.md), [VAP normative baseline](../../spec/v1.2/README.md).
+

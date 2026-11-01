@@ -45,9 +45,9 @@ Sources: [Doximity official blog, 2026-10-29](https://blog.doximity.com/articles
 
 Protect patient information with purpose limitation, access controls, retention policy and redaction / selective disclosure. An external anchor should normally carry commitments, not patient medical plaintext. Keep event, collection, provider-claimed and anchoring timestamps separate.
 
-## Candidate acceptance cases for synthetic testing
+## Design cases and executed synthetic checks
 
-These are **unexecuted design candidates**. No clinical real-world data is requested or implied.
+The nine design candidates below now have an executed **illustrative application-level classification suite**, with additional missing-input, malformed-input and local commitment checks. See the [test scope and recorded local execution](tests/README.md). Execution of those bounded checks does not establish the broader acceptance properties below: actual VAP verification, authenticated manifests, external anchoring, clinical correctness and provider integration remain unverified. No clinical real-world data is requested or implied.
 
 1. **CHECK_NOT_RUN:** A dosage recommendation is emitted when the checker is not run. The record must not claim a passed check.
 2. **CHECK_TIMEOUT:** The reference checker times out; a later batch verifies while safety-verification outcome remains unknown.
@@ -79,3 +79,4 @@ Sources: [EU AI Act Article 6](https://ai-act-service-desk.ec.europa.eu/en/ai-ac
 As of the published VAP repository disclosure of 2026-10-25: **zero external implementations** of VAP and its profiles and **zero Evidence Packs accepted in proceedings**. No authenticated independent medical-system integration or clinical effectiveness assessment is established by this note. Commercial contract/customer figures are not asserted: the repository's 2026-10-24 correction withdrew an unsubstantiated prior claim.
 
 VAP is maintained by **VeritasChain Standards Organization (VSO)**, whose operating legal entity is **VeritasChain Co., Ltd.** VSO is not represented here as an independently incorporated nonprofit body.
+
