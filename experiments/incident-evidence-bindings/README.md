@@ -4,7 +4,7 @@
 
 ## Scope and security boundaries
 
-This experiment defines eight negative checks for an evidence consumer. It is deliberately not a production verifier. Run with `python -m unittest discover -s experiments/incident-evidence-bindings -p 'test_*.py' -v` from repository root (Python 3.10+). No network or external packages.
+This experiment defines eight original negative checks plus three additional boundary checks for an evidence consumer. It is deliberately not a production verifier. Run with `python -m unittest discover -s experiments/incident-evidence-bindings -p 'test_*.py' -v` from repository root (Python 3.10+). No network or external packages.
 
 | Case | Evidence question | Required behavior |
 | --- | --- | --- |
@@ -16,6 +16,9 @@ This experiment defines eight negative checks for an evidence consumer. It is de
 | T06 | Local event missing but independent receipt exists | Contradiction INVALID |
 | T07 | Signature and Merkle proof valid; action unauthorized | Integrity VALID and authorization INVALID coexist |
 | T08 | Collector outage | Confirmed count unavailable |
+| T09 | Matching trace ID without trusted parent receipt | Causation INDETERMINATE |
+| T10 | Maximum potential exposure but no observed read/egress | Keep all three values separate |
+| T11 | Invalid or contradictory exposure counts | Reject invalid input |
 
 ## Proposed bindings (non-normative)
 
