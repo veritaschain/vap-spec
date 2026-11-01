@@ -1,6 +1,6 @@
 # Incident fact ledger
 
-**Last updated:** 2026-10-31 JST. Each claim retains its own check date.
+**Last updated:** 2026-11-01 JST. Each claim retains its own check date.
 
 **Status:** Informative / unadopted proposal
 
@@ -8,8 +8,8 @@ For design discussion only, not liability findings, technical attribution, vendo
 
 ## Verdicts
 
-- `PRIMARY_CONFIRMED`: primary source supports an attributed fact or institutional finding.
-- `SUPPORTED_REPORTING`: secondary reporting; underlying hospital notice not independently fetched.
+- `PRIMARY_CONFIRMED`: primary source supports an attributed fact or institutional finding; this does not mean independent validation of raw forensic evidence.
+- `SUPPORTED_REPORTING`: attributed secondary reporting; each section identifies the underlying material inspected or unavailable.
 - `INDEX_CORROBORATED`: a search-indexed database page supports the stated metadata association, not independent incident facts.
 - `NOT_ESTABLISHED`: not established by inspected evidence; not necessarily false.
 - `CORRECTED`: initial framing corrected below.
@@ -59,6 +59,24 @@ A stated retention end date is not itself an observation of deletion. Passing th
 upgrade an attributed statement into independently verified completion. No provider receipt from
 this incident is imported into the synthetic assessor or represented as authenticated experimental evidence.
 
+## 91APP
+
+Company statements, the authority's narrower confirmation and reporting are kept separate.
+No incident logs, customer records or forensic evidence package were accessed for this review.
+See the [design note](91APP-EVIDENCE-REVIEW.md) ([日本語](91APP-EVIDENCE-REVIEW-ja.md));
+none of these claims is an input to the existing synthetic experiments.
+
+| Claim ID | Verdict | Finding or correction | Sources | Checked (JST) |
+| --- | --- | --- | --- | --- |
+| APP-001 | PRIMARY_CONFIRMED | 91APP dates intrusion to October 3 and containment to October 14, 2026. It reports ARTEX traces in its systems; its route reconstruction describes unpatched Appsmith, GitLab-held database credentials and the orders database. | [A1][a1] | 2026-11-01 |
+| APP-002 | PRIMARY_CONFIRMED | Taiwan's Administration for Digital Industries confirmed unauthorized acquisition of some data in its October 20 notice; exact types were then still under investigation. That notice does not establish ARTEX attribution or the later maximum affected count. | [A3][a3] | 2026-11-01 |
+| APP-003 | PRIMARY_CONFIRMED | The October 29 company update gives a maximum of 1,329 brands and 4,798,255 consumers, using the April 4, 2025–October 14, 2026 order-date window because the exact stolen orders could not be determined. This is not confirmation that all listed consumers' data was stolen. | [A2][a2] | 2026-11-01 |
+| APP-004 | PRIMARY_CONFIRMED | The company describes Appsmith removal, credential and permission updates, and restrictions between CI and database systems. These are reported remediation actions, not this repository's validation of their effectiveness. | [A1][a1] | 2026-11-01 |
+| APP-005 | CORRECTED | 91APP says it notified brands October 29. Consumer notification was planned from November 2 subject to brand authorization; an unqualified "unnotified incident" label is inappropriate. | [A2][a2], [A5][a5] | 2026-11-01 |
+| APP-006 | SUPPORTED_REPORTING | CNA reports that compensation amounts and the earnings effect were not yet estimable. This does not establish a measured total of victims' financial losses. | [A4][a4] | 2026-11-01 |
+| APP-007 | NOT_ESTABLISHED | Full autonomous execution, attribution to the same actors as another ARTEX incident, and a specific CVE are not established by these reviewed sources. Exact software versions and raw forensic evidence were not examined. | [A1][a1], [A2][a2], [A3][a3] | 2026-11-01 |
+| APP-008 | NOT_ESTABLISHED | These sources do not establish a VAP/VCP deployment, an authenticated VAP evidence package, or that adopting either framework would have prevented this attack. | [A1][a1], [A2][a2], [A3][a3] | 2026-11-01 |
+
 ## Japanese regulatory context (not an incident finding)
 
 | Claim ID | Verdict | Finding or correction | Sources | Checked (JST) |
@@ -75,6 +93,7 @@ This is a source-bounded policy note, not an exhaustive finding that no other re
 - **2026-10-30 — Initial verification:** distinguished evidence types; corrected chronology, log-absence claims and disclosure-versus-permission assumptions. REF-001 was initially not established because the direct citation page could not be retrieved.
 - **2026-10-30 — Follow-up verification:** corroborated REF-001 through indexed AIID metadata; added the preservation/scope-timing limitation (BAY-008) and the report's journal-email date (DAR-007).
 - **2026-10-31 — Primary-source addition:** added Panasonic's notice and the Japanese security-measures consultation. Separated company/provider statements, prospective retention dates and independent deletion evidence; preserved prior claim IDs and check dates.
+- **2026-11-01 — 91APP addition:** separated company claims, authority confirmation, maximum exposure, notification plans and unresolved attribution. Added an informative English/Japanese design note; no incident evidence or executed test was added.
 - **REF-001 — `INDEX_CORROBORATED`, checked 2026-10-30 JST:** AIID's search-indexed Discover pages associate Incident `1792` with this Bayview incident and Healthcare IT News ([B5][b5], [B6][b6]). The direct citation page was not retrieved; registration date and total report count remain unverified. Incident facts rely on the reporting above, not independent confirmation by the database.
 - Retain claim IDs when recording corrections and new evidence.
 
@@ -93,6 +112,11 @@ This is a source-bounded policy note, not an exhaustive finding that no other re
 | P1 | [External generative-AI upload notice (Japanese)][p1] | 2026-10-23 | Panasonic Operational Excellence; primary company notice reporting provider responses |
 | J1 | [Guideline amendment consultation, case 240000133 (Japanese)][j1] | 2026-10-29 | e-Gov; official consultation and deadline |
 | J2 | [Overview of additions to security-measures examples (Japanese)][j2] | 2026-10; linked from J1 | Personal Information Protection Commission; official consultation overview |
+| A1 | [91APP incident account][a1] | 2026-10-22; reviewed 2026-11-01 | Primary company account |
+| A2 | [91APP scope update][a2] | 2026-10-29 | Primary company update |
+| A3 | [Administration for Digital Industries incident notice][a3] | 2026-10-20 | Official authority notice; narrower confirmation |
+| A4 | [CNA report on 91APP's updated scope and compensation][a4] | 2026-10-29 | Central News Agency; secondary reporting |
+| A5 | [91APP notification and compensation information][a5] | 2026-10-29 | Primary company notice; future steps remain attributed plans |
 
 [b1]: https://www.beckershospitalreview.com/healthcare-information-technology/ai/johns-hopkins-alerts-3182-patients-after-worker-uploads-data-to-unapproved-ai-tool/
 [b2]: https://www.wmar2news.com/local/patients-data-sent-to-ai-tool-johns-hopkins-bayview-medical-center-oct-23-2026
@@ -105,3 +129,8 @@ This is a source-bounded policy note, not an exhaustive finding that no other re
 [p1]: https://holdings.panasonic/jp/information/topics/20261023.html
 [j1]: https://public-comment.e-gov.go.jp/pcm/detail?CLASSNAME=PCMMSTDETAIL&Mode=0&id=240000133
 [j2]: https://public-comment.e-gov.go.jp/pcm/download?seqNo=0000323105
+[a1]: https://91app.com/91app-202610-security-incident/
+[a2]: https://91app.com/blog/91app-202610-security-incident-2/
+[a3]: https://moda.gov.tw/ADI/news/latest-news/21118
+[a4]: https://www.cna.com.tw/news/afe/202610290355.aspx
+[a5]: https://91app.com/91app-202610-security-incident-compensation/
