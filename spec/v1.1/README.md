@@ -16,7 +16,7 @@
 | **Stable** | Released, backward-compatible changes only |
 | **Superseded** | Replaced by newer version |
 
-**Current Status: Superseded** by [v1.2.0 (Draft 3)](../v1.2/) for all new work. This version is retained for reference; its text is unchanged.
+**Current Status: Superseded** by [v1.2.0 (Draft 3)](../v1.2/) for all new work. This version is retained for reference; its normative text is unchanged. A navigation-only correction dated 2026-11-02 repairs the §11 TOC fragment and records that edit in the version history.
 
 ---
 
@@ -72,6 +72,7 @@ When implementing a VAP profile (VCP, CAP, DVP, etc.), reference these sections:
 |---------|------|---------|
 | 1.0.0 | 2025-12-11 | Initial Release |
 | 1.1.0 | 2025-12-11 | High-Risk AI Domains, hierarchy clarification |
+| 1.1.0 (editorial) | 2026-11-02 | Repair the specification's §11 TOC fragment; normative text unchanged |
 
 ---
 
