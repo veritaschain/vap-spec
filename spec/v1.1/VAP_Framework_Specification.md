@@ -86,7 +86,7 @@ Across the five domains of finance, healthcare, transportation, energy, and publ
 8. [Conformance Levels](#8-conformance-levels)
 9. [Implementation Guidelines](#9-implementation-guidelines)
 10. [Governance and Standardization](#10-governance-and-standardization)
-11. [Relation to International Standards (Non-Normative)](#11-relation-to-international-standards)
+11. [Relation to International Standards (Non-Normative)](#11-relation-to-international-standards-non-normative)
 12. [References](#12-references)
 
 ---
@@ -1096,6 +1096,7 @@ VSO plans the following standardization activities:
 |---------|------|---------|--------|
 | 1.0.0 | 2025-12-11 | Initial Release | VSO Technical Committee |
 | 1.1.0 | 2025-12-11 | Added High-Risk AI Domains, VSO/VAP/VCP hierarchy clarification | VSO Technical Committee |
+| 1.1.0 (editorial) | 2026-11-02 | Correct the §11 TOC fragment to match the retained heading; normative text unchanged | VSO |
 
 ---
 
