@@ -3,7 +3,7 @@
 **Document ID:** VSO-VAP-SPEC-001
 **Version:** 1.2.0
 **Status:** Draft Specification (Draft 3)
-**Date:** 2026-09-01 (publication folds G-2, H-2, A-4 applied 2026-09-28; post-publication folds L-1, L-2, L-3, H-3, H-4, H-5 applied 2026-10-06; post-publication fold B-5 corrected 2026-10-09; CAB-independence errata applied 2026-10-21 JST; VCP compatibility-status corrections dated 2026-10-24 JST, §5.1, §10.4, Declaration and Appendix B; commercial disclosure and CAP mapping-status follow-up dated 2026-10-24 JST; cross-profile consistency errata E-2026-10-25 applied 2026-10-25 JST; publication-status clarification E-2026-10-27 dated 2026-10-27 JST; Appendix D and ERRATA)
+**Date:** 2026-09-01 (publication folds G-2, H-2, A-4 applied 2026-09-28; post-publication folds L-1, L-2, L-3, H-3, H-4, H-5 applied 2026-10-06; post-publication fold B-5 corrected 2026-10-09; CAB-independence errata applied 2026-10-21 JST; VCP compatibility-status corrections dated 2026-10-24 JST, §5.1, §10.4, Declaration and Appendix B; commercial disclosure and CAP mapping-status follow-up dated 2026-10-24 JST; cross-profile consistency errata E-2026-10-25 applied 2026-10-25 JST; publication-status clarification E-2026-10-27 dated 2026-10-27 JST; G-2 inline commercial-claim withdrawal marker added 2026-11-02 JST; Appendix D and ERRATA)
 
 VAP (Verifiable AI Provenance Framework) is a metaframework. It defines the
 common requirements that domain profiles (VCP, CAP, CPP, OAP, MAP, PAP, …) and
@@ -30,7 +30,7 @@ related Internet-Drafts are individual submissions (§11.4).
 
 | File | Content | SHA-256 |
 |------|---------|---------|
-| [`VAP_Framework_Specification.md`](VAP_Framework_Specification.md) | VAP Framework Specification v1.2.0, Draft 3 (normative) | `429ae7765438625adfb5ba66c380b4c2108de3c1be78e376422f25348346e415` |
+| [`VAP_Framework_Specification.md`](VAP_Framework_Specification.md) | VAP Framework Specification v1.2.0, Draft 3 (normative) | `4eef5270fbd08bc1ffbae8f08d8bcb41a7f961a70b4a8e4edb75d6f2af280583` |
 | [`VSO-VAP-CHANGE-001.md`](VSO-VAP-CHANGE-001.md) | VAP v1.1 → v1.2 Change Proposal — normative annex / change-control record (§1.7) | `ec781c81b2869f06ccb53de12927da868d7990e1eea42ba8a0369425b0089fca` |
 
 Version numbers identify documents; the SHA-256 digests above fix their exact
@@ -55,6 +55,7 @@ Earlier texts remain available in the repository history at the commits listed.
 | 2026-10-24 (disclosure / mapping follow-up) | Current commercial disclosure propagates the dated withdrawal without asserting a replacement count; CAP mapping publication acknowledged with unresolved divergences and no conformance claim. Historical G-2 and digest rows preserved. Normative requirements and fixed artifacts unchanged; experimental extensions unadopted, independent reproduction unestablished | `24a961ddd419298d02b2cc2b8015d6e058501a2411ffa9a744a218bf110ac6bf` |
 | 2026-10-25 | Draft 3 with errata E-2026-10-25 (cross-profile consistency): Internet-Draft revisions in §11.4; VCP timing, Gold target and VCP-ANCHOR attributions in §2.2.1, §5.1.2 and §5.1.3 restated as VCP v1.2 gives them; CPP Internet-Draft title correction noted in §2.2.6. No requirement, field, conformance level, registry or compatibility status changed. Earlier digest rows preserved | `da7c1b6e4bd7786459bf4ea6c25f0966314896cfed416ae3675eef97018a028b` |
 | 2026-10-27 | Draft 3 with erratum E-2026-10-27: current VCP status wording identifies specification GA and separates publication from implementation production readiness. Normative requirements, release dates and tag, compatibility status, CHANGE-001 and fixed artifacts are unchanged. Earlier digest rows preserved | `429ae7765438625adfb5ba66c380b4c2108de3c1be78e376422f25348346e415` |
+| 2026-11-02 | Add the already-published commercial-claim withdrawal directly to historical G-2, with a disposition entry. Original G-2 text and noncommercial baseline preserved. No requirement, field, conformance level, CHANGE-001, release status or historical digest row changed | `4eef5270fbd08bc1ffbae8f08d8bcb41a7f961a70b4a8e4edb75d6f2af280583` |
 
 Note (2026-10-25): the 2026-10-08 text existed only at branch commit `b2c649e`; `main` went from `1771fdb` (`67e9b2…`) to `47bbeb5` (`6f588a…`) via #9.
 
