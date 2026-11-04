@@ -180,10 +180,14 @@ def verify(envelope: dict, trusted_public_key: bytes, expected_run_id: str) -> d
                 not isinstance(row.get('observed', {}), dict) for row in rows):
             raise ValueError('malformed case observations')
         for row in rows:
+            if type(row.get('case')) is not str:
+                raise ValueError('case identifier must be a string')
             observed = row.get('observed', {})
             if any(not isinstance(observed.get(field, {}), dict)
                    for field in ('attempt', 'backend_counts')):
                 raise ValueError('malformed observed network result')
+        if type(decoded['cleanup.json'].get('returncode')) is not int:
+            raise ValueError('cleanup returncode must be an integer')
         if payload['source_commit_before'] != payload['source_commit_after']:
             raise ValueError('source changed during capture')
         if payload['source_digest_before'] != payload['source_digest_after']:

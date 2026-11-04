@@ -39,9 +39,17 @@ class BundleTests(unittest.TestCase):
         edit(summary)
         self.payload['artifacts']['summary.json'] = artifact(json.dumps(summary))
 
+    def assert_invalid_report(self, report, reason):
+        self.assertEqual(report, {
+            'integrity': 'INVALID', 'case_inventory': 'NOT_ESTABLISHED',
+            'isolation': 'NOT_ESTABLISHED', 'action': 'NOT_ESTABLISHED',
+            'external_anchor': 'NOT_ESTABLISHED', 'overall_safety': 'NOT_ASSESSED',
+            'error': 'ValueError: ' + reason})
+
     def test_signed_negative_control_is_not_safe(self):
         report = self.check()
         self.assertEqual(report['integrity'], 'VERIFIED')
+        self.assertEqual(report['case_inventory'], 'COMPLETE_RECORDED_INVENTORY')
         self.assertEqual(report['isolation'], 'VIOLATED_IN_NEGATIVE_CONTROL')
         self.assertEqual(report['action'], 'BYPASS_EFFECT_OBSERVED')
         self.assertEqual(report['overall_safety'], 'NOT_ASSESSED')
@@ -110,8 +118,22 @@ class BundleTests(unittest.TestCase):
         self.assertEqual(self.check()['case_inventory'], 'NOT_ESTABLISHED')
 
     def test_cleanup_failure_cannot_count_as_complete(self):
-        self.payload['artifacts']['cleanup.json'] = artifact('{"returncode":1}')
-        self.assertEqual(self.check()['case_inventory'], 'NOT_ESTABLISHED')
+        for returncode in (-1, 1):
+            with self.subTest(returncode=returncode):
+                self.payload['artifacts']['cleanup.json'] = artifact(json.dumps({'returncode': returncode}))
+                report = self.check()
+                self.assertEqual(report['integrity'], 'VERIFIED')
+                self.assertEqual(report['case_inventory'], 'NOT_ESTABLISHED')
+
+    def test_signed_cleanup_returncode_requires_integer_not_boolean(self):
+        for returncode in (False, True, 0.0, 1.0, '0', None, [], {}):
+            with self.subTest(returncode=returncode):
+                self.payload['artifacts']['cleanup.json'] = artifact(json.dumps({'returncode': returncode}))
+                self.assert_invalid_report(self.check(), 'cleanup returncode must be an integer')
+
+    def test_signed_cleanup_returncode_cannot_be_missing(self):
+        self.payload['artifacts']['cleanup.json'] = artifact('{}')
+        self.assert_invalid_report(self.check(), 'cleanup returncode must be an integer')
 
     def test_no_bypass_is_not_universal_isolation(self):
         self.edit_summary(lambda summary: summary['cases'][14].update(observed={}))
@@ -148,6 +170,24 @@ class BundleTests(unittest.TestCase):
     def test_malformed_signed_cases_are_rejected(self):
         self.edit_summary(lambda summary: summary.update(cases='invalid'))
         self.assertEqual(self.check()['integrity'], 'INVALID')
+
+    def test_signed_case_ids_require_strings(self):
+        for case_id in ([], {}, None, False, True, 0, 1, 0.0):
+            with self.subTest(case_id=case_id):
+                self.edit_summary(lambda summary: summary['cases'][0].update(case=case_id))
+                self.assert_invalid_report(self.check(), 'case identifier must be a string')
+
+    def test_signed_case_id_cannot_be_missing(self):
+        self.edit_summary(lambda summary: summary['cases'][0].pop('case'))
+        self.assert_invalid_report(self.check(), 'case identifier must be a string')
+
+    def test_unknown_string_case_ids_do_not_establish_inventory(self):
+        for case_id in ('', '17', '01 '):
+            with self.subTest(case_id=case_id):
+                self.edit_summary(lambda summary: summary['cases'][0].update(case=case_id))
+                report = self.check()
+                self.assertEqual(report['integrity'], 'VERIFIED')
+                self.assertEqual(report['case_inventory'], 'NOT_ESTABLISHED')
 
     def test_malformed_signed_network_result_is_rejected(self):
         self.edit_summary(lambda summary: summary['cases'][14].update(observed={'attempt': []}))
