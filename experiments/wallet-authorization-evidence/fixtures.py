@@ -79,7 +79,12 @@ def rebind_fixture(bundle: dict, *, operation_updates: dict | None = None,
     e.update(operation_digest=digest(op), policy_digest=digest(p), approval_digest=digest(a),
              revocation_digest=digest(r), control_digest=digest(control),
              actual_operation=copy.deepcopy(op), signing_payload=payload)
-    e.update(execution_updates or {})
+    # Model execution observations independently of requested operation. The
+    # helper must not copy stale operation digests into actual_operation.
+    execution_fields = dict(execution_updates or {})
+    actual_updates = execution_fields.pop("actual_operation_updates", {})
+    e["actual_operation"].update(actual_updates)
+    e.update(execution_fields)
     b = copy.deepcopy(evidence["chain_observation"]["payload"])
     b.update(operation_digest=digest(op), execution_digest=digest(e),
              chain_id=op["chain_id"], wallet=op["wallet"])

@@ -17,8 +17,8 @@ from eth_hash.auto import keccak
 from eth_tester import EthereumTester, PyEVMBackend
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from fixtures import make_fixture, rebind_fixture, resign
-from wallet_evidence import canonical_json, digest, verify_bundle
+from fixtures import make_fixture, rebind_fixture
+from wallet_evidence import canonical_json, verify_bundle
 
 
 ZERO_ADDRESS = "0x" + "00" * 20
@@ -137,6 +137,13 @@ class LocalDelegationTests(unittest.TestCase):
             },
             execution_updates={
                 "signing_payload": "0x" + payload.hex(),
+                # The tuple does not encode application identity, amount or
+                # destination. Those fields remain synthetic fixture context.
+                "actual_operation_updates": {
+                    "chain_id": str(observed_chain), "nonce": str(observed_nonce),
+                    "delegation_target": observed_target,
+                    "action": "clear_delegation" if observed_target == ZERO_ADDRESS else "delegate",
+                },
             },
             chain_updates={
                 "block_number": str(block["number"]), "block_hash": block["hash"],
@@ -147,21 +154,6 @@ class LocalDelegationTests(unittest.TestCase):
                 "delegation_code": self.chain.get_code(self.authority, receipt["block_number"]),
                 "finality": "observed_block", "observed_at": block["timestamp"],
             })
-        # rebind_fixture creates synthetic statements from the intended operation.
-        # Replace only the tuple-derived execution fields with observations before
-        # signing that statement. Application identity, amount and destination are
-        # still synthetic context: the EIP-7702 tuple does not encode those fields.
-        execution = dict(bundle["evidence"]["execution"]["payload"])
-        execution["actual_operation"] = {
-            **bundle["operation"],
-            "chain_id": str(observed_chain), "nonce": str(observed_nonce),
-            "delegation_target": observed_target,
-            "action": "clear_delegation" if observed_target == ZERO_ADDRESS else "delegate",
-        }
-        resign(bundle, "execution", execution)
-        chain_observation = dict(bundle["evidence"]["chain_observation"]["payload"])
-        chain_observation["execution_digest"] = digest(execution)
-        resign(bundle, "chain_observation", chain_observation)
         return verify_bundle(bundle, trust, evaluation_time=at)
 
     def test_delegation_executes_again_without_a_new_authorization(self):
@@ -254,7 +246,7 @@ class LocalDelegationTests(unittest.TestCase):
         self.assertTrue(all(claim["verdict"] == "VALID" for claim in report["claims"].values()))
         self.assertEqual(report["admission"], "ALLOW")  # Evidence only; executes nothing.
 
-    def assert_observed_intent_mismatch(self, receipt, *, clear=False, actual_target):
+    def assert_observed_intent_mismatch(self, receipt, *, clear=False, actual_target, actual_nonce=None):
         with mock.patch(__name__ + ".verify_bundle", wraps=verify_bundle) as checked:
             report = self.evidence_report(receipt, clear=clear)
         self.assertEqual(report["claims"]["integrity"]["verdict"], "VALID")
@@ -271,15 +263,25 @@ class LocalDelegationTests(unittest.TestCase):
         self.assertEqual(actual["delegation_target"], actual_target.lower())
         self.assertEqual(actual["action"],
                          "clear_delegation" if actual_target == ZERO_ADDRESS else "delegate")
+        self.assertEqual(actual["chain_id"], str(self.chain_id))
+        if actual_nonce is not None:
+            self.assertEqual(actual["nonce"], str(actual_nonce))
         self.assertNotEqual(actual["delegation_target"], bundle["operation"]["delegation_target"])
 
-    def test_stale_tuple_for_other_target_does_not_match_existing_intent(self):
+    def test_signed_bytes_override_cached_target_and_nonce_metadata(self):
         self.authorize(self.target)
         other_target = self.deploy(REVERT_RUNTIME)
-        receipt = self.authorize(other_target, nonce=self.chain.get_nonce(self.authority) - 1)
+        stale = self.chain.get_nonce(self.authority) - 1
+        receipt = self.authorize(other_target, nonce=stale)
         self.assertEqual(receipt["status"], 1)
         self.assertEqual(self.chain.get_code(self.authority), self.delegation_code())
-        self.assert_observed_intent_mismatch(receipt, actual_target=other_target)
+        # Cached helper metadata must not relabel the signed B tuple as A or
+        # change the nonce in the observation derived from those signed bytes.
+        record = self.authorization_records[receipt["transaction_hash"]]
+        record.update(target=self.target.lower(), nonce=stale + 10)
+        self.assert_observed_intent_mismatch(
+            receipt, actual_target=other_target, actual_nonce=stale,
+        )
 
     def test_actual_clear_tuple_cannot_be_reported_as_delegate(self):
         self.authorize(self.target)
@@ -313,6 +315,19 @@ class LocalDelegationTests(unittest.TestCase):
         self.assertEqual(report["claims"]["integrity"]["verdict"], "VALID")
         self.assertEqual(report["claims"]["delegation_state"]["verdict"], "VALID")
         # This is a state assertion, not a claim that transaction execution succeeded.
+
+    def test_signed_target_cannot_be_relabelled_as_requested_target(self):
+        # The requested target remains A, while the stale signed tuple names B.
+        # The EVM keeps A. The adapter must still report the signed B operation.
+        self.authorize(self.target)
+        alternate = self.deploy(REVERT_RUNTIME)
+        stale = self.chain.get_nonce(self.authority) - 1
+        receipt = self.authorize(alternate, nonce=stale)
+        self.assertEqual(receipt["status"], 1)
+        self.assertEqual(self.chain.get_code(self.authority), self.delegation_code())
+        self.assert_observed_intent_mismatch(
+            receipt, actual_target=alternate, actual_nonce=stale,
+        )
 
     def test_receipt_retains_its_own_authorization_binding(self):
         first_receipt = self.authorize(self.target)
