@@ -1,0 +1,5 @@
+# Isolated local EIP-7702 behavior tests; no public RPC endpoint is used.
+-r requirements.txt
+eth-tester[py-evm]==0.14.0b1
+py-evm==0.12.1b1
+eth-account==0.14.0
