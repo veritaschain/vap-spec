@@ -106,7 +106,9 @@ Version 0 requires the state observation and transaction inclusion to identify t
 
 The EVM suite checks persistent re-execution, valid clearing, stale clear tuples, chain mismatch, chain ID zero behavior, nonce advancement, and state persistence across reverted execution. Its adapter also feeds real local receipts, blocks, code and authorization bytes into signed evidence. The basic verifier's nonzero `operation.chain_id` identifies the observed chain; this is distinct from an EIP-7702 authorization tuple whose chain ID can be zero.
 
-The adapter binds each receipt to its own authorization bytes and nonce by transaction hash. Its observation and evaluation times are illustrative clocks derived from local block timestamps; they are not independently collected wall-clock evidence. Policy, approval, control statements and evidence-signing keys remain synthetic even when the EVM observations are real local execution results.
+The adapter binds each receipt to its own authorization bytes by transaction hash. It decodes the actual EIP-7702 tuple's chain ID, delegation target and nonce and derives `delegate` versus `clear_delegation` from that target. These observed fields populate `execution.actual_operation` separately from the intended operation. A different target or action produces `execution_match=INVALID`, including when a skipped tuple leaves a prior state that happens to match the intention; `delegation_state` can correctly remain `VALID` for that observed state.
+
+The tuple does not encode application identity, amount or destination; those fields remain synthetic context in this test adapter. Its observation and evaluation times are illustrative clocks derived from local block timestamps; they are not independently collected wall-clock evidence. Policy, approval, control statements and evidence-signing keys remain synthetic even when the EVM observations are real local execution results. This test-adapter binding does not extend the general verifier into an Ethereum semantic decoder or a production observer.
 
 ## Cases and expected separation
 

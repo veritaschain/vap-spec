@@ -9,6 +9,7 @@ are an error, never a silently skipped behavior check.
 import sys
 import unittest
 from pathlib import Path
+from unittest import mock
 
 import rlp
 from eth_account import Account
@@ -16,8 +17,8 @@ from eth_hash.auto import keccak
 from eth_tester import EthereumTester, PyEVMBackend
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from fixtures import make_fixture, rebind_fixture
-from wallet_evidence import canonical_json, verify_bundle
+from fixtures import make_fixture, rebind_fixture, resign
+from wallet_evidence import canonical_json, digest, verify_bundle
 
 
 ZERO_ADDRESS = "0x" + "00" * 20
@@ -103,7 +104,18 @@ class LocalDelegationTests(unittest.TestCase):
         local block timestamp, not independently measured collection timestamps.
         """
         authorization = self.authorization_records[receipt["transaction_hash"]]
-        if authorization["chain_id"] != self.chain_id:
+        # Derive the observed tuple fields from the actual signing bytes retained
+        # for this receipt, independently of the caller's intended target/action.
+        payload = authorization["payload"]
+        if payload[:1] != b"\x05":
+            raise ValueError("Expected EIP-7702 authorization signing bytes")
+        tuple_chain, tuple_target, tuple_nonce = rlp.decode(payload[1:])
+        observed_chain = int.from_bytes(tuple_chain, "big")
+        observed_nonce = int.from_bytes(tuple_nonce, "big")
+        if len(tuple_target) != 20 or rlp.encode([observed_chain, tuple_target, observed_nonce]) != payload[1:]:
+            raise ValueError("Expected a canonical EIP-7702 authorization tuple")
+        observed_target = "0x" + tuple_target.hex()
+        if observed_chain != self.chain_id:
             raise ValueError("The evidence adapter only supports chain-specific authorizations")
         self.assertEqual(receipt, self.chain.get_transaction_receipt(receipt["transaction_hash"]))
         block = self.chain.get_block_by_number(receipt["block_number"])
@@ -115,7 +127,7 @@ class LocalDelegationTests(unittest.TestCase):
                 "chain_id": str(self.chain_id), "wallet": self.authority.lower(),
                 "destination": self.authority.lower(),
                 "delegation_target": delegation_target,
-                "nonce": str(authorization["nonce"]),
+                "nonce": str(observed_nonce),
             },
             policy_updates={
                 "allowed_chains": [str(self.chain_id)],
@@ -124,7 +136,7 @@ class LocalDelegationTests(unittest.TestCase):
                 "allowed_delegation_targets": list(dict.fromkeys([delegation_target, ZERO_ADDRESS])),
             },
             execution_updates={
-                "signing_payload": "0x" + authorization["payload"].hex(),
+                "signing_payload": "0x" + payload.hex(),
             },
             chain_updates={
                 "block_number": str(block["number"]), "block_hash": block["hash"],
@@ -135,6 +147,21 @@ class LocalDelegationTests(unittest.TestCase):
                 "delegation_code": self.chain.get_code(self.authority, receipt["block_number"]),
                 "finality": "observed_block", "observed_at": block["timestamp"],
             })
+        # rebind_fixture creates synthetic statements from the intended operation.
+        # Replace only the tuple-derived execution fields with observations before
+        # signing that statement. Application identity, amount and destination are
+        # still synthetic context: the EIP-7702 tuple does not encode those fields.
+        execution = dict(bundle["evidence"]["execution"]["payload"])
+        execution["actual_operation"] = {
+            **bundle["operation"],
+            "chain_id": str(observed_chain), "nonce": str(observed_nonce),
+            "delegation_target": observed_target,
+            "action": "clear_delegation" if observed_target == ZERO_ADDRESS else "delegate",
+        }
+        resign(bundle, "execution", execution)
+        chain_observation = dict(bundle["evidence"]["chain_observation"]["payload"])
+        chain_observation["execution_digest"] = digest(execution)
+        resign(bundle, "chain_observation", chain_observation)
         return verify_bundle(bundle, trust, evaluation_time=at)
 
     def test_delegation_executes_again_without_a_new_authorization(self):
@@ -220,6 +247,52 @@ class LocalDelegationTests(unittest.TestCase):
         self.assertEqual(report["claims"]["integrity"]["verdict"], "VALID")
         self.assertEqual(report["claims"]["delegation_state"]["verdict"], "VALID")
         self.assertEqual(report["admission"], "ALLOW")  # Evidence only; executes nothing.
+
+    def test_actual_matching_delegate_observation_is_accepted(self):
+        receipt = self.authorize(self.target)
+        report = self.evidence_report(receipt)
+        self.assertTrue(all(claim["verdict"] == "VALID" for claim in report["claims"].values()))
+        self.assertEqual(report["admission"], "ALLOW")  # Evidence only; executes nothing.
+
+    def assert_observed_intent_mismatch(self, receipt, *, clear=False, actual_target):
+        with mock.patch(__name__ + ".verify_bundle", wraps=verify_bundle) as checked:
+            report = self.evidence_report(receipt, clear=clear)
+        self.assertEqual(report["claims"]["integrity"]["verdict"], "VALID")
+        self.assertEqual(report["claims"]["authorization"]["verdict"], "VALID")
+        # A prior matching state can remain after the mismatched tuple is skipped.
+        # The state observation is correct; execution/intent equality is not.
+        self.assertEqual(report["claims"]["delegation_state"]["verdict"], "VALID")
+        self.assertEqual(report["claims"]["execution_match"]["verdict"], "INVALID")
+        self.assertIn("execution:actual_operation_mismatch",
+                      report["claims"]["execution_match"]["reasons"])
+        self.assertEqual(report["admission"], "DENY")
+        bundle = checked.call_args.args[0]
+        actual = bundle["evidence"]["execution"]["payload"]["actual_operation"]
+        self.assertEqual(actual["delegation_target"], actual_target.lower())
+        self.assertEqual(actual["action"],
+                         "clear_delegation" if actual_target == ZERO_ADDRESS else "delegate")
+        self.assertNotEqual(actual["delegation_target"], bundle["operation"]["delegation_target"])
+
+    def test_stale_tuple_for_other_target_does_not_match_existing_intent(self):
+        self.authorize(self.target)
+        other_target = self.deploy(REVERT_RUNTIME)
+        receipt = self.authorize(other_target, nonce=self.chain.get_nonce(self.authority) - 1)
+        self.assertEqual(receipt["status"], 1)
+        self.assertEqual(self.chain.get_code(self.authority), self.delegation_code())
+        self.assert_observed_intent_mismatch(receipt, actual_target=other_target)
+
+    def test_actual_clear_tuple_cannot_be_reported_as_delegate(self):
+        self.authorize(self.target)
+        receipt = self.authorize(ZERO_ADDRESS, nonce=self.chain.get_nonce(self.authority) - 1)
+        self.assertEqual(receipt["status"], 1)
+        self.assertEqual(self.chain.get_code(self.authority), self.delegation_code())
+        self.assert_observed_intent_mismatch(receipt, actual_target=ZERO_ADDRESS)
+
+    def test_actual_delegate_tuple_cannot_be_reported_as_clear(self):
+        receipt = self.authorize(self.target, nonce=self.chain.get_nonce(self.authority) + 1)
+        self.assertEqual(receipt["status"], 1)
+        self.assertEqual(self.chain.get_code(self.authority), "0x")
+        self.assert_observed_intent_mismatch(receipt, clear=True, actual_target=self.target)
 
     def test_actual_stale_clear_cannot_be_replaced_by_success_receipt(self):
         self.authorize(self.target)
