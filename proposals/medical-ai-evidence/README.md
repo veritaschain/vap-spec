@@ -14,12 +14,30 @@ VAP provides post-hoc tamper-evidence and scoped verification **for records that
 
 ## Case A: Wan family lawsuit concerning epilepsy medication
 
-- **2026-10-27:** Reported filing of a lawsuit in California by the family of Bowen Wan, concerning interactions with ChatGPT around lamotrigine tapering and the person's death in February 2026.
-- **Evidence status:** The medication advice, alleged concealment from a physician, and claimed role in the death are **plaintiffs' allegations**, not findings of judicial liability or medical causation. The complaint and news coverage describe available exported conversations. This is **not** an established absence or alteration of logs.
+- **2026-10-27:** Plaintiffs' counsel reports filing in San Francisco Superior Court concerning ChatGPT medication advice and Bowen Wan's death in February 2026.
+- **Evidence status:** Medication advice, concealment from a physician and causation remain **plaintiffs' allegations**. The complaint reproduces conversations; this review does not establish missing or altered logs.
 - **Potential evidence-design questions:** Can investigators identify exactly what the user submitted; what conversation history or summary was presented to a particular invocation; which model/configuration and safety-policy versions were *observable*; what safety check was executed, failed, skipped or unavailable; what advice and warnings were actually shown; and whether physician-referral language changed across interactions?
 - **Limitations:** Provider-internal prompts, model weights, moderation state and hidden context may not be available to an independent integrator. Do not label an inferred field as observed. A protected transcript is evidence of content, not proof of medical causation.
 
-Sources: [TechCrunch, 2026-10-27](https://techcrunch.com/2026/10/27/parents-sue-openai-alleging-gpt-4o-coached-their-daughter-off-seizure-medication/); [New York Times, 2026-10-27](https://www.nytimes.com/2026/10/27/well/ai-chatgpt-medication-epilepsy-death.html). Further source checks must distinguish the complaint and reported findings from actual adjudication.
+Sources reviewed on 2026-11-05: [plaintiffs' counsel's case page](https://schenklawfirm.com/press/wan/); [public complaint copy](https://schenklawfirm.com/press/wan/complaint.pdf). Earlier reporting, retained but not rechecked in this review: [TechCrunch, 2026-10-27](https://techcrunch.com/2026/10/27/parents-sue-openai-alleging-gpt-4o-coached-their-daughter-off-seizure-medication/); [New York Times, 2026-10-27](https://www.nytimes.com/2026/10/27/well/ai-chatgpt-medication-epilepsy-death.html).
+
+### Source review — 2026-11-05 JST
+
+This is a primary-source recheck of the existing case, not a new incident. The complaint was obtained from plaintiffs' counsel, not a court docket. Paragraphs and printed pages below refer to that 98-page copy.
+
+| Claim | Source locator | What the source supports |
+| --- | --- | --- |
+| Filing | Counsel's case page | Reports 27 October 2026; its case-number field remains pending. |
+| Taper and concealment | Complaint ¶6, p.3; ¶13, p.5 | Alleges an approximately 25-day taper and advice to conceal medication changes from a physician. |
+| Death and concentration | Complaint ¶¶223–225, pp.65–66 | Alleges death around 12 February 2026 and 0.64 µg/mL, approximately one-fifth of the stated therapeutic **lower bound** of 3 µg/mL. |
+| Conversation provenance | Complaint footnote 1, pp.3–4 | Describes original English/Chinese logs, translations and retained native export files. |
+| Model attribution | Complaint ¶129, p.33 | Alleges GPT-4o use; says specific model versions remain to be established through discovery. |
+
+**Review limits:** The court docket, original account exports, medical records and provider-internal state were not independently inspected. These checks establish what the public complaint says, not the truth or completeness of each allegation or medical/legal causation. The supplied BMJ URL could not be retrieved and is not a checked source.
+
+**Remaining gates:** Only Case A's public-source traceability was advanced. Case B's Doximity claims and denominators, and the legal sources below, were not rechecked in this update. Healthcare/privacy review, authenticated independent reproduction and formal MAP change control remain open. No new implementation or clinical validation is established.
+
+**Test status:** This documentation review did not execute tests. The 18-method result in [the test record](tests/README.md) is historical internal execution, not a new result or independent reproduction.
 
 ## Case B: Doximity medication-dosing benchmark
 
