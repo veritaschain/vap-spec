@@ -17,7 +17,7 @@ import time
 import uuid
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
 from cryptography.hazmat.primitives.serialization import Encoding, PublicFormat
-from control_evidence import ARTIFACTS, artifact, digest, read_json, seal, verify, preflight
+from control_evidence import ARTIFACTS, artifact, digest, read_json, seal, verify, preflight, probe_result_record
 
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[1]
@@ -89,7 +89,7 @@ def run(output):
                 observe('preflight-evaluation-not-enforced', decision)
             try:
                 result = super().probe(role, *args)
-                observe('probe-result', {'role': role, 'arguments': list(args), 'result': result})
+                observe('probe-result', probe_result_record(role, args, result))
                 return result
             except Exception as exc:
                 observe('probe-error', {'role': role, 'arguments': list(args), 'error_type': type(exc).__name__})

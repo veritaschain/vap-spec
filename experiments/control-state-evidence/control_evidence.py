@@ -7,6 +7,7 @@ The deliberately narrow canonical encoding here is NOT RFC 8785 / VAP wire forma
 from __future__ import annotations
 import hashlib
 import json
+import math
 from typing import Any
 from cryptography.exceptions import InvalidSignature
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey, Ed25519PublicKey
@@ -44,7 +45,13 @@ def read_json(text: str) -> Any:
         return obj
     def invalid_constant(_):
         raise ValueError('invalid JSON constant')
-    return json.loads(text, object_pairs_hook=pairs, parse_constant=invalid_constant)
+    def finite_float(token):
+        value = float(token)
+        if not math.isfinite(value):
+            raise ValueError('non-finite JSON number')
+        return value
+    return json.loads(text, object_pairs_hook=pairs, parse_constant=invalid_constant,
+                      parse_float=finite_float)
 
 
 def digest(value: Any) -> str:
@@ -53,6 +60,37 @@ def digest(value: Any) -> str:
 
 def artifact(text: str) -> dict:
     return {'text': text, 'sha256': hashlib.sha256(text.encode('utf-8')).hexdigest()}
+
+
+def probe_result_record(role: str, arguments, result: dict) -> dict:
+    """Commit a reserialized parsed probe result without changing numeric values.
+
+    The inner JSON may contain finite measured timings. It is opaque text to the
+    restricted outer canonicalizer, not original wire bytes or RFC 8785 encoding.
+    No timing is dropped, rounded to an integer, or used as trusted UTC.
+    """
+    if not isinstance(result, dict):
+        raise ValueError('probe result must be an object')
+    text = json.dumps(result, ensure_ascii=False, separators=(',', ':'), allow_nan=False)
+    details = {'role': role, 'arguments': list(arguments), 'result_json': artifact(text)}
+    validate_probe_result(details)
+    return details
+
+
+def validate_probe_result(details: dict) -> dict:
+    if (not isinstance(details, dict) or set(details) != {'role', 'arguments', 'result_json'} or
+            type(details['role']) is not str or not details['role'] or
+            not isinstance(details['arguments'], list) or
+            any(type(arg) is not str for arg in details['arguments'])):
+        raise ValueError('invalid probe-result metadata')
+    entry = details['result_json']
+    if (not isinstance(entry, dict) or set(entry) != {'text', 'sha256'} or
+            type(entry['text']) is not str or artifact(entry['text']) != entry):
+        raise ValueError('probe-result bytes mismatch')
+    decoded = read_json(entry['text'])
+    if not isinstance(decoded, dict):
+        raise ValueError('probe-result JSON must be an object')
+    return decoded
 
 
 def seal(payload: dict, key: Ed25519PrivateKey) -> dict:
@@ -132,6 +170,8 @@ def verify(envelope: dict, trusted_public_key: bytes, expected_run_id: str) -> d
                     event['monotonic_ns'] < previous):
                 raise ValueError('observation binding or ordering mismatch')
             previous = event['monotonic_ns']
+            if event.get('kind') == 'probe-result':
+                validate_probe_result(event['details'])
         if any(not isinstance(value, dict) for value in decoded.values()):
             raise ValueError('artifact JSON must be an object')
         rows = decoded['summary.json'].get('cases', [])
