@@ -62,22 +62,20 @@ def artifact(text: str) -> dict:
     return {'text': text, 'sha256': hashlib.sha256(text.encode('utf-8')).hexdigest()}
 
 
-def probe_result_record(role: str, arguments, result: dict) -> dict:
+def probe_result_record(role: str, arguments, result: Any) -> dict:
     """Commit a reserialized parsed probe result without changing numeric values.
 
     The inner JSON may contain finite measured timings. It is opaque text to the
     restricted outer canonicalizer, not original wire bytes or RFC 8785 encoding.
     No timing is dropped, rounded to an integer, or used as trusted UTC.
     """
-    if not isinstance(result, dict):
-        raise ValueError('probe result must be an object')
     text = json.dumps(result, ensure_ascii=False, separators=(',', ':'), allow_nan=False)
     details = {'role': role, 'arguments': list(arguments), 'result_json': artifact(text)}
     validate_probe_result(details)
     return details
 
 
-def validate_probe_result(details: dict) -> dict:
+def validate_probe_result(details: dict) -> Any:
     if (not isinstance(details, dict) or set(details) != {'role', 'arguments', 'result_json'} or
             type(details['role']) is not str or not details['role'] or
             not isinstance(details['arguments'], list) or
@@ -88,7 +86,10 @@ def validate_probe_result(details: dict) -> dict:
             type(entry['text']) is not str or artifact(entry['text']) != entry):
         raise ValueError('probe-result bytes mismatch')
     decoded = read_json(entry['text'])
-    if not isinstance(decoded, dict):
+    if details['role'] == 'gate' and details['arguments'] == ['export']:
+        if not isinstance(decoded, list) or any(not isinstance(event, dict) for event in decoded):
+            raise ValueError('audit export must be an array of event objects')
+    elif not isinstance(decoded, dict):
         raise ValueError('probe-result JSON must be an object')
     return decoded
 

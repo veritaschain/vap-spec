@@ -110,6 +110,33 @@ class ProbeSerializationTests(unittest.TestCase):
         self.result['result']['total_ms'] = 999
         self.assertEqual(validate_probe_result(self.details)['result']['total_ms'], 27.080375)
 
+    def test_gate_export_event_array_is_preserved(self):
+        events = [{'event_id': 'synthetic-1', 'elapsed_ms': 0.125},
+                  {'event_id': 'synthetic-2', 'elapsed_ms': 1.5}]
+        self.details = probe_result_record('gate', ('export',), events)
+        self.assertEqual(validate_probe_result(self.details), events)
+        self.assertEqual(self.check()['integrity'], 'VERIFIED')
+
+    def test_empty_export_array_is_captured_not_promoted(self):
+        self.details = probe_result_record('gate', ('export',), [])
+        self.assertEqual(validate_probe_result(self.details), [])
+        self.assertEqual(self.check()['overall_safety'], 'NOT_ASSESSED')
+
+    def test_export_object_is_not_an_event_array(self):
+        with self.assertRaises(ValueError):
+            probe_result_record('gate', ('export',), {'events': []})
+
+    def test_export_nonobject_elements_rejected(self):
+        for value in ([None], [1], ['event'], [[]]):
+            with self.subTest(value=value), self.assertRaises(ValueError):
+                probe_result_record('gate', ('export',), value)
+
+    def test_array_exception_is_limited_to_exact_gate_export(self):
+        for role, args in (('agent', ('export',)), ('gate', ('counts',)),
+                           ('gate', ('export', 'extra'))):
+            with self.subTest(role=role, args=args), self.assertRaises(ValueError):
+                probe_result_record(role, args, [])
+
 
 if __name__ == '__main__':
     unittest.main()
