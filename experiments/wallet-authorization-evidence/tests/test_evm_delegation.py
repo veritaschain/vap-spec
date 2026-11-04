@@ -110,6 +110,17 @@ class LocalDelegationTests(unittest.TestCase):
         at = block["timestamp"] + 1
         bundle, trust, _ = make_fixture("clear_observed" if clear else "authorized", at=at)
         delegation_target = ZERO_ADDRESS if clear else (target or self.target).lower()
+        # The intended operation and observed signed authorization are separate.
+        # A successful transaction receipt does not prove the signed tuple matched
+        # the requested delegation target (for example with a stale nonce).
+        signed_target = authorization["target"]
+        actual_operation = dict(bundle["operation"])
+        actual_operation.update({
+            "chain_id": str(self.chain_id), "wallet": self.authority.lower(),
+            "destination": self.authority.lower(),
+            "delegation_target": signed_target,
+            "nonce": str(authorization["nonce"]),
+        })
         rebind_fixture(bundle,
             operation_updates={
                 "chain_id": str(self.chain_id), "wallet": self.authority.lower(),
@@ -125,6 +136,7 @@ class LocalDelegationTests(unittest.TestCase):
             },
             execution_updates={
                 "signing_payload": "0x" + authorization["payload"].hex(),
+                "actual_operation": actual_operation,
             },
             chain_updates={
                 "block_number": str(block["number"]), "block_hash": block["hash"],
@@ -240,6 +252,19 @@ class LocalDelegationTests(unittest.TestCase):
         self.assertEqual(report["claims"]["integrity"]["verdict"], "VALID")
         self.assertEqual(report["claims"]["delegation_state"]["verdict"], "VALID")
         # This is a state assertion, not a claim that transaction execution succeeded.
+
+    def test_signed_target_cannot_be_relabelled_as_requested_target(self):
+        # The requested target remains A, while the stale signed tuple names B.
+        # The EVM keeps A. The adapter must still report the signed B operation.
+        self.authorize(self.target)
+        alternate = self.deploy(REVERT_RUNTIME)
+        stale = self.chain.get_nonce(self.authority) - 1
+        receipt = self.authorize(alternate, nonce=stale)
+        self.assertEqual(receipt["status"], 1)
+        self.assertEqual(self.chain.get_code(self.authority), self.delegation_code())
+        report = self.evidence_report(receipt, target=self.target)
+        self.assertEqual(report["claims"]["execution_match"]["verdict"], "INVALID")
+        self.assertEqual(report["admission"], "DENY")
 
     def test_receipt_retains_its_own_authorization_binding(self):
         first_receipt = self.authorize(self.target)
