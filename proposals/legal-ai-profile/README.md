@@ -44,8 +44,16 @@ service page describes case management, document drafting, fact-checking, and op
 The [AILEX standardization page](https://ailex.co.jp/ietf/) explains the LAP proposal and its implementation status.
 Use the service documentation for currently available product features and the reference draft for the profile design.
 
+### AILEX relationship disclosure
+
+Tokachi Kamimura is the representative of both [AILEX LLC](https://ailex.co.jp/company/) and
+[VeritasChain Co., Ltd.](https://veritaschain.org/company/), which operates VSO.
+The [LAP -05 editor](https://datatracker.ietf.org/doc/draft-ailex-vap-legal-ai-provenance/05/)
+lists AILEX LLC / VSO as the affiliation. AILEX has a commercial interest in this product reference;
+it is not evidence of adoption by an independent third party.
+
 Appendix C of `-05` reports no independently validated conforming implementation of that revision. This introduction
-makes no LAP or VAP conformance or certification claim for AILEX.
+makes no LAP or VAP conformance, certification, or independently validated implementation claim for AILEX.
 
 ## External AI service boundaries
 
