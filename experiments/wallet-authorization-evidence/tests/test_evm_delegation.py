@@ -114,13 +114,6 @@ class LocalDelegationTests(unittest.TestCase):
         # A successful transaction receipt does not prove the signed tuple matched
         # the requested delegation target (for example with a stale nonce).
         signed_target = authorization["target"]
-        actual_operation = dict(bundle["operation"])
-        actual_operation.update({
-            "chain_id": str(self.chain_id), "wallet": self.authority.lower(),
-            "destination": self.authority.lower(),
-            "delegation_target": signed_target,
-            "nonce": str(authorization["nonce"]),
-        })
         rebind_fixture(bundle,
             operation_updates={
                 "chain_id": str(self.chain_id), "wallet": self.authority.lower(),
@@ -136,7 +129,7 @@ class LocalDelegationTests(unittest.TestCase):
             },
             execution_updates={
                 "signing_payload": "0x" + authorization["payload"].hex(),
-                "actual_operation": actual_operation,
+                "actual_operation_updates": {"delegation_target": signed_target},
             },
             chain_updates={
                 "block_number": str(block["number"]), "block_hash": block["hash"],
