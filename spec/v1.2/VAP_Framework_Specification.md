@@ -5,7 +5,7 @@
 **Document ID:** VSO-VAP-SPEC-001
 **Status:** Draft Specification (Draft 3)
 **Version:** 1.2.0
-**Date:** 2026-09-01 (publication folds G-2, H-2, A-4 applied 2026-09-28; post-publication folds L-1, L-2, L-3, H-3, H-4, H-5 applied 2026-10-06; post-publication fold B-5 corrected 2026-10-09; CAB-independence errata applied 2026-10-21 JST; VCP compatibility-status corrections dated 2026-10-24 JST, §5.1, §10.4, Declaration and Appendix B; commercial disclosure and CAP mapping-status follow-up dated 2026-10-24 JST; cross-profile consistency errata E-2026-10-25 applied 2026-10-25 JST; publication-status clarification E-2026-10-27 dated 2026-10-27 JST; see Appendix D and ERRATA)
+**Date:** 2026-09-01 (publication folds G-2, H-2, A-4 applied 2026-09-28; post-publication folds L-1, L-2, L-3, H-3, H-4, H-5 applied 2026-10-06; post-publication fold B-5 corrected 2026-10-09; CAB-independence errata applied 2026-10-21 JST; VCP compatibility-status corrections dated 2026-10-24 JST, §5.1, §10.4, Declaration and Appendix B; commercial disclosure and CAP mapping-status follow-up dated 2026-10-24 JST; cross-profile consistency errata E-2026-10-25 applied 2026-10-25 JST; publication-status clarification E-2026-10-27 dated 2026-10-27 JST; vendor-neutrality wording E-2026-11-05 dated 2026-11-05 JST; see Appendix D and ERRATA)
 **Supersedes:** Draft 2 (2026-06-10). Draft 3 folds the cross-profile alignment
 review **VSO-VAP-ALIGN-001** into this document. Per VSO practice, pre-release
 review findings fold directly into the draft with a disposition record and do
@@ -1231,7 +1231,7 @@ VeritasChain Standards Organization (VSO)
     └── Regulatory Liaisons
 ```
 
-VSO develops and maintains specifications and defines conformance requirements. The scheme requires that VSO not perform audits or issue certifications, and that any CAB that does so be independent of the scheme owner. VSO maintains strict vendor neutrality (VSO Non-Endorsement Policy). VSO is operated by VeritasChain Co., Ltd.
+VSO develops and maintains specifications and defines conformance requirements. The scheme requires that VSO not perform audits or issue certifications, and that any CAB that does so be independent of the scheme owner. VSO aims for vendor neutrality through public procedures and conflict-of-interest management (VSO Non-Endorsement Policy). VSO is operated by VeritasChain Co., Ltd.
 
 **Current registry (confirmed 2026-10-21 JST).** The CAB registry at <https://veritaschain.org/certified/cab/> lists one CAB: VeritasChain Co., Ltd. That company operates VSO and is not independent of the scheme owner. No independent CAB is registered. This registry fact does not relax technical independent verification of evidence, independent external anchoring, or the institutional-independence requirement stated above.
 
@@ -1466,6 +1466,7 @@ Application dates, and the EU AI Act classifications cited in §2.2, are stated 
 | 1.2.0 (Draft 3, disclosure and mapping status) | 2026-10-24 | Current commercial disclosure follows the dated withdrawal; no replacement commercial count is asserted. CAP mapping status acknowledges the published review draft without claiming conformance. The earlier G-2 row remains a historical record, with a new Appendix D follow-up. No normative requirement, legal-scope statement, CHANGE-001, implementation, signed data, fixed distribution, DOC-SYNC or K3 change; experimental extensions remain unadopted and independent third-party reproduction unestablished. This is not a §10.3 vote | VSO |
 | 1.2.0 (Draft 3, errata E-2026-10-25) | 2026-10-25 | Cross-profile consistency errata: §11.4 lists the Internet-Draft revisions current on 2026-10-25 (four posted on 2026-10-24); §2.2.1 and §5.1.3 restate VCP timing and the Gold target as VCP §2.1 gives them; §5.1.2 records the `Payload.VCP-ANCHOR` payload namespace used by VCP v1.2 §3.2.3; §2.2.6 records the corrected CPP Internet-Draft title. No requirement identifier, field, wire format, conformance level, release status or compatibility status changes. See ERRATA. This row is not a §10.3 change-proposal vote | VSO |
 | 1.2.0 (Draft 3, errata E-2026-10-27) | 2026-10-27 | §5.1 and the current repository status table describe VCP GA as specification publication, not implementation production readiness. Current status wording only; all normative requirements, VCP release dates and tag, §10.4 compatibility status, CHANGE-001, implementations and fixed artifacts are unchanged. Earlier history is preserved. See ERRATA. This row is not a §10.3 change-proposal vote | VSO |
+| 1.2.0 (Draft 3, errata E-2026-11-05) | 2026-11-05 | §10.1 and the repository README no longer say that VSO maintains strict vendor neutrality. VSO aims for vendor neutrality through public procedures and conflict-of-interest management, and is operated by VeritasChain Co., Ltd. The requirement that a CAB be independent of the scheme owner is unchanged, as is the statement that the only registered CAB is that company and is not independent of the scheme owner. No requirement identifier, field, wire format, or conformance level changes. See ERRATA. This row is not a §10.3 change-proposal vote | VSO |
 | 1.2.0 (Draft 2) | 2026-06-10 | Per VSO-VAP-CHANGE-001: Cryptographic Sequence Verifiability abstraction (INT-003/004/004a); external anchoring MUST at all levels (INT-006) with anchor continuity (INT-007); Completeness Invariant (INT-008); bounded RECOVERY (INT-009); ERASURE event + legal scope clause; policy identification; XREF (TRC-005); SCITT/COSE opt-in alignment; PQC EXPERIMENTAL status (ML-DSA/FN-DSA), hybrid signatures, RSA-2048 deprecation; version compatibility management; profile registry update (VCP v1.2 RC1, CAP v1.0, CPP v1.0, IAP); Legal Scope and Non-Guarantee Statement | VSO Technical Committee |
 
 ---
@@ -1603,6 +1604,21 @@ The sentences this errata replaces were:
 The status label this erratum replaces was:
 
 - §5.1: "v1.2 Released (Production Ready, GA 2026-07-06; tag `v1.2.0`)".
+
+### E-2026-11-05
+
+| Field | Entry |
+| --- | --- |
+| ID | E-2026-11-05 |
+| Date | 2026-11-05 JST |
+| Affected sections | §10.1 (the vendor-neutrality sentence in the paragraph under the structure diagram); repository `README.md` (the same identity sentence) |
+| Reason | Those sentences said, in the present tense, that VSO maintains strict vendor neutrality. VSO aims for vendor neutrality through public procedures and conflict-of-interest management. VSO is operated by VeritasChain Co., Ltd. The only registered CAB is that company, and it is not independent of the scheme owner |
+| What is unchanged | The requirement that a CAB be independent of the scheme owner; the current-registry paragraph under §10.1; technical independent verification of evidence; independent external anchoring. No requirement identifier, field, wire format, or conformance level changes. This is not a vote under §10.3 |
+
+The sentences this erratum replaces were:
+
+- §10.1: "VSO maintains strict vendor neutrality (VSO Non-Endorsement Policy)."
+- `README.md`: "VSO maintains strict vendor neutrality."
 
 ---
 
