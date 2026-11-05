@@ -100,7 +100,7 @@ The normative registry above is unchanged; the following entry introduces publis
 | Assessment programs | Certification authority |
 | Open standard | Endorsement of any vendor |
 
-**VSO maintains strict vendor neutrality.** See [VSO Non-Endorsement Policy](https://veritaschain.org/vso/policies/). VAP v1.2 §10.1 requires conformity assessment to be performed by Conformity Assessment Bodies that are independent of the scheme owner, not by VSO. The only CAB in the [registry](https://veritaschain.org/certified/cab/) is VeritasChain Co., Ltd., which operates VSO and is not independent of the scheme owner (errata 2026-10-21 JST).
+**VSO aims for vendor neutrality through public procedures and conflict-of-interest management.** VSO is operated by VeritasChain Co., Ltd. See [VSO Non-Endorsement Policy](https://veritaschain.org/vso/policies/). VAP v1.2 §10.1 requires conformity assessment to be performed by Conformity Assessment Bodies that are independent of the scheme owner, not by VSO. The only CAB in the [registry](https://veritaschain.org/certified/cab/) is VeritasChain Co., Ltd., which operates VSO and is not independent of the scheme owner (errata 2026-10-21 JST).
 
 ---
 
