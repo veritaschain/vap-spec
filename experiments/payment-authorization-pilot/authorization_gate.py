@@ -486,10 +486,17 @@ class AuthorizedAdapter:
         except (ValueError, TypeError, UnicodeError):
             result = self._adapter._result("REJECTED", None, "request_schema_or_scope_rejected")
             return {**result, "mock_admission": self._unavailable_admission(None, "native_request_unusable")}
+        return self._submit_prepared(snapshot, raw, evidence)
+
+    def _submit_prepared(self, snapshot: dict, raw: bytes, evidence: Any = None, *,
+                         before_dispatch: Callable[[dict, bytes], None] | None = None,
+                         after_terminal_receipt: Callable[[dict, bytes, bytes], None] | None = None) -> dict:
+        """Code-owned per-call extensions; no callbacks enter from evidence."""
         original, problems = _freeze_evidence(evidence)
         try:
             result = self._adapter._submit_prepared(snapshot, raw,
-                admit_new_claim=self._admission_callback(original, problems))
+                admit_new_claim=self._admission_callback(original, problems),
+                before_dispatch=before_dispatch, after_terminal_receipt=after_terminal_receipt)
         except AdmissionBlocked as exc:
             result = self._adapter._result("REJECTED", bytes_digest(raw), "mock_admission_not_committed_no_post")
             return {**result, "mock_admission": {**exc.decision, "proof_digest": None}}
