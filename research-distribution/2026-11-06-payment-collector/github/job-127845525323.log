@@ -1,0 +1,1332 @@
+﻿2026-11-06T10:35:49.0159167Z Current runner version: '2.338.2'
+2026-11-06T10:35:49.0185215Z ##[group]Runner Image Provisioner
+2026-11-06T10:35:49.0186246Z Hosted Compute Agent
+2026-11-06T10:35:49.0186871Z Version: 20261028.624
+2026-11-06T10:35:49.0187507Z Commit: 54898b74c23fde5556c9b3c3a2290865feef0dfe
+2026-11-06T10:35:49.0188329Z Build Date: 2026-10-28T21:51:42Z
+2026-11-06T10:35:49.0189317Z Worker ID: {8ef869eb-8033-4e3c-8d16-33979a6794d8}
+2026-11-06T10:35:49.0190093Z Region: westus
+2026-11-06T10:35:49.0190719Z Cloud: Azure
+2026-11-06T10:35:49.0191283Z ##[endgroup]
+2026-11-06T10:35:49.0192875Z ##[group]Operating System
+2026-11-06T10:35:49.0193537Z Ubuntu
+2026-11-06T10:35:49.0194142Z 24.04.5
+2026-11-06T10:35:49.0194743Z LTS
+2026-11-06T10:35:49.0195285Z ##[endgroup]
+2026-11-06T10:35:49.0195908Z ##[group]Runner Image
+2026-11-06T10:35:49.0196569Z Image: ubuntu-24.04
+2026-11-06T10:35:49.0197505Z Version: 20261101.360.1
+2026-11-06T10:35:49.0199330Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261101.360/images/ubuntu/Ubuntu2404-Readme.md
+2026-11-06T10:35:49.0201131Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261101.360
+2026-11-06T10:35:49.0202124Z ##[endgroup]
+2026-11-06T10:35:49.0203356Z ##[group]GITHUB_TOKEN Permissions
+2026-11-06T10:35:49.0205305Z Contents: read
+2026-11-06T10:35:49.0205928Z Metadata: read
+2026-11-06T10:35:49.0206665Z ##[endgroup]
+2026-11-06T10:35:49.0209195Z Secret source: Actions
+2026-11-06T10:35:49.0210275Z Cache mode: write
+2026-11-06T10:35:49.0211000Z Prepare workflow directory
+2026-11-06T10:35:49.0560573Z Prepare all required actions
+2026-11-06T10:35:49.0610679Z Getting action download info
+2026-11-06T10:35:49.4308343Z Download action repository 'actions/checkout@11d5960a326750d5838078e36cf38b85af677262' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-11-06T10:35:49.5311253Z Download action repository 'actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-11-06T10:35:49.6068988Z Download action repository 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-11-06T10:35:49.8285284Z Complete job name: collect-and-recover
+2026-11-06T10:35:49.9185377Z ##[group]Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+2026-11-06T10:35:49.9186488Z with:
+2026-11-06T10:35:49.9186959Z   repository: veritaschain/vap-spec
+2026-11-06T10:35:49.9191361Z   token: ***
+2026-11-06T10:35:49.9191828Z   ssh-strict: true
+2026-11-06T10:35:49.9192277Z   ssh-user: git
+2026-11-06T10:35:49.9192731Z   persist-credentials: true
+2026-11-06T10:35:49.9193277Z   clean: true
+2026-11-06T10:35:49.9193785Z   sparse-checkout-cone-mode: true
+2026-11-06T10:35:49.9194369Z   fetch-depth: 1
+2026-11-06T10:35:49.9194808Z   fetch-tags: false
+2026-11-06T10:35:49.9195260Z   show-progress: true
+2026-11-06T10:35:49.9195710Z   lfs: false
+2026-11-06T10:35:49.9196139Z   submodules: false
+2026-11-06T10:35:49.9196654Z   set-safe-directory: true
+2026-11-06T10:35:49.9197173Z   allow-unsafe-pr-checkout: false
+2026-11-06T10:35:49.9198127Z ##[endgroup]
+2026-11-06T10:35:50.2003615Z Syncing repository: veritaschain/vap-spec
+2026-11-06T10:35:50.2005646Z ##[group]Getting Git version info
+2026-11-06T10:35:50.2006398Z Working directory is '/home/runner/work/vap-spec/vap-spec'
+2026-11-06T10:35:50.2007429Z [command]/usr/bin/git version
+2026-11-06T10:35:50.2111496Z git version 2.56.0
+2026-11-06T10:35:50.2134318Z ##[endgroup]
+2026-11-06T10:35:50.2153218Z Temporarily overriding HOME='/home/runner/work/_temp/7de24fe6-2504-419c-af44-df65d5999797' before making global git config changes
+2026-11-06T10:35:50.2155840Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-06T10:35:50.2170256Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/vap-spec/vap-spec
+2026-11-06T10:35:50.2227922Z Deleting the contents of '/home/runner/work/vap-spec/vap-spec'
+2026-11-06T10:35:50.2230217Z ##[group]Initializing the repository
+2026-11-06T10:35:50.2231295Z [command]/usr/bin/git init /home/runner/work/vap-spec/vap-spec
+2026-11-06T10:35:50.2352006Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-06T10:35:50.2353283Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-06T10:35:50.2354255Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-06T10:35:50.2355013Z hint: call:
+2026-11-06T10:35:50.2355434Z hint:
+2026-11-06T10:35:50.2355989Z hint: 	git config --global init.defaultBranch <name>
+2026-11-06T10:35:50.2356619Z hint:
+2026-11-06T10:35:50.2357231Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-06T10:35:50.2358226Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-06T10:35:50.2359369Z hint:
+2026-11-06T10:35:50.2359800Z hint: 	git branch -m <name>
+2026-11-06T10:35:50.2366304Z hint:
+2026-11-06T10:35:50.2367023Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-06T10:35:50.2369059Z Initialized empty Git repository in /home/runner/work/vap-spec/vap-spec/.git/
+2026-11-06T10:35:50.2402582Z [command]/usr/bin/git remote add origin https://github.com/veritaschain/vap-spec
+2026-11-06T10:35:50.2441169Z ##[endgroup]
+2026-11-06T10:35:50.2442005Z ##[group]Disabling automatic garbage collection
+2026-11-06T10:35:50.2446019Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-06T10:35:50.2480773Z ##[endgroup]
+2026-11-06T10:35:50.2481531Z ##[group]Setting up auth
+2026-11-06T10:35:50.2489541Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-06T10:35:50.2531799Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-06T10:35:50.2943572Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-06T10:35:50.2994492Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-06T10:35:50.3271486Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-06T10:35:50.3318472Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-06T10:35:50.3568962Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-06T10:35:50.3618765Z ##[endgroup]
+2026-11-06T10:35:50.3620355Z ##[group]Fetching the repository
+2026-11-06T10:35:50.3632555Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +ce9c968951c0c92a3b5cf9d5a9a587506f8a700d:refs/remotes/origin/main
+2026-11-06T10:35:51.2629165Z From https://github.com/veritaschain/vap-spec
+2026-11-06T10:35:51.2665665Z  * [new ref]         ce9c968951c0c92a3b5cf9d5a9a587506f8a700d -> origin/main
+2026-11-06T10:35:51.2672374Z ##[endgroup]
+2026-11-06T10:35:51.2674003Z ##[group]Determining the checkout info
+2026-11-06T10:35:51.2675897Z ##[endgroup]
+2026-11-06T10:35:51.2677079Z [command]/usr/bin/git sparse-checkout disable
+2026-11-06T10:35:51.2719780Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-06T10:35:51.2766116Z ##[group]Checking out the ref
+2026-11-06T10:35:51.2773118Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-11-06T10:35:51.3487085Z Switched to a new branch 'main'
+2026-11-06T10:35:51.3491285Z branch 'main' set up to track 'origin/main'.
+2026-11-06T10:35:51.3502193Z ##[endgroup]
+2026-11-06T10:35:51.3554681Z [command]/usr/bin/git log -1 --format=%H
+2026-11-06T10:35:51.3589894Z ce9c968951c0c92a3b5cf9d5a9a587506f8a700d
+2026-11-06T10:35:51.4074301Z ##[group]Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+2026-11-06T10:35:51.4076062Z with:
+2026-11-06T10:35:51.4077258Z   python-version: 3.12
+2026-11-06T10:35:51.4078360Z   check-latest: false
+2026-11-06T10:35:51.4088231Z   token: ***
+2026-11-06T10:35:51.4089541Z   update-environment: true
+2026-11-06T10:35:51.4090706Z   allow-prereleases: false
+2026-11-06T10:35:51.4091836Z   freethreaded: false
+2026-11-06T10:35:51.4092884Z ##[endgroup]
+2026-11-06T10:35:51.5586019Z ##[group]Installed versions
+2026-11-06T10:35:51.5680019Z (node:2357) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-06T10:35:51.5680917Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-06T10:35:51.5681780Z Successfully set up CPython (3.12.16)
+2026-11-06T10:35:51.5682572Z ##[endgroup]
+2026-11-06T10:35:51.5839655Z ##[group]Run python -m pip install -r experiments/payment-collector-pilot/requirements.txt
+2026-11-06T10:35:51.5840557Z [36;1mpython -m pip install -r experiments/payment-collector-pilot/requirements.txt[0m
+2026-11-06T10:35:51.5876521Z shell: /usr/bin/bash -e {0}
+2026-11-06T10:35:51.5876858Z env:
+2026-11-06T10:35:51.5877190Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-06T10:35:51.5877705Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+2026-11-06T10:35:51.5878207Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-06T10:35:51.5878997Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-06T10:35:51.5879467Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-06T10:35:51.5879909Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib
+2026-11-06T10:35:51.5880292Z ##[endgroup]
+2026-11-06T10:35:52.7025143Z Collecting cryptography<51,>=44 (from -r /home/runner/work/vap-spec/vap-spec/experiments/payment-runtime-pilot/requirements.txt (line 1))
+2026-11-06T10:35:52.7492371Z   Downloading cryptography-50.0.2-cp311-abi3-manylinux_2_34_x86_64.whl.metadata (4.4 kB)
+2026-11-06T10:35:52.8570938Z Collecting cffi>=2.0.0 (from cryptography<51,>=44->-r /home/runner/work/vap-spec/vap-spec/experiments/payment-runtime-pilot/requirements.txt (line 1))
+2026-11-06T10:35:52.8604624Z   Downloading cffi-2.1.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.5 kB)
+2026-11-06T10:35:52.8722013Z Collecting pycparser (from cffi>=2.0.0->cryptography<51,>=44->-r /home/runner/work/vap-spec/vap-spec/experiments/payment-runtime-pilot/requirements.txt (line 1))
+2026-11-06T10:35:52.8752232Z   Downloading pycparser-3.12-py3-none-any.whl.metadata (9.7 kB)
+2026-11-06T10:35:52.8826123Z Downloading cryptography-50.0.2-cp311-abi3-manylinux_2_34_x86_64.whl (4.8 MB)
+2026-11-06T10:35:52.9273494Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.8/4.8 MB 192.3 MB/s  0:00:00
+2026-11-06T10:35:52.9305561Z Downloading cffi-2.1.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (221 kB)
+2026-11-06T10:35:52.9363353Z Downloading pycparser-3.12-py3-none-any.whl (62 kB)
+2026-11-06T10:35:52.9975226Z Installing collected packages: pycparser, cffi, cryptography
+2026-11-06T10:35:53.2913686Z 
+2026-11-06T10:35:53.2926490Z Successfully installed cffi-2.1.1 cryptography-50.0.2 pycparser-3.12
+2026-11-06T10:35:53.2936305Z 
+2026-11-06T10:35:53.2936801Z [notice] A new release of pip is available: 26.2.2 -> 26.3
+2026-11-06T10:35:53.2938272Z [notice] To update, run: pip install --upgrade pip
+2026-11-06T10:35:53.3498193Z ##[group]Run python -W error::ResourceWarning -m unittest discover -s experiments/payment-collector-pilot/tests -v
+2026-11-06T10:35:53.3499422Z [36;1mpython -W error::ResourceWarning -m unittest discover -s experiments/payment-collector-pilot/tests -v[0m
+2026-11-06T10:35:53.3521313Z shell: /usr/bin/bash -e {0}
+2026-11-06T10:35:53.3521579Z env:
+2026-11-06T10:35:53.3521849Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-06T10:35:53.3522302Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+2026-11-06T10:35:53.3522742Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-06T10:35:53.3523134Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-06T10:35:53.3523753Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-06T10:35:53.3524143Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib
+2026-11-06T10:35:53.3524471Z ##[endgroup]
+2026-11-06T10:35:54.0610028Z test_collector_rejects_malformed_or_mismatched_original_packages_over_http (test_payment_collector.PaymentCollectorTests.test_collector_rejects_malformed_or_mismatched_original_packages_over_http) ... ok
+2026-11-06T10:35:54.7052686Z test_collector_sigkill_after_commit_recovers_same_record_without_payment (test_payment_collector.PaymentCollectorTests.test_collector_sigkill_after_commit_recovers_same_record_without_payment) ... ok
+2026-11-06T10:35:55.3473406Z test_collector_sigkill_after_receipt_commit_keeps_financial_result_and_stable_ack (test_payment_collector.PaymentCollectorTests.test_collector_sigkill_after_receipt_commit_keeps_financial_result_and_stable_ack) ... ok
+2026-11-06T10:35:55.7617822Z test_committed_admission_ack_loss_cannot_rearm_initial_payment (test_payment_collector.PaymentCollectorTests.test_committed_admission_ack_loss_cannot_rearm_initial_payment) ... ok
+2026-11-06T10:35:56.2712222Z test_concurrent_initialized_clients_have_one_pre_path_and_original_proof (test_payment_collector.PaymentCollectorTests.test_concurrent_initialized_clients_have_one_pre_path_and_original_proof) ... ok
+2026-11-06T10:35:56.8904191Z test_controlled_ack_reply_faults_after_real_commit_never_allow_payment (test_payment_collector.PaymentCollectorTests.test_controlled_ack_reply_faults_after_real_commit_never_allow_payment) ... ok
+2026-11-06T10:35:57.4050663Z test_current_collector_epoch_fences_old_process_but_preserves_original_ack (test_payment_collector.PaymentCollectorTests.test_current_collector_epoch_fences_old_process_but_preserves_original_ack) ... ok
+2026-11-06T10:35:58.7666467Z test_financial_terminal_outcome_survives_actual_post_effect_collector_outage (test_payment_collector.PaymentCollectorTests.test_financial_terminal_outcome_survives_actual_post_effect_collector_outage) ... ok
+2026-11-06T10:35:59.2256904Z test_fresh_missing_readback_does_not_turn_historical_ack_into_present_retention (test_payment_collector.PaymentCollectorTests.test_fresh_missing_readback_does_not_turn_historical_ack_into_present_retention) ... ok
+2026-11-06T10:36:00.0029008Z test_legacy_raw_and_authorized_claims_cannot_gain_pre_dispatch_coverage (test_payment_collector.PaymentCollectorTests.test_legacy_raw_and_authorized_claims_cannot_gain_pre_dispatch_coverage) ... ok
+2026-11-06T10:36:00.2252902Z test_missing_authorization_never_contacts_collector_or_payment_provider (test_payment_collector.PaymentCollectorTests.test_missing_authorization_never_contacts_collector_or_payment_provider) ... ok
+2026-11-06T10:36:00.7052471Z test_original_admission_is_collected_before_only_payment_and_receipt_after (test_payment_collector.PaymentCollectorTests.test_original_admission_is_collected_before_only_payment_and_receipt_after) ... ok
+2026-11-06T10:36:01.2092234Z test_provider_ack_loss_requires_native_get_then_evidence_only_receipt_recovery (test_payment_collector.PaymentCollectorTests.test_provider_ack_loss_requires_native_get_then_evidence_only_receipt_recovery) ... ok
+2026-11-06T10:36:01.4525172Z test_reads_and_recovery_of_unsubmitted_request_never_create_a_claim (test_payment_collector.PaymentCollectorTests.test_reads_and_recovery_of_unsubmitted_request_never_create_a_claim) ... ok
+2026-11-06T10:36:02.0480395Z test_real_ack_verified_then_local_journal_lock_cannot_authorize_payment (test_payment_collector.PaymentCollectorTests.test_real_ack_verified_then_local_journal_lock_cannot_authorize_payment) ... ok
+2026-11-06T10:36:02.4525928Z test_real_collection_replay_keeps_original_bytes_ack_and_conflict_after_restart (test_payment_collector.PaymentCollectorTests.test_real_collection_replay_keeps_original_bytes_ack_and_conflict_after_restart) ... ok
+2026-11-06T10:36:02.9034095Z test_real_collector_database_lock_prevents_payment_but_keeps_claim (test_payment_collector.PaymentCollectorTests.test_real_collector_database_lock_prevents_payment_but_keeps_claim) ... ok
+2026-11-06T10:36:03.4633616Z test_reconciliation_and_evidence_recovery_own_request_across_real_http_calls (test_payment_collector.PaymentCollectorTests.test_reconciliation_and_evidence_recovery_own_request_across_real_http_calls) ... ok
+2026-11-06T10:36:03.6869084Z test_rejected_owned_snapshot_is_terminal_even_if_caller_becomes_valid (test_payment_collector.PaymentCollectorTests.test_rejected_owned_snapshot_is_terminal_even_if_caller_becomes_valid) ... ok
+2026-11-06T10:36:04.0727421Z test_sigkill_after_claim_before_collection_retains_consumption (test_payment_collector.PaymentCollectorTests.test_sigkill_after_claim_before_collection_retains_consumption) ... ok
+2026-11-06T10:36:04.5029452Z test_sigkill_after_pre_dispatch_persistence_never_resumes_payment_send (test_payment_collector.PaymentCollectorTests.test_sigkill_after_pre_dispatch_persistence_never_resumes_payment_send) ... ok
+2026-11-06T10:36:04.9283047Z test_signed_matching_ack_without_valid_fresh_readback_cannot_allow_payment (test_payment_collector.PaymentCollectorTests.test_signed_matching_ack_without_valid_fresh_readback_cannot_allow_payment) ... ok
+2026-11-06T10:36:05.3574355Z test_unavailable_collector_consumes_claim_and_recovery_never_sends_payment (test_payment_collector.PaymentCollectorTests.test_unavailable_collector_consumes_claim_and_recovery_never_sends_payment) ... ok
+2026-11-06T10:36:05.7448910Z test_unreadable_or_tampered_local_custody_never_asserts_verified_pre_dispatch (test_payment_collector.PaymentCollectorTests.test_unreadable_or_tampered_local_custody_never_asserts_verified_pre_dispatch) ... ok
+2026-11-06T10:36:05.9967656Z test_wrong_collector_pin_rejects_genuine_signed_ack_before_payment (test_payment_collector.PaymentCollectorTests.test_wrong_collector_pin_rejects_genuine_signed_ack_before_payment) ... ok
+2026-11-06T10:36:05.9969605Z 
+2026-11-06T10:36:05.9969882Z ----------------------------------------------------------------------
+2026-11-06T10:36:05.9970503Z Ran 25 tests in 12.268s
+2026-11-06T10:36:05.9970745Z 
+2026-11-06T10:36:05.9970882Z OK
+2026-11-06T10:36:06.0225491Z ##[group]Run python -O -W error::ResourceWarning -m unittest discover -s experiments/payment-collector-pilot/tests -v
+2026-11-06T10:36:06.0226405Z [36;1mpython -O -W error::ResourceWarning -m unittest discover -s experiments/payment-collector-pilot/tests -v[0m
+2026-11-06T10:36:06.0247973Z shell: /usr/bin/bash -e {0}
+2026-11-06T10:36:06.0248222Z env:
+2026-11-06T10:36:06.0248494Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-06T10:36:06.0249260Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+2026-11-06T10:36:06.0249695Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-06T10:36:06.0250078Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-06T10:36:06.0250464Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-06T10:36:06.0250876Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib
+2026-11-06T10:36:06.0251220Z ##[endgroup]
+2026-11-06T10:36:09.6551211Z test_collector_rejects_malformed_or_mismatched_original_packages_over_http (test_payment_collector.PaymentCollectorTests.test_collector_rejects_malformed_or_mismatched_original_packages_over_http) ... ok
+2026-11-06T10:36:10.2852852Z test_collector_sigkill_after_commit_recovers_same_record_without_payment (test_payment_collector.PaymentCollectorTests.test_collector_sigkill_after_commit_recovers_same_record_without_payment) ... ok
+2026-11-06T10:36:10.9264486Z test_collector_sigkill_after_receipt_commit_keeps_financial_result_and_stable_ack (test_payment_collector.PaymentCollectorTests.test_collector_sigkill_after_receipt_commit_keeps_financial_result_and_stable_ack) ... ok
+2026-11-06T10:36:11.3424502Z test_committed_admission_ack_loss_cannot_rearm_initial_payment (test_payment_collector.PaymentCollectorTests.test_committed_admission_ack_loss_cannot_rearm_initial_payment) ... ok
+2026-11-06T10:36:11.8668296Z test_concurrent_initialized_clients_have_one_pre_path_and_original_proof (test_payment_collector.PaymentCollectorTests.test_concurrent_initialized_clients_have_one_pre_path_and_original_proof) ... ok
+2026-11-06T10:36:12.5015618Z test_controlled_ack_reply_faults_after_real_commit_never_allow_payment (test_payment_collector.PaymentCollectorTests.test_controlled_ack_reply_faults_after_real_commit_never_allow_payment) ... ok
+2026-11-06T10:36:13.0257902Z test_current_collector_epoch_fences_old_process_but_preserves_original_ack (test_payment_collector.PaymentCollectorTests.test_current_collector_epoch_fences_old_process_but_preserves_original_ack) ... ok
+2026-11-06T10:36:14.4216378Z test_financial_terminal_outcome_survives_actual_post_effect_collector_outage (test_payment_collector.PaymentCollectorTests.test_financial_terminal_outcome_survives_actual_post_effect_collector_outage) ... ok
+2026-11-06T10:36:14.8792457Z test_fresh_missing_readback_does_not_turn_historical_ack_into_present_retention (test_payment_collector.PaymentCollectorTests.test_fresh_missing_readback_does_not_turn_historical_ack_into_present_retention) ... ok
+2026-11-06T10:36:15.6583553Z test_legacy_raw_and_authorized_claims_cannot_gain_pre_dispatch_coverage (test_payment_collector.PaymentCollectorTests.test_legacy_raw_and_authorized_claims_cannot_gain_pre_dispatch_coverage) ... ok
+2026-11-06T10:36:15.8786810Z test_missing_authorization_never_contacts_collector_or_payment_provider (test_payment_collector.PaymentCollectorTests.test_missing_authorization_never_contacts_collector_or_payment_provider) ... ok
+2026-11-06T10:36:16.3673824Z test_original_admission_is_collected_before_only_payment_and_receipt_after (test_payment_collector.PaymentCollectorTests.test_original_admission_is_collected_before_only_payment_and_receipt_after) ... ok
+2026-11-06T10:36:16.8657868Z test_provider_ack_loss_requires_native_get_then_evidence_only_receipt_recovery (test_payment_collector.PaymentCollectorTests.test_provider_ack_loss_requires_native_get_then_evidence_only_receipt_recovery) ... ok
+2026-11-06T10:36:17.1021965Z test_reads_and_recovery_of_unsubmitted_request_never_create_a_claim (test_payment_collector.PaymentCollectorTests.test_reads_and_recovery_of_unsubmitted_request_never_create_a_claim) ... ok
+2026-11-06T10:36:17.6943741Z test_real_ack_verified_then_local_journal_lock_cannot_authorize_payment (test_payment_collector.PaymentCollectorTests.test_real_ack_verified_then_local_journal_lock_cannot_authorize_payment) ... ok
+2026-11-06T10:36:18.0927719Z test_real_collection_replay_keeps_original_bytes_ack_and_conflict_after_restart (test_payment_collector.PaymentCollectorTests.test_real_collection_replay_keeps_original_bytes_ack_and_conflict_after_restart) ... ok
+2026-11-06T10:36:18.5433386Z test_real_collector_database_lock_prevents_payment_but_keeps_claim (test_payment_collector.PaymentCollectorTests.test_real_collector_database_lock_prevents_payment_but_keeps_claim) ... ok
+2026-11-06T10:36:19.1032635Z test_reconciliation_and_evidence_recovery_own_request_across_real_http_calls (test_payment_collector.PaymentCollectorTests.test_reconciliation_and_evidence_recovery_own_request_across_real_http_calls) ... ok
+2026-11-06T10:36:19.3206433Z test_rejected_owned_snapshot_is_terminal_even_if_caller_becomes_valid (test_payment_collector.PaymentCollectorTests.test_rejected_owned_snapshot_is_terminal_even_if_caller_becomes_valid) ... ok
+2026-11-06T10:36:19.7128275Z test_sigkill_after_claim_before_collection_retains_consumption (test_payment_collector.PaymentCollectorTests.test_sigkill_after_claim_before_collection_retains_consumption) ... ok
+2026-11-06T10:36:20.1419612Z test_sigkill_after_pre_dispatch_persistence_never_resumes_payment_send (test_payment_collector.PaymentCollectorTests.test_sigkill_after_pre_dispatch_persistence_never_resumes_payment_send) ... ok
+2026-11-06T10:36:20.5431837Z test_signed_matching_ack_without_valid_fresh_readback_cannot_allow_payment (test_payment_collector.PaymentCollectorTests.test_signed_matching_ack_without_valid_fresh_readback_cannot_allow_payment) ... ok
+2026-11-06T10:36:20.9720584Z test_unavailable_collector_consumes_claim_and_recovery_never_sends_payment (test_payment_collector.PaymentCollectorTests.test_unavailable_collector_consumes_claim_and_recovery_never_sends_payment) ... ok
+2026-11-06T10:36:21.3508117Z test_unreadable_or_tampered_local_custody_never_asserts_verified_pre_dispatch (test_payment_collector.PaymentCollectorTests.test_unreadable_or_tampered_local_custody_never_asserts_verified_pre_dispatch) ... ok
+2026-11-06T10:36:21.5930293Z test_wrong_collector_pin_rejects_genuine_signed_ack_before_payment (test_payment_collector.PaymentCollectorTests.test_wrong_collector_pin_rejects_genuine_signed_ack_before_payment) ... ok
+2026-11-06T10:36:21.5931735Z 
+2026-11-06T10:36:21.5932030Z ----------------------------------------------------------------------
+2026-11-06T10:36:21.5932747Z Ran 25 tests in 12.315s
+2026-11-06T10:36:21.5933039Z 
+2026-11-06T10:36:21.5933191Z OK
+2026-11-06T10:36:21.6214490Z ##[group]Run python -W error::ResourceWarning -m unittest discover -s experiments/payment-authorization-pilot/tests -v
+2026-11-06T10:36:21.6215397Z [36;1mpython -W error::ResourceWarning -m unittest discover -s experiments/payment-authorization-pilot/tests -v[0m
+2026-11-06T10:36:21.6216168Z [36;1mpython -W error::ResourceWarning -m unittest discover -s experiments/payment-runtime-pilot/tests -v[0m
+2026-11-06T10:36:21.6237225Z shell: /usr/bin/bash -e {0}
+2026-11-06T10:36:21.6237472Z env:
+2026-11-06T10:36:21.6237735Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-06T10:36:21.6238176Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+2026-11-06T10:36:21.6238857Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-06T10:36:21.6239263Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-06T10:36:21.6239649Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-06T10:36:21.6240095Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib
+2026-11-06T10:36:21.6240425Z ##[endgroup]
+2026-11-06T10:36:21.8817922Z test_actual_proof_store_failure_rolls_back_claim_and_prevents_post (test_authorization_gate.AuthorizationGateTests.test_actual_proof_store_failure_rolls_back_claim_and_prevents_post) ... ok
+2026-11-06T10:36:22.0079953Z test_admission_time_is_sampled_after_the_actual_claim_lock_is_acquired (test_authorization_gate.AuthorizationGateTests.test_admission_time_is_sampled_after_the_actual_claim_lock_is_acquired) ... ok
+2026-11-06T10:36:22.3438430Z test_concurrent_native_clients_preserve_one_winning_admission_proof (test_authorization_gate.AuthorizationGateTests.test_concurrent_native_clients_preserve_one_winning_admission_proof) ... ok
+2026-11-06T10:36:22.4672783Z test_expired_or_not_yet_valid_approvals_never_create_a_claim (test_authorization_gate.AuthorizationGateTests.test_expired_or_not_yet_valid_approvals_never_create_a_claim) ... ok
+2026-11-06T10:36:22.5961921Z test_healthy_admission_persists_original_evidence_and_same_time_as_native_claim (test_authorization_gate.AuthorizationGateTests.test_healthy_admission_persists_original_evidence_and_same_time_as_native_claim) ... ok
+2026-11-06T10:36:22.7675713Z test_historical_recheck_detects_altered_proof_even_with_recomputed_outer_digest (test_authorization_gate.AuthorizationGateTests.test_historical_recheck_detects_altered_proof_even_with_recomputed_outer_digest) ... ok
+2026-11-06T10:36:22.8792923Z test_identity_eligibility_must_cover_approval_issuance_and_admission (test_authorization_gate.AuthorizationGateTests.test_identity_eligibility_must_cover_approval_issuance_and_admission) ... ok
+2026-11-06T10:36:22.9993163Z test_legacy_native_claim_is_not_backfilled_or_labeled_authorized (test_authorization_gate.AuthorizationGateTests.test_legacy_native_claim_is_not_backfilled_or_labeled_authorized) ... ok
+2026-11-06T10:36:23.1247912Z test_missing_signature_wrong_role_and_wrong_domain_are_not_authorization (test_authorization_gate.AuthorizationGateTests.test_missing_signature_wrong_role_and_wrong_domain_are_not_authorization) ... ok
+2026-11-06T10:36:23.2491155Z test_policy_constraints_apply_even_when_every_signature_binds_the_request (test_authorization_gate.AuthorizationGateTests.test_policy_constraints_apply_even_when_every_signature_binds_the_request) ... ok
+2026-11-06T10:36:23.4775637Z test_prior_unknown_payment_reconciles_without_fresh_authorization_or_resend (test_authorization_gate.AuthorizationGateTests.test_prior_unknown_payment_reconciles_without_fresh_authorization_or_resend) ... ok
+2026-11-06T10:36:23.5879540Z test_public_key_aliases_cannot_assign_two_different_people (test_authorization_gate.AuthorizationGateTests.test_public_key_aliases_cannot_assign_two_different_people) ... ok
+2026-11-06T10:36:23.8354496Z test_reconciliation_and_status_cannot_attach_another_mutated_request_proof (test_authorization_gate.AuthorizationGateTests.test_reconciliation_and_status_cannot_attach_another_mutated_request_proof) ... ok
+2026-11-06T10:36:23.9598307Z test_repeat_cannot_replace_the_original_approval_pack (test_authorization_gate.AuthorizationGateTests.test_repeat_cannot_replace_the_original_approval_pack) ... ok
+2026-11-06T10:36:24.0847665Z test_same_instance_concurrent_calls_own_their_request_and_approval_snapshots (test_authorization_gate.AuthorizationGateTests.test_same_instance_concurrent_calls_own_their_request_and_approval_snapshots) ... ok
+2026-11-06T10:36:24.3074436Z test_sigkill_after_claim_retains_original_proof_and_never_resends (test_authorization_gate.AuthorizationGateTests.test_sigkill_after_claim_retains_original_proof_and_never_resends) ... ok
+2026-11-06T10:36:24.5253715Z test_sigkill_during_proof_and_claim_transaction_leaves_neither_committed (test_authorization_gate.AuthorizationGateTests.test_sigkill_during_proof_and_claim_transaction_leaves_neither_committed) ... ok
+2026-11-06T10:36:24.6692412Z test_signed_approvals_cannot_be_used_for_changed_native_request (test_authorization_gate.AuthorizationGateTests.test_signed_approvals_cannot_be_used_for_changed_native_request) ... ok
+2026-11-06T10:36:24.8071914Z test_status_must_be_supplied_authenticated_scoped_and_fresh (test_authorization_gate.AuthorizationGateTests.test_status_must_be_supplied_authenticated_scoped_and_fresh) ... ok
+2026-11-06T10:36:24.9265370Z test_two_signing_keys_need_two_eligible_configured_people (test_authorization_gate.AuthorizationGateTests.test_two_signing_keys_need_two_eligible_configured_people) ... ok
+2026-11-06T10:36:24.9266209Z 
+2026-11-06T10:36:24.9266416Z ----------------------------------------------------------------------
+2026-11-06T10:36:24.9266810Z Ran 20 tests in 3.179s
+2026-11-06T10:36:24.9266968Z 
+2026-11-06T10:36:24.9269557Z OK
+2026-11-06T10:36:25.1867687Z test_amount_beneficiary_or_alias_changes_cannot_reuse_a_consumed_request (test_payment_runtime.PaymentRuntimeTests.test_amount_beneficiary_or_alias_changes_cannot_reuse_a_consumed_request) ... ok
+2026-11-06T10:36:25.3754106Z test_bad_native_response_keeps_claim_until_genuine_readonly_receipt_is_recovered (test_payment_runtime.PaymentRuntimeTests.test_bad_native_response_keeps_claim_until_genuine_readonly_receipt_is_recovered) ... ok
+2026-11-06T10:36:25.4875001Z test_changed_currency_or_unit_cannot_open_a_new_consumption_scope (test_payment_runtime.PaymentRuntimeTests.test_changed_currency_or_unit_cannot_open_a_new_consumption_scope) ... ok
+2026-11-06T10:36:25.6013851Z test_epoch_and_configuration_rotation_do_not_reset_consumed_aliases (test_payment_runtime.PaymentRuntimeTests.test_epoch_and_configuration_rotation_do_not_reset_consumed_aliases) ... ok
+2026-11-06T10:36:25.7132997Z test_healthy_dispatch_has_one_real_post_and_atomic_local_balance_effect (test_payment_runtime.PaymentRuntimeTests.test_healthy_dispatch_has_one_real_post_and_atomic_local_balance_effect) ... ok
+2026-11-06T10:36:25.8174453Z test_invalid_amount_units_and_request_shapes_never_reach_provider (test_payment_runtime.PaymentRuntimeTests.test_invalid_amount_units_and_request_shapes_never_reach_provider) ... ok
+2026-11-06T10:36:26.0427619Z test_late_submitter_failure_cannot_downgrade_an_independently_reconciled_result (test_payment_runtime.PaymentRuntimeTests.test_late_submitter_failure_cannot_downgrade_an_independently_reconciled_result) ... ok
+2026-11-06T10:36:26.6414871Z test_native_transport_ignores_environment_proxy_configuration (test_payment_runtime.PaymentRuntimeTests.test_native_transport_ignores_environment_proxy_configuration) ... ok
+2026-11-06T10:36:26.7381605Z test_nonliteral_loopback_targets_are_rejected_before_any_connection (test_payment_runtime.PaymentRuntimeTests.test_nonliteral_loopback_targets_are_rejected_before_any_connection) ... ok
+2026-11-06T10:36:26.8379047Z test_parser_does_not_accept_ambiguous_numeric_or_duplicate_json (test_payment_runtime.PaymentRuntimeTests.test_parser_does_not_accept_ambiguous_numeric_or_duplicate_json) ... ok
+2026-11-06T10:36:26.9641375Z test_provider_alias_conflicts_cannot_create_a_second_effect (test_payment_runtime.PaymentRuntimeTests.test_provider_alias_conflicts_cannot_create_a_second_effect) ... ok
+2026-11-06T10:36:27.1759911Z test_provider_commit_then_lost_ack_stays_unknown_until_readonly_reconciliation (test_payment_runtime.PaymentRuntimeTests.test_provider_commit_then_lost_ack_stays_unknown_until_readonly_reconciliation) ... ok
+2026-11-06T10:36:27.2899947Z test_provider_direct_replay_and_client_suppression_have_separate_counts (test_payment_runtime.PaymentRuntimeTests.test_provider_direct_replay_and_client_suppression_have_separate_counts) ... ok
+2026-11-06T10:36:27.6962454Z test_provider_sigkill_after_commit_recovers_with_same_db_and_stable_receipt (test_payment_runtime.PaymentRuntimeTests.test_provider_sigkill_after_commit_recovers_with_same_db_and_stable_receipt) ... ok
+2026-11-06T10:36:27.8102660Z test_real_insufficient_funds_receipt_is_failed_without_balance_effect (test_payment_runtime.PaymentRuntimeTests.test_real_insufficient_funds_receipt_is_failed_without_balance_effect) ... ok
+2026-11-06T10:36:28.0636485Z test_real_journal_lock_before_claim_blocks_every_post (test_payment_runtime.PaymentRuntimeTests.test_real_journal_lock_before_claim_blocks_every_post) ... ok
+2026-11-06T10:36:28.1744541Z test_real_receipt_corruption_wrong_scope_and_wrong_signer_are_rejected (test_payment_runtime.PaymentRuntimeTests.test_real_receipt_corruption_wrong_scope_and_wrong_signer_are_rejected) ... ok
+2026-11-06T10:36:28.5477166Z test_real_result_store_lock_keeps_the_claim_after_provider_effect (test_payment_runtime.PaymentRuntimeTests.test_real_result_store_lock_keeps_the_claim_after_provider_effect) ... ok
+2026-11-06T10:36:29.1551757Z test_redirect_is_not_followed_and_cannot_rearm_consumed_claim (test_payment_runtime.PaymentRuntimeTests.test_redirect_is_not_followed_and_cannot_rearm_consumed_claim) ... ok
+2026-11-06T10:36:29.2654146Z test_repeated_submit_after_adapter_restart_uses_original_receipt_without_post (test_payment_runtime.PaymentRuntimeTests.test_repeated_submit_after_adapter_restart_uses_original_receipt_without_post) ... ok
+2026-11-06T10:36:29.4680082Z test_sigkill_after_claim_before_post_never_becomes_permission_to_resend (test_payment_runtime.PaymentRuntimeTests.test_sigkill_after_claim_before_post_never_becomes_permission_to_resend) ... ok
+2026-11-06T10:36:29.6770023Z test_sigkill_after_real_response_before_local_store_recovers_original_receipt (test_payment_runtime.PaymentRuntimeTests.test_sigkill_after_real_response_before_local_store_recovers_original_receipt) ... ok
+2026-11-06T10:36:29.7795402Z test_status_and_reconciliation_do_not_claim_or_reset_an_unsubmitted_request (test_payment_runtime.PaymentRuntimeTests.test_status_and_reconciliation_do_not_claim_or_reset_an_unsubmitted_request) ... ok
+2026-11-06T10:36:29.8840667Z test_stopped_provider_gives_no_effect_and_consumed_unknown_claim (test_payment_runtime.PaymentRuntimeTests.test_stopped_provider_gives_no_effect_and_consumed_unknown_claim) ... ok
+2026-11-06T10:36:30.2064798Z test_two_concurrent_native_clients_share_one_durable_claim_and_post (test_payment_runtime.PaymentRuntimeTests.test_two_concurrent_native_clients_share_one_durable_claim_and_post) ... ok
+2026-11-06T10:36:30.3295276Z test_verified_terminal_reconciliation_and_status_use_no_network (test_payment_runtime.PaymentRuntimeTests.test_verified_terminal_reconciliation_and_status_use_no_network) ... ok
+2026-11-06T10:36:30.4464454Z test_wrong_pinned_provider_identity_cannot_confirm_real_committed_response (test_payment_runtime.PaymentRuntimeTests.test_wrong_pinned_provider_identity_cannot_confirm_real_committed_response) ... ok
+2026-11-06T10:36:30.5635343Z test_wrong_pinned_provider_key_cannot_confirm_real_committed_response (test_payment_runtime.PaymentRuntimeTests.test_wrong_pinned_provider_key_cannot_confirm_real_committed_response) ... ok
+2026-11-06T10:36:30.5636423Z 
+2026-11-06T10:36:30.5636633Z ----------------------------------------------------------------------
+2026-11-06T10:36:30.5637084Z Ran 28 tests in 5.501s
+2026-11-06T10:36:30.5637270Z 
+2026-11-06T10:36:30.5637368Z OK
+2026-11-06T10:36:30.5890458Z ##[group]Run python experiments/payment-collector-pilot/run_demo.py --output experiments/payment-collector-pilot/generated
+2026-11-06T10:36:30.5891428Z [36;1mpython experiments/payment-collector-pilot/run_demo.py --output experiments/payment-collector-pilot/generated[0m
+2026-11-06T10:36:30.5912093Z shell: /usr/bin/bash -e {0}
+2026-11-06T10:36:30.5912336Z env:
+2026-11-06T10:36:30.5912605Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-06T10:36:30.5913046Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+2026-11-06T10:36:30.5913476Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-06T10:36:30.5913867Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-06T10:36:30.5914247Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-06T10:36:30.5914627Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib
+2026-11-06T10:36:30.5914950Z ##[endgroup]
+2026-11-06T10:36:32.7970231Z {
+2026-11-06T10:36:32.7971183Z   "schema": "synthetic-payment-collector-demo-summary-v0",
+2026-11-06T10:36:32.7972013Z   "synthetic": true,
+2026-11-06T10:36:32.7972582Z   "scenario_count": 5,
+2026-11-06T10:36:32.7973128Z   "stage_count": 13,
+2026-11-06T10:36:32.7973638Z   "business_authorization_verified": false,
+2026-11-06T10:36:32.7974252Z   "production_gate": false,
+2026-11-06T10:36:32.7974795Z   "independent_custody_established": false,
+2026-11-06T10:36:32.7975423Z   "complete_collection_asserted": false,
+2026-11-06T10:36:32.7976032Z   "automatic_payment_retry": false,
+2026-11-06T10:36:32.7976569Z   "scenarios": [
+2026-11-06T10:36:32.7976986Z     {
+2026-11-06T10:36:32.7977389Z       "scenario": "healthy",
+2026-11-06T10:36:32.7978041Z       "steps": [
+2026-11-06T10:36:32.7978480Z         {
+2026-11-06T10:36:32.7979226Z           "stage": "original_collection_and_payment",
+2026-11-06T10:36:32.7979915Z           "state": "SETTLED",
+2026-11-06T10:36:32.7980429Z           "reason": "stored_verified_native_receipt",
+2026-11-06T10:36:32.7981160Z           "request_digest": "sha256:6af99ca7d7d5eb06684a44113e6f8829ca456823510ab51f5970c39bd1d58c50",
+2026-11-06T10:36:32.7981859Z           "payment_posts": 1,
+2026-11-06T10:36:32.7982207Z           "payment_effects": 1,
+2026-11-06T10:36:32.7982571Z           "provider_lookups": 0,
+2026-11-06T10:36:32.7982914Z           "collector": {
+2026-11-06T10:36:32.7983241Z             "collect_attempts": 2,
+2026-11-06T10:36:32.7983602Z             "query_attempts": 2,
+2026-11-06T10:36:32.7983936Z             "records": 2,
+2026-11-06T10:36:32.7984245Z             "kind_counts": {
+2026-11-06T10:36:32.7984576Z               "admission_record": 1,
+2026-11-06T10:36:32.7984951Z               "provider_receipt": 1
+2026-11-06T10:36:32.7985292Z             }
+2026-11-06T10:36:32.7985552Z           },
+2026-11-06T10:36:32.7985815Z           "custody": {
+2026-11-06T10:36:32.7986129Z             "state": "ACKNOWLEDGED",
+2026-11-06T10:36:32.7986552Z             "basis": "historical_local_observations_only",
+2026-11-06T10:36:32.7987031Z             "present_retention": "NOT_CHECKED",
+2026-11-06T10:36:32.7987483Z             "pre_dispatch": {
+2026-11-06T10:36:32.7987848Z               "state": "VERIFIED_PREREQUISITE",
+2026-11-06T10:36:32.7988871Z               "observation_digest": "sha256:4d4b0af47a05d2fd731eb94bd12d0e6fcf995f1938845e7892e0796131669021",
+2026-11-06T10:36:32.7989713Z               "proves_payment_post_occurred": false
+2026-11-06T10:36:32.7990011Z             },
+2026-11-06T10:36:32.7990218Z             "admission_record": {
+2026-11-06T10:36:32.7990482Z               "state": "ACKNOWLEDGED",
+2026-11-06T10:36:32.7990956Z               "observation_digest": "sha256:4d4b0af47a05d2fd731eb94bd12d0e6fcf995f1938845e7892e0796131669021",
+2026-11-06T10:36:32.7991613Z               "package_digest": "sha256:6732a4798c99c9288f9b1a10dc3e5f771125c1624e582a615193c26ad62996c1",
+2026-11-06T10:36:32.7992069Z               "stage": "PRE_DISPATCH"
+2026-11-06T10:36:32.7992305Z             },
+2026-11-06T10:36:32.7992698Z             "provider_receipt": {
+2026-11-06T10:36:32.7992953Z               "state": "ACKNOWLEDGED",
+2026-11-06T10:36:32.7993410Z               "observation_digest": "sha256:b181200a9a057bfb1e692c92e722a6d698d08265bfc2d8d211e636cb08056bbe",
+2026-11-06T10:36:32.7994070Z               "package_digest": "sha256:d4d38b5e2c708a2a92c8f0571b06ecc1399131f48afbf0633a658574d7e11fbc",
+2026-11-06T10:36:32.7994521Z               "stage": "POST_EFFECT"
+2026-11-06T10:36:32.7994751Z             },
+2026-11-06T10:36:32.7994939Z             "observations": [
+2026-11-06T10:36:32.7995163Z               {
+2026-11-06T10:36:32.7995560Z                 "observation_digest": "sha256:b181200a9a057bfb1e692c92e722a6d698d08265bfc2d8d211e636cb08056bbe",
+2026-11-06T10:36:32.7996035Z                 "stage": "POST_EFFECT",
+2026-11-06T10:36:32.7996300Z                 "kind": "provider_receipt",
+2026-11-06T10:36:32.7996761Z                 "package_digest": "sha256:d4d38b5e2c708a2a92c8f0571b06ecc1399131f48afbf0633a658574d7e11fbc",
+2026-11-06T10:36:32.7997221Z                 "package_bytes": {
+2026-11-06T10:36:32.7997682Z                   "original_bytes_digest": "sha256:d4d38b5e2c708a2a92c8f0571b06ecc1399131f48afbf0633a658574d7e11fbc",
+2026-11-06T10:36:32.7998175Z                   "byte_length": 3608
+2026-11-06T10:36:32.7998426Z                 },
+2026-11-06T10:36:32.7998871Z                 "ack_bytes": {
+2026-11-06T10:36:32.7999324Z                   "original_bytes_digest": "sha256:53f380f3e0b14e30e2fe65c4b8776f43d2a50e3edcf1ed977401f6782257bd24",
+2026-11-06T10:36:32.7999802Z                   "byte_length": 732
+2026-11-06T10:36:32.8000056Z                 },
+2026-11-06T10:36:32.8000367Z                 "readback_bytes": {
+2026-11-06T10:36:32.8000814Z                   "original_bytes_digest": "sha256:5b4cc1b2b2127c6063986d9de73648084b49c0ca3b2af8b2645e67952c75e29a",
+2026-11-06T10:36:32.8001283Z                   "byte_length": 636
+2026-11-06T10:36:32.8001511Z                 },
+2026-11-06T10:36:32.8001742Z                 "nonce": "21b7c862d9463587329d12b0c0405774",
+2026-11-06T10:36:32.8002042Z                 "collector_epoch": 1,
+2026-11-06T10:36:32.8002294Z                 "record_bytes": {
+2026-11-06T10:36:32.8002735Z                   "original_bytes_digest": "sha256:b181200a9a057bfb1e692c92e722a6d698d08265bfc2d8d211e636cb08056bbe",
+2026-11-06T10:36:32.8003209Z                   "byte_length": 10394
+2026-11-06T10:36:32.8003443Z                 }
+2026-11-06T10:36:32.8003625Z               },
+2026-11-06T10:36:32.8003803Z               {
+2026-11-06T10:36:32.8004196Z                 "observation_digest": "sha256:4d4b0af47a05d2fd731eb94bd12d0e6fcf995f1938845e7892e0796131669021",
+2026-11-06T10:36:32.8004672Z                 "stage": "PRE_DISPATCH",
+2026-11-06T10:36:32.8004959Z                 "kind": "admission_record",
+2026-11-06T10:36:32.8005414Z                 "package_digest": "sha256:6732a4798c99c9288f9b1a10dc3e5f771125c1624e582a615193c26ad62996c1",
+2026-11-06T10:36:32.8005877Z                 "package_bytes": {
+2026-11-06T10:36:32.8006331Z                   "original_bytes_digest": "sha256:6732a4798c99c9288f9b1a10dc3e5f771125c1624e582a615193c26ad62996c1",
+2026-11-06T10:36:32.8006803Z                   "byte_length": 20774
+2026-11-06T10:36:32.8007039Z                 },
+2026-11-06T10:36:32.8007399Z                 "ack_bytes": {
+2026-11-06T10:36:32.8007841Z                   "original_bytes_digest": "sha256:afed2c92853af0a81d7d6bb56b9e137ec2f0d91217a2a759661c6b13e58eb7da",
+2026-11-06T10:36:32.8008318Z                   "byte_length": 734
+2026-11-06T10:36:32.8008765Z                 },
+2026-11-06T10:36:32.8009022Z                 "readback_bytes": {
+2026-11-06T10:36:32.8009504Z                   "original_bytes_digest": "sha256:3c939aa2786bd82ba2004c04d5d3dc6dc4f7212b03593ae51cadde1263c4c4cd",
+2026-11-06T10:36:32.8009992Z                   "byte_length": 636
+2026-11-06T10:36:32.8010223Z                 },
+2026-11-06T10:36:32.8010454Z                 "nonce": "0ad871779c8e6386e05225056430db97",
+2026-11-06T10:36:32.8010918Z                 "collector_epoch": 1,
+2026-11-06T10:36:32.8011184Z                 "record_bytes": {
+2026-11-06T10:36:32.8011642Z                   "original_bytes_digest": "sha256:4d4b0af47a05d2fd731eb94bd12d0e6fcf995f1938845e7892e0796131669021",
+2026-11-06T10:36:32.8012138Z                   "byte_length": 44731
+2026-11-06T10:36:32.8012382Z                 }
+2026-11-06T10:36:32.8012574Z               }
+2026-11-06T10:36:32.8012752Z             ],
+2026-11-06T10:36:32.8012953Z             "unverifiable_observations": 0
+2026-11-06T10:36:32.8013206Z           }
+2026-11-06T10:36:32.8013378Z         },
+2026-11-06T10:36:32.8013549Z         {
+2026-11-06T10:36:32.8013781Z           "stage": "repeat_returns_original_result",
+2026-11-06T10:36:32.8014073Z           "state": "SETTLED",
+2026-11-06T10:36:32.8014333Z           "reason": "stored_verified_native_receipt",
+2026-11-06T10:36:32.8014802Z           "request_digest": "sha256:6af99ca7d7d5eb06684a44113e6f8829ca456823510ab51f5970c39bd1d58c50",
+2026-11-06T10:36:32.8015265Z           "payment_posts": 1,
+2026-11-06T10:36:32.8015499Z           "payment_effects": 1,
+2026-11-06T10:36:32.8015739Z           "provider_lookups": 0,
+2026-11-06T10:36:32.8015975Z           "collector": {
+2026-11-06T10:36:32.8016197Z             "collect_attempts": 2,
+2026-11-06T10:36:32.8016460Z             "query_attempts": 2,
+2026-11-06T10:36:32.8016689Z             "records": 2,
+2026-11-06T10:36:32.8016902Z             "kind_counts": {
+2026-11-06T10:36:32.8017130Z               "admission_record": 1,
+2026-11-06T10:36:32.8017386Z               "provider_receipt": 1
+2026-11-06T10:36:32.8017618Z             }
+2026-11-06T10:36:32.8017800Z           },
+2026-11-06T10:36:32.8017980Z           "custody": {
+2026-11-06T10:36:32.8018193Z             "state": "ACKNOWLEDGED",
+2026-11-06T10:36:32.8018480Z             "basis": "historical_local_observations_only",
+2026-11-06T10:36:32.8019049Z             "present_retention": "NOT_CHECKED",
+2026-11-06T10:36:32.8019331Z             "pre_dispatch": {
+2026-11-06T10:36:32.8019584Z               "state": "VERIFIED_PREREQUISITE",
+2026-11-06T10:36:32.8020061Z               "observation_digest": "sha256:4d4b0af47a05d2fd731eb94bd12d0e6fcf995f1938845e7892e0796131669021",
+2026-11-06T10:36:32.8020556Z               "proves_payment_post_occurred": false
+2026-11-06T10:36:32.8020839Z             },
+2026-11-06T10:36:32.8021035Z             "admission_record": {
+2026-11-06T10:36:32.8021287Z               "state": "ACKNOWLEDGED",
+2026-11-06T10:36:32.8021741Z               "observation_digest": "sha256:4d4b0af47a05d2fd731eb94bd12d0e6fcf995f1938845e7892e0796131669021",
+2026-11-06T10:36:32.8022387Z               "package_digest": "sha256:6732a4798c99c9288f9b1a10dc3e5f771125c1624e582a615193c26ad62996c1",
+2026-11-06T10:36:32.8022836Z               "stage": "PRE_DISPATCH"
+2026-11-06T10:36:32.8023079Z             },
+2026-11-06T10:36:32.8023275Z             "provider_receipt": {
+2026-11-06T10:36:32.8023518Z               "state": "ACKNOWLEDGED",
+2026-11-06T10:36:32.8023977Z               "observation_digest": "sha256:b181200a9a057bfb1e692c92e722a6d698d08265bfc2d8d211e636cb08056bbe",
+2026-11-06T10:36:32.8024869Z               "package_digest": "sha256:d4d38b5e2c708a2a92c8f0571b06ecc1399131f48afbf0633a658574d7e11fbc",
+2026-11-06T10:36:32.8025400Z               "stage": "POST_EFFECT"
+2026-11-06T10:36:32.8025831Z             },
+2026-11-06T10:36:32.8026022Z             "observations": [
+2026-11-06T10:36:32.8026238Z               {
+2026-11-06T10:36:32.8026627Z                 "observation_digest": "sha256:b181200a9a057bfb1e692c92e722a6d698d08265bfc2d8d211e636cb08056bbe",
+2026-11-06T10:36:32.8027098Z                 "stage": "POST_EFFECT",
+2026-11-06T10:36:32.8027360Z                 "kind": "provider_receipt",
+2026-11-06T10:36:32.8027817Z                 "package_digest": "sha256:d4d38b5e2c708a2a92c8f0571b06ecc1399131f48afbf0633a658574d7e11fbc",
+2026-11-06T10:36:32.8028270Z                 "package_bytes": {
+2026-11-06T10:36:32.8029204Z                   "original_bytes_digest": "sha256:d4d38b5e2c708a2a92c8f0571b06ecc1399131f48afbf0633a658574d7e11fbc",
+2026-11-06T10:36:32.8029714Z                   "byte_length": 3608
+2026-11-06T10:36:32.8029949Z                 },
+2026-11-06T10:36:32.8030146Z                 "ack_bytes": {
+2026-11-06T10:36:32.8030587Z                   "original_bytes_digest": "sha256:53f380f3e0b14e30e2fe65c4b8776f43d2a50e3edcf1ed977401f6782257bd24",
+2026-11-06T10:36:32.8031217Z                   "byte_length": 732
+2026-11-06T10:36:32.8031453Z                 },
+2026-11-06T10:36:32.8031660Z                 "readback_bytes": {
+2026-11-06T10:36:32.8032116Z                   "original_bytes_digest": "sha256:5b4cc1b2b2127c6063986d9de73648084b49c0ca3b2af8b2645e67952c75e29a",
+2026-11-06T10:36:32.8032590Z                   "byte_length": 636
+2026-11-06T10:36:32.8032825Z                 },
+2026-11-06T10:36:32.8033050Z                 "nonce": "21b7c862d9463587329d12b0c0405774",
+2026-11-06T10:36:32.8033349Z                 "collector_epoch": 1,
+2026-11-06T10:36:32.8033596Z                 "record_bytes": {
+2026-11-06T10:36:32.8034045Z                   "original_bytes_digest": "sha256:b181200a9a057bfb1e692c92e722a6d698d08265bfc2d8d211e636cb08056bbe",
+2026-11-06T10:36:32.8034523Z                   "byte_length": 10394
+2026-11-06T10:36:32.8034770Z                 }
+2026-11-06T10:36:32.8034959Z               },
+2026-11-06T10:36:32.8035238Z               {
+2026-11-06T10:36:32.8035846Z                 "observation_digest": "sha256:4d4b0af47a05d2fd731eb94bd12d0e6fcf995f1938845e7892e0796131669021",
+2026-11-06T10:36:32.8036334Z                 "stage": "PRE_DISPATCH",
+2026-11-06T10:36:32.8036602Z                 "kind": "admission_record",
+2026-11-06T10:36:32.8037050Z                 "package_digest": "sha256:6732a4798c99c9288f9b1a10dc3e5f771125c1624e582a615193c26ad62996c1",
+2026-11-06T10:36:32.8037504Z                 "package_bytes": {
+2026-11-06T10:36:32.8038071Z                   "original_bytes_digest": "sha256:6732a4798c99c9288f9b1a10dc3e5f771125c1624e582a615193c26ad62996c1",
+2026-11-06T10:36:32.8038809Z                   "byte_length": 20774
+2026-11-06T10:36:32.8039200Z                 },
+2026-11-06T10:36:32.8039401Z                 "ack_bytes": {
+2026-11-06T10:36:32.8039857Z                   "original_bytes_digest": "sha256:afed2c92853af0a81d7d6bb56b9e137ec2f0d91217a2a759661c6b13e58eb7da",
+2026-11-06T10:36:32.8040344Z                   "byte_length": 734
+2026-11-06T10:36:32.8040573Z                 },
+2026-11-06T10:36:32.8040767Z                 "readback_bytes": {
+2026-11-06T10:36:32.8041218Z                   "original_bytes_digest": "sha256:3c939aa2786bd82ba2004c04d5d3dc6dc4f7212b03593ae51cadde1263c4c4cd",
+2026-11-06T10:36:32.8041696Z                   "byte_length": 636
+2026-11-06T10:36:32.8041923Z                 },
+2026-11-06T10:36:32.8042147Z                 "nonce": "0ad871779c8e6386e05225056430db97",
+2026-11-06T10:36:32.8042443Z                 "collector_epoch": 1,
+2026-11-06T10:36:32.8042691Z                 "record_bytes": {
+2026-11-06T10:36:32.8043140Z                   "original_bytes_digest": "sha256:4d4b0af47a05d2fd731eb94bd12d0e6fcf995f1938845e7892e0796131669021",
+2026-11-06T10:36:32.8043616Z                   "byte_length": 44731
+2026-11-06T10:36:32.8043847Z                 }
+2026-11-06T10:36:32.8044030Z               }
+2026-11-06T10:36:32.8044411Z             ],
+2026-11-06T10:36:32.8044639Z             "unverifiable_observations": 0
+2026-11-06T10:36:32.8044892Z           }
+2026-11-06T10:36:32.8045061Z         }
+2026-11-06T10:36:32.8045230Z       ]
+2026-11-06T10:36:32.8045398Z     },
+2026-11-06T10:36:32.8045571Z     {
+2026-11-06T10:36:32.8045759Z       "scenario": "collector_stopped",
+2026-11-06T10:36:32.8046005Z       "steps": [
+2026-11-06T10:36:32.8046189Z         {
+2026-11-06T10:36:32.8046424Z           "stage": "collector_unreachable_before_payment",
+2026-11-06T10:36:32.8046732Z           "state": "UNKNOWN",
+2026-11-06T10:36:32.8047000Z           "reason": "post_claim_outcome_unresolved",
+2026-11-06T10:36:32.8047608Z           "request_digest": "sha256:1ca4fdb9f6fc35b6a95f96fc63c266de4dfa93e7f1403414169d04c4078e4d74",
+2026-11-06T10:36:32.8048083Z           "payment_posts": 0,
+2026-11-06T10:36:32.8048325Z           "payment_effects": 0,
+2026-11-06T10:36:32.8048746Z           "provider_lookups": 0,
+2026-11-06T10:36:32.8048990Z           "collector": {
+2026-11-06T10:36:32.8049224Z             "collect_attempts": 0,
+2026-11-06T10:36:32.8049473Z             "query_attempts": 0,
+2026-11-06T10:36:32.8049707Z             "records": 0,
+2026-11-06T10:36:32.8049927Z             "kind_counts": {
+2026-11-06T10:36:32.8050157Z               "admission_record": 0,
+2026-11-06T10:36:32.8050414Z               "provider_receipt": 0
+2026-11-06T10:36:32.8050650Z             }
+2026-11-06T10:36:32.8050833Z           },
+2026-11-06T10:36:32.8051017Z           "custody": {
+2026-11-06T10:36:32.8051235Z             "state": "UNKNOWN",
+2026-11-06T10:36:32.8051505Z             "basis": "historical_local_observations_only",
+2026-11-06T10:36:32.8051832Z             "present_retention": "NOT_CHECKED",
+2026-11-06T10:36:32.8052121Z             "pre_dispatch": {
+2026-11-06T10:36:32.8052357Z               "state": "NOT_RECORDED"
+2026-11-06T10:36:32.8052592Z             },
+2026-11-06T10:36:32.8052787Z             "admission_record": {
+2026-11-06T10:36:32.8053023Z               "state": "UNKNOWN"
+2026-11-06T10:36:32.8053244Z             },
+2026-11-06T10:36:32.8053442Z             "provider_receipt": {
+2026-11-06T10:36:32.8053684Z               "state": "UNKNOWN"
+2026-11-06T10:36:32.8053898Z             },
+2026-11-06T10:36:32.8054088Z             "observations": [],
+2026-11-06T10:36:32.8054334Z             "unverifiable_observations": 0
+2026-11-06T10:36:32.8054586Z           }
+2026-11-06T10:36:32.8054756Z         },
+2026-11-06T10:36:32.8054924Z         {
+2026-11-06T10:36:32.8055122Z           "stage": "later_evidence_recovery",
+2026-11-06T10:36:32.8055393Z           "state": "UNKNOWN",
+2026-11-06T10:36:32.8055663Z           "reason": "durable_claim_outcome_unresolved",
+2026-11-06T10:36:32.8056151Z           "request_digest": "sha256:1ca4fdb9f6fc35b6a95f96fc63c266de4dfa93e7f1403414169d04c4078e4d74",
+2026-11-06T10:36:32.8056614Z           "payment_posts": 0,
+2026-11-06T10:36:32.8056848Z           "payment_effects": 0,
+2026-11-06T10:36:32.8057087Z           "provider_lookups": 0,
+2026-11-06T10:36:32.8057330Z           "collector": {
+2026-11-06T10:36:32.8057568Z             "collect_attempts": 1,
+2026-11-06T10:36:32.8057822Z             "query_attempts": 1,
+2026-11-06T10:36:32.8058053Z             "records": 1,
+2026-11-06T10:36:32.8058271Z             "kind_counts": {
+2026-11-06T10:36:32.8058727Z               "admission_record": 1,
+2026-11-06T10:36:32.8059099Z               "provider_receipt": 0
+2026-11-06T10:36:32.8059345Z             }
+2026-11-06T10:36:32.8059522Z           },
+2026-11-06T10:36:32.8059701Z           "custody": {
+2026-11-06T10:36:32.8059916Z             "state": "UNKNOWN",
+2026-11-06T10:36:32.8060183Z             "basis": "historical_local_observations_only",
+2026-11-06T10:36:32.8060502Z             "present_retention": "NOT_CHECKED",
+2026-11-06T10:36:32.8060783Z             "pre_dispatch": {
+2026-11-06T10:36:32.8061015Z               "state": "NOT_RECORDED"
+2026-11-06T10:36:32.8061252Z             },
+2026-11-06T10:36:32.8061446Z             "admission_record": {
+2026-11-06T10:36:32.8061855Z               "state": "ACKNOWLEDGED",
+2026-11-06T10:36:32.8062321Z               "observation_digest": "sha256:4ea2000f098dd4d5dc76d45a97375aaa24539ccbc1617c65119414582def08c2",
+2026-11-06T10:36:32.8062978Z               "package_digest": "sha256:5b06d68bdda76cc5a2e093890b9234dfb16f538013784cca5212e58a363c7966",
+2026-11-06T10:36:32.8063444Z               "stage": "HISTORICAL_RECOVERY"
+2026-11-06T10:36:32.8063699Z             },
+2026-11-06T10:36:32.8063895Z             "provider_receipt": {
+2026-11-06T10:36:32.8064136Z               "state": "UNKNOWN"
+2026-11-06T10:36:32.8064355Z             },
+2026-11-06T10:36:32.8064543Z             "observations": [
+2026-11-06T10:36:32.8064763Z               {
+2026-11-06T10:36:32.8065291Z                 "observation_digest": "sha256:4ea2000f098dd4d5dc76d45a97375aaa24539ccbc1617c65119414582def08c2",
+2026-11-06T10:36:32.8065782Z                 "stage": "HISTORICAL_RECOVERY",
+2026-11-06T10:36:32.8066064Z                 "kind": "admission_record",
+2026-11-06T10:36:32.8066524Z                 "package_digest": "sha256:5b06d68bdda76cc5a2e093890b9234dfb16f538013784cca5212e58a363c7966",
+2026-11-06T10:36:32.8066985Z                 "package_bytes": {
+2026-11-06T10:36:32.8067445Z                   "original_bytes_digest": "sha256:5b06d68bdda76cc5a2e093890b9234dfb16f538013784cca5212e58a363c7966",
+2026-11-06T10:36:32.8067931Z                   "byte_length": 20894
+2026-11-06T10:36:32.8068183Z                 },
+2026-11-06T10:36:32.8068384Z                 "ack_bytes": {
+2026-11-06T10:36:32.8069123Z                   "original_bytes_digest": "sha256:289f32d2565dc9d6cf89ee45b39ab449b479235ef8302b0cf085d2d3ed0eb878",
+2026-11-06T10:36:32.8069610Z                   "byte_length": 734
+2026-11-06T10:36:32.8069848Z                 },
+2026-11-06T10:36:32.8070056Z                 "readback_bytes": {
+2026-11-06T10:36:32.8070512Z                   "original_bytes_digest": "sha256:d56bae0d4ca9275eb8524c6016a010ea785178eeef0f4b6714cb3142c8231e2c",
+2026-11-06T10:36:32.8070988Z                   "byte_length": 636
+2026-11-06T10:36:32.8071221Z                 },
+2026-11-06T10:36:32.8071455Z                 "nonce": "8e9ce53a14fc56bd3e93723b9da81a29",
+2026-11-06T10:36:32.8071767Z                 "collector_epoch": 1,
+2026-11-06T10:36:32.8072022Z                 "record_bytes": {
+2026-11-06T10:36:32.8072474Z                   "original_bytes_digest": "sha256:4ea2000f098dd4d5dc76d45a97375aaa24539ccbc1617c65119414582def08c2",
+2026-11-06T10:36:32.8072957Z                   "byte_length": 44978
+2026-11-06T10:36:32.8073194Z                 }
+2026-11-06T10:36:32.8073377Z               }
+2026-11-06T10:36:32.8073554Z             ],
+2026-11-06T10:36:32.8073764Z             "unverifiable_observations": 0
+2026-11-06T10:36:32.8074017Z           }
+2026-11-06T10:36:32.8074197Z         },
+2026-11-06T10:36:32.8074373Z         {
+2026-11-06T10:36:32.8074598Z           "stage": "repeat_does_not_resume_payment",
+2026-11-06T10:36:32.8074888Z           "state": "UNKNOWN",
+2026-11-06T10:36:32.8075153Z           "reason": "durable_claim_outcome_unresolved",
+2026-11-06T10:36:32.8075644Z           "request_digest": "sha256:1ca4fdb9f6fc35b6a95f96fc63c266de4dfa93e7f1403414169d04c4078e4d74",
+2026-11-06T10:36:32.8076103Z           "payment_posts": 0,
+2026-11-06T10:36:32.8076339Z           "payment_effects": 0,
+2026-11-06T10:36:32.8076579Z           "provider_lookups": 0,
+2026-11-06T10:36:32.8076814Z           "collector": {
+2026-11-06T10:36:32.8077036Z             "collect_attempts": 1,
+2026-11-06T10:36:32.8077288Z             "query_attempts": 1,
+2026-11-06T10:36:32.8077515Z             "records": 1,
+2026-11-06T10:36:32.8077729Z             "kind_counts": {
+2026-11-06T10:36:32.8077958Z               "admission_record": 1,
+2026-11-06T10:36:32.8078216Z               "provider_receipt": 0
+2026-11-06T10:36:32.8078454Z             }
+2026-11-06T10:36:32.8078756Z           },
+2026-11-06T10:36:32.8079088Z           "custody": {
+2026-11-06T10:36:32.8079322Z             "state": "UNKNOWN",
+2026-11-06T10:36:32.8079597Z             "basis": "historical_local_observations_only",
+2026-11-06T10:36:32.8080090Z             "present_retention": "NOT_CHECKED",
+2026-11-06T10:36:32.8080380Z             "pre_dispatch": {
+2026-11-06T10:36:32.8080617Z               "state": "NOT_RECORDED"
+2026-11-06T10:36:32.8080852Z             },
+2026-11-06T10:36:32.8081046Z             "admission_record": {
+2026-11-06T10:36:32.8081294Z               "state": "ACKNOWLEDGED",
+2026-11-06T10:36:32.8081751Z               "observation_digest": "sha256:4ea2000f098dd4d5dc76d45a97375aaa24539ccbc1617c65119414582def08c2",
+2026-11-06T10:36:32.8082409Z               "package_digest": "sha256:5b06d68bdda76cc5a2e093890b9234dfb16f538013784cca5212e58a363c7966",
+2026-11-06T10:36:32.8082872Z               "stage": "HISTORICAL_RECOVERY"
+2026-11-06T10:36:32.8083317Z             },
+2026-11-06T10:36:32.8083524Z             "provider_receipt": {
+2026-11-06T10:36:32.8083766Z               "state": "UNKNOWN"
+2026-11-06T10:36:32.8083988Z             },
+2026-11-06T10:36:32.8084180Z             "observations": [
+2026-11-06T10:36:32.8084403Z               {
+2026-11-06T10:36:32.8084805Z                 "observation_digest": "sha256:4ea2000f098dd4d5dc76d45a97375aaa24539ccbc1617c65119414582def08c2",
+2026-11-06T10:36:32.8085288Z                 "stage": "HISTORICAL_RECOVERY",
+2026-11-06T10:36:32.8085569Z                 "kind": "admission_record",
+2026-11-06T10:36:32.8086022Z                 "package_digest": "sha256:5b06d68bdda76cc5a2e093890b9234dfb16f538013784cca5212e58a363c7966",
+2026-11-06T10:36:32.8086485Z                 "package_bytes": {
+2026-11-06T10:36:32.8086945Z                   "original_bytes_digest": "sha256:5b06d68bdda76cc5a2e093890b9234dfb16f538013784cca5212e58a363c7966",
+2026-11-06T10:36:32.8087476Z                   "byte_length": 20894
+2026-11-06T10:36:32.8087724Z                 },
+2026-11-06T10:36:32.8087926Z                 "ack_bytes": {
+2026-11-06T10:36:32.8088373Z                   "original_bytes_digest": "sha256:289f32d2565dc9d6cf89ee45b39ab449b479235ef8302b0cf085d2d3ed0eb878",
+2026-11-06T10:36:32.8089124Z                   "byte_length": 734
+2026-11-06T10:36:32.8089370Z                 },
+2026-11-06T10:36:32.8089569Z                 "readback_bytes": {
+2026-11-06T10:36:32.8090034Z                   "original_bytes_digest": "sha256:d56bae0d4ca9275eb8524c6016a010ea785178eeef0f4b6714cb3142c8231e2c",
+2026-11-06T10:36:32.8090514Z                   "byte_length": 636
+2026-11-06T10:36:32.8090740Z                 },
+2026-11-06T10:36:32.8090972Z                 "nonce": "8e9ce53a14fc56bd3e93723b9da81a29",
+2026-11-06T10:36:32.8091276Z                 "collector_epoch": 1,
+2026-11-06T10:36:32.8091524Z                 "record_bytes": {
+2026-11-06T10:36:32.8091976Z                   "original_bytes_digest": "sha256:4ea2000f098dd4d5dc76d45a97375aaa24539ccbc1617c65119414582def08c2",
+2026-11-06T10:36:32.8092452Z                   "byte_length": 44978
+2026-11-06T10:36:32.8092685Z                 }
+2026-11-06T10:36:32.8092869Z               }
+2026-11-06T10:36:32.8093055Z             ],
+2026-11-06T10:36:32.8093270Z             "unverifiable_observations": 0
+2026-11-06T10:36:32.8093525Z           }
+2026-11-06T10:36:32.8093696Z         }
+2026-11-06T10:36:32.8093866Z       ]
+2026-11-06T10:36:32.8094035Z     },
+2026-11-06T10:36:32.8094199Z     {
+2026-11-06T10:36:32.8094388Z       "scenario": "collector_ack_lost",
+2026-11-06T10:36:32.8094639Z       "steps": [
+2026-11-06T10:36:32.8094821Z         {
+2026-11-06T10:36:32.8095024Z           "stage": "collector_committed_ack_lost",
+2026-11-06T10:36:32.8095313Z           "state": "UNKNOWN",
+2026-11-06T10:36:32.8095574Z           "reason": "post_claim_outcome_unresolved",
+2026-11-06T10:36:32.8096052Z           "request_digest": "sha256:d9fee278ffe4111ff0a0b68d68b6a69a163c25eb3ff169321f22196c12f009d9",
+2026-11-06T10:36:32.8096534Z           "payment_posts": 0,
+2026-11-06T10:36:32.8096770Z           "payment_effects": 0,
+2026-11-06T10:36:32.8097012Z           "provider_lookups": 0,
+2026-11-06T10:36:32.8097247Z           "collector": {
+2026-11-06T10:36:32.8097472Z             "collect_attempts": 1,
+2026-11-06T10:36:32.8097872Z             "query_attempts": 0,
+2026-11-06T10:36:32.8098106Z             "records": 1,
+2026-11-06T10:36:32.8098332Z             "kind_counts": {
+2026-11-06T10:36:32.8098838Z               "admission_record": 1,
+2026-11-06T10:36:32.8099216Z               "provider_receipt": 0
+2026-11-06T10:36:32.8099462Z             }
+2026-11-06T10:36:32.8099645Z           },
+2026-11-06T10:36:32.8099829Z           "custody": {
+2026-11-06T10:36:32.8100040Z             "state": "UNKNOWN",
+2026-11-06T10:36:32.8100310Z             "basis": "historical_local_observations_only",
+2026-11-06T10:36:32.8100631Z             "present_retention": "NOT_CHECKED",
+2026-11-06T10:36:32.8100910Z             "pre_dispatch": {
+2026-11-06T10:36:32.8101305Z               "state": "NOT_RECORDED"
+2026-11-06T10:36:32.8101550Z             },
+2026-11-06T10:36:32.8101746Z             "admission_record": {
+2026-11-06T10:36:32.8101980Z               "state": "UNKNOWN"
+2026-11-06T10:36:32.8102192Z             },
+2026-11-06T10:36:32.8102388Z             "provider_receipt": {
+2026-11-06T10:36:32.8102618Z               "state": "UNKNOWN"
+2026-11-06T10:36:32.8102830Z             },
+2026-11-06T10:36:32.8103018Z             "observations": [],
+2026-11-06T10:36:32.8103261Z             "unverifiable_observations": 0
+2026-11-06T10:36:32.8103511Z           }
+2026-11-06T10:36:32.8103686Z         },
+2026-11-06T10:36:32.8103855Z         {
+2026-11-06T10:36:32.8104066Z           "stage": "recover_original_collection_ack",
+2026-11-06T10:36:32.8104354Z           "state": "UNKNOWN",
+2026-11-06T10:36:32.8104615Z           "reason": "durable_claim_outcome_unresolved",
+2026-11-06T10:36:32.8105096Z           "request_digest": "sha256:d9fee278ffe4111ff0a0b68d68b6a69a163c25eb3ff169321f22196c12f009d9",
+2026-11-06T10:36:32.8105547Z           "payment_posts": 0,
+2026-11-06T10:36:32.8105777Z           "payment_effects": 0,
+2026-11-06T10:36:32.8106014Z           "provider_lookups": 0,
+2026-11-06T10:36:32.8106248Z           "collector": {
+2026-11-06T10:36:32.8106483Z             "collect_attempts": 2,
+2026-11-06T10:36:32.8106729Z             "query_attempts": 1,
+2026-11-06T10:36:32.8106958Z             "records": 1,
+2026-11-06T10:36:32.8107173Z             "kind_counts": {
+2026-11-06T10:36:32.8107402Z               "admission_record": 1,
+2026-11-06T10:36:32.8107653Z               "provider_receipt": 0
+2026-11-06T10:36:32.8107888Z             }
+2026-11-06T10:36:32.8108062Z           },
+2026-11-06T10:36:32.8108241Z           "custody": {
+2026-11-06T10:36:32.8108446Z             "state": "UNKNOWN",
+2026-11-06T10:36:32.8109078Z             "basis": "historical_local_observations_only",
+2026-11-06T10:36:32.8109427Z             "present_retention": "NOT_CHECKED",
+2026-11-06T10:36:32.8109719Z             "pre_dispatch": {
+2026-11-06T10:36:32.8109961Z               "state": "NOT_RECORDED"
+2026-11-06T10:36:32.8110200Z             },
+2026-11-06T10:36:32.8110395Z             "admission_record": {
+2026-11-06T10:36:32.8110644Z               "state": "ACKNOWLEDGED",
+2026-11-06T10:36:32.8111123Z               "observation_digest": "sha256:c1a723b4dc66e4fd8bd5749a94652f5c04cd961ce8eb36b9ca76bc771b7afebb",
+2026-11-06T10:36:32.8111796Z               "package_digest": "sha256:2d983ac3db01855949c6f2fdf93c8e4c3d26db6de1b01a42c28870af34d3b0bb",
+2026-11-06T10:36:32.8112267Z               "stage": "HISTORICAL_RECOVERY"
+2026-11-06T10:36:32.8112534Z             },
+2026-11-06T10:36:32.8112731Z             "provider_receipt": {
+2026-11-06T10:36:32.8112971Z               "state": "UNKNOWN"
+2026-11-06T10:36:32.8113188Z             },
+2026-11-06T10:36:32.8113375Z             "observations": [
+2026-11-06T10:36:32.8113592Z               {
+2026-11-06T10:36:32.8114003Z                 "observation_digest": "sha256:c1a723b4dc66e4fd8bd5749a94652f5c04cd961ce8eb36b9ca76bc771b7afebb",
+2026-11-06T10:36:32.8114494Z                 "stage": "HISTORICAL_RECOVERY",
+2026-11-06T10:36:32.8114773Z                 "kind": "admission_record",
+2026-11-06T10:36:32.8115225Z                 "package_digest": "sha256:2d983ac3db01855949c6f2fdf93c8e4c3d26db6de1b01a42c28870af34d3b0bb",
+2026-11-06T10:36:32.8115851Z                 "package_bytes": {
+2026-11-06T10:36:32.8116313Z                   "original_bytes_digest": "sha256:2d983ac3db01855949c6f2fdf93c8e4c3d26db6de1b01a42c28870af34d3b0bb",
+2026-11-06T10:36:32.8116796Z                   "byte_length": 20906
+2026-11-06T10:36:32.8117032Z                 },
+2026-11-06T10:36:32.8117228Z                 "ack_bytes": {
+2026-11-06T10:36:32.8117672Z                   "original_bytes_digest": "sha256:f52d8155f04def0cd15d19ed5cd66c603d53f5d5e25a4f54d03214d6e3c59a39",
+2026-11-06T10:36:32.8118153Z                   "byte_length": 734
+2026-11-06T10:36:32.8118385Z                 },
+2026-11-06T10:36:32.8118872Z                 "readback_bytes": {
+2026-11-06T10:36:32.8119344Z                   "original_bytes_digest": "sha256:74b53b9bce9893c7af27aa6ae2cea05399913bc094f2f7f8679aeecc78be4dd4",
+2026-11-06T10:36:32.8119822Z                   "byte_length": 636
+2026-11-06T10:36:32.8120058Z                 },
+2026-11-06T10:36:32.8120319Z                 "nonce": "0948d8de322a96258bb21c0e98902ab2",
+2026-11-06T10:36:32.8120623Z                 "collector_epoch": 1,
+2026-11-06T10:36:32.8120877Z                 "record_bytes": {
+2026-11-06T10:36:32.8121326Z                   "original_bytes_digest": "sha256:c1a723b4dc66e4fd8bd5749a94652f5c04cd961ce8eb36b9ca76bc771b7afebb",
+2026-11-06T10:36:32.8121812Z                   "byte_length": 45002
+2026-11-06T10:36:32.8122057Z                 }
+2026-11-06T10:36:32.8122240Z               }
+2026-11-06T10:36:32.8122422Z             ],
+2026-11-06T10:36:32.8122627Z             "unverifiable_observations": 0
+2026-11-06T10:36:32.8122880Z           }
+2026-11-06T10:36:32.8123052Z         },
+2026-11-06T10:36:32.8123226Z         {
+2026-11-06T10:36:32.8123421Z           "stage": "repeat_still_consumed",
+2026-11-06T10:36:32.8123693Z           "state": "UNKNOWN",
+2026-11-06T10:36:32.8123958Z           "reason": "durable_claim_outcome_unresolved",
+2026-11-06T10:36:32.8124446Z           "request_digest": "sha256:d9fee278ffe4111ff0a0b68d68b6a69a163c25eb3ff169321f22196c12f009d9",
+2026-11-06T10:36:32.8124904Z           "payment_posts": 0,
+2026-11-06T10:36:32.8125140Z           "payment_effects": 0,
+2026-11-06T10:36:32.8125383Z           "provider_lookups": 0,
+2026-11-06T10:36:32.8125621Z           "collector": {
+2026-11-06T10:36:32.8125848Z             "collect_attempts": 2,
+2026-11-06T10:36:32.8126090Z             "query_attempts": 1,
+2026-11-06T10:36:32.8126319Z             "records": 1,
+2026-11-06T10:36:32.8126534Z             "kind_counts": {
+2026-11-06T10:36:32.8126761Z               "admission_record": 1,
+2026-11-06T10:36:32.8127011Z               "provider_receipt": 0
+2026-11-06T10:36:32.8127250Z             }
+2026-11-06T10:36:32.8127433Z           },
+2026-11-06T10:36:32.8127612Z           "custody": {
+2026-11-06T10:36:32.8127820Z             "state": "UNKNOWN",
+2026-11-06T10:36:32.8128094Z             "basis": "historical_local_observations_only",
+2026-11-06T10:36:32.8128416Z             "present_retention": "NOT_CHECKED",
+2026-11-06T10:36:32.8129034Z             "pre_dispatch": {
+2026-11-06T10:36:32.8129277Z               "state": "NOT_RECORDED"
+2026-11-06T10:36:32.8129519Z             },
+2026-11-06T10:36:32.8129717Z             "admission_record": {
+2026-11-06T10:36:32.8129970Z               "state": "ACKNOWLEDGED",
+2026-11-06T10:36:32.8130465Z               "observation_digest": "sha256:c1a723b4dc66e4fd8bd5749a94652f5c04cd961ce8eb36b9ca76bc771b7afebb",
+2026-11-06T10:36:32.8131133Z               "package_digest": "sha256:2d983ac3db01855949c6f2fdf93c8e4c3d26db6de1b01a42c28870af34d3b0bb",
+2026-11-06T10:36:32.8131606Z               "stage": "HISTORICAL_RECOVERY"
+2026-11-06T10:36:32.8131859Z             },
+2026-11-06T10:36:32.8132070Z             "provider_receipt": {
+2026-11-06T10:36:32.8132310Z               "state": "UNKNOWN"
+2026-11-06T10:36:32.8132526Z             },
+2026-11-06T10:36:32.8132722Z             "observations": [
+2026-11-06T10:36:32.8132938Z               {
+2026-11-06T10:36:32.8133509Z                 "observation_digest": "sha256:c1a723b4dc66e4fd8bd5749a94652f5c04cd961ce8eb36b9ca76bc771b7afebb",
+2026-11-06T10:36:32.8134007Z                 "stage": "HISTORICAL_RECOVERY",
+2026-11-06T10:36:32.8134290Z                 "kind": "admission_record",
+2026-11-06T10:36:32.8134746Z                 "package_digest": "sha256:2d983ac3db01855949c6f2fdf93c8e4c3d26db6de1b01a42c28870af34d3b0bb",
+2026-11-06T10:36:32.8135211Z                 "package_bytes": {
+2026-11-06T10:36:32.8135672Z                   "original_bytes_digest": "sha256:2d983ac3db01855949c6f2fdf93c8e4c3d26db6de1b01a42c28870af34d3b0bb",
+2026-11-06T10:36:32.8136164Z                   "byte_length": 20906
+2026-11-06T10:36:32.8136402Z                 },
+2026-11-06T10:36:32.8136862Z                 "ack_bytes": {
+2026-11-06T10:36:32.8137312Z                   "original_bytes_digest": "sha256:f52d8155f04def0cd15d19ed5cd66c603d53f5d5e25a4f54d03214d6e3c59a39",
+2026-11-06T10:36:32.8137798Z                   "byte_length": 734
+2026-11-06T10:36:32.8138038Z                 },
+2026-11-06T10:36:32.8138237Z                 "readback_bytes": {
+2026-11-06T10:36:32.8138842Z                   "original_bytes_digest": "sha256:74b53b9bce9893c7af27aa6ae2cea05399913bc094f2f7f8679aeecc78be4dd4",
+2026-11-06T10:36:32.8139329Z                   "byte_length": 636
+2026-11-06T10:36:32.8139556Z                 },
+2026-11-06T10:36:32.8139781Z                 "nonce": "0948d8de322a96258bb21c0e98902ab2",
+2026-11-06T10:36:32.8140090Z                 "collector_epoch": 1,
+2026-11-06T10:36:32.8140339Z                 "record_bytes": {
+2026-11-06T10:36:32.8140790Z                   "original_bytes_digest": "sha256:c1a723b4dc66e4fd8bd5749a94652f5c04cd961ce8eb36b9ca76bc771b7afebb",
+2026-11-06T10:36:32.8141284Z                   "byte_length": 45002
+2026-11-06T10:36:32.8141518Z                 }
+2026-11-06T10:36:32.8141700Z               }
+2026-11-06T10:36:32.8141878Z             ],
+2026-11-06T10:36:32.8142082Z             "unverifiable_observations": 0
+2026-11-06T10:36:32.8142340Z           }
+2026-11-06T10:36:32.8142511Z         }
+2026-11-06T10:36:32.8142689Z       ]
+2026-11-06T10:36:32.8142854Z     },
+2026-11-06T10:36:32.8143018Z     {
+2026-11-06T10:36:32.8143214Z       "scenario": "provider_response_lost",
+2026-11-06T10:36:32.8143476Z       "steps": [
+2026-11-06T10:36:32.8143660Z         {
+2026-11-06T10:36:32.8143876Z           "stage": "provider_committed_response_lost",
+2026-11-06T10:36:32.8144167Z           "state": "UNKNOWN",
+2026-11-06T10:36:32.8144430Z           "reason": "post_claim_outcome_unresolved",
+2026-11-06T10:36:32.8144904Z           "request_digest": "sha256:9a5b1b9b85b547b8ae2dbbb92ea2023063339b77c6a771dc9b813edf276856ae",
+2026-11-06T10:36:32.8145365Z           "payment_posts": 1,
+2026-11-06T10:36:32.8145618Z           "payment_effects": 1,
+2026-11-06T10:36:32.8145863Z           "provider_lookups": 0,
+2026-11-06T10:36:32.8146099Z           "collector": {
+2026-11-06T10:36:32.8146325Z             "collect_attempts": 1,
+2026-11-06T10:36:32.8146578Z             "query_attempts": 1,
+2026-11-06T10:36:32.8146814Z             "records": 1,
+2026-11-06T10:36:32.8147034Z             "kind_counts": {
+2026-11-06T10:36:32.8147260Z               "admission_record": 1,
+2026-11-06T10:36:32.8147512Z               "provider_receipt": 0
+2026-11-06T10:36:32.8147746Z             }
+2026-11-06T10:36:32.8147930Z           },
+2026-11-06T10:36:32.8148112Z           "custody": {
+2026-11-06T10:36:32.8148324Z             "state": "UNKNOWN",
+2026-11-06T10:36:32.8148833Z             "basis": "historical_local_observations_only",
+2026-11-06T10:36:32.8149173Z             "present_retention": "NOT_CHECKED",
+2026-11-06T10:36:32.8149454Z             "pre_dispatch": {
+2026-11-06T10:36:32.8149777Z               "state": "VERIFIED_PREREQUISITE",
+2026-11-06T10:36:32.8150267Z               "observation_digest": "sha256:3aae1f5a74054c09b9b8534ec2fd423196d5fe55acb1298b7096588d15009d9e",
+2026-11-06T10:36:32.8150770Z               "proves_payment_post_occurred": false
+2026-11-06T10:36:32.8151202Z             },
+2026-11-06T10:36:32.8151405Z             "admission_record": {
+2026-11-06T10:36:32.8151654Z               "state": "ACKNOWLEDGED",
+2026-11-06T10:36:32.8152108Z               "observation_digest": "sha256:3aae1f5a74054c09b9b8534ec2fd423196d5fe55acb1298b7096588d15009d9e",
+2026-11-06T10:36:32.8152756Z               "package_digest": "sha256:c70a16f7737d55b5127c110037b3e79c11239622fa031575659b5600879dd0ed",
+2026-11-06T10:36:32.8153201Z               "stage": "PRE_DISPATCH"
+2026-11-06T10:36:32.8153437Z             },
+2026-11-06T10:36:32.8153630Z             "provider_receipt": {
+2026-11-06T10:36:32.8153868Z               "state": "UNKNOWN"
+2026-11-06T10:36:32.8154088Z             },
+2026-11-06T10:36:32.8154408Z             "observations": [
+2026-11-06T10:36:32.8154629Z               {
+2026-11-06T10:36:32.8155030Z                 "observation_digest": "sha256:3aae1f5a74054c09b9b8534ec2fd423196d5fe55acb1298b7096588d15009d9e",
+2026-11-06T10:36:32.8155507Z                 "stage": "PRE_DISPATCH",
+2026-11-06T10:36:32.8155785Z                 "kind": "admission_record",
+2026-11-06T10:36:32.8156231Z                 "package_digest": "sha256:c70a16f7737d55b5127c110037b3e79c11239622fa031575659b5600879dd0ed",
+2026-11-06T10:36:32.8156687Z                 "package_bytes": {
+2026-11-06T10:36:32.8157137Z                   "original_bytes_digest": "sha256:c70a16f7737d55b5127c110037b3e79c11239622fa031575659b5600879dd0ed",
+2026-11-06T10:36:32.8157612Z                   "byte_length": 20954
+2026-11-06T10:36:32.8157856Z                 },
+2026-11-06T10:36:32.8158054Z                 "ack_bytes": {
+2026-11-06T10:36:32.8158502Z                   "original_bytes_digest": "sha256:6a18eecb679a6b8bd01922a90f0b71d4a7941a0c0705be60ebed77fbf7c3ec28",
+2026-11-06T10:36:32.8159322Z                   "byte_length": 734
+2026-11-06T10:36:32.8159564Z                 },
+2026-11-06T10:36:32.8159767Z                 "readback_bytes": {
+2026-11-06T10:36:32.8160220Z                   "original_bytes_digest": "sha256:b72e7ef5b1f3833022961e73065fd49428ea0858e693a30f9f89455573dbd4f6",
+2026-11-06T10:36:32.8160697Z                   "byte_length": 636
+2026-11-06T10:36:32.8160931Z                 },
+2026-11-06T10:36:32.8161168Z                 "nonce": "b0e11197b38a9566b084ee9601d3fd0d",
+2026-11-06T10:36:32.8161488Z                 "collector_epoch": 1,
+2026-11-06T10:36:32.8162075Z                 "record_bytes": {
+2026-11-06T10:36:32.8162632Z                   "original_bytes_digest": "sha256:3aae1f5a74054c09b9b8534ec2fd423196d5fe55acb1298b7096588d15009d9e",
+2026-11-06T10:36:32.8163386Z                   "byte_length": 45091
+2026-11-06T10:36:32.8163751Z                 }
+2026-11-06T10:36:32.8164044Z               }
+2026-11-06T10:36:32.8164377Z             ],
+2026-11-06T10:36:32.8164832Z             "unverifiable_observations": 0
+2026-11-06T10:36:32.8165429Z           }
+2026-11-06T10:36:32.8224644Z         },
+2026-11-06T10:36:32.8224976Z         {
+2026-11-06T10:36:32.8225344Z           "stage": "provider_get_only_reconciliation",
+2026-11-06T10:36:32.8225856Z           "state": "SETTLED",
+2026-11-06T10:36:32.8226287Z           "reason": "stored_verified_native_receipt",
+2026-11-06T10:36:32.8227072Z           "request_digest": "sha256:9a5b1b9b85b547b8ae2dbbb92ea2023063339b77c6a771dc9b813edf276856ae",
+2026-11-06T10:36:32.8227780Z           "payment_posts": 1,
+2026-11-06T10:36:32.8228150Z           "payment_effects": 1,
+2026-11-06T10:36:32.8228806Z           "provider_lookups": 1,
+2026-11-06T10:36:32.8229236Z           "collector": {
+2026-11-06T10:36:32.8229614Z             "collect_attempts": 1,
+2026-11-06T10:36:32.8230040Z             "query_attempts": 1,
+2026-11-06T10:36:32.8230454Z             "records": 1,
+2026-11-06T10:36:32.8230833Z             "kind_counts": {
+2026-11-06T10:36:32.8231255Z               "admission_record": 1,
+2026-11-06T10:36:32.8231718Z               "provider_receipt": 0
+2026-11-06T10:36:32.8232141Z             }
+2026-11-06T10:36:32.8232450Z           },
+2026-11-06T10:36:32.8232779Z           "custody": {
+2026-11-06T10:36:32.8233424Z             "state": "UNKNOWN",
+2026-11-06T10:36:32.8233928Z             "basis": "historical_local_observations_only",
+2026-11-06T10:36:32.8234543Z             "present_retention": "NOT_CHECKED",
+2026-11-06T10:36:32.8235020Z             "pre_dispatch": {
+2026-11-06T10:36:32.8235462Z               "state": "VERIFIED_PREREQUISITE",
+2026-11-06T10:36:32.8236322Z               "observation_digest": "sha256:3aae1f5a74054c09b9b8534ec2fd423196d5fe55acb1298b7096588d15009d9e",
+2026-11-06T10:36:32.8236863Z               "proves_payment_post_occurred": false
+2026-11-06T10:36:32.8237154Z             },
+2026-11-06T10:36:32.8237372Z             "admission_record": {
+2026-11-06T10:36:32.8237638Z               "state": "ACKNOWLEDGED",
+2026-11-06T10:36:32.8238308Z               "observation_digest": "sha256:3aae1f5a74054c09b9b8534ec2fd423196d5fe55acb1298b7096588d15009d9e",
+2026-11-06T10:36:32.8239312Z               "package_digest": "sha256:c70a16f7737d55b5127c110037b3e79c11239622fa031575659b5600879dd0ed",
+2026-11-06T10:36:32.8239790Z               "stage": "PRE_DISPATCH"
+2026-11-06T10:36:32.8240032Z             },
+2026-11-06T10:36:32.8240239Z             "provider_receipt": {
+2026-11-06T10:36:32.8240489Z               "state": "UNKNOWN"
+2026-11-06T10:36:32.8240715Z             },
+2026-11-06T10:36:32.8240915Z             "observations": [
+2026-11-06T10:36:32.8241152Z               {
+2026-11-06T10:36:32.8241561Z                 "observation_digest": "sha256:3aae1f5a74054c09b9b8534ec2fd423196d5fe55acb1298b7096588d15009d9e",
+2026-11-06T10:36:32.8242060Z                 "stage": "PRE_DISPATCH",
+2026-11-06T10:36:32.8242336Z                 "kind": "admission_record",
+2026-11-06T10:36:32.8242787Z                 "package_digest": "sha256:c70a16f7737d55b5127c110037b3e79c11239622fa031575659b5600879dd0ed",
+2026-11-06T10:36:32.8243242Z                 "package_bytes": {
+2026-11-06T10:36:32.8243701Z                   "original_bytes_digest": "sha256:c70a16f7737d55b5127c110037b3e79c11239622fa031575659b5600879dd0ed",
+2026-11-06T10:36:32.8244180Z                   "byte_length": 20954
+2026-11-06T10:36:32.8244421Z                 },
+2026-11-06T10:36:32.8244619Z                 "ack_bytes": {
+2026-11-06T10:36:32.8245069Z                   "original_bytes_digest": "sha256:6a18eecb679a6b8bd01922a90f0b71d4a7941a0c0705be60ebed77fbf7c3ec28",
+2026-11-06T10:36:32.8245553Z                   "byte_length": 734
+2026-11-06T10:36:32.8245786Z                 },
+2026-11-06T10:36:32.8245989Z                 "readback_bytes": {
+2026-11-06T10:36:32.8246458Z                   "original_bytes_digest": "sha256:b72e7ef5b1f3833022961e73065fd49428ea0858e693a30f9f89455573dbd4f6",
+2026-11-06T10:36:32.8246934Z                   "byte_length": 636
+2026-11-06T10:36:32.8247167Z                 },
+2026-11-06T10:36:32.8247401Z                 "nonce": "b0e11197b38a9566b084ee9601d3fd0d",
+2026-11-06T10:36:32.8247705Z                 "collector_epoch": 1,
+2026-11-06T10:36:32.8247958Z                 "record_bytes": {
+2026-11-06T10:36:32.8248419Z                   "original_bytes_digest": "sha256:3aae1f5a74054c09b9b8534ec2fd423196d5fe55acb1298b7096588d15009d9e",
+2026-11-06T10:36:32.8249456Z                   "byte_length": 45091
+2026-11-06T10:36:32.8249702Z                 }
+2026-11-06T10:36:32.8249888Z               }
+2026-11-06T10:36:32.8250081Z             ],
+2026-11-06T10:36:32.8250293Z             "unverifiable_observations": 0
+2026-11-06T10:36:32.8250551Z           }
+2026-11-06T10:36:32.8250725Z         },
+2026-11-06T10:36:32.8250893Z         {
+2026-11-06T10:36:32.8251117Z           "stage": "collect_original_provider_receipt",
+2026-11-06T10:36:32.8251426Z           "state": "SETTLED",
+2026-11-06T10:36:32.8251687Z           "reason": "stored_verified_native_receipt",
+2026-11-06T10:36:32.8252177Z           "request_digest": "sha256:9a5b1b9b85b547b8ae2dbbb92ea2023063339b77c6a771dc9b813edf276856ae",
+2026-11-06T10:36:32.8252642Z           "payment_posts": 1,
+2026-11-06T10:36:32.8252888Z           "payment_effects": 1,
+2026-11-06T10:36:32.8253131Z           "provider_lookups": 1,
+2026-11-06T10:36:32.8253547Z           "collector": {
+2026-11-06T10:36:32.8253771Z             "collect_attempts": 3,
+2026-11-06T10:36:32.8254023Z             "query_attempts": 3,
+2026-11-06T10:36:32.8254262Z             "records": 2,
+2026-11-06T10:36:32.8254483Z             "kind_counts": {
+2026-11-06T10:36:32.8254717Z               "admission_record": 1,
+2026-11-06T10:36:32.8254979Z               "provider_receipt": 1
+2026-11-06T10:36:32.8255218Z             }
+2026-11-06T10:36:32.8255400Z           },
+2026-11-06T10:36:32.8255598Z           "custody": {
+2026-11-06T10:36:32.8255814Z             "state": "ACKNOWLEDGED",
+2026-11-06T10:36:32.8256109Z             "basis": "historical_local_observations_only",
+2026-11-06T10:36:32.8256567Z             "present_retention": "NOT_CHECKED",
+2026-11-06T10:36:32.8256855Z             "pre_dispatch": {
+2026-11-06T10:36:32.8257106Z               "state": "VERIFIED_PREREQUISITE",
+2026-11-06T10:36:32.8257591Z               "observation_digest": "sha256:3aae1f5a74054c09b9b8534ec2fd423196d5fe55acb1298b7096588d15009d9e",
+2026-11-06T10:36:32.8258092Z               "proves_payment_post_occurred": false
+2026-11-06T10:36:32.8258364Z             },
+2026-11-06T10:36:32.8258803Z             "admission_record": {
+2026-11-06T10:36:32.8259071Z               "state": "ACKNOWLEDGED",
+2026-11-06T10:36:32.8259526Z               "observation_digest": "sha256:544d87b89a649cff4bc229d409b452af225521c1f655fb81290d2ae73d731f6a",
+2026-11-06T10:36:32.8260169Z               "package_digest": "sha256:c70a16f7737d55b5127c110037b3e79c11239622fa031575659b5600879dd0ed",
+2026-11-06T10:36:32.8260630Z               "stage": "HISTORICAL_RECOVERY"
+2026-11-06T10:36:32.8260888Z             },
+2026-11-06T10:36:32.8261083Z             "provider_receipt": {
+2026-11-06T10:36:32.8261338Z               "state": "ACKNOWLEDGED",
+2026-11-06T10:36:32.8261785Z               "observation_digest": "sha256:c287c3846514a1f01800b6c977095a4b4ce44597a4368ac4da679e5e91751a98",
+2026-11-06T10:36:32.8262431Z               "package_digest": "sha256:568249807b3d8124dc4449b1e5561bdf3d855779dc4fd6f1ab50c470e5fcdb17",
+2026-11-06T10:36:32.8262895Z               "stage": "HISTORICAL_RECOVERY"
+2026-11-06T10:36:32.8263144Z             },
+2026-11-06T10:36:32.8263337Z             "observations": [
+2026-11-06T10:36:32.8263560Z               {
+2026-11-06T10:36:32.8263952Z                 "observation_digest": "sha256:c287c3846514a1f01800b6c977095a4b4ce44597a4368ac4da679e5e91751a98",
+2026-11-06T10:36:32.8264424Z                 "stage": "HISTORICAL_RECOVERY",
+2026-11-06T10:36:32.8264710Z                 "kind": "provider_receipt",
+2026-11-06T10:36:32.8265176Z                 "package_digest": "sha256:568249807b3d8124dc4449b1e5561bdf3d855779dc4fd6f1ab50c470e5fcdb17",
+2026-11-06T10:36:32.8265635Z                 "package_bytes": {
+2026-11-06T10:36:32.8266092Z                   "original_bytes_digest": "sha256:568249807b3d8124dc4449b1e5561bdf3d855779dc4fd6f1ab50c470e5fcdb17",
+2026-11-06T10:36:32.8266572Z                   "byte_length": 3728
+2026-11-06T10:36:32.8266811Z                 },
+2026-11-06T10:36:32.8267010Z                 "ack_bytes": {
+2026-11-06T10:36:32.8267456Z                   "original_bytes_digest": "sha256:50a3ee031085eab29464f01117235fce5f428d9a7b0dffda94ec2d57d2254984",
+2026-11-06T10:36:32.8267940Z                   "byte_length": 732
+2026-11-06T10:36:32.8268179Z                 },
+2026-11-06T10:36:32.8268388Z                 "readback_bytes": {
+2026-11-06T10:36:32.8269111Z                   "original_bytes_digest": "sha256:411c73224c323589aa13b69a51929e128c252dfb5067aedfe398070287c88fcf",
+2026-11-06T10:36:32.8269592Z                   "byte_length": 636
+2026-11-06T10:36:32.8269824Z                 },
+2026-11-06T10:36:32.8270059Z                 "nonce": "109830013855fd9110f67567379c9fea",
+2026-11-06T10:36:32.8270359Z                 "collector_epoch": 1,
+2026-11-06T10:36:32.8270608Z                 "record_bytes": {
+2026-11-06T10:36:32.8271058Z                   "original_bytes_digest": "sha256:c287c3846514a1f01800b6c977095a4b4ce44597a4368ac4da679e5e91751a98",
+2026-11-06T10:36:32.8271681Z                   "byte_length": 10642
+2026-11-06T10:36:32.8271925Z                 }
+2026-11-06T10:36:32.8272109Z               },
+2026-11-06T10:36:32.8272293Z               {
+2026-11-06T10:36:32.8272690Z                 "observation_digest": "sha256:544d87b89a649cff4bc229d409b452af225521c1f655fb81290d2ae73d731f6a",
+2026-11-06T10:36:32.8273173Z                 "stage": "HISTORICAL_RECOVERY",
+2026-11-06T10:36:32.8273456Z                 "kind": "admission_record",
+2026-11-06T10:36:32.8273901Z                 "package_digest": "sha256:c70a16f7737d55b5127c110037b3e79c11239622fa031575659b5600879dd0ed",
+2026-11-06T10:36:32.8274349Z                 "package_bytes": {
+2026-11-06T10:36:32.8274905Z                   "original_bytes_digest": "sha256:c70a16f7737d55b5127c110037b3e79c11239622fa031575659b5600879dd0ed",
+2026-11-06T10:36:32.8275384Z                   "byte_length": 20954
+2026-11-06T10:36:32.8275623Z                 },
+2026-11-06T10:36:32.8275823Z                 "ack_bytes": {
+2026-11-06T10:36:32.8276272Z                   "original_bytes_digest": "sha256:6a18eecb679a6b8bd01922a90f0b71d4a7941a0c0705be60ebed77fbf7c3ec28",
+2026-11-06T10:36:32.8276753Z                   "byte_length": 734
+2026-11-06T10:36:32.8276985Z                 },
+2026-11-06T10:36:32.8277181Z                 "readback_bytes": {
+2026-11-06T10:36:32.8277638Z                   "original_bytes_digest": "sha256:5bbe79dc6bbeb454dfc875d162a57670b9ee9e2850ff81888f8ba6f62590542a",
+2026-11-06T10:36:32.8278117Z                   "byte_length": 636
+2026-11-06T10:36:32.8278357Z                 },
+2026-11-06T10:36:32.8278849Z                 "nonce": "f46d527f554df66575b2eb87093f2dfd",
+2026-11-06T10:36:32.8279159Z                 "collector_epoch": 1,
+2026-11-06T10:36:32.8279416Z                 "record_bytes": {
+2026-11-06T10:36:32.8279864Z                   "original_bytes_digest": "sha256:544d87b89a649cff4bc229d409b452af225521c1f655fb81290d2ae73d731f6a",
+2026-11-06T10:36:32.8280339Z                   "byte_length": 45098
+2026-11-06T10:36:32.8280581Z                 }
+2026-11-06T10:36:32.8280766Z               },
+2026-11-06T10:36:32.8280951Z               {
+2026-11-06T10:36:32.8281350Z                 "observation_digest": "sha256:3aae1f5a74054c09b9b8534ec2fd423196d5fe55acb1298b7096588d15009d9e",
+2026-11-06T10:36:32.8281838Z                 "stage": "PRE_DISPATCH",
+2026-11-06T10:36:32.8282108Z                 "kind": "admission_record",
+2026-11-06T10:36:32.8282555Z                 "package_digest": "sha256:c70a16f7737d55b5127c110037b3e79c11239622fa031575659b5600879dd0ed",
+2026-11-06T10:36:32.8283006Z                 "package_bytes": {
+2026-11-06T10:36:32.8283453Z                   "original_bytes_digest": "sha256:c70a16f7737d55b5127c110037b3e79c11239622fa031575659b5600879dd0ed",
+2026-11-06T10:36:32.8283924Z                   "byte_length": 20954
+2026-11-06T10:36:32.8284162Z                 },
+2026-11-06T10:36:32.8284361Z                 "ack_bytes": {
+2026-11-06T10:36:32.8284815Z                   "original_bytes_digest": "sha256:6a18eecb679a6b8bd01922a90f0b71d4a7941a0c0705be60ebed77fbf7c3ec28",
+2026-11-06T10:36:32.8285302Z                   "byte_length": 734
+2026-11-06T10:36:32.8285535Z                 },
+2026-11-06T10:36:32.8285735Z                 "readback_bytes": {
+2026-11-06T10:36:32.8286183Z                   "original_bytes_digest": "sha256:b72e7ef5b1f3833022961e73065fd49428ea0858e693a30f9f89455573dbd4f6",
+2026-11-06T10:36:32.8286654Z                   "byte_length": 636
+2026-11-06T10:36:32.8286885Z                 },
+2026-11-06T10:36:32.8287117Z                 "nonce": "b0e11197b38a9566b084ee9601d3fd0d",
+2026-11-06T10:36:32.8287459Z                 "collector_epoch": 1,
+2026-11-06T10:36:32.8287707Z                 "record_bytes": {
+2026-11-06T10:36:32.8288155Z                   "original_bytes_digest": "sha256:3aae1f5a74054c09b9b8534ec2fd423196d5fe55acb1298b7096588d15009d9e",
+2026-11-06T10:36:32.8288883Z                   "byte_length": 45091
+2026-11-06T10:36:32.8289120Z                 }
+2026-11-06T10:36:32.8289454Z               }
+2026-11-06T10:36:32.8289631Z             ],
+2026-11-06T10:36:32.8289840Z             "unverifiable_observations": 0
+2026-11-06T10:36:32.8290097Z           }
+2026-11-06T10:36:32.8290268Z         }
+2026-11-06T10:36:32.8290438Z       ]
+2026-11-06T10:36:32.8290607Z     },
+2026-11-06T10:36:32.8290775Z     {
+2026-11-06T10:36:32.8290984Z       "scenario": "outcome_collection_stopped",
+2026-11-06T10:36:32.8291271Z       "steps": [
+2026-11-06T10:36:32.8291457Z         {
+2026-11-06T10:36:32.8291706Z           "stage": "financial_settled_outcome_custody_unresolved",
+2026-11-06T10:36:32.8292046Z           "state": "SETTLED",
+2026-11-06T10:36:32.8292312Z           "reason": "stored_verified_native_receipt",
+2026-11-06T10:36:32.8292916Z           "request_digest": "sha256:53ea829f2736e9a43bbe110cbf22d39baecee00721369df1b7ee9c09181c39ea",
+2026-11-06T10:36:32.8293382Z           "payment_posts": 1,
+2026-11-06T10:36:32.8293628Z           "payment_effects": 1,
+2026-11-06T10:36:32.8293877Z           "provider_lookups": 0,
+2026-11-06T10:36:32.8294115Z           "collector": {
+2026-11-06T10:36:32.8294342Z             "collect_attempts": 1,
+2026-11-06T10:36:32.8294589Z             "query_attempts": 1,
+2026-11-06T10:36:32.8294829Z             "records": 1,
+2026-11-06T10:36:32.8295049Z             "kind_counts": {
+2026-11-06T10:36:32.8295282Z               "admission_record": 1,
+2026-11-06T10:36:32.8295538Z               "provider_receipt": 0
+2026-11-06T10:36:32.8295772Z             }
+2026-11-06T10:36:32.8295952Z           },
+2026-11-06T10:36:32.8296134Z           "custody": {
+2026-11-06T10:36:32.8296347Z             "state": "UNKNOWN",
+2026-11-06T10:36:32.8296639Z             "basis": "historical_local_observations_only",
+2026-11-06T10:36:32.8296972Z             "present_retention": "NOT_CHECKED",
+2026-11-06T10:36:32.8297253Z             "pre_dispatch": {
+2026-11-06T10:36:32.8297507Z               "state": "VERIFIED_PREREQUISITE",
+2026-11-06T10:36:32.8298001Z               "observation_digest": "sha256:1ad1af764084df0f97ead2ddccc9641c63092b70de9efcbb86f56c524518afb7",
+2026-11-06T10:36:32.8298751Z               "proves_payment_post_occurred": false
+2026-11-06T10:36:32.8299051Z             },
+2026-11-06T10:36:32.8299253Z             "admission_record": {
+2026-11-06T10:36:32.8299502Z               "state": "ACKNOWLEDGED",
+2026-11-06T10:36:32.8299955Z               "observation_digest": "sha256:1ad1af764084df0f97ead2ddccc9641c63092b70de9efcbb86f56c524518afb7",
+2026-11-06T10:36:32.8300627Z               "package_digest": "sha256:a5b7df272c130baf8dd81a89bde5ab0f3ecd11eadbf958534aa0aada1a7cb00a",
+2026-11-06T10:36:32.8301106Z               "stage": "PRE_DISPATCH"
+2026-11-06T10:36:32.8301343Z             },
+2026-11-06T10:36:32.8301541Z             "provider_receipt": {
+2026-11-06T10:36:32.8301780Z               "state": "UNKNOWN"
+2026-11-06T10:36:32.8302000Z             },
+2026-11-06T10:36:32.8302188Z             "observations": [
+2026-11-06T10:36:32.8302404Z               {
+2026-11-06T10:36:32.8302812Z                 "observation_digest": "sha256:1ad1af764084df0f97ead2ddccc9641c63092b70de9efcbb86f56c524518afb7",
+2026-11-06T10:36:32.8303296Z                 "stage": "PRE_DISPATCH",
+2026-11-06T10:36:32.8303567Z                 "kind": "admission_record",
+2026-11-06T10:36:32.8304038Z                 "package_digest": "sha256:a5b7df272c130baf8dd81a89bde5ab0f3ecd11eadbf958534aa0aada1a7cb00a",
+2026-11-06T10:36:32.8304507Z                 "package_bytes": {
+2026-11-06T10:36:32.8304982Z                   "original_bytes_digest": "sha256:a5b7df272c130baf8dd81a89bde5ab0f3ecd11eadbf958534aa0aada1a7cb00a",
+2026-11-06T10:36:32.8305506Z                   "byte_length": 21002
+2026-11-06T10:36:32.8305743Z                 },
+2026-11-06T10:36:32.8305942Z                 "ack_bytes": {
+2026-11-06T10:36:32.8306384Z                   "original_bytes_digest": "sha256:98839c99521a568e24ab657f72b8aa99c4f1a750dfe1ae3702d3cdbdc6f807d9",
+2026-11-06T10:36:32.8306862Z                   "byte_length": 734
+2026-11-06T10:36:32.8307231Z                 },
+2026-11-06T10:36:32.8307434Z                 "readback_bytes": {
+2026-11-06T10:36:32.8307898Z                   "original_bytes_digest": "sha256:bb3bac71df39b848e3cb95ca23ab5c701c872db1800d2ceed708e1a909993823",
+2026-11-06T10:36:32.8308376Z                   "byte_length": 636
+2026-11-06T10:36:32.8308827Z                 },
+2026-11-06T10:36:32.8309069Z                 "nonce": "51bbf77e52501d85ee12c1987a71e96f",
+2026-11-06T10:36:32.8309374Z                 "collector_epoch": 1,
+2026-11-06T10:36:32.8309626Z                 "record_bytes": {
+2026-11-06T10:36:32.8310078Z                   "original_bytes_digest": "sha256:1ad1af764084df0f97ead2ddccc9641c63092b70de9efcbb86f56c524518afb7",
+2026-11-06T10:36:32.8310560Z                   "byte_length": 45187
+2026-11-06T10:36:32.8310930Z                 }
+2026-11-06T10:36:32.8311127Z               }
+2026-11-06T10:36:32.8311312Z             ],
+2026-11-06T10:36:32.8311518Z             "unverifiable_observations": 0
+2026-11-06T10:36:32.8311776Z           }
+2026-11-06T10:36:32.8311953Z         },
+2026-11-06T10:36:32.8312126Z         {
+2026-11-06T10:36:32.8312336Z           "stage": "recover_outcome_evidence_only",
+2026-11-06T10:36:32.8312626Z           "state": "SETTLED",
+2026-11-06T10:36:32.8312892Z           "reason": "stored_verified_native_receipt",
+2026-11-06T10:36:32.8313380Z           "request_digest": "sha256:53ea829f2736e9a43bbe110cbf22d39baecee00721369df1b7ee9c09181c39ea",
+2026-11-06T10:36:32.8313837Z           "payment_posts": 1,
+2026-11-06T10:36:32.8314072Z           "payment_effects": 1,
+2026-11-06T10:36:32.8314315Z           "provider_lookups": 0,
+2026-11-06T10:36:32.8314568Z           "collector": {
+2026-11-06T10:36:32.8314794Z             "collect_attempts": 3,
+2026-11-06T10:36:32.8315045Z             "query_attempts": 3,
+2026-11-06T10:36:32.8315281Z             "records": 2,
+2026-11-06T10:36:32.8315499Z             "kind_counts": {
+2026-11-06T10:36:32.8315726Z               "admission_record": 1,
+2026-11-06T10:36:32.8315981Z               "provider_receipt": 1
+2026-11-06T10:36:32.8316223Z             }
+2026-11-06T10:36:32.8316401Z           },
+2026-11-06T10:36:32.8316583Z           "custody": {
+2026-11-06T10:36:32.8316797Z             "state": "ACKNOWLEDGED",
+2026-11-06T10:36:32.8317089Z             "basis": "historical_local_observations_only",
+2026-11-06T10:36:32.8317409Z             "present_retention": "NOT_CHECKED",
+2026-11-06T10:36:32.8317690Z             "pre_dispatch": {
+2026-11-06T10:36:32.8317940Z               "state": "VERIFIED_PREREQUISITE",
+2026-11-06T10:36:32.8318424Z               "observation_digest": "sha256:1ad1af764084df0f97ead2ddccc9641c63092b70de9efcbb86f56c524518afb7",
+2026-11-06T10:36:32.8319178Z               "proves_payment_post_occurred": false
+2026-11-06T10:36:32.8319461Z             },
+2026-11-06T10:36:32.8319657Z             "admission_record": {
+2026-11-06T10:36:32.8319907Z               "state": "ACKNOWLEDGED",
+2026-11-06T10:36:32.8320367Z               "observation_digest": "sha256:b0ecb7475ea453d60bb6cf715ace349ce23bf8b44b4424c883966107aebc9c1c",
+2026-11-06T10:36:32.8321046Z               "package_digest": "sha256:a5b7df272c130baf8dd81a89bde5ab0f3ecd11eadbf958534aa0aada1a7cb00a",
+2026-11-06T10:36:32.8321524Z               "stage": "HISTORICAL_RECOVERY"
+2026-11-06T10:36:32.8321780Z             },
+2026-11-06T10:36:32.8321980Z             "provider_receipt": {
+2026-11-06T10:36:32.8322239Z               "state": "ACKNOWLEDGED",
+2026-11-06T10:36:32.8322691Z               "observation_digest": "sha256:d266e9f75e57c669a1896b00cdf231dd0ddfb3f6c94311860dd6b3eadc3132ef",
+2026-11-06T10:36:32.8323336Z               "package_digest": "sha256:2a16c2a73a8314ea5f58807439d34bf566086cc790176e1d34981311ea7e8a7c",
+2026-11-06T10:36:32.8323791Z               "stage": "HISTORICAL_RECOVERY"
+2026-11-06T10:36:32.8324045Z             },
+2026-11-06T10:36:32.8324237Z             "observations": [
+2026-11-06T10:36:32.8324456Z               {
+2026-11-06T10:36:32.8324856Z                 "observation_digest": "sha256:d266e9f75e57c669a1896b00cdf231dd0ddfb3f6c94311860dd6b3eadc3132ef",
+2026-11-06T10:36:32.8325523Z                 "stage": "HISTORICAL_RECOVERY",
+2026-11-06T10:36:32.8325814Z                 "kind": "provider_receipt",
+2026-11-06T10:36:32.8326265Z                 "package_digest": "sha256:2a16c2a73a8314ea5f58807439d34bf566086cc790176e1d34981311ea7e8a7c",
+2026-11-06T10:36:32.8326718Z                 "package_bytes": {
+2026-11-06T10:36:32.8327169Z                   "original_bytes_digest": "sha256:2a16c2a73a8314ea5f58807439d34bf566086cc790176e1d34981311ea7e8a7c",
+2026-11-06T10:36:32.8327651Z                   "byte_length": 3760
+2026-11-06T10:36:32.8327885Z                 },
+2026-11-06T10:36:32.8328081Z                 "ack_bytes": {
+2026-11-06T10:36:32.8328877Z                   "original_bytes_digest": "sha256:2db2521ddf88730c613ac10d195f3291c59cc8035886fa7c9a4327060337746e",
+2026-11-06T10:36:32.8329406Z                   "byte_length": 732
+2026-11-06T10:36:32.8329642Z                 },
+2026-11-06T10:36:32.8329844Z                 "readback_bytes": {
+2026-11-06T10:36:32.8330307Z                   "original_bytes_digest": "sha256:fb21f6155f703e0dcb46c237fb059709d6d94ca24172fb9931eec6ebb4b6cbef",
+2026-11-06T10:36:32.8330792Z                   "byte_length": 636
+2026-11-06T10:36:32.8331024Z                 },
+2026-11-06T10:36:32.8331260Z                 "nonce": "f95b9a9f6491dc9ecd2a0c4d2dd2057a",
+2026-11-06T10:36:32.8331571Z                 "collector_epoch": 1,
+2026-11-06T10:36:32.8331826Z                 "record_bytes": {
+2026-11-06T10:36:32.8332285Z                   "original_bytes_digest": "sha256:d266e9f75e57c669a1896b00cdf231dd0ddfb3f6c94311860dd6b3eadc3132ef",
+2026-11-06T10:36:32.8332780Z                   "byte_length": 10706
+2026-11-06T10:36:32.8333020Z                 }
+2026-11-06T10:36:32.8333207Z               },
+2026-11-06T10:36:32.8333388Z               {
+2026-11-06T10:36:32.8333793Z                 "observation_digest": "sha256:b0ecb7475ea453d60bb6cf715ace349ce23bf8b44b4424c883966107aebc9c1c",
+2026-11-06T10:36:32.8334283Z                 "stage": "HISTORICAL_RECOVERY",
+2026-11-06T10:36:32.8334571Z                 "kind": "admission_record",
+2026-11-06T10:36:32.8335039Z                 "package_digest": "sha256:a5b7df272c130baf8dd81a89bde5ab0f3ecd11eadbf958534aa0aada1a7cb00a",
+2026-11-06T10:36:32.8335516Z                 "package_bytes": {
+2026-11-06T10:36:32.8335986Z                   "original_bytes_digest": "sha256:a5b7df272c130baf8dd81a89bde5ab0f3ecd11eadbf958534aa0aada1a7cb00a",
+2026-11-06T10:36:32.8336506Z                   "byte_length": 21002
+2026-11-06T10:36:32.8336741Z                 },
+2026-11-06T10:36:32.8336937Z                 "ack_bytes": {
+2026-11-06T10:36:32.8337386Z                   "original_bytes_digest": "sha256:98839c99521a568e24ab657f72b8aa99c4f1a750dfe1ae3702d3cdbdc6f807d9",
+2026-11-06T10:36:32.8337862Z                   "byte_length": 734
+2026-11-06T10:36:32.8338096Z                 },
+2026-11-06T10:36:32.8338296Z                 "readback_bytes": {
+2026-11-06T10:36:32.8339008Z                   "original_bytes_digest": "sha256:ee54f3755cab1bfe5cc78186d6e7508f4ba1ddfc31dda9be42bd3789e20bfe9b",
+2026-11-06T10:36:32.8339516Z                   "byte_length": 636
+2026-11-06T10:36:32.8339746Z                 },
+2026-11-06T10:36:32.8339978Z                 "nonce": "0becd8be0b438f2f723ced6e0063305f",
+2026-11-06T10:36:32.8340288Z                 "collector_epoch": 1,
+2026-11-06T10:36:32.8340538Z                 "record_bytes": {
+2026-11-06T10:36:32.8340989Z                   "original_bytes_digest": "sha256:b0ecb7475ea453d60bb6cf715ace349ce23bf8b44b4424c883966107aebc9c1c",
+2026-11-06T10:36:32.8341470Z                   "byte_length": 45194
+2026-11-06T10:36:32.8341706Z                 }
+2026-11-06T10:36:32.8341895Z               },
+2026-11-06T10:36:32.8342087Z               {
+2026-11-06T10:36:32.8342499Z                 "observation_digest": "sha256:1ad1af764084df0f97ead2ddccc9641c63092b70de9efcbb86f56c524518afb7",
+2026-11-06T10:36:32.8342986Z                 "stage": "PRE_DISPATCH",
+2026-11-06T10:36:32.8343257Z                 "kind": "admission_record",
+2026-11-06T10:36:32.8343865Z                 "package_digest": "sha256:a5b7df272c130baf8dd81a89bde5ab0f3ecd11eadbf958534aa0aada1a7cb00a",
+2026-11-06T10:36:32.8344333Z                 "package_bytes": {
+2026-11-06T10:36:32.8344796Z                   "original_bytes_digest": "sha256:a5b7df272c130baf8dd81a89bde5ab0f3ecd11eadbf958534aa0aada1a7cb00a",
+2026-11-06T10:36:32.8345287Z                   "byte_length": 21002
+2026-11-06T10:36:32.8345530Z                 },
+2026-11-06T10:36:32.8345727Z                 "ack_bytes": {
+2026-11-06T10:36:32.8346169Z                   "original_bytes_digest": "sha256:98839c99521a568e24ab657f72b8aa99c4f1a750dfe1ae3702d3cdbdc6f807d9",
+2026-11-06T10:36:32.8346642Z                   "byte_length": 734
+2026-11-06T10:36:32.8346987Z                 },
+2026-11-06T10:36:32.8347190Z                 "readback_bytes": {
+2026-11-06T10:36:32.8347647Z                   "original_bytes_digest": "sha256:bb3bac71df39b848e3cb95ca23ab5c701c872db1800d2ceed708e1a909993823",
+2026-11-06T10:36:32.8348130Z                   "byte_length": 636
+2026-11-06T10:36:32.8348360Z                 },
+2026-11-06T10:36:32.8348854Z                 "nonce": "51bbf77e52501d85ee12c1987a71e96f",
+2026-11-06T10:36:32.8349176Z                 "collector_epoch": 1,
+2026-11-06T10:36:32.8349428Z                 "record_bytes": {
+2026-11-06T10:36:32.8349885Z                   "original_bytes_digest": "sha256:1ad1af764084df0f97ead2ddccc9641c63092b70de9efcbb86f56c524518afb7",
+2026-11-06T10:36:32.8350375Z                   "byte_length": 45187
+2026-11-06T10:36:32.8350613Z                 }
+2026-11-06T10:36:32.8350796Z               }
+2026-11-06T10:36:32.8350978Z             ],
+2026-11-06T10:36:32.8351193Z             "unverifiable_observations": 0
+2026-11-06T10:36:32.8351455Z           }
+2026-11-06T10:36:32.8351631Z         }
+2026-11-06T10:36:32.8351809Z       ]
+2026-11-06T10:36:32.8351979Z     }
+2026-11-06T10:36:32.8352149Z   ],
+2026-11-06T10:36:32.8352319Z   "limits": [
+2026-11-06T10:36:32.8352659Z     "all_roles_keys_processes_and_toy_balances_belong_to_one_operator_and_host_user",
+2026-11-06T10:36:32.8353160Z     "collection_ack_is_historical_fresh_readback_is_point_in_time_only",
+2026-11-06T10:36:32.8353622Z     "later_collection_never_establishes_original_pre_dispatch_coverage",
+2026-11-06T10:36:32.8354168Z     "mock_admission_remains_at_claim_time_not_live_authority_or_continuous_revocation",
+2026-11-06T10:36:32.8354655Z     "raw_runtime_or_provider_with_bearer_can_bypass_wrappers",
+2026-11-06T10:36:32.8355118Z     "no_independent_anchor_complete_log_storage_rollback_or_power_loss_guarantee",
+2026-11-06T10:36:32.8355642Z     "no_VAP_conformance_complete_payment_acceptance_or_production_readiness_claim"
+2026-11-06T10:36:32.8356026Z   ]
+2026-11-06T10:36:32.8356201Z }
+2026-11-06T10:36:32.8418176Z ##[group]Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+2026-11-06T10:36:32.8418950Z with:
+2026-11-06T10:36:32.8419176Z   name: payment-collector-public-demo
+2026-11-06T10:36:32.8419822Z   path: experiments/payment-collector-pilot/generated/summary.json
+experiments/payment-collector-pilot/generated/evidence-bundle.json
+
+2026-11-06T10:36:32.8420458Z   if-no-files-found: error
+2026-11-06T10:36:32.8420694Z   retention-days: 30
+2026-11-06T10:36:32.8420903Z   compression-level: 6
+2026-11-06T10:36:32.8421114Z   overwrite: false
+2026-11-06T10:36:32.8421325Z   include-hidden-files: false
+2026-11-06T10:36:32.8421557Z env:
+2026-11-06T10:36:32.8421810Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-06T10:36:32.8422231Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+2026-11-06T10:36:32.8422657Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-06T10:36:32.8423073Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-06T10:36:32.8423452Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-06T10:36:32.8423848Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib
+2026-11-06T10:36:32.8424175Z ##[endgroup]
+2026-11-06T10:36:33.0228471Z (node:3083) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-06T10:36:33.0229997Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-06T10:36:33.0340787Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-11-06T10:36:33.0342168Z The least common ancestor is /home/runner/work/vap-spec/vap-spec/experiments/payment-collector-pilot/generated. This will be the root directory of the artifact
+2026-11-06T10:36:33.0342936Z With the provided path, there will be 2 files uploaded
+2026-11-06T10:36:33.0343421Z Artifact name is valid!
+2026-11-06T10:36:33.0343655Z Root directory input is valid!
+2026-11-06T10:36:33.4517855Z Beginning upload of artifact content to blob storage
+2026-11-06T10:36:33.5042555Z (node:3083) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-06T10:36:33.8786808Z Uploaded bytes 84274
+2026-11-06T10:36:33.9534702Z Finished uploading artifact content to blob storage!
+2026-11-06T10:36:33.9536170Z SHA256 digest of uploaded artifact zip is b93f40c33d1ae946d25f881527a4b2fcf32b704b745e7980aed0182060923bca
+2026-11-06T10:36:33.9537497Z Finalizing artifact upload
+2026-11-06T10:36:34.4101729Z Artifact payment-collector-public-demo.zip successfully finalized. Artifact ID 13495277522
+2026-11-06T10:36:34.4103379Z Artifact payment-collector-public-demo has been successfully uploaded! Final size is 84274 bytes. Artifact ID is 13495277522
+2026-11-06T10:36:34.4112931Z Artifact download URL: https://github.com/veritaschain/vap-spec/actions/runs/42203872859/artifacts/13495277522
+2026-11-06T10:36:34.4315466Z Post job cleanup.
+2026-11-06T10:36:34.5607627Z (node:3111) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-06T10:36:34.5608998Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-06T10:36:34.5805896Z Post job cleanup.
+2026-11-06T10:36:34.6742965Z [command]/usr/bin/git version
+2026-11-06T10:36:34.6792717Z git version 2.56.0
+2026-11-06T10:36:34.6840740Z Temporarily overriding HOME='/home/runner/work/_temp/6a527386-e1ee-4945-baf4-bce35f112117' before making global git config changes
+2026-11-06T10:36:34.6841893Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-06T10:36:34.6847203Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/vap-spec/vap-spec
+2026-11-06T10:36:34.6897143Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-06T10:36:34.6975627Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-06T10:36:34.7268907Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-06T10:36:34.7319538Z http.https://github.com/.extraheader
+2026-11-06T10:36:34.7349745Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-06T10:36:34.7415896Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-06T10:36:34.7731475Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-06T10:36:34.7790308Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-06T10:36:34.8234656Z Cleaning up orphan processes
+2026-11-06T10:36:34.8652626Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@11d5960a326750d5838078e36cf38b85af677262, actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065, actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
