@@ -6,9 +6,13 @@ repository baseline `1e6fff1bab50caf467b2a6b9e9f7de3d23d1c67a`. [日本語](READ
 This note proposes evidence bindings for a future payment adapter. It adds no normative
 fields, profile registration or conformance claim. An additive
 [offline synthetic evidence experiment](../../experiments/payment-api-evidence/README.md)
-now exercises the evidence distinctions behind all eight candidate groups. The full adapter
-acceptance cases below have **not been implemented or executed**: there is no payment
-endpoint, durable consumption ledger, real collector outage or actual bank settlement test.
+now exercises the evidence distinctions behind all eight candidate groups. A separate
+[controlled runtime pilot](../../experiments/payment-runtime-pilot/README.md) exercises
+durable dispatch and reconciliation against a native loopback mock payment endpoint.
+It covers the PAY-06 runtime subset and local-journal/epoch aspects of PAY-08; business
+authorization and independent collection remain outside that pilot. The **complete adapter
+acceptance contract has not been executed**. No real bank settlement or independent
+collector outage/recovery is tested.
 
 ## Source and scope
 
@@ -88,7 +92,7 @@ Do not include private keys, bearer tokens or unnecessary account/personal data.
 references, access controls and retention rules are preferable where feasible; pseudonyms
 and digests, especially of guessable values, may still expose sensitive information.
 
-## Proposed adapter acceptance cases — not executed
+## Proposed adapter acceptance contract — partial experimental coverage
 
 Review four separate dimensions: **record integrity (I), operation authorization (A), execution
 matching (E), and observed control state (C)**. These are discussion labels, not VAP verdicts
@@ -108,10 +112,12 @@ scope. Unknown evidence may block admission while remaining unknown in retrospec
 
 ## Review handoff
 
-A later stateful implementation needs synthetic endpoints, healthy positive controls and
-negative controls that demonstrate the adapter's actual failures. The offline companion
-verifies signed synthetic evidence and includes unchanged positive controls; it does not
-execute these endpoints or establish the stateful guarantees in PAY-06 and PAY-08.
+A complete implementation needs integrated authorization, collection, provider semantics,
+healthy positive controls and negative controls that demonstrate the adapter's actual failures.
+The offline companion verifies signed synthetic evidence and does not execute an endpoint.
+The additive runtime pilot exercises real local request consumption and process recovery,
+with actual toy balance effects and no automatic resend. It does not establish all the
+end-to-end guarantees in PAY-06 and PAY-08 or integrate the two experiments into one gate.
 Obtain trusted identity,
 revocation, bank and collector observations without using real payment credentials or funds.
 Inspect substantive assertions rather than comparing supplied expectation labels.
