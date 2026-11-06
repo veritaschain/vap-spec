@@ -1,6 +1,6 @@
 # Incident-derived evidence bindings
 
-**Status:** Informative discussion proposal; not adopted. **Updated:** 2026-10-31 JST.
+**Status:** Informative discussion proposal; not adopted. **Updated:** 2026-11-01 JST.
 **Formal proposal number:** Unassigned. **Target release:** Undecided.
 **Baseline:** VAP v1.2.0 Draft 3 at `357b8e6b232750180a2a0ce185355e31880edaf6`.
 **License:** CC BY 4.0 International.
@@ -15,6 +15,9 @@ The motivation and source limitations are recorded in the [incident claim ledger
 The [Panasonic source update](INCIDENTS.md#panasonic-group) and
 [Japanese regulatory context](INCIDENTS.md#japanese-regulatory-context-not-an-incident-finding)
 add a distinction between disabled training use, retained data and evidence of later deletion.
+The [91APP evidence review](91APP-EVIDENCE-REVIEW.md) ([日本語](91APP-EVIDENCE-REVIEW-ja.md))
+adds source-attributed incident claims and design questions about compromised credentials,
+cross-system observations and revocation. It does not reconstruct the incident or add executed cases.
 The [synthetic acceptance catalogue](acceptance-cases.json) specifies proposed test inputs and expected
 application-layer assessments. Those cases have not been executed against a gateway, provider, editor,
 publisher, or VAP verifier. They are not an incident reconstruction or evidence of product readiness.
