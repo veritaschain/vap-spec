@@ -20,6 +20,12 @@ this primitive with a synthetic maker/checker prerequisite and an admission reco
 committed with a new claim. It has a separate, limited trust model and report.
 Calling this base adapter directly still performs no business authorization check.
 
+The additive [collector pilot](../payment-collector-pilot/README.md) composes that
+mock admission with separate-process evidence storage, a prerequisite before the
+initial controlled POST and evidence recovery that never rearms a payment claim.
+It does not establish independently operated custody or change this primitive's
+business-authorization scope.
+
 The [offline payment evidence verifier](../payment-api-evidence/README.md) remains
 a separate retrospective tool. This runtime never authorizes a new request by
 inventing its future dispatch observation or provider receipt. It has a native

@@ -828,7 +828,9 @@ class Adapter:
         return self._submit_prepared(request, raw)
 
     def _submit_prepared(self, request: dict, raw: bytes, *,
-                         admit_new_claim: Callable[[sqlite3.Connection, dict, bytes, int], None] | None = None
+                         admit_new_claim: Callable[[sqlite3.Connection, dict, bytes, int], None] | None = None,
+                         before_dispatch: Callable[[dict, bytes], None] | None = None,
+                         after_terminal_receipt: Callable[[dict, bytes, bytes], None] | None = None
                          ) -> dict:
         """Protected dispatch reuse; callbacks are code-owned, never wire input."""
         if request_bytes(request) != raw:
@@ -845,13 +847,25 @@ class Adapter:
         try:
             if self.fault_hook is not None:
                 self.fault_hook("after_claim", {"request_digest": bytes_digest(raw)})
+            # Initial claim owner only; no database transaction is held during
+            # this code-owned prerequisite (for example, local evidence custody).
+            if before_dispatch is not None:
+                before_dispatch(request, raw)
             status, receipt = self._http("POST", "/payments", raw)
             if status != 200:
                 return self._retain_unknown(request, raw, "provider_http_" + str(status) + "_claim_retained")
             payload = verify_receipt(receipt, raw, self.provider_public_key, self.provider_id)
             if self.fault_hook is not None:
                 self.fault_hook("after_response", {"request_digest": bytes_digest(raw), "status": payload["status"]})
-            return self._from_row(self._store_receipt(request, raw, receipt))
+            terminal = self._from_row(self._store_receipt(request, raw, receipt))
+            if after_terminal_receipt is not None:
+                try:
+                    after_terminal_receipt(request, raw, receipt)
+                except Exception:
+                    # Financial observation is already verified and committed.
+                    # A later evidence-custody failure must not erase it.
+                    return {**terminal, "custody_warning": "post_effect_custody_unresolved"}
+            return terminal
         except Exception:
             # Includes transport, receipt verification, SQLite writes and the
             # explicitly trusted harness hooks. Process death simply leaves the

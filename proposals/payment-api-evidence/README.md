@@ -15,8 +15,13 @@ authorization and independent collection remain outside that base pilot. An addi
 synthetic maker/checker prerequisites at claim time and commits the original admission
 record with the claim. This covers portions of PAY-02/PAY-03 and supplied-status checks
 in PAY-04, not production human authorization or current authority-state enforcement.
-The **complete adapter acceptance contract has not been executed**. No real bank
-settlement or independent collector outage/recovery is tested.
+An additive [collector pilot](../../experiments/payment-collector-pilot/README.md)
+uses a separate loopback process to retain original admission and provider receipt
+bytes, require a verified collection prerequisite before the initial controlled
+POST, and recover evidence without resending payment. Its separate stores and keys
+remain under one operator and host user. The **complete adapter acceptance contract
+has not been executed**. No real bank settlement or independently operated custody
+service is tested.
 
 ## Source and scope
 
@@ -125,6 +130,10 @@ end-to-end guarantees in PAY-06 and PAY-08. The authorization wrapper now compos
 separate mock admission prerequisite with that runtime; it does not use the retrospective
 verifier as a live authorizer. Its signed supplied status can be stale in reality even
 within the configured age, and revocation after a claim is not atomic with provider execution.
+The collector companion adds actual local outage, acknowledgment-loss and evidence
+recovery checks. Financial outcome and custody observations remain distinct; later
+collection cannot backfill an original pre-dispatch prerequisite. It does not
+establish collector-wide completeness, external anchoring or independent custody.
 Obtain trusted identity,
 revocation, bank and collector observations without using real payment credentials or funds.
 Inspect substantive assertions rather than comparing supplied expectation labels.

@@ -14,6 +14,12 @@ time, and stores its admission record in the same transaction as the claim.
 This is a controlled application route, not an exclusive security boundary around
 the provider. The original runtime remains a primitive for trusted callers.
 
+The additive [collector pilot](../payment-collector-pilot/README.md) retains this
+original admission record and native outcome receipt in a separate loopback
+process. It adds a collection prerequisite before the initial controlled POST and
+evidence-only recovery. It remains a same-operator experiment and does not change
+this pilot's claim-time authorization or establish independent custody.
+
 ## Run and inspect
 
 Run from the repository root with Python 3.12 and native loopback/process support:
