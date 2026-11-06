@@ -1,0 +1,93 @@
+[
+  {
+    "id": "CHECK_NOT_RUN",
+    "evidence": {
+      "check_status": "not_run"
+    },
+    "expected": {
+      "check_execution": "NOT_RUN"
+    }
+  },
+  {
+    "id": "CHECK_TIMEOUT",
+    "evidence": {
+      "check_status": "timeout"
+    },
+    "expected": {
+      "check_execution": "UNKNOWN"
+    }
+  },
+  {
+    "id": "DISPLAY_DIVERGENCE",
+    "evidence": {
+      "draft_digest": "sha256:0198f082cd70d06a2fc06118a9103d69236e77b0341030685727056f811775eb",
+      "display_digest": "sha256:859d29875fd6d7138f4e709b2d4fd76ea33d663f42799398047743ae0d679d4e"
+    },
+    "expected": {
+      "display": "DIVERGENCE"
+    }
+  },
+  {
+    "id": "MISSING_PATIENT_CONTEXT",
+    "evidence": {
+      "patient_fields": [
+        "age",
+        "weight"
+      ]
+    },
+    "expected": {
+      "patient_context": "MISSING"
+    }
+  },
+  {
+    "id": "POST_ANCHOR_OMISSION",
+    "evidence": {
+      "anchored_count": 5,
+      "submitted_count": 4,
+      "manifest_bound": true
+    },
+    "expected": {
+      "submitted_batch": "INCOMPLETE_SUBMISSION"
+    }
+  },
+  {
+    "id": "PRE_COLLECTION_GAP",
+    "evidence": {
+      "collector_coverage": "partial"
+    },
+    "expected": {
+      "collection": "UNOBSERVED"
+    }
+  },
+  {
+    "id": "TRANSLATION_DERIVATION",
+    "evidence": {
+      "original_digest": "sha256:ca024752f77de72f97a2bf8df753003b0de0099a92c95dab15ed823bb3fd9b96",
+      "translated_digest": "sha256:b1af3d72e2db832002965a0f38a8c2faba7ea667979ddd0e54977a267eb285d8",
+      "parent_ref": "source-1"
+    },
+    "expected": {
+      "translation": "DERIVATIVE"
+    }
+  },
+  {
+    "id": "PROVIDER_STATE_UNOBSERVABLE",
+    "evidence": {
+      "provider_filter_state": null
+    },
+    "expected": {
+      "provider_state": "UNKNOWN"
+    }
+  },
+  {
+    "id": "MODEL_REPLAY_DIVERGENCE",
+    "evidence": {
+      "original_digest": "sha256:ca024752f77de72f97a2bf8df753003b0de0099a92c95dab15ed823bb3fd9b96",
+      "replay_digest": "sha256:7fb7a90f58543ea6a264ddf97a4c5ce1cbf79b9730c3acd1a085ff2a69628793"
+    },
+    "expected": {
+      "replay": "REPLAY_DIFFERS"
+    }
+  }
+]
+
