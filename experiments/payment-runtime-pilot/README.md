@@ -15,6 +15,11 @@ policy or collector availability. Every result declares
 The provider's local transport credential is not a human approval or business
 authorization proof.
 
+An additive [authorization pilot](../payment-authorization-pilot/README.md) wraps
+this primitive with a synthetic maker/checker prerequisite and an admission record
+committed with a new claim. It has a separate, limited trust model and report.
+Calling this base adapter directly still performs no business authorization check.
+
 The [offline payment evidence verifier](../payment-api-evidence/README.md) remains
 a separate retrospective tool. This runtime never authorizes a new request by
 inventing its future dispatch observation or provider receipt. It has a native
@@ -50,6 +55,12 @@ Fresh runs use fresh keys and produce different signatures.
 
 The focused [CI workflow](../../.github/workflows/payment-runtime-pilot.yml) runs
 the process tests and demo, then preserves only those two public files.
+
+The healthy two-client concurrency test waits for both workers to finish their
+own initialization before releasing their claim attempts. It uses a bounded
+two-second SQLite wait and retains strict one-claim/one-POST/one-effect checks.
+This separates that scenario from the deliberately short lock-failure tests;
+it is not a latency guarantee or a change to runtime timeout defaults.
 
 ## What is measured
 

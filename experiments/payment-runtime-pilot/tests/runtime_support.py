@@ -174,13 +174,16 @@ class Harness:
         config["provider_public_key"] = bytes.fromhex(config.pop("provider_public_key_hex"))
         return runtime.Adapter(**config)
 
-    def worker(self, *, action="submit", request=None, barrier=None, config_changes=None, env=None):
+    def worker(self, *, action="submit", request=None, barrier=None, start_barrier=False,
+               config_changes=None, env=None):
         config = self.next_file("client-config", self.adapter_config(**(config_changes or {})))
         request_file = self.next_file("request", self.request if request is None else request)
         command = [*PYTHON, str(WORKER), "client", "--config", str(config),
                    "--request", str(request_file), "--action", action]
         if barrier:
             command.extend(("--barrier", barrier))
+        if start_barrier:
+            command.append("--start-barrier")
         process = Process(command, env={**os.environ, "PYTHONDONTWRITEBYTECODE": "1", **(env or {})})
         self.processes.append(process)
         return process
