@@ -69,4 +69,9 @@ The [incident-derived evidence bindings](../incident-evidence-bindings/README.md
 integration guidance. Applying it to AILEX requires inspection of its deployed paths and controls;
 this page does not claim that such integration or an independent assessment has been completed.
 
+The [consumer-agent evidence discussion](../consumer-agent-evidence/README.md)
+([日本語](../consumer-agent-evidence/README-ja.md)) adds proposed review questions
+for declared commercial relationships, sources, disclosures, exact delegated
+actions and data lifecycle. It introduces no LAP fields or AILEX product features.
+
 [Return to the VAP family overview](../../README.md#relationship)
