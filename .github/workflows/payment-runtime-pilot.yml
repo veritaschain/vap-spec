@@ -1,0 +1,38 @@
+name: Payment runtime pilot
+
+on:
+  push:
+    paths:
+      - 'experiments/payment-runtime-pilot/**'
+      - '.github/workflows/payment-runtime-pilot.yml'
+  pull_request:
+    paths:
+      - 'experiments/payment-runtime-pilot/**'
+      - '.github/workflows/payment-runtime-pilot.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  loopback-runtime:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r experiments/payment-runtime-pilot/requirements.txt
+      - name: Actual process, concurrency and persistence tests
+        run: python -W error::ResourceWarning -m unittest discover -s experiments/payment-runtime-pilot/tests -v
+      - name: Lost acknowledgment and read-only reconciliation
+        run: python experiments/payment-runtime-pilot/run_demo.py --output experiments/payment-runtime-pilot/generated
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: payment-runtime-public-demo
+          path: |
+            experiments/payment-runtime-pilot/generated/summary.json
+            experiments/payment-runtime-pilot/generated/provider-receipt.json
+          if-no-files-found: error
+          retention-days: 30

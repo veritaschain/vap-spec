@@ -164,9 +164,15 @@ archives remain unchanged. The
 [collector pilot](../incident-collector-pilot/README.md) illustrate different
 bounded runtime experiments; their outcomes are not payment test results.
 
-The next runtime step would need a controlled synthetic endpoint and a durable
-consumption ledger, then restart/concurrency/lost-acknowledgment tests and read-only
-reconciliation. Production use would additionally need bank-specific semantics,
+An additive [controlled runtime pilot](../payment-runtime-pilot/README.md) now
+exercises a loopback mock endpoint, durable request consumption, restart,
+concurrency, lost acknowledgment and read-only reconciliation. It uses a separate
+native protocol and begins after trusted caller business authorization; it does
+not turn this retrospective verifier into a live authorization gate or feed
+fabricated future observations into it. This directory remains stateless and its
+existing fixtures are still synthetic evidence-semantics cases.
+
+Production use would additionally need bank-specific semantics,
 trusted identity and receipt integrations, protected policy state, privacy and
 retention design, independent collection, and review of privileged bypasses.
 The school-alert/evaluation proposal remains a separate design workstream.
