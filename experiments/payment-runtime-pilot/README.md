@@ -15,6 +15,11 @@ policy or collector availability. Every result declares
 The provider's local transport credential is not a human approval or business
 authorization proof.
 
+An additive [authorization pilot](../payment-authorization-pilot/README.md) wraps
+this primitive with a synthetic maker/checker prerequisite and an admission record
+committed with a new claim. It has a separate, limited trust model and report.
+Calling this base adapter directly still performs no business authorization check.
+
 The [offline payment evidence verifier](../payment-api-evidence/README.md) remains
 a separate retrospective tool. This runtime never authorizes a new request by
 inventing its future dispatch observation or provider receipt. It has a native

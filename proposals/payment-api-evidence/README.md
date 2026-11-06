@@ -10,9 +10,13 @@ now exercises the evidence distinctions behind all eight candidate groups. A sep
 [controlled runtime pilot](../../experiments/payment-runtime-pilot/README.md) exercises
 durable dispatch and reconciliation against a native loopback mock payment endpoint.
 It covers the PAY-06 runtime subset and local-journal/epoch aspects of PAY-08; business
-authorization and independent collection remain outside that pilot. The **complete adapter
-acceptance contract has not been executed**. No real bank settlement or independent
-collector outage/recovery is tested.
+authorization and independent collection remain outside that base pilot. An additive
+[authorization pilot](../../experiments/payment-authorization-pilot/README.md) checks
+synthetic maker/checker prerequisites at claim time and commits the original admission
+record with the claim. This covers portions of PAY-02/PAY-03 and supplied-status checks
+in PAY-04, not production human authorization or current authority-state enforcement.
+The **complete adapter acceptance contract has not been executed**. No real bank
+settlement or independent collector outage/recovery is tested.
 
 ## Source and scope
 
@@ -117,7 +121,10 @@ healthy positive controls and negative controls that demonstrate the adapter's a
 The offline companion verifies signed synthetic evidence and does not execute an endpoint.
 The additive runtime pilot exercises real local request consumption and process recovery,
 with actual toy balance effects and no automatic resend. It does not establish all the
-end-to-end guarantees in PAY-06 and PAY-08 or integrate the two experiments into one gate.
+end-to-end guarantees in PAY-06 and PAY-08. The authorization wrapper now composes a
+separate mock admission prerequisite with that runtime; it does not use the retrospective
+verifier as a live authorizer. Its signed supplied status can be stale in reality even
+within the configured age, and revocation after a claim is not atomic with provider execution.
 Obtain trusted identity,
 revocation, bank and collector observations without using real payment credentials or funds.
 Inspect substantive assertions rather than comparing supplied expectation labels.

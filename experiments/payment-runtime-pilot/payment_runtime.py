@@ -724,7 +724,9 @@ class Adapter:
                 return self._result("UNKNOWN", row["request_digest"], "stored_receipt_unverifiable_claim_retained")
         return self._result("UNKNOWN", row["request_digest"], "durable_claim_outcome_unresolved")
 
-    def _claim(self, request: dict, raw: bytes) -> tuple[sqlite3.Row, bool]:
+    def _claim(self, request: dict, raw: bytes, *,
+               admit_new_claim: Callable[[sqlite3.Connection, dict, bytes, int], None] | None = None
+               ) -> tuple[sqlite3.Row, bool]:
         connection = _connect(self.journal_path, self.sqlite_timeout)
         try:
             connection.execute("BEGIN IMMEDIATE")
@@ -734,11 +736,18 @@ class Adapter:
                 return existing, False
             _current_generation(connection, self.recovery_epoch, self.configuration_digest)
             _check_generation(request, self.context, self.recovery_epoch, self.configuration_digest)
+            at_ms = time.time_ns() // 1000000
+            # Protected extension for a separately configured local experiment.
+            # Existing claims resolve above, before any fresh admission check.
+            # The per-call callback may atomically retain proof in this same
+            # transaction; an exception rolls back proof and claim together.
+            if admit_new_claim is not None:
+                admit_new_claim(connection, request, raw, at_ms)
             connection.execute("""INSERT INTO dispatches
                 (request_digest,scope,operation_id,idempotency_key,request_bytes,state,receipt_bytes,claimed_at_ms,observed_at_ms)
                 VALUES (?,?,?,?,?,'CLAIMED',NULL,?,NULL)""", (
                 bytes_digest(raw), self.scope, request["operation_id"], request["idempotency_key"],
-                raw, time.time_ns() // 1000000))
+                raw, at_ms))
             row = connection.execute("SELECT * FROM dispatches WHERE request_digest=?", (bytes_digest(raw),)).fetchone()
             connection.commit()
             return row, True
@@ -816,8 +825,16 @@ class Adapter:
             request, raw = self._prepare(request)
         except (ValueError, TypeError, UnicodeError):
             return self._result("REJECTED", None, "request_schema_or_scope_rejected")
+        return self._submit_prepared(request, raw)
+
+    def _submit_prepared(self, request: dict, raw: bytes, *,
+                         admit_new_claim: Callable[[sqlite3.Connection, dict, bytes, int], None] | None = None
+                         ) -> dict:
+        """Protected dispatch reuse; callbacks are code-owned, never wire input."""
+        if request_bytes(request) != raw:
+            raise ValueError("prepared_request_bytes_mismatch")
         try:
-            row, created = self._claim(request, raw)
+            row, created = self._claim(request, raw, admit_new_claim=admit_new_claim)
         except ValueError as exc:
             state = "CONFLICT" if str(exc) == "immutable_request_identity_conflict" else "REJECTED"
             return self._result(state, bytes_digest(raw), str(exc))
