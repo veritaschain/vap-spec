@@ -35,6 +35,11 @@ The artifact allowlist excludes private keys, bearer credentials, configuration
 files and databases. Temporary service files are private and are removed when the
 demo exits. CI keeps the selected public artifact for 30 days.
 
+The [preserved 6 November 2026 run](../../research-distribution/2026-11-06-payment-collector/README.md)
+retains its original ZIP, complete public evidence, pinned source subset and
+captured CI records separately from that expiry, with an offline historical
+recheck. It covers one selected run; independent reproduction is not established.
+
 The demo exercises five scenarios with separate temporary service stores. Counts
 below refer to payment POSTs and effects; evidence collection has its own counters.
 
