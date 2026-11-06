@@ -1,11 +1,14 @@
 # Payment API authorization evidence — informative proposal
 
-**Status: proposed, unadopted; documentation only.** Checked 6 November 2026 JST against
+**Status: proposed, unadopted; informative design.** Checked 6 November 2026 JST against
 repository baseline `1e6fff1bab50caf467b2a6b9e9f7de3d23d1c67a`. [日本語](README-ja.md)
 
-This note proposes evidence bindings for a future payment adapter. It adds no implementation,
-normative fields, profile registration or conformance claim. The eight candidate cases below
-have **not been implemented or executed**.
+This note proposes evidence bindings for a future payment adapter. It adds no normative
+fields, profile registration or conformance claim. An additive
+[offline synthetic evidence experiment](../../experiments/payment-api-evidence/README.md)
+now exercises the evidence distinctions behind all eight candidate groups. The full adapter
+acceptance cases below have **not been implemented or executed**: there is no payment
+endpoint, durable consumption ledger, real collector outage or actual bank settlement test.
 
 ## Source and scope
 
@@ -17,8 +20,9 @@ incomplete remediation. [Reuters][reuters] did not establish a link between its 
 roughly USD 2 million case and this campaign. These are attributed public reports, not
 forensic evidence collected by VSO.
 
-The proposed companion [site source review, PR #202][site-review] separates dates, claims and
-sources. It is a draft contribution, not a claim that the live site has changed.
+The companion [site source review, PR #202][site-review] separates dates, claims and sources.
+It was merged on 6 November 2026 and the [CRAFTY FALCON entry][site-entry] was published.
+Publication of that review does not adopt this proposal or validate an implementation.
 
 The [current registry](../../spec/v1.2/README.md) distinguishes **VAP v1.2 Draft 3**, **VCP v1.2
 specification GA**, and **DAP v0.1.0 Working Draft**. VCP's finance/algorithmic-trading scope
@@ -84,7 +88,7 @@ Do not include private keys, bearer tokens or unnecessary account/personal data.
 references, access controls and retention rules are preferable where feasible; pseudonyms
 and digests, especially of guessable values, may still expose sensitive information.
 
-## Proposed acceptance cases — not executed
+## Proposed adapter acceptance cases — not executed
 
 Review four separate dimensions: **record integrity (I), operation authorization (A), execution
 matching (E), and observed control state (C)**. These are discussion labels, not VAP verdicts
@@ -104,8 +108,11 @@ scope. Unknown evidence may block admission while remaining unknown in retrospec
 
 ## Review handoff
 
-A later implementation needs synthetic endpoints, healthy positive controls and negative
-controls that demonstrate the old adapter's actual failures. Obtain trusted identity,
+A later stateful implementation needs synthetic endpoints, healthy positive controls and
+negative controls that demonstrate the adapter's actual failures. The offline companion
+verifies signed synthetic evidence and includes unchanged positive controls; it does not
+execute these endpoints or establish the stateful guarantees in PAY-06 and PAY-08.
+Obtain trusted identity,
 revocation, bank and collector observations without using real payment credentials or funds.
 Inspect substantive assertions rather than comparing supplied expectation labels.
 
@@ -123,3 +130,4 @@ transfers, enforce approval, rotate secrets or prove that an attack never happen
 [c49]: https://cert-in.org.in/s2cMainServlet?VLCODE=CIAD-2026-0049&pageid=PUBVLNOTES02
 [reuters]: https://www.reuters.com/legal/government/india-flags-chinese-linked-ai-tools-hacking-campaign-against-financial-firms-2026-11-05/
 [site-review]: https://github.com/veritaschain/vcp-site/pull/202
+[site-entry]: https://veritaschain.org/incidents/#V1104CRAFTY
