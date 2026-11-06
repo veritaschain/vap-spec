@@ -106,9 +106,10 @@ class Harness(native_support.Harness):
             self.adapter() if native is None else native,
             self.gate_config(**config_options), fault_hook=fault_hook)
 
-    def authorized_worker(self, *, request=None, evidence=None, action="submit", barrier=None):
+    def authorized_worker(self, *, request=None, evidence=None, action="submit", barrier=None,
+                          start_barrier=False, config_changes=None):
         config = {
-            "runtime": self.adapter_config(),
+            "runtime": self.adapter_config(**(config_changes or {})),
             "gate": {"policy": self.policy, "trusted_keys": {
                 role: {name: public.hex() for name, public in keys.items()}
                 for role, keys in self.trust.items()}, "identities": self.identities,
@@ -122,6 +123,8 @@ class Harness(native_support.Harness):
                    "--request", str(request_file), "--evidence", str(evidence_file), "--action", action]
         if barrier:
             command.extend(("--barrier", barrier))
+        if start_barrier:
+            command.append("--start-barrier")
         process = Process(command, env={**os.environ, "PYTHONDONTWRITEBYTECODE": "1"})
         self.processes.append(process)
         return process

@@ -34,6 +34,7 @@ def main():
     parser.add_argument("--request", type=Path)
     parser.add_argument("--action", choices=("submit", "reconcile", "read_status"), default="submit")
     parser.add_argument("--barrier", choices=("after_claim", "after_response", "after_commit"))
+    parser.add_argument("--start-barrier", action="store_true")
     args = parser.parse_args()
     config = read_private(args.config)
 
@@ -57,6 +58,12 @@ def main():
     config["fault_hook"] = hook
     adapter = Adapter(**config)
     request = read_private(args.request)
+    if args.start_barrier:
+        # Construction itself opens write transactions. Healthy claim races
+        # start only after every worker has finished that initialization.
+        emit({"event": "ready", "stage": "initialized", "pid": os.getpid()})
+        if sys.stdin.buffer.read(1) != b"1":
+            raise RuntimeError("test_start_barrier_release_invalid")
     result = getattr(adapter, args.action)(request)
     safe = dict(result)
     receipt = safe.pop("receipt_bytes", None)

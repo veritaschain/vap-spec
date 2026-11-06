@@ -46,7 +46,12 @@ exact request and policy bindings, unusable or revoked status, an actual SQLite
 lock, atomic proof/claim rollback, SIGKILL before and after commit, native client
 concurrency, same-instance input snapshots, legacy claims and historical record
 coherence. The same 20 also pass under optimized Python; repeated execution is
-not an additional set of tests. The original runtime's 28 tests remain unchanged.
+not an additional set of tests. The original runtime retains 28 test cases.
+
+The healthy two-client scenarios wait for each worker's initialized readiness
+before releasing both into the claim race, with a bounded two-second SQLite wait.
+They still require one winner, one observed existing claim, and one POST/effect.
+The deliberately short journal-lock failure cases and runtime defaults are unchanged.
 
 The lock-timing test advances the client clock from a past interval to the present
 while an actual writer lock is held. It checks when time is sampled, not an

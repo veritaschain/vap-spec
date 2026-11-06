@@ -368,14 +368,28 @@ class AuthorizationGateTests(unittest.TestCase):
     def test_concurrent_native_clients_preserve_one_winning_admission_proof(self):
         gate = self.h.gate()
         alternate = self.h.make_evidence(self.h.request, suffix="second-client")
-        a = self.h.authorized_worker(evidence=self.h.evidence, barrier="after_claim")
-        b = self.h.authorized_worker(evidence=alternate, barrier="after_claim")
+        # Each subprocess repeats native and authorization-store initialization.
+        # Start the claim race only after both have finished those transactions.
+        options = {"barrier": "after_claim", "start_barrier": True,
+                   "config_changes": {"sqlite_timeout": 2.0}}
+        a = self.h.authorized_worker(evidence=self.h.evidence, **options)
+        ready_a = a.event()
+        self.assertEqual((ready_a["event"], ready_a["stage"]), ("ready", "initialized"))
+        b = self.h.authorized_worker(evidence=alternate, **options)
+        ready_b = b.event()
+        self.assertEqual((ready_b["event"], ready_b["stage"]), ("ready", "initialized"))
+        self.assertEqual(self.rows(), {"claims": 0, "proofs": 0})
+        self.assertEqual(self.h.counts()["post_attempts"], 0)
+        a.release()
+        b.release()
         events = [(a, a.event(), self.h.evidence), (b, b.event(), alternate)]
         winners = [(p, e, pack) for p, e, pack in events if e["event"] == "barrier"]
         followers = [(p, e) for p, e, _ in events if e["event"] == "result"]
         self.assertEqual(len(winners), 1)
         self.assertEqual(len(followers), 1)
         self.assertEqual(followers[0][1]["result"]["state"], "UNKNOWN")
+        self.assertEqual(followers[0][1]["result"]["reason"], "durable_claim_outcome_unresolved")
+        self.assertEqual(self.rows(), {"claims": 1, "proofs": 1})
         persisted = authorization.load_json(gate.read_authorization(self.h.request)["record_bytes"])
         self.assertEqual(persisted["evidence"], {name: raw.hex() for name, raw in winners[0][2].items()})
         self.assertEqual(self.h.counts()["post_attempts"], 0)

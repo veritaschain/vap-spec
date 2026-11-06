@@ -56,6 +56,12 @@ Fresh runs use fresh keys and produce different signatures.
 The focused [CI workflow](../../.github/workflows/payment-runtime-pilot.yml) runs
 the process tests and demo, then preserves only those two public files.
 
+The healthy two-client concurrency test waits for both workers to finish their
+own initialization before releasing their claim attempts. It uses a bounded
+two-second SQLite wait and retains strict one-claim/one-POST/one-effect checks.
+This separates that scenario from the deliberately short lock-failure tests;
+it is not a latency guarantee or a change to runtime timeout defaults.
+
 ## What is measured
 
 | Measurement | Meaning |

@@ -269,11 +269,21 @@ class PaymentRuntimeTests(unittest.TestCase):
                 self.assertEqual(self.h.counts()["effects"], index)
 
     def test_two_concurrent_native_clients_share_one_durable_claim_and_post(self):
-        # Initialize before starting both independent workers so this exercises
-        # the claim race, not just schema-creation contention.
-        self.h.adapter()
-        a = self.h.worker(barrier="after_claim")
-        b = self.h.worker(barrier="after_claim")
+        # Every Adapter constructor performs write initialization. Complete each
+        # before releasing concurrent claims; 2s is the bounded healthy-contention
+        # budget, while dedicated lock-failure tests keep the short default.
+        options = {"barrier": "after_claim", "start_barrier": True,
+                   "config_changes": {"sqlite_timeout": 2.0}}
+        a = self.h.worker(**options)
+        ready_a = a.event()
+        self.assertEqual((ready_a["event"], ready_a["stage"]), ("ready", "initialized"))
+        b = self.h.worker(**options)
+        ready_b = b.event()
+        self.assertEqual((ready_b["event"], ready_b["stage"]), ("ready", "initialized"))
+        self.assertEqual(self.journal_states(), [])
+        self.assertEqual(self.h.counts()["post_attempts"], 0)
+        a.release()
+        b.release()
         events = [(a, a.event()), (b, b.event())]
         claimed = [(p, e) for p, e in events if e.get("event") == "barrier"]
         already_claimed = [(p, e) for p, e in events if e.get("event") == "result"]
@@ -281,6 +291,8 @@ class PaymentRuntimeTests(unittest.TestCase):
         self.assertEqual(len(already_claimed), 1)
         self.assertEqual(claimed[0][1]["stage"], "after_claim")
         self.assertEqual(already_claimed[0][1]["result"]["state"], "UNKNOWN")
+        self.assertEqual(already_claimed[0][1]["result"]["reason"], "durable_claim_outcome_unresolved")
+        self.assertEqual(self.journal_states(), ["CLAIMED"])
         self.assertEqual(self.h.counts()["post_attempts"], 0)
         claimed[0][0].release()
         self.assertEqual(claimed[0][0].result()["state"], "SETTLED")

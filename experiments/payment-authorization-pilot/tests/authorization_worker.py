@@ -33,6 +33,7 @@ def main():
     parser.add_argument("--evidence", required=True, type=Path)
     parser.add_argument("--action", choices=("submit", "reconcile", "read_status"), default="submit")
     parser.add_argument("--barrier", choices=("after_authorization_proof", "after_claim", "after_response"))
+    parser.add_argument("--start-barrier", action="store_true")
     args = parser.parse_args()
     config = private_json(args.config)
     request = private_json(args.request)
@@ -52,6 +53,12 @@ def main():
         role: {key: bytes.fromhex(public) for key, public in keys.items()}
         for role, keys in gate["trusted_keys"].items()}
     adapter = AuthorizedAdapter(Adapter(**native), GateConfig(**gate), fault_hook=hook)
+    if args.start_barrier:
+        # Both native journal and authorization-proof schema initialization are
+        # complete; the parent now controls when the claim race begins.
+        emit({"event": "ready", "stage": "initialized", "pid": os.getpid()})
+        if sys.stdin.buffer.read(1) != b"1":
+            raise RuntimeError("test_start_barrier_release_invalid")
     result = (adapter.submit(request, evidence) if args.action == "submit"
               else getattr(adapter, args.action)(request))
     safe = dict(result)

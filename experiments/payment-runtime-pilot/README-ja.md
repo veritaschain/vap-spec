@@ -25,6 +25,10 @@
 Python 3.12、`cryptography`、SQLite、実際のループバック通信とプロセス操作が必要です。
 SIGKILLの試験はPOSIX環境を対象とします。必要な機能がなければ試験失敗とし、スキップや模擬成功にはしません。
 
+正常系の2クライアント競合試験では、両ワーカー自身の初期化完了を確認してから送出権の取得へ進め、SQLiteの待ち時間を
+2秒に制限します。取得・POST・振替が各1件という条件を維持し、意図的に短い待ち時間でロック失敗を起こす試験と区別します。
+遅延の保証や、実行系のタイムアウト既定値の変更ではありません。
+
 ```sh
 python -m pip install -r experiments/payment-runtime-pilot/requirements.txt
 python -W error::ResourceWarning -m unittest discover -s experiments/payment-runtime-pilot/tests -v
