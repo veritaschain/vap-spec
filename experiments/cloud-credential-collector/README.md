@@ -17,6 +17,8 @@ The CLI does not contact Azure or collect from an authenticated cloud endpoint. 
 of an export and a collector signature do not establish that Microsoft produced the export.
 The published demo and tests use only synthetic records and public test signing material.
 
+For deployment and sharing decisions, see [Authorization and confidentiality boundaries](SECURITY-BOUNDARIES.md). These tools preserve originals; they do not scan for secrets or authorize release.
+
 ## Run
 
 Use Linux, Python 3.12 and the pinned dependency. The implementation requires `/proc/self/fd`

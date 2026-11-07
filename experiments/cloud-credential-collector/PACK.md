@@ -16,6 +16,8 @@ This work explores the offline-verification aim of [VAP §9.3](../../spec/v1.2/V
 It does not define the VAP Evidence Pack wire format or provide external anchor proofs,
 applicable policy documents, profile conformance, legal acceptance or independent reproduction.
 
+For deployment and sharing decisions, see [Authorization and confidentiality boundaries](SECURITY-BOUNDARIES.md). These tools preserve originals; they do not scan for secrets or authorize release.
+
 ## Run
 
 From the repository root, using the same Python 3.12 environment as the collector:
