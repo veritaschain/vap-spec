@@ -2,3 +2,6 @@
 __pycache__/
 *.pyc
 experiments/declared-scope-verifier/generated/
+
+# Local AI-agent permission records may contain credentials in command arguments.
+**/.claude/settings.local.json
