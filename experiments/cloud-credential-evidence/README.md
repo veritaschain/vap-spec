@@ -160,6 +160,10 @@ source availability, permissions, exact operation bindings and collection closur
 by the bridge. Its local signatures and checkpoint comparisons do not establish Azure origin or
 independent custody.
 
+The collector's [portable custody snapshot](../cloud-credential-collector/PACK.md) adds a separate
+offline check of retained originals and receipt history without the producer's store. That custody
+result is not an authentication, authorization, native-operation or VAP-conformance result.
+
 This directory contains a reproducible offline semantics experiment. It does not contain a live
 Azure collector, cloud credential store, API connector, complete cloud schema decoder or runtime
 authorization gate. There is no incident forensic dataset, independent third-party execution,

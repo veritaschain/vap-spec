@@ -13,6 +13,11 @@ preserves raw artifact bytes, signed receipt history and restart/retry behavior,
 envelopes to that checker. There is no live cloud adapter or deployed control, and no new normative
 field, profile or conformance result.
 
+Its [portable custody snapshot](../../experiments/cloud-credential-collector/PACK.md) can also
+carry the retained originals and signed receipt prefix to a verifier without the producing store.
+The verifier requires external key and store-identity pins; the included checkpoint is not an
+independent anchor or proof of the latest complete history.
+
 ## Motivation and source boundary
 
 [Microsoft's 5 November report][ms] describes exposed application credentials enabling cloud

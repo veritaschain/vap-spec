@@ -9,6 +9,10 @@ signed collection receipt. It adds actual filesystem persistence, process restar
 behavior to the separate offline evidence checker. Its native-record export connects the two
 experiments without manufacturing source availability, permissions or operation bindings.
 
+The subsequent [portable custody snapshot](PACK.md) packages original artifacts and their signed
+receipt prefix for verification without the producer's database or private key. It requires a
+separately pinned public key and expected store ID, and retains the external-checkpoint limits.
+
 The CLI does not contact Azure or collect from an authenticated cloud endpoint. Local possession
 of an export and a collector signature do not establish that Microsoft produced the export.
 The published demo and tests use only synthetic records and public test signing material.
@@ -130,7 +134,9 @@ and the original collector receipt time. It does not reserialize the source JSON
 or mappings may remain preserved as custody artifacts while native export fails explicitly.
 The native envelope references the custody receipt by commitment but does not embed the custody
 store or its receipt chain. The separate evidence checker evaluates the exported statement;
-repeating custody audit still requires the retained store, caller-pinned public key and any retained checkpoint.
+auditing the live store still requires that store, caller-pinned public key and any retained checkpoint.
+Alternatively, a separately exported [custody snapshot](PACK.md) supports a bounded recheck of its
+included committed prefix without the store. The native envelope alone still does not contain that history.
 
 The CLI obtains receipt time from the host clock. It has no clock override or backdating option.
 Tests may inject a clock through the Python API. The custody receipt retains nanosecond precision
