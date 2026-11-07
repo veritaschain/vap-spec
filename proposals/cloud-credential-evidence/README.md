@@ -1,12 +1,15 @@
 # Cloud workload credential evidence — informative proposal
 
-**Status: proposed, unadopted; design only.** Reviewed **7 November 2026 JST**.
+**Status: proposed, unadopted; design with a bounded offline experiment.** Reviewed **7 November 2026 JST**.
 [日本語](README-ja.md) · [Source ledger](SOURCES.md)
 
 Baseline: VAP repository commit
 [d97980f](https://github.com/veritaschain/vap-spec/tree/d97980f340ff9f81639daf8ffa6e02acbe1433ec).
-The acceptance cases below are **proposed and not executed**. This note supplies no cloud
-adapter, verifier or deployed control, and creates no normative field, profile or conformance result.
+The acceptance cases below are proposed criteria. The
+[offline synthetic experiment](../../experiments/cloud-credential-evidence/README.md)
+now exercises bounded distinctions for CE-01–CE-10; its executable coverage and limits are recorded
+separately. There is no live cloud adapter or deployed control, and no new normative field,
+profile or conformance result.
 
 ## Motivation and source boundary
 
@@ -75,10 +78,12 @@ logging-to-Storage path. This is not measured latency for the reported attack, a
 latency or a response SLA. Evaluate event-to-evidence and evidence-to-response delay separately.
 Signing exported logs does not make a post-event observation a preventive control.
 
-## Proposed acceptance matrix — not executed
+## Proposed acceptance matrix
 
 All inputs below are hypothetical synthetic review cases. Their expected distinctions are proposed
-criteria, not test results. Case labels are local discussion identifiers.
+criteria, not test results. Case labels are local discussion identifiers. The initial design recorded
+these cases as unexecuted; subsequent synthetic execution is described in the
+[experiment coverage](../../experiments/cloud-credential-evidence/README.md#acceptance-coverage).
 
 | Case | Candidate input | Distinction required for review |
 | --- | --- | --- |
@@ -95,9 +100,10 @@ criteria, not test results. Case labels are local discussion identifiers.
 
 ## Review handoff
 
-An implementation would first need a versioned service-specific mapping, permitted synthetic fixtures,
-caller-supplied trust/authority configuration and a declared collection boundary. It should demonstrate
-the matching positive control and independently altered bindings without using live credentials.
+The offline experiment supplies a restricted versioned mapping, synthetic fixtures,
+caller-supplied trust/authority configuration and a declared collection boundary. Its positive
+control and independently altered bindings use no live credentials. A real integration still needs
+environment-specific mapping, ingestion and authority provisioning.
 Native log provenance and availability must be established for that environment; this note does not
 assume that ordinary Azure log exports carry independently verifiable provider event signatures.
 

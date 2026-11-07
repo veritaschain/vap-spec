@@ -23,6 +23,7 @@ the reported activity.
 | [Application and service principal objects][identity] | 1 October 2024 | AppId and a tenant-local service principal identify different objects. Managed-identity service principals have no associated application object. Preserve identity kind and tenant context. |
 | [AADServicePrincipalSignInLogs table][signin] | 28 August 2026 | AADTenantId, AppOwnerTenantId and ResourceOwnerTenantId have distinct meanings; TenantId denotes the logging workspace. Credential/token IDs and time fields must retain source semantics and missingness. Schema presence alone does not establish populated values or a universal join key. |
 | [Azure Key Vault logging][keyvault] | 10 April 2026 | Optional client correlation and operation-specific results need explicit interpretation. The documented logging-to-Storage path can make information available up to ten minutes after the operation; this is not an incident latency measurement or a universal latency/response SLA. |
+| [Key Vault Get Secret REST reference][get-secret] | API version 2025-07-01; checked 7 November 2026 | GET and HTTP 200 define the documented successful retrieval response. The offline experiment does not promote arbitrary 2xx responses or explicitly conflicting collector methods into a supported SecretGet observation. |
 
 The timing, trust and acceptance requirements in the proposal are **VSO's design reasoning** from these
 source distinctions, not a Microsoft or Todyl specification or endorsement. No claim is made that a
@@ -39,15 +40,18 @@ independently anchored cross-party evidence remain different provenance arrangem
 - [Existing incident bindings][bindings], [payment evidence][payment] and [declared-scope verification][scope]
   are reference work with their own limits. No existing result is counted as execution of CE-01 to CE-10.
 
-The English and Japanese proposal share the same ten unexecuted acceptance cases. A future implementation
-needs its own schema mapping, trust assumptions, actual checks and recorded results. Updating this source
-review does not revise fixed evidence or specification releases.
+The initial English and Japanese design recorded the same ten unexecuted acceptance cases.
+The subsequent [offline synthetic experiment](../../experiments/cloud-credential-evidence/README.md)
+has its own restricted mapping, caller-supplied trust assumptions, executable checks and coverage.
+Its generated inputs are not incident evidence, Azure-origin signatures or independent reproduction.
+Updating this source review does not revise fixed evidence or specification releases.
 
 [ms]: https://www.microsoft.com/en-us/security/blog/2026/11/05/threat-actors-use-agentic-ai-tooling-to-find-and-abuse-exposed-secrets/
 [todyl]: https://www.todyl.com/blog/stolen-app-credentials-real-access-an-actor-is-signing-into-entra-id-and-azure-devops-as-your-workloads
 [identity]: https://learn.microsoft.com/en-us/entra/identity-platform/app-objects-and-service-principals
 [signin]: https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/aadserviceprincipalsigninlogs
 [keyvault]: https://learn.microsoft.com/en-us/azure/key-vault/general/logging
+[get-secret]: https://learn.microsoft.com/en-us/rest/api/keyvault/secrets/get-secret/get-secret?view=rest-keyvault-secrets-2025-07-01
 [vap-base]: https://github.com/veritaschain/vap-spec/tree/d97980f340ff9f81639daf8ffa6e02acbe1433ec
 [registry]: https://github.com/veritaschain/vap-spec/blob/d97980f340ff9f81639daf8ffa6e02acbe1433ec/README.md#relationship
 [vcp-base]: https://github.com/veritaschain/vcp-spec/tree/2dd82e2a70b7f3245ba00e851c991c035649beee
