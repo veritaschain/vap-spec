@@ -44,6 +44,13 @@ The initial English and Japanese design recorded the same ten unexecuted accepta
 The subsequent [offline synthetic experiment](../../experiments/cloud-credential-evidence/README.md)
 has its own restricted mapping, caller-supplied trust assumptions, executable checks and coverage.
 Its generated inputs are not incident evidence, Azure-origin signatures or independent reproduction.
+The subsequent [local collector pilot](../../experiments/cloud-credential-collector/README.md)
+adds real local persistence and process-recovery checks with synthetic inputs. Its custody design
+and external-checkpoint limits are VSO experimental choices, not Microsoft requirements or an
+independent reconstruction of the incident. Its implementation references
+[SQLite atomic commit](https://www.sqlite.org/atomiccommit.html) and
+[Python filesystem synchronization](https://docs.python.org/3.12/library/os.html#os.fsync);
+process-kill tests do not establish power-loss durability.
 Updating this source review does not revise fixed evidence or specification releases.
 
 [ms]: https://www.microsoft.com/en-us/security/blog/2026/11/05/threat-actors-use-agentic-ai-tooling-to-find-and-abuse-exposed-secrets/

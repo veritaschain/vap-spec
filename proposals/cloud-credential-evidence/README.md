@@ -1,6 +1,6 @@
 # Cloud workload credential evidence — informative proposal
 
-**Status: proposed, unadopted; design with a bounded offline experiment.** Reviewed **7 November 2026 JST**.
+**Status: proposed, unadopted; design with bounded offline evidence and local collection experiments.** Reviewed **7 November 2026 JST**.
 [日本語](README-ja.md) · [Source ledger](SOURCES.md)
 
 Baseline: VAP repository commit
@@ -8,8 +8,10 @@ Baseline: VAP repository commit
 The acceptance cases below are proposed criteria. The
 [offline synthetic experiment](../../experiments/cloud-credential-evidence/README.md)
 now exercises bounded distinctions for CE-01–CE-10; its executable coverage and limits are recorded
-separately. There is no live cloud adapter or deployed control, and no new normative field,
-profile or conformance result.
+separately. A [local collector pilot](../../experiments/cloud-credential-collector/README.md)
+preserves raw artifact bytes, signed receipt history and restart/retry behavior, and exports native
+envelopes to that checker. There is no live cloud adapter or deployed control, and no new normative
+field, profile or conformance result.
 
 ## Motivation and source boundary
 
@@ -102,8 +104,10 @@ these cases as unexecuted; subsequent synthetic execution is described in the
 
 The offline experiment supplies a restricted versioned mapping, synthetic fixtures,
 caller-supplied trust/authority configuration and a declared collection boundary. Its positive
-control and independently altered bindings use no live credentials. A real integration still needs
-environment-specific mapping, ingestion and authority provisioning.
+control and independently altered bindings use no live credentials. The local collector adds actual
+filesystem custody and process-recovery tests using synthetic data; a caller-retained checkpoint
+can expose a conflicting rollback but cannot prove all later history was retained. A real integration
+still needs environment-specific mapping, authenticated ingestion and authority provisioning.
 Native log provenance and availability must be established for that environment; this note does not
 assume that ordinary Azure log exports carry independently verifiable provider event signatures.
 

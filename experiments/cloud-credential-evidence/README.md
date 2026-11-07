@@ -153,6 +153,13 @@ contradictions, so a changed binding must be detected even when the signature is
 
 ## Remaining implementation boundary
 
+The separate [local collector pilot](../cloud-credential-collector/README.md) now supplies
+raw-byte custody, signed collection receipts, process-recovery tests and native-envelope export.
+It leaves this checker's semantics unchanged. Actual local receipt time stays a receipt time;
+source availability, permissions, exact operation bindings and collection closure are not invented
+by the bridge. Its local signatures and checkpoint comparisons do not establish Azure origin or
+independent custody.
+
 This directory contains a reproducible offline semantics experiment. It does not contain a live
 Azure collector, cloud credential store, API connector, complete cloud schema decoder or runtime
 authorization gate. There is no incident forensic dataset, independent third-party execution,
