@@ -18,6 +18,10 @@ completeness of real-world observations.
 
 The local contract is defined in [CONFORMANCE.md](CONFORMANCE.md).
 [SCENARIO.md](SCENARIO.md) explains the synthetic workflow and its assumptions.
+[CHANGELOG.md](CHANGELOG.md) records implementation history, and
+[RELEASE.md](RELEASE.md) records the proposed experimental release, exact
+reproduction evidence and remaining publication steps. No tag or release is
+asserted by that preparation.
 
 The [July 2026 prototype at `ec6cfba`](https://github.com/veritaschain/vap-spec/tree/ec6cfbaf901e6147f767bbe56132b1bb6211337a/interop/vap-evidence-pack-demo)
 remains available at its original commit. The 0.2.0 contract uses its own
@@ -57,7 +61,12 @@ Passing schema validation alone is not a demo PASS.
 
 ## Run the committed dataset
 
-Use Python 3.12 and Node.js 24 for the documented toolchain. From the repository
+Use Python 3.12 and Node.js 24 for the documented toolchain.
+
+For the prepared dependency versions and a single command that runs all
+existing checks, follow the
+[release reproduction instructions](RELEASE.md#reproduce-with-one-check-command).
+The individual commands remain available below. Run them from the repository
 root:
 
 ```sh
