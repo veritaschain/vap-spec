@@ -1,0 +1,271 @@
+{
+  "record_version": "vap-interop-release-preparation/1",
+  "contract_id": "vap-interop-demo/0.2.0",
+  "proposed_tag": "vap-interop-demo-v0.2.0",
+  "tag_created_by_this_preparation": false,
+  "release_created_by_this_preparation": false,
+  "base_commit": "d97980f340ff9f81639daf8ffa6e02acbe1433ec",
+  "base_tree": "c4559da4813951aca0263bc64dba8eb60d6f3727",
+  "prior_tested_commit": "3dea7ce88dbe7a0af22740602d17129dc80febaa",
+  "prior_ci_url": "https://github.com/veritaschain/vap-spec/actions/runs/41057936560",
+  "source_state": "The 22 baseline demo/license files match the named commit. Runner, changed workflow and release documentation are uncommitted; runner/workflow hashes are recorded separately. No final release commit is assigned.",
+  "baseline_source_files": [
+    {
+      "path": "LICENSE",
+      "bytes": 1232,
+      "sha256": "91dd9f04de2684c55a65d585b20c70e4ebc51cd41a4ef246433cfa379e32dfb8",
+      "git_blob": "725d0aaa1c923a2095ce732a693a685e33d6d70b"
+    },
+    {
+      "path": "interop/vap-evidence-pack-demo/CONFORMANCE.md",
+      "bytes": 12370,
+      "sha256": "c23c8b46c3ae5e0793607b70890e9a3a7effc29c19621c6507f1343ecf74b2dc",
+      "git_blob": "584ba7cad09a651131d02392bcd4ebdf217705b6"
+    },
+    {
+      "path": "interop/vap-evidence-pack-demo/SCENARIO.md",
+      "bytes": 6393,
+      "sha256": "d3919f1416f5bea91f61496d81c42ca8d7f2a0b96b83db1a1569d7792b56c737",
+      "git_blob": "d70df4433b04f9aff1441ef94adc36fc8b136e64"
+    },
+    {
+      "path": "interop/vap-evidence-pack-demo/generate_demo.py",
+      "bytes": 9846,
+      "sha256": "f3ff1dc9ad7e36cafa65943e117ebde9a89a272a631e538316e59223888fd1c1",
+      "git_blob": "6b46fb40a469b529cb4a9cceaffb91d2b80969ac"
+    },
+    {
+      "path": "interop/vap-evidence-pack-demo/requirements.txt",
+      "bytes": 191,
+      "sha256": "8e5cf165f2e25fdc9945e81b37a277155ea58290aa3bf2b8b25bca719bd43e1a",
+      "git_blob": "f16450cb828b610686014cccd833c5311aca90e5"
+    },
+    {
+      "path": "interop/vap-evidence-pack-demo/schema/demo-trust.schema.json",
+      "bytes": 2547,
+      "sha256": "70a570124f68b4c571e1486a28726de5211780c2142ae1a29ab08395bb59d128",
+      "git_blob": "bdebd5bb1c1b79b1b9545dab712ab1d4597b34cc"
+    },
+    {
+      "path": "interop/vap-evidence-pack-demo/schema/evidence-pack.schema.json",
+      "bytes": 9655,
+      "sha256": "34cfb159cc32e191396606007cc1cbb8706e9f5f0b8471a20ef0142a6bc62474",
+      "git_blob": "e205271c62bdab16270207bbdb7a4a568ea53627"
+    },
+    {
+      "path": "interop/vap-evidence-pack-demo/test-vectors/demo-trust-six.json",
+      "bytes": 577,
+      "sha256": "367231f0104f1a56c0a059f6f0a4ab423c0c16fc6337ccec4b0c5b6efd6afe37",
+      "git_blob": "2f81962af957ed21197d34df484036d073172765"
+    },
+    {
+      "path": "interop/vap-evidence-pack-demo/test-vectors/demo-trust.json",
+      "bytes": 577,
+      "sha256": "68ab0403bbf07edb134908d9f9dfcd55965e1b64c64d1305fa351c708a12af39",
+      "git_blob": "493389484012cf5bf42150690b8c6daa8c2f7878"
+    },
+    {
+      "path": "interop/vap-evidence-pack-demo/test-vectors/invalid-omitted-outcome.json",
+      "bytes": 4916,
+      "sha256": "14a64548e356dfbd9656617a5c1832bad7768b58f8e64c4e39f4fde3e10416bc",
+      "git_blob": "184668d09067670e3163a9f6f60f64aa35bc61e6"
+    },
+    {
+      "path": "interop/vap-evidence-pack-demo/test-vectors/invalid-omitted-pair.json",
+      "bytes": 3989,
+      "sha256": "63d2a65684bab60dd77f709e0647a1b287e891a95e0efa5517bbddc2024f3d5b",
+      "git_blob": "75f77674a738e613136a9570f5725d438cf2e8fb"
+    },
+    {
+      "path": "interop/vap-evidence-pack-demo/test-vectors/invalid-rebound-scope.json",
+      "bytes": 3989,
+      "sha256": "c11e76d163bc2153828ffad119f9f34a2c45bb927c8590caec75f4ee31fb5e69",
+      "git_blob": "0c53bf8f24f272fd016d3fa2a826bff858875cd6"
+    },
+    {
+      "path": "interop/vap-evidence-pack-demo/test-vectors/invalid-split-view.json",
+      "bytes": 5800,
+      "sha256": "60c874c1b2a0043527faa46305c653f0af8966be544788d173c33709deccafd1",
+      "git_blob": "7882b7f9c59864711feed503c560aed174ef899c"
+    },
+    {
+      "path": "interop/vap-evidence-pack-demo/test-vectors/invalid-tampered-event.json",
+      "bytes": 5814,
+      "sha256": "a1f3c61d0235ea5db67f5bad08f66decb0b55bd52b514c0e3184489b14173780",
+      "git_blob": "121297ff055931ad5517768d3f9295dbd75f3e97"
+    },
+    {
+      "path": "interop/vap-evidence-pack-demo/test-vectors/invalid-untrusted-signer.json",
+      "bytes": 5800,
+      "sha256": "bbd59cb6eab5747811e4803998a8bfc7a1d32f24c37f8df5ae715de0a442bf78",
+      "git_blob": "33c17ea6e51acd78c8ae1c5cf31f0e27c4578995"
+    },
+    {
+      "path": "interop/vap-evidence-pack-demo/test-vectors/manifest.json",
+      "bytes": 3162,
+      "sha256": "bc05d2de41f713b8a19110bcfde864b44e2beaccebf3108d59a0611750262953",
+      "git_blob": "e936c520b9feb174e4f4a0dba774290a62577fa9"
+    },
+    {
+      "path": "interop/vap-evidence-pack-demo/test-vectors/valid-pack.json",
+      "bytes": 5800,
+      "sha256": "7e0320a98c44d18d56754579ef88e9d4997fbba8b7a51215f41f4b3b78e582a8",
+      "git_blob": "4e937a977b71ff9a80d339b46cc0c68722099a62"
+    },
+    {
+      "path": "interop/vap-evidence-pack-demo/test-vectors/valid-six-events.json",
+      "bytes": 7611,
+      "sha256": "171c8a8c683eb234142c0bad5d83e7aca67d504e372b1bfbb3978733adfbbaaa",
+      "git_blob": "a2557e4bd3c1ab8fc1d722fdcb138a56ef463904"
+    },
+    {
+      "path": "interop/vap-evidence-pack-demo/tests/test_contract_boundaries.py",
+      "bytes": 26410,
+      "sha256": "b6eefa9ab5f182cb3bc15ba0f2b85ba5db881ef13a02eafeb5c66f29984ce838",
+      "git_blob": "637720f791a86657c76116fc21dbf4008635fc1f"
+    },
+    {
+      "path": "interop/vap-evidence-pack-demo/tests/test_vectors.py",
+      "bytes": 12233,
+      "sha256": "af8f957e8c88403cacd2ae915932c00b1761f86734502aa524052580035fd7b0",
+      "git_blob": "07b3f5dc77e0b18d8c1e5f796e7dd9b719344492"
+    },
+    {
+      "path": "interop/vap-evidence-pack-demo/verify_node.mjs",
+      "bytes": 24288,
+      "sha256": "80ba2bcb6d882786653524db7ce649495e92d4751416032cc31ee876e9be96dd",
+      "git_blob": "9fd3e8813fde453efee1177da2d238d14669527b"
+    },
+    {
+      "path": "interop/vap-evidence-pack-demo/verify_python.py",
+      "bytes": 15430,
+      "sha256": "0ddae5a2092cc579a64fe9d83f627ca4e6e5c518549f7163956e643d0a937e09",
+      "git_blob": "a1ac92b6f79233899d9229beaafb2ec88d38c23f"
+    }
+  ],
+  "runner": {
+    "path": "interop/vap-evidence-pack-demo/reproduce.sh",
+    "bytes": 1279,
+    "sha256": "cb396078f5ea51a8c152cd1abdda190790ab3b168ca5abb5881c370990a445f6",
+    "status": "uncommitted preparation entry point"
+  },
+  "execution": {
+    "command": [
+      "sh",
+      "interop/vap-evidence-pack-demo/reproduce.sh"
+    ],
+    "working_directory": "repository root",
+    "environment": {
+      "VAP_DEMO_PYTHON": "python",
+      "PATH_selection": "isolated venv bin prepended"
+    },
+    "started_at_utc": "2026-11-07T06:58:41.202807+00:00",
+    "finished_at_utc": "2026-11-07T06:58:49.935318+00:00",
+    "exit_code": 0,
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "node": "v24.22.1",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "installed_python_packages": [
+      {
+        "name": "attrs",
+        "version": "26.1.0"
+      },
+      {
+        "name": "cffi",
+        "version": "2.1.1"
+      },
+      {
+        "name": "cryptography",
+        "version": "50.0.2"
+      },
+      {
+        "name": "jsonschema",
+        "version": "4.25.1"
+      },
+      {
+        "name": "jsonschema-specifications",
+        "version": "2025.9.1"
+      },
+      {
+        "name": "pip",
+        "version": "25.0.1"
+      },
+      {
+        "name": "pycparser",
+        "version": "3.12"
+      },
+      {
+        "name": "referencing",
+        "version": "0.37.0"
+      },
+      {
+        "name": "rpds-py",
+        "version": "2026.9.1"
+      },
+      {
+        "name": "typing_extensions",
+        "version": "4.16.0"
+      }
+    ],
+    "dependency_setup": {
+      "command": [
+        "/workspace/scratch/9e3417b0b6c4/verification/vap-interop-release-env-20261107/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "--disable-pip-version-check",
+        "-r",
+        "interop/vap-evidence-pack-demo/requirements.txt",
+        "-c",
+        "interop/vap-evidence-pack-demo/release-preparation/2026-11-07/constraints.txt"
+      ],
+      "exit_code": 0,
+      "existing_isolated_environment_reused": true,
+      "packages_were_already_satisfied": true
+    }
+  },
+  "observed_result": {
+    "fixture_manifest_files_compared": 11,
+    "unittest_methods_run": 32,
+    "unittest_result": "OK",
+    "seconds_reported_by_unittest": "8.439",
+    "vector_cli_expectations_checked_by_existing_test": {
+      "verifiers": [
+        "Python",
+        "Node.js"
+      ],
+      "packs_per_verifier": 8,
+      "pass_exit_0_per_verifier": 2,
+      "fail_exit_1_per_verifier": 6
+    }
+  },
+  "evidence_files": [
+    {
+      "path": "constraints.txt",
+      "bytes": 339,
+      "sha256": "64f5ed5edfe3186019204f24993cf5ff808660ede04adf855071556408520e20"
+    },
+    {
+      "path": "reproduction.txt",
+      "bytes": 5451,
+      "sha256": "9d61754129eb5ac8f46febd890b95b75bcb65c9dbf867ceef3cbd0cec494ff11"
+    }
+  ],
+  "limits": [
+    "first-party execution by the same operator",
+    "synthetic public test keys",
+    "no organizationally independent implementation or reproduction established",
+    "no adopted common VAP Evidence Pack format or full VAP conformance",
+    "no source-capture completeness, trusted time or external anchoring proof",
+    "version constraints do not preserve dependency wheels or their hashes",
+    "this record is not final-candidate CI or publication evidence",
+    "modified CI workflow awaits an exact-head GitHub Actions run; local execution is not CI evidence"
+  ],
+  "workflow": {
+    "path": ".github/workflows/vap-evidence-demo.yml",
+    "bytes": 1089,
+    "sha256": "598f76b8fb6eca0b25d8bff95ed1aba9daedce9e581f1f5607212c42a540ff65",
+    "status": "uncommitted modified CI workflow; not executed by GitHub Actions in this local record",
+    "base_git_blob": "61da1e8ee7f2c30261e14eb2daebb72887ac0670"
+  }
+}
