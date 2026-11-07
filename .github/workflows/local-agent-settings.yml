@@ -1,0 +1,26 @@
+name: Local agent settings guard
+
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  local-agent-settings:
+    name: Check tracked local agent settings
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+      # This checks index paths after a push; it is not a content/history scan.
+      - name: Reject tracked local permission records
+        run: python3 .github/scripts/check_local_agent_settings.py
+      - name: Test guard and ignore behavior
+        run: python3 -O .github/scripts/test_local_agent_settings.py
