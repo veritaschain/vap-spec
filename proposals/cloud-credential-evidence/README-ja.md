@@ -82,6 +82,38 @@ VaultやKeyの情報取得と、秘密情報の操作は別です。制御系API
 イベントから証拠の利用可能性までと、証拠から対応までの遅延を分けて評価します。
 取得済みログに署名しても、事後の観測が予防制御になるわけではありません。
 
+### プロバイダーのセッション状態と防御側の観測 — 2026年11月9日追記
+
+[Chainalysisの更新報告][chainalysis]は、資格情報への影響について初期評価を改めています。
+[Microsoftの別件のStorm-3358報告][storm3358]は、ARTEXを用いた侵入と遠隔操作ツールの設置を観測したとしています。
+これらの更新はCE-09・CE-10の参考になりますが、1つの攻撃時系列を構成せず、
+この実験へ実際の事件証拠を提供するものでもありません。
+
+現行のクラウド検証器は出典の資格情報・トークン識別子を保持し、提供された操作許可の有効期間を検査します。
+一方、**プロバイダー発行のトークン・セッションの有効期間や失効の実効状態には対応付けていません**。
+今後のアダプターでは、観測した操作時点でこれらを別に評価し、出典で裏付けられる発行、期限、
+親とセッションの関係、失効の観測を保持する設計が必要です。リセット・更新・失効の要求、
+プロバイダーの受付、観測した効果、その後の利用を区別します。反映範囲、系譜、時計が不明なら未解決のまま残し、
+親の資格情報を変更しただけで既発行セッションすべての状態を確定しません。
+プロバイダーによる受付、正確な操作への認可、効果の証拠は別であり、使えるトークンや有効な記録署名だけで
+3つすべてが成立したとは判断しません。
+
+[EVIDECTの資格情報ライフサイクル契約][evidect-lifecycle]は、2026年11月9日に
+[未マージのDraft PR #37][evidect-pr]のコミット`3acb662fefbd03774ca61d3d588c541cae431d1a`で確認しました。
+親の失効後に子が使える条件や、セッション自体の有効性は既に合成実験で扱っています。
+同じローカル管理主体と模擬プロバイダーを用い、オフラインでの過去の認可は`NOT_ASSESSED`のままです。
+各事件の実トークン仕様や、実プロバイダー接続を検証したものではありません。
+出典上の意味を確認できる非秘密の参照を使い、共有証拠へベアラートークン、パスワード、取得した秘密情報を転記しません。
+原本とコミットメントにも、既存の[機密性の指針](../../experiments/cloud-credential-collector/SECURITY-BOUNDARIES-ja.md)が適用されます。
+
+防御側のプロセス、ファイル、通信の観測には固有の対応付けと信頼範囲が必要であり、
+現行のAzure認証・Key Vaultのデコーダーは扱っていません。観測したコマンド・結果と、
+AI関与について公表者が述べた評価を区別します。ツール名、速さ、収集者の署名から攻撃者の非公開の判断を取得したり、
+観測していない活動の真実性を確立したりはできません。実行時の強制と実効的な失効には別の制御が必要です。
+
+これは接続時に残る課題の文書化であり、実装済み要件や新しい試験結果ではありません。
+CE-01〜CE-10、実行済みの検証範囲、スキーマ、VAP/VCPの規範本文は維持します。
+
 ## 受入ケース案
 
 以下はすべて仮想の合成入力を想定しています。要求する区別は提案上の基準であり、テスト結果ではありません。
@@ -126,6 +158,10 @@ XREFには、既存要件である各当事者の独立した記録とアンカ�
 [signin]: https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/aadserviceprincipalsigninlogs
 [identity]: https://learn.microsoft.com/en-us/entra/identity-platform/app-objects-and-service-principals
 [keyvault]: https://learn.microsoft.com/en-us/azure/key-vault/general/logging
+[chainalysis]: https://www.chainalysis.com/blog/security-incident-october-30/
+[storm3358]: https://www.microsoft.com/en-us/security/blog/2026/11/06/artex-abuse-expands-as-cybercriminals-target-financial-sector/
+[evidect-lifecycle]: https://github.com/veritaschain/evidect-site/blob/3acb662fefbd03774ca61d3d588c541cae431d1a/examples/execution-authorization/credential-lifecycle/CONTRACT.md
+[evidect-pr]: https://github.com/veritaschain/evidect-site/pull/37
 [vap]: ../../spec/v1.2/VAP_Framework_Specification.md
 [bindings]: ../incident-evidence-bindings/README.md
 [payment]: ../../experiments/payment-api-evidence/README.md

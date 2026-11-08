@@ -85,6 +85,42 @@ logging-to-Storage path. This is not measured latency for the reported attack, a
 latency or a response SLA. Evaluate event-to-evidence and evidence-to-response delay separately.
 Signing exported logs does not make a post-event observation a preventive control.
 
+### Provider session state and defender observations — 9 November 2026 follow-up
+
+[Chainalysis's updated disclosure][chainalysis] revises its earlier credential-impact assessment.
+[Microsoft's separate Storm-3358 report][storm3358] describes observed ARTEX-assisted intrusion
+and remote-access-tool deployment. These source updates inform CE-09 and CE-10; they do not form
+one attack timeline or provide incident evidence to this experiment.
+
+The current cloud checker preserves source credential/token identifiers and checks the supplied
+operation-permission interval. It does **not** map provider-issued token/session lifetimes or
+effective revocation. A future adapter would assess these separately at the observed operation
+time, retaining source-supported issuance, expiry, parent/session relationships and revocation
+observations. Distinguish a reset, rotation or revocation request from provider acknowledgement,
+observed effect and later use. Unknown propagation, missing lineage and uncertain clocks remain
+unresolved; a parent credential change alone does not establish every issued session's state.
+Provider acceptance, exact-operation authorization and evidence of the effect remain separate:
+neither a working token nor a valid record signature establishes all three.
+
+The [EVIDECT credential-lifecycle contract][evidect-lifecycle], reviewed at commit
+`3acb662fefbd03774ca61d3d588c541cae431d1a` in [open Draft PR #37][evidect-pr] on
+9 November 2026, already describes synthetic parent-revocation/child-survival and session-validity
+checks. It uses one local controller and a mock provider; its offline historical authorization
+remains `NOT_ASSESSED`. Those checks are not these incidents' actual token semantics or a live
+provider integration. Use non-secret references only when their source meaning is established;
+do not copy bearer tokens, passwords or retrieved secrets into shared evidence. The existing
+[confidentiality guidance](../../experiments/cloud-credential-collector/SECURITY-BOUNDARIES.md)
+also applies to raw originals and their commitments.
+
+Defender-side process, file and network observations would need their own source mappings and
+trust scope; the current Azure sign-in/Key Vault decoder does not cover them. Preserve observed
+commands/results separately from publisher assessments of AI involvement. Tool names, speed or
+collector signatures cannot reveal an attacker's private reasoning or establish the truth of
+unobserved activity. Runtime enforcement and effective revocation require separate controls.
+
+This is a documented integration gap, not an implemented requirement or a new test result.
+CE-01–CE-10, executable coverage, schemas and normative VAP/VCP text are unchanged.
+
 ## Proposed acceptance matrix
 
 All inputs below are hypothetical synthetic review cases. Their expected distinctions are proposed
@@ -131,6 +167,10 @@ No cloud integration, independent reproduction, formal adoption or production-re
 [signin]: https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/aadserviceprincipalsigninlogs
 [identity]: https://learn.microsoft.com/en-us/entra/identity-platform/app-objects-and-service-principals
 [keyvault]: https://learn.microsoft.com/en-us/azure/key-vault/general/logging
+[chainalysis]: https://www.chainalysis.com/blog/security-incident-october-30/
+[storm3358]: https://www.microsoft.com/en-us/security/blog/2026/11/06/artex-abuse-expands-as-cybercriminals-target-financial-sector/
+[evidect-lifecycle]: https://github.com/veritaschain/evidect-site/blob/3acb662fefbd03774ca61d3d588c541cae431d1a/examples/execution-authorization/credential-lifecycle/CONTRACT.md
+[evidect-pr]: https://github.com/veritaschain/evidect-site/pull/37
 [vap]: ../../spec/v1.2/VAP_Framework_Specification.md
 [bindings]: ../incident-evidence-bindings/README.md
 [payment]: ../../experiments/payment-api-evidence/README.md

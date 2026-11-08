@@ -4,17 +4,29 @@
 The linked pages remain live; publication dates, revisions and observation scope are separate.
 No forensic capture or independent reproduction was supplied to VSO for this note.
 
+**Follow-up reviewed: 9 November 2026 JST.** The added incident rows and session-state discussion
+below supplement the 7 November baseline; they do not change the historical implementation results.
+
 ## Incident sources
 
 | Source | Version checked | Bounded use in the proposal |
 | --- | --- | --- |
 | [Microsoft Threat Intelligence / Security Research][ms] | Published 5 November 2026 | Reports at least one five-minute GitHub-to-Key-Vault case and agentic use of exposed application credentials. The separate 28-, 60- and 80-second API-adjustment examples do not form that case's disclosed full timeline. The 28-second example concerns ARM secret metadata, not proof of secret-content retrieval. |
 | [Todyl][todyl] | Published 3 November; page last updated 6 November 2026, with a dated 6 November update and earlier sections retained | The updated assessment cites Microsoft's research. Earlier text says its telemetry did not show a model directing the activity. Preserve that chronology; the update is not independently supplied attacker-model telemetry. Its customer observations have their own coverage, not a campaign-wide census. |
+| [Chainalysis][chainalysis] | Initial disclosure 30 October; page includes updates through 7 November 2026; checked 9 November JST | The 4 November 11:00 P.M. EST update reports exposure of all users' password hashes and live tokens, revising the earlier assessment. This motivates session-state review; the disclosure does not establish the actual token lifecycle or each attacker's autonomous step. |
+| [Microsoft Threat Intelligence: Storm-3358][storm3358] | Published 6 November 2026; checked 9 November JST | Reports ARTEX-assisted intrusion and remote-access-tool deployment by Storm-3358. Defender observations motivate source-specific process/network mappings, outside the current Azure decoder. Do not merge this report with the 5 November exposed-secrets case. |
 
 These are attributed findings, not observations produced by the proposed adapter. Their AI assessments
 do not identify the internal reasoning behind every observed API request. This note makes no additional
 framework attribution, victim total, loss estimate or claim that the current VAP/VCP would have prevented
 the reported activity.
+
+The 9 November session-state continuation is VSO design reasoning. Existing operation-permission
+interval checks do not establish provider token expiry or effective revocation. The related
+[EVIDECT contract][evidect-lifecycle] was reviewed at `3acb662fefbd03774ca61d3d588c541cae431d1a`
+in [open Draft PR #37][evidect-pr]. Its mock-provider lifecycle checks are separate experimental
+work, not incident reconstruction or a live provider integration. The continuation adds no tests,
+acceptance-case identifiers, normative fields or claim of prevention.
 
 ## Primary technical references
 
@@ -58,6 +70,10 @@ Updating this source review does not revise fixed evidence or specification rele
 [identity]: https://learn.microsoft.com/en-us/entra/identity-platform/app-objects-and-service-principals
 [signin]: https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/aadserviceprincipalsigninlogs
 [keyvault]: https://learn.microsoft.com/en-us/azure/key-vault/general/logging
+[chainalysis]: https://www.chainalysis.com/blog/security-incident-october-30/
+[storm3358]: https://www.microsoft.com/en-us/security/blog/2026/11/06/artex-abuse-expands-as-cybercriminals-target-financial-sector/
+[evidect-lifecycle]: https://github.com/veritaschain/evidect-site/blob/3acb662fefbd03774ca61d3d588c541cae431d1a/examples/execution-authorization/credential-lifecycle/CONTRACT.md
+[evidect-pr]: https://github.com/veritaschain/evidect-site/pull/37
 [get-secret]: https://learn.microsoft.com/en-us/rest/api/keyvault/secrets/get-secret/get-secret?view=rest-keyvault-secrets-2025-07-01
 [vap-base]: https://github.com/veritaschain/vap-spec/tree/d97980f340ff9f81639daf8ffa6e02acbe1433ec
 [registry]: https://github.com/veritaschain/vap-spec/blob/d97980f340ff9f81639daf8ffa6e02acbe1433ec/README.md#relationship
