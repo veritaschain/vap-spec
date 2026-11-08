@@ -1,0 +1,176 @@
+{
+  "schema": "vso-payment-research-preservation/1",
+  "preserved_on": "2026-11-06",
+  "date_timezone": "Asia/Tokyo",
+  "status": "experimental_unadopted",
+  "independent_reproduction": "not_established",
+  "scope": "one_original_completed_GitHub_Actions_collector_demo_run",
+  "source": {
+    "repository": "https://github.com/veritaschain/vap-spec",
+    "commit": "ce9c968951c0c92a3b5cf9d5a9a587506f8a700d",
+    "tree": "9a01c636694fb0a6eea780ab93b5de195f00c088",
+    "snapshots": [
+      {
+        "path": "experiments/payment-collector-pilot/payment_collector.py",
+        "preserved_path": "source/experiments/payment-collector-pilot/payment_collector.py",
+        "bytes": 44312,
+        "sha256": "8c5177479d19425363442b442759645df224d42fc4f10a0a5cbd6b3a6f3c3ee8",
+        "git_blob_sha": "e605b9b0b63dac148ca3f8692bc736825dfbc2b4"
+      },
+      {
+        "path": "experiments/payment-collector-pilot/run_demo.py",
+        "preserved_path": "source/experiments/payment-collector-pilot/run_demo.py",
+        "bytes": 20931,
+        "sha256": "242c46623376f1345015582457b3d2fa1102be645a1077a0b14752370c1314fc",
+        "git_blob_sha": "1477d231d2958406df807feacd0e5888ae3faa8e"
+      },
+      {
+        "path": "experiments/payment-collector-pilot/requirements.txt",
+        "preserved_path": "source/experiments/payment-collector-pilot/requirements.txt",
+        "bytes": 51,
+        "sha256": "323c306fba109b73b26de648e152109a9765e3db65b5e4cddd4a60dc7e81dab7",
+        "git_blob_sha": "4375e2291ed4ba3dc9e04bfdb4ea775692e662e5"
+      },
+      {
+        "path": "experiments/payment-authorization-pilot/authorization_gate.py",
+        "preserved_path": "source/experiments/payment-authorization-pilot/authorization_gate.py",
+        "bytes": 29515,
+        "sha256": "144a00440d9c38d4f7f09a60dafd27e1b81743dd31e48e47bf1e280dce438185",
+        "git_blob_sha": "c573b1fec64ce54460887b149914ef1f559fbd45"
+      },
+      {
+        "path": "experiments/payment-authorization-pilot/run_demo.py",
+        "preserved_path": "source/experiments/payment-authorization-pilot/run_demo.py",
+        "bytes": 14359,
+        "sha256": "a62af647cb9ebf9be08437eba6e91e1029c8e1b86523ee2da52c3a665d8417f1",
+        "git_blob_sha": "b1dcfb7543c90dd030d8a45859d39b1566020ebf"
+      },
+      {
+        "path": "experiments/payment-authorization-pilot/requirements.txt",
+        "preserved_path": "source/experiments/payment-authorization-pilot/requirements.txt",
+        "bytes": 45,
+        "sha256": "10994a86901861bc2b7b962ae895d127ba6ec267882fb660f56de23fec09c655",
+        "git_blob_sha": "2c08fe3963a4d465c4a1ee51bbecb7d5851c6af9"
+      },
+      {
+        "path": "experiments/payment-runtime-pilot/payment_runtime.py",
+        "preserved_path": "source/experiments/payment-runtime-pilot/payment_runtime.py",
+        "bytes": 48323,
+        "sha256": "ba88e58ca51a63d3c6a3800ed0dc268508dab965800ff3cbdf3f0802d7ab7361",
+        "git_blob_sha": "567e305d06a567b6efd0e1fc57c74a54a4de68a3"
+      },
+      {
+        "path": "experiments/payment-runtime-pilot/requirements.txt",
+        "preserved_path": "source/experiments/payment-runtime-pilot/requirements.txt",
+        "bytes": 21,
+        "sha256": "cbc3e54c2c8ef4848d0ecee0042489edea07b031b1cf8d6f8ed5470a32ac4af8",
+        "git_blob_sha": "b03fc83db9dd471ebcdefc1aecc92abdca4aedc5"
+      },
+      {
+        "path": ".github/workflows/payment-collector-pilot.yml",
+        "preserved_path": "source/.github/workflows/payment-collector-pilot.yml",
+        "bytes": 2134,
+        "sha256": "72f4f74e7f3b95389173687e0d07dc85713552b1c128709181d9a59f6539613c",
+        "git_blob_sha": "dc10763b7e07481f3f00160e13f9c5a4ae9e0735"
+      },
+      {
+        "path": "LICENSE",
+        "preserved_path": "source/LICENSE",
+        "bytes": 1232,
+        "sha256": "91dd9f04de2684c55a65d585b20c70e4ebc51cd41a4ef246433cfa379e32dfb8",
+        "git_blob_sha": "725d0aaa1c923a2095ce732a693a685e33d6d70b"
+      }
+    ],
+    "snapshot_scope": "producer, verifier dependencies, declared requirements, workflow and license; not the full repository"
+  },
+  "ci": {
+    "run_id": 42203872859,
+    "attempt": 1,
+    "event": "push",
+    "head_branch": "main",
+    "head_sha": "ce9c968951c0c92a3b5cf9d5a9a587506f8a700d",
+    "job_id": 127845525323,
+    "conclusion": "success",
+    "workflow_url": "https://github.com/veritaschain/vap-spec/actions/runs/42203872859",
+    "job_url": "https://github.com/veritaschain/vap-spec/actions/runs/42203872859/job/127845525323",
+    "created_at": "2026-11-06T10:35:45Z",
+    "job_started_at": "2026-11-06T10:35:48Z",
+    "job_completed_at": "2026-11-06T10:36:37Z"
+  },
+  "artifact": {
+    "id": 13495277522,
+    "name": "payment-collector-public-demo",
+    "bytes": 84274,
+    "sha256": "b93f40c33d1ae946d25f881527a4b2fcf32b704b745e7980aed0182060923bca",
+    "created_at": "2026-11-06T10:36:34Z",
+    "expires_at": "2026-12-06T10:36:33Z",
+    "path": "original/payment-collector-public-demo-13495277522.zip",
+    "members": [
+      {
+        "path": "original/summary.json",
+        "archive_member": "summary.json",
+        "bytes": 28056,
+        "sha256": "4d8e01c31c5e02754d6d92ed04bb13ffc624c9ea3a82766d448e654eff9eca49"
+      },
+      {
+        "path": "original/evidence-bundle.json",
+        "archive_member": "evidence-bundle.json",
+        "bytes": 871431,
+        "sha256": "48f50aa31933719643c9b9049c583cf323b6d490a3943b2fd75bb3362d79acff"
+      }
+    ]
+  },
+  "capture": {
+    "method": "GitHub connector using the authorized veritaschain account",
+    "archive": "original downloaded ZIP bytes, unchanged",
+    "members": "exact uncompressed ZIP member bytes, unchanged",
+    "github_metadata": "connector-returned decoded JSON payload text preserved as UTF-8, not raw HTTP transport bytes",
+    "job_log": "connector-decoded log text preserved as UTF-8, not a raw HTTP transport archive",
+    "redactions": "none added; GitHub authentication values in the supplied job log were already masked"
+  },
+  "original_environment": {
+    "evidence": "github/job-127845525323.log",
+    "runner": "GitHub-hosted ubuntu-latest",
+    "os": "Ubuntu 24.04.5 LTS",
+    "runner_image": "ubuntu-24.04",
+    "runner_image_version": "20261101.360.1",
+    "actions_runner_version": "2.338.2",
+    "python": "CPython 3.12.16",
+    "installed_dependencies": {
+      "cryptography": "50.0.2",
+      "cffi": "2.1.1",
+      "pycparser": "3.12"
+    },
+    "hermetic_environment_preserved": false
+  },
+  "original_validation": {
+    "collector_unique_tests": 25,
+    "collector_optimized_run_repeats_same_tests": 25,
+    "authorization_unique_tests": 20,
+    "runtime_unique_tests": 28,
+    "job_unique_test_total": 73,
+    "demo_scenarios": 5,
+    "demo_stages": 13,
+    "original_custody_records": 10,
+    "complete_PAY_01_to_PAY_08_acceptance": false,
+    "other_workflow_results_not_included": true
+  },
+  "preservation_validation": {
+    "archive_digest_matches_GitHub_metadata_and_job_log": true,
+    "extracted_members_byte_identical": true,
+    "source_snapshots_byte_identical_to_pinned_commit": true,
+    "operation": "offline recheck of original supplied evidence, not a fresh service execution",
+    "independent_trust_established": false,
+    "production_readiness_established": false
+  },
+  "limits": [
+    "All roles, keys, processes and mock balances belong to one operator and host user.",
+    "Embedded public keys and identity mappings are original controller declarations, not independent trust.",
+    "A local prerequisite and collector ACK do not independently prove timing relative to payment.",
+    "The offline recheck does not rerun HTTP services, crashes, locking, balances or network isolation.",
+    "Dependencies, host OS and service databases are not captured; this is not a hermetic execution environment.",
+    "Only this selected original run is preserved. Other artifacts and future runs keep their existing retention.",
+    "Repository history and copies can be changed or removed; Git storage is not an immutable archive.",
+    "No VAP conformance, formal adoption, independent reproduction or production readiness is established."
+  ]
+}
