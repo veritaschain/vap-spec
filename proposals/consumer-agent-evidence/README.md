@@ -4,11 +4,17 @@
 
 [日本語](README-ja.md) · [Source ledger](SOURCES.md)
 
+**Source follow-up: 10 November 2026.** The [dated monitoring record](SOURCES.md#monitoring-follow-up-2026-11-10)
+adds the official 6 November package text and the supplied 9–10 November monitoring
+window. It distinguishes a guideline implementation target and deletion-policy
+requests from adopted obligations. The design review below remains dated 6 November.
+
 This VSO proposal describes evidence for reviewing a consumer-facing agent's
 declared mandate, commercial relationships, recommendation context, authorized
-actions and data lifecycle. The source ledger separates Japan's reported cyber
-policy decision, verified budget decision, existing data-management guidance
-and an individual expert's consumer-agent discussion. The design below is VSO's
+actions and data lifecycle. The source ledger separates Japan's cyber policy
+decision, budget decision,
+existing data-management guidance and an individual expert's consumer-agent
+discussion, preserving the dated verification status of each. The design below is VSO's
 inference from those concerns, not a requirement in the cited materials.
 
 This document introduces no adopted profile, normative field, wire format,
@@ -162,8 +168,10 @@ AILEX, government endorsement of VAP/VCP, procurement eligibility or a market
 requirement to purchase certification. It is not a comprehensive survey of
 every agency or applicable law.
 
-Useful follow-up is to obtain the final cyber-package text, inspect subsequent
-Consumer Commission minutes or official proposals, and separately review an
-authorized deployed data path before claiming a product improvement. A future
-pilot would need an explicit evidence contract, privacy/trust boundaries and
+The 10 November source follow-up supplies the official cyber-package text.
+Further review should track the PPC consultation result and final amendment,
+deletion-policy proposals and subsequent Consumer Commission minutes, and
+separately review an authorized deployed data path before claiming a product
+improvement. A future pilot would need an explicit evidence contract,
+privacy/trust boundaries and
 tests of the cases above. No scheduled monitoring job is created here.
