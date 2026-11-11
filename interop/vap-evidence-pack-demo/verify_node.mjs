@@ -17,6 +17,15 @@ const ROLE_RECORDS = [
   ['demo_anchor_receipt', 'anchor', 'DEMO_ANCHOR_RECEIPT'],
 ];
 const SPKI_ED25519_PREFIX = Buffer.from('302a300506032b6570032100', 'hex');
+const ED25519_P = (1n << 255n) - 19n;
+const ED25519_L = (1n << 252n) + 27742317777372353535851937790883648493n;
+// Five y coordinates cover all eight points killed by multiplication by 8.
+// Matching without the x sign also covers the two invalid x=0 sign aliases.
+const ED25519_SMALL_ORDER_Y = new Set([
+  0n, 1n, ED25519_P - 1n,
+  littleEndianInteger(Buffer.from('26e8958fc2b227b045c3f489f2ef98f0d5dfac05d3c63339b13802886d53fc05', 'hex')),
+  littleEndianInteger(Buffer.from('c7176a703d4dd84fba3c0b760d10670f2a2053fa2c39ccc64ec7fd7792ac037a', 'hex')),
+]);
 
 export class VerificationError extends Error {
   constructor(message) {
@@ -272,6 +281,28 @@ function base64Bytes(value, length, label) {
   return bytes;
 }
 
+function littleEndianInteger(bytes) {
+  let value = 0n;
+  for (let index = bytes.length - 1; index >= 0; index -= 1) {
+    value = (value << 8n) | BigInt(bytes[index]);
+  }
+  return value;
+}
+
+function ed25519Point(raw, label) {
+  // The crypto backend still checks curve decoding and the signature equation.
+  // Small-order rejection is a demo policy additional to RFC 8032, not VAP.
+  const encoded = littleEndianInteger(raw);
+  const y = encoded & ((1n << 255n) - 1n);
+  if (y >= ED25519_P ||
+      ((y === 1n || y === ED25519_P - 1n) && (encoded >> 255n) !== 0n)) {
+    reject(label + ' has noncanonical Ed25519 point encoding');
+  }
+  if (ED25519_SMALL_ORDER_Y.has(y)) {
+    reject(label + ' is a small-order Ed25519 point');
+  }
+}
+
 function timestamp(value, label) {
   if (typeof value !== 'string' || value.length !== 20) {
     reject(label + ' must be a UTC timestamp of exactly 20 characters');
@@ -392,6 +423,7 @@ function validateTrust(trust) {
     exactObject(entry, ['key_id', 'public_key'], 'trust.roles.' + role);
     printable(entry.key_id, 'trust.roles.' + role + '.key_id', true);
     const raw = base64Bytes(entry.public_key, 32, 'trust.roles.' + role + '.public_key');
+    ed25519Point(raw, 'trust.roles.' + role + '.public_key');
     const rawHex = raw.toString('hex');
     if (keyIds.has(entry.key_id) || keyValues.has(rawHex)) {
       reject('trust roles must use distinct key identifiers and public keys');
@@ -413,6 +445,10 @@ function sha256(bytes) {
 
 function verifySignature(body, signature, rawKey, label) {
   const signatureBytes = base64Bytes(signature, 64, label + ' signature');
+  ed25519Point(signatureBytes.subarray(0, 32), label + ' signature R');
+  if (littleEndianInteger(signatureBytes.subarray(32)) >= ED25519_L) {
+    reject(label + ' signature scalar must be less than Ed25519 subgroup order');
+  }
   let matches = false;
   try {
     const publicKey = crypto.createPublicKey({

@@ -21,6 +21,17 @@ CONTRACT_ID = "vap-interop-demo/0.2.0"
 CANONICALIZATION = "DEMO-ASCII-SAFEINT-JSON-v1"
 MAX_SAFE_INTEGER = 9007199254740991
 MAX_FILE_BYTES = 2 * 1024 * 1024
+ED25519_P = 2**255 - 19
+ED25519_L = 2**252 + 27742317777372353535851937790883648493
+# The five y coordinates of all eight points killed by multiplication by 8.
+# Ignore the x sign for this check; the two x=0 sign aliases are rejected too.
+ED25519_SMALL_ORDER_Y = {
+    0, 1, ED25519_P - 1,
+    int.from_bytes(bytes.fromhex(
+        "26e8958fc2b227b045c3f489f2ef98f0d5dfac05d3c63339b13802886d53fc05"), "little"),
+    int.from_bytes(bytes.fromhex(
+        "c7176a703d4dd84fba3c0b760d10670f2a2053fa2c39ccc64ec7fd7792ac037a"), "little"),
+}
 EVENT_TYPES = ["AI_DECISION_ATTEMPT", "AI_DECISION_OUTCOME"]
 CHECKS = [
     "contract-and-shape", "pinned-scope", "event-signatures",
@@ -174,11 +185,29 @@ def merkle_root(events):
 
 def _signature(value, public_key, label):
     signature = _base64(value["signature"], 64, label + " signature")
+    _ed25519_point(signature[:32], label + " signature R")
+    _require(int.from_bytes(signature[32:], "little") < ED25519_L,
+             label + " signature scalar must be less than Ed25519 subgroup order")
     try:
         Ed25519PublicKey.from_public_bytes(public_key).verify(
             signature, canonical(_without(value, "signature")))
     except (InvalidSignature, ValueError) as exc:
         raise VerificationError(label + " signature is invalid") from exc
+
+
+def _ed25519_point(raw, label):
+    """Apply this demo's canonical/small-order policy before backend verify.
+
+    RFC 8032 decoding requires y < p. Rejecting small-order A and R is an
+    additional local contract restriction, not a claim about VAP conformance.
+    The crypto library still performs curve decoding and the signature equation.
+    """
+    encoded = int.from_bytes(raw, "little")
+    y = encoded & (2**255 - 1)
+    _require(y < ED25519_P and not (y in (1, ED25519_P - 1) and encoded >> 255),
+             label + " has noncanonical Ed25519 point encoding")
+    _require(y not in ED25519_SMALL_ORDER_Y,
+             label + " is a small-order Ed25519 point")
 
 
 def _validate_shape(pack, trust):
@@ -250,10 +279,12 @@ def _validate_shape(pack, trust):
     _hex(trust["scope_commitment"], "trust.scope_commitment")
     _shape(trust["roles"], "producer observer anchor", "trust.roles")
     role_keys, role_ids = {}, set()
-    for role, config in trust["roles"].items():
+    for role in ("producer", "observer", "anchor"):
+        config = trust["roles"][role]
         _shape(config, "key_id public_key", "trust role")
         _string(config["key_id"], "trust.key_id")
         raw = _base64(config["public_key"], 32, "public_key")
+        _ed25519_point(raw, "trust.roles." + role + ".public_key")
         _require(config["key_id"] not in role_ids and raw not in role_keys.values(),
                  "roles require distinct key IDs and public keys")
         role_ids.add(config["key_id"])

@@ -39,6 +39,36 @@ canonical padded base64 of exactly 32 decoded bytes. Ed25519 signatures use
 canonical padded base64 of exactly 64 decoded bytes. Alternate or permissively
 decoded base64 encodings are rejected.
 
+### 1.1 Ed25519 input policy (11 November 2026 hardening)
+
+Before calling the signature library, both verifiers apply these explicit
+checks to the decoded bytes:
+
+- Every role public key A and every signature point R has a canonical point
+  encoding: its encoded y coordinate is less than `p = 2^255 - 19`; a set x
+  sign bit is rejected when x is zero (`y = 1` or `y = p - 1`).
+- A and R must not be any of the eight small-order points satisfying
+  `[8]P = identity`. This includes the identity and points of order 2, 4 and 8.
+- The second half of each signature encodes an unsigned little-endian scalar
+  `S < L`, where `L = 2^252 + 27742317777372353535851937790883648493`.
+  `S = 0` is in range; it does not waive the point checks or signature equation.
+- The signature library must then decode the remaining point input and verify
+  the signature against the caller-selected key and exact canonical message.
+
+Canonical decoding and the scalar bound follow
+[RFC 8032 §§5.1.3 and 5.1.7](https://www.rfc-editor.org/rfc/rfc8032.html#section-5.1.7).
+Rejecting small-order A and R is an **additional policy of this experimental
+demo**; RFC 8032's verification procedure does not itself require that rejection.
+This policy does not amend VAP's normative algorithm registry or claim that a
+small-order blacklist establishes full prime-subgroup membership.
+
+Distinct role keys alone do not exclude small-order keys. The separate
+[security regression dataset](security-vectors/README.md) records a synthetic
+pack that older implementations accepted under substituted role trust, without
+any private keys. The original ten fixed data files and their manifest are
+unchanged. Compatibility reports must identify the implementation commit as well
+as the contract ID; older execution records do not prove this policy was tested.
+
 ## 2. Exact pack shape
 
 The pack has exactly these members:
@@ -191,9 +221,16 @@ A trust file has exactly `contract_id`, `trust_version`,
 - Each role contains exactly a nonempty `key_id` and a canonical base64
   `public_key`.
 - Key IDs and decoded public keys are distinct across the three roles.
+- Every decoded key meets the Ed25519 input policy in §1.1.
 
 The caller must select this file explicitly. The pack cannot supply its own
 trust root or authorize a new signer.
+
+Rejecting malformed or small-order keys does not authenticate this trust file.
+If a caller accepts an attacker's unrelated ordinary role keys, the attacker
+can sign a different pack with its own private keys. The caller must establish
+the trust file's provenance separately; this hardening is not a replacement
+for that boundary.
 
 The committed configurations bind public synthetic keys. Their private seeds
 are public repeated bytes: `11` for producer, `22` for observer, and `33`
@@ -273,6 +310,8 @@ The `unittest` and CI gates cover:
 - Duplicate members, safe-integer boundaries, disallowed number tokens,
   bool/integer distinction, unsupported Unicode, and unknown fields/algorithms.
 - Scope pins, role/record binding, signatures, and missing-trust usage.
+- The separate security dataset, every small-order point in every trust role
+  and signature position, noncanonical point encodings, and scalar boundaries.
 
 These are the required checks for this package. Their presence does not report
 an execution result. Publish the source commit, toolchain, dataset and trust

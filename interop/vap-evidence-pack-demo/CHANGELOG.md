@@ -3,6 +3,25 @@
 This history applies only to `vap-interop-demo/0.2.0`. It is not a VAP framework
 version history or adoption record.
 
+## Unreleased implementation hardening — 2026-11-11
+
+- Both implementations explicitly reject the eight small-order Ed25519 points
+  for role keys and signature R values, noncanonical point encodings, and
+  signature scalars at or above the subgroup order. The crypto library still
+  verifies the equation. These are documented local demo requirements.
+- A separate fixed forged-pack/trust fixture and cross-language regressions
+  cover the defect. The original dataset, manifest, generator, signed artifacts
+  and retained 7 November execution record remain unchanged.
+- The original implementation accepts the forged fixture with Python
+  `cryptography 50.0.2` and Node `22.23.4`; Node `24.22.1` already rejects it
+  in its backend. Explicit prechecks make the revised rejection independent
+  of that observed backend difference. See [the record](security-vectors/README.md).
+
+The contract ID remains `vap-interop-demo/0.2.0`; the package has no released
+tag asserted here. Reports must pin the implementation commit. This update is
+not a VAP amendment, certification, external reproduction or trust-file
+authentication mechanism.
+
 ## 0.2.0 — implementation merged 2026-10-30; release preparation 2026-11-07
 
 **Publication status:** A release/tag is proposed in [RELEASE.md](RELEASE.md).
