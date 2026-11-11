@@ -51,6 +51,7 @@ its `vap-v1.2` and `experimental-scope` modes.
 | `schema/demo-trust.schema.json` | JSON Schema 2020-12 structural contract for synthetic trust input |
 | `test-vectors/*.json` | Eight pack vectors, two trust files, and a manifest |
 | `test-vectors/manifest.json` | Expected verdicts, exact exit codes, trust-file choices, and file digests and sizes |
+| `security-vectors/` | Separate 11 November small-order Ed25519 regression pack, substituted trust, manifest and observed baseline behavior; original vectors remain fixed |
 | `tests/` | Schema, deterministic-generation, CLI, cryptographic and boundary checks using `unittest` |
 | `CONFORMANCE.md` | Local compatibility requirements and the exact byte and object contracts |
 | `SCENARIO.md` | Synthetic workflow, negative-vector construction, and claim boundaries |

@@ -1,0 +1,22 @@
+{
+  "contract_id": "vap-interop-demo/0.2.0",
+  "manifest_version": "demo-security-vector-manifest/1",
+  "policy_date": "2026-11-11",
+  "files": {
+    "invalid-small-order-pack.json": {
+      "bytes": 5808,
+      "sha256": "1f335611669bcd9414bb0b9ada9496347347a6e67cd96dcadad20977291200b8"
+    },
+    "invalid-small-order-trust.json": {
+      "bytes": 577,
+      "sha256": "2b78827921da35dd27c9959c511bf41079cfbb94f74b65b01f0db15cc251f719"
+    }
+  },
+  "vector": {
+    "pack": "invalid-small-order-pack.json",
+    "trust": "invalid-small-order-trust.json",
+    "expected_verdict": "FAIL",
+    "expected_exit_code": 1,
+    "expected_error": "trust.roles.producer.public_key is a small-order Ed25519 point"
+  }
+}
