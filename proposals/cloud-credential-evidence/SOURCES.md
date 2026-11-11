@@ -18,8 +18,9 @@ below supplement the 7 November baseline; they do not change the historical impl
 
 These are attributed findings, not observations produced by the proposed adapter. Their AI assessments
 do not identify the internal reasoning behind every observed API request. This note makes no additional
-framework attribution, victim total, loss estimate or claim that the current VAP/VCP would have prevented
-the reported activity.
+framework attribution, victim total or loss estimate. VAP/VCP provides evidence for retrospective
+verification and is not a mechanism for preventing the reported activity, whether used alone or in a
+combined system. Blocking and access enforcement belong to separately designed controls.
 
 The 9 November session-state continuation is VSO design reasoning. Existing operation-permission
 interval checks do not establish provider token expiry or effective revocation. The related

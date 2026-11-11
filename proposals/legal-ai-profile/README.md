@@ -1,6 +1,12 @@
 # VAP-LAP — Legal AI Profile
 
-**Proposed domain profile · Informative introduction**
+**Related external proposal · Informative introduction · Not a registered VAP profile**
+
+`VAP-LAP` is the proposer's label. This note does not add LAP to the
+[VAP v1.2 §4.5.2 registry](../../spec/v1.2/VAP_Framework_Specification.md),
+assign a VSO profile identifier, or add "Proposed" to its status vocabulary.
+Registration requires its own change-control decision; no such decision is
+recorded by publishing this introduction.
 
 VAP-LAP is AILEX's proposed Legal AI Profile for recording AI-assisted legal work and professional review.
 It connects legal consultation, document generation, and fact-checking with the people who review their outputs.
