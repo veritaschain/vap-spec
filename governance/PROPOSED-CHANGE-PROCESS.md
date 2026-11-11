@@ -90,6 +90,13 @@ change would require a documented decision about reopening the full review
 period before it can enter a ballot. These operating details remain proposals;
 §10.3's 30-day minimum cannot be shortened by this document.
 
+**Calendar illustration, not a scheduled review:** under the proposed full-day
+calculation, a hypothetical opening at 2026-11-11 03:00 UTC (12:00 JST) reaches
+30 complete days at 2026-12-11 03:00 UTC (12:00 JST). The minimum alone therefore
+does not imply a mid-December close. This is not an adoption date: deliberation,
+the required vote and release still follow the actual public review, and may
+take longer. No review has been opened or backdated by this illustration.
+
 VCP and VAP are separately governed specifications. A VCP proposal's review
 window or vote does not open, close or approve a VAP proposal. In particular,
 the VCP-CP-2026-002 process does not supply missing VAP adoption evidence.
