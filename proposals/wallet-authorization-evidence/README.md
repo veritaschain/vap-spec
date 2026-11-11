@@ -1,6 +1,6 @@
 # Wallet authorization evidence — informative proposal
 
-**Status: unadopted proposal and experiment; no normative change.** This work does not adopt DAP, create a new generic profile, alter VAP v1.2, or claim that VAP/VCP alone would prevent an incident. [日本語](README-ja.md)
+**Status: unadopted proposal and experiment; no normative change.** This work does not adopt DAP, create a new generic profile, or alter VAP v1.2. VAP/VCP provides evidence for retrospective verification and is not an incident-prevention mechanism, whether used alone or in a combined system. Any enforcement belongs to separately designed controls. [日本語](README-ja.md)
 
 ## Problem and scope
 

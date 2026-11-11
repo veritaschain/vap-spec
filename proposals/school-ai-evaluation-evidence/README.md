@@ -25,8 +25,10 @@ contains the corresponding incident entries and their claim-level sources.
 The practical question is which evidence was collected, by whom, with what
 coverage, and which authorized reviewer can obtain it. Public non-disclosure,
 unavailable user history, missing collection and demonstrated modification must
-remain distinct. None of these sources establishes that VAP was deployed or
-would have prevented the reported harm.
+remain distinct. None of these sources establishes that VAP was deployed.
+VAP/VCP provides evidence for retrospective verification and does not prevent
+the reported harm, whether used alone or within a combined system. Safety
+intervention is the responsibility of separately designed controls and people.
 
 Counsel’s case page dates the filing to 4 November, while the state-court stamp
 on its linked complaint says 2 November. This review uses the stamp for the

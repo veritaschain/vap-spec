@@ -63,8 +63,10 @@ The [incident ledger](../INCIDENTS.md) remains the detailed fact register.
 
 The engineering inference is to bind authorization to the actual operation, retain
 scope and uncertainty, and connect disclosure to the final submitted artifact and
-applicable policy. It is not a finding about either institution's technical controls,
-nor a claim that this implementation would necessarily have prevented those incidents.
+applicable policy. It is not a finding about either institution's technical controls.
+VAP/VCP provides records for retrospective verification and does not prevent incidents,
+whether used alone or within a combined system. Experimental blocking behavior belongs
+to separately implemented gates and has not been demonstrated for those incidents.
 
 The two supplied background memos informed the questions about observation boundaries
 and legal overclaiming. Their historical news, regulatory dates, market figures and

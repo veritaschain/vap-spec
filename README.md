@@ -29,7 +29,7 @@ VAP's scope is deliberately strict: **domains where system failures can cause ir
 
 ### Implementation status (mandatory disclosure)
 
-As of 25 October 2026: **zero external implementations** of VAP or any VAP profile, and **zero Evidence Packs accepted in any proceeding**. How these items will be counted is set out in the [proposed counting criteria](disclosures/2026-10-24-counting-criteria.md).
+**Disclosure reviewed 11 November 2026; latest published count dated 25 October 2026:** **zero external implementations** of VAP or any VAP profile, and **zero Evidence Packs accepted in any proceeding**. The count's original date is retained; this review does not assert a newly measured global count. How these items will be counted is set out in the [proposed counting criteria](disclosures/2026-10-24-counting-criteria.md).
 
 **Commercial disclosure correction — 24 October 2026:** the previously published paid-service contract figure has not been substantiated through reconciliation with primary records. It is withdrawn from current public claims pending that review; this does **not** establish a count of zero. No verified contract count, customer count or revenue figure is asserted here. Commercial service activity must be distinguished from external implementations, independent validation and accepted Evidence Packs. See the [dated correction and counting criteria](disclosures/2026-10-24-commercial-contracts.md). Previously distributed fixed source and evidence archives remain unchanged.
 
@@ -80,14 +80,16 @@ Released / GA identifies specification publication, not implementation productio
 
 CAP v1.0 has published a [draft mapping](https://github.com/veritaschain/cap-spec/blob/beb0c44d0991ce191999949db3276471d92eb44e/docs/conformance/CAP-v1.0-VAP-v1.2-Draft3-Conformance-Mapping.md) against VAP v1.2 Draft 3; it identifies unresolved divergences and does not establish conformance. CPP v1.4's mapping remains unpublished. Full conformance has not been established for either profile (VAP v1.2 §10.4). For VCP v1.1 and v1.2, integrity alignment with VAP v1.2 is under review; full conformance has not been established and the clause-level mapping is outstanding.
 
-### Related and proposed domain profiles
+### Related external proposal — Legal AI Profile (LAP)
 
-The VAP family also provides a point of reference for proposed domain profiles.
-The normative registry above is unchanged; the following entry introduces published proposal work.
+The following entry introduces AILEX's published proposal. It is outside the
+VAP v1.2 §4.5.2 registered-profile list above. `VAP-LAP` is the proposal's own
+label; it does not assign a VSO profile identifier or registration status.
+The proposal's state below is not a new value in the normative status vocabulary.
 
-| Proposal | Domain | Reference | Status |
+| Related proposal | Domain | Reference | Proposal state |
 |----------|--------|-----------|--------|
-| **VAP-LAP — Legal AI Profile** | Legal AI / LegalTech | [Overview, draft, and AILEX reference](./proposals/legal-ai-profile/README.md) | Proposed domain profile; individual Internet-Draft `-05` |
+| **LAP — Legal AI Profile** (proposal label: VAP-LAP) | Legal AI / LegalTech | [Overview, draft, and AILEX reference](./proposals/legal-ai-profile/README.md) | External proposal; individual Internet-Draft `-05`; not a registered VAP profile |
 
 ---
 
@@ -109,6 +111,7 @@ The normative registry above is unchanged; the following entry introduces publis
 | Resource | Link |
 |----------|------|
 | **VAP v1.2 Specification** | [spec/v1.2/VAP_Framework_Specification.md](./spec/v1.2/VAP_Framework_Specification.md) |
+| **Change-control preparation** | [Proposed process record](./governance/PROPOSED-CHANGE-PROCESS.md) · [CHANGE-002 candidate inventory](./proposals/CHANGE-002-CANDIDATES.md) — discussion drafts only; no effective procedure, formal registration or adoption |
 | **Unadopted research reproduction kit** | [Fixed kit, complete historical evidence and evaluation terms](./research-distribution/2026-10-24/) — internal validation only; independent third-party reproduction not established |
 | **Incident-derived evidence bindings** | [Proposal and incident ledger](./proposals/incident-evidence-bindings/README.md) · [Implementation crosswalk and review handoff](./proposals/incident-evidence-bindings/integration/README.md) · [日本語](./proposals/incident-evidence-bindings/integration/README-ja.md) — informative, unadopted; related local tests and remaining deployment conditions are distinguished |
 | **Cloud workload credential evidence** | [Source-backed design](./proposals/cloud-credential-evidence/README.md) · [Offline synthetic experiment](./experiments/cloud-credential-evidence/README.md) · [日本語](./experiments/cloud-credential-evidence/README-ja.md) · [Local collection, recovery and portable snapshots](./experiments/cloud-credential-collector/README.md) · [収集・回復・持ち運び検証の日本語版](./experiments/cloud-credential-collector/README-ja.md) · [Sources](./proposals/cloud-credential-evidence/SOURCES.md) — informative, unadopted; scoped evidence distinctions and local raw-byte custody; no live cloud connection or deployed control |
@@ -126,7 +129,7 @@ The normative registry above is unchanged; the following entry introduces publis
 | **VCP** (Finance Profile) | [github.com/veritaschain/vcp-spec](https://github.com/veritaschain/vcp-spec) |
 | **CAP** (Content / Creative AI Profile) | [github.com/veritaschain/cap-spec](https://github.com/veritaschain/cap-spec) |
 | **CPP** (Capture Provenance Profile) | [github.com/veritaschain/cpp-spec](https://github.com/veritaschain/cpp-spec) |
-| **VAP-LAP** (proposed Legal AI Profile) | [Overview, draft, and AILEX reference](./proposals/legal-ai-profile/README.md) |
+| **LAP** (related external proposal, labelled VAP-LAP by its proposer) | [Overview, draft, and AILEX reference](./proposals/legal-ai-profile/README.md) — outside the VAP profile registry |
 | **Website** | [veritaschain.org](https://veritaschain.org) |
 | **IETF Internet-Draft (VAP)** | [draft-kamimura-vap-framework](https://datatracker.ietf.org/doc/draft-kamimura-vap-framework/) |
 
