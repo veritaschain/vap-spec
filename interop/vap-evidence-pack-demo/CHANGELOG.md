@@ -25,8 +25,7 @@ authentication mechanism.
 **Publication note, 13 November 2026 (JST):** the prerelease
 `vap-interop-demo-v0.2.0` exists at `cbd4502` (published 8 November 2026) and
 does not include this hardening. The known issue is recorded at the top of
-[RELEASE.md](RELEASE.md) and in that release's notes; its tag and assets are
-unchanged.
+[RELEASE.md](RELEASE.md); the release's tag and assets are unchanged.
 
 ## 0.2.0 — implementation merged 2026-10-30; release preparation 2026-11-07
 

@@ -25,7 +25,8 @@
 > ([PR #68](https://github.com/veritaschain/vap-spec/pull/68), `35e56ba`) is on
 > `main` only. It is not part of the tag, the attached source ZIP or the
 > 32-test record of that release. The release is immutable: its tag and assets
-> are unchanged, and only its notes carry the same known-issue statement. No
+> are unchanged by this note. Whether the release page's own notes carry this
+> statement must be checked on that page; this file does not assert it. No
 > replacement release has been published or scheduled here. Reports that use
 > the demo must pin the implementation commit. These are first-party
 > observations on synthetic data, not an independent reproduction.
