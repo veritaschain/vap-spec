@@ -23,6 +23,11 @@ The local contract is defined in [CONFORMANCE.md](CONFORMANCE.md).
 reproduction evidence and remaining publication steps. No tag or release is
 asserted by that preparation.
 
+The prerelease `vap-interop-demo-v0.2.0` (commit `cbd4502`, published
+8 November 2026) predates the 11 November Ed25519 input policy and does not
+contain it; see the dated note at the top of [RELEASE.md](RELEASE.md). The
+verifiers in this directory on `main` include that policy.
+
 The [July 2026 prototype at `ec6cfba`](https://github.com/veritaschain/vap-spec/tree/ec6cfbaf901e6147f767bbe56132b1bb6211337a/interop/vap-evidence-pack-demo)
 remains available at its original commit. The 0.2.0 contract uses its own
 identifier, exact object shapes, an external trust input, and new deterministic

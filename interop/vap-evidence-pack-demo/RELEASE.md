@@ -1,5 +1,36 @@
 # Experimental demo 0.2.0 release preparation
 
+> **Publication record and known issue — added 13 November 2026 (JST).**
+> The prerelease prepared below was published on 8 November 2026
+> (`2026-11-08T03:09:00Z`) as
+> [`vap-interop-demo-v0.2.0`](https://github.com/veritaschain/vap-spec/releases/tag/vap-interop-demo-v0.2.0)
+> at commit [`cbd4502a0a6d1cd9b7b9d611a849888272d14abb`](https://github.com/veritaschain/vap-spec/commit/cbd4502a0a6d1cd9b7b9d611a849888272d14abb),
+> and [Issue #3](https://github.com/veritaschain/vap-spec/issues/3) is closed.
+> The preparation text below is retained as written on 7 November. Its
+> statements that no tag or release exists, that Issue #3 remains open and that
+> the final commit is still to be selected describe that date, not the present.
+>
+> **Known issue in the tagged source.** The two verifiers at `cbd4502` are
+> byte-identical to the revision examined in the
+> [11 November security record](security-vectors/README.md). They do not screen
+> Ed25519 inputs before backend verification. When the caller accepts a
+> substituted trust file whose role keys are small-order points, the fixed
+> altered pack in `security-vectors/` passes all seven checks under Python
+> `cryptography` 50.0.2 and Node 22.23.4; Node 24.22.1, the release toolchain,
+> rejects it. With the original `demo-trust.json` the same pack is rejected.
+> A party able to substitute the trust file can also sign with ordinary keys,
+> so the trust file needs its own authentication in every case.
+>
+> The explicit input policy merged on 11 November 2026
+> ([PR #68](https://github.com/veritaschain/vap-spec/pull/68), `35e56ba`) is on
+> `main` only. It is not part of the tag, the attached source ZIP or the
+> 32-test record of that release. The release is immutable: its tag and assets
+> are unchanged by this note. Whether the release page's own notes carry this
+> statement must be checked on that page; this file does not assert it. No
+> replacement release has been published or scheduled here. Reports that use
+> the demo must pin the implementation commit. These are first-party
+> observations on synthetic data, not an independent reproduction.
+
 **Status at 7 November 2026 (JST):** proposed prerelease; no tag or release is
 created by this preparation. [Issue #3](https://github.com/veritaschain/vap-spec/issues/3)
 tracks publication and remains open until the release evidence is linked.
