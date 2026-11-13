@@ -57,6 +57,12 @@ If you want to propose a new VAP domain profile:
 4. **Public Comment** - 30-day public review period
 5. **Vote** - Technical Committee vote (2/3 majority required)
 
+> **Status note — 13 November 2026 (JST).** These steps follow VAP v1.2 §10.3.
+> No membership or decision record of a VAP Technical Committee has been
+> published, and the change path is not yet operational; see
+> [governance/PROPOSED-CHANGE-PROCESS.md](governance/PROPOSED-CHANGE-PROCESS.md)
+> and the [v1.2 known issues](spec/v1.2/README.md#known-issues-in-v12-informative).
+
 ## Getting Started
 
 ### Prerequisites
@@ -191,7 +197,7 @@ feat(profiles): propose DVP automotive profile RFC
 
 1. A maintainer will review your PR
 2. Address any requested changes
-3. For specification changes, Technical Committee review may be required
+3. For specification changes, Technical Committee review may be required (see the status note under [Proposing New Domain Profiles](#proposing-new-domain-profiles))
 4. Once approved, a maintainer will merge your PR
 
 ### After Merge

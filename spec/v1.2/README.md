@@ -109,6 +109,24 @@ Released / GA identifies specification publication, not implementation productio
 
 CAP v1.0 has published a [draft mapping](https://github.com/veritaschain/cap-spec/blob/beb0c44d0991ce191999949db3276471d92eb44e/docs/conformance/CAP-v1.0-VAP-v1.2-Draft3-Conformance-Mapping.md) against VAP v1.2 Draft 3; it identifies unresolved divergences and does not establish conformance. CPP v1.4's mapping remains unpublished. Full conformance has not been established for either profile (§10.4). For VCP v1.1 and v1.2, integrity alignment with VAP v1.2 is under review; full conformance has not been established and the clause-level mapping is outstanding.
 
+
+## Known issues in v1.2 (informative)
+
+Recorded 13 November 2026 (JST) in a first-party review of `main` at
+`b92955667f94e9c00a061b8c600500939a08c1e2`. These entries are informative. They
+change no requirement, field, conformance level, registry entry or
+compatibility status. The specification text and VSO-VAP-CHANGE-001 are
+unchanged; their digests are the ones in the [Documents](#documents) table.
+Resolving them needs a decision under a change path that is not yet operational
+([governance/PROPOSED-CHANGE-PROCESS.md](../../governance/PROPOSED-CHANGE-PROCESS.md)).
+
+| Location | Issue |
+|----------|-------|
+| §1.7, §10.1, §10.3, Appendix B; CHANGE-001 header and Annex D; [CONTRIBUTING.md](../../CONTRIBUTING.md) | The specification shows a Technical Committee with seven working groups and an Advisory Board, assigns change decisions to a Technical Committee vote, attributes v1.0.0 and v1.1.0 to the "VSO Technical Committee", and calls the CHANGE-001 decision log a Technical Committee decision log. No membership, appointment record or decision record of a VAP Technical Committee, working group or Advisory Board has been published. VCP records the same gap for its revision history ([VCP v1.2 README](https://github.com/veritaschain/vcp-spec/blob/749b145e2d582efa8fea207ce5bcccf5b38003a5/spec/v1.2/README.md), [VCP-DR-2026-001](https://github.com/veritaschain/vcp-spec/blob/749b145e2d582efa8fea207ce5bcccf5b38003a5/decisions/VCP-DR-2026-001.md)). |
+| Header, §1.7; CHANGE-001 header | The specification calls VSO-VAP-CHANGE-001 a normative annex. CHANGE-001's own status line reads "Change Proposal — Draft for Technical Committee Review", and its preamble says it becomes a normative annex upon adoption. No adoption record has been published. Where the two texts differ in detail the specification prevails (§1.7); this entry does not decide CHANGE-001's status. |
+| CHANGE-001 §5 | The grace periods run from "VAP v1.2 publication" (P+3m, P+6m), but P is not defined. Draft 3 was published on 2026-09-28 and remains a Draft Specification. Neither text says whether that publication, or a later release under §10.3 step 5, starts the periods. |
+| §8.2 | Profiles MUST publish a sequence-mechanism matrix per conformance level. No profile publishes a document identified as that matrix (VCP `749b145`, CAP `922e05e`, CPP `3ff148b`). Parts of the content exist: VCP's tier table and `VerificationDepth` field, and CAP's tier requirements, whose draft mapping records the gap as I06. CPP's mapping is unpublished. |
+
 ---
 
 ## Legal scope (§1.6, normative)
