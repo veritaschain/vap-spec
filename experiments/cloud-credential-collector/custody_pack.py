@@ -104,7 +104,10 @@ def _pins(trusted_public_key: Any, expected_store_id: Any) -> Ed25519PublicKey:
         raise PackError("invalid_trusted_public_key")
     if type(expected_store_id) is not str or STORE_ID_RE.fullmatch(expected_store_id) is None:
         raise PackError("invalid_expected_store_id")
-    return Ed25519PublicKey.from_public_bytes(trusted_public_key)
+    try:
+        return evidence.configured_public_key(trusted_public_key)
+    except ValueError as exc:
+        raise PackError("invalid_trusted_public_key") from exc
 
 
 def _time_pair(nanoseconds: Any, seconds: Any) -> bool:

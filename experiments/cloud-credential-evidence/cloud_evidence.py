@@ -50,6 +50,35 @@ CLAIMS = (
 )
 
 
+# Local configured-key admission only; this is not a normative VAP policy.
+ED25519_P = 2**255 - 19
+ED25519_SMALL_ORDER_Y = {
+    0, 1, ED25519_P - 1,
+    int.from_bytes(bytes.fromhex(
+        "26e8958fc2b227b045c3f489f2ef98f0d5dfac05d3c63339b13802886d53fc05"), "little"),
+    int.from_bytes(bytes.fromhex(
+        "c7176a703d4dd84fba3c0b760d10670f2a2053fa2c39ccc64ec7fd7792ac037a"), "little"),
+}
+
+
+def configured_public_key(public: bytes) -> Ed25519PublicKey:
+    """Admit a raw trust key before it can authenticate experimental evidence.
+
+    Five y coordinates cover all eight pure small-order points. Curve decoding,
+    R/S handling and the verification equation remain with cryptography. This
+    does not establish prime-subgroup membership or the key owner's authority.
+    """
+    if type(public) is not bytes or len(public) != 32:
+        raise ValueError("configured_public_key_shape")
+    encoded = int.from_bytes(public, "little")
+    y = encoded & (2**255 - 1)
+    if y >= ED25519_P or (y in (1, ED25519_P - 1) and encoded >> 255):
+        raise ValueError("noncanonical_configured_ed25519_public_key")
+    if y in ED25519_SMALL_ORDER_Y:
+        raise ValueError("small_order_configured_ed25519_public_key")
+    return Ed25519PublicKey.from_public_bytes(public)
+
+
 def _json_value(value: Any, depth: int = 0) -> None:
     if depth > 32:
         raise ValueError("json_nesting_limit")
@@ -436,7 +465,7 @@ def _validate_inputs(bundle: Any, trust: Any, scope: Any, evaluation_time: Any) 
             _require_shape(grant, GRANT_SCHEMA, "trust_grant_shape")
             if grant["valid_from"] > grant["valid_until"]:
                 raise ValueError("trust_grant_interval")
-        keys[key_id] = Ed25519PublicKey.from_public_bytes(bytes.fromhex(config["public_key"]))
+        keys[key_id] = configured_public_key(bytes.fromhex(config["public_key"]))
     for envelope in bundle["records"]:
         _require_shape(envelope, {
             "key_id": _text, "payload": lambda x: type(x) is dict,
