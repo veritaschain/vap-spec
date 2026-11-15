@@ -7,7 +7,7 @@ It does not adopt the proposal or establish VAP/CAP conformance. The normative
 baseline remains **VAP v1.2.0 Draft 3**.
 
 The separate [controlled upload pilot](../incident-upload-pilot/README.md) connects
-this unchanged assessor to measured immutable bytes, mandatory local pre-recording
+this assessor to measured immutable bytes, mandatory local pre-recording
 and a separate local HTTP receiver. Its execution controls and receiver statements
 remain application-side experimental behavior, not additional core verdicts.
 
@@ -43,6 +43,22 @@ evaluator trust file**, which also pins the target, workflow and observation
 cutoff. Signature integrity, identity, role, time assumptions and object binding
 are reported separately. A real signature for another tenant or document does
 not establish applicability to this target.
+
+**Configured-key hardening — 15 November 2026:** evaluator trust now rejects
+the eight pure small-order Ed25519 points and noncanonical point encodings
+before any record is attributed. With an identity key deliberately configured
+for a provider, the previous implementation accepted `R = identity, S = 0`
+and labeled an unsigned synthetic provider claim `VERIFIED` under
+`cryptography` 50.0.2. The new regression rejects that trust input. This does
+not imply a submitted record can replace an existing strong trust key.
+
+This is a local experimental admission rule, not a VAP/VCP normative change.
+Backend curve decoding, R/S handling and signature-equation checks are retained;
+the guard does not establish prime-subgroup membership or authenticate the
+evaluator's configuration. Signature preimages, the 23 fixed expectations and
+saved historical results are unchanged. Pin an implementation commit when
+reporting a result. Consumers that freeze the older implementation use the
+explicit [historical baseline procedure](../INCIDENT_BASELINES.md).
 
 The program evaluates supplied digests and observations. It does **not** read the
 actual outgoing patient spreadsheet or manuscript, instrument an editor, observe

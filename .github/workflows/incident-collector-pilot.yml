@@ -31,9 +31,22 @@ jobs:
         python: ['3.12', '3.14']
     defaults:
       run:
-        working-directory: experiments/incident-collector-pilot
+        working-directory: baseline/experiments/incident-collector-pilot
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Check out current experiment
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          path: candidate
+      - name: Check out the recorded historical source baseline
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: 433f019513d991982fc6fb08bd4529808cc9f6a1
+          path: baseline
+      - name: Stage current experiment over its pinned dependencies
+        working-directory: ${{ github.workspace }}
+        run: |
+          cp -R candidate/experiments/incident-collector-pilot baseline/experiments/
+          cp candidate/.github/workflows/incident-collector-pilot.yml baseline/.github/workflows/
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
           python-version: ${{ matrix.python }}
@@ -50,6 +63,6 @@ jobs:
         if: always()
         with:
           name: incident-collector-python-${{ matrix.python }}
-          path: experiments/incident-collector-pilot/generated/public/
+          path: baseline/experiments/incident-collector-pilot/generated/public/
           if-no-files-found: error
           retention-days: 30

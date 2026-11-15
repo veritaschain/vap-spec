@@ -32,9 +32,22 @@ jobs:
         python-version: ['3.12', '3.14']
     defaults:
       run:
-        working-directory: experiments/incident-recheck-kit
+        working-directory: baseline/experiments/incident-recheck-kit
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Check out current experiment
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          path: candidate
+      - name: Check out the recorded historical source baseline
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: b72bbf05c912f5b87560f4c809298c7bbcaf05e4
+          path: baseline
+      - name: Stage current experiment over its pinned dependencies
+        working-directory: ${{ github.workspace }}
+        run: |
+          cp -R candidate/experiments/incident-recheck-kit baseline/experiments/
+          cp candidate/.github/workflows/incident-recheck-kit.yml baseline/.github/workflows/
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with:
           python-version: ${{ matrix.python-version }}
@@ -48,8 +61,8 @@ jobs:
         with:
           name: incident-recheck-python-${{ matrix.python-version }}
           path: |
-            experiments/incident-recheck-kit/generated/incident-ci-2026-10-30.zip
-            experiments/incident-recheck-kit/generated/SHA256SUMS
-            experiments/incident-recheck-kit/generated/summary.json
+            baseline/experiments/incident-recheck-kit/generated/incident-ci-2026-10-30.zip
+            baseline/experiments/incident-recheck-kit/generated/SHA256SUMS
+            baseline/experiments/incident-recheck-kit/generated/summary.json
           if-no-files-found: error
           retention-days: 30

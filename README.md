@@ -126,6 +126,7 @@ The proposal's state below is not a new value in the normative status vocabulary
 | **Incident evidence review reports** | [Japanese and English views with source-file hashes and JSON Pointers](./experiments/incident-review-report/) — generated from the fixed 53-case capture; human review not performed |
 | **Retention conditions and deletion follow-up** | [Experimental offline adapter](./experiments/incident-retention-adapter/) — compares attributed deadlines and separately supplied deletion evidence; elapsed time never establishes completion |
 | **Collector outage and recovery pilot** | [Actual loopback metadata collection and one-shot upload gate](./experiments/incident-collector-pilot/) · [日本語](./experiments/incident-collector-pilot/RUN-ja.md) — additive 18-case experiment; recovery queries do not resume uploads; independent observation not established |
+| **Reproducing pinned incident experiments** | [Historical source checkout instructions](./experiments/INCIDENT_BASELINES.md) — use the recorded source commit for the recheck kit, review report and collector pilot; their historical source hashes are not replaced by current assessor code |
 | **VCP** (Finance Profile) | [github.com/veritaschain/vcp-spec](https://github.com/veritaschain/vcp-spec) |
 | **CAP** (Content / Creative AI Profile) | [github.com/veritaschain/cap-spec](https://github.com/veritaschain/cap-spec) |
 | **CPP** (Capture Provenance Profile) | [github.com/veritaschain/cpp-spec](https://github.com/veritaschain/cpp-spec) |

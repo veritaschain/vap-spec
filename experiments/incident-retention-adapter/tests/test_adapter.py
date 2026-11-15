@@ -15,6 +15,36 @@ from incident_assessor.assess import assess as assess_erasure
 
 
 class RetentionAdapterTests(unittest.TestCase):
+    def test_forged_retention_statement_with_identity_key_is_rejected(self):
+        fixture = FreshFixture()
+        statement = fixture.statement()
+        package, trust = fixture.inputs()
+        key_id = statement["key_id"]
+        trust["erasure_trust"]["keys"][key_id]["public_key"] = "01" + "00" * 31
+        for record in package["retention_records"] + package["erasure"]["records"]:
+            if record["key_id"] == key_id:
+                record["signature"] = "01" + "00" * 63
+        with self.assertRaisesRegex(InputError, "Small-order configured Ed25519"):
+            assess(package, trust, allow_synthetic=True)
+
+    def test_noncanonical_retention_key_is_rejected_before_attribution(self):
+        fixture = FreshFixture()
+        statement = fixture.statement()
+        package, trust = fixture.inputs()
+        trust["erasure_trust"]["keys"][statement["key_id"]]["public_key"] = (2**255-18).to_bytes(32,"little").hex()
+        with self.assertRaisesRegex(InputError, "Noncanonical configured Ed25519"):
+            assess(package, trust, allow_synthetic=True)
+
+    def test_forged_retention_statement_cannot_change_strong_trust(self):
+        fixture = FreshFixture()
+        fixture.statement()
+        package, trust = fixture.inputs()
+        package["retention_records"][0]["signature"] = "01" + "00" * 63
+        report = assess(package, trust, allow_synthetic=True)
+        self.assertEqual(report["record_checks"][0]["signature"], "FAILED")
+        self.assertEqual(report["record_checks"][0]["eligibility"], "INELIGIBLE")
+        self.assertEqual(report["statements"], [])
+
     def run_fixture(self, fixture, *, as_of=None):
         package, trust = fixture.inputs(as_of=as_of)
         return assess(package, trust, allow_synthetic=True)

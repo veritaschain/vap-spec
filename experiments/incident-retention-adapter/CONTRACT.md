@@ -38,6 +38,12 @@ digest and trusted keys. Its synthetic mode requires explicit
 `allow_synthetic=True` or `--allow-synthetic`. A producer's inclusion of a trust
 file in an exported case does not independently establish that trust.
 
+The current shared assessor's configured-key admission rule also applies before
+retention assessment: pure small-order and noncanonical Ed25519 public keys
+raise `InputError`. See its [local trust contract](../incident-evidence-assessor/CONTRACT.md).
+This implementation hardening does not alter either signing domain or the
+retention/deletion semantics, and it does not decide normative VAP/VCP policy.
+
 The target subject includes at least `request_id`, `provider_id`, `tenant_id`,
 `account_id`, nonempty `object_ids` and `payload_sha256`. Additional subject
 fields permitted by the original contract are preserved and compared too.

@@ -34,9 +34,22 @@ jobs:
         python-version: ['3.12', '3.14']
     defaults:
       run:
-        working-directory: experiments/incident-review-report
+        working-directory: baseline/experiments/incident-review-report
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Check out current experiment
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          path: candidate
+      - name: Check out the recorded historical source baseline
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: 1553ff9729ceb30f3ff03513cead45c5b7abd1d9
+          path: baseline
+      - name: Stage current experiment over its pinned dependencies
+        working-directory: ${{ github.workspace }}
+        run: |
+          cp -R candidate/experiments/incident-review-report baseline/experiments/
+          cp candidate/.github/workflows/incident-review-report.yml baseline/.github/workflows/
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with:
           python-version: ${{ matrix.python-version }}
@@ -50,12 +63,12 @@ jobs:
         with:
           name: incident-review-python-${{ matrix.python-version }}
           path: |
-            experiments/incident-review-report/generated/incident-review.zip
-            experiments/incident-review-report/generated/review.json
-            experiments/incident-review-report/generated/review-en.md
-            experiments/incident-review-report/generated/review-ja.md
-            experiments/incident-review-report/generated/manifest.json
-            experiments/incident-review-report/generated/summary.json
-            experiments/incident-review-report/generated/SHA256SUMS
+            baseline/experiments/incident-review-report/generated/incident-review.zip
+            baseline/experiments/incident-review-report/generated/review.json
+            baseline/experiments/incident-review-report/generated/review-en.md
+            baseline/experiments/incident-review-report/generated/review-ja.md
+            baseline/experiments/incident-review-report/generated/manifest.json
+            baseline/experiments/incident-review-report/generated/summary.json
+            baseline/experiments/incident-review-report/generated/SHA256SUMS
           if-no-files-found: error
           retention-days: 30
