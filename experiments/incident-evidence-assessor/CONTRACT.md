@@ -33,6 +33,14 @@ reviewer, responder and recipient. Every used role has an expected issuer in
 target.authorities. Independent review also requires a different trusted organization
 from the provider and requester; key count alone is not organizational independence.
 
+Local implementation hardening (15 November 2026): configured public keys must
+be 32-byte lowercase hex with canonical Ed25519 point encoding and must not be
+one of the eight pure small-order points. Invalid keys are `InputError` before
+assessment, including configured keys not used by the submitted records.
+Backend curve decoding, R/S acceptance and equation verification are unchanged;
+the guard does not establish prime-subgroup membership. This local admission
+rule does not amend normative VAP/VCP requirements or authenticate trust input.
+
 Every signed record is `{algorithm, key_id, body, signature}`, algorithm Ed25519,
 hex signature (64 bytes). Body is `{record_id, evaluation_id, kind, issuer,
 recorded_at, binding, data}`. Signed bytes are UTF-8

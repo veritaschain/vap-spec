@@ -10,6 +10,16 @@ import rfc8785
 MAX_BYTES = 8 * 1024 * 1024
 MAX_ITEMS = 10000
 MAX_DEPTH = 64
+ED25519_P = 2**255 - 19
+# Five y coordinates cover the eight pure small-order points. This is a local
+# trust-input rule for this experiment, not a normative VAP signature policy.
+ED25519_SMALL_ORDER_Y = {
+    0, 1, ED25519_P - 1,
+    int.from_bytes(bytes.fromhex(
+        "26e8958fc2b227b045c3f489f2ef98f0d5dfac05d3c63339b13802886d53fc05"), "little"),
+    int.from_bytes(bytes.fromhex(
+        "c7176a703d4dd84fba3c0b760d10670f2a2053fa2c39ccc64ec7fd7792ac037a"), "little"),
+}
 ROLES = {"policy", "gateway", "collector", "provider", "author", "reviewer", "responder", "recipient"}
 WORKFLOWS = {"transfer", "erasure", "publication", "incident_response", "cross_party"}
 SUBJECT_FIELDS = {
@@ -65,6 +75,23 @@ def enum(value, choices):
 def digest_hex(value, length=32):
     if type(value) is not str or not re.fullmatch(r"[0-9a-f]{%d}" % (2 * length), value):
         raise InputError("Expected lowercase hexadecimal of length " + str(2 * length))
+    return value
+
+
+def configured_public_key(value):
+    """Reject weak/invalid encodings before a trust key can authenticate input.
+
+    Curve decoding, R/S handling and the signature equation remain with the
+    cryptography backend. This check does not establish subgroup membership,
+    trust-configuration authenticity, issuer identity or authorization.
+    """
+    digest_hex(value)
+    encoded = int.from_bytes(bytes.fromhex(value), "little")
+    y = encoded & (2**255 - 1)
+    if y >= ED25519_P or (y in (1, ED25519_P - 1) and encoded >> 255):
+        raise InputError("Noncanonical configured Ed25519 public key point")
+    if y in ED25519_SMALL_ORDER_Y:
+        raise InputError("Small-order configured Ed25519 public key point")
     return value
 
 
@@ -205,7 +232,7 @@ def validate_trust(trust):
     for key_id, key in trust["keys"].items():
         text(key_id)
         exact_keys(key, {"public_key", "issuer", "organization", "roles", "not_before", "not_after"})
-        digest_hex(key["public_key"])
+        configured_public_key(key["public_key"])
         text(key["issuer"])
         text(key["organization"])
         strings(key["roles"])

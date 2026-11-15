@@ -2,8 +2,8 @@
 
 **Experimental, synthetic, unadopted — version 0.1.0.**
 
-This offline adapter evaluates attributed retention conditions alongside an
-unchanged [incident erasure assessment](../incident-evidence-assessor/README.md).
+This offline adapter evaluates attributed retention conditions alongside
+the [incident erasure assessment](../incident-evidence-assessor/README.md).
 It distinguishes a stated deadline from evidence about an action. Advancing an
 observation cutoff past that deadline never creates a deletion attestation,
 independent review or VAP ERASURE event.
@@ -54,6 +54,16 @@ passed to the old erasure assessor. Valid signatures establish attribution under
 the supplied trust assumptions. They do not establish truth, historical time,
 source-document availability or the completeness of the supplied record set.
 Public fixture keys are for synthetic tests and require explicit opt-in.
+
+**Configured-key hardening — 15 November 2026:** the shared assessor's trust
+validation now rejects pure small-order and noncanonical Ed25519 public keys
+before either erasure or retention records can be attributed. This closes the
+reproduced identity-key case in which `R = identity, S = 0` was accepted as an
+`AUTHENTICATED_PROVIDER_STATEMENT` by `cryptography` 50.0.2. Invalid trust is an
+input error, not a finding about actual deletion. The statement body, signature
+domain, retention semantics and historical captures are unchanged. This is a
+local experimental rule; it does not decide normative VAP/VCP signature policy
+or authenticate the caller's trust configuration.
 
 The original `erasure_report` is returned without modification. Any scoped
 independent-review result in that report comes from its original evidence and
