@@ -46,6 +46,35 @@ OPERATION_FIELDS = {
 }
 
 
+# Local configured-key admission only; this is not a normative VAP policy.
+ED25519_P = 2**255 - 19
+ED25519_SMALL_ORDER_Y = {
+    0, 1, ED25519_P - 1,
+    int.from_bytes(bytes.fromhex(
+        "26e8958fc2b227b045c3f489f2ef98f0d5dfac05d3c63339b13802886d53fc05"), "little"),
+    int.from_bytes(bytes.fromhex(
+        "c7176a703d4dd84fba3c0b760d10670f2a2053fa2c39ccc64ec7fd7792ac037a"), "little"),
+}
+
+
+def configured_public_key(public: bytes) -> Ed25519PublicKey:
+    """Admit a raw trust key before it can authenticate experimental evidence.
+
+    Five y coordinates cover all eight pure small-order points. Curve decoding,
+    R/S handling and the verification equation remain with cryptography. This
+    does not establish prime-subgroup membership or the key owner's authority.
+    """
+    if type(public) is not bytes or len(public) != 32:
+        raise ValueError("configured_public_key_shape")
+    encoded = int.from_bytes(public, "little")
+    y = encoded & (2**255 - 1)
+    if y >= ED25519_P or (y in (1, ED25519_P - 1) and encoded >> 255):
+        raise ValueError("noncanonical_configured_ed25519_public_key")
+    if y in ED25519_SMALL_ORDER_Y:
+        raise ValueError("small_order_configured_ed25519_public_key")
+    return Ed25519PublicKey.from_public_bytes(public)
+
+
 def _json_value(value: Any, depth: int = 0) -> None:
     """Restricted JSON domain, deliberately not a claim of RFC 8785 support."""
     if depth > 64:
@@ -204,7 +233,7 @@ def _trust(trusted_keys: dict) -> dict:
         for key_id, public in keys.items():
             if not _text(key_id) or type(public) is not bytes or len(public) != 32:
                 raise ValueError("caller_trust_key_shape")
-            Ed25519PublicKey.from_public_bytes(public)
+            configured_public_key(public)
             copied[role][key_id] = public
     return copied
 

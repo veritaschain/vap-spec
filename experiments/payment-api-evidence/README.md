@@ -1,5 +1,7 @@
 # Payment API evidence experiment
 
+Current configured Ed25519 keys are subject to the [local key-admission rule](../ed25519-key-admission/README.md). Its scope, error behavior, regression commands and historical-source boundaries are documented there.
+
 **Status: unadopted, informative experiment.** [日本語](README-ja.md)
 
 This is an offline verifier of deliberately synthetic payment evidence. It makes

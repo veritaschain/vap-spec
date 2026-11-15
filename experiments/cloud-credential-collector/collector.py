@@ -132,7 +132,10 @@ def _time_pair(nanoseconds: Any, seconds: Any) -> bool:
 def _keys(public_key: bytes, private_key: bytes | None) -> tuple[Ed25519PublicKey, Ed25519PrivateKey | None]:
     if type(public_key) is not bytes or len(public_key) != 32:
         raise CollectorError("invalid_trusted_public_key")
-    public = Ed25519PublicKey.from_public_bytes(public_key)
+    try:
+        public = evidence.configured_public_key(public_key)
+    except ValueError as exc:
+        raise CollectorError("invalid_trusted_public_key") from exc
     private = None
     if private_key is not None:
         if type(private_key) is not bytes or len(private_key) != 32:

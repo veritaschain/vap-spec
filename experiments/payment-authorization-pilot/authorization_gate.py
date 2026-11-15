@@ -127,7 +127,7 @@ def _trust_manifest(trust: Any) -> dict:
         for key_id, public in keys.items():
             if not _text(key_id) or type(public) is not bytes or len(public) != 32:
                 raise ValueError("configured_role_key_shape")
-            Ed25519PublicKey.from_public_bytes(public)
+            runtime.configured_public_key(public)
             result[role][key_id] = public.hex()
     return load_json(canonical_json(result))
 

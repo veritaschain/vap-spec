@@ -1,5 +1,7 @@
 # Wallet authorization evidence experiment
 
+Current configured Ed25519 keys are subject to the [local key-admission rule](../ed25519-key-admission/README.md). Its scope, error behavior, regression commands and historical-source boundaries are documented there.
+
 **Status: unadopted, informative experiment.** This directory does not change a VAP requirement, adopt DAP, certify a wallet, or implement a production signing gate. It is additive: existing experiments and their fixed evidence remain unchanged.
 
 The experiment separates four questions that a signed log entry cannot answer by itself:

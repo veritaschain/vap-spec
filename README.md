@@ -110,6 +110,7 @@ The proposal's state below is not a new value in the normative status vocabulary
 
 | Resource | Link |
 |----------|------|
+| **Experimental configured-key admission** | [Payment/cloud implementation restriction and regression scope](./experiments/ed25519-key-admission/README.md) — local hardening; normative text and historical evidence remain unchanged |
 | **VAP v1.2 Specification** | [spec/v1.2/VAP_Framework_Specification.md](./spec/v1.2/VAP_Framework_Specification.md) |
 | **Change-control preparation** | [Proposed process record](./governance/PROPOSED-CHANGE-PROCESS.md) · [CHANGE-002 candidate inventory](./proposals/CHANGE-002-CANDIDATES.md) — discussion drafts only; no effective procedure, formal registration or adoption |
 | **Unadopted research reproduction kit** | [Fixed kit, complete historical evidence and evaluation terms](./research-distribution/2026-10-24/) — internal validation only; independent third-party reproduction not established |

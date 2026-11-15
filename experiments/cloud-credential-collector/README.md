@@ -1,5 +1,7 @@
 # Local cloud evidence collector pilot
 
+Current configured Ed25519 keys are subject to the [local key-admission rule](../ed25519-key-admission/README.md). Its scope, error behavior, regression commands and historical-source boundaries are documented there.
+
 **Status: unadopted, informative; local custody experiment using synthetic tests.**
 [日本語](README-ja.md) · [Evidence checker](../cloud-credential-evidence/README.md) ·
 [Design proposal](../../proposals/cloud-credential-evidence/README.md)

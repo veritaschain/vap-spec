@@ -1,5 +1,7 @@
 # Controlled payment evidence collector pilot
 
+Current configured Ed25519 keys are subject to the [local key-admission rule](../ed25519-key-admission/README.md). Its scope, error behavior, regression commands and historical-source boundaries are documented there.
+
 **Status: unadopted, informative experiment.** [日本語](README-ja.md)
 
 This pilot adds an actual loopback collector process and separate SQLite store to

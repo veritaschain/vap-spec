@@ -27,7 +27,7 @@ from typing import Any, Callable
 from urllib.parse import parse_qs, urlencode, urlsplit
 
 from cryptography.exceptions import InvalidSignature
-from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey, Ed25519PublicKey
+from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
 
 
 def _dependency(name: str, directory: str, file: str) -> Any:
@@ -188,7 +188,7 @@ def _verify_statement(raw: bytes, public_key: bytes) -> dict:
             or type(body["signature"]) is not str or re.fullmatch(r"[0-9a-f]{128}", body["signature"]) is None):
         raise ValueError("collector_signed_envelope_shape")
     try:
-        Ed25519PublicKey.from_public_bytes(public_key).verify(
+        runtime.configured_public_key(public_key).verify(
             bytes.fromhex(body["signature"]), SIGNING_DOMAIN + canonical_json(body["payload"]))
     except InvalidSignature as exc:
         raise ValueError("collector_signature_invalid") from exc
@@ -478,7 +478,7 @@ class CollectorClient:
         self.context = runtime.validate_context(context)
         if type(public_key) is not bytes or len(public_key) != 32:
             raise ValueError("collector_public_key_shape")
-        Ed25519PublicKey.from_public_bytes(public_key)
+        runtime.configured_public_key(public_key)
         if not runtime._text(collector_id) or not runtime._integer(recovery_epoch):
             raise ValueError("collector_identity_epoch_shape")
         self.public_key, self.collector_id, self.recovery_epoch = public_key, collector_id, recovery_epoch
