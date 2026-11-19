@@ -22,3 +22,15 @@ Matching results demonstrate compatibility with the named demo contract.
 Organizationally independent implementation or reproduction must be evidenced
 separately; neither compatibility nor a demo PASS establishes VAP conformance,
 certification, legal compliance, or the origin of real-world records.
+
+## External implementation work
+
+The [supplemental handoff guide](EXTERNAL-IMPLEMENTATION-HANDOFF.md) records how
+to identify an exact baseline, preserve raw inputs, and report results against
+the existing [independent implementation challenge](https://github.com/veritaschain/vap-spec/issues/2).
+It distinguishes the published prerelease from the later Ed25519 input-policy
+hardening on main. It does not select a replacement challenge baseline.
+
+The [IETF 127 review](../maintenance/2026-11-20/ietf-127-interoperability-review.md)
+maps external findings to existing VSO work. Those findings are source reports,
+not external implementation results for VAP or VCP.
