@@ -212,12 +212,85 @@ are adopted by this inventory.
   an earlier signed record in place. Specify the evidence needed to determine
   an applicable decision without claiming its substantive correctness.
 
-## 5. Decision and change log
+## 5. External interoperability observations, IETF 127 (14–20 November 2026)
+
+**Status for every item below: unadopted, unnumbered candidate review material.**
+Source: VSO's 20 November 2026 (JST) check of its weekly standards brief against
+the primary materials listed at the end of this section. `E1`–`E8` and
+`Q-a`–`Q-d` are navigation labels only. Nothing here changes VAP v1.2,
+CHANGE-001, a profile or any signed artifact.
+
+The work described is third-party work on individual Internet-Drafts and
+hackathon projects. None of it is an implementation of VAP or VCP. VAP still
+has no external implementation and no Evidence Pack accepted in any
+proceeding.
+
+### What the materials state (checked 20 November 2026 JST)
+
+| Ref | Observation | Primary source |
+| --- | --- | --- |
+| E1 | RFC 9943 defines no identifier for an individual Signed Statement; `iss` and `sub` group statements without selecting one. Presented at the SCITT WG on 18 November as history and a proposal for discussion; the deck states that nothing in it seeks adoption | [S1] pp. 14–19, 21–22 |
+| E2 | One Signed Statement re-encoded 64 ways with six CBOR encoding freedoms gave 64 distinct data-hash values; a stock decoder rejected none of them and silently repaired 31 on read. The slide concludes that a reference by digest holds only if the bytes and their canonicalization are pinned (the slide attributes the experiment to a SCITT list post of 22 September) | [S1] p. 23 |
+| E3 | Requirements gathered so far, labelled "proposed input, not WG consensus": a reference names its target and its matching rule (algorithm and exact input bytes); a missing input is never a match; an unsupported relation type is never treated as verified; a match is not signature validity or issuer trust | [S1] p. 24 |
+| E4 | The same four Signed Statements were registered on two Transparency Services run by two operators (14 November), and each operator checked the other's receipts. The same statement has a different leaf on each log (the statement's bytes on one, the digest of its Sig_structure on the other). The slides state that RFC 9943 and RFC 9942 do not name the entry's serialization, so a receipt cannot be checked without the issuing service's rule. Limits stated by the authors: the two operators co-champion the same hackathon project; no signed tree head of the second log was checked; one operator's checking script and output are unpublished | [S2]; [S5] §11; [S1] pp. 30–31 |
+| E5 | In an RFC 9942 inclusion receipt (RFC9162_SHA256) the signature covers the Merkle root, while the tree size and leaf index are carried in the unprotected header. Read alone, a receipt shows inclusion under a signed root, not the statement's position or the log size. One service reported that a plain receipt was accepted for the issued pair and for 31 of 8,255 edited (tree size, leaf index) pairs, and for the issued pair only when read with its signed tree head. An erratum to RFC 9942 §5.2.1 was announced on the SCITT list; its filing was not confirmed in this check | [S5] §§7, 9, 11 |
+| E6 | Four JSON canonicalization implementations wrote identical bytes on 20,121 of 20,140 cases. Eight inputs split them: integers of 2^53 or more, a byte order mark, duplicate members and nesting deeper than 128. The slides conclude that a JCS profile has to say "refuse" for these | [S3] |
+| E7 | The two reference verifiers of one project disagreed on one number written two ways (`1e-07` from Python, `1e-7` from JavaScript: ALLOW versus DENY). A verifier written in Go by another party from the documents alone found 25 places where the text left a choice | [S4]; [S1] p. 30 |
+| E8 | `draft-mih-sokolov-cose-deterministic-encodings-01` adds a COSE Hash Envelope (RFC 9995) header parameter that identifies the deterministic encoding of the preimage. It defines only the CBOR value `"dtrm"` and forbids pairing it with `application/json` | [S6] §§3–4 |
+
+### Where they touch VAP v1.2 (questions only)
+
+**Q-a. Numeric representation and invalid input (row in §3).** §7.2 requires
+numeric values to be encoded as strings, and §7.3 and INT-001 require RFC 8785,
+whose input is the I-JSON subset (RFC 7493; duplicate property names are not
+allowed). For fields encoded as strings, a number-formatting split like E7
+does not arise. Still open: (i) whether the `int64` fields of the §7.5
+AnchorRecord abstract schema (`event_count`, `timestamp_int`) are strings
+under §7.2; (ii) the verifier's result for each E6 input (an integer of 2^53 or
+more as a JSON number, a leading byte order mark, a duplicate member, deep
+nesting): reject, or report as not verifiable under P1; (iii) shared boundary
+vectors run in at least Python and JavaScript.
+
+**Q-b. Verification context for receipts.** §11.3 keeps VAP-native
+verification possible without the transparency service, so E4–E5 do not
+affect VAP-native checks. Where SCITT alignment is claimed and an Evidence Pack
+carries COSE Receipts, §9.3 lists receipts, public keys and policy documents,
+but not the issuing service's entry serialization or a signed tree head.
+Question: whether the pack should carry, per receipt, the service's entry
+rule and receipt-signing key and, when a claim depends on position or log
+size, a signed tree head that binds the size. Coordinate with the `bind` row in
+§3 (INT-008, §7.5), since `anchor_target.proof` is target-specific.
+
+**Q-c. References between records.** VAP identifies events by an identifier
+(INT-002) and by `event_hash` over RFC 8785 canonical JSON (INT-003, §4.1.3,
+§7.1), so attaching a receipt does not change `event_hash`. Some references
+carry only identifiers, for example `erasure_target_event_ids` in §7.4.
+Question, in the light of E3: whether such a reference should also name the
+target's digest and hash algorithm, and how a verifier reports a reference
+whose target is missing (cf. P1).
+
+**Q-d. Order of work.** E4–E7 surfaced only when someone else wrote a verifier
+from the documents. A reproduction kit should follow fixed normative text for
+Q-a to Q-c; built first, it would fix one implementation's behaviour rather
+than the specification's.
+
+### Sources for this section
+
+- [S1] SCITT WG session slides, IETF 127, 18 November 2026: <https://datatracker.ietf.org/meeting/127/materials/slides-127-scitt-ietf-127-scitt-working-group-sf-00> (identification part also as <https://datatracker.ietf.org/meeting/127/materials/slides-127-scitt-unique-identification-semantic-correlation-00>)
+- [S2] Hackathon results, "Agent action evidence interop": <https://datatracker.ietf.org/meeting/127/materials/slides-127-hackathon-sessd-agent-action-evidence-interop-results-01>
+- [S3] Hackathon results, "Agent evidence conformance matrix": <https://datatracker.ietf.org/meeting/127/materials/slides-127-hackathon-sessd-agent-evidence-conformance-matrix-01>
+- [S4] Hackathon results, "Action Evidence Packages for AI agents: recompute, don't inherit": <https://datatracker.ietf.org/meeting/127/materials/slides-127-hackathon-sessd-action-evidence-packages-for-ai-agents-recompute-dont-inherit-03>
+- [S5] `draft-lemonnier-scitt-decision-provenance-03`: <https://datatracker.ietf.org/doc/html/draft-lemonnier-scitt-decision-provenance-03>
+- [S6] `draft-mih-sokolov-cose-deterministic-encodings-01`: <https://datatracker.ietf.org/doc/html/draft-mih-sokolov-cose-deterministic-encodings-01>
+- RFC 8785 <https://www.rfc-editor.org/rfc/rfc8785>, RFC 9942 <https://www.rfc-editor.org/rfc/rfc9942>, RFC 9943 <https://www.rfc-editor.org/rfc/rfc9943>
+
+## 6. Decision and change log
 
 | Date | Administrative action | Normative effect |
 | --- | --- | --- |
 | 2026-11-11 JST | Prepare this source-linked inventory and unresolved-decision checklist | None; no scope assignment, review clock, vote, registration or adoption |
 | 2026-11-11 JST | Add the eight follow-up subjects F7–F14, attributed to the supplied follow-up list; original report reconciliation and exact text/vectors remain pending | None; all eight remain unnumbered, unadopted candidate work |
+| 2026-11-20 JST | Add §5: external observations E1–E8 from IETF 127 materials and questions Q-a–Q-d, from the check of the 20 November weekly standards brief | None; questions only, unadopted; no external implementation of VAP is implied |
 
 Use the [proposed change-control preparation](../governance/PROPOSED-CHANGE-PROCESS.md)
 to assemble the required governance and review records. Formal identifiers,
