@@ -262,7 +262,26 @@ VAP produces evidence relevant to provisions such as the following. This is not 
 
 ## Standardization
 
-### Current Status
+### Publication update — 15 November 2026
+
+[VAP Framework -03](https://datatracker.ietf.org/doc/html/draft-kamimura-vap-framework-03)
+has been published. It explains how the draft's three conceptual groups relate
+to the VSO specification's five mandatory layers and updates its VCP reference
+to revision -05. No framework requirement is added or changed; it remains an
+individual Internet-Draft.
+
+The [dated publication follow-up](maintenance/2026-11-20/ietf-vap-framework-03-follow-up.md)
+records the relationship to the 11 November proposal. The
+[IETF 127 interoperability review](maintenance/2026-11-20/ietf-127-interoperability-review.md)
+and [external implementation handoff](interop/EXTERNAL-IMPLEMENTATION-HANDOFF.md)
+connect the reported experiments to existing VSO work and the experimental
+verifier challenge.
+
+### Recorded status
+
+The IETF row below retains the revision snapshot dated 25 October 2026.
+The VAP publication update above supplements that snapshot; it does not assert
+that all companion drafts have been refreshed in this review.
 
 | Body | Document | Status |
 |------|----------|--------|
