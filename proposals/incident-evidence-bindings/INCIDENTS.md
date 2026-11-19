@@ -1,6 +1,6 @@
 # Incident fact ledger
 
-**Last updated:** 2026-10-31 JST. Each claim retains its own check date.
+**Last updated:** 2026-11-19 JST. Each claim retains its own check date.
 
 **Status:** Informative / unadopted proposal
 
@@ -70,11 +70,29 @@ this incident is imported into the synthetic assessor or represented as authenti
 
 This is a source-bounded policy note, not an exhaustive finding that no other regulatory change occurred.
 
+## FCA and ICT change-management context (not a new incident registration)
+
+The source-bounded observations below motivate the separate
+[AI-assisted change-evidence proposal](../ai-assisted-change-evidence/README.md).
+They neither identify the organisations in the November outage reports nor
+register a new incident in the VSO ledger. The proposal's mock data are not
+records supplied by the FCA or the reviewed banks.
+
+| Claim ID | Verdict | Finding or correction | Sources | Checked (JST) |
+| --- | --- | --- | --- | --- |
+| FCA-001 | PRIMARY_CONFIRMED | FCA reports deficiencies in tracking conditional approvals, recording them as full approval, and documenting production exceptions. | [F1][f1], AI section | 2026-11-19 |
+| FCA-002 | PRIMARY_CONFIRMED | FCA reports gaps in kill-switch training, tests, maintenance and records of authorised operators. | [F1][f1], AI section | 2026-11-19 |
+| FCA-003 | NOT_ESTABLISHED | The inspected review does not announce a new kill-switch rule taking effect during 19–26 November 2026 or require VAP. | [F1][f1] | 2026-11-19 |
+| CHG-001 | PRIMARY_CONFIRMED | DORA Article 9(4)(e)–(f) requires controlled ICT change management and documented patch/update policies for entities within its scope. This is not an incident-specific compliance finding. | [E1][e1] | 2026-11-19 |
+| CHG-002 | PRIMARY_CONFIRMED | Amended AI Act Article 113(c) applies Chapter III Sections 1–3, except Article 6(5), from 2 December 2027 for Article 6(2)/Annex III systems and 2 August 2028 for Article 6(1)/Annex I systems. | [E2][e2] | 2026-11-19 |
+| CHG-003 | PRIMARY_CONFIRMED | An incident's location alone does not exclude AI Act scope: Article 2 includes specified EU connections for third-country providers/deployers. Applicability and any breach remain case-specific questions. | [E3][e3] | 2026-11-19 |
+
 ## Identifier and correction history
 
 - **2026-10-30 — Initial verification:** distinguished evidence types; corrected chronology, log-absence claims and disclosure-versus-permission assumptions. REF-001 was initially not established because the direct citation page could not be retrieved.
 - **2026-10-30 — Follow-up verification:** corroborated REF-001 through indexed AIID metadata; added the preservation/scope-timing limitation (BAY-008) and the report's journal-email date (DAR-007).
 - **2026-10-31 — Primary-source addition:** added Panasonic's notice and the Japanese security-measures consultation. Separated company/provider statements, prospective retention dates and independent deletion evidence; preserved prior claim IDs and check dates.
+- **2026-11-19 — Change-evidence context:** added FCA observations and DORA/AI Act scope and timing references. Kept design in a separate unadopted proposal; no new incident registration, normative change or re-verification of the earlier incidents is implied.
 - **REF-001 — `INDEX_CORROBORATED`, checked 2026-10-30 JST:** AIID's search-indexed Discover pages associate Incident `1792` with this Bayview incident and Healthcare IT News ([B5][b5], [B6][b6]). The direct citation page was not retrieved; registration date and total report count remain unverified. Incident facts rely on the reporting above, not independent confirmation by the database.
 - Retain claim IDs when recording corrections and new evidence.
 
@@ -93,6 +111,10 @@ This is a source-bounded policy note, not an exhaustive finding that no other re
 | P1 | [External generative-AI upload notice (Japanese)][p1] | 2026-10-23 | Panasonic Operational Excellence; primary company notice reporting provider responses |
 | J1 | [Guideline amendment consultation, case 240000133 (Japanese)][j1] | 2026-10-29 | e-Gov; official consultation and deadline |
 | J2 | [Overview of additions to security-measures examples (Japanese)][j2] | 2026-10; linked from J1 | Personal Information Protection Commission; official consultation overview |
+| F1 | [Wholesale banks supervision — Insights 3 (Autumn 2026)][f1] | 2026-11-02; page updated the same day | FCA; official supervisory observations |
+| E1 | [DORA, Regulation (EU) 2022/2554][e1] | Adopted 2022-12-14; applies from 2025-01-17 under Article 64 | EU regulation; Article 9(4)(e)–(f) |
+| E2 | [AI Act consolidated text][e2] | Consolidated as at 2026-07-27 | EUR-Lex; amended Article 113(c) |
+| E3 | [AI Act Article 2][e3] | Based on the 2026-07-27 consolidation | European Commission official explorer; scope |
 
 [b1]: https://www.beckershospitalreview.com/healthcare-information-technology/ai/johns-hopkins-alerts-3182-patients-after-worker-uploads-data-to-unapproved-ai-tool/
 [b2]: https://www.wmar2news.com/local/patients-data-sent-to-ai-tool-johns-hopkins-bayview-medical-center-oct-23-2026
@@ -105,3 +127,7 @@ This is a source-bounded policy note, not an exhaustive finding that no other re
 [p1]: https://holdings.panasonic/jp/information/topics/20261023.html
 [j1]: https://public-comment.e-gov.go.jp/pcm/detail?CLASSNAME=PCMMSTDETAIL&Mode=0&id=240000133
 [j2]: https://public-comment.e-gov.go.jp/pcm/download?seqNo=0000323105
+[f1]: https://www.fca.org.uk/publications/multi-firm-reviews/wholesale-banks-supervision-insights-3-autumn-2026
+[e1]: https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng
+[e2]: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1689-20260727
+[e3]: https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-2

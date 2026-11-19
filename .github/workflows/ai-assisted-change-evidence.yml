@@ -1,0 +1,70 @@
+name: Experimental AI-assisted change evidence
+
+on:
+  push:
+    paths:
+      - 'experiments/ai-assisted-change-evidence/**'
+      - 'experiments/pre-record-gate/**'
+      - 'experiments/declared-scope-verifier/**'
+      - '.github/workflows/ai-assisted-change-evidence.yml'
+  pull_request:
+    paths:
+      - 'experiments/ai-assisted-change-evidence/**'
+      - 'experiments/pre-record-gate/**'
+      - 'experiments/declared-scope-verifier/**'
+      - '.github/workflows/ai-assisted-change-evidence.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  change-evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        python: ['3.12', '3.14']
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install -r experiments/pre-record-gate/requirements.txt
+      - name: Manifest, policy, authorization and export regressions
+        run: python -W error::ResourceWarning -m unittest discover -s experiments/ai-assisted-change-evidence/tests -v
+      - name: Preserve validation with Python optimization enabled
+        run: python -O -W error::ResourceWarning -m unittest discover -s experiments/ai-assisted-change-evidence/tests -v
+      - name: Preserve the existing gate regressions
+        working-directory: experiments/pre-record-gate
+        run: python -W error::ResourceWarning -m unittest discover -s tests -v
+      - name: Execute the declared synthetic scenario inventory
+        run: python experiments/ai-assisted-change-evidence/run.py run-suite --output "$RUNNER_TEMP/ai-change-evidence"
+      - name: Retain the summary digest outside the export directory
+        # This same-run pin checks reproducibility; it is not independent custody.
+        run: |
+          python - <<'PY'
+          import hashlib
+          import os
+          from pathlib import Path
+          root = Path(os.environ['RUNNER_TEMP'])
+          summary_digest = hashlib.sha256((root / 'ai-change-evidence' / 'summary.json').read_bytes()).hexdigest()
+          (root / 'ai-change-summary.sha256').write_text(summary_digest + '\n', encoding='utf-8')
+          with open(os.environ['GITHUB_ENV'], 'a', encoding='utf-8') as env_file:
+              env_file.write('CHANGE_SUMMARY_SHA256=' + summary_digest + '\n')
+          PY
+      - name: Recheck original exported artifacts with the retained digest
+        run: python experiments/ai-assisted-change-evidence/run.py verify-exports --output "$RUNNER_TEMP/ai-change-evidence" --expected-summary-sha256 "$CHANGE_SUMMARY_SHA256"
+      - name: Keep tracked files unchanged by execution
+        run: git diff --exit-code
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: ai-change-evidence-${{ github.run_id }}-${{ github.run_attempt }}-python-${{ matrix.python }}
+          path: |
+            ${{ runner.temp }}/ai-change-evidence/
+            ${{ runner.temp }}/ai-change-summary.sha256
+          if-no-files-found: error
+          retention-days: 30

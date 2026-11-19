@@ -1,0 +1,188 @@
+[
+  {
+    "case": "normal",
+    "expected": {
+      "record_integrity": "VERIFIED",
+      "authorization_binding": "VERIFIED",
+      "test_evidence": "SATISFIED_DECLARED_POLICY",
+      "approval_conditions": "SATISFIED_DECLARED_POLICY",
+      "admission": "ALLOW_MOCK_WRITE",
+      "mock_execution": "CONFIRMED_SUCCESS"
+    },
+    "effects": 1,
+    "evidence_bundles": 1
+  },
+  {
+    "case": "tampered-patch",
+    "expected": {
+      "record_integrity": "INVALID",
+      "admission": "DENY",
+      "mock_execution": "NOT_ATTEMPTED"
+    },
+    "effects": 0,
+    "evidence_bundles": 0
+  },
+  {
+    "case": "signed-untested-patch",
+    "expected": {
+      "record_integrity": "VERIFIED",
+      "test_evidence": "NOT_SATISFIED",
+      "admission": "DENY",
+      "mock_execution": "NOT_ATTEMPTED"
+    },
+    "effects": 0,
+    "evidence_bundles": 0
+  },
+  {
+    "case": "signed-failed-test",
+    "expected": {
+      "record_integrity": "VERIFIED",
+      "test_evidence": "NOT_SATISFIED",
+      "admission": "DENY",
+      "mock_execution": "NOT_ATTEMPTED"
+    },
+    "effects": 0,
+    "evidence_bundles": 0
+  },
+  {
+    "case": "missing-test",
+    "expected": {
+      "record_integrity": "VERIFIED",
+      "test_evidence": "NOT_SATISFIED",
+      "admission": "DENY",
+      "mock_execution": "NOT_ATTEMPTED"
+    },
+    "effects": 0,
+    "evidence_bundles": 0
+  },
+  {
+    "case": "stale-test",
+    "expected": {
+      "record_integrity": "VERIFIED",
+      "test_evidence": "NOT_SATISFIED",
+      "admission": "DENY",
+      "mock_execution": "NOT_ATTEMPTED"
+    },
+    "effects": 0,
+    "evidence_bundles": 0
+  },
+  {
+    "case": "wrong-environment",
+    "expected": {
+      "record_integrity": "VERIFIED",
+      "test_evidence": "NOT_SATISFIED",
+      "admission": "DENY",
+      "mock_execution": "NOT_ATTEMPTED"
+    },
+    "effects": 0,
+    "evidence_bundles": 0
+  },
+  {
+    "case": "unmet-condition",
+    "expected": {
+      "record_integrity": "VERIFIED",
+      "authorization_binding": "VERIFIED",
+      "approval_conditions": "NOT_SATISFIED",
+      "admission": "DENY",
+      "mock_execution": "NOT_ATTEMPTED"
+    },
+    "effects": 0,
+    "evidence_bundles": 0
+  },
+  {
+    "case": "unsupported-exception",
+    "expected": {
+      "record_integrity": "VERIFIED",
+      "approval_conditions": "NOT_SATISFIED",
+      "admission": "DENY",
+      "mock_execution": "NOT_ATTEMPTED"
+    },
+    "effects": 0,
+    "evidence_bundles": 0
+  },
+  {
+    "case": "expired-approval",
+    "expected": {
+      "record_integrity": "VERIFIED",
+      "authorization_binding": "INVALID",
+      "admission": "DENY",
+      "mock_execution": "NOT_ATTEMPTED"
+    },
+    "effects": 0,
+    "evidence_bundles": 0
+  },
+  {
+    "case": "revoked-approval",
+    "expected": {
+      "record_integrity": "VERIFIED",
+      "authorization_binding": "INVALID",
+      "admission": "DENY",
+      "mock_execution": "NOT_ATTEMPTED"
+    },
+    "effects": 0,
+    "evidence_bundles": 0
+  },
+  {
+    "case": "wrong-approved-manifest",
+    "expected": {
+      "record_integrity": "VERIFIED",
+      "authorization_binding": "INVALID",
+      "admission": "DENY",
+      "mock_execution": "NOT_ATTEMPTED"
+    },
+    "effects": 0,
+    "evidence_bundles": 0
+  },
+  {
+    "case": "audit-unavailable",
+    "expected": {
+      "record_integrity": "VERIFIED",
+      "admission": "ALLOW_MOCK_WRITE",
+      "mock_execution": "BLOCKED"
+    },
+    "effects": 0,
+    "evidence_bundles": 0
+  },
+  {
+    "case": "lost-response",
+    "expected": {
+      "record_integrity": "VERIFIED",
+      "admission": "ALLOW_MOCK_WRITE",
+      "mock_execution": "RESULT_UNKNOWN"
+    },
+    "effects": 1,
+    "evidence_bundles": 2
+  },
+  {
+    "case": "rollback-unknown",
+    "expected": {
+      "record_integrity": "VERIFIED",
+      "mock_execution": "CONFIRMED_SUCCESS",
+      "post_change_health": "ATTESTED_UNHEALTHY",
+      "rollback_evidence": "NOT_ESTABLISHED"
+    },
+    "effects": 1,
+    "evidence_bundles": 1
+  },
+  {
+    "case": "duplicate-request",
+    "expected": {
+      "record_integrity": "VERIFIED",
+      "mock_execution": "CONFIRMED_SUCCESS"
+    },
+    "effects": 1,
+    "evidence_bundles": 1
+  },
+  {
+    "case": "bypass-companion",
+    "expected": {
+      "record_integrity": "VERIFIED",
+      "test_evidence": "NOT_SATISFIED",
+      "admission": "DENY",
+      "mock_execution": "CONFIRMED_SUCCESS",
+      "bypass": "DIRECT_LOWER_LEVEL_GATE"
+    },
+    "effects": 1,
+    "evidence_bundles": 1
+  }
+]
