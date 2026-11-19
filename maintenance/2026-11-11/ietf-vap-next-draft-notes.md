@@ -1,5 +1,7 @@
 # Proposed editorial note for the next VAP Internet-Draft
 
+> **Status update — 20 November 2026 (JST).** This note was written before [draft-kamimura-vap-framework-03](https://datatracker.ietf.org/doc/html/draft-kamimura-vap-framework-03) was posted on 15 November 2026 (Datatracker record time 08:14:45 UTC). The `-03` adds the crosswalk in its §4.1 (Table 2) and updates the VCP reference to `draft-kamimura-scitt-vcp-05`; its "Changes from -02" states that no framework requirement is added or changed. The text below is kept as written on 11 November and is not a description of `-03`.
+
 **Prepared:** 11 November 2026 (JST). **State:** proposed text only; not submitted or adopted.
 This is a maintenance note, not the original IETF source. It assigns no next
 revision number, review period, effective date or decision authority. The
