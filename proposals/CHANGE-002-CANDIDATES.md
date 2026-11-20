@@ -27,10 +27,10 @@ signed archive or prior adoption record is changed by this register.
 The current normative obligations remain unchanged while these subjects are
 deferred. Mention in Annex C is not accepted replacement text.
 
-## 2. Nine current proposal directories
+## 2. Ten current proposal directories
 
 All entries below remain **unadopted**. This directory inventory does not make
-them nine formal change proposals or assign any to CHANGE-002. Each proposal's
+them ten formal change proposals or assign any to CHANGE-002. Each proposal's
 own dated baseline, experiments and preserved artifacts remain authoritative
 for what it actually contains.
 
@@ -45,6 +45,13 @@ for what it actually contains.
 | P7 | [School AI alerts and evaluation configuration](school-ai-evaluation-evidence/README.md) | Informative design proposal | Review disclosure, alert handling and observed isolation evidence; no school or provider deployment is asserted |
 | P8 | [Consumer-agent evidence](consumer-agent-evidence/README.md) | Informative design discussion | Review mandates, commercial disclosures, actions and retention evidence; no regulatory obligation or generic mandate schema is adopted |
 | P9 | [Legal AI Profile (LAP)](legal-ai-profile/README.md) | Related external proposal, labelled VAP-LAP by its proposer | Separate possible profile-registration decision; outside the current §4.5.2 profile list |
+| P10 | [Evidence for AI-assisted software changes](ai-assisted-change-evidence/README.md) | Informative research proposal and local experiment | Review the artifact, target, baseline, test, approval-condition and outcome bindings for reuse of existing core evidence relationships; no software-change profile, event code or Evidence Pack format is adopted |
+
+Row P10 was added on 21 November 2026 (JST). The directory was merged on
+19 November 2026 ([vap-spec #75](https://github.com/veritaschain/vap-spec/pull/75)), after this
+register was prepared; the register's baseline and the other rows are unchanged.
+Whether P10 is handled as acceptance material for core work or as a separate
+candidate has not been decided.
 
 ## 3. Core repair questions that need exact text
 

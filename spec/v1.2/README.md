@@ -127,6 +127,13 @@ Resolving them needs a decision under a change path that is not yet operational
 | CHANGE-001 §5 | The grace periods run from "VAP v1.2 publication" (P+3m, P+6m), but P is not defined. Draft 3 was published on 2026-09-28 and remains a Draft Specification. Neither text says whether that publication, or a later release under §10.3 step 5, starts the periods. |
 | §8.2 | Profiles MUST publish a sequence-mechanism matrix per conformance level. No profile publishes a document identified as that matrix (VCP `749b145`, CAP `922e05e`, CPP `3ff148b`). Parts of the content exist: VCP's tier table and `VerificationDepth` field, and CAP's tier requirements, whose draft mapping records the gap as I06. CPP's mapping is unpublished. |
 
+Recorded 21 November 2026 (JST) in a first-party static review of `main` at
+`daaede234eeea94b1bf5473a29d743e147f640d8`. Informative; no requirement, field or mapping is changed.
+
+| Location | Issue |
+|----------|-------|
+| §5.1.4 Regulatory Mapping | The table lists "MiFID II RTS 25" against `ClockSyncStatus`. RTS 25 (Delegated Regulation (EU) 2017/574) was repealed with effect from 2 March 2026; business-clock synchronisation is now set by [Delegated Regulation (EU) 2025/1155](https://eur-lex.europa.eu/eli/reg_del/2025/1155/oj), Articles 11–16. The row has not been re-checked against the replacement text. The repository README and the VAP-AT programme page were updated on 20 November 2026; the specification text is unchanged. |
+
 ---
 
 ## Legal scope (§1.6, normative)
