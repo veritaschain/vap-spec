@@ -96,7 +96,7 @@ This is a relevance mapping, not a compliance determination (VAP v1.2 §1.6). Un
 ### Additional Regulatory Coverage
 
 - **MiFID II Art. 17 + RTS 6** (Delegated Regulation (EU) 2017/589): algorithmic trading organisational requirements
-- **MiFID II RTS 25** (Delegated Regulation (EU) 2017/574): business-clock synchronisation
+- **EU clock-synchronisation rules** (Delegated Regulation (EU) 2025/1155, Articles 11–16; replaced MiFID II RTS 25 — Delegated Regulation (EU) 2017/574 — on 2 March 2026): business-clock synchronisation
 - **CAT Rule 613**: Consolidated Audit Trail (US)
 - **GDPR Article 22**: Automated decision-making transparency
 
