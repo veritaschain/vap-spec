@@ -9,6 +9,12 @@ adds the official 6 November package text and the supplied 9–10 November monit
 window. It distinguishes a guideline implementation target and deletion-policy
 requests from adopted obligations. The design review below remains dated 6 November.
 
+**Documentation follow-up: 21 November 2026.** The [new dated source record](SOURCES.md#monitoring-follow-up-2026-11-21)
+adds the 18 November Cabinet Office policy outline, PPC public-sector study
+materials and monitoring triggers. The original design review remains dated
+6 November; §4.1 and CA-09 are informative additions dated 21 November.
+This update performs no implementation test or AILEX deployment inspection.
+
 This VSO proposal describes evidence for reviewing a consumer-facing agent's
 declared mandate, commercial relationships, recommendation context, authorized
 actions and data lifecycle. The source ledger separates Japan's cyber policy
@@ -128,6 +134,32 @@ physical erasure or a legal-compliance conclusion. An audit log is itself a data
 asset with access and retention needs; recording every raw conversation forever
 is not the objective of this proposal.
 
+### 4.1 Public-sector purpose-reuse example
+
+**Added: 21 November 2026. Informative scenario; not executed.** The
+[PPC study materials](SOURCES.md#monitoring-follow-up-2026-11-21) motivate this
+example; they do not prescribe the evidence design below or amend private-SaaS
+obligations. This is not an adopted PAP/LAP requirement.
+
+Assume that an approval covers a resident-service record only for department A's
+specified inference task. Department B then requests the same record for a
+different inference task or for model training. Review the changed use against:
+
+- the original collection purpose and approved task, and the proposed later use;
+- the exact data/version, receiving department, provider, account/tenant and route;
+- the decision-maker's authority, cited legal/operational basis and document
+  version, effective interval, and approval scope;
+- the observed request, dispatch/refusal, processing result and available
+  downstream evidence, including contradictions and unknowns.
+
+The unchanged data does not make the earlier limited approval cover the new
+purpose or recipient. Preserve the original decision and assess the basis for
+the later use separately. A valid record signature, a matching operational
+approval and a legal determination permitting reuse are separate conclusions.
+Missing evidence remains unresolved; it is not proof that no processing occurred.
+Processing location, training use, retention and deletion also remain separate
+questions under §4 and the [existing transfer-evidence proposal](../incident-evidence-bindings/README.md#4-transfer-authorization-and-observed-egress).
+
 ## 5. Proposed review cases — not executed
 
 These cases define questions for a future evidence contract. They are not
@@ -143,6 +175,7 @@ fixtures, passing tests or acceptance results for an existing service.
 | CA-06 | Previously valid delegation, no sufficiently current status evidence | Preserve historical evidence and unresolved authority at execution; absence of a status record does not prove revocation. |
 | CA-07 | Retention deadline passed; only an ACK exists; backups are uncovered | Deadline state, completion evidence and copy coverage remain separate. |
 | CA-08 | Matching data appears after a scoped deletion claim | Preserve the claim and later observation; investigate survival, restoration or recreation without silently rewriting history. |
+| CA-09 | Approval is limited to department A's inference task; department B requests a different use or model training on the same data | Keep the scope mismatch and the separate basis for the later use visible; signature validity does not extend authorization or determine legal permissibility. See §4.1. |
 
 ## 6. Relationship to current repository work
 
@@ -169,9 +202,14 @@ requirement to purchase certification. It is not a comprehensive survey of
 every agency or applicable law.
 
 The 10 November source follow-up supplies the official cyber-package text.
-Further review should track the PPC consultation result and final amendment,
-deletion-policy proposals and subsequent Consumer Commission minutes, and
-separately review an authorized deployed data path before claiming a product
+The [21 November follow-up](SOURCES.md#monitoring-follow-up-2026-11-21) adds
+draft AI-service rules and the administrative personal-information study.
+Track the planned 26 November Consumer Commission discussion, the results and
+final text of the PPC consultation closing on 27 November at 23:59 JST, and
+any earlier study findings before its planned autumn 2027 intermediate report.
+Proposed scope limits do not establish an AILEX exemption. Existing duties and
+public-sector supplier obligations require their own applicability assessment.
+Separately inspect an authorized deployed data path before claiming a product
 improvement. A future pilot would need an explicit evidence contract,
 privacy/trust boundaries and
 tests of the cases above. No scheduled monitoring job is created here.
