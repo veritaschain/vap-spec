@@ -234,7 +234,7 @@ VAP produces evidence relevant to provisions such as the following. This is not 
 | Regulation | Jurisdiction | Relevance |
 |------------|--------------|-----------|
 | EU AI Act (Regulation (EU) 2024/1689) | European Union | High-risk classification (Art. 6); record-keeping (Art. 12); human oversight (Art. 14) |
-| MiFID II + RTS 6 / RTS 25 | European Union | Algorithmic trading organisational requirements (RTS 6); business-clock synchronisation (RTS 25) |
+| MiFID II RTS 6; Delegated Regulation (EU) 2025/1155 | European Union | Algorithmic trading organisational requirements (RTS 6); business-clock synchronisation (Delegated Regulation (EU) 2025/1155, Articles 11–16, which replaced RTS 25 — Delegated Regulation (EU) 2017/574 — on 2 March 2026) |
 | GDPR | European Union | Right to erasure (Art. 17) — crypto-shredding may support, does not determine, compliance |
 | CAT (SEC Rule 613) | United States | Consolidated Audit Trail |
 | NIS2 Directive | European Union | Critical infrastructure |
