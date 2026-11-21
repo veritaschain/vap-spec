@@ -271,7 +271,9 @@ to revision -05. No framework requirement is added or changed; it remains an
 individual Internet-Draft.
 
 The [dated publication follow-up](maintenance/2026-11-20/ietf-vap-framework-03-follow-up.md)
-records the relationship to the 11 November proposal. The
+records the relationship to the 11 November proposal. Two points found after
+publication are listed for the next revision in the
+[21 November note](maintenance/2026-11-21/ietf-vap-framework-next-revision-inputs.md). The
 [IETF 127 interoperability review](maintenance/2026-11-20/ietf-127-interoperability-review.md)
 and [external implementation handoff](interop/EXTERNAL-IMPLEMENTATION-HANDOFF.md)
 connect the reported experiments to existing VSO work and the experimental
@@ -285,7 +287,7 @@ that all companion drafts have been refreshed in this review.
 
 | Body | Document | Status |
 |------|----------|--------|
-| IETF | [`draft-kamimura-vap-framework-03`](https://datatracker.ietf.org/doc/draft-kamimura-vap-framework/), [`draft-kamimura-scitt-vcp-06`](https://datatracker.ietf.org/doc/draft-kamimura-scitt-vcp/), [`draft-kamimura-rats-behavioral-evidence-02`](https://datatracker.ietf.org/doc/draft-kamimura-rats-behavioral-evidence/), [`draft-kamimura-scitt-refusal-events-04`](https://datatracker.ietf.org/doc/draft-kamimura-scitt-refusal-events/), [`draft-vso-cpp-core-04`](https://datatracker.ietf.org/doc/draft-vso-cpp-core/) (revisions current on 20 November 2026; `-03` of the VAP draft posted 15 November 2026; `-06` of the SCITT/VCP profile posted 20 November 2026, 02:28 UTC, adding an open issue on Receipt verification context and changing no requirement) | Individual Internet-Drafts, active. Not adopted by any IETF Working Group; no standing in the IETF standards process |
+| IETF | [`draft-kamimura-vap-framework-03`](https://datatracker.ietf.org/doc/draft-kamimura-vap-framework/), [`draft-kamimura-scitt-vcp-06`](https://datatracker.ietf.org/doc/draft-kamimura-scitt-vcp/), [`draft-kamimura-rats-behavioral-evidence-03`](https://datatracker.ietf.org/doc/draft-kamimura-rats-behavioral-evidence/), [`draft-kamimura-scitt-refusal-events-04`](https://datatracker.ietf.org/doc/draft-kamimura-scitt-refusal-events/), [`draft-vso-cpp-core-04`](https://datatracker.ietf.org/doc/draft-vso-cpp-core/) (revisions current on 21 November 2026; `-03` of the VAP draft posted 15 November 2026; `-06` of the SCITT/VCP profile posted 20 November 2026, 02:28 UTC, adding an open issue on Receipt verification context and changing no requirement; `-03` of the RATS behavioral-evidence draft posted 21 November 2026, 04:12 UTC, an informational update that pins its VCP reference to the v1.2.0 tag and changes neither its scope nor its conclusions) | Individual Internet-Drafts, active. Not adopted by any IETF Working Group; no standing in the IETF standards process |
 | ITU-T SG17 | VSO-LS-SG17-001 | Returned by the TSB; the three criteria (well-defined standardization problem, demonstrated interoperability requirement, implementation experience) are not yet met |
 | ISO/IEC JTC 1/SC 42 | Pre-registered gap-assessment protocol VSO-GAP-SC42-001 | No liaison, submission, or contribution |
 | ISO/TC 68 | (Financial Services) | Planned. No submission |
