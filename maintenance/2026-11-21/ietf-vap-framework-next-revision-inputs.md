@@ -43,6 +43,16 @@ an open issue on Receipt verification context and changes no requirement. The
 -05 citation remains a valid reference to a fixed document; a later revision
 can cite whichever revision is current when it is prepared.
 
+**Added 24 November 2026 (JST).** [draft-kamimura-scitt-vcp-07][vcp07] was
+posted on 24 November 2026 (Datatracker record time 02:34:46 UTC). It corrects
+the SCRAPI description and the illustrative examples, states that the profile
+relies on Receipts for inclusion only, and changes no VCP requirement. The
+point above is unchanged: -05 stays a valid citation, and -07 is the current
+revision. Item 2 of its Open Issues records that the VCP AnchorRecord signature
+does not cover the event count, endpoints and PolicyID. Whether any passage of
+the VAP draft that describes anchoring needs a matching note has not been
+reviewed.
+
 ## Not covered
 
 This note does not review the rest of -03, propose replacement wording, or
@@ -54,10 +64,12 @@ maintains the draft and is not an independent review.
 - [draft-kamimura-vap-framework-03 (archived text)][vap03txt]
 - [Commission Delegated Regulation (EU) 2025/1155][reg1155], Articles 11 to
   16, 25 and 26
-- [IETF Datatracker record for draft-kamimura-scitt-vcp][vcp-dt]
+- [IETF Datatracker record for draft-kamimura-scitt-vcp][vcp-dt] (checked
+  again on 24 November 2026 for the addition in section 2)
 
 [vap03]: https://datatracker.ietf.org/doc/html/draft-kamimura-vap-framework-03
 [vap03txt]: https://www.ietf.org/archive/id/draft-kamimura-vap-framework-03.txt
 [vcp06]: https://datatracker.ietf.org/doc/html/draft-kamimura-scitt-vcp-06
+[vcp07]: https://datatracker.ietf.org/doc/html/draft-kamimura-scitt-vcp-07
 [vcp-dt]: https://datatracker.ietf.org/doc/draft-kamimura-scitt-vcp/
 [reg1155]: https://eur-lex.europa.eu/eli/reg_del/2025/1155/oj
