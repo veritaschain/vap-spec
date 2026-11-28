@@ -82,6 +82,10 @@ they were committed. Nothing in v1.2 keeps a reusable secret out of a signed or 
 2. How a verifier reports a field that was withheld or redacted. It must not treat the absence as a
    verified statement about the content (register F13).
 3. Test material must use synthetic secrets only.
+4. A third party can demonstrate a violation of this rule and cannot demonstrate compliance with it.
+   The [screening experiment](../../experiments/secret-value-screening/README.md) shows the limit on
+   fourteen synthetic cases: a reference that is a hash of a low-entropy secret is not distinguishable
+   from any other digest. Review text should state that the rule is checkable only in the negative.
 
 ### 2.3 F12, first part — where record-signing keys are held
 
@@ -207,8 +211,9 @@ records were deleted or edited, they were records that had not been anchored.
 2. Whether the five subjects go forward together or separately, and their order relative to P1.
 3. Resolution of the open points listed under each subject.
 4. Review cases for each subject, with expected results, taken from the lists in register section 4.
-5. Overlap with `draft-mih-scitt-agent-action-capsule` for F7 and F9; its IPR statements have not been
-   reviewed by VSO.
+5. Overlap with `draft-mih-scitt-agent-action-capsule` for F7 and F9. The IPR disclosures on file were
+   read on 28 November 2026 and are recorded in [EXTERNAL-OVERLAP.md](EXTERNAL-OVERLAP.md); the
+   non-assertion covenant they mention and sections 6 onward of the current revision were not read.
 
 Any normative change follows VAP v1.2 §10.3, with a separate submission, public review, deliberation,
 decision record and release.
