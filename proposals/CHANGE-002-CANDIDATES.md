@@ -27,10 +27,10 @@ signed archive or prior adoption record is changed by this register.
 The current normative obligations remain unchanged while these subjects are
 deferred. Mention in Annex C is not accepted replacement text.
 
-## 2. Ten current proposal directories
+## 2. Eleven current proposal directories
 
 All entries below remain **unadopted**. This directory inventory does not make
-them ten formal change proposals or assign any to CHANGE-002. Each proposal's
+them eleven formal change proposals or assign any to CHANGE-002. Each proposal's
 own dated baseline, experiments and preserved artifacts remain authoritative
 for what it actually contains.
 
@@ -46,12 +46,17 @@ for what it actually contains.
 | P8 | [Consumer-agent evidence](consumer-agent-evidence/README.md) | Informative design discussion | Review mandates, commercial disclosures, actions and retention evidence; no regulatory obligation or generic mandate schema is adopted |
 | P9 | [Legal AI Profile (LAP)](legal-ai-profile/README.md) | Related external proposal, labelled VAP-LAP by its proposer | Separate possible profile-registration decision; outside the current §4.5.2 profile list |
 | P10 | [Evidence for AI-assisted software changes](ai-assisted-change-evidence/README.md) | Informative research proposal and local experiment | Review the artifact, target, baseline, test, approval-condition and outcome bindings for reuse of existing core evidence relationships; no software-change profile, event code or Evidence Pack format is adopted |
+| P11 | [Candidate text for five core subjects, revision 0.1](core-text-candidates/README.md) | Unnumbered discussion draft | Candidate wording for F7, F9, F11, F13 and the first part of F12 (section 4 below); review the open points listed under each subject before any of it is treated as replacement text |
 
 Row P10 was added on 21 November 2026 (JST). The directory was merged on
 19 November 2026 ([vap-spec #75](https://github.com/veritaschain/vap-spec/pull/75)), after this
 register was prepared; the register's baseline and the other rows are unchanged.
 Whether P10 is handled as acceptance material for core work or as a separate
 candidate has not been decided.
+
+Row P11 was added on 28 November 2026 (JST). It is not a new subject: it holds
+candidate wording for five of the subjects already listed in section 4, and those
+subjects remain unadopted and unnumbered. The section 4 entries are unchanged.
 
 ## 3. Core repair questions that need exact text
 
@@ -291,13 +296,40 @@ than the specification's.
 - [S6] `draft-mih-sokolov-cose-deterministic-encodings-01`: <https://datatracker.ietf.org/doc/html/draft-mih-sokolov-cose-deterministic-encodings-01>
 - RFC 8785 <https://www.rfc-editor.org/rfc/rfc8785>, RFC 9942 <https://www.rfc-editor.org/rfc/rfc9942>, RFC 9943 <https://www.rfc-editor.org/rfc/rfc9943>
 
-## 6. Decision and change log
+## 6. Suggested order of work (28 November 2026)
+
+**Status: a recommendation from VSO's internal review of 28 November 2026; not a
+scope assignment, a decision or a schedule.** The review was first-party and
+AI-assisted, and has not been independently reviewed. It read the public incident
+registry at 88 records
+([vcp-site `591e68c`](https://github.com/veritaschain/vcp-site/blob/591e68cf8fc480d0baeba24cbec68b8fcf084bfe/incidents/incidents.json))
+against this register. Incident counts are VSO's editorial classification and are
+not evidence of need.
+
+| Order | Subjects | Why here | Material that exists |
+| --- | --- | --- | --- |
+| 1 | P1 three-valued verification; meaning and bytes of `bind`; Ed25519 key and signature input policy; numeric representation with Q-a (section 3, section 5) | Later subjects report results that depend on a not-verified outcome; these rest on verifier findings and the IETF 127 observations, not on incidents | P1 revision 0.2; demo security vectors; no exact text yet for `bind`, key policy or numeric fields |
+| 2 | F11, F13, first part of F12, F9 as an informative note, F7 as an optional reservation | Can be stated as wording in existing clauses | [P11](core-text-candidates/README.md), revision 0.1, with open points |
+| 3 | P2, limited to defining the declared scope and binding a digest of the scope or policy text; F10 | P2's own section 9 lists six open decisions on advance commitment. F10 depends on publishing the DAP Working Draft and reconciling it with v1.2 Draft 3 | P2 revision 0.1 with a verifier and 14 synthetic scenarios; no text for F10 |
+| Later | Advance commitment under P2; F8; second part of F12 (compromise declarations); F14 | Each needs design work; F8 overlaps third-party Internet-Drafts whose IPR statements VSO has not reviewed | Local experiments only |
+
+Not proposed for any release: detection, blocking or runtime intervention;
+obligations on systems operated by an attacker; new domain-specific normative
+text for wallets, payment APIs or cloud credentials; a wider scope for VCP.
+
+Nothing in this order can be acted on as a normative change until the decision
+inputs in [the proposed change-control preparation](../governance/PROPOSED-CHANGE-PROCESS.md),
+section 1, are supplied: the Technical Committee, the voting rule, the formal
+register and an opened public review.
+
+## 7. Decision and change log
 
 | Date | Administrative action | Normative effect |
 | --- | --- | --- |
 | 2026-11-11 JST | Prepare this source-linked inventory and unresolved-decision checklist | None; no scope assignment, review clock, vote, registration or adoption |
 | 2026-11-11 JST | Add the eight follow-up subjects F7–F14, attributed to the supplied follow-up list; original report reconciliation and exact text/vectors remain pending | None; all eight remain unnumbered, unadopted candidate work |
 | 2026-11-20 JST | Add §5: external observations E1–E8 from IETF 127 materials and questions Q-a–Q-d, from the check of the 20 November weekly standards brief | None; questions only, unadopted; no external implementation of VAP is implied |
+| 2026-11-28 JST | Add row P11 (candidate wording for F7, F9, F11, F13 and the first part of F12) and §6 (suggested order of work) from the 28 November internal review of the incident registry at 88 records | None; candidate wording and a recommendation only; no scope assignment, review opening, vote or adoption |
 
 Use the [proposed change-control preparation](../governance/PROPOSED-CHANGE-PROCESS.md)
 to assemble the required governance and review records. Formal identifiers,
