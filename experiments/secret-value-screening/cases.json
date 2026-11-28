@@ -1,0 +1,175 @@
+{
+  "about": "Synthetic cases for the secret-value screening experiment. Strings in double braces are placeholders that secret_screen.py replaces at run time; no secret-shaped literal is stored in this file. Experimental and unadopted.",
+  "cases": [
+    {
+      "id": "S01-clean",
+      "purpose": "A record with no secret-shaped value.",
+      "event": {
+        "header": {"event_id": "01930000-0000-7000-8000-000000000001", "event_type": "AI_DECISION"},
+        "provenance": {
+          "actor": {"id": "agent-a", "version": "1.0"},
+          "input": {"sources": ["ticket-4411"], "summary": "Rotate the staging certificate."},
+          "action": {"tool": "cert.rotate", "target": "staging"},
+          "outcome": {"status": "COMPLETED"}
+        },
+        "security": {"event_hash": "{{SHA256_DIGEST}}", "signature": "{{BASE64_SIGNATURE}}"}
+      },
+      "expected": {"result": "NO_PATTERN_MATCHED"}
+    },
+    {
+      "id": "S02-bearer-in-input",
+      "purpose": "A bearer token copied into the recorded input.",
+      "event": {
+        "header": {"event_type": "AI_DECISION"},
+        "provenance": {"input": {"request_headers": "{{BEARER}}"}}
+      },
+      "expected": {
+        "result": "SECRET_PATTERN_FOUND",
+        "classes": ["bearer-token"],
+        "pointers": ["/provenance/input/request_headers"]
+      }
+    },
+    {
+      "id": "S03-jwt-in-tool-result",
+      "purpose": "A token returned by a tool and recorded in the outcome.",
+      "event": {
+        "header": {"event_type": "AI_DECISION"},
+        "provenance": {"outcome": {"status": "COMPLETED", "tool_result": ["login ok", "{{JWT}}"]}}
+      },
+      "expected": {
+        "result": "SECRET_PATTERN_FOUND",
+        "classes": ["jwt"],
+        "pointers": ["/provenance/outcome/tool_result/1"]
+      }
+    },
+    {
+      "id": "S04-private-key-in-context",
+      "purpose": "A private key read from the environment and recorded as context.",
+      "event": {
+        "header": {"event_type": "AI_DECISION"},
+        "provenance": {"context": {"environment": {"deploy_key": "{{PEM_PRIVATE_KEY}}"}}}
+      },
+      "expected": {
+        "result": "SECRET_PATTERN_FOUND",
+        "classes": ["pem-private-key"],
+        "pointers": ["/provenance/context/environment/deploy_key"]
+      }
+    },
+    {
+      "id": "S05-url-userinfo-in-payload",
+      "purpose": "A connection string with embedded credentials in a profile-defined payload.",
+      "event": {
+        "header": {"event_type": "AI_DECISION"},
+        "domain_payload": {"export_target": "{{URL_USERINFO}}"}
+      },
+      "expected": {
+        "result": "SECRET_PATTERN_FOUND",
+        "classes": ["url-userinfo"],
+        "pointers": ["/domain_payload/export_target"]
+      }
+    },
+    {
+      "id": "S06-secret-member-name",
+      "purpose": "A member whose name says it holds a secret; the value has no recognisable shape.",
+      "event": {
+        "header": {"event_type": "AI_DECISION"},
+        "domain_payload": {"connector": {"name": "billing", "api_key": "{{OPAQUE_SECRET}}"}}
+      },
+      "expected": {
+        "result": "SECRET_PATTERN_FOUND",
+        "classes": ["secret-member-name"],
+        "pointers": ["/domain_payload/connector/api_key"]
+      }
+    },
+    {
+      "id": "S07-assignment-in-free-text",
+      "purpose": "A credential written into a free-text action description.",
+      "event": {
+        "header": {"event_type": "AI_DECISION"},
+        "provenance": {"action": {"description": "{{ASSIGNMENT}}"}}
+      },
+      "expected": {
+        "result": "SECRET_PATTERN_FOUND",
+        "classes": ["named-assignment"],
+        "pointers": ["/provenance/action/description"]
+      }
+    },
+    {
+      "id": "S08-cookie-header",
+      "purpose": "A session cookie captured with a recorded request.",
+      "event": {
+        "header": {"event_type": "AI_DECISION"},
+        "provenance": {"input": {"captured_request": "GET /export\n{{COOKIE}}"}}
+      },
+      "expected": {
+        "result": "SECRET_PATTERN_FOUND",
+        "classes": ["cookie-header"],
+        "pointers": ["/provenance/input/captured_request"]
+      }
+    },
+    {
+      "id": "S09-digests-are-not-secrets",
+      "purpose": "False-positive control: digests and a signature are not reported, and the security block is outside the screened scope.",
+      "event": {
+        "header": {"event_type": "AI_DECISION"},
+        "provenance": {"input": {"sources": [{"document_sha256": "{{SHA256_DIGEST}}"}]}},
+        "security": {"event_hash": "{{SHA256_DIGEST}}", "signature": "{{BASE64_SIGNATURE}}", "note": "{{BEARER}}"}
+      },
+      "expected": {"result": "NO_PATTERN_MATCHED"}
+    },
+    {
+      "id": "S10-issuer-assigned-identifier",
+      "purpose": "The form the candidate rule asks for: a non-secret identifier assigned by the credential's issuer.",
+      "event": {
+        "header": {"event_type": "AI_DECISION"},
+        "provenance": {"action": {"credential_ref": "kid:issuer.example.invalid/2026/0042", "token_id": "tok-0042"}}
+      },
+      "expected": {"result": "NO_PATTERN_MATCHED"}
+    },
+    {
+      "id": "S11-hash-of-low-entropy-secret",
+      "purpose": "Known limit. The reference is a hash of a low-entropy secret, which the candidate rule does not accept as a non-secret identifier. Pattern screening cannot tell it from any other digest.",
+      "known_limit": true,
+      "event": {
+        "header": {"event_type": "AI_DECISION"},
+        "provenance": {"action": {"credential_ref": "{{SHA256_OF_LOW_ENTROPY}}"}}
+      },
+      "expected": {"result": "NO_PATTERN_MATCHED"}
+    },
+    {
+      "id": "S12-declared-not-assessed",
+      "purpose": "A member the caller declares encrypted before commitment. It is reported as not assessed; nothing is concluded about its content.",
+      "event": {
+        "header": {"event_type": "AI_DECISION"},
+        "provenance": {
+          "input": {"summary": "Export the ledger."},
+          "context": {"protected": {"ciphertext": "{{BEARER}}"}}
+        }
+      },
+      "not_assessed": ["/provenance/context/protected"],
+      "expected": {"result": "NO_PATTERN_MATCHED", "not_assessed": ["/provenance/context/protected"]}
+    },
+    {
+      "id": "S13-two-findings-one-record",
+      "purpose": "More than one secret in one record; each is reported at its own pointer.",
+      "event": {
+        "header": {"event_type": "AI_DECISION"},
+        "provenance": {
+          "input": {"request_headers": "{{BEARER}}"},
+          "outcome": {"log_excerpt": ["step 1 ok", "{{URL_USERINFO}}"]}
+        }
+      },
+      "expected": {
+        "result": "SECRET_PATTERN_FOUND",
+        "classes": ["bearer-token", "url-userinfo"],
+        "pointers": ["/provenance/input/request_headers", "/provenance/outcome/log_excerpt/1"]
+      }
+    },
+    {
+      "id": "S14-duplicate-member-names",
+      "purpose": "Input with duplicate member names is rejected and not repaired.",
+      "raw_text": "{\"header\": {\"event_type\": \"AI_DECISION\"}, \"provenance\": {\"input\": \"a\", \"input\": \"{{BEARER}}\"}}",
+      "expected": {"result": "INPUT_REJECTED"}
+    }
+  ]
+}

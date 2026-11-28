@@ -27,10 +27,10 @@ signed archive or prior adoption record is changed by this register.
 The current normative obligations remain unchanged while these subjects are
 deferred. Mention in Annex C is not accepted replacement text.
 
-## 2. Eleven current proposal directories
+## 2. Twelve current proposal directories
 
 All entries below remain **unadopted**. This directory inventory does not make
-them eleven formal change proposals or assign any to CHANGE-002. Each proposal's
+them twelve formal change proposals or assign any to CHANGE-002. Each proposal's
 own dated baseline, experiments and preserved artifacts remain authoritative
 for what it actually contains.
 
@@ -47,6 +47,7 @@ for what it actually contains.
 | P9 | [Legal AI Profile (LAP)](legal-ai-profile/README.md) | Related external proposal, labelled VAP-LAP by its proposer | Separate possible profile-registration decision; outside the current §4.5.2 profile list |
 | P10 | [Evidence for AI-assisted software changes](ai-assisted-change-evidence/README.md) | Informative research proposal and local experiment | Review the artifact, target, baseline, test, approval-condition and outcome bindings for reuse of existing core evidence relationships; no software-change profile, event code or Evidence Pack format is adopted |
 | P11 | [Candidate text for five core subjects, revision 0.1](core-text-candidates/README.md) | Unnumbered discussion draft | Candidate wording for F7, F9, F11, F13 and the first part of F12 (section 4 below); review the open points listed under each subject before any of it is treated as replacement text |
+| P12 | [Candidate text for three core repair questions, revision 0.1](integrity-text-candidates/README.md) | Unnumbered discussion draft | Candidate wording for the meaning and bytes of `bind`, the Ed25519 key and signature input policy, and numeric representation with Q-a (section 3 and section 5 below); depends on the third value proposed in P1; no vectors until the text is fixed |
 
 Row P10 was added on 21 November 2026 (JST). The directory was merged on
 19 November 2026 ([vap-spec #75](https://github.com/veritaschain/vap-spec/pull/75)), after this
@@ -57,6 +58,10 @@ candidate has not been decided.
 Row P11 was added on 28 November 2026 (JST). It is not a new subject: it holds
 candidate wording for five of the subjects already listed in section 4, and those
 subjects remain unadopted and unnumbered. The section 4 entries are unchanged.
+
+Row P12 was added on 28 November 2026 (JST). It holds candidate wording for three
+of the questions in section 3. Those questions remain open; section 3 is unchanged.
+P-256 / ES256 is not covered by P12.
 
 ## 3. Core repair questions that need exact text
 
@@ -308,10 +313,10 @@ not evidence of need.
 
 | Order | Subjects | Why here | Material that exists |
 | --- | --- | --- | --- |
-| 1 | P1 three-valued verification; meaning and bytes of `bind`; Ed25519 key and signature input policy; numeric representation with Q-a (section 3, section 5) | Later subjects report results that depend on a not-verified outcome; these rest on verifier findings and the IETF 127 observations, not on incidents | P1 revision 0.2; demo security vectors; no exact text yet for `bind`, key policy or numeric fields |
-| 2 | F11, F13, first part of F12, F9 as an informative note, F7 as an optional reservation | Can be stated as wording in existing clauses | [P11](core-text-candidates/README.md), revision 0.1, with open points |
+| 1 | P1 three-valued verification; meaning and bytes of `bind`; Ed25519 key and signature input policy; numeric representation with Q-a (section 3, section 5) | Later subjects report results that depend on a not-verified outcome; these rest on verifier findings and the IETF 127 observations, not on incidents | P1 revision 0.2; [P12](integrity-text-candidates/README.md), revision 0.1, with open points; demo security vectors. Shared boundary vectors are deliberately not written yet (Q-d) |
+| 2 | F11, F13, first part of F12, F9 as an informative note, F7 as an optional reservation | Can be stated as wording in existing clauses | [P11](core-text-candidates/README.md), revision 0.1, with open points; for F13, [fourteen synthetic screening cases](../experiments/secret-value-screening/README.md), which show that the rule can be checked only in the negative |
 | 3 | P2, limited to defining the declared scope and binding a digest of the scope or policy text; F10 | P2's own section 9 lists six open decisions on advance commitment. F10 depends on publishing the DAP Working Draft and reconciling it with v1.2 Draft 3 | P2 revision 0.1 with a verifier and 14 synthetic scenarios; no text for F10 |
-| Later | Advance commitment under P2; F8; second part of F12 (compromise declarations); F14 | Each needs design work; F8 overlaps third-party Internet-Drafts whose IPR statements VSO has not reviewed | Local experiments only |
+| Later | Advance commitment under P2; F8; second part of F12 (compromise declarations); F14 | Each needs design work. F8 overlaps a third-party Internet-Draft; its IPR disclosures were read on 28 November 2026 ([note](core-text-candidates/EXTERNAL-OVERLAP.md)), the covenant they mention was not | Local experiments only |
 
 Not proposed for any release: detection, blocking or runtime intervention;
 obligations on systems operated by an attacker; new domain-specific normative
@@ -330,6 +335,7 @@ register and an opened public review.
 | 2026-11-11 JST | Add the eight follow-up subjects F7–F14, attributed to the supplied follow-up list; original report reconciliation and exact text/vectors remain pending | None; all eight remain unnumbered, unadopted candidate work |
 | 2026-11-20 JST | Add §5: external observations E1–E8 from IETF 127 materials and questions Q-a–Q-d, from the check of the 20 November weekly standards brief | None; questions only, unadopted; no external implementation of VAP is implied |
 | 2026-11-28 JST | Add row P11 (candidate wording for F7, F9, F11, F13 and the first part of F12) and §6 (suggested order of work) from the 28 November internal review of the incident registry at 88 records | None; candidate wording and a recommendation only; no scope assignment, review opening, vote or adoption |
+| 2026-11-28 JST | Add row P12 (candidate wording for `bind`, the Ed25519 input policy and numeric representation), a review note on overlap with `draft-mih-scitt-agent-action-capsule` and its IPR disclosures, and a synthetic screening experiment for F13; update §6 to point to them | None; candidate wording, a review note and a local experiment only; no scope assignment, review opening, vote or adoption |
 
 Use the [proposed change-control preparation](../governance/PROPOSED-CHANGE-PROCESS.md)
 to assemble the required governance and review records. Formal identifiers,
